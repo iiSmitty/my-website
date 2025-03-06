@@ -1,0 +1,377 @@
+/* Windows 95 Theme CSS - Fixed */
+body {
+    background-color: #008080; /* Classic Win95 teal background */
+    font-family: "MS Sans Serif", Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    color: #000000;
+}
+
+.win95-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #c0c0c0;
+    border: 2px solid #000000;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Windows 95 Title Bar */
+.win95-title-bar {
+    background: linear-gradient(to right, #000080, #1084d0);
+    color: white;
+    padding: 3px 2px 3px 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.win95-buttons {
+    display: flex;
+}
+
+.win95-button {
+    width: 16px;
+    height: 14px;
+    background-color: #c0c0c0;
+    border: 1px outset #ffffff;
+    margin-left: 2px;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    line-height: 12px;
+}
+
+.win95-button:active {
+    border: 1px inset #ffffff;
+}
+
+/* Windows 95 Menu Bar */
+.win95-menu-bar {
+    background-color: #c0c0c0;
+    border-bottom: 1px solid #808080;
+    display: flex;
+    padding: 2px 0;
+}
+
+.win95-menu-item {
+    padding: 2px 6px;
+    margin-right: 4px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.win95-menu-item:hover {
+    background-color: #000080;
+    color: white;
+}
+
+/* Windows 95 Content Area */
+.win95-content {
+    padding: 10px;
+    font-size: 12px;
+}
+
+/* Windows 95 Box */
+.win95-box {
+    border: 2px inset #ffffff;
+    background-color: #ffffff;
+    padding: 10px;
+    margin-bottom: 16px;
+}
+
+/* Section Styling */
+.section-header {
+    margin-top: 20px;
+    margin-bottom: 4px;
+}
+
+.section-title {
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    padding: 3px 5px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.section-content {
+    margin-top: 0;
+}
+
+/* Standard Elements */
+h1, h2 {
+    color: #000080;
+    text-align: center;
+    margin: 15px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 16px;
+}
+
+.marquee {
+    background-color: #ffff00;
+    padding: 5px;
+    text-align: center;
+    margin: 10px 0;
+    border: 2px inset #ffffff;
+}
+
+.blink {
+    animation: blink-animation 1s steps(5, start) infinite;
+    display: inline-block;
+}
+
+@keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}
+
+.win95-button-large {
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-family: "MS Sans Serif", Arial, sans-serif;
+    cursor: pointer;
+}
+
+.win95-button-large:active {
+    border: 2px inset #ffffff;
+}
+
+.button-container {
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* Decryption animation */
+.win95-decrypt-animation {
+    margin-top: 15px;
+    display: none;
+}
+
+.decrypt-progress {
+    border: 2px inset #ffffff;
+    background-color: #ffffff;
+    height: 20px;
+    margin-bottom: 5px;
+    padding: 1px;
+}
+
+.decrypt-bar {
+    background-color: #0000aa;
+    height: 100%;
+    width: 0;
+    transition: width 0.5s;
+}
+
+.decrypt-text {
+    font-family: "Courier New", monospace;
+    font-size: 12px;
+    color: #008000;
+}
+
+.image-placeholder {
+    text-align: center;
+    width: 220px;
+    margin: 10px auto;
+    font-weight: bold;
+    background-color: #c0c0c0;
+    padding: 15px;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #808080;
+}
+
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+
+th {
+    background-color: #c0c0c0;
+}
+
+.skill-dots {
+    letter-spacing: 2px;
+}
+
+/* Windows 95 Status Bar */
+.win95-status-bar {
+    background-color: #c0c0c0;
+    padding: 3px 5px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    font-size: 11px;
+    border: 1px inset #ffffff;
+}
+
+.status-bar-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3px;
+}
+
+.status-bar-bottom {
+    text-align: center;
+    padding-top: 2px;
+    border-top: 1px solid #808080;
+}
+
+
+.status-item {
+    padding: 0 5px;
+}
+
+/* Windows 95-style links */
+a {
+    color: #0000FF;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #800080;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* List styling */
+ul {
+    list-style-type: square;
+    margin: 5px 0;
+    padding-left: 20px;
+}
+
+/* Windows 95 Dialog */
+.win95-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    width: 300px;
+    transition: opacity 0.5s;
+}
+
+body.startup {
+    background-color: #008080;
+    background-image: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden; /* Prevent scrolling during startup */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.win95-dialog-title {
+    background: linear-gradient(to right, #000080, #1084d0);
+    color: white;
+    padding: 3px 3px 3px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.win95-dialog-content {
+    padding: 15px;
+    text-align: center;
+}
+
+.dialog-logo {
+    margin-bottom: 15px;
+}
+
+.windows-logo {
+    width: 32px;
+    height: 32px;
+    margin: 0 auto;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 2px;
+}
+
+.windows-logo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    background-color: #ff0000;
+}
+
+.windows-logo::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    background-color: #00ff00;
+}
+
+.windows-logo .bottom-left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    background-color: #0000ff;
+}
+
+.windows-logo .bottom-right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    background-color: #ffff00;
+}
+
+.dialog-message {
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.dialog-buttons {
+    margin-top: 15px;
+}
+
+.faith-message {
+    color: #000080; /* Windows 95 blue */
+    font-weight: bold;
+}
+
+.faith-message a {
+    color: #0000FF;
+}
+
+.faith-message a:hover {
+    text-decoration: underline;
+}

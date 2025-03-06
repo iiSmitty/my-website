@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>André Smit</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<link rel="icon" type="image/png" href="favicon.png">
+<body>
+<script src="decrypt.js"></script>
+<div class="win95-container">
+    <!-- Windows 95 Title Bar -->
+    <div class="win95-title-bar">
+        <div class="win95-title">Windows 95</div>
+        <div class="win95-buttons">
+            <button class="win95-button win95-minimize">_</button>
+            <button class="win95-button win95-maximize">□</button>
+            <button class="win95-button win95-close">×</button>
+        </div>
+    </div>
+
+    <!-- Windows 95 Menu Bar -->
+    <div class="win95-menu-bar">
+        <div class="win95-menu-item">File</div>
+        <div class="win95-menu-item">Edit</div>
+        <div class="win95-menu-item">View</div>
+        <div class="win95-menu-item">Help</div>
+    </div>
+
+    <!-- Content Area -->
+    <div class="win95-content">
+        <div class="marquee">
+            <span class="blink">&#9733;</span> Welcome to my personal website! <span class="blink">&#9733;</span>
+        </div>
+
+        <h1>André Smit</h1>
+        <h2>Problem Solver</h2>
+
+        <div class="win95-box image-placeholder">Under Construction</div>
+
+        <div class="section-header">
+            <div class="section-title">About Me</div>
+        </div>
+        <div class="win95-box section-content">
+            <p>Hello, world! I'm a software engineer based in [Your City]. I specialize in [Your Specialties], and I'm passionate about creating efficient, clean code.</p>
+            <p>When I'm not coding, you can find me [Your Hobbies].</p>
+        </div>
+
+        <div class="section-header">
+            <div class="section-title">What I Do</div>
+        </div>
+        <div class="win95-box section-content">
+            <ul>
+                <li>Backend Development</li>
+                <li>Frontend Development</li>
+                <li>Database Design</li>
+                <li>System Architecture</li>
+                <li>Code Optimization</li>
+            </ul>
+        </div>
+
+        <div class="section-header">
+            <div class="section-title">My Skills</div>
+        </div>
+        <div class="win95-box section-content">
+            <table>
+                <tr>
+                    <th>Skill</th>
+                    <th>Experience Level</th>
+                </tr>
+                <tr>
+                    <td><a href="#">Python</a></td>
+                    <td><span class="skill-dots">&#9679;&#9679;&#9679;&#9679;&#9675;</span></td>
+                </tr>
+                <tr>
+                    <td><a href="#">JavaScript</a></td>
+                    <td><span class="skill-dots">&#9679;&#9679;&#9679;&#9675;&#9675;</span></td>
+                </tr>
+                <tr>
+                    <td><a href="#">HTML/CSS</a></td>
+                    <td><span class="skill-dots">&#9679;&#9679;&#9679;&#9679;&#9679;</span></td>
+                </tr>
+                <tr>
+                    <td><a href="#">SQL</a></td>
+                    <td><span class="skill-dots">&#9679;&#9679;&#9679;&#9675;&#9675;</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section-header">
+            <div class="section-title">Contact Me</div>
+        </div>
+        <div class="win95-box section-content">
+            <p>Email: <span id="encrypted-email">************@********.***</span></p>
+            <p>Phone: <span id="encrypted-phone">(***) ***-****</span></p>
+            <div class="button-container">
+                <button class="win95-button-large" id="decrypt-button">Decrypt Contact Info</button>
+            </div>
+            <div class="win95-decrypt-animation" id="decrypt-animation">
+                <div class="decrypt-progress">
+                    <div class="decrypt-bar" id="decrypt-progress-bar"></div>
+                </div>
+                <div class="decrypt-text" id="decrypt-text">Initializing decryption...</div>
+            </div>
+        </div>
+
+        <div class="win95-status-bar">
+            <div class="status-bar-top">
+                <div class="status-item">Page loaded successfully</div>
+                <div class="status-item">Visitors: 1,337</div>
+                <div class="status-item">Last updated: March 2025</div>
+                <div class="status-item">
+                    <button class="win95-sound-button" id="sound-toggle" title="Toggle Sound">🔊</button>
+                </div>
+            </div>
+            <div class="status-bar-bottom">
+                <div class="faith-message">
+                    Jesus Christ is the Light and Saviour of the world!
+                    <a href="https://www.bible.com/" target="_blank">Discover His Love</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
