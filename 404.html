@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | André Smit</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+<script src="decrypt.js"></script>
+<div class="win95-container">
+    <!-- Windows 95 Title Bar -->
+    <div class="win95-title-bar">
+        <div class="win95-title">Error - Page Not Found</div>
+        <div class="win95-buttons">
+            <button class="win95-button win95-minimize">_</button>
+            <button class="win95-button win95-maximize">□</button>
+            <button class="win95-button win95-close">×</button>
+        </div>
+    </div>
+
+    <!-- Windows 95 Menu Bar -->
+    <div class="win95-menu-bar">
+        <div class="win95-menu-item">File</div>
+        <div class="win95-menu-item">Edit</div>
+        <div class="win95-menu-item">View</div>
+        <div class="win95-menu-item">Help</div>
+    </div>
+
+    <!-- Content Area -->
+    <div class="win95-content">
+        <div class="win95-dialog-content">
+            <div class="dialog-logo">
+                <div class="windows-logo">
+                    <div class="bottom-left"></div>
+                    <div class="bottom-right"></div>
+                </div>
+            </div>
+
+            <div class="win95-box" style="text-align: center; margin: 20px auto; max-width: 450px;">
+                <h1 style="color: #000080;">Error 404 - Page Not Found</h1>
+                <div style="margin: 25px 0; font-size: 14px;">
+                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAnFBMVEUAAAD/AAAAAAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD/AAD///+SJUmNAAAAMnRSTlMAAQgRQmuLo7O6tqqORkoJPhkHOmSn1fX+/fPVpGE5BjlnrN31/v3y1KpkORo/CUhGi2IAU04AAAABYktHRDM31XxeAAAACXBIWXMAAAsRAAALEQF/ZF+RAAAAB3RJTUUH6AMGATMvOCUqnQAAALJJREFUOMut09cOgjAUgOHSIlVAcQ8c4N6K+v5v50EDDaHYePz/4EtPRtJEGJZlWK6PYARjuBwpYHmkguORBq1HOlgetdB41EbjUReNR300Hg3ReDRG49F0fmeS5bVfZ0Hy3rzPyuRj4C3+GYTxYWu/hG9eRbHTJOeSbj1K83w3sY1Lz/HlbntdWNahdW5ZDu7kcnHVLd98ytavQfEi8K/++BtKSQxRqgljjRkbwdiSiC9VuyHIY0V4dgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNC0wMy0wNlQwMTo1MTowMCswMDowMISoy4UAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjQtMDMtMDZUMDE6NTE6MDArMDA6MDD190M5AAAAAElFTkSuQmCC" alt="Error icon" style="width: 32px; height: 32px; margin-right: 10px;">
+                        <span>The page you are looking for does not exist.</span>
+                    </div>
+                    <p>The file might have been moved, deleted, or never existed.</p>
+                </div>
+
+                <div class="button-container">
+                    <a href="index.html">
+                        <button class="win95-button-large">Return to Home Page</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="win95-status-bar">
+            <div class="status-bar-top">
+                <div class="status-item">Error code: 404</div>
+                <div class="status-item">Unable to locate file</div>
+                <div class="status-item">Last updated: March 2025</div>
+                <div class="status-item">
+                    <button class="win95-sound-button" id="sound-toggle" title="Toggle Sound">🔊</button>
+                </div>
+            </div>
+            <div class="status-bar-bottom">
+                <div class="faith-message">
+                    Jesus Christ is the Light and Saviour of the world!
+                    <a href="https://www.bible.com/" target="_blank">Discover His Love</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Add any JavaScript you need for the error page
+    document.querySelector('.win95-close').addEventListener('click', function() {
+        window.location.href = 'index.html';
+    });
+
+    // Sound toggle functionality (if you have it on your main page)
+    if (document.getElementById('sound-toggle')) {
+        document.getElementById('sound-toggle').addEventListener('click', function() {
+            // Add sound toggle logic here
+        });
+    }
+</script>
+</body>
+</html>
