@@ -375,3 +375,130 @@ body.startup {
 .faith-message a:hover {
     text-decoration: underline;
 }
+
+
+/* Mobile Responsive Adjustments */
+@media only screen and (max-width: 600px) {
+    body {
+        padding: 0;
+        margin: 0;
+    }
+
+    .win95-container {
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+        border: none;
+        box-shadow: none;
+    }
+
+    /* Adjust title bar and button sizes for better mobile touch targets */
+    .win95-title-bar {
+        padding: 8px 4px;
+    }
+
+    .win95-button {
+        width: 24px;
+        height: 24px;
+        font-size: 14px;
+        margin-left: 5px;
+    }
+
+    /* Make menu items larger for touch */
+    .win95-menu-bar {
+        padding: 5px 0;
+    }
+
+    .win95-menu-item {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    /* Improve content spacing */
+    .win95-content {
+        padding: 10px;
+    }
+
+    /* Make sure tables and content are readable on mobile */
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px 5px;
+    }
+
+    /* Make buttons more touch-friendly */
+    .win95-button-large {
+        padding: 10px 15px;
+        margin: 15px 0;
+        font-size: 14px;
+        min-height: 44px; /* Better touch target */
+    }
+
+    /* Improve status bar readability */
+    .win95-status-bar {
+        font-size: 12px;
+    }
+
+    .status-bar-top {
+        flex-wrap: wrap;
+    }
+
+    .status-item {
+        padding: 3px 5px;
+        width: 50%; /* 2 items per row */
+        box-sizing: border-box;
+    }
+
+    /* Ensure content fits viewport width */
+    .win95-box, .section-title, h1, h2, p {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Ensure proper text sizing */
+    h1 {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    p, li {
+        font-size: 14px;
+    }
+
+    /* Make decrypt section more mobile-friendly */
+    .decrypt-progress {
+        height: 25px;
+    }
+
+    /* Ensure scrolling works properly */
+    html, body {
+        overflow-x: hidden;
+    }
+
+    /* Adjust image placeholder size */
+    .image-placeholder {
+        width: 80%;
+        max-width: 220px;
+    }
+}
+
+/* For extra small screens */
+@media only screen and (max-width: 320px) {
+    .win95-title {
+        font-size: 11px;
+    }
+
+    .status-item {
+        width: 100%; /* Stack items on very small screens */
+    }
+
+    .win95-menu-item {
+        padding: 8px 6px;
+        font-size: 12px;
+    }
+}
