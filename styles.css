@@ -375,3 +375,41 @@ body.startup {
 .faith-message a:hover {
     text-decoration: underline;
 }
+
+/* Mobile devices (portrait) */
+@media only screen and (max-width: 480px) {
+    .win95-container {
+        max-width: 100%;
+        margin: 0;
+        border: none;
+    }
+
+    body {
+        padding: 0;
+    }
+
+    .win95-content {
+        padding: 8px;
+    }
+
+    /* Adjust font sizes for better readability */
+    h1 {
+        font-size: 20px;
+    }
+
+    /* Adjust table display for small screens */
+    table, th, td {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .win95-button-large {
+        padding: 8px 16px;
+        min-height: 44px; /* Recommended minimum touch target size */
+    }
+
+    .win95-menu-item {
+        padding: 8px 12px;
+    }
+}
