@@ -53,6 +53,26 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
     // Track if startup sound has been played
     let startupSoundPlayed = false;
 
+    // Only create startup dialog if we're on the homepage
+    function initializeWebsite() {
+        // Check if we're on a 404 page
+        const isErrorPage = document.title.includes('404') ||
+            window.location.pathname.includes('404.html');
+
+        // Skip startup dialog if we're on the error page
+        if (isErrorPage) {
+            // Make sure the container is visible without needing to click through dialog
+            const mainContent = document.querySelector('.win95-container');
+            if (mainContent) {
+                mainContent.style.display = 'block';
+            }
+            return;
+        }
+
+        // Otherwise, create the startup dialog as normal
+        createStartupDialog();
+    }
+
     // Create a Windows 95 startup dialog that plays sound when clicked
     function createStartupDialog() {
         // Create dialog elements
@@ -211,3 +231,6 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
 } else {
     console.log("This script is designed to run in a browser environment.");
 }
+
+// Run the initialization when the page loads
+document.addEventListener('DOMContentLoaded', initializeWebsite);
