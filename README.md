@@ -56,7 +56,7 @@ As a problem solver working in modern tech, I find inspiration in Windows 95's b
 ├── clippy.css                      # Clippy styling
 ├── images/                         # Image assets
 │   └── clippy.png                  # Our helpful assistant
-│   └── win95-error.png             # Our helpful assistant
+│   └── win95-error.png             # Our error icon
 └── sounds/                         # Audio assets
     └── win95-access.mp3            # That nostalgic Windows sound
     └── win95-complete.mp3          # That nostalgic Windows sound
