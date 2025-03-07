@@ -375,3 +375,82 @@ body.startup {
 .faith-message a:hover {
     text-decoration: underline;
 }
+
+/* Simple Windows 95 Scrollbar Styling */
+
+/* For Webkit browsers (Chrome, Safari, newer versions of Opera) */
+::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #c0c0c0;
+    border-left: 1px solid #7e7e7e;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #c0c0c0;
+    border: 1px solid #000;
+    border-right-color: #fff;
+    border-bottom-color: #fff;
+    box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #7e7e7e;
+}
+
+::-webkit-scrollbar-button {
+    display: block;
+    background-color: #c0c0c0;
+    border: 1px solid #000;
+    border-right-color: #fff;
+    border-bottom-color: #fff;
+    box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #7e7e7e;
+    width: 16px;
+    height: 16px;
+}
+
+/* Basic content for buttons using unicode characters */
+::-webkit-scrollbar-button:vertical:start:decrement:after {
+    content: "▲";
+    display: block;
+    font-size: 8px;
+    text-align: center;
+    margin-top: 3px;
+}
+
+::-webkit-scrollbar-button:vertical:end:increment:after {
+    content: "▼";
+    display: block;
+    font-size: 8px;
+    text-align: center;
+    margin-top: 3px;
+}
+
+::-webkit-scrollbar-button:horizontal:start:decrement:after {
+    content: "◄";
+    display: block;
+    font-size: 8px;
+    text-align: center;
+    margin-top: 3px;
+}
+
+::-webkit-scrollbar-button:horizontal:end:increment:after {
+    content: "►";
+    display: block;
+    font-size: 8px;
+    text-align: center;
+    margin-top: 3px;
+}
+
+/* For Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #c0c0c0 #c0c0c0;
+}
+
+/* General scrollable areas - add this class to elements you want to scroll */
+.win95-scrollable {
+    background-color: #ffffff;
+    border: 2px inset #c0c0c0;
+    padding: 4px;
+    overflow: auto;
+}
