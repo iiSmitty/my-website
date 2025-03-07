@@ -62,9 +62,7 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
             if (mainContent) {
                 mainContent.style.display = 'block';
             }
-
-            // Optional: You might want to play an error sound or display a different message for 404s
-            // playWin95Sound('error');
+            playWin95Sound('error');
         }
     });
 
