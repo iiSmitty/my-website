@@ -60,7 +60,7 @@
             <div class="status-bar-top">
                 <div class="status-item">Error code: 404</div>
                 <div class="status-item">Unable to locate file</div>
-                <div class="status-item">Last updated: March 2025</div>
+                <div class="status-item">Last updated: August 24, 1995</div>
                 <div class="status-item">
                     <button class="win95-sound-button" id="sound-toggle" title="Toggle Sound">🔊</button>
                 </div>
@@ -76,15 +76,17 @@
 </div>
 
 <script>
-    // Add any JavaScript you need for the error page
     document.querySelector('.win95-close').addEventListener('click', function() {
-        window.location.href = 'index.html';
+        window.location.href = 'https://andresmit.co.za/';
     });
 
-    // Sound toggle functionality (if you have it on your main page)
+    // Sound toggle functionality
     if (document.getElementById('sound-toggle')) {
         document.getElementById('sound-toggle').addEventListener('click', function() {
-            // Add sound toggle logic here
+            if (typeof soundEnabled !== 'undefined') {
+                soundEnabled = !soundEnabled;
+                this.textContent = soundEnabled ? '🔊' : '🔇';
+            }
         });
     }
 </script>
