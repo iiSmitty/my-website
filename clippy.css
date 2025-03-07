@@ -1,0 +1,68 @@
+.clippy-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    animation: clippy-enter 0.5s ease-out;
+}
+
+.clippy-exit {
+    animation: clippy-exit 0.5s ease-in;
+}
+
+@keyframes clippy-enter {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes clippy-exit {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(20px); opacity: 0; }
+}
+
+.clippy-popup {
+    width: 300px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.clippy-header {
+    background-color: #000080;
+    color: white;
+    padding: 3px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.clippy-title {
+    font-weight: bold;
+}
+
+.clippy-content {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    background-color: #c0c0c0;
+}
+
+.clippy-image {
+    width: 80px;
+    height: 80px;
+    background-image: url('./images/clippy.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+}
+
+.clippy-message {
+    flex: 1;
+    font-size: 14px;
+}
+
+.clippy-buttons {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    gap: 10px;
+    background-color: #c0c0c0;
+}
