@@ -377,8 +377,6 @@ body.startup {
 }
 
 /* Simple Windows 95 Scrollbar Styling */
-
-/* For Webkit browsers (Chrome, Safari, newer versions of Opera) */
 ::-webkit-scrollbar {
     width: 16px;
     height: 16px;
@@ -408,7 +406,6 @@ body.startup {
     height: 16px;
 }
 
-/* Basic content for buttons using unicode characters */
 ::-webkit-scrollbar-button:vertical:start:decrement:after {
     content: "▲";
     display: block;
@@ -447,10 +444,9 @@ body.startup {
     scrollbar-color: #c0c0c0 #c0c0c0;
 }
 
-/* General scrollable areas - add this class to elements you want to scroll */
-.win95-scrollable {
-    background-color: #ffffff;
-    border: 2px inset #c0c0c0;
-    padding: 4px;
-    overflow: auto;
+/* Make sure the content area is scrollable */
+.win95-content {
+    max-height: 80vh; /* Adjust this value as needed */
+    overflow-y: auto;
+    padding: 15px;
 }
