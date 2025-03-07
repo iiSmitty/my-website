@@ -47,7 +47,25 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
         }
 
         // Create a "Windows is starting up" dialog
-        createStartupDialog();
+        // Check if we're on a 404 page
+        const is404Page = document.title.includes('404') ||
+            window.location.pathname.includes('404') ||
+            document.body.classList.contains('error-404');
+
+        // Only create the startup dialog if we're not on a 404 page
+        if (!is404Page) {
+            // Create a "Windows is starting up" dialog
+            createStartupDialog();
+        } else {
+            // For 404 pages, just show the main content directly
+            const mainContent = document.querySelector('.win95-container');
+            if (mainContent) {
+                mainContent.style.display = 'block';
+            }
+
+            // Optional: You might want to play an error sound or display a different message for 404s
+            // playWin95Sound('error');
+        }
     });
 
     // Track if startup sound has been played
