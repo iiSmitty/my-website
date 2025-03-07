@@ -62,7 +62,6 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
             if (mainContent) {
                 mainContent.style.display = 'block';
             }
-            playWin95Sound('error');
         }
     });
 
