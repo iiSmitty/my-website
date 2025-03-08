@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Running Personal Bests | Strava PBs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .strava-orange {
+            color: #FC4C02;
+        }
+        .card {
+            transition: transform 0.2s;
+            margin-bottom: 20px;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .refresh-time {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+<div class="container py-5">
+    <header class="text-center mb-5">
+        <h1 class="display-4">My Running <span class="strava-orange">Personal Bests</span></h1>
+        <p class="lead">Powered by Strava API and updated automatically</p>
+        <p class="refresh-time" id="lastUpdated"></p>
+    </header>
+
+    <div class="row" id="pbCards">
+        <!-- Cards will be generated here -->
+        <div class="col-12 text-center" id="loading">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p>Loading personal bests...</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        try {
+            const response = await fetch('./data/strava-pbs.json');
+            const data = await response.json();
+
+            const { personalBests, lastUpdated } = data;
+
+            // Update last updated time
+            if (lastUpdated) {
+                const date = new Date(lastUpdated);
+                document.getElementById('lastUpdated').textContent = `Last updated: ${date.toLocaleString()}`;
+            }
+
+            // Hide loading indicator
+            document.getElementById('loading').style.display = 'none';
+
+            // Create cards for each personal best
+            const pbCardsContainer = document.getElementById('pbCards');
+
+            // Nice display names for distances
+            const distanceNames = {
+                '1k': '1 Kilometer',
+                '5k': '5 Kilometers',
+                '10k': '10 Kilometers',
+                '1_mile': '1 Mile',
+                'half_marathon': 'Half Marathon',
+                'marathon': 'Marathon'
+            };
+
+            // Sort distances by increasing length
+            const distanceOrder = ['1k', '1_mile', '5k', '10k', 'half_marathon', 'marathon'];
+            const sortedDistances = Object.keys(personalBests)
+                .sort((a, b) => distanceOrder.indexOf(a) - distanceOrder.indexOf(b));
+
+            // Create cards for each PB
+            sortedDistances.forEach(distance => {
+                const pb = personalBests[distance];
+                const date = new Date(pb.start_date);
+
+                const card = document.createElement('div');
+                card.className = 'col-md-6 col-lg-4';
+                card.innerHTML = `
+            <div class="card h-100">
+              <div class="card-header bg-dark text-white">
+                <h5 class="card-title mb-0">${distanceNames[distance] || distance}</h5>
+              </div>
+              <div class="card-body">
+                <h2 class="text-center mb-4 strava-orange">${pb.formatted_time}</h2>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item d-flex justify-content-between">
+                    <span>Pace:</span> <strong>${pb.formatted_pace}</strong>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between">
+                    <span>Date:</span> <strong>${date.toLocaleDateString()}</strong>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between">
+                    <span>Activity:</span> <strong>${pb.name}</strong>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-footer">
+                <a href="${pb.strava_url}" target="_blank" class="btn btn-sm btn-outline-secondary w-100">
+                  View on Strava <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                    <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          `;
+
+                pbCardsContainer.appendChild(card);
+            });
+
+            // Show a message if no PBs are found
+            if (sortedDistances.length === 0) {
+                pbCardsContainer.innerHTML = `
+            <div class="col-12 text-center">
+              <div class="alert alert-info">
+                No personal bests found yet. Make sure you have running activities in your Strava account.
+              </div>
+            </div>
+          `;
+            }
+
+        } catch (error) {
+            console.error('Error loading data:', error);
+            document.getElementById('loading').innerHTML = `
+          <div class="alert alert-danger">
+            Error loading personal bests data. Please check the console for details.
+          </div>
+        `;
+        }
+    });
+</script>
+</body>
+</html>
