@@ -9,19 +9,35 @@ const refreshToken = process.env.STRAVA_REFRESH_TOKEN;
 
 // Standard running distances in meters
 const standardDistances = {
+  '400m': 400,
+  '800m': 800,      // Approximately 1/2 mile
   '1k': 1000,
+  '1_mile': 1609.34,
+  '2_mile': 3218.69,
   '5k': 5000,
   '10k': 10000,
+  '15k': 15000,
+  '10_mile': 16093.4,
+  '20k': 20000,
   'half_marathon': 21097.5,
+  '30k': 30000,
   'marathon': 42195
 };
 
 // Tolerance range (in meters) for identifying activities at standard distances
 const distanceTolerance = {
-  '1k': 100,      // ±100m for 1K
-  '5k': 250,      // ±250m for 5K
-  '10k': 500,     // ±500m for 10K
-  'half_marathon': 1000,  // ±1000m for half marathon
+  '400m': 20,      // ±20m for 400m
+  '800m': 40,      // ±40m for 800m (1/2 mile)
+  '1k': 100,       // ±100m for 1K
+  '1_mile': 100,   // ±100m for 1 mile
+  '2_mile': 150,   // ±150m for 2 mile
+  '5k': 300,       // ±300m for 5K (expanded tolerance)
+  '10k': 600,      // ±600m for 10K (expanded tolerance)
+  '15k': 800,      // ±800m for 15K
+  '10_mile': 800,  // ±800m for 10 mile
+  '20k': 1000,     // ±1000m for 20K
+  'half_marathon': 1200,  // ±1200m for half marathon (expanded tolerance)
+  '30k': 1500,     // ±1500m for 30K
   'marathon': 2000        // ±2000m for marathon
 };
 
@@ -41,8 +57,9 @@ async function getAccessToken() {
   }
 }
 
-async function fetchActivities(accessToken, page = 1, perPage = 100, allActivities = []) {
+async function fetchActivities(accessToken, page = 1, perPage = 200, allActivities = [], maxPages = 15) {
   try {
+    console.log(`Fetching page ${page} of activities...`);
     const response = await axios.get('https://www.strava.com/api/v3/athlete/activities', {
       headers: {
         'Authorization': `Bearer ${accessToken}`
@@ -56,11 +73,14 @@ async function fetchActivities(accessToken, page = 1, perPage = 100, allActiviti
     const activities = response.data;
     allActivities = [...allActivities, ...activities];
     
-    // If we received a full page of activities, there might be more
-    if (activities.length === perPage) {
-      return fetchActivities(accessToken, page + 1, perPage, allActivities);
+    // If we received a full page of activities and haven't reached our max page limit, continue fetching
+    if (activities.length === perPage && page < maxPages) {
+      // Add a short delay to avoid hitting Strava API rate limits
+      await new Promise(resolve => setTimeout(resolve, 500));
+      return fetchActivities(accessToken, page + 1, perPage, allActivities, maxPages);
     }
     
+    console.log(`Fetched a total of ${allActivities.length} activities`);
     return allActivities;
   } catch (error) {
     console.error('Error fetching activities:', error.message);
@@ -75,6 +95,7 @@ function isRunningActivity(activity) {
 function findPersonalBests(activities) {
   // Filter only running activities
   const runningActivities = activities.filter(isRunningActivity);
+  console.log(`Found ${runningActivities.length} running activities`);
   
   // Initialize best times for standard distances
   const personalBests = {};
@@ -82,11 +103,13 @@ function findPersonalBests(activities) {
     personalBests[distance] = { time: Infinity, activity: null };
   });
   
-  // Find fastest 1-mile time
-  personalBests['1_mile'] = { time: Infinity, activity: null };
-  
   // Find best activities for each standard distance
   runningActivities.forEach(activity => {
+    // Skip activities with no distance data
+    if (!activity.distance || activity.distance <= 0) {
+      return;
+    }
+    
     // Calculate pace in seconds per meter
     const pacePerMeter = activity.elapsed_time / activity.distance;
     
@@ -99,7 +122,10 @@ function findPersonalBests(activities) {
         // Normalize time to exact distance (simple proportion)
         const normalizedTime = Math.round(pacePerMeter * distanceValue);
         
-        if (normalizedTime < personalBests[distanceKey].time) {
+        // Log matches for debugging
+        console.log(`Found potential ${distanceKey} match: ${activity.name} - ${activity.distance}m, normalized time: ${formatTime(normalizedTime)}`);
+        
+        if (normalizedTime < personalBests[distanceKey].time && normalizedTime > 0) {
           personalBests[distanceKey] = {
             time: normalizedTime,
             activity: {
@@ -113,31 +139,22 @@ function findPersonalBests(activities) {
               strava_url: `https://www.strava.com/activities/${activity.id}`
             }
           };
-        }
-      }
-      
-      // Check for 1 mile (approximately 1609.34 meters)
-      if (activity.distance >= 1550 && activity.distance <= 1700) {
-        const normalizedTime = Math.round(pacePerMeter * 1609.34);
-        
-        if (normalizedTime < personalBests['1_mile'].time) {
-          personalBests['1_mile'] = {
-            time: normalizedTime,
-            activity: {
-              id: activity.id,
-              name: activity.name,
-              start_date: activity.start_date,
-              elapsed_time: activity.elapsed_time,
-              distance: activity.distance,
-              normalized_time: normalizedTime,
-              pace_per_km: Math.round((normalizedTime / 1.60934) * 10) / 10,  // seconds per km, 1 decimal
-              strava_url: `https://www.strava.com/activities/${activity.id}`
-            }
-          };
+          console.log(`New PB for ${distanceKey}: ${formatTime(normalizedTime)}`);
         }
       }
     });
   });
+  
+  // Helper function to format time for logging
+  function formatTime(seconds) {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const remainingSeconds = seconds % 60;
+    
+    return hours > 0 
+      ? `${hours}:${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`
+      : `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+  }
   
   // Remove activities with no personal best
   Object.keys(personalBests).forEach(key => {
@@ -167,6 +184,35 @@ function findPersonalBests(activities) {
       const paceRemainingSeconds = Math.round(paceSeconds % 60);
       personalBests[key].formatted_pace = `${paceMinutes}:${paceRemainingSeconds.toString().padStart(2, '0')}/km`;
     }
+  });
+  
+  // Add display names for distances
+  const displayNames = {
+    '400m': '400 meters',
+    '800m': '1/2 mile (800m)',
+    '1k': '1 Kilometer',
+    '1_mile': '1 Mile',
+    '2_mile': '2 Miles',
+    '5k': '5 Kilometers',
+    '10k': '10 Kilometers',
+    '15k': '15 Kilometers',
+    '10_mile': '10 Miles',
+    '20k': '20 Kilometers', 
+    'half_marathon': 'Half Marathon',
+    '30k': '30 Kilometers',
+    'marathon': 'Marathon'
+  };
+  
+  Object.keys(personalBests).forEach(key => {
+    if (personalBests[key]) {
+      personalBests[key].display_name = displayNames[key] || key;
+    }
+  });
+  
+  // Log all found PBs for debugging
+  console.log("Personal Bests found:");
+  Object.keys(personalBests).forEach(key => {
+    console.log(`${displayNames[key] || key}: ${personalBests[key].formatted_time}`);
   });
   
   return personalBests;
