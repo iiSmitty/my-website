@@ -7,44 +7,127 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Define menu items with their links
         const menuItems = [
-            { text: 'File', link: '#' },
+            {
+                text: 'File',
+                dropdown: [
+                    { text: 'Home', link: './' },
+                    { text: 'Strava PBs', link: './strava-pbs' },
+                    { text: 'Exit', action: 'exit' }
+                ]
+            },
             { text: 'Edit', link: '#' },
             { text: 'View', link: '#' },
-            { text: 'Strava PBs', link: './strava-pbs', activePage: 'strava-pbs' },
             { text: 'Help', link: '#' }
         ];
 
-        // Special case for home link
-        const homeItem = document.createElement('div');
-        homeItem.className = 'win95-menu-item';
-        if (currentPage === 'home' || currentPage === '') {
-            homeItem.classList.add('active-menu-item');
-        }
-        homeItem.textContent = 'Home';
-        homeItem.addEventListener('click', function() {
-            window.location.href = './';
+        // Close any open dropdowns when clicking elsewhere
+        document.addEventListener('click', function(event) {
+            const dropdowns = document.querySelectorAll('.win95-dropdown');
+            dropdowns.forEach(dropdown => {
+                if (!dropdown.contains(event.target)) {
+                    dropdown.querySelector('.win95-dropdown-content').classList.remove('show');
+
+                    // Remove active state from menu item
+                    dropdown.querySelector('.win95-menu-item').classList.remove('active-menu-item');
+                }
+            });
         });
-        menuBar.appendChild(homeItem);
 
-        // Create and append all other menu items
+        // Create and append all menu items
         menuItems.forEach(item => {
-            const menuItem = document.createElement('div');
-            menuItem.className = 'win95-menu-item';
-            menuItem.textContent = item.text;
+            if (item.dropdown) {
+                // Create dropdown container
+                const dropdownContainer = document.createElement('div');
+                dropdownContainer.className = 'win95-dropdown';
 
-            // Highlight active page
-            if (item.activePage && currentPage === item.activePage) {
-                menuItem.classList.add('active-menu-item');
-            }
+                // Create dropdown trigger
+                const menuItem = document.createElement('div');
+                menuItem.className = 'win95-menu-item';
+                menuItem.textContent = item.text;
 
-            // Add click event for links
-            if (item.link) {
-                menuItem.addEventListener('click', function() {
-                    window.location.href = item.link;
+                // Create dropdown content
+                const dropdownContent = document.createElement('div');
+                dropdownContent.className = 'win95-dropdown-content';
+
+                // Toggle dropdown on click
+                menuItem.addEventListener('click', function(event) {
+                    event.stopPropagation();
+
+                    // Close any open dropdowns first
+                    document.querySelectorAll('.win95-dropdown-content').forEach(dropdown => {
+                        if (dropdown !== dropdownContent) {
+                            dropdown.classList.remove('show');
+                        }
+                    });
+
+                    dropdownContent.classList.toggle('show');
+
+                    // Add active state to menu item when dropdown is open
+                    if (dropdownContent.classList.contains('show')) {
+                        menuItem.classList.add('active-menu-item');
+                    } else {
+                        menuItem.classList.remove('active-menu-item');
+                    }
                 });
-            }
 
-            menuBar.appendChild(menuItem);
+                // Add dropdown items
+                item.dropdown.forEach(dropdownItem => {
+                    const dropdownElement = document.createElement('div');
+                    dropdownElement.className = 'win95-dropdown-item';
+                    dropdownElement.textContent = dropdownItem.text;
+
+                    // Highlight active page in dropdown
+                    if ((dropdownItem.text === 'Home' && (currentPage === 'home' || currentPage === '' || currentPage === 'index')) ||
+                        (dropdownItem.text === 'Strava PBs' && currentPage === 'strava-pbs')) {
+                        dropdownElement.classList.add('active-dropdown-item');
+                    }
+
+                    // Check for special actions first
+                    if (dropdownItem.action === 'exit') {
+                        dropdownElement.addEventListener('click', function() {
+                            console.log('Exit clicked'); // Debug log
+
+                            // First close the dropdown
+                            dropdownContent.classList.remove('show');
+                            menuItem.classList.remove('active-menu-item');
+
+                            // Call the global showClosingDialog function
+                            if (typeof window.showClosingDialog === 'function') {
+                                window.showClosingDialog();
+                            } else {
+                                console.error('showClosingDialog function not found in global scope');
+                            }
+                        });
+                    }
+                    // Handle normal links
+                    else if (dropdownItem.link) {
+                        dropdownElement.addEventListener('click', function() {
+                            window.location.href = dropdownItem.link;
+                        });
+                    }
+
+                    dropdownContent.appendChild(dropdownElement);
+                });
+
+                // Assemble dropdown
+                dropdownContainer.appendChild(menuItem);
+                dropdownContainer.appendChild(dropdownContent);
+                menuBar.appendChild(dropdownContainer);
+            } else {
+                // Create regular menu item
+                const menuItem = document.createElement('div');
+                menuItem.className = 'win95-menu-item';
+                menuItem.textContent = item.text;
+
+                // Add click event for links
+                if (item.link) {
+                    menuItem.addEventListener('click', function() {
+                        window.location.href = item.link;
+                    });
+                }
+
+                menuBar.appendChild(menuItem);
+            }
         });
 
         return menuBar;
