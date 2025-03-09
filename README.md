@@ -54,6 +54,7 @@ As a problem solver working in modern tech, I find inspiration in Windows 95's b
 ├── styles.css                      # Core styling
 ├── decrypt.js                      # Contact info decryption
 ├── clippy.js                       # iOS Clippy easter egg
+├── strava-pbs.js                   # Strava logic
 ├── clippy.css                      # Clippy styling
 ├── images/                         # Image assets
 │   └── clippy.png                  # Our helpful assistant
