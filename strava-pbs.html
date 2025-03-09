@@ -3,41 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Running Personal Bests | Strava PBs</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Strava PBs</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">
     <style>
+        /* Additional Windows 95 Styling for Strava PBs */
+        .pb-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .pb-title-bar {
+            background: linear-gradient(to right, #000080, #1084d0);
+            color: white;
+            font-weight: bold;
+            padding: 3px 5px;
+            font-size: 12px;
+        }
+
+        .pb-content {
+            padding: 10px;
+            background-color: #ffffff;
+            border: 2px inset #ffffff;
+        }
+
+        .pb-time {
+            font-size: 20px;
+            text-align: center;
+            margin: 12px 0;
+            color: #000080;
+            font-weight: bold;
+        }
+
+        .pb-details {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .pb-details li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            border-bottom: 1px solid #c0c0c0;
+            padding-bottom: 4px;
+        }
+
+        .strava-link {
+            display: block;
+            background-color: #c0c0c0;
+            border: 2px outset #ffffff;
+            color: black;
+            text-decoration: none;
+            text-align: center;
+            padding: 4px 10px;
+            margin-top: 10px;
+            font-family: 'MS Sans Serif', Arial, sans-serif;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .strava-link:active {
+            border: 2px inset #ffffff;
+        }
+
         .strava-orange {
             color: #FC4C02;
         }
-        .card {
-            transition: transform 0.2s;
-            margin-bottom: 20px;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
+
         .refresh-time {
-            font-size: 0.8rem;
-            color: #6c757d;
+            font-size: 11px;
+            color: #000080;
+            margin: 8px 0;
+            text-align: center;
+        }
+
+        .loading-box {
+            text-align: center;
+            padding: 20px;
+            border: 2px inset #ffffff;
+            background-color: #ffffff;
+        }
+
+        /* Windows 95 spinner animation */
+        .win95-spinner {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background-image: url('data:image/gif;base64,R0lGODlhIAAgAPMAAP///wAAAMbGxoSEhLa2tpqamjY2NlZWVjIyMhwcHAAAAAAAAAAAAAAAAAAAAAALQAAAAAAAAAAAAA4BEAAAAARDEIm138KnbRu1vBIQy7cBhnA9gg5IBFAAqKdZsOLJ1UxUDEahjQcASIwQ42gqwg5kcBQETsUWQXgsqgNWAFQM5GdyAgA7');
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-<div class="container py-5">
-    <header class="text-center mb-5">
-        <h1 class="display-4">My Running <span class="strava-orange">Personal Bests</span></h1>
-        <p class="lead">Powered by Strava API and updated automatically</p>
-        <p class="refresh-time" id="lastUpdated"></p>
-    </header>
+<div class="win95-container">
+    <!-- Windows 95 Title Bar -->
+    <div class="win95-title-bar">
+        <div class="win95-title">Strava Personal Bests</div>
+        <div class="win95-buttons">
+            <button class="win95-button win95-minimize">_</button>
+            <button class="win95-button win95-maximize">□</button>
+            <button class="win95-button win95-close">×</button>
+        </div>
+    </div>
 
-    <div class="row" id="pbCards">
-        <!-- Cards will be generated here -->
-        <div class="col-12 text-center" id="loading">
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
+    <!-- Windows 95 Menu Bar -->
+    <div class="win95-menu-bar">
+        <div class="win95-menu-item" onclick="window.location.href='index.html'">Home</div>
+        <div class="win95-menu-item">File</div>
+        <div class="win95-menu-item">Edit</div>
+        <div class="win95-menu-item">View</div>
+        <div class="win95-menu-item">Help</div>
+    </div>
+
+    <!-- Content Area -->
+    <div class="win95-content">
+        <div class="marquee">
+            <span class="blink">&#9733;</span> My Running Personal Bests <span class="blink">&#9733;</span>
+        </div>
+
+        <h1>Powered by Strava API</h1>
+
+        <div class="refresh-time" id="lastUpdated"></div>
+
+        <div id="loading" class="win95-box loading-box">
+            <div class="win95-spinner"></div>
             <p>Loading personal bests...</p>
+        </div>
+
+        <div class="pb-container" id="pbCards">
+            <!-- PB cards will be generated here -->
+        </div>
+
+        <div class="win95-status-bar">
+            <div class="status-bar-top">
+                <div class="status-item">Page loaded successfully</div>
+                <div class="status-item">Visitors: 1,337</div>
+                <div class="status-item">Last updated: August 24, 1995</div>
+                <div class="status-item">
+                    <button class="win95-sound-button" id="sound-toggle" title="Toggle Sound">🔊</button>
+                </div>
+            </div>
+            <div class="status-bar-bottom">
+                <div class="faith-message">
+                    Jesus Christ is the Light and Saviour of the world!
+                    <a href="https://www.bible.com/" target="_blank">Discover His Love</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -77,64 +193,61 @@
             const sortedDistances = Object.keys(personalBests)
                 .sort((a, b) => distanceOrder.indexOf(a) - distanceOrder.indexOf(b));
 
-            // Create cards for each PB
+            // Create Windows 95 style boxes for each PB
             sortedDistances.forEach(distance => {
                 const pb = personalBests[distance];
                 const date = new Date(pb.start_date);
 
-                const card = document.createElement('div');
-                card.className = 'col-md-6 col-lg-4';
-                card.innerHTML = `
-            <div class="card h-100">
-              <div class="card-header bg-dark text-white">
-                <h5 class="card-title mb-0">${distanceNames[distance] || distance}</h5>
-              </div>
-              <div class="card-body">
-                <h2 class="text-center mb-4 strava-orange">${pb.formatted_time}</h2>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item d-flex justify-content-between">
-                    <span>Pace:</span> <strong>${pb.formatted_pace}</strong>
-                  </li>
-                  <li class="list-group-item d-flex justify-content-between">
-                    <span>Date:</span> <strong>${date.toLocaleDateString()}</strong>
-                  </li>
-                  <li class="list-group-item d-flex justify-content-between">
-                    <span>Activity:</span> <strong>${pb.name}</strong>
-                  </li>
-                </ul>
-              </div>
-              <div class="card-footer">
-                <a href="${pb.strava_url}" target="_blank" class="btn btn-sm btn-outline-secondary w-100">
-                  View on Strava <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
-                    <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          `;
+                const pbBox = document.createElement('div');
+                pbBox.className = 'pb-box';
+                pbBox.innerHTML = `
+                    <div class="pb-title-bar">
+                        ${distanceNames[distance] || distance}
+                    </div>
+                    <div class="pb-content">
+                        <div class="pb-time strava-orange">${pb.formatted_time}</div>
+                        <ul class="pb-details">
+                            <li>
+                                <span>Pace:</span> <strong>${pb.formatted_pace}</strong>
+                            </li>
+                            <li>
+                                <span>Date:</span> <strong>${date.toLocaleDateString()}</strong>
+                            </li>
+                            <li>
+                                <span>Activity:</span> <strong>${pb.name}</strong>
+                            </li>
+                        </ul>
+                        <div class="button-container">
+                            <a href="${pb.strava_url}" class="strava-link win95-button-large" target="_blank">
+                                View on Strava
+                            </a>
+                        </div>
+                    </div>
+                `;
 
-                pbCardsContainer.appendChild(card);
+                pbCardsContainer.appendChild(pbBox);
             });
 
             // Show a message if no PBs are found
             if (sortedDistances.length === 0) {
                 pbCardsContainer.innerHTML = `
-            <div class="col-12 text-center">
-              <div class="alert alert-info">
-                No personal bests found yet. Make sure you have running activities in your Strava account.
-              </div>
-            </div>
-          `;
+                    <div class="win95-box">
+                        <div class="section-content">
+                            No personal bests found yet. Make sure you have running activities in your Strava account.
+                        </div>
+                    </div>
+                `;
             }
 
         } catch (error) {
             console.error('Error loading data:', error);
             document.getElementById('loading').innerHTML = `
-          <div class="alert alert-danger">
-            Error loading personal bests data. Please check the console for details.
-          </div>
-        `;
+                <div class="win95-box">
+                    <div class="section-content">
+                        Error loading personal bests data. Please check the console for details.
+                    </div>
+                </div>
+            `;
         }
     });
 </script>
