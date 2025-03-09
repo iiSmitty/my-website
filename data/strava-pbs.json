@@ -1,41 +1,44 @@
 {
   "personalBests": {
     "5k": {
-      "id": 5388064728,
-      "name": "Harbour Run",
-      "start_date": "2021-05-23T15:00:00Z",
-      "elapsed_time": 0,
-      "distance": 5000,
-      "normalized_time": 0,
-      "pace_per_km": 0,
-      "strava_url": "https://www.strava.com/activities/5388064728",
-      "formatted_time": "0:00",
-      "formatted_pace": "0:00/km"
+      "id": 5522723024,
+      "name": "DURBAC Night Run",
+      "start_date": "2021-06-24T16:00:21Z",
+      "elapsed_time": 1317,
+      "distance": 5055.5,
+      "normalized_time": 1303,
+      "pace_per_km": 260.6,
+      "strava_url": "https://www.strava.com/activities/5522723024",
+      "formatted_time": "21:43",
+      "formatted_pace": "4:21/km",
+      "display_name": "5 Kilometers"
     },
     "10k": {
       "id": 13309370797,
       "name": "[Versus Back to Base] 48/50",
       "start_date": "2025-01-09T16:01:14Z",
-      "elapsed_time": 2931,
+      "elapsed_time": 2830,
       "distance": 10012.2,
-      "normalized_time": 2927,
-      "pace_per_km": 292.7,
+      "normalized_time": 2830,
+      "pace_per_km": 283,
       "strava_url": "https://www.strava.com/activities/13309370797",
-      "formatted_time": "48:47",
-      "formatted_pace": "4:53/km"
+      "formatted_time": "47:10",
+      "formatted_pace": "4:43/km",
+      "display_name": "10 Kilometers"
     },
     "half_marathon": {
-      "id": 13692390402,
-      "name": "2025 Versus 21km Road Run Party",
-      "start_date": "2025-02-22T04:33:51Z",
-      "elapsed_time": 6157,
-      "distance": 20928.7,
-      "normalized_time": 6207,
-      "pace_per_km": 294.2,
-      "strava_url": "https://www.strava.com/activities/13692390402",
-      "formatted_time": "1:43:27",
-      "formatted_pace": "4:54/km"
+      "id": 13503231289,
+      "name": "Thank you, Integralis",
+      "start_date": "2025-01-31T16:21:20Z",
+      "elapsed_time": 6823,
+      "distance": 21227.7,
+      "normalized_time": 6781,
+      "pace_per_km": 321.4,
+      "strava_url": "https://www.strava.com/activities/13503231289",
+      "formatted_time": "1:53:01",
+      "formatted_pace": "5:21/km",
+      "display_name": "Half Marathon"
     }
   },
-  "lastUpdated": "2025-03-08T19:32:53.280Z"
+  "lastUpdated": "2025-03-09T00:46:57.681Z"
 }
