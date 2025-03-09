@@ -113,7 +113,7 @@
 
     <!-- Windows 95 Menu Bar -->
     <div class="win95-menu-bar">
-        <div class="win95-menu-item" onclick="window.location.href='index.html'">Home</div>
+        <div class="win95-menu-item" id="home-link">Home</div>
         <div class="win95-menu-item">File</div>
         <div class="win95-menu-item">Edit</div>
         <div class="win95-menu-item">View</div>
@@ -249,6 +249,13 @@
                 </div>
             `;
         }
+    });
+
+    document.getElementById('home-link').addEventListener('click', function() {
+        // Set a session storage flag to indicate internal navigation
+        sessionStorage.setItem('internalNavigation', 'true');
+        // Navigate to the home page
+        window.location.href = 'index.html';
     });
 </script>
 </body>

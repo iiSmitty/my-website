@@ -16,7 +16,7 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
     let soundToggle;
     let soundEnabled = true;
 
-// Initialize when DOM is loaded
+    // Initialize when DOM is loaded
     document.addEventListener('DOMContentLoaded', function() {
         // Get elements
         decryptButton = document.getElementById('decrypt-button');
@@ -46,23 +46,44 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
             decryptButton.addEventListener('click', startDecryption);
         }
 
-        // Create a "Windows is starting up" dialog
+        // Check if this is an internal navigation from another page on your site
+        const isInternalNavigation = document.referrer.includes(window.location.hostname) ||
+            sessionStorage.getItem('internalNavigation') === 'true';
+
+        // Clear the session storage flag
+        sessionStorage.removeItem('internalNavigation');
+
         // Check if we're on a 404 page
         const is404Page = document.title.includes('404') ||
             window.location.pathname.includes('404') ||
             document.body.classList.contains('error-404');
 
-        // Only create the startup dialog if we're not on a 404 page
-        if (!is404Page) {
+        // Only show the startup dialog if we're not navigating internally and not on a 404 page
+        if (!isInternalNavigation && !is404Page) {
             // Create a "Windows is starting up" dialog
             createStartupDialog();
         } else {
-            // For 404 pages, just show the main content directly
+            // For internal navigation or 404 pages, just show the main content directly
             const mainContent = document.querySelector('.win95-container');
             if (mainContent) {
                 mainContent.style.display = 'block';
             }
         }
+
+        // Modify all internal navigation links to set a session flag
+        document.querySelectorAll('.win95-menu-item').forEach(item => {
+            const originalOnClick = item.onclick;
+
+            item.onclick = function(e) {
+                // Set a session storage flag to indicate internal navigation
+                sessionStorage.setItem('internalNavigation', 'true');
+
+                // Call the original onclick handler if it exists
+                if (typeof originalOnClick === 'function') {
+                    return originalOnClick.call(this, e);
+                }
+            };
+        });
     });
 
     // Track if startup sound has been played
