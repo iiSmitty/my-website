@@ -247,3 +247,149 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
 } else {
     console.log("This script is designed to run in a browser environment.");
 }
+
+// Add this to your JavaScript file (e.g., decrypt.js)
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the close button
+    const closeButton = document.querySelector('.win95-button.win95-close');
+
+    if (closeButton) {
+        closeButton.addEventListener('click', function() {
+            // Show a Windows 95 style "closing" dialog
+            showClosingDialog();
+        });
+    }
+
+    // Also handle minimize and maximize for a complete experience
+    const minimizeButton = document.querySelector('.win95-button.win95-minimize');
+    const maximizeButton = document.querySelector('.win95-button.win95-maximize');
+
+    if (minimizeButton) {
+        minimizeButton.addEventListener('click', function() {
+            // Minimize animation effect
+            const container = document.querySelector('.win95-container');
+            if (container) {
+                // Save current state
+                container.dataset.originalHeight = container.offsetHeight + 'px';
+
+                // Animate minimize
+                container.style.transition = 'all 0.3s ease-out';
+                container.style.height = '32px';  // Minimize to just the title bar
+                container.style.overflow = 'hidden';
+
+                // Add restore button
+                const restoreButton = document.createElement('button');
+                restoreButton.className = 'win95-button-large';
+                restoreButton.textContent = 'Restore Window';
+                restoreButton.style.position = 'fixed';
+                restoreButton.style.bottom = '10px';
+                restoreButton.style.right = '10px';
+                restoreButton.style.zIndex = '9999';
+
+                restoreButton.addEventListener('click', function() {
+                    container.style.height = container.dataset.originalHeight;
+                    document.body.removeChild(this);
+                });
+
+                document.body.appendChild(restoreButton);
+            }
+        });
+    }
+
+    if (maximizeButton) {
+        maximizeButton.addEventListener('click', function() {
+            // Toggle maximize
+            const container = document.querySelector('.win95-container');
+            if (container) {
+                if (!container.dataset.isMaximized) {
+                    // Save current styles
+                    container.dataset.originalWidth = container.style.width;
+                    container.dataset.originalMaxWidth = container.style.maxWidth;
+                    container.dataset.originalHeight = container.style.height;
+                    container.dataset.originalMargin = container.style.margin;
+
+                    // Maximize
+                    container.style.transition = 'all 0.3s ease-out';
+                    container.style.width = '100%';
+                    container.style.maxWidth = '100%';
+                    container.style.height = 'calc(100vh - 20px)';
+                    container.style.margin = '0';
+                    container.dataset.isMaximized = 'true';
+                } else {
+                    // Restore
+                    container.style.width = container.dataset.originalWidth;
+                    container.style.maxWidth = container.dataset.originalMaxWidth;
+                    container.style.height = container.dataset.originalHeight;
+                    container.style.margin = container.dataset.originalMargin;
+                    container.dataset.isMaximized = '';
+                }
+            }
+        });
+    }
+});
+
+function showClosingDialog() {
+    // Create a Windows 95 style closing dialog
+    const dialog = document.createElement('div');
+    dialog.className = 'win95-dialog';
+    dialog.style.zIndex = '9999';
+    dialog.innerHTML = `
+        <div class="win95-dialog-title">
+            <span class="dialog-title-text">Windows</span>
+            <button class="win95-button win95-close" style="visibility:hidden">×</button>
+        </div>
+        <div class="win95-dialog-content">
+            <div class="dialog-message">
+                <p>It is now safe to turn off your computer.</p>
+            </div>
+            <div class="dialog-buttons">
+                <button class="win95-button-large" id="confirm-close">OK</button>
+            </div>
+        </div>
+    `;
+
+    // Add to body
+    document.body.appendChild(dialog);
+
+    // Get the confirm button
+    const confirmButton = document.getElementById('confirm-close');
+
+    // Add click handler
+    confirmButton.addEventListener('click', function() {
+        // Fade out effect
+        document.body.style.transition = 'opacity 1s';
+        document.body.style.opacity = '0';
+
+        // After fade out, close the tab/window
+        setTimeout(() => {
+            window.close();
+
+            // If window.close() doesn't work (common in modern browsers),
+            // show a fallback message
+            document.body.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: #000080;
+                    color: white;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    font-family: 'MS Sans Serif', Arial, sans-serif;
+                    text-align: center;
+                    padding: 20px;
+                ">
+                    <h1 style="font-size: 24px; margin-bottom: 20px;">Windows 95 has shut down</h1>
+                    <p style="font-size: 16px;">It is now safe to close this tab.</p>
+                    <p style="margin-top: 40px; font-size: 14px;">
+                        (Modern browsers prevent scripts from closing tabs that weren't opened by JavaScript)
+                    </p>
+                </div>
+            `;
+        }, 1000);
+    });
+}
