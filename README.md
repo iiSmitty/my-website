@@ -49,6 +49,7 @@ As a problem solver working in modern tech, I find inspiration in Windows 95's b
 ```
 /
 ├── index.html                      # Main page
+├── strava-pbs.html                 # Strava records
 ├── 404.html                        # Not found
 ├── styles.css                      # Core styling
 ├── decrypt.js                      # Contact info decryption
