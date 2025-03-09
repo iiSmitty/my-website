@@ -300,18 +300,15 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create dialog message
         const message = document.createElement('div');
         message.style.display = 'flex';
+        message.style.flexDirection = 'column';
         message.style.alignItems = 'center';
+        message.style.justifyContent = 'center';
+        message.style.textAlign = 'center';
         message.style.marginBottom = '20px';
-
-        // Add Windows logo
-        const logo = document.createElement('div');
-        logo.innerHTML = '&#x1F5B3;'; // Computer emoji as Windows logo placeholder
-        logo.style.fontSize = '32px';
-        logo.style.marginRight = '15px';
-        message.appendChild(logo);
 
         const text = document.createElement('p');
         text.textContent = 'Are you sure you want to shut down this website?';
+        text.style.margin = '10px 0';
         message.appendChild(text);
 
         content.appendChild(message);
