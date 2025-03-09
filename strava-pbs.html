@@ -162,8 +162,8 @@
     document.getElementById('home-link').addEventListener('click', function() {
         // Set a session storage flag to indicate internal navigation
         sessionStorage.setItem('internalNavigation', 'true');
-        // Navigate to the home page
-        window.location.href = 'index.html';
+        // Navigate to the home page without extension
+        window.location.href = './index';
     });
 </script>
 </body>
