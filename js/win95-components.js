@@ -239,6 +239,156 @@ document.addEventListener('DOMContentLoaded', function() {
         return statusBar;
     }
 
+    // Create the dialog for closing/shutdown
+    function createClosingDialog() {
+        // Create the overlay background
+        const overlay = document.createElement('div');
+        overlay.className = 'win95-overlay';
+        overlay.style.position = 'fixed';
+        overlay.style.top = '0';
+        overlay.style.left = '0';
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+        overlay.style.zIndex = '1000';
+        overlay.style.display = 'flex';
+        overlay.style.justifyContent = 'center';
+        overlay.style.alignItems = 'center';
+
+        // Create the dialog window
+        const dialog = document.createElement('div');
+        dialog.className = 'win95-dialog';
+        dialog.style.width = '400px';
+        dialog.style.backgroundColor = '#c0c0c0';
+        dialog.style.border = 'outset 2px #dfdfdf';
+        dialog.style.boxShadow = '2px 2px 5px rgba(0, 0, 0, 0.2)';
+        dialog.style.fontFamily = '"MS Sans Serif", sans-serif';
+        dialog.style.padding = '2px';
+        dialog.style.position = 'relative';
+
+        // Create the dialog title bar
+        const titleBar = document.createElement('div');
+        titleBar.className = 'win95-title-bar';
+        titleBar.style.backgroundColor = '#000080';
+        titleBar.style.color = 'white';
+        titleBar.style.padding = '3px 4px';
+        titleBar.style.fontWeight = 'bold';
+        titleBar.style.display = 'flex';
+        titleBar.style.justifyContent = 'space-between';
+        titleBar.style.alignItems = 'center';
+
+        // Title text
+        const titleText = document.createElement('span');
+        titleText.textContent = 'Shut Down Windows';
+        titleBar.appendChild(titleText);
+
+        // Close button in title bar
+        const closeButton = document.createElement('span');
+        closeButton.innerHTML = '&#x2715;'; // X symbol
+        closeButton.style.cursor = 'pointer';
+        closeButton.style.marginLeft = '4px';
+        closeButton.addEventListener('click', function() {
+            document.body.removeChild(overlay);
+        });
+        titleBar.appendChild(closeButton);
+
+        // Create dialog content
+        const content = document.createElement('div');
+        content.className = 'win95-dialog-content';
+        content.style.padding = '15px';
+
+        // Create dialog message
+        const message = document.createElement('div');
+        message.style.display = 'flex';
+        message.style.alignItems = 'center';
+        message.style.marginBottom = '20px';
+
+        // Add Windows logo
+        const logo = document.createElement('div');
+        logo.innerHTML = '&#x1F5B3;'; // Computer emoji as Windows logo placeholder
+        logo.style.fontSize = '32px';
+        logo.style.marginRight = '15px';
+        message.appendChild(logo);
+
+        const text = document.createElement('p');
+        text.textContent = 'Are you sure you want to shut down this website?';
+        message.appendChild(text);
+
+        content.appendChild(message);
+
+        // Create buttons container
+        const buttons = document.createElement('div');
+        buttons.style.display = 'flex';
+        buttons.style.justifyContent = 'center';
+        buttons.style.gap = '10px';
+
+        // Yes button
+        const yesButton = document.createElement('button');
+        yesButton.className = 'win95-button';
+        yesButton.textContent = 'Yes';
+        yesButton.style.padding = '4px 10px';
+        yesButton.style.backgroundColor = '#c0c0c0';
+        yesButton.style.border = 'outset 2px #dfdfdf';
+        yesButton.style.fontFamily = '"MS Sans Serif", sans-serif';
+        yesButton.style.minWidth = '75px';
+        yesButton.addEventListener('click', function() {
+            // Play Windows 95 shutdown sound and video
+            playShutdownVideo();
+        });
+        buttons.appendChild(yesButton);
+
+        // No button
+        const noButton = document.createElement('button');
+        noButton.className = 'win95-button';
+        noButton.textContent = 'No';
+        noButton.style.padding = '4px 10px';
+        noButton.style.backgroundColor = '#c0c0c0';
+        noButton.style.border = 'outset 2px #dfdfdf';
+        noButton.style.fontFamily = '"MS Sans Serif", sans-serif';
+        noButton.style.minWidth = '75px';
+        noButton.addEventListener('click', function() {
+            document.body.removeChild(overlay);
+        });
+        buttons.appendChild(noButton);
+
+        content.appendChild(buttons);
+
+        // Assemble the dialog
+        dialog.appendChild(titleBar);
+        dialog.appendChild(content);
+        overlay.appendChild(dialog);
+
+        return overlay;
+    }
+
+    // Function to play the Windows 95 shutdown video
+    function playShutdownVideo() {
+        // Create a fullscreen overlay for the video
+        const videoOverlay = document.createElement('div');
+        videoOverlay.style.position = 'fixed';
+        videoOverlay.style.top = '0';
+        videoOverlay.style.left = '0';
+        videoOverlay.style.width = '100%';
+        videoOverlay.style.height = '100%';
+        videoOverlay.style.backgroundColor = 'black';
+        videoOverlay.style.zIndex = '2000';
+        videoOverlay.style.display = 'flex';
+        videoOverlay.style.justifyContent = 'center';
+        videoOverlay.style.alignItems = 'center';
+
+        // Create YouTube iframe
+        const iframe = document.createElement('iframe');
+        iframe.width = '100%';
+        iframe.height = '100%';
+        iframe.src = 'https://www.youtube.com/embed/lAkuJXGldrM?autoplay=1';
+        iframe.frameBorder = '0';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+        iframe.allowFullscreen = true;
+
+        videoOverlay.appendChild(iframe);
+        document.body.appendChild(videoOverlay);
+    }
+
     // Function to load components into the page
     function loadComponents() {
         // Determine current page
@@ -275,6 +425,12 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
+
+    // Global function to show the closing dialog
+    window.showClosingDialog = function() {
+        const dialog = createClosingDialog();
+        document.body.appendChild(dialog);
+    };
 
     // Initialize components
     loadComponents();
