@@ -2,7 +2,7 @@
 
 // Replace these with your actual contact info
 const REAL_EMAIL = "andrez.smit@gmail.com";
-const REAL_PHONE = "(072) 338-6828";
+const REAL_PHONE = "";
 
 // Skip browser-specific code if running in Node
 if (typeof window !== 'undefined' && typeof document !== 'undefined') {
