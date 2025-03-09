@@ -393,3 +393,5 @@ function showClosingDialog() {
         }, 1000);
     });
 }
+
+window.showClosingDialog = showClosingDialog;

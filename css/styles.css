@@ -69,6 +69,62 @@ body {
     color: white;
 }
 
+/* Windows 95 Menu Bar Dropdown Styling */
+
+/* Dropdown container */
+.win95-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown content panel */
+.win95-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #c0c0c0;
+    min-width: 140px;
+    left: -2px;
+    top: calc(100% - 1px);
+    border-top: 1px solid #dfdfdf;
+    border-left: 1px solid #dfdfdf;
+    border-right: 2px solid #404040;
+    border-bottom: 2px solid #404040;
+    box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.win95-dropdown-content.show {
+    display: block;
+}
+
+/* Dropdown item styling */
+.win95-dropdown-item {
+    color: #000000;
+    padding: 4px 8px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    position: relative;
+    font-size: 12px;
+}
+
+/* Active item in dropdown */
+.active-dropdown-item {
+    background-color: #000080;
+    color: white;
+}
+
+/* Hover state for dropdown items */
+.win95-dropdown-item:hover:not(.active-dropdown-item) {
+    background-color: #000080;
+    color: white;
+}
+
+/* Add separator between dropdown items - thinner line */
+.win95-dropdown-content div:not(:last-child) {
+    border-bottom: 1px solid #919191;
+}
+
 /* Windows 95 Content Area */
 .win95-content {
     padding: 10px;
