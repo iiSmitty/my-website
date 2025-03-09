@@ -48,20 +48,33 @@ As a problem solver working in modern tech, I find inspiration in Windows 95's b
 
 ```
 /
-├── index.html                      # Main page
-├── strava-pbs.html                 # Strava records
-├── 404.html                        # Not found
-├── styles.css                      # Core styling
-├── decrypt.js                      # Contact info decryption
-├── clippy.js                       # iOS Clippy easter egg
-├── strava-pbs.js                   # Strava logic
-├── clippy.css                      # Clippy styling
+├── github/                         # GitHub integration
+│   ├── scripts/                    # JavaScript utilities
+│   │   └── fetch-strava-data.js    # Fetches Strava activity data
+│   └── workflows/                  # GitHub Actions workflows
+│       └── update-strava-data.yml  # Automated Strava data updates
+├── css/                            # Stylesheets
+│   ├── clippy.css                  # Clippy assistant styling
+│   └── styles.css                  # Core site styling
+├── data/                           # Data files
+│   └── strava-pbs.json             # Strava personal bests data
 ├── images/                         # Image assets
-│   └── clippy.png                  # Our helpful assistant
-│   └── win95-error.png             # Our error icon
-└── sounds/                         # Audio assets
-    └── win95-access.mp3            # That nostalgic Windows sound
-    └── win95-complete.mp3          # That nostalgic Windows sound
+│   ├── clippy.png                  # Our helpful assistant
+│   ├── favicon.png                 # Site favicon
+│   └── win95-error.png             # Error icon for notifications
+├── js/                             # JavaScript files
+│   ├── clippy.js                   # iOS Clippy easter egg
+│   ├── decrypt.js                  # Contact info decryption
+│   └── strava-pbs.js               # Strava records logic
+├── sounds/                         # Audio assets
+│   ├── win95-access.mp3            # Windows startup sound
+│   └── win95-complete.mp3          # Windows completion sound
+├── 404.html                        # Not found page
+├── CNAME                           # Custom domain configuration
+├── index.html                      # Main entry page
+├── LICENSE.txt                     # Project license
+├── README.md                       # Project documentation
+└── strava-pbs.html                 # Strava personal records page
 ```
 
 ## 🔍 Easter Egg Guide
