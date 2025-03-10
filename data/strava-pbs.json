@@ -40,5 +40,11 @@
       "display_name": "Half Marathon"
     }
   },
+  "completedCounts": {
+    "5k": 12,
+    "10k": 8,
+    "half_marathon": 3,
+    "marathon": 1
+  },
   "lastUpdated": "2025-03-09T00:46:57.681Z"
 }
