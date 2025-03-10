@@ -292,26 +292,35 @@ function countCompletedDistances(activities) {
 
   // Define distance thresholds (in meters)
   const distanceThresholds = {
-    '5k': { min: 4700, target: 5000 },         // ~5% tolerance below target
-    '10k': { min: 9500, target: 10000 },       // ~5% tolerance below target
-    'half_marathon': { min: 20000, target: 21097.5 }, // ~5% tolerance below target
-    'marathon': { min: 40000, target: 42195 }  // ~5% tolerance below target
+    '5k': { min: 4700, target: 5000, max: 7500 },         // 5K range
+    '10k': { min: 9500, target: 10000, max: 15000 },      // 10K range
+    'half_marathon': { min: 20000, target: 21097.5, max: 30000 }, // Half marathon range
+    'marathon': { min: 40000, target: 42195, max: Infinity }  // Marathon and above
   };
 
-  // Count activities that match the distance thresholds
+  // Count activities, placing each in best matching category
   runningActivities.forEach(activity => {
     // Skip activities with no distance data
     if (!activity.distance || activity.distance <= 0) {
       return;
     }
 
-    // Check each distance threshold
-    Object.entries(distanceThresholds).forEach(([distanceKey, threshold]) => {
-      if (activity.distance >= threshold.min) {
-        completedCounts[distanceKey]++;
-        console.log(`Counted ${distanceKey}: ${activity.name} (${activity.distance}m)`);
+    // Find the appropriate category for this activity
+    let bestMatch = null;
+
+    // Check which distance category this activity belongs to
+    for (const [distanceKey, threshold] of Object.entries(distanceThresholds)) {
+      if (activity.distance >= threshold.min && activity.distance < threshold.max) {
+        bestMatch = distanceKey;
+        break; // Stop at the first matching category (ordered from shortest to longest)
       }
-    });
+    }
+
+    // If we found a matching category, increment its counter
+    if (bestMatch) {
+      completedCounts[bestMatch]++;
+      console.log(`Counted ${bestMatch}: ${activity.name} (${activity.distance}m)`);
+    }
   });
 
   console.log("Completed Runs Summary:");
