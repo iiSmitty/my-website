@@ -41,10 +41,10 @@
     }
   },
   "completedCounts": {
-    "5k": 12,
-    "10k": 8,
-    "half_marathon": 3,
-    "marathon": 1
+    "5k": 240,
+    "10k": 62,
+    "half_marathon": 10,
+    "marathon": 0
   },
-  "lastUpdated": "2025-03-09T00:46:57.681Z"
+  "lastUpdated": "2025-03-10T18:15:00.503Z"
 }
