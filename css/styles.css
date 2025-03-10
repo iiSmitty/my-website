@@ -597,3 +597,74 @@ body.startup {
     background-size: contain;
     margin-bottom: 10px;
 }
+
+/* Stats container */
+.stats-container {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Stats section title */
+.section-title {
+    font-size: 18px;
+    color: #000080;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Stats box */
+.stats-box {
+    border: 2px solid #c0c0c0;
+    background-color: #ececec;
+    box-shadow: inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 #888888;
+}
+
+/* Stats title bar */
+.stats-title-bar {
+    background-color: #000080;
+    color: white;
+    padding: 4px 8px;
+    font-weight: bold;
+}
+
+/* Stats grid to hold counter cards */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
+    padding: 16px;
+}
+
+/* Individual counter card */
+.counter-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+    border: 2px solid #c0c0c0;
+    background-color: #f0f0f0;
+    /* Windows 95 inset effect */
+    box-shadow: inset -1px -1px 0 #ffffff,
+    inset 1px 1px 0 #888888;
+}
+
+.counter-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.counter-title {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #000080;
+    text-align: center;
+}
+
+.counter-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000080;
+}

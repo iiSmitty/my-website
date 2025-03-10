@@ -278,6 +278,50 @@ function findPersonalBests(activities) {
   return personalBests;
 }
 
+function countCompletedDistances(activities) {
+  // Filter only running activities
+  const runningActivities = activities.filter(isRunningActivity);
+
+  // Initialize counters
+  const completedCounts = {
+    '5k': 0,
+    '10k': 0,
+    'half_marathon': 0,
+    'marathon': 0
+  };
+
+  // Define distance thresholds (in meters)
+  const distanceThresholds = {
+    '5k': { min: 4700, target: 5000 },         // ~5% tolerance below target
+    '10k': { min: 9500, target: 10000 },       // ~5% tolerance below target
+    'half_marathon': { min: 20000, target: 21097.5 }, // ~5% tolerance below target
+    'marathon': { min: 40000, target: 42195 }  // ~5% tolerance below target
+  };
+
+  // Count activities that match the distance thresholds
+  runningActivities.forEach(activity => {
+    // Skip activities with no distance data
+    if (!activity.distance || activity.distance <= 0) {
+      return;
+    }
+
+    // Check each distance threshold
+    Object.entries(distanceThresholds).forEach(([distanceKey, threshold]) => {
+      if (activity.distance >= threshold.min) {
+        completedCounts[distanceKey]++;
+        console.log(`Counted ${distanceKey}: ${activity.name} (${activity.distance}m)`);
+      }
+    });
+  });
+
+  console.log("Completed Runs Summary:");
+  Object.entries(completedCounts).forEach(([distance, count]) => {
+    console.log(`${distance}: ${count}`);
+  });
+
+  return completedCounts;
+}
+
 async function main() {
   try {
     // Get access token
@@ -291,6 +335,10 @@ async function main() {
     // Find personal bests
     console.log('Analyzing personal bests...');
     const personalBests = findPersonalBests(activities);
+
+    // Count completed races by distance
+    console.log('Counting completed distances...');
+    const completedCounts = countCompletedDistances(activities);
     
     // Force times for critical distances if not matching
     // This is a hardcoded fallback to ensure we have the correct PRs
@@ -376,6 +424,7 @@ async function main() {
     // Add last updated timestamp
     const result = {
       personalBests,
+      completedCounts,
       lastUpdated: new Date().toISOString()
     };
     
