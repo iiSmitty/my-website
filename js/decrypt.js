@@ -1,7 +1,7 @@
 // Windows 95-style Decryption Easter Egg
 
 // Replace these with your actual contact info
-const REAL_EMAIL = "andrez.smit@gmail.com";
+const REAL_EMAIL = "info@andresmit.co.za";
 const REAL_PHONE = "(072) 338-6828";
 
 // Skip browser-specific code if running in Node
