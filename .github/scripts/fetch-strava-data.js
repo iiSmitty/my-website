@@ -133,7 +133,7 @@ async function findPersonalBests(activities, accessToken) {
         elapsed_time: activity10k.elapsed_time,
         distance: activity10k.distance,
         normalized_time: targetPBs['10k'].targetTime,
-        pace_per_km: Math.round((targetPBs['10k'].targetTime / (activity10k.distance / 1000)) * 10) / 10,
+        pace_per_km: Math.round((targetPBs['10k'].targetTime / (standardDistances['10k'] / 1000)) * 10) / 10,
         strava_url: `https://www.strava.com/activities/${activity10k.id}`
       }
     };
