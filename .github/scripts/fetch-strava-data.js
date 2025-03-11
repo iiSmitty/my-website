@@ -36,8 +36,20 @@ async function getAccessToken() {
 
 async function fetchPersonalRecords(accessToken) {
   try {
+    // First get the authenticated athlete to get the athlete ID
+    console.log('Fetching authenticated athlete data...');
+    const athleteResponse = await axios.get('https://www.strava.com/api/v3/athlete', {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`
+      }
+    });
+
+    const athleteId = athleteResponse.data.id;
+    console.log(`Athlete ID: ${athleteId}`);
+
+    // Now fetch the stats using the athlete ID
     console.log('Fetching athlete stats including personal records...');
-    const response = await axios.get('https://www.strava.com/api/v3/athletes/me/stats', {
+    const response = await axios.get(`https://www.strava.com/api/v3/athletes/${athleteId}/stats`, {
       headers: {
         'Authorization': `Bearer ${accessToken}`
       }
