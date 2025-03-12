@@ -392,6 +392,151 @@ function showClosingDialog() {
             `;
         }, 1000);
     });
+
+    // Initialize variables for Spotify player
+    let spotifyPlayer = null;
+    let spotifyReady = false;
+    let spotifyDelay = 3000; // Delay in ms before starting music (adjust as needed)
+
+// Load the Spotify Web Playback SDK
+    function loadSpotifySDK() {
+        // Add the Spotify Web Player API script
+        const script = document.createElement('script');
+        script.src = 'https://sdk.scdn.co/spotify-player.js';
+        script.async = true;
+        document.body.appendChild(script);
+
+        // Initialize the Spotify Player when the API is ready
+        window.onSpotifyWebPlaybackSDKReady = () => {
+            initSpotifyPlayer();
+        };
+    }
+
+// Initialize the Spotify Player
+    function initSpotifyPlayer() {
+        // Create a hidden container for the Spotify iframe
+        const spotifyContainer = document.createElement('div');
+        spotifyContainer.id = 'spotify-container';
+        spotifyContainer.style.display = 'none';
+        document.body.appendChild(spotifyContainer);
+
+        // Create the iframe element for the Spotify playlist
+        const spotifyIframe = document.createElement('iframe');
+        spotifyIframe.id = 'spotify-player';
+        spotifyIframe.style.border = 'none';
+        spotifyIframe.style.width = '1px';
+        spotifyIframe.style.height = '1px';
+        spotifyIframe.allow = 'autoplay; encrypted-media';
+
+        // Set the src for the Spotify playlist embed with autoplay and reduced volume
+        spotifyIframe.src = 'https://open.spotify.com/embed/playlist/37i9dQZF1EIgZ3TgyTUhf1?utm_source=generator&theme=0';
+
+        spotifyContainer.appendChild(spotifyIframe);
+
+        // Store a reference to the iframe for later control
+        spotifyPlayer = spotifyIframe;
+        spotifyReady = true;
+
+        // Connect the Spotify player to the sound toggle
+        connectSpotifyToSoundToggle();
+    }
+
+// Start playing music after the specified delay
+    function startBackgroundMusic() {
+        setTimeout(() => {
+            if (spotifyReady && soundEnabled) {
+                // The iframe is already loaded, so we just need to make it visible
+                // but keep it tiny so it doesn't affect the layout
+                const container = document.getElementById('spotify-container');
+                if (container) {
+                    container.style.display = 'block';
+                }
+
+                // Try to set the volume via postMessage to the iframe
+                setSpotifyVolume(15);
+            }
+        }, spotifyDelay);
+    }
+
+// Set the Spotify player volume (0-100)
+    function setSpotifyVolume(volumePercent) {
+        if (spotifyPlayer && spotifyPlayer.contentWindow) {
+            try {
+                spotifyPlayer.contentWindow.postMessage({
+                    command: 'setVolume',
+                    volume: volumePercent / 100
+                }, '*');
+            } catch (e) {
+                console.log('Could not set Spotify volume:', e);
+            }
+        }
+    }
+
+// Connect Spotify to the sound toggle functionality
+    function connectSpotifyToSoundToggle() {
+        const soundToggle = document.getElementById('sound-toggle');
+        if (soundToggle) {
+            // Update the existing click handler to also control Spotify
+            const originalClickHandler = soundToggle.onclick;
+            soundToggle.onclick = function() {
+                // Call original handler if it exists
+                if (originalClickHandler) {
+                    originalClickHandler.call(this);
+                }
+
+                // Update Spotify playback based on sound toggle state
+                if (spotifyPlayer) {
+                    if (soundEnabled) {
+                        // Sound is enabled, show the player and set volume
+                        document.getElementById('spotify-container').style.display = 'block';
+                        setSpotifyVolume(15);
+                    } else {
+                        // Sound is disabled, hide the player (which effectively pauses it)
+                        document.getElementById('spotify-container').style.display = 'none';
+                    }
+                }
+            };
+        }
+    }
+
+// Update the createStartupDialog function to start background music after startup sound
+    const originalCreateStartupDialog = createStartupDialog;
+    createStartupDialog = function() {
+        // Call the original function (which doesn't return anything)
+        originalCreateStartupDialog();
+
+        // Get the Start Windows button
+        const startButton = document.getElementById('start-windows');
+
+        // Add our music initialization to the Start Windows button click handler
+        const originalOnClick = startButton.onclick;
+        startButton.onclick = function(e) {
+            // Call the original handler
+            if (originalOnClick) {
+                originalOnClick.call(this, e);
+            }
+
+            // Initialize our Spotify player
+            loadSpotifySDK();
+            startBackgroundMusic();
+        };
+    };
+
+// Initialize Spotify if we're on an internal page
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check if this is an internal navigation or 404 page
+        const isInternalNavigation = document.referrer.includes(window.location.hostname) ||
+            sessionStorage.getItem('internalNavigation') === 'true';
+        const is404Page = document.title.includes('404') ||
+            window.location.pathname.includes('404') ||
+            document.body.classList.contains('error-404');
+
+        // If we're on an internal page, initialize Spotify without waiting for the startup dialog
+        if (isInternalNavigation || is404Page) {
+            loadSpotifySDK();
+            startBackgroundMusic();
+        }
+    });
 }
 
 window.showClosingDialog = showClosingDialog;
