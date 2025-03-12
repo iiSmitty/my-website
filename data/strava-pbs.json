@@ -20,10 +20,10 @@
       "elapsed_time": 6157,
       "distance": 20928.7,
       "normalized_time": 2830,
-      "pace_per_km": 135.2,
+      "pace_per_km": 283,
       "strava_url": "https://www.strava.com/activities/13692390402",
       "formatted_time": "47:10",
-      "formatted_pace": "2:15/km",
+      "formatted_pace": "4:43/km",
       "display_name": "10 Kilometers"
     },
     "half_marathon": {
@@ -46,5 +46,5 @@
     "half_marathon": 9,
     "marathon": 0
   },
-  "lastUpdated": "2025-03-11T10:20:36.704Z"
+  "lastUpdated": "2025-03-12T06:32:28.492Z"
 }
