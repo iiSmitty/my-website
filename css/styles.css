@@ -606,14 +606,6 @@ body.startup {
     gap: 16px;
 }
 
-/* Stats section title */
-.section-title {
-    font-size: 18px;
-    color: #000080;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
 /* Stats box */
 .stats-box {
     border: 2px solid #c0c0c0;
