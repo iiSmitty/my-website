@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 dropdown: [
                     { text: 'Home', accessKey: 'H', link: './' },
                     { text: 'Strava PBs', accessKey: 'S', link: './strava-pbs' },
+                    { text: 'LinkedIn Profile', accessKey: 'L', link: 'https://www.linkedin.com/in/andrezsmit/', target: '_blank'},
                     { text: 'Exit', accessKey: 'X', action: 'exit' }
                 ]
             },
@@ -154,7 +155,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Handle normal links
                     else if (dropdownItem.link) {
                         dropdownElement.addEventListener('click', function() {
-                            window.location.href = dropdownItem.link;
+                            // Check if the link should open in a new tab
+                            if (dropdownItem.target === '_blank') {
+                                window.open(dropdownItem.link, '_blank');
+                            } else {
+                                window.location.href = dropdownItem.link;
+                            }
+
+                            // Close the dropdown after clicking
+                            dropdownContent.classList.remove('show');
+                            menuItem.classList.remove('active-menu-item');
                         });
                     }
 
