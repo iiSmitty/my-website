@@ -660,3 +660,107 @@ body.startup {
     font-weight: bold;
     color: #000080;
 }
+
+/* What I Do */
+
+.Msnp32ServerIcon_32x32 {
+    width: 32px;
+    height: 32px;
+    background-image: url(/icons/server-icon.ico);
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.MspaintIcon_32x32 {
+    width: 32px;
+    height: 32px;
+    background-image: url(/icons/mspaint.ico);
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.ReaderDiskIcon_32x32 {
+    width: 32px;
+    height: 32px;
+    background-image: url(/icons/reader-disket.ico);
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.Regedit100_32x32 {
+    width: 32px;
+    height: 32px;
+    background-image: url(/icons/regedit-100.ico);
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.Msrating100_32x32 {
+    width: 32px;
+    height: 32px;
+    background-image: url(/icons/msrating-109.ico);
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.program-manager {
+    display: flex;
+    margin-bottom: 10px;
+    min-height: 100px;
+    background-color: white;
+    padding: 10px;
+}
+
+.program-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.program-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+    cursor: pointer;
+    text-align: center;
+    padding: 4px;
+}
+
+.program-item:hover {
+    background-color: transparent;
+    outline: 1px dotted #000000;
+}
+
+.program-item:active {
+    background-color: #0000aa;
+    color: white;
+    outline: none;
+}
+
+.program-info {
+    background-color: white;
+    padding: 10px;
+    min-height: 60px;
+    margin-top: 8px;
+}
+
+.icon-description-separator {
+    border-top: 1px solid #808080;
+    border-bottom: 1px solid #ffffff;
+    height: 0;
+    margin: 8px 0;
+}
+
+.win95-status-mini {
+    border-top: 1px solid #808080;
+    padding: 2px 5px;
+    background-color: #c0c0c0;
+    font-size: 11px;
+    font-family: 'MS Sans Serif', Arial, sans-serif;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+}

@@ -12,6 +12,7 @@
 <script src="js/decrypt.js"></script>
 <script src="js/clippy.js"></script>
 <script src="js/win95-components.js"></script>
+<script src="js/program-icons.js"></script>
 <div class="win95-container">
     <!-- Windows 95 Title Bar -->
     <div class="win95-title-bar">
@@ -52,13 +53,38 @@
             <div class="section-title">What I Do</div>
         </div>
         <div class="win95-box section-content">
-            <ul>
-                <li>Backend Development</li>
-                <li>Frontend Development</li>
-                <li>Database Design</li>
-                <li>System Architecture</li>
-                <li>Code Optimization</li>
-            </ul>
+            <div class="program-manager">
+                <div class="program-group">
+                    <div class="program-item" onclick="showInfo('backend')">
+                        <span class="Msnp32ServerIcon_32x32"></span>
+                        <span>Backend.exe</span>
+                    </div>
+                    <div class="program-item" onclick="showInfo('frontend')">
+                        <span class="MspaintIcon_32x32"></span>
+                        <span>Frontend.exe</span>
+                    </div>
+                    <div class="program-item" onclick="showInfo('database')">
+                        <span class="ReaderDiskIcon_32x32"></span>
+                        <span>Database.mdb</span>
+                    </div>
+                    <div class="program-item" onclick="showInfo('architecture')">
+                        <span class="Regedit100_32x32"></span>
+                        <span>Architecture.vsd</span>
+                    </div>
+                    <div class="program-item" onclick="showInfo('optimization')">
+                        <span class="Msrating100_32x32"></span>
+                        <span>Optimize.bat</span>
+                    </div>
+                </div>
+            </div>
+            <div class="icon-description-separator"></div>
+            <div class="program-info" id="infoBox">
+                Click an icon to learn more about what I'm focusing on as a graduate developer...
+            </div>
+            <div class="win95-status-mini">
+                <span>5 items</span>
+                <span>640K memory free</span>
+            </div>
         </div>
 
         <div class="section-header">
