@@ -171,11 +171,14 @@ h2 {
 }
 
 .marquee {
-    background-color: #ffff00;
+    background-color: #ffffcc; /* More muted yellow */
     padding: 5px;
     text-align: center;
     margin: 10px 0;
-    border: 2px inset #ffffff;
+    border: 1px solid #000000; /* Simple black border */
+    font-family: "MS Sans Serif", Arial, sans-serif;
+    font-size: 12px;
+    box-shadow: 1px 1px 0 #ffffff inset, -1px -1px 0 #808080 inset; /* Subtle Windows 95 inset effect */
 }
 
 .blink {
@@ -763,4 +766,78 @@ body.startup {
     display: flex;
     justify-content: space-between;
     margin-top: 8px;
+}
+
+.ComputerIcon_32x32 {
+    width: 32px;
+    height: 32px;
+    background-image: url(/icons/computer.ico);
+    display: inline-block;
+    margin-bottom: 4px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.RecycleIcon_32x32 {
+    width: 32px;
+    height: 32px;
+    background-image: url(/icons/recycle-full.ico);
+    display: inline-block;
+    margin-bottom: 4px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Desktop Icons */
+.desktop-icons {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Hide desktop icons on mobile devices */
+html body.is-touch-device .desktop-icons,
+body.is-touch-device .desktop-icons,
+.is-touch-device .win95-container .desktop-icons,
+.is-touch-device div.desktop-icons {
+    display: none;
+}
+
+.desktop-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75px;
+    cursor: pointer;
+    padding: 5px;
+    color: #fff;
+    text-align: center;
+}
+
+.desktop-icon span:last-child {
+    margin-top: 4px;
+    font-size: 11px;
+    text-align: center;
+    word-wrap: break-word;
+    width: 100%;
+}
+
+/* Selected state - replaces hover */
+.desktop-icon.selected {
+    background-color: #000080;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+}
+
+.desktop-icon:active {
+    background-color: #000080;
+    color: #fff;
+}
+
+.desktop-icon:focus {
+    outline: 1px dotted #000;
 }

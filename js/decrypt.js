@@ -140,6 +140,12 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
                 if (mainContent) {
                     mainContent.style.display = 'block';
                 }
+
+                // Show desktop icons
+                const desktopIcons = document.querySelector('.desktop-icons');
+                if (desktopIcons) {
+                    desktopIcons.style.display = 'block';
+                }
             }, 500);
         });
     }
