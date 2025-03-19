@@ -816,6 +816,7 @@ body.is-touch-device .desktop-icons,
     padding: 5px;
     color: #fff;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .desktop-icon span:last-child {
