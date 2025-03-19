@@ -1,17 +1,37 @@
+// Combined device detection and navigation handling
 document.addEventListener('DOMContentLoaded', function() {
-    // Basic mobile detection
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+    // Detect if this is a mobile device
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
         'ontouchstart' in window ||
-        navigator.maxTouchPoints > 0) {
+        navigator.maxTouchPoints > 0;
 
-        console.log('Mobile device detected, removing desktop icons');
+    // Get reference to desktop icons
+    const desktopIcons = document.querySelector('.desktop-icons');
 
-        // Find the desktop icons element
-        const desktopIcons = document.querySelector('.desktop-icons');
+    // Get reference to startup dialog (if present)
+    const startupDialog = document.querySelector('.win95-dialog');
 
-        // If found, remove it completely from the DOM
-        if (desktopIcons && desktopIcons.parentNode) {
-            desktopIcons.parentNode.removeChild(desktopIcons);
+    // Handle desktop icons visibility
+    if (desktopIcons) {
+        if (isMobile) {
+            // On mobile: always remove desktop icons
+            if (desktopIcons.parentNode) {
+                desktopIcons.parentNode.removeChild(desktopIcons);
+            }
+        } else {
+            // On desktop: check if we're in startup mode
+            if (startupDialog && startupDialog.style.display !== 'none') {
+                // Initial startup - icons will be shown after clicking "Start Windows"
+                desktopIcons.style.display = 'none';
+            } else {
+                // Not in startup mode (either no dialog or returning navigation)
+                desktopIcons.style.display = 'block';
+            }
         }
+    }
+
+    // Add mobile class to body for CSS targeting if needed
+    if (isMobile) {
+        document.body.classList.add('is-touch-device');
     }
 });
