@@ -306,6 +306,8 @@ document.addEventListener('DOMContentLoaded', function() {
         maximizeButton.addEventListener('click', function() {
             // Toggle maximize
             const container = document.querySelector('.win95-container');
+            const desktopIcons = document.querySelector('.desktop-icons');
+
             if (container) {
                 if (!container.dataset.isMaximized) {
                     // Save current styles
@@ -321,6 +323,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     container.style.height = 'calc(100vh - 20px)';
                     container.style.margin = '0';
                     container.dataset.isMaximized = 'true';
+
+                    // Hide desktop icons when maximized
+                    if (desktopIcons) {
+                        desktopIcons.style.display = 'none';
+                    }
                 } else {
                     // Restore
                     container.style.width = container.dataset.originalWidth;
@@ -328,6 +335,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     container.style.height = container.dataset.originalHeight;
                     container.style.margin = container.dataset.originalMargin;
                     container.dataset.isMaximized = '';
+
+                    // Show desktop icons when restored
+                    if (desktopIcons && !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                        'ontouchstart' in window ||
+                        navigator.maxTouchPoints > 0)) {
+                        desktopIcons.style.display = 'block';
+                    }
                 }
             }
         });
