@@ -58,6 +58,14 @@ As a problem solver working in modern tech, I find inspiration in Windows 95's b
 │   └── styles.css                  # Core site styling
 ├── data/                           # Data files
 │   └── strava-pbs.json             # Strava personal bests data
+├── icons/                          # Icon assets
+│   ├── computer.ico                # Computer icon
+│   ├── mspaint.ico                 # MS Paint icon
+│   ├── msraring-100.ico            # MS Raring icon
+│   ├── reader-disket.ico           # Floppy disk reader icon
+│   ├── recycle-full.ico            # Full recycle bin icon
+│   ├── regedit-100.ico             # Registry editor icon
+│   └── server-icon.ico             # Server icon
 ├── images/                         # Image assets
 │   ├── clippy.png                  # Our helpful assistant
 │   ├── favicon.png                 # Site favicon
@@ -65,7 +73,10 @@ As a problem solver working in modern tech, I find inspiration in Windows 95's b
 ├── js/                             # JavaScript files
 │   ├── clippy.js                   # iOS Clippy easter egg
 │   ├── decrypt.js                  # Contact info decryption
-│   └── strava-pbs.js               # Strava records logic
+│   ├── mobile-detection.js         # Mobile device detection
+│   ├── program-icons.js            # Program icons handling
+│   ├── strava-pbs.js               # Strava records logic
+│   └── win95-components.js         # Windows 95 UI components
 ├── sounds/                         # Audio assets
 │   ├── win95-access.mp3            # Windows startup sound
 │   └── win95-complete.mp3          # Windows completion sound
