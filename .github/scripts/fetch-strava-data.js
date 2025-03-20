@@ -342,6 +342,7 @@ async function findPersonalBests(activities, accessToken) {
 function countCompletedDistances(activities) {
   // Filter only running activities
   const runningActivities = activities.filter(isRunningActivity);
+  console.log(`Total running activities for counting: ${runningActivities.length}`);
 
   // Initialize counters
   const completedCounts = {
@@ -351,18 +352,23 @@ function countCompletedDistances(activities) {
     'marathon': 0
   };
 
+  // Track uncategorized runs
+  let uncategorizedRuns = [];
+  let zeroDistanceRuns = 0;
+
   // Define distance thresholds (in meters)
   const distanceThresholds = {
-    '5k': { min: 4700, target: 5000, max: 9499 },       // 5K up to just before 10K
-    '10k': { min: 9500, target: 10000, max: 19999 },    // 10K up to just before half
-    'half_marathon': { min: 20000, target: 21097.5, max: 39999 },
-    'marathon': { min: 40000, target: 42195, max: Infinity }
+    '5k': { min: 4700, target: 5000, max: 9499 },         // 5K range
+    '10k': { min: 9500, target: 10000, max: 19999 },      // 10K range
+    'half_marathon': { min: 20000, target: 21097.5, max: 39999 }, // Half-marathon range
+    'marathon': { min: 40000, target: 42195, max: Infinity }  // Marathon and above
   };
 
   // Count activities, placing each in best matching category
   runningActivities.forEach(activity => {
     // Skip activities with no distance data
     if (!activity.distance || activity.distance <= 0) {
+      zeroDistanceRuns++;
       return;
     }
 
@@ -380,13 +386,59 @@ function countCompletedDistances(activities) {
     // If we found a matching category, increment its counter
     if (bestMatch) {
       completedCounts[bestMatch]++;
+    } else {
+      // Track activities that don't match any category
+      uncategorizedRuns.push({
+        name: activity.name || "Unnamed activity",
+        distance: activity.distance,
+        type: activity.type,
+        id: activity.id
+      });
     }
   });
+
+  // Calculate total categorized runs
+  const totalCategorized = Object.values(completedCounts).reduce((sum, count) => sum + count, 0);
 
   console.log("Completed Runs Summary:");
   Object.entries(completedCounts).forEach(([distance, count]) => {
     console.log(`${distance}: ${count}`);
   });
+  console.log(`Total categorized: ${totalCategorized}`);
+  console.log(`Zero distance runs: ${zeroDistanceRuns}`);
+  console.log(`Uncategorized runs: ${uncategorizedRuns.length}`);
+
+  if (uncategorizedRuns.length > 0) {
+    console.log("Sample of uncategorized runs:");
+    uncategorizedRuns.slice(0, 5).forEach(run => {
+      console.log(`  ${run.name}: ${run.distance}m (${run.type})`);
+    });
+
+    // Show distribution of uncategorized runs
+    const distanceBuckets = {
+      "< 1km": 0,
+      "1-2km": 0,
+      "2-3km": 0,
+      "3-4km": 0,
+      "4-4.7km": 0,
+      "Other": 0
+    };
+
+    uncategorizedRuns.forEach(run => {
+      const distance = run.distance;
+      if (distance < 1000) distanceBuckets["< 1km"]++;
+      else if (distance < 2000) distanceBuckets["1-2km"]++;
+      else if (distance < 3000) distanceBuckets["2-3km"]++;
+      else if (distance < 4000) distanceBuckets["3-4km"]++;
+      else if (distance < 4700) distanceBuckets["4-4.7km"]++;
+      else distanceBuckets["Other"]++;
+    });
+
+    console.log("Distribution of uncategorized runs:");
+    Object.entries(distanceBuckets).forEach(([range, count]) => {
+      console.log(`  ${range}: ${count}`);
+    });
+  }
 
   return completedCounts;
 }
