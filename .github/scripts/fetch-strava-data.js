@@ -353,10 +353,10 @@ function countCompletedDistances(activities) {
 
   // Define distance thresholds (in meters)
   const distanceThresholds = {
-    '5k': { min: 4700, target: 5000, max: 7500 },         // 5K range
-    '10k': { min: 9500, target: 10000, max: 15000 },      // 10K range
-    'half_marathon': { min: 20000, target: 21097.5, max: 30000 }, // Half marathon range
-    'marathon': { min: 40000, target: 42195, max: Infinity }  // Marathon and above
+    '5k': { min: 4700, target: 5000, max: 9499 },       // 5K up to just before 10K
+    '10k': { min: 9500, target: 10000, max: 19999 },    // 10K up to just before half
+    'half_marathon': { min: 20000, target: 21097.5, max: 39999 },
+    'marathon': { min: 40000, target: 42195, max: Infinity }
   };
 
   // Count activities, placing each in best matching category
