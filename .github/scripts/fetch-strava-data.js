@@ -96,7 +96,7 @@ async function fetchSpecificActivity(accessToken, activityId) {
 }
 
 function isRunningActivity(activity) {
-  return activity.type === 'Run';
+  return activity.type === 'Run' || activity.type === 'Trail Run';
 }
 
 async function findPersonalBests(activities, accessToken) {
