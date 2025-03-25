@@ -827,7 +827,6 @@ body.is-touch-device .desktop-icons,
     width: 100%;
 }
 
-/* Selected state - replaces hover */
 .desktop-icon.selected {
     background-color: #000080;
     color: #fff;
@@ -841,4 +840,97 @@ body.is-touch-device .desktop-icons,
 
 .desktop-icon:focus {
     outline: 1px dotted #000;
+}
+
+.address-bar {
+    background-color: white;
+    border: 1px inset #808080;
+    padding: 2px 5px;
+    margin-bottom: 5px;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+}
+
+.address-bar span {
+    margin-right: 5px;
+}
+
+.folder-view {
+    background-color: white;
+    border: 1px inset #808080;
+    padding: 5px;
+    overflow: auto;
+    min-height: 250px;
+}
+
+.folder-view-header {
+    display: flex;
+    border-bottom: 1px solid #d0d0d0;
+    font-weight: bold;
+    font-size: 11px;
+    padding-bottom: 3px;
+}
+
+.folder-view-column {
+    padding: 2px 5px;
+}
+
+.column-name {
+    flex: 3;
+}
+
+.column-type {
+    flex: 2;
+}
+
+.column-details {
+    flex: 4;
+}
+
+.tech-item {
+    display: flex;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 3px 0;
+    font-size: 11px;
+}
+
+.tech-item:hover {
+    background-color: #d0d0d0;
+}
+
+.tech-item.selected {
+    background-color: #000080;
+    color: white;
+}
+
+.tech-item-name {
+    flex: 3;
+    display: flex;
+    align-items: center;
+}
+
+.tech-item-name span[class*="Icon"] {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+}
+
+.tech-item-type {
+    flex: 2;
+}
+
+.tech-item-details {
+    flex: 4;
+}
+
+#myTechWindow {
+    position: fixed; /* Changed from absolute to fixed */
+    top: 50px;
+    left: 50px;
+    z-index: 1000; /* Higher z-index to ensure it's above everything */
+    width: 600px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    background-color: #c0c0c0;
+    border: 2px outset #fff;
 }

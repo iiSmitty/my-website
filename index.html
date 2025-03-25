@@ -9,11 +9,14 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
+
 <script src="js/decrypt.js"></script>
 <script src="js/clippy.js"></script>
 <script src="js/win95-components.js"></script>
 <script src="js/program-icons.js"></script>
 <script src="js/mobile-detection.js"></script>
+<script src="js/tech-counter.js"></script>
+
 <div class="win95-container">
     <!-- Windows 95 Title Bar -->
     <div class="win95-title-bar">
@@ -31,7 +34,7 @@
     </div>
 
     <!-- Desktop Icons -->
-    <div class="desktop-icons" style="display: none;">
+    <div class="desktop-icons">
         <div class="desktop-icon">
             <span class="ComputerIcon_32x32"></span>
             <span>My Computer</span>
@@ -152,5 +155,124 @@
         </div>
     </div>
 </div>
+
+<!-- My Tech Window -->
+<div class="win95-window" id="myTechWindow" style="display: none; position: fixed; top: 50px; left: 50px; z-index: 1000; width: 600px;">
+    <!-- Windows 95 Title Bar -->
+    <div class="win95-title-bar" id="myTechTitleBar">
+        <div class="win95-title">
+            <span class="ComputerIcon_16x16"></span>
+            My Computer
+        </div>
+        <div class="win95-buttons">
+            <button class="win95-button win95-minimize">_</button>
+            <button class="win95-button win95-maximize">□</button>
+            <button class="win95-button win95-close" onclick="closeMyTechWindow()">×</button>
+        </div>
+    </div>
+
+    <!-- Windows 95 Menu Bar -->
+    <div class="win95-menu-bar">
+        <div class="win95-menu-item">File</div>
+        <div class="win95-menu-item">Edit</div>
+        <div class="win95-menu-item">View</div>
+        <div class="win95-menu-item">Help</div>
+    </div>
+
+    <!-- Tech Window Content -->
+    <div class="win95-content">
+
+        <div class="address-bar">
+            <span>Address:</span> My Tech
+        </div>
+
+        <div class="folder-view">
+            <div class="folder-view-header">
+                <div class="folder-view-column column-name">Name</div>
+                <div class="folder-view-column column-type">Type</div>
+                <div class="folder-view-column column-details">Details</div>
+            </div>
+
+            <!-- Tech Items -->
+            <div class="tech-item" onclick="selectTechItem(this)">
+                <div class="tech-item-name">
+                    <span class="HardwareIcon_16x16"></span>
+                    Dell Latitude 5511
+                </div>
+                <div class="tech-item-type">Laptop</div>
+                <div class="tech-item-details">i7-10850H, 32GB RAM, 512GB SSD</div>
+            </div>
+
+            <div class="tech-item" onclick="selectTechItem(this)">
+                <div class="tech-item-name">
+                    <span class="DisplayPropertiesIcon_16x16"></span>
+                    Dell D3100
+                </div>
+                <div class="tech-item-type">Docking Station</div>
+                <div class="tech-item-details">One 4K Display And Two Full HD Displays</div>
+            </div>
+
+            <div class="tech-item" onclick="selectTechItem(this)">
+                <div class="tech-item-name">
+                    <span class="DisplayPropertiesIcon_16x16"></span>
+                    Dell U2412M
+                </div>
+                <div class="tech-item-type">Monitor</div>
+                <div class="tech-item-details">24" IPS, 1920x1200</div>
+            </div>
+
+            <div class="tech-item" onclick="selectTechItem(this)">
+                <div class="tech-item-name">
+                    <span class="DisplayPropertiesIcon_16x16"></span>
+                    Dell E2423HN
+                </div>
+                <div class="tech-item-type">Monitor</div>
+                <div class="tech-item-details">23.8" VA, 1920x1080</div>
+            </div>
+
+            <div class="tech-item" onclick="selectTechItem(this)">
+                <div class="tech-item-name">
+                    <span class="SoundIcon_16x16"></span>
+                    Sony WF-1000XM4
+                </div>
+                <div class="tech-item-type">Headset</div>
+                <div class="tech-item-details">Noise-cancelling, Bluetooth</div>
+            </div>
+
+            <div class="tech-item" onclick="selectTechItem(this)">
+                <div class="tech-item-name">
+                    <span class="SoundIcon_16x16"></span>
+                    Cooler Master MH630
+                </div>
+                <div class="tech-item-type">Headset</div>
+                <div class="tech-item-details">Stereo Gaming Headset</div>
+            </div>
+
+            <div class="tech-item" onclick="selectTechItem(this)">
+                <div class="tech-item-name">
+                    <span class="MouseIcon_16x16"></span>
+                    Logitech G305
+                </div>
+                <div class="tech-item-type">Mouse</div>
+                <div class="tech-item-details">Wireless, Programmable</div>
+            </div>
+
+            <div class="tech-item" onclick="selectTechItem(this)">
+                <div class="tech-item-name">
+                    <span class="ClockIcon_16x16"></span>
+                    Garmin Fenix 7X
+                </div>
+                <div class="tech-item-type">Watch</div>
+                <div class="tech-item-details">Sapphire Solar</div>
+            </div>
+        </div>
+
+        <!-- Status Bar -->
+        <div class="win95-status-bar">
+            <div id="tech-item-counter">0 object(s)</div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
