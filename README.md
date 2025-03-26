@@ -70,6 +70,11 @@ As a problem solver working in modern tech, I find inspiration in Windows 95's b
 ├── images/                         # Image assets
 │   ├── clippy.png                  # Our helpful assistant
 │   ├── favicon.png                 # Site favicon
+│   ├── microsoft-windows-1.png     # Windows Cyan
+│   ├── microsoft-windows-2.png     # Windows Green
+│   ├── microsoft-windows-3.png     # Windows Pink
+│   ├── microsoft-windows-4.png     # Windows Red
+│   ├── microsoft-windows-5.png     # Windows White
 │   └── win95-error.png             # Error icon for notifications
 ├── js/                             # JavaScript files
 │   ├── clippy.js                   # iOS Clippy easter egg
