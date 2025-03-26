@@ -60,6 +60,7 @@ As a problem solver working in modern tech, I find inspiration in Windows 95's b
 │   └── strava-pbs.json             # Strava personal bests data
 ├── icons/                          # Icon assets
 │   ├── computer.ico                # Computer icon
+│   ├── github-mark-white.png       # GitHub icon
 │   ├── mspaint.ico                 # MS Paint icon
 │   ├── msraring-100.ico            # MS Raring icon
 │   ├── reader-disket.ico           # Floppy disk reader icon
