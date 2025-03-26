@@ -97,6 +97,15 @@ function initializeDesktopIcons() {
                 openMyTechWindow();
             });
         }
+
+        // For Source Code icon, add double-click handler
+        if (icon.querySelector('.GitHubIcon_32x32')) {
+            console.log("Found Source Code icon at index:", index);
+            icon.addEventListener('dblclick', function() {
+                console.log("Source Code double-clicked");
+                openGitHubInstallerWindow();
+            });
+        }
     });
 
     // Make the tech window draggable
@@ -150,3 +159,145 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("DOM is ready, initializing...");
     initializeDesktopIcons();
 });
+
+// Function to open the GitHub installer window
+function openGitHubInstallerWindow() {
+    const installerWindow = document.getElementById('githubInstallerWindow');
+    installerWindow.style.display = 'block';
+
+    // Start the installation process
+    startInstallation();
+
+    // Make the window draggable
+    makeWindowDraggable('githubInstallerWindow', 'githubInstallerTitleBar');
+}
+
+// Function to close the GitHub installer window
+function closeGitHubInstallerWindow() {
+    const installerWindow = document.getElementById('githubInstallerWindow');
+    installerWindow.style.display = 'none';
+}
+
+// Function to open GitHub page in a new tab
+function openGitHubPage() {
+    // Your GitHub URL
+    const githubUrl = 'https://github.com/iiSmitty';
+    window.open(githubUrl, '_blank');
+
+    // Close the installer window
+    closeGitHubInstallerWindow();
+}
+
+// Installation steps with delays (in ms)
+const installationSteps = [
+    { text: "Checking system requirements...", delay: 1000 },
+    { text: "Searching for existing GitHub installations...", delay: 1500 },
+    { text: "Initializing connection protocols...", delay: 1200 },
+    { text: "Configuring repository access...", delay: 1300 },
+    { text: "Optimizing connection settings...", delay: 900 },
+    { text: "Installing Octocat drivers (1/3)...", delay: 1100 },
+    { text: "Installing Octocat drivers (2/3)...", delay: 1400 },
+    { text: "Installing Octocat drivers (3/3)...", delay: 1000 },
+    { text: "Configuring SSH keys...", delay: 1200 },
+    { text: "Testing connection speed...", delay: 1300 },
+    { text: "Finalizing installation...", delay: 1000 },
+    { text: "Installation complete!", delay: 500 }
+];
+
+let currentStep = 0;
+
+// Start the installation process
+function startInstallation() {
+    currentStep = 0;
+    const progressBar = document.getElementById('progressBar');
+    const installationLog = document.getElementById('installationLog');
+    const nextBtn = document.getElementById('nextBtn');
+
+    // Reset UI
+    progressBar.style.width = '0%';
+    nextBtn.disabled = true;
+    installationLog.innerHTML = '<div>Starting installation process...</div>';
+
+    // Process each step with its delay
+    processNextStep();
+}
+
+function processNextStep() {
+    const progressBar = document.getElementById('progressBar');
+    const statusText = document.getElementById('statusText');
+    const nextBtn = document.getElementById('nextBtn');
+
+    if (currentStep < installationSteps.length) {
+        const step = installationSteps[currentStep];
+
+        // Update status text
+        statusText.textContent = step.text;
+
+        // Add to log
+        addLogEntry(step.text);
+
+        // Update progress bar
+        const progress = ((currentStep + 1) / installationSteps.length) * 100;
+        progressBar.style.width = `${progress}%`;
+
+        // Move to next step after delay
+        setTimeout(processNextStep, step.delay);
+
+        currentStep++;
+
+        // Enable Next button when done
+        if (currentStep === installationSteps.length) {
+            nextBtn.disabled = false;
+            addLogEntry("Ready to connect to GitHub repositories!", "completed");
+        }
+    }
+}
+
+function addLogEntry(text, className = '') {
+    const installationLog = document.getElementById('installationLog');
+    const entry = document.createElement('div');
+    entry.textContent = text;
+    if (className) {
+        entry.className = className;
+    }
+    installationLog.appendChild(entry);
+    installationLog.scrollTop = installationLog.scrollHeight;
+}
+
+// Function to make windows draggable (reusable for all windows)
+function makeWindowDraggable(windowId, titleBarId) {
+    const windowElement = document.getElementById(windowId);
+    const titleBar = document.getElementById(titleBarId);
+
+    if (!windowElement || !titleBar) {
+        console.log(`Window ${windowId} or title bar ${titleBarId} not found`);
+        return;
+    }
+
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    titleBar.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        offsetX = e.clientX - windowElement.getBoundingClientRect().left;
+        offsetY = e.clientY - windowElement.getBoundingClientRect().top;
+
+        // Bring window to front
+        const allWindows = document.querySelectorAll('.win95-window');
+        allWindows.forEach(win => {
+            win.style.zIndex = 10;
+        });
+        windowElement.style.zIndex = 100;
+    });
+
+    document.addEventListener('mousemove', function(e) {
+        if (!isDragging) return;
+
+        windowElement.style.left = (e.clientX - offsetX) + 'px';
+        windowElement.style.top = (e.clientY - offsetY) + 'px';
+    });
+
+    document.addEventListener('mouseup', function() {
+        isDragging = false;
+    });
+}

@@ -49,6 +49,27 @@ body {
     border: 1px inset #ffffff;
 }
 
+/* Standard Windows 95 button for dialogs and forms */
+.win95-btn {
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-family: 'MS Sans Serif', Arial, sans-serif;
+    cursor: pointer;
+    min-width: 75px;
+    text-align: center;
+}
+
+.win95-btn:active {
+    border: 2px inset #ffffff;
+}
+
+.win95-btn:disabled {
+    color: #808080;
+    text-shadow: 1px 1px 0 #ffffff;
+}
+
 /* Windows 95 Menu Bar */
 .win95-menu-bar {
     background-color: #c0c0c0;
@@ -776,6 +797,18 @@ body.startup {
     margin-bottom: 4px;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.GitHubIcon_32x32 {
+    width: 32px;
+    height: 32px;
+    background-image: url(/icons/github-mark-white.png);
+    display: inline-block;
+    margin-bottom: 4px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
 }
 
 .RecycleIcon_32x32 {
