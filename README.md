@@ -81,6 +81,7 @@ As a problem solver working in modern tech, I find inspiration in Windows 95's b
 │   ├── decrypt.js                  # Contact info decryption
 │   ├── mobile-detection.js         # Mobile device detection
 │   ├── program-icons.js            # Program icons handling
+│   ├── screensaver.js              # Flying Windows screensaver
 │   ├── strava-pbs.js               # Strava records logic
 │   └── win95-components.js         # Windows 95 UI components
 ├── sounds/                         # Audio assets
