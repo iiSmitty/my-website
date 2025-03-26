@@ -66,6 +66,23 @@ function selectTechItem(element) {
     element.classList.add('selected');
 }
 
+// Function to handle deselecting icons when clicking outside
+function initializeDesktopClickHandler() {
+    console.log("Initializing desktop click handler...");
+
+    // This might be the body element or a div that represents the entire desktop area
+    // Update this selector to match your actual desktop background element
+    const desktopBackground = document.body; // or document.querySelector('.desktop-background');
+
+    desktopBackground.addEventListener('click', function(event) {
+        // Check if the click is on the desktop background and not on an icon or a window
+        if (!event.target.closest('.desktop-icon') && !event.target.closest('.win95-window')) {
+            console.log("Desktop background clicked, deselecting all icons");
+            document.querySelectorAll('.desktop-icon').forEach(icon => icon.classList.remove('selected'));
+        }
+    });
+}
+
 // Initialize all desktop icons and their functionality
 function initializeDesktopIcons() {
     console.log("Initializing desktop icons...");
@@ -83,10 +100,12 @@ function initializeDesktopIcons() {
 
     desktopIcons.forEach((icon, index) => {
         // Click handler to select the icon
-        icon.addEventListener('click', function() {
+        icon.addEventListener('click', function(event) {
             console.log("Icon clicked:", index);
             desktopIcons.forEach(i => i.classList.remove('selected'));
             this.classList.add('selected');
+            // Stop the event from bubbling up to the document
+            event.stopPropagation();
         });
 
         // For My Computer specifically, add double-click handler
@@ -110,6 +129,9 @@ function initializeDesktopIcons() {
 
     // Make the tech window draggable
     makeTechWindowDraggable();
+
+    // Initialize the desktop click handler
+    initializeDesktopClickHandler();
 }
 
 // Function to make the tech window draggable
