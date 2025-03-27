@@ -1,7 +1,6 @@
 // Inactivity tracker and screensaver launcher
 let inactivityTime = 0;
-// const inactivityLimit = 3 * 60 * 1000; // 3 minutes in milliseconds
-const inactivityLimit = 30000;
+const inactivityLimit = 3 * 60 * 1000; // 3 minutes in milliseconds
 let timer;
 let screensaverActive = false;
 let p5Instance;
