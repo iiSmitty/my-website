@@ -203,6 +203,69 @@ async function fetchDetailedActivity(accessToken, activityId) {
   }
 }
 
+async function findCalculatedPersonalBests(activities) {
+  // Filter only running activities
+  const runningActivities = activities.filter(isRunningActivity);
+  console.log(`Found ${runningActivities.length} running activities for calculating PRs`);
+
+  // Initialize structure for storing PRs
+  const personalBests = {};
+
+  // Process each activity to find best times for each standard distance
+  runningActivities.forEach(activity => {
+    // Skip activities with invalid data
+    if (!activity.distance || activity.distance <= 0 || !activity.elapsed_time || activity.elapsed_time <= 0) {
+      return;
+    }
+
+    // Check each standard distance
+    Object.entries(standardDistances).forEach(([distanceKey, distanceValue]) => {
+      const minDistance = distanceValue - distanceTolerance[distanceKey];
+      const maxDistance = distanceValue + distanceTolerance[distanceKey];
+
+      if (activity.distance >= minDistance && activity.distance <= maxDistance) {
+        // Calculate normalized time
+        const pacePerMeter = activity.elapsed_time / activity.distance;
+        const normalizedTime = Math.round(pacePerMeter * distanceValue);
+
+        // If this is faster than current best (or we haven't found one yet)
+        if (!personalBests[distanceKey] || normalizedTime < personalBests[distanceKey].normalized_time) {
+          // Calculate pace
+          const pacePerKm = Math.round((normalizedTime / (distanceValue / 1000)) * 10) / 10;
+          const paceMinutes = Math.floor(pacePerKm / 60);
+          const paceRemainingSeconds = Math.round(pacePerKm % 60);
+
+          personalBests[distanceKey] = {
+            id: activity.id,
+            name: activity.name,
+            start_date: activity.start_date,
+            elapsed_time: activity.elapsed_time,
+            distance: activity.distance,
+            normalized_time: normalizedTime,
+            pace_per_km: pacePerKm,
+            formatted_time: formatTime(normalizedTime),
+            formatted_pace: `${paceMinutes}:${paceRemainingSeconds.toString().padStart(2, '0')}/km`,
+            strava_url: `https://www.strava.com/activities/${activity.id}`,
+            display_name: getDisplayName(distanceKey)
+          };
+        }
+      }
+    });
+  });
+
+  // Log results
+  console.log("\nCalculated PRs found:");
+  Object.keys(standardDistances).forEach(distance => {
+    if (personalBests[distance]) {
+      console.log(`${getDisplayName(distance)}: ${personalBests[distance].formatted_time}`);
+    } else {
+      console.log(`${getDisplayName(distance)}: Not found by calculation`);
+    }
+  });
+
+  return personalBests;
+}
+
 // Find PRs using Strava's best efforts data
 async function findPersonalBests(activities, accessToken) {
   // Filter only running activities
@@ -341,8 +404,8 @@ async function main() {
       console.log(`\nCouldn't find PRs for these distances using best efforts: ${missingDistances.join(', ')}`);
       console.log('Falling back to calculated PRs for these distances...');
 
-      // Get calculated PRs for all distances
-      const calculatedPRs = await findPersonalBests(activities, accessToken);
+      // Get calculated PRs for all distances using the calculation method
+      const calculatedPRs = await findCalculatedPersonalBests(activities);
 
       // Only use calculated PRs for distances where we couldn't find best efforts
       missingDistances.forEach(distance => {
