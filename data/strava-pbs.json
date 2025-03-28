@@ -12,6 +12,32 @@
       "formatted_pace": "5:21/km",
       "strava_url": "https://www.strava.com/activities/13503231289",
       "display_name": "Half Marathon"
+    },
+    "5k": {
+      "id": 14003519637,
+      "name": "DURBAC TT",
+      "start_date": "2025-03-27T16:00:37Z",
+      "elapsed_time": 1268,
+      "distance": 5025.9,
+      "normalized_time": 1261,
+      "pace_per_km": 252.2,
+      "formatted_time": "21:01",
+      "formatted_pace": "4:12/km",
+      "strava_url": "https://www.strava.com/activities/14003519637",
+      "display_name": "5 Kilometers"
+    },
+    "10k": {
+      "id": 13309370797,
+      "name": "[Versus Back to Base] 48/50",
+      "start_date": "2025-01-09T16:01:14Z",
+      "elapsed_time": 2931,
+      "distance": 10012.2,
+      "normalized_time": 2927,
+      "pace_per_km": 292.7,
+      "formatted_time": "48:47",
+      "formatted_pace": "4:53/km",
+      "strava_url": "https://www.strava.com/activities/13309370797",
+      "display_name": "10 Kilometers"
     }
   },
   "completedCounts": {
@@ -20,5 +46,5 @@
     "half_marathon": 10,
     "marathon": 0
   },
-  "lastUpdated": "2025-03-28T10:14:09.796Z"
+  "lastUpdated": "2025-03-28T10:22:21.347Z"
 }
