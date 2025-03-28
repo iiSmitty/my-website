@@ -417,6 +417,49 @@ async function main() {
   }
 }
 
+// REMOVE THIS AFTER TESTING
+// Debug to find specific activity
+const targetActivityId = 14003519637; // Your new PR activity ID
+const targetActivity = activities.find(a => a.id == targetActivityId); // Use == instead of === for string/number comparison
+if (targetActivity) {
+  console.log("\n====== DEBUGGING TARGET ACTIVITY ======");
+  console.log("Found target activity:", targetActivity.name);
+  console.log("Distance:", targetActivity.distance, "meters");
+  console.log("Time:", formatTime(targetActivity.elapsed_time));
+
+  // Force check this specific activity
+  const distanceKey = '5k';
+  const distanceValue = standardDistances[distanceKey];
+  const pacePerMeter = targetActivity.elapsed_time / targetActivity.distance;
+  const normalizedTime = Math.round(pacePerMeter * distanceValue);
+  console.log("Normalized time for 5K:", formatTime(normalizedTime));
+
+  // Get current PR for this distance
+  if (existingData.personalBests && existingData.personalBests[distanceKey]) {
+    const currentBestTime = existingData.personalBests[distanceKey].normalized_time;
+    console.log("Current best time:", formatTime(currentBestTime));
+    console.log("Is new time better?", normalizedTime < currentBestTime);
+  } else {
+    console.log("No existing PR found for 5K");
+  }
+  console.log("====================================\n");
+} else {
+  console.log("\n⚠️ Target activity ID 14003519637 NOT found in fetched activities!");
+  console.log("This could indicate the activity wasn't fetched or has a different ID");
+  console.log("====================================\n");
+}
+
+// Then continue with your existing code
+if (!existingData.personalBests) {
+  // This will do a full analysis of all activities
+  console.log('No existing PR data, analyzing all activities...');
+  existingData.personalBests = await findAllPersonalBests(activities, accessToken);
+} else {
+  // Check if any new activities beat existing PRs
+  console.log('Checking for new PRs among recent activities...');
+  await checkForNewPRs(newActivities, existingData.personalBests, accessToken);
+}
+
 // Function to check new activities against existing PRs
 async function checkForNewPRs(activities, existingPRs, accessToken) {
   // Filter only running activities
