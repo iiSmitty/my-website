@@ -1,1 +1,50 @@
-
+{
+  "personalBests": {
+    "5k": {
+      "id": 5388064728,
+      "name": "Harbour Run",
+      "start_date": "2021-05-23T15:00:00Z",
+      "elapsed_time": 0,
+      "distance": 5000,
+      "normalized_time": 0,
+      "pace_per_km": 0,
+      "strava_url": "https://www.strava.com/activities/5388064728",
+      "display_name": "5 Kilometers",
+      "formatted_time": "0:00",
+      "formatted_pace": "0:00/km"
+    },
+    "10k": {
+      "id": 13309370797,
+      "name": "[Versus Back to Base] 48/50",
+      "start_date": "2025-01-09T16:01:14Z",
+      "elapsed_time": 2931,
+      "distance": 10012.2,
+      "normalized_time": 2927,
+      "pace_per_km": 292.7,
+      "strava_url": "https://www.strava.com/activities/13309370797",
+      "display_name": "10 Kilometers",
+      "formatted_time": "48:47",
+      "formatted_pace": "4:53/km"
+    },
+    "half_marathon": {
+      "id": 13692390402,
+      "name": "2025 Versus 21km Road Run Party",
+      "start_date": "2025-02-22T04:33:51Z",
+      "elapsed_time": 6157,
+      "distance": 20928.7,
+      "normalized_time": 6207,
+      "pace_per_km": 294.2,
+      "strava_url": "https://www.strava.com/activities/13692390402",
+      "display_name": "Half Marathon",
+      "formatted_time": "1:43:27",
+      "formatted_pace": "4:54/km"
+    }
+  },
+  "completedCounts": {
+    "5k": 183,
+    "10k": 55,
+    "half_marathon": 10,
+    "marathon": 0
+  },
+  "lastUpdated": "2025-03-28T09:39:16.162Z"
+}
