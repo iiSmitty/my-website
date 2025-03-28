@@ -79,159 +79,8 @@ async function fetchActivities(accessToken, page = 1, perPage = 200, allActiviti
   }
 }
 
-async function fetchSpecificActivity(accessToken, activityId) {
-  try {
-    console.log(`Fetching specific activity ${activityId}...`);
-    const response = await axios.get(`https://www.strava.com/api/v3/activities/${activityId}`, {
-      headers: {
-        'Authorization': `Bearer ${accessToken}`
-      }
-    });
-
-    return response.data;
-  } catch (error) {
-    console.error(`Error fetching activity ${activityId}:`, error.message);
-    return null;
-  }
-}
-
 function isRunningActivity(activity) {
   return activity.type === 'Run' || activity.type === 'Trail Run';
-}
-
-async function findPersonalBests(activities, accessToken) {
-  // Filter only running activities
-  const runningActivities = activities.filter(isRunningActivity);
-  console.log(`Found ${runningActivities.length} running activities`);
-
-  // Initialize best times for standard distances
-  const personalBests = {};
-  Object.keys(standardDistances).forEach(distance => {
-    personalBests[distance] = { time: Infinity, activity: null };
-  });
-
-  // First pass: Look for actual fastest times for each distance
-  console.log("Looking for best times for each standard distance...");
-
-  runningActivities.forEach(activity => {
-    // Skip activities with no distance data
-    if (!activity.distance || activity.distance <= 0) {
-      return;
-    }
-
-    // Calculate pace in seconds per meter
-    const pacePerMeter = activity.elapsed_time / activity.distance;
-
-    // Check standard distances
-    Object.entries(standardDistances).forEach(([distanceKey, distanceValue]) => {
-      const minDistance = distanceValue - distanceTolerance[distanceKey];
-      const maxDistance = distanceValue + distanceTolerance[distanceKey];
-
-      if (activity.distance >= minDistance && activity.distance <= maxDistance) {
-        // Normalize time to exact distance (simple proportion)
-        const normalizedTime = Math.round(pacePerMeter * distanceValue);
-
-        // Log potential matches for debugging
-        console.log(`Potential ${distanceKey} match: ${activity.name} - ${formatTime(normalizedTime)}`);
-
-        if (normalizedTime < personalBests[distanceKey].time && normalizedTime > 0) {
-          personalBests[distanceKey] = {
-            time: normalizedTime,
-            activity: {
-              id: activity.id,
-              name: activity.name,
-              start_date: activity.start_date,
-              elapsed_time: activity.elapsed_time,
-              distance: activity.distance,
-              normalized_time: normalizedTime,
-              pace_per_km: Math.round((normalizedTime / (distanceValue / 1000)) * 10) / 10,
-              strava_url: `https://www.strava.com/activities/${activity.id}`
-            }
-          };
-          console.log(`New best time for ${distanceKey}: ${formatTime(normalizedTime)}`);
-        }
-      }
-    });
-  });
-
-  // Define fallback values for when no activities match a distance category
-  const fallbackPBs = {
-    '5k': {
-      time: (21 * 60) + 36,  // 21:36
-      name: "5K Personal Best"
-    },
-    '10k': {
-      time: (47 * 60) + 10,  // 47:10
-      name: "10K Personal Best"
-    },
-    'half_marathon': {
-      time: (1 * 3600) + (52 * 60) + 55,  // 1:52:55
-      name: "Half Marathon Personal Best"
-    }
-  };
-
-  // Only use fallbacks if we didn't find ANY matching activity
-  Object.entries(fallbackPBs).forEach(([distance, fallback]) => {
-    if (!personalBests[distance].activity) {
-      console.log(`No ${distance} activity found. Using fallback time ${formatTime(fallback.time)}`);
-      personalBests[distance] = {
-        time: fallback.time,
-        activity: {
-          id: "fallback-" + distance,
-          name: fallback.name,
-          start_date: new Date().toISOString(),
-          elapsed_time: fallback.time,
-          distance: standardDistances[distance],
-          normalized_time: fallback.time,
-          pace_per_km: Math.round((fallback.time / (standardDistances[distance] / 1000)) * 10) / 10,
-          strava_url: "https://www.strava.com/athlete/you"
-        }
-      };
-    }
-  });
-
-  // Remove intermediate time property and just keep the activities
-  const finalBests = {};
-  Object.keys(personalBests).forEach(key => {
-    if (personalBests[key].activity) {
-      finalBests[key] = personalBests[key].activity;
-    }
-  });
-
-  // Format times for all PBs
-  Object.keys(finalBests).forEach(key => {
-    if (finalBests[key]) {
-      const seconds = finalBests[key].normalized_time;
-      finalBests[key].formatted_time = formatTime(seconds);
-
-      // Format pace
-      const paceSeconds = finalBests[key].pace_per_km;
-      const paceMinutes = Math.floor(paceSeconds / 60);
-      const paceRemainingSeconds = Math.round(paceSeconds % 60);
-      finalBests[key].formatted_pace = `${paceMinutes}:${paceRemainingSeconds.toString().padStart(2, '0')}/km`;
-    }
-  });
-
-  // Add display names for distances
-  const displayNames = {
-    '5k': '5 Kilometers',
-    '10k': '10 Kilometers',
-    'half_marathon': 'Half Marathon'
-  };
-
-  Object.keys(finalBests).forEach(key => {
-    if (finalBests[key]) {
-      finalBests[key].display_name = displayNames[key] || key;
-    }
-  });
-
-  // Log all found PBs for debugging
-  console.log("Personal Bests found:");
-  Object.keys(finalBests).forEach(key => {
-    console.log(`${displayNames[key] || key}: ${finalBests[key].formatted_time}`);
-  });
-
-  return finalBests;
 }
 
 function countCompletedDistances(activities) {
@@ -338,6 +187,123 @@ function countCompletedDistances(activities) {
   return completedCounts;
 }
 
+async function fetchDetailedActivity(accessToken, activityId) {
+  try {
+    console.log(`Fetching detailed activity ${activityId}...`);
+    const response = await axios.get(`https://www.strava.com/api/v3/activities/${activityId}?include_all_efforts=true`, {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`
+      }
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching detailed activity ${activityId}:`, error.message);
+    return null;
+  }
+}
+
+// Find PRs using Strava's best efforts data
+async function findPersonalBests(activities, accessToken) {
+  // Filter only running activities
+  const runningActivities = activities.filter(isRunningActivity);
+  console.log(`Found ${runningActivities.length} running activities to check for best efforts`);
+
+  // Initialize structure to store best efforts
+  const personalBests = {};
+
+  // Map effort names as they appear in Strava to our standardized keys
+  const effortNameMap = {
+    '5k': '5k',
+    '10k': '10k',
+    'Half-Marathon': 'half_marathon'
+  };
+
+  // Set of target distances we're looking for
+  const targetDistances = new Set(Object.keys(effortNameMap));
+  console.log(`Looking for PRs for these distances: ${Array.from(targetDistances).join(', ')}`);
+
+  // Start with most recent activities (most likely to contain PRs)
+  const sortedActivities = [...runningActivities].sort(
+      (a, b) => new Date(b.start_date) - new Date(a.start_date)
+  );
+
+  // Take the top 30 most recent activities - adjust as needed
+  const recentActivities = sortedActivities.slice(0, 30);
+
+  console.log(`Analyzing ${recentActivities.length} most recent activities for best efforts...`);
+
+  // Track which distances we've found PRs for
+  const foundDistances = new Set();
+
+  // Process activities until we've found all the PRs we're looking for
+  for (const activity of recentActivities) {
+    if (targetDistances.size === foundDistances.size) {
+      console.log("Found all target PRs, stopping search");
+      break;
+    }
+
+    console.log(`Checking activity ${activity.name} (${activity.id}) from ${new Date(activity.start_date).toLocaleDateString()} for best efforts...`);
+    const detailedActivity = await fetchDetailedActivity(accessToken, activity.id);
+
+    if (!detailedActivity || !detailedActivity.best_efforts || detailedActivity.best_efforts.length === 0) {
+      console.log(`No best efforts found for activity ${activity.id}`);
+      continue;
+    }
+
+    console.log(`Found ${detailedActivity.best_efforts.length} best efforts in activity`);
+
+    for (const effort of detailedActivity.best_efforts) {
+      // Skip if this isn't a standard distance we're tracking
+      if (!targetDistances.has(effort.name)) continue;
+
+      // Skip if we already found this distance
+      if (foundDistances.has(effort.name)) continue;
+
+      // Check if this is a PR (pr_rank of 1)
+      if (effort.pr_rank === 1) {
+        const ourKey = effortNameMap[effort.name];
+        console.log(`Found PR for ${effort.name} (${ourKey}): ${formatTime(effort.elapsed_time)}`);
+
+        // Calculate pace
+        const pacePerKm = effort.elapsed_time / (effort.distance / 1000);
+        const paceMinutes = Math.floor(pacePerKm / 60);
+        const paceRemainingSeconds = Math.round(pacePerKm % 60);
+
+        personalBests[ourKey] = {
+          id: activity.id,
+          name: activity.name,
+          start_date: activity.start_date,
+          elapsed_time: effort.elapsed_time,
+          distance: effort.distance,
+          normalized_time: effort.elapsed_time,
+          pace_per_km: Math.round(pacePerKm * 10) / 10,
+          formatted_time: formatTime(effort.elapsed_time),
+          formatted_pace: `${paceMinutes}:${paceRemainingSeconds.toString().padStart(2, '0')}/km`,
+          strava_url: `https://www.strava.com/activities/${activity.id}`,
+          display_name: getDisplayName(ourKey)
+        };
+
+        foundDistances.add(effort.name);
+      } else {
+        console.log(`Found effort for ${effort.name} but it's not a PR (rank: ${effort.pr_rank})`);
+      }
+    }
+  }
+
+  // Log final PRs found
+  console.log("\nBest Efforts PRs found:");
+  Object.keys(standardDistances).forEach(distance => {
+    if (personalBests[distance]) {
+      console.log(`${getDisplayName(distance)}: ${personalBests[distance].formatted_time}`);
+    } else {
+      console.log(`${getDisplayName(distance)}: Not found via best efforts`);
+    }
+  });
+
+  return personalBests;
+}
+
 async function main() {
   try {
     // Get access token
@@ -357,43 +323,37 @@ async function main() {
       }
     }
 
-    // Get the date of the last processed activity
-    let lastActivityDate = null;
-    if (existingData.lastUpdated) {
-      lastActivityDate = new Date(existingData.lastUpdated);
-      console.log(`Last update was on ${lastActivityDate.toISOString()}`);
-    }
-
-    // Fetch activities, prioritizing newer ones
+    // Fetch activities
     console.log('Fetching activities...');
     const activities = await fetchActivities(accessToken);
     console.log(`Retrieved ${activities.length} activities`);
 
-    // Identify activities we haven't processed yet
-    // We'll still analyze all activities for counting purposes, but
-    // for PR detection we'll focus on new ones
-    let newActivities = activities;
-    if (lastActivityDate) {
-      // Filter to activities created or updated since last check
-      newActivities = activities.filter(activity => {
-        const activityDate = new Date(activity.start_date);
-        return activityDate > lastActivityDate;
+    // Find personal bests using best efforts data
+    console.log('Finding personal bests using Strava best efforts...');
+    existingData.personalBests = await findPersonalBests(activities, accessToken);
+
+    // If we couldn't find all PRs with best efforts, fall back to our calculation method
+    const missingDistances = Object.keys(standardDistances).filter(
+        distance => !existingData.personalBests[distance]
+    );
+
+    if (missingDistances.length > 0) {
+      console.log(`\nCouldn't find PRs for these distances using best efforts: ${missingDistances.join(', ')}`);
+      console.log('Falling back to calculated PRs for these distances...');
+
+      // Get calculated PRs for all distances
+      const calculatedPRs = await findPersonalBests(activities, accessToken);
+
+      // Only use calculated PRs for distances where we couldn't find best efforts
+      missingDistances.forEach(distance => {
+        if (calculatedPRs[distance]) {
+          console.log(`Using calculated PR for ${distance}: ${calculatedPRs[distance].formatted_time}`);
+          existingData.personalBests[distance] = calculatedPRs[distance];
+        }
       });
-      console.log(`Found ${newActivities.length} new activities since last update`);
     }
 
-    // Initialize PR data structure if not exists
-    if (!existingData.personalBests) {
-      // This will do a full analysis of all activities
-      console.log('No existing PR data, analyzing all activities...');
-      existingData.personalBests = await findAllPersonalBests(activities, accessToken);
-    } else {
-      // Check if any new activities beat existing PRs
-      console.log('Checking for new PRs among recent activities...');
-      await checkForNewPRs(newActivities, existingData.personalBests, accessToken);
-    }
-
-    // Always update the completed counts with all activities
+    // Count completed distances
     console.log('Counting completed distances...');
     existingData.completedCounts = countCompletedDistances(activities);
     existingData.lastUpdated = new Date().toISOString();
@@ -404,7 +364,6 @@ async function main() {
       fs.mkdirSync(dataDir, { recursive: true });
     }
 
-    // Write the updated data to a JSON file
     // Validate PRs before writing to file
     if (validatePRs(existingData.personalBests)) {
       // Write the updated data to a JSON file
@@ -417,81 +376,10 @@ async function main() {
       console.error('Skipping file write due to invalid PR data');
       process.exit(1);
     }
-
   } catch (error) {
     console.error('Error:', error.message);
     process.exit(1);
   }
-}
-
-// Function to check new activities against existing PRs
-async function checkForNewPRs(activities, existingPRs, accessToken) {
-  // Filter only running activities
-  const runningActivities = activities.filter(isRunningActivity);
-  console.log(`Checking ${runningActivities.length} new running activities for PRs`);
-
-  let prUpdates = 0;
-
-  // For each activity, check if it beats any existing PR
-  for (const activity of runningActivities) {
-    // Skip activities with no distance data
-    if (!activity.distance || activity.distance <= 0) {
-      continue;
-    }
-
-    // Check each standard distance
-    Object.entries(standardDistances).forEach(([distanceKey, distanceValue]) => {
-      const minDistance = distanceValue - distanceTolerance[distanceKey];
-      const maxDistance = distanceValue + distanceTolerance[distanceKey];
-
-      // If this activity is in the right distance range
-      if (activity.distance >= minDistance && activity.distance <= maxDistance) {
-        // Calculate normalized time for the exact distance
-        const pacePerMeter = activity.elapsed_time / activity.distance;
-        const normalizedTime = Math.round(pacePerMeter * distanceValue);
-
-        // Get current PR for this distance if it exists
-        let currentBestTime = Infinity;
-        if (existingPRs[distanceKey]) {
-          currentBestTime = existingPRs[distanceKey].normalized_time;
-        }
-
-        // If this activity beats the existing PR
-        if (normalizedTime < currentBestTime) {
-          console.log(`New PR for ${distanceKey}!`);
-          console.log(`Old time: ${formatTime(currentBestTime)}`);
-          console.log(`New time: ${formatTime(normalizedTime)}`);
-          console.log(`Activity: ${activity.name} (${new Date(activity.start_date).toLocaleDateString()})`);
-
-          // Update the PR
-          existingPRs[distanceKey] = {
-            id: activity.id,
-            name: activity.name,
-            start_date: activity.start_date,
-            elapsed_time: activity.elapsed_time,
-            distance: activity.distance,
-            normalized_time: normalizedTime,
-            pace_per_km: Math.round((normalizedTime / (distanceValue / 1000)) * 10) / 10,
-            formatted_time: formatTime(normalizedTime),
-            strava_url: `https://www.strava.com/activities/${activity.id}`,
-            display_name: getDisplayName(distanceKey)
-          };
-
-          // Update formatted pace
-          const paceSeconds = existingPRs[distanceKey].pace_per_km;
-          const paceMinutes = Math.floor(paceSeconds / 60);
-          const paceRemainingSeconds = Math.round(paceSeconds % 60);
-          existingPRs[distanceKey].formatted_pace =
-              `${paceMinutes}:${paceRemainingSeconds.toString().padStart(2, '0')}/km`;
-
-          prUpdates++;
-        }
-      }
-    });
-  }
-
-  console.log(`Updated ${prUpdates} personal records`);
-  return prUpdates > 0;
 }
 
 // Helper function to get display name for a distance
@@ -502,128 +390,6 @@ function getDisplayName(distanceKey) {
     'half_marathon': 'Half Marathon'
   };
   return displayNames[distanceKey] || distanceKey;
-}
-
-// Full analysis function (used only when no existing data is available)
-async function findAllPersonalBests(activities, accessToken) {
-  // Filter only running activities
-  const runningActivities = activities.filter(isRunningActivity);
-  console.log(`Found ${runningActivities.length} running activities for initial PR analysis`);
-
-  // Initialize best times for standard distances with proper structure
-  const personalBests = {};
-
-  // Temporary storage for debugging
-  const candidateActivities = {
-    '5k': [],
-    '10k': [],
-    'half_marathon': []
-  };
-
-  // First, collect all candidate activities for each distance
-  runningActivities.forEach(activity => {
-    // Skip activities with no distance data or zero elapsed time
-    if (!activity.distance || activity.distance <= 0 || !activity.elapsed_time || activity.elapsed_time <= 0) {
-      return;
-    }
-
-    // Check standard distances
-    Object.entries(standardDistances).forEach(([distanceKey, distanceValue]) => {
-      const minDistance = distanceValue - distanceTolerance[distanceKey];
-      const maxDistance = distanceValue + distanceTolerance[distanceKey];
-
-      if (activity.distance >= minDistance && activity.distance <= maxDistance) {
-        // Calculate normalized time to exact distance
-        const pacePerMeter = activity.elapsed_time / activity.distance;
-        const normalizedTime = Math.round(pacePerMeter * distanceValue);
-
-        if (normalizedTime > 0) {
-          candidateActivities[distanceKey].push({
-            id: activity.id,
-            name: activity.name,
-            start_date: activity.start_date,
-            elapsed_time: activity.elapsed_time,
-            distance: activity.distance,
-            normalized_time: normalizedTime,
-            formatted_time: formatTime(normalizedTime)
-          });
-        }
-      }
-    });
-  });
-
-  // Log all candidate activities for debugging
-  Object.entries(candidateActivities).forEach(([distance, activities]) => {
-    console.log(`\nFound ${activities.length} candidate activities for ${distance}:`);
-
-    // Sort by normalized_time (fastest first)
-    activities.sort((a, b) => a.normalized_time - b.normalized_time);
-
-    // Log the top 5 (or fewer if there aren't 5)
-    const topActivities = activities.slice(0, 5);
-    topActivities.forEach((activity, index) => {
-      console.log(`${index + 1}. ${activity.name}: ${activity.formatted_time} (ID: ${activity.id}, Date: ${new Date(activity.start_date).toLocaleDateString()}, Raw time: ${formatTime(activity.elapsed_time)}, Distance: ${(activity.distance/1000).toFixed(2)}km)`);
-    });
-  });
-
-  // Now find the best time for each distance
-  Object.entries(standardDistances).forEach(([distanceKey, distanceValue]) => {
-    if (candidateActivities[distanceKey].length > 0) {
-      // Sort by normalized time (fastest first)
-      candidateActivities[distanceKey].sort((a, b) => a.normalized_time - b.normalized_time);
-
-      // Get the fastest one
-      const fastest = candidateActivities[distanceKey][0];
-
-      // Calculate pace
-      const pacePerKm = Math.round((fastest.normalized_time / (distanceValue / 1000)) * 10) / 10;
-      const paceMinutes = Math.floor(pacePerKm / 60);
-      const paceRemainingSeconds = Math.round(pacePerKm % 60);
-      const formattedPace = `${paceMinutes}:${paceRemainingSeconds.toString().padStart(2, '0')}/km`;
-
-      // Store with all required fields
-      personalBests[distanceKey] = {
-        id: fastest.id,
-        name: fastest.name,
-        start_date: fastest.start_date,
-        elapsed_time: fastest.elapsed_time,
-        distance: fastest.distance,
-        normalized_time: fastest.normalized_time,
-        pace_per_km: pacePerKm,
-        formatted_time: formatTime(fastest.normalized_time),
-        formatted_pace: formattedPace,
-        strava_url: `https://www.strava.com/activities/${fastest.id}`,
-        display_name: getDisplayName(distanceKey)
-      };
-
-      console.log(`\nSelected PR for ${distanceKey}: ${personalBests[distanceKey].formatted_time}`);
-      console.log(`Activity: ${personalBests[distanceKey].name} (${new Date(personalBests[distanceKey].start_date).toLocaleDateString()})`);
-      console.log(`Pace: ${personalBests[distanceKey].formatted_pace}`);
-    } else {
-      console.log(`\nNo candidate activities found for ${distanceKey}`);
-
-      // If needed, you could add fallback values here, but I recommend against it
-      // unless you're certain of the correct values
-    }
-  });
-
-  // Verify that the PR data is complete and valid
-  Object.entries(personalBests).forEach(([key, pr]) => {
-    if (!pr.normalized_time || pr.normalized_time <= 0) {
-      console.error(`WARNING: Invalid time for ${key}: ${pr.formatted_time}`);
-    }
-  });
-
-  console.log("\nFinal Personal Records found:");
-  Object.keys(personalBests).forEach(key => {
-    if (personalBests[key]) {
-      console.log(`${personalBests[key].display_name}: ${personalBests[key].formatted_time}`);
-    } else {
-      console.log(`${getDisplayName(key)}: Not found`);
-    }
-  });
-
-  return personalBests;
 }
 
 // Add this to your main function, right before saving the data
