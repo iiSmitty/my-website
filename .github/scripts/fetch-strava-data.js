@@ -369,6 +369,38 @@ async function main() {
     const activities = await fetchActivities(accessToken);
     console.log(`Retrieved ${activities.length} activities`);
 
+    // REMOVE THIS AFTER TESTING
+    // DEBUG CODE - No await here, so it's safe
+    const targetActivityId = 14003519637; // Your new PR activity ID
+    const targetActivity = activities.find(a => a.id == targetActivityId);
+    if (targetActivity) {
+      console.log("\n====== DEBUGGING TARGET ACTIVITY ======");
+      console.log("Found target activity:", targetActivity.name);
+      console.log("Distance:", targetActivity.distance, "meters");
+      console.log("Time:", formatTime(targetActivity.elapsed_time));
+
+      // Force check this specific activity
+      const distanceKey = '5k';
+      const distanceValue = standardDistances[distanceKey];
+      const pacePerMeter = targetActivity.elapsed_time / targetActivity.distance;
+      const normalizedTime = Math.round(pacePerMeter * distanceValue);
+      console.log("Normalized time for 5K:", formatTime(normalizedTime));
+
+      // Get current PR for this distance
+      if (existingData.personalBests && existingData.personalBests[distanceKey]) {
+        const currentBestTime = existingData.personalBests[distanceKey].normalized_time;
+        console.log("Current best time:", formatTime(currentBestTime));
+        console.log("Is new time better?", normalizedTime < currentBestTime);
+      } else {
+        console.log("No existing PR found for 5K");
+      }
+      console.log("====================================\n");
+    } else {
+      console.log("\n⚠️ Target activity ID 14003519637 NOT found in fetched activities!");
+      console.log("This could indicate the activity wasn't fetched or has a different ID");
+      console.log("====================================\n");
+    }
+
     // Identify activities we haven't processed yet
     // We'll still analyze all activities for counting purposes, but
     // for PR detection we'll focus on new ones
@@ -415,38 +447,6 @@ async function main() {
     console.error('Error:', error.message);
     process.exit(1);
   }
-}
-
-// REMOVE THIS AFTER TESTING
-// DEBUG CODE - No await here, so it's safe
-const targetActivityId = 14003519637; // Your new PR activity ID
-const targetActivity = activities.find(a => a.id == targetActivityId);
-if (targetActivity) {
-  console.log("\n====== DEBUGGING TARGET ACTIVITY ======");
-  console.log("Found target activity:", targetActivity.name);
-  console.log("Distance:", targetActivity.distance, "meters");
-  console.log("Time:", formatTime(targetActivity.elapsed_time));
-
-  // Force check this specific activity
-  const distanceKey = '5k';
-  const distanceValue = standardDistances[distanceKey];
-  const pacePerMeter = targetActivity.elapsed_time / targetActivity.distance;
-  const normalizedTime = Math.round(pacePerMeter * distanceValue);
-  console.log("Normalized time for 5K:", formatTime(normalizedTime));
-
-  // Get current PR for this distance
-  if (existingData.personalBests && existingData.personalBests[distanceKey]) {
-    const currentBestTime = existingData.personalBests[distanceKey].normalized_time;
-    console.log("Current best time:", formatTime(currentBestTime));
-    console.log("Is new time better?", normalizedTime < currentBestTime);
-  } else {
-    console.log("No existing PR found for 5K");
-  }
-  console.log("====================================\n");
-} else {
-  console.log("\n⚠️ Target activity ID 14003519637 NOT found in fetched activities!");
-  console.log("This could indicate the activity wasn't fetched or has a different ID");
-  console.log("====================================\n");
 }
 
 // Function to check new activities against existing PRs
