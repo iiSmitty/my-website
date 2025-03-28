@@ -418,9 +418,9 @@ async function main() {
 }
 
 // REMOVE THIS AFTER TESTING
-// Debug to find specific activity
+// DEBUG CODE - No await here, so it's safe
 const targetActivityId = 14003519637; // Your new PR activity ID
-const targetActivity = activities.find(a => a.id == targetActivityId); // Use == instead of === for string/number comparison
+const targetActivity = activities.find(a => a.id == targetActivityId);
 if (targetActivity) {
   console.log("\n====== DEBUGGING TARGET ACTIVITY ======");
   console.log("Found target activity:", targetActivity.name);
@@ -447,17 +447,6 @@ if (targetActivity) {
   console.log("\n⚠️ Target activity ID 14003519637 NOT found in fetched activities!");
   console.log("This could indicate the activity wasn't fetched or has a different ID");
   console.log("====================================\n");
-}
-
-// Then continue with your existing code
-if (!existingData.personalBests) {
-  // This will do a full analysis of all activities
-  console.log('No existing PR data, analyzing all activities...');
-  existingData.personalBests = await findAllPersonalBests(activities, accessToken);
-} else {
-  // Check if any new activities beat existing PRs
-  console.log('Checking for new PRs among recent activities...');
-  await checkForNewPRs(newActivities, existingData.personalBests, accessToken);
 }
 
 // Function to check new activities against existing PRs
