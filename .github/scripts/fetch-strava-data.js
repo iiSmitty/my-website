@@ -218,7 +218,9 @@ async function findPersonalBests(activities, accessToken) {
   // Map effort names as they appear in Strava to our standardized keys
   const effortNameMap = {
     '5k': '5k',
+    '5K': '5k',
     '10k': '10k',
+    '10K': '10k',
     'Half-Marathon': 'half_marathon'
   };
 
@@ -258,14 +260,26 @@ async function findPersonalBests(activities, accessToken) {
 
     for (const effort of detailedActivity.best_efforts) {
       // Skip if this isn't a standard distance we're tracking
-      if (!targetDistances.has(effort.name)) continue;
+      // Using case-insensitive comparison
+      if (!targetDistances.has(effort.name) &&
+          !Array.from(targetDistances).some(dist => dist.toLowerCase() === effort.name.toLowerCase()))
+        continue;
+
+      // Get the normalized key for this effort
+      const normalizedEffortName = effort.name.toLowerCase();
 
       // Skip if we already found this distance
-      if (foundDistances.has(effort.name)) continue;
+      if (Array.from(foundDistances).some(d => d.toLowerCase() === normalizedEffortName))
+        continue;
 
       // Check if this is a PR (pr_rank of 1)
       if (effort.pr_rank === 1) {
-        const ourKey = effortNameMap[effort.name];
+        // Find the matching key ignoring case
+        const matchingKey = Array.from(targetDistances).find(
+            key => key.toLowerCase() === effort.name.toLowerCase()
+        );
+        const ourKey = effortNameMap[matchingKey] || effortNameMap[effort.name];
+
         console.log(`Found PR for ${effort.name} (${ourKey}): ${formatTime(effort.elapsed_time)}`);
 
         // Calculate pace
