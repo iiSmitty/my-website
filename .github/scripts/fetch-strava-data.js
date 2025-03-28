@@ -400,6 +400,16 @@ async function fetchActivityDetails(accessToken, activityId) {
   }
 }
 
+// Helper function to format date
+function formatDate(dateString) {
+  return new Date(dateString).toLocaleString();
+}
+
+// Helper function to format distance in meters to km
+function formatDistance(meters) {
+  return (meters / 1000).toFixed(2) + ' km';
+}
+
 async function main() {
   try {
     // Get access token
@@ -415,11 +425,6 @@ async function main() {
     console.log(`ID: ${activity.id}`);
     console.log(`Name: ${activity.name}`);
     console.log(`Type: ${activity.type}`);
-    console.log(`Date: ${formatDate(activity.start_date)}`);
-    console.log(`Distance: ${formatDistance(activity.distance)}`);
-    console.log(`Duration: ${formatTime(activity.elapsed_time)}`);
-    console.log(`Moving Time: ${formatTime(activity.moving_time)}`);
-    console.log(`Average Speed: ${(activity.average_speed * 3.6).toFixed(2)} km/h`);
 
     // Check if best efforts are available
     if (!activity.best_efforts || activity.best_efforts.length === 0) {
