@@ -21,6 +21,9 @@ const distanceTolerance = {
   'half_marathon': 1200  // ±1200m for half marathon
 };
 
+// The specific activity ID to debug
+const ACTIVITY_ID = 13692390402;
+
 // Helper function to format time for logging
 function formatTime(seconds) {
   const hours = Math.floor(seconds / 3600);
@@ -291,21 +294,6 @@ async function findPersonalBests(activities, accessToken) {
     }
   }
 
-  // Manual correction for known activity with timing discrepancy
-  // The DURBAC TT activity for 5K should be 20:59 as shown in Strava
-  if (personalBests['5k'] && personalBests['5k'].id === 14003519637) {
-    console.log("Applying manual correction for 5K time (DURBAC TT)");
-    personalBests['5k'].normalized_time = 1259; // 20:59 in seconds
-    personalBests['5k'].formatted_time = "20:59";
-
-    // Recalculate pace
-    const pacePerKm = 1259 / 5;
-    const paceMinutes = Math.floor(pacePerKm / 60);
-    const paceRemainingSeconds = Math.round(pacePerKm % 60);
-    personalBests['5k'].pace_per_km = Math.round(pacePerKm * 10) / 10;
-    personalBests['5k'].formatted_pace = `${paceMinutes}:${paceRemainingSeconds.toString().padStart(2, '0')}/km`;
-  }
-
   // Log final PRs found
   console.log("\nBest Efforts PRs found:");
   Object.keys(standardDistances).forEach(distance => {
@@ -396,10 +384,72 @@ async function findCalculatedPersonalBests(activities) {
   return personalBests;
 }
 
+async function fetchActivityDetails(accessToken, activityId) {
+  try {
+    console.log(`Fetching detailed activity ${activityId}...`);
+    const response = await axios.get(`https://www.strava.com/api/v3/activities/${activityId}?include_all_efforts=true`, {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`
+      }
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching activity ${activityId}:`, error.message);
+    throw error;
+  }
+}
+
 async function main() {
   try {
     // Get access token
     const accessToken = await getAccessToken();
+
+    // Fetch the specific activity
+    const activity = await fetchActivityDetails(accessToken, ACTIVITY_ID);
+
+    // Print basic activity info
+    console.log('\n========================');
+    console.log('ACTIVITY DETAILS');
+    console.log('========================');
+    console.log(`ID: ${activity.id}`);
+    console.log(`Name: ${activity.name}`);
+    console.log(`Type: ${activity.type}`);
+    console.log(`Date: ${formatDate(activity.start_date)}`);
+    console.log(`Distance: ${formatDistance(activity.distance)}`);
+    console.log(`Duration: ${formatTime(activity.elapsed_time)}`);
+    console.log(`Moving Time: ${formatTime(activity.moving_time)}`);
+    console.log(`Average Speed: ${(activity.average_speed * 3.6).toFixed(2)} km/h`);
+
+    // Check if best efforts are available
+    if (!activity.best_efforts || activity.best_efforts.length === 0) {
+      console.log('\nNo best efforts found for this activity');
+      return;
+    }
+
+    // Print all best efforts
+    console.log('\n========================');
+    console.log('BEST EFFORTS');
+    console.log('========================');
+    console.log(`Found ${activity.best_efforts.length} best efforts`);
+
+    activity.best_efforts.forEach((effort, index) => {
+      console.log(`\n----- Effort #${index + 1} -----`);
+      console.log(`Name: ${effort.name}`);
+      console.log(`Distance: ${formatDistance(effort.distance)}`);
+      console.log(`Time: ${formatTime(effort.elapsed_time)}`);
+      console.log(`Start Date: ${formatDate(effort.start_date)}`);
+      console.log(`PR Rank: ${effort.pr_rank || 'Not a PR'}`);
+
+      // Display achievement info if available
+      if (effort.achievements && effort.achievements.length > 0) {
+        console.log('Achievements:');
+        effort.achievements.forEach(achievement => {
+          console.log(`  - Type: ${achievement.type}`);
+          console.log(`    Rank: ${achievement.rank}`);
+        });
+      }
+    });
 
     // Load existing PR data if available
     let existingData = {};
