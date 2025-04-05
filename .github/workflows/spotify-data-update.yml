@@ -17,10 +17,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16'
-          cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install axios # Add any other packages you need for spotify-data-fetcher.js
 
       - name: Fetch Spotify data
         run: node .github/scripts/spotify-data-fetcher.js
