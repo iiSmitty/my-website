@@ -1009,8 +1009,7 @@ body.is-touch-device .desktop-icons,
 
 .spotify-artist {
     text-align: center;
-    width: 90px;
-    min-width: 80px;
+    width: 100px;
     margin-bottom: 10px;
     padding: 5px;
     display: flex;
