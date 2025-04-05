@@ -125,10 +125,20 @@ function initializeDesktopIcons() {
                 openGitHubInstallerWindow();
             });
         }
+
+        // For Spotify icon, add double-click handler
+        if (icon.querySelector('.SpotifyIcon_32x32')) {
+            console.log("Found Spotify icon at index:", index);
+            icon.addEventListener('dblclick', function() {
+                console.log("Spotify double-clicked");
+                openSpotifyWindow();
+            });
+        }
     });
 
-    // Make the tech window draggable
+    // Make windows draggable
     makeTechWindowDraggable();
+    makeWindowDraggable('spotifyWindow', 'spotifyTitleBar');
 
     // Initialize the desktop click handler
     initializeDesktopClickHandler();
@@ -322,4 +332,128 @@ function makeWindowDraggable(windowId, titleBarId) {
     document.addEventListener('mouseup', function() {
         isDragging = false;
     });
+}
+
+// Function to open the Spotify window
+function openSpotifyWindow() {
+    console.log("Opening Spotify window...");
+
+    // Show the Spotify window
+    const spotifyWindow = document.getElementById('spotifyWindow');
+    if (spotifyWindow) {
+        spotifyWindow.style.display = 'block';
+        console.log("Spotify window opened");
+
+        // Bring to front
+        const allWindows = document.querySelectorAll('.win95-window');
+        allWindows.forEach(win => {
+            win.style.zIndex = 10;
+        });
+        spotifyWindow.style.zIndex = 100;
+
+        // Load Spotify data
+        loadSpotifyData();
+    } else {
+        console.error("Could not find spotifyWindow element");
+    }
+}
+
+// Function to close the Spotify window
+function closeSpotifyWindow() {
+    console.log("Closing Spotify window...");
+
+    const spotifyWindow = document.getElementById('spotifyWindow');
+    if (spotifyWindow) {
+        spotifyWindow.style.display = 'none';
+        console.log("Spotify window closed");
+    }
+}
+
+// Function to load data from local JSON file
+async function loadSpotifyData() {
+    try {
+        console.log("Loading Spotify data...");
+        // Fetch the local JSON file from the data folder
+        const response = await fetch('data/spotify-data.json');
+
+        if (!response.ok) {
+            throw new Error('Failed to load Spotify data');
+        }
+
+        const data = await response.json();
+        console.log("Spotify data loaded successfully");
+
+        // Display the data
+        if (data.topArtists) {
+            displayTopArtists(data.topArtists);
+        }
+
+        if (data.topTracks) {
+            displayTopTracks(data.topTracks);
+        }
+
+        if (data.lastUpdated) {
+            const date = new Date(data.lastUpdated);
+            document.getElementById('lastUpdated').textContent = `Last updated: ${date.toLocaleString()}`;
+        }
+
+    } catch (error) {
+        console.error('Error loading Spotify data:', error);
+    }
+}
+
+// Function to display top artists
+function displayTopArtists(artists) {
+    console.log("Displaying top artists:", artists.length);
+    artists.forEach((artist, index) => {
+        if (index < 5) { // Limit to 5 artists
+            const imageElement = document.getElementById(`artist-image-${index + 1}`);
+            const nameElement = document.getElementById(`artist-name-${index + 1}`);
+
+            if (imageElement && nameElement) {
+                // Set artist image
+                if (artist.image) {
+                    imageElement.src = artist.image;
+                }
+
+                // Set artist name
+                nameElement.textContent = artist.name;
+            }
+        }
+    });
+}
+
+// Function to display top tracks
+function displayTopTracks(tracks) {
+    console.log("Displaying top tracks:", tracks.length);
+
+    // Clear existing tracks
+    const tracksList = document.querySelector('.spotify-tracks-list');
+    if (tracksList) {
+        // Clear the list first
+        tracksList.innerHTML = '';
+
+        // Add each track
+        tracks.forEach((track, index) => {
+            const trackElement = document.createElement('div');
+            trackElement.className = 'spotify-track-item';
+
+            // Build the track item HTML
+            trackElement.innerHTML = `
+                <div class="track-number">${index + 1}</div>
+                <div class="track-art-container">
+                    <img src="${track.albumImage || ''}" alt="${track.name}" class="track-art">
+                </div>
+                <div class="track-info">
+                    <div class="track-name">${track.name}</div>
+                    <div class="track-artist">${track.artist}</div>
+                </div>
+            `;
+
+            // Add to the tracks list
+            tracksList.appendChild(trackElement);
+        });
+    } else {
+        console.error("Could not find spotify-tracks-list element");
+    }
 }
