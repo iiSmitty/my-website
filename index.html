@@ -46,6 +46,10 @@
             <span>Source Code</span>
         </div>
         <div class="desktop-icon">
+            <span class="SpotifyIcon_32x32"></span>
+            <span>Spotify</span>
+        </div>
+        <div class="desktop-icon">
             <span class="RecycleIcon_32x32"></span>
             <span>Recycle Bin</span>
         </div>
@@ -269,6 +273,80 @@
         <div class="win95-status-bar">
             <div id="tech-item-counter">0 object(s)</div>
         </div>
+    </div>
+</div>
+
+<!-- Spotify Window -->
+<div class="win95-window" id="spotifyWindow" style="display: none; position: fixed; top: 50px; left: 50px; z-index: 1000; width: 600px;">
+    <!-- Windows 95 Title Bar -->
+    <div class="win95-title-bar" id="spotifyTitleBar">
+        <div class="win95-title">
+            Spotify
+        </div>
+        <div class="win95-buttons">
+            <button class="win95-button win95-minimize">_</button>
+            <button class="win95-button win95-maximize">□</button>
+            <button class="win95-button win95-close" onclick="closeSpotifyWindow()">×</button>
+        </div>
+    </div>
+
+    <!-- Windows 95 Menu Bar -->
+    <div class="win95-menu-bar">
+        <div class="win95-menu-item">File</div>
+        <div class="win95-menu-item">Edit</div>
+        <div class="win95-menu-item">View</div>
+        <div class="win95-menu-item">Help</div>
+    </div>
+
+    <!-- Spotify Content -->
+    <div class="win95-content">
+        <div class="spotify-header">
+            <h2>Top artists this month</h2>
+        </div>
+
+        <!-- Artist Circles Section -->
+        <div class="spotify-artists-container">
+            <div class="spotify-artist">
+                <div class="artist-image-container">
+                    <img src="" alt="Artist 1" class="artist-image" id="artist-image-1">
+                </div>
+                <div class="artist-name" id="artist-name-1">Artist Name</div>
+            </div>
+            <div class="spotify-artist">
+                <div class="artist-image-container">
+                    <img src="" alt="Artist 2" class="artist-image" id="artist-image-2">
+                </div>
+                <div class="artist-name" id="artist-name-2">Artist Name</div>
+            </div>
+            <div class="spotify-artist">
+                <div class="artist-image-container">
+                    <img src="" alt="Artist 3" class="artist-image" id="artist-image-3">
+                </div>
+                <div class="artist-name" id="artist-name-3">Artist Name</div>
+            </div>
+            <div class="spotify-artist">
+                <div class="artist-image-container">
+                    <img src="" alt="Artist 4" class="artist-image" id="artist-image-4">
+                </div>
+                <div class="artist-name" id="artist-name-4">Artist Name</div>
+            </div>
+            <div class="spotify-artist">
+                <div class="artist-image-container">
+                    <img src="" alt="Artist 5" class="artist-image" id="artist-image-5">
+                </div>
+                <div class="artist-name" id="artist-name-5">Artist Name</div>
+            </div>
+        </div>
+
+        <!-- Top Tracks Section -->
+        <div class="spotify-tracks-section">
+            <h3>Top tracks this month</h3>
+
+            <div class="spotify-tracks-list">
+                <!-- Tracks will be dynamically populated by JavaScript -->
+            </div>
+        </div>
+        <div class="refresh-time" id="lastUpdated"></div>
     </div>
 </div>
 
