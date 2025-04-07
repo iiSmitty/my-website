@@ -45,12 +45,12 @@
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
     {
-      "name": "Rooksein",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb2a56712841c5dc2fc0f0f641",
+      "name": "Jay",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb366b0b82df1eb46a1600c768",
       "genres": [],
-      "popularity": 36,
-      "uri": "spotify:artist:0TX0T9VkzOTEjsdzi1a4nT",
-      "url": "https://open.spotify.com/artist/0TX0T9VkzOTEjsdzi1a4nT"
+      "popularity": 42,
+      "uri": "spotify:artist:4KZEdNPtF2AdijUD02qPoj",
+      "url": "https://open.spotify.com/artist/4KZEdNPtF2AdijUD02qPoj"
     }
   ],
   "topTracks": [
@@ -80,7 +80,7 @@
       "album": "Die Ruimte",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2735ba82225885ef42556872351",
       "duration": "2:56",
-      "popularity": 36,
+      "popularity": 37,
       "uri": "spotify:track:5RWWblCfZthddiJwmc05UJ",
       "url": "https://open.spotify.com/track/5RWWblCfZthddiJwmc05UJ"
     },
@@ -115,16 +115,6 @@
       "url": "https://open.spotify.com/track/5BrbGLJ4eELmDNfOrQfhQa"
     },
     {
-      "name": "The Elements",
-      "artist": "TobyMac",
-      "album": "The Elements",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273d844bf8d20303a5e82d1956d",
-      "duration": "3:51",
-      "popularity": 45,
-      "uri": "spotify:track:28jcFm1snS2T2CcnGladPy",
-      "url": "https://open.spotify.com/track/28jcFm1snS2T2CcnGladPy"
-    },
-    {
       "name": "Here I Am",
       "artist": "Line So Thin",
       "album": "Here I Am",
@@ -135,12 +125,22 @@
       "url": "https://open.spotify.com/track/52TfDBmvrEZVebJCDPkOzM"
     },
     {
+      "name": "The Elements",
+      "artist": "TobyMac",
+      "album": "The Elements",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273d844bf8d20303a5e82d1956d",
+      "duration": "3:51",
+      "popularity": 45,
+      "uri": "spotify:track:28jcFm1snS2T2CcnGladPy",
+      "url": "https://open.spotify.com/track/28jcFm1snS2T2CcnGladPy"
+    },
+    {
       "name": "Olifant",
       "artist": "Francois van Coke",
       "album": "Die Ruimte",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2735ba82225885ef42556872351",
       "duration": "3:00",
-      "popularity": 31,
+      "popularity": 32,
       "uri": "spotify:track:4ispTcCXTQxR2kjiaULCBN",
       "url": "https://open.spotify.com/track/4ispTcCXTQxR2kjiaULCBN"
     },
@@ -155,5 +155,5 @@
       "url": "https://open.spotify.com/track/4zAjQDduJhIRFSpfrIN68Z"
     }
   ],
-  "lastUpdated": "2025-04-05T16:35:15.849Z"
+  "lastUpdated": "2025-04-07T01:43:59.949Z"
 }
