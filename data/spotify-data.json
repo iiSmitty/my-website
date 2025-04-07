@@ -33,7 +33,7 @@
     },
     {
       "name": "Linkin Park",
-      "image": "https://i.scdn.co/image/ab6761610000e5eba49c7eec5131a21a0bfb737b",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebc7e6bd9e65eab62a53355576",
       "genres": [
         "nu metal",
         "rap metal",
@@ -45,12 +45,17 @@
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
     {
-      "name": "Jay",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb366b0b82df1eb46a1600c768",
-      "genres": [],
-      "popularity": 42,
-      "uri": "spotify:artist:4KZEdNPtF2AdijUD02qPoj",
-      "url": "https://open.spotify.com/artist/4KZEdNPtF2AdijUD02qPoj"
+      "name": "Manafest",
+      "image": "https://i.scdn.co/image/ab6761610000e5eba692cfc6b61a366585744dec",
+      "genres": [
+        "christian rock",
+        "christian hip hop",
+        "christian alternative rock",
+        "rap rock"
+      ],
+      "popularity": 49,
+      "uri": "spotify:artist:4uOFEWy9mIcvQbr03IbPcL",
+      "url": "https://open.spotify.com/artist/4uOFEWy9mIcvQbr03IbPcL"
     }
   ],
   "topTracks": [
@@ -105,16 +110,6 @@
       "url": "https://open.spotify.com/track/4zIAj6F6UhV88Yat35oFNA"
     },
     {
-      "name": "Ons Verander",
-      "artist": "Janie Bay, Hunter Kennedy",
-      "album": "Ons Verander",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273d82963f8c48a81c4e99082ea",
-      "duration": "2:40",
-      "popularity": 30,
-      "uri": "spotify:track:5BrbGLJ4eELmDNfOrQfhQa",
-      "url": "https://open.spotify.com/track/5BrbGLJ4eELmDNfOrQfhQa"
-    },
-    {
       "name": "Here I Am",
       "artist": "Line So Thin",
       "album": "Here I Am",
@@ -123,6 +118,16 @@
       "popularity": 51,
       "uri": "spotify:track:52TfDBmvrEZVebJCDPkOzM",
       "url": "https://open.spotify.com/track/52TfDBmvrEZVebJCDPkOzM"
+    },
+    {
+      "name": "Ons Verander",
+      "artist": "Janie Bay, Hunter Kennedy",
+      "album": "Ons Verander",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273d82963f8c48a81c4e99082ea",
+      "duration": "2:40",
+      "popularity": 30,
+      "uri": "spotify:track:5BrbGLJ4eELmDNfOrQfhQa",
+      "url": "https://open.spotify.com/track/5BrbGLJ4eELmDNfOrQfhQa"
     },
     {
       "name": "The Elements",
@@ -155,5 +160,5 @@
       "url": "https://open.spotify.com/track/4zAjQDduJhIRFSpfrIN68Z"
     }
   ],
-  "lastUpdated": "2025-04-07T01:43:59.949Z"
+  "lastUpdated": "2025-04-07T13:33:17.663Z"
 }
