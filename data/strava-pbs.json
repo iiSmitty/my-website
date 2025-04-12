@@ -27,24 +27,24 @@
       "display_name": "10 Kilometers"
     },
     "half_marathon": {
-      "id": 13503231289,
-      "name": "Thank you, Integralis",
-      "start_date": "2025-01-31T16:21:20Z",
-      "elapsed_time": 6775,
-      "distance": 21097,
-      "normalized_time": 6775,
-      "pace_per_km": 321.1,
-      "formatted_time": "1:52:55",
-      "formatted_pace": "5:21/km",
-      "strava_url": "https://www.strava.com/activities/13503231289",
+      "id": 13692390402,
+      "name": "2025 Versus 21km Road Run Party",
+      "start_date": "2025-02-22T04:33:51Z",
+      "elapsed_time": 6157,
+      "distance": 20928.7,
+      "normalized_time": 6207,
+      "pace_per_km": 294.2,
+      "formatted_time": "1:43:27",
+      "formatted_pace": "4:54/km",
+      "strava_url": "https://www.strava.com/activities/13692390402",
       "display_name": "Half Marathon"
     }
   },
   "completedCounts": {
-    "5k": 184,
+    "5k": 185,
     "10k": 57,
     "half_marathon": 11,
     "marathon": 0
   },
-  "lastUpdated": "2025-04-11T06:33:42.685Z"
+  "lastUpdated": "2025-04-12T06:31:01.687Z"
 }
