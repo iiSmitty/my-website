@@ -9,16 +9,6 @@
       "url": "https://open.spotify.com/artist/7pJtnZQLPJmqzVfdIz7eFF"
     },
     {
-      "name": "Dead by April",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebf3770344c0b2952acd65b79f",
-      "genres": [
-        "metalcore"
-      ],
-      "popularity": 54,
-      "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
-      "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
-    },
-    {
       "name": "Disciple",
       "image": "https://i.scdn.co/image/ab6761610000e5eb97419027de7f9d25cebb5114",
       "genres": [
@@ -32,6 +22,22 @@
       "url": "https://open.spotify.com/artist/4D9k73VomKTnVQ6ROnt8IO"
     },
     {
+      "name": "Die Piesangskille",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb8283b82faf9927529a914e3b",
+      "genres": [],
+      "popularity": 45,
+      "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
+      "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
+    },
+    {
+      "name": "Citizen Soldier",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb518fa3bdacfb82908a73dbc8",
+      "genres": [],
+      "popularity": 63,
+      "uri": "spotify:artist:7fM0h2CG7zKqKc0jEa1b4R",
+      "url": "https://open.spotify.com/artist/7fM0h2CG7zKqKc0jEa1b4R"
+    },
+    {
       "name": "Linkin Park",
       "image": "https://i.scdn.co/image/ab6761610000e5eba49c7eec5131a21a0bfb737b",
       "genres": [
@@ -43,19 +49,6 @@
       "popularity": 90,
       "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
-    },
-    {
-      "name": "Manafest",
-      "image": "https://i.scdn.co/image/ab6761610000e5eba692cfc6b61a366585744dec",
-      "genres": [
-        "christian rock",
-        "christian hip hop",
-        "christian alternative rock",
-        "rap rock"
-      ],
-      "popularity": 49,
-      "uri": "spotify:artist:4uOFEWy9mIcvQbr03IbPcL",
-      "url": "https://open.spotify.com/artist/4uOFEWy9mIcvQbr03IbPcL"
     }
   ],
   "topTracks": [
@@ -65,19 +58,19 @@
       "album": "Die Ruimte",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2735ba82225885ef42556872351",
       "duration": "2:58",
-      "popularity": 39,
+      "popularity": 40,
       "uri": "spotify:track:2dJNS220dOuB5taOM56DsG",
       "url": "https://open.spotify.com/track/2dJNS220dOuB5taOM56DsG"
     },
     {
-      "name": "Wasteland - orchestral",
-      "artist": "Dead by April, THE DAY WE LEFT EARTH",
-      "album": "Wasteland (orchestral)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273bb77a506c8162c7ec1979fad",
-      "duration": "2:25",
-      "popularity": 49,
-      "uri": "spotify:track:36wIxrvx8BXA0g2cv1TXyz",
-      "url": "https://open.spotify.com/track/36wIxrvx8BXA0g2cv1TXyz"
+      "name": "What An Awesome God - Choir Version",
+      "artist": "Phil Wickham",
+      "album": "What An Awesome God",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731f2e2db8a5a5413f028162c1",
+      "duration": "3:31",
+      "popularity": 36,
+      "uri": "spotify:track:4WQdGBzrQEvgM2R7VnVSH5",
+      "url": "https://open.spotify.com/track/4WQdGBzrQEvgM2R7VnVSH5"
     },
     {
       "name": "Breek",
@@ -90,12 +83,32 @@
       "url": "https://open.spotify.com/track/5RWWblCfZthddiJwmc05UJ"
     },
     {
+      "name": "Wasteland - orchestral",
+      "artist": "Dead by April, THE DAY WE LEFT EARTH",
+      "album": "Wasteland (orchestral)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273bb77a506c8162c7ec1979fad",
+      "duration": "2:25",
+      "popularity": 48,
+      "uri": "spotify:track:36wIxrvx8BXA0g2cv1TXyz",
+      "url": "https://open.spotify.com/track/36wIxrvx8BXA0g2cv1TXyz"
+    },
+    {
+      "name": "Jesus Freak - Remastered 2013",
+      "artist": "DC Talk",
+      "album": "Jesus Freak (Remastered)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c592d8aca952dacc3df87487",
+      "duration": "4:49",
+      "popularity": 52,
+      "uri": "spotify:track:4zAjQDduJhIRFSpfrIN68Z",
+      "url": "https://open.spotify.com/track/4zAjQDduJhIRFSpfrIN68Z"
+    },
+    {
       "name": "Hartedief (het my verlief)",
       "artist": "Van Pletzen, Emma B",
       "album": "Hartedief (het my verlief)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273e6eb2edc51fbb481398feed4",
       "duration": "2:27",
-      "popularity": 34,
+      "popularity": 35,
       "uri": "spotify:track:4wuPDjn5tcc0PnsNJwsTOG",
       "url": "https://open.spotify.com/track/4wuPDjn5tcc0PnsNJwsTOG"
     },
@@ -108,16 +121,6 @@
       "popularity": 37,
       "uri": "spotify:track:4zIAj6F6UhV88Yat35oFNA",
       "url": "https://open.spotify.com/track/4zIAj6F6UhV88Yat35oFNA"
-    },
-    {
-      "name": "Here I Am",
-      "artist": "Line So Thin",
-      "album": "Here I Am",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735f8cad9a2bbf9360deae3a2a",
-      "duration": "3:24",
-      "popularity": 51,
-      "uri": "spotify:track:52TfDBmvrEZVebJCDPkOzM",
-      "url": "https://open.spotify.com/track/52TfDBmvrEZVebJCDPkOzM"
     },
     {
       "name": "Ons Verander",
@@ -135,7 +138,7 @@
       "album": "The Elements",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273d844bf8d20303a5e82d1956d",
       "duration": "3:51",
-      "popularity": 45,
+      "popularity": 46,
       "uri": "spotify:track:28jcFm1snS2T2CcnGladPy",
       "url": "https://open.spotify.com/track/28jcFm1snS2T2CcnGladPy"
     },
@@ -148,17 +151,7 @@
       "popularity": 32,
       "uri": "spotify:track:4ispTcCXTQxR2kjiaULCBN",
       "url": "https://open.spotify.com/track/4ispTcCXTQxR2kjiaULCBN"
-    },
-    {
-      "name": "Jesus Freak - Remastered 2013",
-      "artist": "DC Talk",
-      "album": "Jesus Freak (Remastered)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c592d8aca952dacc3df87487",
-      "duration": "4:49",
-      "popularity": 51,
-      "uri": "spotify:track:4zAjQDduJhIRFSpfrIN68Z",
-      "url": "https://open.spotify.com/track/4zAjQDduJhIRFSpfrIN68Z"
     }
   ],
-  "lastUpdated": "2025-04-07T13:40:19.531Z"
+  "lastUpdated": "2025-04-14T01:45:54.796Z"
 }
