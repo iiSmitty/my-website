@@ -1179,3 +1179,98 @@ body.is-touch-device .desktop-icons,
 .spotify-track-item:nth-child(odd) {
     background-color: #f5f5f5;
 }
+
+/* Windows 95 Style Achievement Notification */
+.achievement-notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #c0c0c0; /* Classic Win95 gray */
+    padding: 2px;
+    z-index: 9999;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 380px;
+    min-width: 280px;
+    font-family: 'MS Sans Serif', Arial, sans-serif;
+    box-sizing: border-box;
+    pointer-events: none; /* Prevent clicking through it */
+
+    /* Classic Win95 border effect - raised outer border */
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+    box-shadow: 0 0 0 1px #000000;
+}
+
+.achievement-content {
+    display: flex;
+    align-items: center;
+    color: white;
+    background-color: #000080; /* Win95 classic title bar blue */
+    padding: 6px 10px;
+    width: 100%;
+
+    /* Inner border effect - Windows 95 style */
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
+
+.achievement-icon {
+    margin-right: 10px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.achievement-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: #ffcc00; /* Trophy gold color */
+    background-color: transparent;
+    /* Make the SVG look more Windows 95-like */
+    filter: drop-shadow(1px 1px 0px rgba(0,0,0,0.5));
+}
+
+.achievement-text {
+    font-weight: bold;
+    font-size: 12px;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+}
+
+.achievement-separator {
+    margin: 0 5px;
+    color: #c0c0c0;
+}
+
+@keyframes win95SlideUp {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+    10% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+    90% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+}
+
+.achievement-show {
+    animation: win95SlideUp 8s forwards;
+}

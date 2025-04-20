@@ -190,6 +190,8 @@ function makeTechWindowDraggable() {
 document.addEventListener('DOMContentLoaded', function() {
     console.log("DOM is ready, initializing...");
     initializeDesktopIcons();
+    makeIconsDraggable();
+    addDeleteKeyFunctionality();
 });
 
 // Function to open the GitHub installer window
@@ -456,4 +458,159 @@ function displayTopTracks(tracks) {
     } else {
         console.error("Could not find spotify-tracks-list element");
     }
+}
+
+// Function to make desktop icons draggable
+function makeIconsDraggable() {
+    const desktopIcons = document.querySelectorAll('.desktop-icon');
+
+    desktopIcons.forEach(icon => {
+        let isDragging = false;
+        let offsetX, offsetY;
+
+        // Mouse down event to start dragging
+        icon.addEventListener('mousedown', function(e) {
+            // Only start dragging if it's not a double-click
+            // (use a timer to detect double-clicks)
+            const currentTime = new Date().getTime();
+            const clickDelay = 200; // milliseconds
+
+            if (icon.lastClickTime && (currentTime - icon.lastClickTime < clickDelay)) {
+                // This is a double-click, don't start dragging
+                return;
+            }
+
+            // Only start dragging on left mouse button (button 0)
+            if (e.button !== 0) return;
+
+            // Remember last click time for double-click detection
+            icon.lastClickTime = currentTime;
+
+            // Select the icon first
+            desktopIcons.forEach(i => i.classList.remove('selected'));
+            icon.classList.add('selected');
+
+            // Set up dragging
+            isDragging = true;
+            offsetX = e.clientX - icon.getBoundingClientRect().left;
+            offsetY = e.clientY - icon.getBoundingClientRect().top;
+
+            // Prevent default behavior and event bubbling
+            e.preventDefault();
+            e.stopPropagation();
+        });
+
+        // Mouse move event for dragging
+        document.addEventListener('mousemove', function(e) {
+            if (!isDragging) return;
+
+            // Calculate new position
+            const desktopIconsContainer = document.querySelector('.desktop-icons');
+            const containerRect = desktopIconsContainer.getBoundingClientRect();
+
+            let newLeft = e.clientX - offsetX - containerRect.left;
+            let newTop = e.clientY - offsetY - containerRect.top;
+
+            // Set the icon's position (convert from absolute to relative positioning)
+            icon.style.position = 'absolute';
+            icon.style.left = newLeft + 'px';
+            icon.style.top = newTop + 'px';
+            icon.style.margin = '0'; // Remove the margin to prevent offset issues
+
+            e.preventDefault();
+        });
+
+        // Mouse up event to stop dragging
+        document.addEventListener('mouseup', function() {
+            isDragging = false;
+        });
+
+        // Prevent accidental text selection during dragging
+        icon.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+        });
+    });
+}
+
+// Function to add delete functionality with simplified achievement notification
+function addDeleteKeyFunctionality() {
+
+    // Create achievement notification element (hidden initially)
+    if (!document.querySelector('.achievement-notification')) {
+        const achievementElement = document.createElement('div');
+        achievementElement.className = 'achievement-notification';
+        achievementElement.innerHTML = `
+            <div class="achievement-content">
+                <div class="achievement-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </div>
+                <div class="achievement-text">
+                    Achievement unlocked
+                    <span class="achievement-separator">-</span>
+                    25 G Desktop Declutterer
+                </div>
+            </div>
+        `;
+        document.body.appendChild(achievementElement);
+    }
+
+    // Preload the achievement sound
+    const achievementSound = new Audio('https://dl.dropboxusercontent.com/s/8qvrpd69ua7wio8/XboxAchievement.mp3');
+
+    // Add a keyboard event listener to the document
+    document.addEventListener('keydown', function(e) {
+        // Check if the Delete key was pressed
+        if (e.key === 'Delete') {
+            console.log("Delete key pressed");
+
+            // Find the selected icon
+            const selectedIcon = document.querySelector('.desktop-icon.selected');
+
+            if (selectedIcon) {
+                console.log("Deleting selected icon:", selectedIcon.querySelector('span:last-child').textContent);
+
+                // Animate the deletion
+                selectedIcon.style.transition = 'opacity 0.3s';
+                selectedIcon.style.opacity = '0';
+
+                // Remove the icon after animation
+                setTimeout(() => {
+                    selectedIcon.remove();
+
+                    // Check if all icons are now deleted
+                    const remainingIcons = document.querySelectorAll('.desktop-icon');
+                    if (remainingIcons.length === 0) {
+                        console.log("All icons deleted! Showing achievement...");
+                        showAchievement();
+                    }
+                }, 300);
+            }
+        }
+    });
+}
+
+// Function to display the achievement notification
+function showAchievement() {
+    const achievementElement = document.querySelector('.achievement-notification');
+    if (!achievementElement) return;
+
+    // Play achievement sound
+    const achievementSound = new Audio('https://dl.dropboxusercontent.com/s/8qvrpd69ua7wio8/XboxAchievement.mp3');
+    achievementSound.volume = 0.7;
+    achievementSound.play().catch(err => console.log('Audio play failed:', err));
+
+    // Prevent showing multiple times
+    if (achievementElement.classList.contains('achievement-show')) {
+        return;
+    }
+
+    // Show and animate the achievement
+    achievementElement.classList.add('achievement-show');
+
+    // Remove the animation class after it completes
+    setTimeout(() => {
+        achievementElement.classList.remove('achievement-show');
+    }, 8000); // Match this to the CSS animation duration
 }
