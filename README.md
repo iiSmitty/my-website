@@ -60,13 +60,15 @@ As a problem solver working in modern tech, I find inspiration in Windows 95's b
 │   └── strava-pbs.json             # Strava personal bests data
 ├── icons/                          # Icon assets
 │   ├── computer.ico                # Computer icon
+│   ├── database.ico                # Database icon
+│   ├── floppy-disk.ico             # Floppy disk icon
 │   ├── github-mark-white.png       # GitHub icon
 │   ├── mspaint.ico                 # MS Paint icon
-│   ├── msraring-100.ico            # MS Raring icon
-│   ├── reader-disket.ico           # Floppy disk reader icon
+│   ├── msrating-100.ico            # MS Raring icon
 │   ├── recycle-full.ico            # Full recycle bin icon
 │   ├── regedit-100.ico             # Registry editor icon
-│   └── server-icon.ico             # Server icon
+│   ├── server-icon.ico             # Server icon
+│   └── spotify-white.png           # Spotify icon
 ├── images/                         # Image assets
 │   ├── clippy.png                  # Our helpful assistant
 │   ├── favicon.png                 # Site favicon
@@ -76,13 +78,16 @@ As a problem solver working in modern tech, I find inspiration in Windows 95's b
 │   ├── microsoft-windows-4.png     # Windows Red
 │   ├── microsoft-windows-5.png     # Windows White
 │   └── win95-error.png             # Error icon for notifications
-├── js/                             # JavaScript files
+├── js/                             # JavaScript files 
 │   ├── clippy.js                   # iOS Clippy easter egg
 │   ├── decrypt.js                  # Contact info decryption
+│   ├── floppy-disk.js              # Floppy disk interaction logic
 │   ├── mobile-detection.js         # Mobile device detection
 │   ├── program-icons.js            # Program icons handling
 │   ├── screensaver.js              # Flying Windows screensaver
 │   ├── strava-pbs.js               # Strava records logic
+│   ├── tech-counter.js             # Technology counter logic
+│   ├── watermark.js                # Watermark logic
 │   └── win95-components.js         # Windows 95 UI components
 ├── sounds/                         # Audio assets
 │   ├── win95-access.mp3            # Windows startup sound
