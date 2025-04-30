@@ -706,7 +706,7 @@ body.startup {
 .ReaderDiskIcon_32x32 {
     width: 32px;
     height: 32px;
-    background-image: url(/icons/reader-disket.ico);
+    background-image: url(/icons/database.ico);
     display: inline-block;
     margin-bottom: 4px;
 }
@@ -1273,4 +1273,277 @@ body.is-touch-device .desktop-icons,
 
 .achievement-show {
     animation: win95SlideUp 8s forwards;
+}
+
+/* ==================================
+   Floppy Disk Loader Component
+   ================================== */
+
+/* Base Container Styles */
+.floppy-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 10px 15px;
+    min-height: 32px;
+    overflow: hidden;
+
+    /* Transitions for all states */
+    transition:
+            background-color 0.2s ease,
+            opacity 0.5s ease-out 0.1s,
+            height 0.5s ease-out 0.1s,
+            padding-top 0.5s ease-out 0.1s,
+            padding-bottom 0.5s ease-out 0.1s,
+            margin-top 0.5s ease-out 0.1s,
+            margin-bottom 0.5s ease-out 0.1s,
+            border-width 0.5s ease-out 0.1s;
+}
+
+.floppy-container.interactive {
+    cursor: pointer;
+}
+
+.floppy-container.interactive:hover {
+    background-color: #d4d0c8;
+}
+
+/* Content Layout */
+.floppy-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.floppy-icon {
+    display: inline-block;
+    transition: transform 0.3s ease-in-out;
+}
+
+.floppy-text {
+    font-family: 'Pixelated MS Sans Serif', Arial, sans-serif;
+    font-size: 12px;
+    user-select: none;
+    transition: color 0.3s ease;
+}
+
+.floppy-drive-light {
+    position: absolute;
+    bottom: 5px;
+    right: 8px;
+    width: 6px;
+    height: 6px;
+    background-color: #808080;
+    border: 1px solid #000;
+    border-radius: 1px;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* Loading State */
+.floppy-container.loading {
+    cursor: wait;
+    background-color: #c0c0c0;
+    animation: containerShake 0.15s linear infinite;
+}
+
+.floppy-container.loading .floppy-icon {
+    animation: floppyInsertAndWhir 1.8s ease-in-out forwards;
+}
+
+.floppy-container.loading .floppy-text {
+    color: #000;
+}
+
+.floppy-container.loading .floppy-drive-light {
+    opacity: 1;
+    animation: driveBlinkPulse 0.6s ease-in-out infinite;
+}
+
+/* Loaded State */
+.floppy-container.loaded {
+    cursor: default;
+    opacity: 0.7;
+    animation: none;
+}
+
+.floppy-container.loaded:hover {
+    background-color: #c0c0c0;
+}
+
+/* Dissolving State */
+.floppy-container.dissolving {
+    cursor: default;
+    animation: none;
+}
+
+.floppy-container.dissolving .floppy-icon,
+.floppy-container.dissolving .floppy-text,
+.floppy-container.dissolving .floppy-drive-light {
+    opacity: 0 !important;
+    transition: opacity 0.2s linear !important;
+    z-index: 1;
+}
+
+.floppy-container.dissolving .pixel-overlay {
+    opacity: 1;
+}
+
+.floppy-container.dissolving .pixel-square {
+    animation-play-state: running;
+}
+
+/* Dissolved State */
+.floppy-container.dissolved {
+    opacity: 0;
+    height: 0;
+    min-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-width: 0;
+    overflow: hidden;
+}
+
+/* ==================================
+   Animation Keyframes
+   ================================== */
+
+/* Floppy Disk Insertion Animation */
+@keyframes floppyInsertAndWhir {
+    0% {
+        transform: translateY(0) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    15% {
+        transform: translateY(5px) scale(0.95) rotate(0deg);
+        opacity: 0.9;
+    }
+    25% {
+        transform: translateY(2px) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    30%, 50%, 70%, 90% {
+        transform: translateY(2px) scale(1) rotate(-1deg);
+    }
+    40%, 60%, 80%, 100% {
+        transform: translateY(2px) scale(1) rotate(1deg);
+    }
+}
+
+/* Container Vibration Animation */
+@keyframes containerShake {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(1px, 0px); }
+    50% { transform: translate(0px, 1px); }
+    75% { transform: translate(-1px, 0px); }
+}
+
+/* Drive Light Blinking Animation */
+@keyframes driveBlinkPulse {
+    0% {
+        background-color: #008000;
+        box-shadow: none;
+    }
+    50% {
+        background-color: #33ff33;
+        box-shadow: 0 0 3px 1px rgba(51, 255, 51, 0.7);
+    }
+    100% {
+        background-color: #008000;
+        box-shadow: none;
+    }
+}
+
+/* Pixelation Animation */
+@keyframes pixelateVirus {
+    0% {
+        background-color: #2a5a5a;
+        opacity: 0.5;
+    }
+    50% {
+        background-color: #1a3a3a;
+        opacity: 0.8;
+    }
+    100% {
+        background-color: #008080;
+        opacity: 1;
+    }
+}
+
+/* ==================================
+   Floppy Disk Icon
+   ================================== */
+
+.FloppyDiskIcon_32x32 {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-image: url(/icons/floppy-disk.ico);
+    background-position: -128px -64px;
+    image-rendering: pixelated;
+}
+
+/* ==================================
+   Hidden Content Section
+   ================================== */
+
+.hidden-content-section {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+    transform: translateY(20px);
+    transition:
+            opacity 0.6s ease-out,
+            transform 0.6s ease-out,
+            height 0s ease 0.6s,
+            visibility 0s ease 0.6s;
+}
+
+.hidden-content-section.visible {
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+    transform: translateY(0);
+    transition:
+            opacity 0.6s ease-out,
+            transform 0.6s ease-out,
+            height 0s ease 0s,
+            visibility 0s ease 0s;
+}
+
+/* ==================================
+   Pixel Overlay Effect
+   ================================== */
+
+.pixel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 5;
+    background-color: transparent;
+    transition: opacity 0.1s linear;
+}
+
+.pixel-overlay.active {
+    opacity: 1;
+}
+
+.pixel-square {
+    width: 5px;
+    height: 5px;
+    background-color: transparent;
+    opacity: 0;
+    animation: pixelateVirus 0.5s linear forwards;
+    animation-play-state: paused;
 }
