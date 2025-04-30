@@ -26,6 +26,7 @@
 <script src="js/tech-counter.js"></script>
 <script src="js/screensaver.js"></script>
 <script src="js/watermark.js"></script>
+<script src="js/floppy-disk.js"></script>
 
 <div class="win95-container">
     <!-- Windows 95 Title Bar -->
@@ -72,7 +73,18 @@
         <h1>André Smit</h1>
         <h2>Problem Solver</h2>
 
-        <div class="win95-box image-placeholder">Under Construction</div>
+        <!-- Floppy Disk Loader -->
+        <div class="win95-box floppy-container interactive" id="floppyLoader">
+            <div class="floppy-content">
+                <span class="FloppyDiskIcon_32x32 floppy-icon"></span>
+                <span class="floppy-text">Click to Load Profile...</span>
+            </div>
+            <div class="floppy-drive-light"></div>
+            <div class="pixel-overlay" id="floppyPixelOverlay"></div>
+        </div>
+
+        <!-- === WRAPPER FOR HIDDEN CONTENT START === -->
+        <div id="mainProfileContent" class="hidden-content-section">
 
         <div class="section-header">
             <div class="section-title">About Me</div>
@@ -171,6 +183,9 @@
         <div class="win95-status-bar">
             <!-- Placeholder for JavaScript component -->
         </div>
+
+        </div>
+        <!-- === WRAPPER FOR HIDDEN CONTENT END === -->
     </div>
 </div>
 
