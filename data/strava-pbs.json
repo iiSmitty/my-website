@@ -14,16 +14,16 @@
       "display_name": "5 Kilometers"
     },
     "10k": {
-      "id": 13692390402,
-      "name": "2025 Versus 21km Road Run Party",
-      "start_date": "2025-02-22T04:33:51Z",
-      "elapsed_time": 2830,
-      "distance": 10000,
-      "normalized_time": 2830,
-      "pace_per_km": 283,
-      "formatted_time": "47:10",
-      "formatted_pace": "4:43/km",
-      "strava_url": "https://www.strava.com/activities/13692390402",
+      "id": 13309370797,
+      "name": "[Versus Back to Base] 48/50",
+      "start_date": "2025-01-09T16:01:14Z",
+      "elapsed_time": 2931,
+      "distance": 10012.2,
+      "normalized_time": 2927,
+      "pace_per_km": 292.7,
+      "formatted_time": "48:47",
+      "formatted_pace": "4:53/km",
+      "strava_url": "https://www.strava.com/activities/13309370797",
       "display_name": "10 Kilometers"
     },
     "half_marathon": {
@@ -41,10 +41,10 @@
     }
   },
   "completedCounts": {
-    "5k": 187,
+    "5k": 188,
     "10k": 63,
     "half_marathon": 11,
     "marathon": 0
   },
-  "lastUpdated": "2025-05-05T06:35:51.594Z"
+  "lastUpdated": "2025-05-06T06:34:45.916Z"
 }
