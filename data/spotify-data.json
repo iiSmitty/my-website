@@ -1,38 +1,12 @@
 {
   "topArtists": [
     {
-      "name": "Francois van Coke",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebe38c2e86015bb58eb8ebfcaf",
-      "genres": [],
-      "popularity": 46,
-      "uri": "spotify:artist:7pJtnZQLPJmqzVfdIz7eFF",
-      "url": "https://open.spotify.com/artist/7pJtnZQLPJmqzVfdIz7eFF"
-    },
-    {
-      "name": "Citizen Soldier",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb518fa3bdacfb82908a73dbc8",
-      "genres": [],
-      "popularity": 63,
-      "uri": "spotify:artist:7fM0h2CG7zKqKc0jEa1b4R",
-      "url": "https://open.spotify.com/artist/7fM0h2CG7zKqKc0jEa1b4R"
-    },
-    {
       "name": "Die Heuwels Fantasties",
       "image": "https://i.scdn.co/image/ab6761610000e5eb0ed7aa77209d3edb3778fcfc",
       "genres": [],
       "popularity": 48,
       "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
       "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
-    },
-    {
-      "name": "Dead by April",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebf3770344c0b2952acd65b79f",
-      "genres": [
-        "metalcore"
-      ],
-      "popularity": 54,
-      "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
-      "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
     },
     {
       "name": "Linkin Park",
@@ -46,6 +20,40 @@
       "popularity": 91,
       "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
+    },
+    {
+      "name": "Disciple",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb5f5263b5a85ac5fab97ab6b8",
+      "genres": [
+        "christian rock",
+        "christian alternative rock",
+        "chinese rock",
+        "christian"
+      ],
+      "popularity": 49,
+      "uri": "spotify:artist:4D9k73VomKTnVQ6ROnt8IO",
+      "url": "https://open.spotify.com/artist/4D9k73VomKTnVQ6ROnt8IO"
+    },
+    {
+      "name": "Spoegwolf",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebb62b1c86e4333468d5dbb6e4",
+      "genres": [],
+      "popularity": 51,
+      "uri": "spotify:artist:6o4TnAxiqaQfZMLl55NFdn",
+      "url": "https://open.spotify.com/artist/6o4TnAxiqaQfZMLl55NFdn"
+    },
+    {
+      "name": "Manafest",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb4f9468a66e817aa43b2b93ac",
+      "genres": [
+        "christian rock",
+        "christian hip hop",
+        "christian alternative rock",
+        "rap rock"
+      ],
+      "popularity": 50,
+      "uri": "spotify:artist:4uOFEWy9mIcvQbr03IbPcL",
+      "url": "https://open.spotify.com/artist/4uOFEWy9mIcvQbr03IbPcL"
     }
   ],
   "topTracks": [
@@ -65,9 +73,29 @@
       "album": "Freestyler (Rock The Microphone)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27313bc6d83bab2ec82448674d4",
       "duration": "2:54",
-      "popularity": 72,
+      "popularity": 73,
       "uri": "spotify:track:5Axl2Rjg3wOC3JHju1Gess",
       "url": "https://open.spotify.com/track/5Axl2Rjg3wOC3JHju1Gess"
+    },
+    {
+      "name": "Ek kyk na jou",
+      "artist": "Van Pletzen, Spoegwolf",
+      "album": "Om lig te maak",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b2b136a2288a948a3559c125",
+      "duration": "2:53",
+      "popularity": 28,
+      "uri": "spotify:track:5gyd6FpRVFN6mRcMdyXnNG",
+      "url": "https://open.spotify.com/track/5gyd6FpRVFN6mRcMdyXnNG"
+    },
+    {
+      "name": "Die Young",
+      "artist": "Tsunami J., ERLAX",
+      "album": "Die Young",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2732bedd4c6b797c4fcc25be438",
+      "duration": "2:13",
+      "popularity": 60,
+      "uri": "spotify:track:3kPNcovPdDu0KU6TsecoEP",
+      "url": "https://open.spotify.com/track/3kPNcovPdDu0KU6TsecoEP"
     },
     {
       "name": "Die Ruimte",
@@ -75,7 +103,7 @@
       "album": "Die Ruimte",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2735ba82225885ef42556872351",
       "duration": "2:58",
-      "popularity": 40,
+      "popularity": 39,
       "uri": "spotify:track:2dJNS220dOuB5taOM56DsG",
       "url": "https://open.spotify.com/track/2dJNS220dOuB5taOM56DsG"
     },
@@ -90,54 +118,14 @@
       "url": "https://open.spotify.com/track/4zAjQDduJhIRFSpfrIN68Z"
     },
     {
-      "name": "Die Young",
-      "artist": "Tsunami J., ERLAX",
-      "album": "Die Young",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2732bedd4c6b797c4fcc25be438",
-      "duration": "2:13",
-      "popularity": 60,
-      "uri": "spotify:track:3kPNcovPdDu0KU6TsecoEP",
-      "url": "https://open.spotify.com/track/3kPNcovPdDu0KU6TsecoEP"
-    },
-    {
-      "name": "Breek",
-      "artist": "Francois van Coke",
-      "album": "Die Ruimte",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735ba82225885ef42556872351",
-      "duration": "2:56",
-      "popularity": 36,
-      "uri": "spotify:track:5RWWblCfZthddiJwmc05UJ",
-      "url": "https://open.spotify.com/track/5RWWblCfZthddiJwmc05UJ"
-    },
-    {
-      "name": "Echo",
-      "artist": "Trapt",
-      "album": "Trapt",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738b1659424aa88a47aae93014",
-      "duration": "4:11",
-      "popularity": 57,
-      "uri": "spotify:track:0K8Hm9Q7GbyucgQB5BhC5C",
-      "url": "https://open.spotify.com/track/0K8Hm9Q7GbyucgQB5BhC5C"
-    },
-    {
-      "name": "Wasteland - orchestral",
-      "artist": "Dead by April, THE DAY WE LEFT EARTH",
-      "album": "Wasteland (orchestral)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273bb77a506c8162c7ec1979fad",
-      "duration": "2:25",
-      "popularity": 45,
-      "uri": "spotify:track:36wIxrvx8BXA0g2cv1TXyz",
-      "url": "https://open.spotify.com/track/36wIxrvx8BXA0g2cv1TXyz"
-    },
-    {
-      "name": "Hartedief (het my verlief)",
-      "artist": "Van Pletzen, Emma B",
-      "album": "Om lig te maak",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b2b136a2288a948a3559c125",
-      "duration": "2:27",
-      "popularity": 12,
-      "uri": "spotify:track:4sDTNdATzb2x438BFupO5c",
-      "url": "https://open.spotify.com/track/4sDTNdATzb2x438BFupO5c"
+      "name": "Perfect The Way You Are",
+      "artist": "Dead by April",
+      "album": "Worlds Collide",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273387e3fe93a12844cf969399e",
+      "duration": "3:44",
+      "popularity": 44,
+      "uri": "spotify:track:12tw0TYIJMf1bowLBYWqTp",
+      "url": "https://open.spotify.com/track/12tw0TYIJMf1bowLBYWqTp"
     },
     {
       "name": "Heel",
@@ -148,7 +136,27 @@
       "popularity": 35,
       "uri": "spotify:track:1Uc3ddCBaCo4gG6KC2wVP5",
       "url": "https://open.spotify.com/track/1Uc3ddCBaCo4gG6KC2wVP5"
+    },
+    {
+      "name": "Have You Ever Seen The Rain",
+      "artist": "Creedence Clearwater Revival",
+      "album": "Pendulum (Expanded Edition)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27351f311c2fb06ad2789e3ff91",
+      "duration": "2:40",
+      "popularity": 87,
+      "uri": "spotify:track:2LawezPeJhN4AWuSB0GtAU",
+      "url": "https://open.spotify.com/track/2LawezPeJhN4AWuSB0GtAU"
+    },
+    {
+      "name": "Here I Am",
+      "artist": "Line So Thin",
+      "album": "Here I Am",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735f8cad9a2bbf9360deae3a2a",
+      "duration": "3:24",
+      "popularity": 53,
+      "uri": "spotify:track:52TfDBmvrEZVebJCDPkOzM",
+      "url": "https://open.spotify.com/track/52TfDBmvrEZVebJCDPkOzM"
     }
   ],
-  "lastUpdated": "2025-04-28T01:47:35.791Z"
+  "lastUpdated": "2025-05-05T01:49:49.554Z"
 }
