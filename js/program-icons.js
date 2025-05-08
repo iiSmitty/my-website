@@ -394,13 +394,46 @@ async function loadSpotifyData() {
             displayTopTracks(data.topTracks);
         }
 
+        // Update to use the shared formatCustomDateTime function
         if (data.lastUpdated) {
-            const date = new Date(data.lastUpdated);
-            document.getElementById('lastUpdated').textContent = `Last updated: ${date.toLocaleString()}`;
+            const formattedTime = formatCustomDateTime(data.lastUpdated);
+
+            // Get the last updated container
+            const lastUpdatedContainer = document.getElementById('spotifyLastUpdated');
+
+            if (lastUpdatedContainer) {
+                // Check if we have the structure with LED indicator
+                const textElement = lastUpdatedContainer.querySelector('.sync-text-content');
+
+                if (textElement) {
+                    // Just update the text content
+                    textElement.textContent = `LAST UPDATED: ${formattedTime}`;
+                } else {
+                    // Create the new structure completely
+                    lastUpdatedContainer.innerHTML = `
+                        <div class="refresh-time">
+                            <div class="sync-indicator"></div>
+                            <div class="sync-text-content">LAST UPDATED: ${formattedTime}</div>
+                        </div>
+                    `;
+                }
+            } else {
+                // Fall back to the original element if the new container doesn't exist
+                const lastUpdatedElement = document.getElementById('lastUpdated');
+                if (lastUpdatedElement) {
+                    lastUpdatedElement.textContent = `LAST UPDATED: ${formattedTime}`;
+                }
+            }
         }
 
     } catch (error) {
         console.error('Error loading Spotify data:', error);
+
+        // Update the last updated text if there's an error
+        const textElement = document.getElementById('spotifyLastUpdated')?.querySelector('.sync-text-content');
+        if (textElement) {
+            textElement.textContent = "Error loading data.";
+        }
     }
 }
 

@@ -35,7 +35,10 @@
 
         <h1>Powered by Strava API</h1>
 
-        <div class="refresh-time" id="lastUpdated"></div>
+        <div id="lastUpdated" class="refresh-time">
+            <span class="sync-indicator"></span>
+            <span class="sync-text-content"></span>
+        </div>
 
         <div id="loading" class="win95-box loading-box">
             <div class="win95-spinner"></div>
@@ -60,5 +63,6 @@
 
 <!-- Reference to external JS file -->
 <script src="js/strava-pbs.js"></script>
+<script src="./js/utils.js"></script>
 </body>
 </html>

@@ -598,10 +598,32 @@ body.startup {
 }
 
 .refresh-time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+    margin-bottom: 18px;
+}
+
+.sync-indicator {
+    width: 8px;
+    height: 8px;
+    background-color: #00D000;
+    border-radius: 50%;
+    margin-right: 8px;
+    flex-shrink: 0;
+    border: 1px solid #008000;
+    box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.3),
+    0 0 3px rgba(0, 208, 0, 0.5);
+}
+
+.sync-text-content {
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
     font-size: 11px;
     color: #000080;
-    margin: 8px 0;
-    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: normal;
 }
 
 .loading-box {
