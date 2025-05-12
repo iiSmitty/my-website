@@ -22,6 +22,19 @@
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
     {
+      "name": "Manafest",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb4f9468a66e817aa43b2b93ac",
+      "genres": [
+        "christian rock",
+        "christian hip hop",
+        "christian alternative rock",
+        "rap rock"
+      ],
+      "popularity": 50,
+      "uri": "spotify:artist:4uOFEWy9mIcvQbr03IbPcL",
+      "url": "https://open.spotify.com/artist/4uOFEWy9mIcvQbr03IbPcL"
+    },
+    {
       "name": "Disciple",
       "image": "https://i.scdn.co/image/ab6761610000e5eb5f5263b5a85ac5fab97ab6b8",
       "genres": [
@@ -35,37 +48,24 @@
       "url": "https://open.spotify.com/artist/4D9k73VomKTnVQ6ROnt8IO"
     },
     {
-      "name": "Spoegwolf",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebb62b1c86e4333468d5dbb6e4",
+      "name": "Die Piesangskille",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb8283b82faf9927529a914e3b",
       "genres": [],
-      "popularity": 51,
-      "uri": "spotify:artist:6o4TnAxiqaQfZMLl55NFdn",
-      "url": "https://open.spotify.com/artist/6o4TnAxiqaQfZMLl55NFdn"
-    },
-    {
-      "name": "Manafest",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb4f9468a66e817aa43b2b93ac",
-      "genres": [
-        "christian rock",
-        "christian hip hop",
-        "christian alternative rock",
-        "rap rock"
-      ],
-      "popularity": 50,
-      "uri": "spotify:artist:4uOFEWy9mIcvQbr03IbPcL",
-      "url": "https://open.spotify.com/artist/4uOFEWy9mIcvQbr03IbPcL"
+      "popularity": 46,
+      "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
+      "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
     }
   ],
   "topTracks": [
     {
-      "name": "What An Awesome God - Choir Version",
-      "artist": "Phil Wickham",
-      "album": "What An Awesome God",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731f2e2db8a5a5413f028162c1",
-      "duration": "3:31",
-      "popularity": 45,
-      "uri": "spotify:track:4WQdGBzrQEvgM2R7VnVSH5",
-      "url": "https://open.spotify.com/track/4WQdGBzrQEvgM2R7VnVSH5"
+      "name": "Ek kyk na jou",
+      "artist": "Van Pletzen, Spoegwolf",
+      "album": "Om lig te maak",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b2b136a2288a948a3559c125",
+      "duration": "2:53",
+      "popularity": 30,
+      "uri": "spotify:track:5gyd6FpRVFN6mRcMdyXnNG",
+      "url": "https://open.spotify.com/track/5gyd6FpRVFN6mRcMdyXnNG"
     },
     {
       "name": "Freestyler (Rock The Microphone)",
@@ -73,19 +73,19 @@
       "album": "Freestyler (Rock The Microphone)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27313bc6d83bab2ec82448674d4",
       "duration": "2:54",
-      "popularity": 73,
+      "popularity": 72,
       "uri": "spotify:track:5Axl2Rjg3wOC3JHju1Gess",
       "url": "https://open.spotify.com/track/5Axl2Rjg3wOC3JHju1Gess"
     },
     {
-      "name": "Ek kyk na jou",
-      "artist": "Van Pletzen, Spoegwolf",
-      "album": "Om lig te maak",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b2b136a2288a948a3559c125",
-      "duration": "2:53",
-      "popularity": 28,
-      "uri": "spotify:track:5gyd6FpRVFN6mRcMdyXnNG",
-      "url": "https://open.spotify.com/track/5gyd6FpRVFN6mRcMdyXnNG"
+      "name": "Up From the Bottom",
+      "artist": "Linkin Park",
+      "album": "Up From the Bottom",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273d9de81090bd9699c9d36696e",
+      "duration": "3:03",
+      "popularity": 85,
+      "uri": "spotify:track:5IL3VPDy5siXiptYHF2aLS",
+      "url": "https://open.spotify.com/track/5IL3VPDy5siXiptYHF2aLS"
     },
     {
       "name": "Die Young",
@@ -98,24 +98,14 @@
       "url": "https://open.spotify.com/track/3kPNcovPdDu0KU6TsecoEP"
     },
     {
-      "name": "Die Ruimte",
-      "artist": "Francois van Coke",
-      "album": "Die Ruimte",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735ba82225885ef42556872351",
-      "duration": "2:58",
-      "popularity": 39,
-      "uri": "spotify:track:2dJNS220dOuB5taOM56DsG",
-      "url": "https://open.spotify.com/track/2dJNS220dOuB5taOM56DsG"
-    },
-    {
-      "name": "Jesus Freak - Remastered 2013",
-      "artist": "DC Talk",
-      "album": "Jesus Freak (Remastered)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c592d8aca952dacc3df87487",
-      "duration": "4:49",
-      "popularity": 52,
-      "uri": "spotify:track:4zAjQDduJhIRFSpfrIN68Z",
-      "url": "https://open.spotify.com/track/4zAjQDduJhIRFSpfrIN68Z"
+      "name": "What An Awesome God - Choir Version",
+      "artist": "Phil Wickham",
+      "album": "What An Awesome God",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731f2e2db8a5a5413f028162c1",
+      "duration": "3:31",
+      "popularity": 45,
+      "uri": "spotify:track:4WQdGBzrQEvgM2R7VnVSH5",
+      "url": "https://open.spotify.com/track/4WQdGBzrQEvgM2R7VnVSH5"
     },
     {
       "name": "Perfect The Way You Are",
@@ -156,7 +146,17 @@
       "popularity": 53,
       "uri": "spotify:track:52TfDBmvrEZVebJCDPkOzM",
       "url": "https://open.spotify.com/track/52TfDBmvrEZVebJCDPkOzM"
+    },
+    {
+      "name": "Breek",
+      "artist": "Francois van Coke",
+      "album": "Die Ruimte",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735ba82225885ef42556872351",
+      "duration": "2:56",
+      "popularity": 34,
+      "uri": "spotify:track:5RWWblCfZthddiJwmc05UJ",
+      "url": "https://open.spotify.com/track/5RWWblCfZthddiJwmc05UJ"
     }
   ],
-  "lastUpdated": "2025-05-05T01:49:49.554Z"
+  "lastUpdated": "2025-05-12T01:50:56.358Z"
 }
