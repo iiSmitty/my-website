@@ -14,16 +14,16 @@
       "display_name": "5 Kilometers"
     },
     "10k": {
-      "id": 13309370797,
-      "name": "[Versus Back to Base] 48/50",
-      "start_date": "2025-01-09T16:01:14Z",
-      "elapsed_time": 2931,
-      "distance": 10012.2,
-      "normalized_time": 2927,
-      "pace_per_km": 292.7,
-      "formatted_time": "48:47",
-      "formatted_pace": "4:53/km",
-      "strava_url": "https://www.strava.com/activities/13309370797",
+      "id": 14468903831,
+      "name": "Shut Up Legs!",
+      "start_date": "2025-05-13T15:59:51Z",
+      "elapsed_time": 2810,
+      "distance": 10000,
+      "normalized_time": 2810,
+      "pace_per_km": 281,
+      "formatted_time": "46:50",
+      "formatted_pace": "4:41/km",
+      "strava_url": "https://www.strava.com/activities/14468903831",
       "display_name": "10 Kilometers"
     },
     "half_marathon": {
@@ -42,9 +42,9 @@
   },
   "completedCounts": {
     "5k": 188,
-    "10k": 66,
+    "10k": 67,
     "half_marathon": 11,
     "marathon": 0
   },
-  "lastUpdated": "2025-05-13T06:35:12.986Z"
+  "lastUpdated": "2025-05-14T06:35:16.810Z"
 }
