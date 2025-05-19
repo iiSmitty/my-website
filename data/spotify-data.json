@@ -1,12 +1,14 @@
 {
   "topArtists": [
     {
-      "name": "Die Heuwels Fantasties",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb0ed7aa77209d3edb3778fcfc",
-      "genres": [],
-      "popularity": 48,
-      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
-      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
+      "name": "Cherry 葵 Nightcore",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebe45882ea334a5a40bf0f2e0e",
+      "genres": [
+        "nightcore"
+      ],
+      "popularity": 44,
+      "uri": "spotify:artist:4H502w3aY9YWNIPWTx8adz",
+      "url": "https://open.spotify.com/artist/4H502w3aY9YWNIPWTx8adz"
     },
     {
       "name": "Linkin Park",
@@ -17,43 +19,35 @@
         "rock",
         "alternative metal"
       ],
-      "popularity": 91,
+      "popularity": 90,
       "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
     {
-      "name": "Manafest",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb4f9468a66e817aa43b2b93ac",
-      "genres": [
-        "christian rock",
-        "christian hip hop",
-        "christian alternative rock",
-        "rap rock"
-      ],
-      "popularity": 50,
-      "uri": "spotify:artist:4uOFEWy9mIcvQbr03IbPcL",
-      "url": "https://open.spotify.com/artist/4uOFEWy9mIcvQbr03IbPcL"
-    },
-    {
-      "name": "Disciple",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb5f5263b5a85ac5fab97ab6b8",
-      "genres": [
-        "christian rock",
-        "christian alternative rock",
-        "chinese rock",
-        "christian"
-      ],
-      "popularity": 49,
-      "uri": "spotify:artist:4D9k73VomKTnVQ6ROnt8IO",
-      "url": "https://open.spotify.com/artist/4D9k73VomKTnVQ6ROnt8IO"
-    },
-    {
-      "name": "Die Piesangskille",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb8283b82faf9927529a914e3b",
+      "name": "Die Heuwels Fantasties",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb0ed7aa77209d3edb3778fcfc",
       "genres": [],
-      "popularity": 46,
-      "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
-      "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
+      "popularity": 48,
+      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
+      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
+    },
+    {
+      "name": "Almero",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebfd3cefc4a0807c9a8d58d6cc",
+      "genres": [],
+      "popularity": 28,
+      "uri": "spotify:artist:7dPungKhZV77MeaGRZwTNR",
+      "url": "https://open.spotify.com/artist/7dPungKhZV77MeaGRZwTNR"
+    },
+    {
+      "name": "Dead by April",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebf3770344c0b2952acd65b79f",
+      "genres": [
+        "metalcore"
+      ],
+      "popularity": 54,
+      "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
+      "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
     }
   ],
   "topTracks": [
@@ -63,7 +57,7 @@
       "album": "Om lig te maak",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273b2b136a2288a948a3559c125",
       "duration": "2:53",
-      "popularity": 30,
+      "popularity": 31,
       "uri": "spotify:track:5gyd6FpRVFN6mRcMdyXnNG",
       "url": "https://open.spotify.com/track/5gyd6FpRVFN6mRcMdyXnNG"
     },
@@ -78,16 +72,6 @@
       "url": "https://open.spotify.com/track/5Axl2Rjg3wOC3JHju1Gess"
     },
     {
-      "name": "Up From the Bottom",
-      "artist": "Linkin Park",
-      "album": "Up From the Bottom",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273d9de81090bd9699c9d36696e",
-      "duration": "3:03",
-      "popularity": 85,
-      "uri": "spotify:track:5IL3VPDy5siXiptYHF2aLS",
-      "url": "https://open.spotify.com/track/5IL3VPDy5siXiptYHF2aLS"
-    },
-    {
       "name": "Die Young",
       "artist": "Tsunami J., ERLAX",
       "album": "Die Young",
@@ -98,14 +82,14 @@
       "url": "https://open.spotify.com/track/3kPNcovPdDu0KU6TsecoEP"
     },
     {
-      "name": "What An Awesome God - Choir Version",
-      "artist": "Phil Wickham",
-      "album": "What An Awesome God",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731f2e2db8a5a5413f028162c1",
-      "duration": "3:31",
-      "popularity": 45,
-      "uri": "spotify:track:4WQdGBzrQEvgM2R7VnVSH5",
-      "url": "https://open.spotify.com/track/4WQdGBzrQEvgM2R7VnVSH5"
+      "name": "Up From the Bottom",
+      "artist": "Linkin Park",
+      "album": "From Zero (Deluxe Edition)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273cf2f1518bb27681db355e44e",
+      "duration": "3:03",
+      "popularity": 54,
+      "uri": "spotify:track:2SwdMXPvGdciXamSjfoNH9",
+      "url": "https://open.spotify.com/track/2SwdMXPvGdciXamSjfoNH9"
     },
     {
       "name": "Perfect The Way You Are",
@@ -118,24 +102,44 @@
       "url": "https://open.spotify.com/track/12tw0TYIJMf1bowLBYWqTp"
     },
     {
-      "name": "Heel",
-      "artist": "Spoegwolf",
-      "album": "Eindbestemming",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27370be396b9c889119f25ed363",
-      "duration": "3:46",
-      "popularity": 35,
-      "uri": "spotify:track:1Uc3ddCBaCo4gG6KC2wVP5",
-      "url": "https://open.spotify.com/track/1Uc3ddCBaCo4gG6KC2wVP5"
+      "name": "Listen To Your Heart",
+      "artist": "Through Fire",
+      "album": "All Animal",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27320bc306da63dacab20cfee56",
+      "duration": "3:35",
+      "popularity": 56,
+      "uri": "spotify:track:6NxTKEfNa5DyhOIin6VWYP",
+      "url": "https://open.spotify.com/track/6NxTKEfNa5DyhOIin6VWYP"
     },
     {
-      "name": "Have You Ever Seen The Rain",
-      "artist": "Creedence Clearwater Revival",
-      "album": "Pendulum (Expanded Edition)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27351f311c2fb06ad2789e3ff91",
-      "duration": "2:40",
-      "popularity": 87,
-      "uri": "spotify:track:2LawezPeJhN4AWuSB0GtAU",
-      "url": "https://open.spotify.com/track/2LawezPeJhN4AWuSB0GtAU"
+      "name": "What An Awesome God - Choir Version",
+      "artist": "Phil Wickham",
+      "album": "What An Awesome God",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731f2e2db8a5a5413f028162c1",
+      "duration": "3:31",
+      "popularity": 44,
+      "uri": "spotify:track:4WQdGBzrQEvgM2R7VnVSH5",
+      "url": "https://open.spotify.com/track/4WQdGBzrQEvgM2R7VnVSH5"
+    },
+    {
+      "name": "Letters From The Sky",
+      "artist": "Civil Twilight",
+      "album": "Civil Twilight",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2734a0191d2a20bef992fe4800d",
+      "duration": "4:35",
+      "popularity": 52,
+      "uri": "spotify:track:1g8dRVzAvmSOTfTz5m0H9K",
+      "url": "https://open.spotify.com/track/1g8dRVzAvmSOTfTz5m0H9K"
+    },
+    {
+      "name": "Neversleep",
+      "artist": "Disciple",
+      "album": "Skeleton Psalms (Deluxe Edition)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27379f122b27e5715aadc243e94",
+      "duration": "4:23",
+      "popularity": 33,
+      "uri": "spotify:track:52PtkE0a8kkv0UBHUEXCNc",
+      "url": "https://open.spotify.com/track/52PtkE0a8kkv0UBHUEXCNc"
     },
     {
       "name": "Here I Am",
@@ -143,20 +147,10 @@
       "album": "Here I Am",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2735f8cad9a2bbf9360deae3a2a",
       "duration": "3:24",
-      "popularity": 53,
+      "popularity": 54,
       "uri": "spotify:track:52TfDBmvrEZVebJCDPkOzM",
       "url": "https://open.spotify.com/track/52TfDBmvrEZVebJCDPkOzM"
-    },
-    {
-      "name": "Breek",
-      "artist": "Francois van Coke",
-      "album": "Die Ruimte",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735ba82225885ef42556872351",
-      "duration": "2:56",
-      "popularity": 34,
-      "uri": "spotify:track:5RWWblCfZthddiJwmc05UJ",
-      "url": "https://open.spotify.com/track/5RWWblCfZthddiJwmc05UJ"
     }
   ],
-  "lastUpdated": "2025-05-12T01:50:56.358Z"
+  "lastUpdated": "2025-05-19T01:53:14.953Z"
 }
