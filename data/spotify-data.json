@@ -11,19 +11,6 @@
       "url": "https://open.spotify.com/artist/4H502w3aY9YWNIPWTx8adz"
     },
     {
-      "name": "Linkin Park",
-      "image": "https://i.scdn.co/image/ab6761610000e5eba49c7eec5131a21a0bfb737b",
-      "genres": [
-        "nu metal",
-        "rap metal",
-        "rock",
-        "alternative metal"
-      ],
-      "popularity": 90,
-      "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
-      "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
-    },
-    {
       "name": "Die Heuwels Fantasties",
       "image": "https://i.scdn.co/image/ab6761610000e5eb0ed7aa77209d3edb3778fcfc",
       "genres": [],
@@ -40,14 +27,25 @@
       "url": "https://open.spotify.com/artist/7dPungKhZV77MeaGRZwTNR"
     },
     {
-      "name": "Dead by April",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebf3770344c0b2952acd65b79f",
+      "name": "Linkin Park",
+      "image": "https://i.scdn.co/image/ab6761610000e5eba49c7eec5131a21a0bfb737b",
       "genres": [
-        "metalcore"
+        "nu metal",
+        "rap metal",
+        "rock",
+        "alternative metal"
       ],
-      "popularity": 54,
-      "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
-      "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
+      "popularity": 90,
+      "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
+      "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
+    },
+    {
+      "name": "Die Piesangskille",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb8283b82faf9927529a914e3b",
+      "genres": [],
+      "popularity": 46,
+      "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
+      "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
     }
   ],
   "topTracks": [
@@ -72,34 +70,14 @@
       "url": "https://open.spotify.com/track/5Axl2Rjg3wOC3JHju1Gess"
     },
     {
-      "name": "Die Young",
-      "artist": "Tsunami J., ERLAX",
-      "album": "Die Young",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2732bedd4c6b797c4fcc25be438",
-      "duration": "2:13",
-      "popularity": 60,
-      "uri": "spotify:track:3kPNcovPdDu0KU6TsecoEP",
-      "url": "https://open.spotify.com/track/3kPNcovPdDu0KU6TsecoEP"
-    },
-    {
       "name": "Up From the Bottom",
       "artist": "Linkin Park",
       "album": "From Zero (Deluxe Edition)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273cf2f1518bb27681db355e44e",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a493a67f01bcfe65b23bc910",
       "duration": "3:03",
-      "popularity": 54,
+      "popularity": 70,
       "uri": "spotify:track:2SwdMXPvGdciXamSjfoNH9",
       "url": "https://open.spotify.com/track/2SwdMXPvGdciXamSjfoNH9"
-    },
-    {
-      "name": "Perfect The Way You Are",
-      "artist": "Dead by April",
-      "album": "Worlds Collide",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273387e3fe93a12844cf969399e",
-      "duration": "3:44",
-      "popularity": 44,
-      "uri": "spotify:track:12tw0TYIJMf1bowLBYWqTp",
-      "url": "https://open.spotify.com/track/12tw0TYIJMf1bowLBYWqTp"
     },
     {
       "name": "Listen To Your Heart",
@@ -112,14 +90,34 @@
       "url": "https://open.spotify.com/track/6NxTKEfNa5DyhOIin6VWYP"
     },
     {
-      "name": "What An Awesome God - Choir Version",
-      "artist": "Phil Wickham",
-      "album": "What An Awesome God",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731f2e2db8a5a5413f028162c1",
-      "duration": "3:31",
-      "popularity": 44,
-      "uri": "spotify:track:4WQdGBzrQEvgM2R7VnVSH5",
-      "url": "https://open.spotify.com/track/4WQdGBzrQEvgM2R7VnVSH5"
+      "name": "Hoe Nou?",
+      "artist": "Die Heuwels Fantasties, Die Piesangskille, Johan Viljoen",
+      "album": "Hoe Nou?",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27355a1d0003fffe11d623334fd",
+      "duration": "2:59",
+      "popularity": 49,
+      "uri": "spotify:track:5woFmhSriTtpjYcaho6Ici",
+      "url": "https://open.spotify.com/track/5woFmhSriTtpjYcaho6Ici"
+    },
+    {
+      "name": "Perfect The Way You Are",
+      "artist": "Dead by April",
+      "album": "Worlds Collide",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273387e3fe93a12844cf969399e",
+      "duration": "3:44",
+      "popularity": 45,
+      "uri": "spotify:track:12tw0TYIJMf1bowLBYWqTp",
+      "url": "https://open.spotify.com/track/12tw0TYIJMf1bowLBYWqTp"
+    },
+    {
+      "name": "Euphoria",
+      "artist": "Judge & Jury, Trevor McNevan, Thousand Foot Krutch",
+      "album": "Euphoria",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b2e49741c39b6ba73a422334",
+      "duration": "3:44",
+      "popularity": 45,
+      "uri": "spotify:track:40Xn8CZxXDvtyYXXY7Gl1F",
+      "url": "https://open.spotify.com/track/40Xn8CZxXDvtyYXXY7Gl1F"
     },
     {
       "name": "Letters From The Sky",
@@ -127,7 +125,7 @@
       "album": "Civil Twilight",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2734a0191d2a20bef992fe4800d",
       "duration": "4:35",
-      "popularity": 52,
+      "popularity": 51,
       "uri": "spotify:track:1g8dRVzAvmSOTfTz5m0H9K",
       "url": "https://open.spotify.com/track/1g8dRVzAvmSOTfTz5m0H9K"
     },
@@ -137,20 +135,20 @@
       "album": "Skeleton Psalms (Deluxe Edition)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27379f122b27e5715aadc243e94",
       "duration": "4:23",
-      "popularity": 33,
+      "popularity": 34,
       "uri": "spotify:track:52PtkE0a8kkv0UBHUEXCNc",
       "url": "https://open.spotify.com/track/52PtkE0a8kkv0UBHUEXCNc"
     },
     {
-      "name": "Here I Am",
-      "artist": "Line So Thin",
-      "album": "Here I Am",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735f8cad9a2bbf9360deae3a2a",
-      "duration": "3:24",
-      "popularity": 54,
-      "uri": "spotify:track:52TfDBmvrEZVebJCDPkOzM",
-      "url": "https://open.spotify.com/track/52TfDBmvrEZVebJCDPkOzM"
+      "name": "Hy Is",
+      "artist": "Gesinskerk Musiek",
+      "album": "Hy Is",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c2b4becb1a63b11148397723",
+      "duration": "5:09",
+      "popularity": 7,
+      "uri": "spotify:track:206y8SBYdNNWrTrLLqmaZc",
+      "url": "https://open.spotify.com/track/206y8SBYdNNWrTrLLqmaZc"
     }
   ],
-  "lastUpdated": "2025-05-19T01:53:14.953Z"
+  "lastUpdated": "2025-05-26T01:51:39.965Z"
 }
