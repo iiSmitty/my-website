@@ -14,16 +14,16 @@
       "display_name": "5 Kilometers"
     },
     "10k": {
-      "id": 14468903831,
-      "name": "Shut Up Legs!",
-      "start_date": "2025-05-13T15:59:51Z",
-      "elapsed_time": 2810,
+      "id": 14612267531,
+      "name": "The “perfect time” rarely comes",
+      "start_date": "2025-05-27T15:58:25Z",
+      "elapsed_time": 2791,
       "distance": 10000,
-      "normalized_time": 2810,
-      "pace_per_km": 281,
-      "formatted_time": "46:50",
-      "formatted_pace": "4:41/km",
-      "strava_url": "https://www.strava.com/activities/14468903831",
+      "normalized_time": 2791,
+      "pace_per_km": 279.1,
+      "formatted_time": "46:31",
+      "formatted_pace": "4:39/km",
+      "strava_url": "https://www.strava.com/activities/14612267531",
       "display_name": "10 Kilometers"
     },
     "half_marathon": {
@@ -42,9 +42,9 @@
   },
   "completedCounts": {
     "5k": 188,
-    "10k": 70,
+    "10k": 71,
     "half_marathon": 12,
     "marathon": 0
   },
-  "lastUpdated": "2025-05-27T06:35:30.544Z"
+  "lastUpdated": "2025-05-28T06:35:40.005Z"
 }
