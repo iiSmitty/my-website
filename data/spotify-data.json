@@ -1,25 +1,33 @@
 {
   "topArtists": [
     {
-      "name": "Die Heuwels Fantasties",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb0ed7aa77209d3edb3778fcfc",
+      "name": "Francois van Coke",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebe38c2e86015bb58eb8ebfcaf",
       "genres": [],
-      "popularity": 48,
-      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
-      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
+      "popularity": 45,
+      "uri": "spotify:artist:7pJtnZQLPJmqzVfdIz7eFF",
+      "url": "https://open.spotify.com/artist/7pJtnZQLPJmqzVfdIz7eFF"
     },
     {
       "name": "Linkin Park",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebc7e6bd9e65eab62a53355576",
+      "image": "https://i.scdn.co/image/ab6761610000e5eba49c7eec5131a21a0bfb737b",
       "genres": [
         "nu metal",
         "rap metal",
         "rock",
         "alternative metal"
       ],
-      "popularity": 90,
+      "popularity": 91,
       "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
+    },
+    {
+      "name": "Die Heuwels Fantasties",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb0ed7aa77209d3edb3778fcfc",
+      "genres": [],
+      "popularity": 48,
+      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
+      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
     },
     {
       "name": "Dead by April",
@@ -32,19 +40,6 @@
       "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
     },
     {
-      "name": "Disciple",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb5f5263b5a85ac5fab97ab6b8",
-      "genres": [
-        "christian rock",
-        "christian alternative rock",
-        "chinese rock",
-        "christian"
-      ],
-      "popularity": 48,
-      "uri": "spotify:artist:4D9k73VomKTnVQ6ROnt8IO",
-      "url": "https://open.spotify.com/artist/4D9k73VomKTnVQ6ROnt8IO"
-    },
-    {
       "name": "Die Piesangskille",
       "image": "https://i.scdn.co/image/ab6761610000e5eb8283b82faf9927529a914e3b",
       "genres": [],
@@ -55,22 +50,12 @@
   ],
   "topTracks": [
     {
-      "name": "Ek kyk na jou",
-      "artist": "Van Pletzen, Spoegwolf",
-      "album": "Om lig te maak",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b2b136a2288a948a3559c125",
-      "duration": "2:53",
-      "popularity": 32,
-      "uri": "spotify:track:5gyd6FpRVFN6mRcMdyXnNG",
-      "url": "https://open.spotify.com/track/5gyd6FpRVFN6mRcMdyXnNG"
-    },
-    {
       "name": "Hoe Nou?",
       "artist": "Die Heuwels Fantasties, Die Piesangskille, Johan Viljoen",
       "album": "Hoe Nou?",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27355a1d0003fffe11d623334fd",
       "duration": "2:59",
-      "popularity": 49,
+      "popularity": 50,
       "uri": "spotify:track:5woFmhSriTtpjYcaho6Ici",
       "url": "https://open.spotify.com/track/5woFmhSriTtpjYcaho6Ici"
     },
@@ -85,16 +70,6 @@
       "url": "https://open.spotify.com/track/6fgumpsxkg0snhrDktUHX4"
     },
     {
-      "name": "Up From the Bottom",
-      "artist": "Linkin Park",
-      "album": "From Zero (Deluxe Edition)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a493a67f01bcfe65b23bc910",
-      "duration": "3:03",
-      "popularity": 73,
-      "uri": "spotify:track:2SwdMXPvGdciXamSjfoNH9",
-      "url": "https://open.spotify.com/track/2SwdMXPvGdciXamSjfoNH9"
-    },
-    {
       "name": "AURA of GLORY",
       "artist": "Ogryzek",
       "album": "AURA of GLORY",
@@ -103,16 +78,6 @@
       "popularity": 67,
       "uri": "spotify:track:6lAsYn0DdP9nGlDdrdzNig",
       "url": "https://open.spotify.com/track/6lAsYn0DdP9nGlDdrdzNig"
-    },
-    {
-      "name": "Listen To Your Heart",
-      "artist": "Through Fire",
-      "album": "All Animal",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27320bc306da63dacab20cfee56",
-      "duration": "3:35",
-      "popularity": 56,
-      "uri": "spotify:track:6NxTKEfNa5DyhOIin6VWYP",
-      "url": "https://open.spotify.com/track/6NxTKEfNa5DyhOIin6VWYP"
     },
     {
       "name": "Freestyler (Rock The Microphone)",
@@ -125,14 +90,34 @@
       "url": "https://open.spotify.com/track/5Axl2Rjg3wOC3JHju1Gess"
     },
     {
-      "name": "Letters From The Sky",
-      "artist": "Civil Twilight",
-      "album": "Civil Twilight",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2734a0191d2a20bef992fe4800d",
-      "duration": "4:35",
-      "popularity": 51,
-      "uri": "spotify:track:1g8dRVzAvmSOTfTz5m0H9K",
-      "url": "https://open.spotify.com/track/1g8dRVzAvmSOTfTz5m0H9K"
+      "name": "Hy Is",
+      "artist": "Gesinskerk Musiek",
+      "album": "Hy Is",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c2b4becb1a63b11148397723",
+      "duration": "5:09",
+      "popularity": 11,
+      "uri": "spotify:track:206y8SBYdNNWrTrLLqmaZc",
+      "url": "https://open.spotify.com/track/206y8SBYdNNWrTrLLqmaZc"
+    },
+    {
+      "name": "Ek kyk na jou",
+      "artist": "Van Pletzen, Spoegwolf",
+      "album": "Om lig te maak",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b2b136a2288a948a3559c125",
+      "duration": "2:53",
+      "popularity": 32,
+      "uri": "spotify:track:5gyd6FpRVFN6mRcMdyXnNG",
+      "url": "https://open.spotify.com/track/5gyd6FpRVFN6mRcMdyXnNG"
+    },
+    {
+      "name": "Die Wêreld Is Mal",
+      "artist": "Francois van Coke",
+      "album": "Hierdie Is Die Lewe",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c5045e9ebd7f7c14ad869b60",
+      "duration": "3:05",
+      "popularity": 38,
+      "uri": "spotify:track:28YUDcWpsEwR6BP2kNovg4",
+      "url": "https://open.spotify.com/track/28YUDcWpsEwR6BP2kNovg4"
     },
     {
       "name": "Neversleep",
@@ -145,15 +130,25 @@
       "url": "https://open.spotify.com/track/52PtkE0a8kkv0UBHUEXCNc"
     },
     {
-      "name": "Hy Is",
-      "artist": "Gesinskerk Musiek",
-      "album": "Hy Is",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c2b4becb1a63b11148397723",
-      "duration": "5:09",
-      "popularity": 9,
-      "uri": "spotify:track:206y8SBYdNNWrTrLLqmaZc",
-      "url": "https://open.spotify.com/track/206y8SBYdNNWrTrLLqmaZc"
+      "name": "What An Awesome God - Choir Version",
+      "artist": "Phil Wickham",
+      "album": "What An Awesome God",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731f2e2db8a5a5413f028162c1",
+      "duration": "3:31",
+      "popularity": 43,
+      "uri": "spotify:track:4WQdGBzrQEvgM2R7VnVSH5",
+      "url": "https://open.spotify.com/track/4WQdGBzrQEvgM2R7VnVSH5"
+    },
+    {
+      "name": "Gelukkige Lewe",
+      "artist": "Francois van Coke",
+      "album": "Die Ruimte",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735ba82225885ef42556872351",
+      "duration": "2:48",
+      "popularity": 28,
+      "uri": "spotify:track:7MeHtKV9ksyhKCaZZ4ESIz",
+      "url": "https://open.spotify.com/track/7MeHtKV9ksyhKCaZZ4ESIz"
     }
   ],
-  "lastUpdated": "2025-06-02T01:54:16.179Z"
+  "lastUpdated": "2025-06-09T01:56:15.217Z"
 }
