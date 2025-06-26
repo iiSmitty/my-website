@@ -1569,3 +1569,302 @@ body.is-touch-device .desktop-icons,
     animation: pixelateVirus 0.5s linear forwards;
     animation-play-state: paused;
 }
+
+/* ==================================
+   Coffee Stats
+   ================================== */
+
+.coffee-program-manager {
+    display: flex;
+    gap: 20px;
+    padding: 15px;
+    background-color: #c0c0c0;
+    border: 1px inset #dfdfdf;
+    min-height: 120px;
+}
+
+.coffee-icon-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 80px;
+    padding: 10px;
+}
+
+.coffee-program-icon {
+    text-align: center;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 2px;
+}
+
+.coffee-program-icon:hover {
+    background-color: #000080;
+    color: white;
+}
+
+.coffee-icon-large {
+    font-size: 48px;
+    margin-bottom: 5px;
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.3));
+}
+
+.coffee-program-label {
+    font-size: 11px;
+    font-weight: bold;
+    word-wrap: break-word;
+    max-width: 70px;
+}
+
+.coffee-details-panel {
+    flex: 1;
+    background-color: #ffffff;
+    border: 1px inset #808080;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.coffee-details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #c0c0c0;
+}
+
+.coffee-app-title {
+    font-weight: bold;
+    color: #000080;
+    font-size: 12px;
+}
+
+.coffee-version {
+    font-size: 10px;
+    color: #666;
+    font-style: italic;
+}
+
+.coffee-metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.coffee-metric-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.coffee-metric-label {
+    font-size: 10px;
+    color: #666;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.coffee-metric-value {
+    font-size: 16px;
+    font-weight: bold;
+    color: #8B4513;
+}
+
+.coffee-metric-badge {
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(to right, #FFD700, #FFA500);
+    padding: 2px 6px;
+    border-radius: 2px;
+    display: inline-block;
+    width: fit-content;
+    border: 1px outset #FFD700;
+}
+
+.coffee-progress-container {
+    margin-top: 5px;
+}
+
+.coffee-progress-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+.coffee-progress-track {
+    height: 16px;
+    background-color: #c0c0c0;
+    border: 1px inset #808080;
+    position: relative;
+    overflow: hidden;
+}
+
+.coffee-progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, #8B4513, #D2691E);
+    transition: width 0.5s ease;
+    position: relative;
+}
+
+.coffee-progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 2px,
+            rgba(255,255,255,0.1) 2px,
+            rgba(255,255,255,0.1) 4px
+    );
+}
+
+.coffee-status-line {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    color: #666;
+    margin-top: auto;
+}
+
+.coffee-status-icon {
+    font-size: 12px;
+}
+
+/* iPhone 12 Pro and similar (390px width) */
+@media screen and (max-width: 430px) {
+    .win95-box .coffee-program-manager {
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+        min-height: auto;
+        background-color: #c0c0c0;
+        border: 1px inset #dfdfdf;
+    }
+
+    .win95-box .coffee-icon-area {
+        min-width: auto;
+        padding: 15px;
+        align-self: stretch;
+        background-color: #ffffff;
+        border-bottom: 1px solid #c0c0c0;
+    }
+
+    .win95-box .coffee-icon-large {
+        font-size: 36px;
+        margin-bottom: 5px;
+    }
+
+    .win95-box .coffee-details-panel {
+        padding: 15px;
+        gap: 15px;
+        border: none;
+        background-color: #ffffff;
+    }
+
+    .win95-box .coffee-details-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid #c0c0c0;
+    }
+
+    .win95-box .coffee-app-title {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .win95-box .coffee-version {
+        font-size: 12px;
+        align-self: auto;
+        margin-top: 0;
+    }
+
+    .win95-box .coffee-metrics-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .win95-box .coffee-metric-item {
+        background-color: #f8f8f8;
+        padding: 12px;
+        border: 2px inset #dfdfdf;
+        gap: 6px;
+        text-align: center;
+    }
+
+    .win95-box .coffee-metric-label {
+        font-size: 12px;
+        color: #000080;
+        font-weight: bold;
+    }
+
+    .win95-box .coffee-metric-value {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .win95-box .coffee-metric-badge {
+        font-size: 14px;
+        padding: 4px 12px;
+        align-self: center;
+        margin: 0 auto;
+    }
+
+    .win95-box .coffee-progress-container {
+        margin-top: 15px;
+        background-color: #f8f8f8;
+        padding: 12px;
+        border: 2px inset #dfdfdf;
+    }
+
+    .win95-box .coffee-progress-header {
+        font-size: 13px;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+
+    .win95-box .coffee-progress-track {
+        height: 20px;
+        border: 2px inset #808080;
+    }
+
+    .win95-box .coffee-status-line {
+        font-size: 12px;
+        margin-top: 15px;
+        padding: 8px;
+        background-color: #f8f8f8;
+        border: 2px inset #dfdfdf;
+        border-radius: 0;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .win95-box .coffee-details-panel {
+        padding: 12px;
+    }
+
+    .win95-box .coffee-app-title {
+        font-size: 14px;
+    }
+
+    .win95-box .coffee-metric-value {
+        font-size: 20px;
+    }
+
+    .win95-box .coffee-metrics-grid {
+        gap: 12px;
+    }
+}

@@ -75,103 +75,169 @@
         <!-- === WRAPPER FOR HIDDEN CONTENT START === -->
         <div id="mainProfileContent" class="hidden-content-section">
 
-        <div class="section-header">
-            <div class="section-title">About Me</div>
-        </div>
-        <div class="win95-box section-content">
-            <p>Hello, world! I'm a software engineer based in Cape Town. I specialize in .NET Framework, and I'm passionate about creating efficient, clean code.</p>
-            <p>When I'm not coding, you can find me running on trails and tar roads, hiking, enjoying good coffee, or shooting.</p>
-            <p>Follow my running adventures on <a href="https://www.strava.com/athletes/andresmit" class="win95-link" target="_blank" rel="noopener noreferrer">Strava</a> and let's connect!</p>
-        </div>
+            <div class="section-header">
+                <div class="section-title">About Me</div>
+            </div>
+            <div class="win95-box section-content">
+                <p>Hello, world! I'm a software engineer based in Cape Town. I specialize in .NET Framework, and I'm
+                    passionate about creating efficient, clean code.</p>
+                <p>When I'm not coding, you can find me running on trails and tar roads, hiking, enjoying good coffee,
+                    or shooting.</p>
+                <p>Follow my running adventures on <a href="https://www.strava.com/athletes/andresmit"
+                                                      class="win95-link" target="_blank" rel="noopener noreferrer">Strava</a>
+                    and let's connect!</p>
+            </div>
 
-        <div class="section-header">
-            <div class="section-title">What I Do</div>
-        </div>
-        <div class="win95-box section-content">
-            <div class="program-manager">
-                <div class="program-group">
-                    <div class="program-item" onclick="showInfo('backend')">
-                        <span class="Msnp32ServerIcon_32x32"></span>
-                        <span>Backend.exe</span>
+            <div class="section-header">
+                <div class="section-title">What I Do</div>
+            </div>
+            <div class="win95-box section-content">
+                <div class="program-manager">
+                    <div class="program-group">
+                        <div class="program-item" onclick="showInfo('backend')">
+                            <span class="Msnp32ServerIcon_32x32"></span>
+                            <span>Backend.exe</span>
+                        </div>
+                        <div class="program-item" onclick="showInfo('frontend')">
+                            <span class="MspaintIcon_32x32"></span>
+                            <span>Frontend.exe</span>
+                        </div>
+                        <div class="program-item" onclick="showInfo('database')">
+                            <span class="ReaderDiskIcon_32x32"></span>
+                            <span>Database.mdb</span>
+                        </div>
+                        <div class="program-item" onclick="showInfo('architecture')">
+                            <span class="Regedit100_32x32"></span>
+                            <span>Architecture.vsd</span>
+                        </div>
+                        <div class="program-item" onclick="showInfo('optimization')">
+                            <span class="Msrating100_32x32"></span>
+                            <span>Optimize.bat</span>
+                        </div>
                     </div>
-                    <div class="program-item" onclick="showInfo('frontend')">
-                        <span class="MspaintIcon_32x32"></span>
-                        <span>Frontend.exe</span>
+                </div>
+                <div class="icon-description-separator"></div>
+                <div class="program-info" id="infoBox">
+                    Click an icon to learn more about what I'm focusing on as a graduate developer...
+                </div>
+                <div class="win95-status-mini">
+                    <span>5 items</span>
+                    <span>640K memory free</span>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <div class="section-title">My Skills</div>
+            </div>
+            <div class="win95-box section-content">
+                <table>
+                    <tr>
+                        <th>Skill</th>
+                        <th>Experience Level</th>
+                    </tr>
+                    <tr>
+                        <td>.NET Framework</td>
+                        <td><span class="skill-dots">&#9679;&#9679;&#9679;&#9675;&#9675;</span></td>
+                    </tr>
+                    <tr>
+                        <td>HTML/CSS</td>
+                        <td><span class="skill-dots">&#9679;&#9679;&#9679;&#9675;&#9675;</span></td>
+                    </tr>
+                    <tr>
+                        <td>SQL</td>
+                        <td><span class="skill-dots">&#9679;&#9679;&#9675;&#9675;&#9675;</span></td>
+                    </tr>
+                    <tr>
+                        <td>Windows 95 Nostalgia</td>
+                        <td><span class="skill-dots">&#9679;&#9679;&#9679;&#9679;&#9679;</span></td>
+                    </tr>
+                </table>
+                <p class="skills-note">* Recently graduated with CUM LAUDE and actively expanding my development
+                    skills</p>
+            </div>
+
+            <div class="section-header">
+                <div class="section-title">Contact Me</div>
+            </div>
+            <div class="win95-box section-content">
+                <p>Email: <span id="encrypted-email">************@********.***</span></p>
+                <p>Phone: <span id="encrypted-phone">(***) ***-****</span></p>
+                <div class="button-container">
+                    <button class="win95-button-large" id="decrypt-button">Decrypt Contact Info</button>
+                </div>
+                <div class="win95-decrypt-animation" id="decrypt-animation">
+                    <div class="decrypt-progress">
+                        <div class="decrypt-bar" id="decrypt-progress-bar"></div>
                     </div>
-                    <div class="program-item" onclick="showInfo('database')">
-                        <span class="ReaderDiskIcon_32x32"></span>
-                        <span>Database.mdb</span>
+                    <div class="decrypt-text" id="decrypt-text">Initializing decryption...</div>
+                </div>
+            </div>
+
+            <!-- Enhanced Coffee Stats Section -->
+            <div class="section-header">
+                <div class="section-title">Coffee Analytics</div>
+            </div>
+            <div class="win95-box section-content">
+                <div class="coffee-program-manager">
+                    <!-- Coffee Icon Area -->
+                    <div class="coffee-icon-area">
+                        <div class="coffee-program-icon">
+                            <div class="coffee-icon-large">☕</div>
+                        </div>
                     </div>
-                    <div class="program-item" onclick="showInfo('architecture')">
-                        <span class="Regedit100_32x32"></span>
-                        <span>Architecture.vsd</span>
-                    </div>
-                    <div class="program-item" onclick="showInfo('optimization')">
-                        <span class="Msrating100_32x32"></span>
-                        <span>Optimize.bat</span>
+
+                    <!-- Coffee Details Panel -->
+                    <div class="coffee-details-panel">
+                        <div class="coffee-details-header">
+                            <span class="coffee-app-title">Seattle Coffee Statistics</span>
+                            <span class="coffee-version">v1.0</span>
+                        </div>
+
+                        <div class="coffee-metrics-grid">
+                            <div class="coffee-metric-item">
+                                <div class="coffee-metric-label">Total Visits</div>
+                                <div class="coffee-metric-value" id="coffee-total-visits">137</div>
+                            </div>
+
+                            <div class="coffee-metric-item">
+                                <div class="coffee-metric-label">Estimated Cups</div>
+                                <div class="coffee-metric-value" id="coffee-estimated-cups">205</div>
+                            </div>
+
+                            <div class="coffee-metric-item">
+                                <div class="coffee-metric-label">Loyalty Status</div>
+                                <div class="coffee-metric-badge" id="coffee-loyalty-status">Gold Member</div>
+                            </div>
+
+                            <div class="coffee-metric-item">
+                                <div class="coffee-metric-label">Monthly Average</div>
+                                <div class="coffee-metric-value" id="coffee-monthly-avg">~11</div>
+                            </div>
+                        </div>
+
+                        <!-- Progress Bar -->
+                        <div class="coffee-progress-container">
+                            <div class="coffee-progress-header">
+                                <span>Next Free Coffee</span>
+                                <span id="coffee-progress-text">7/10 visits</span>
+                            </div>
+                            <div class="coffee-progress-track">
+                                <div class="coffee-progress-bar" id="coffee-progress-fill" style="width: 70%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Last Updated Info -->
+                        <div class="coffee-status-line">
+                            <span id="coffee-last-updated">Last synced: 26/06/2025</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="icon-description-separator"></div>
-            <div class="program-info" id="infoBox">
-                Click an icon to learn more about what I'm focusing on as a graduate developer...
-            </div>
-            <div class="win95-status-mini">
-                <span>5 items</span>
-                <span>640K memory free</span>
-            </div>
-        </div>
 
-        <div class="section-header">
-            <div class="section-title">My Skills</div>
-        </div>
-        <div class="win95-box section-content">
-            <table>
-                <tr>
-                    <th>Skill</th>
-                    <th>Experience Level</th>
-                </tr>
-                <tr>
-                    <td>.NET Framework</td>
-                    <td><span class="skill-dots">&#9679;&#9679;&#9679;&#9675;&#9675;</span></td>
-                </tr>
-                <tr>
-                    <td>HTML/CSS</td>
-                    <td><span class="skill-dots">&#9679;&#9679;&#9679;&#9675;&#9675;</span></td>
-                </tr>
-                <tr>
-                    <td>SQL</td>
-                    <td><span class="skill-dots">&#9679;&#9679;&#9675;&#9675;&#9675;</span></td>
-                </tr>
-                <tr>
-                    <td>Windows 95 Nostalgia</td>
-                    <td><span class="skill-dots">&#9679;&#9679;&#9679;&#9679;&#9679;</span></td>
-                </tr>
-            </table>
-            <p class="skills-note">* Recently graduated with CUM LAUDE and actively expanding my development skills</p>
-        </div>
-
-        <div class="section-header">
-            <div class="section-title">Contact Me</div>
-        </div>
-        <div class="win95-box section-content">
-            <p>Email: <span id="encrypted-email">************@********.***</span></p>
-            <p>Phone: <span id="encrypted-phone">(***) ***-****</span></p>
-            <div class="button-container">
-                <button class="win95-button-large" id="decrypt-button">Decrypt Contact Info</button>
+            <!-- Status Bar -->
+            <div class="win95-status-bar">
+                <!-- Placeholder for JavaScript component -->
             </div>
-            <div class="win95-decrypt-animation" id="decrypt-animation">
-                <div class="decrypt-progress">
-                    <div class="decrypt-bar" id="decrypt-progress-bar"></div>
-                </div>
-                <div class="decrypt-text" id="decrypt-text">Initializing decryption...</div>
-            </div>
-        </div>
-
-        <!-- Status Bar -->
-        <div class="win95-status-bar">
-            <!-- Placeholder for JavaScript component -->
-        </div>
 
         </div>
         <!-- === WRAPPER FOR HIDDEN CONTENT END === -->
@@ -179,7 +245,8 @@
 </div>
 
 <!-- My Tech Window -->
-<div class="win95-window" id="myTechWindow" style="display: none; position: fixed; top: 50px; left: 50px; z-index: 1000; width: 600px;">
+<div class="win95-window" id="myTechWindow"
+     style="display: none; position: fixed; top: 50px; left: 50px; z-index: 1000; width: 600px;">
     <!-- Windows 95 Title Bar -->
     <div class="win95-title-bar" id="myTechTitleBar">
         <div class="win95-title">
@@ -289,7 +356,8 @@
 </div>
 
 <!-- Spotify Window -->
-<div class="win95-window" id="spotifyWindow" style="display: none; position: fixed; top: 50px; left: 50px; z-index: 1000; width: 600px;">
+<div class="win95-window" id="spotifyWindow"
+     style="display: none; position: fixed; top: 50px; left: 50px; z-index: 1000; width: 600px;">
     <!-- Windows 95 Title Bar -->
     <div class="win95-title-bar" id="spotifyTitleBar">
         <div class="win95-title">
@@ -366,7 +434,8 @@
 </div>
 
 <!-- GitHub Installer Window -->
-<div class="win95-window" id="githubInstallerWindow" style="display: none; position: fixed; top: 80px; left: 120px; z-index: 1000; width: 450px; background-color: #c0c0c0; border: 2px outset #fff;">
+<div class="win95-window" id="githubInstallerWindow"
+     style="display: none; position: fixed; top: 80px; left: 120px; z-index: 1000; width: 450px; background-color: #c0c0c0; border: 2px outset #fff;">
     <!-- Windows 95 Title Bar -->
     <div class="win95-title-bar" id="githubInstallerTitleBar">
         <div class="win95-title" style="display: flex; align-items: center;">
@@ -387,23 +456,29 @@
             </div>
             <div>
                 <div style="font-weight: bold; font-size: 16px;">GitHub Repository Access Setup</div>
-                <div style="font-size: 12px; margin-top: 5px;">Please wait while the installer configures your connection...</div>
+                <div style="font-size: 12px; margin-top: 5px;">Please wait while the installer configures your
+                    connection...
+                </div>
             </div>
         </div>
 
-        <div style="font-size: 12px; height: 100px; border: 1px inset #808080; background-color: #ffffff; overflow-y: auto; padding: 5px; margin-bottom: 10px;" id="installationLog">
+        <div style="font-size: 12px; height: 100px; border: 1px inset #808080; background-color: #ffffff; overflow-y: auto; padding: 5px; margin-bottom: 10px;"
+             id="installationLog">
             <div>Welcome to the GitHub Connection Wizard</div>
         </div>
 
         <div style="margin-bottom: 20px; font-size: 12px;" id="statusText">Initializing setup...</div>
 
         <div style="border: 1px inset #808080; height: 20px; background-color: #ffffff; margin: 20px 0; position: relative;">
-            <div style="height: 100%; width: 0; background-color: #000080; transition: width 0.3s;" id="progressBar"></div>
+            <div style="height: 100%; width: 0; background-color: #000080; transition: width 0.3s;"
+                 id="progressBar"></div>
         </div>
 
         <div style="display: flex; justify-content: flex-end; margin-top: 30px;">
             <button class="win95-btn" id="cancelBtn" onclick="closeGitHubInstallerWindow()">Cancel</button>
-            <button class="win95-btn" style="margin-left: 10px;" id="nextBtn" disabled onclick="openGitHubPage()">Next ></button>
+            <button class="win95-btn" style="margin-left: 10px;" id="nextBtn" disabled onclick="openGitHubPage()">Next
+                >
+            </button>
         </div>
     </div>
 </div>
@@ -419,6 +494,7 @@
 <script defer src="js/screensaver.js"></script>
 <script defer src="js/watermark.js"></script>
 <script defer src="js/floppy-disk.js"></script>
+<script defer src="js/coffee-simple.js"></script>
 
 </body>
 </html>
