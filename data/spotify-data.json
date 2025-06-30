@@ -4,17 +4,19 @@
       "name": "Spoegwolf",
       "image": "https://i.scdn.co/image/ab6761610000e5ebb62b1c86e4333468d5dbb6e4",
       "genres": [],
-      "popularity": 50,
+      "popularity": 51,
       "uri": "spotify:artist:6o4TnAxiqaQfZMLl55NFdn",
       "url": "https://open.spotify.com/artist/6o4TnAxiqaQfZMLl55NFdn"
     },
     {
-      "name": "Die Heuwels Fantasties",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb0ed7aa77209d3edb3778fcfc",
-      "genres": [],
-      "popularity": 48,
-      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
-      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
+      "name": "Danny Bensi and Saunder Jurriaans",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb77a7369d88f96a2bb2f32540",
+      "genres": [
+        "soundtrack"
+      ],
+      "popularity": 34,
+      "uri": "spotify:artist:7fO0iCzJh7IvVEFiFYfOC2",
+      "url": "https://open.spotify.com/artist/7fO0iCzJh7IvVEFiFYfOC2"
     },
     {
       "name": "Dead by April",
@@ -28,24 +30,19 @@
     },
     {
       "name": "Francois van Coke",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebe38c2e86015bb58eb8ebfcaf",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb90df232b2eb76b109a0b87d5",
       "genres": [],
       "popularity": 45,
       "uri": "spotify:artist:7pJtnZQLPJmqzVfdIz7eFF",
       "url": "https://open.spotify.com/artist/7pJtnZQLPJmqzVfdIz7eFF"
     },
     {
-      "name": "Disciple",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb5f5263b5a85ac5fab97ab6b8",
-      "genres": [
-        "christian rock",
-        "christian alternative rock",
-        "chinese rock",
-        "christian"
-      ],
-      "popularity": 49,
-      "uri": "spotify:artist:4D9k73VomKTnVQ6ROnt8IO",
-      "url": "https://open.spotify.com/artist/4D9k73VomKTnVQ6ROnt8IO"
+      "name": "Die Heuwels Fantasties",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb4015c64f99883877333020a9",
+      "genres": [],
+      "popularity": 48,
+      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
+      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
     }
   ],
   "topTracks": [
@@ -55,7 +52,7 @@
       "album": "Mutter",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2738b2c42026277efc3e058855b",
       "duration": "4:32",
-      "popularity": 81,
+      "popularity": 82,
       "uri": "spotify:track:3gVhsZtseYtY1fMuyYq06F",
       "url": "https://open.spotify.com/track/3gVhsZtseYtY1fMuyYq06F"
     },
@@ -70,24 +67,14 @@
       "url": "https://open.spotify.com/track/28YUDcWpsEwR6BP2kNovg4"
     },
     {
-      "name": "Bitch Lasagna - Instrumental",
-      "artist": "pewdiepie, Party in Backyard",
-      "album": "Bitch Lasagna (Instrumental)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733a29debddcd6f6b1a4952414",
-      "duration": "2:14",
-      "popularity": 18,
-      "uri": "spotify:track:6fgumpsxkg0snhrDktUHX4",
-      "url": "https://open.spotify.com/track/6fgumpsxkg0snhrDktUHX4"
-    },
-    {
-      "name": "AURA of GLORY",
-      "artist": "Ogryzek",
-      "album": "AURA of GLORY",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273601e75b9ba05d8ab2c35ff89",
-      "duration": "4:00",
-      "popularity": 67,
-      "uri": "spotify:track:6lAsYn0DdP9nGlDdrdzNig",
-      "url": "https://open.spotify.com/track/6lAsYn0DdP9nGlDdrdzNig"
+      "name": "Oppieplaas",
+      "artist": "Bacchus Nel",
+      "album": "In Die Arms Van Die Nag",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2730cbb0afdf287aaae6d71bc94",
+      "duration": "5:13",
+      "popularity": 34,
+      "uri": "spotify:track:4fKgp4SRKvZOUx5MbzUffn",
+      "url": "https://open.spotify.com/track/4fKgp4SRKvZOUx5MbzUffn"
     },
     {
       "name": "PASSO BEM SOLTO - Slowed",
@@ -120,14 +107,34 @@
       "url": "https://open.spotify.com/track/4WhFJqlNSycgYlNga1IF6x"
     },
     {
-      "name": "Hoe Nou?",
-      "artist": "Die Heuwels Fantasties, Die Piesangskille, Johan Viljoen",
-      "album": "Hoe Nou?",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27355a1d0003fffe11d623334fd",
-      "duration": "2:59",
-      "popularity": 50,
-      "uri": "spotify:track:5woFmhSriTtpjYcaho6Ici",
-      "url": "https://open.spotify.com/track/5woFmhSriTtpjYcaho6Ici"
+      "name": "Obliterate",
+      "artist": "Micah Ariss, Chandler Burton",
+      "album": "Obliterate",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273fdee63a6f30f827fa22d5ad4",
+      "duration": "3:40",
+      "popularity": 61,
+      "uri": "spotify:track:69k94KPW9EKSELqRY4TH9m",
+      "url": "https://open.spotify.com/track/69k94KPW9EKSELqRY4TH9m"
+    },
+    {
+      "name": "As Ek Weet Hoe",
+      "artist": "Glaskas",
+      "album": "As Ek Weet Hoe",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273636ca126466cb18ba6a6c571",
+      "duration": "2:51",
+      "popularity": 30,
+      "uri": "spotify:track:6fSMqjzoFbtLglXIPEfUq9",
+      "url": "https://open.spotify.com/track/6fSMqjzoFbtLglXIPEfUq9"
+    },
+    {
+      "name": "Bitch Lasagna - Instrumental",
+      "artist": "pewdiepie, Party in Backyard",
+      "album": "Bitch Lasagna (Instrumental)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733a29debddcd6f6b1a4952414",
+      "duration": "2:14",
+      "popularity": 19,
+      "uri": "spotify:track:6fgumpsxkg0snhrDktUHX4",
+      "url": "https://open.spotify.com/track/6fgumpsxkg0snhrDktUHX4"
     },
     {
       "name": "Ek Lewe, Ek Belowe",
@@ -138,17 +145,7 @@
       "popularity": 31,
       "uri": "spotify:track:6k3K1MJGoHcrOO4xcajb6u",
       "url": "https://open.spotify.com/track/6k3K1MJGoHcrOO4xcajb6u"
-    },
-    {
-      "name": "You Are Loved (Don't Give Up)",
-      "artist": "Josh Groban",
-      "album": "Awake",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273e453a438858f7c0515a38663",
-      "duration": "4:48",
-      "popularity": 52,
-      "uri": "spotify:track:4ETPEEP8uDsD66ooEINjHK",
-      "url": "https://open.spotify.com/track/4ETPEEP8uDsD66ooEINjHK"
     }
   ],
-  "lastUpdated": "2025-06-23T01:58:35.081Z"
+  "lastUpdated": "2025-06-30T01:57:37.980Z"
 }
