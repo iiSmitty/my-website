@@ -14,7 +14,7 @@
       "genres": [
         "soundtrack"
       ],
-      "popularity": 34,
+      "popularity": 35,
       "uri": "spotify:artist:7fO0iCzJh7IvVEFiFYfOC2",
       "url": "https://open.spotify.com/artist/7fO0iCzJh7IvVEFiFYfOC2"
     },
@@ -32,7 +32,7 @@
       "name": "Francois van Coke",
       "image": "https://i.scdn.co/image/ab6761610000e5eb90df232b2eb76b109a0b87d5",
       "genres": [],
-      "popularity": 45,
+      "popularity": 46,
       "uri": "spotify:artist:7pJtnZQLPJmqzVfdIz7eFF",
       "url": "https://open.spotify.com/artist/7pJtnZQLPJmqzVfdIz7eFF"
     },
@@ -40,7 +40,7 @@
       "name": "Die Heuwels Fantasties",
       "image": "https://i.scdn.co/image/ab6761610000e5eb4015c64f99883877333020a9",
       "genres": [],
-      "popularity": 48,
+      "popularity": 49,
       "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
       "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
     }
@@ -57,16 +57,6 @@
       "url": "https://open.spotify.com/track/3gVhsZtseYtY1fMuyYq06F"
     },
     {
-      "name": "Die Wêreld Is Mal",
-      "artist": "Francois van Coke",
-      "album": "Hierdie Is Die Lewe",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c5045e9ebd7f7c14ad869b60",
-      "duration": "3:05",
-      "popularity": 38,
-      "uri": "spotify:track:28YUDcWpsEwR6BP2kNovg4",
-      "url": "https://open.spotify.com/track/28YUDcWpsEwR6BP2kNovg4"
-    },
-    {
       "name": "Oppieplaas",
       "artist": "Bacchus Nel",
       "album": "In Die Arms Van Die Nag",
@@ -77,34 +67,14 @@
       "url": "https://open.spotify.com/track/4fKgp4SRKvZOUx5MbzUffn"
     },
     {
-      "name": "PASSO BEM SOLTO - Slowed",
-      "artist": "ATLXS",
-      "album": "PASSO BEM SOLTO",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27336385e0fad3c87e8e8f19071",
-      "duration": "1:56",
-      "popularity": 92,
-      "uri": "spotify:track:4sTlQPMyoFMPdhAJvErBN3",
-      "url": "https://open.spotify.com/track/4sTlQPMyoFMPdhAJvErBN3"
-    },
-    {
-      "name": "Seile",
-      "artist": "Spoegwolf",
-      "album": "See",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2736377d6e584a25cbec78b78ae",
-      "duration": "3:09",
-      "popularity": 34,
-      "uri": "spotify:track:0Msd4B0Xm3BPw510C3bvI0",
-      "url": "https://open.spotify.com/track/0Msd4B0Xm3BPw510C3bvI0"
-    },
-    {
-      "name": "Dramamine",
-      "artist": "Flawed Mangoes",
-      "album": "The Unwavering Hand",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273115509c274cc6035bf56412b",
-      "duration": "3:25",
-      "popularity": 68,
-      "uri": "spotify:track:4WhFJqlNSycgYlNga1IF6x",
-      "url": "https://open.spotify.com/track/4WhFJqlNSycgYlNga1IF6x"
+      "name": "Die Wêreld Is Mal",
+      "artist": "Francois van Coke",
+      "album": "Hierdie Is Die Lewe",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c5045e9ebd7f7c14ad869b60",
+      "duration": "3:05",
+      "popularity": 39,
+      "uri": "spotify:track:28YUDcWpsEwR6BP2kNovg4",
+      "url": "https://open.spotify.com/track/28YUDcWpsEwR6BP2kNovg4"
     },
     {
       "name": "Obliterate",
@@ -112,9 +82,29 @@
       "album": "Obliterate",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273fdee63a6f30f827fa22d5ad4",
       "duration": "3:40",
-      "popularity": 61,
+      "popularity": 62,
       "uri": "spotify:track:69k94KPW9EKSELqRY4TH9m",
       "url": "https://open.spotify.com/track/69k94KPW9EKSELqRY4TH9m"
+    },
+    {
+      "name": "Seile",
+      "artist": "Spoegwolf",
+      "album": "See",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2736377d6e584a25cbec78b78ae",
+      "duration": "3:09",
+      "popularity": 35,
+      "uri": "spotify:track:0Msd4B0Xm3BPw510C3bvI0",
+      "url": "https://open.spotify.com/track/0Msd4B0Xm3BPw510C3bvI0"
+    },
+    {
+      "name": "You Are Loved (Don't Give Up)",
+      "artist": "Josh Groban",
+      "album": "Awake",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273e453a438858f7c0515a38663",
+      "duration": "4:48",
+      "popularity": 52,
+      "uri": "spotify:track:4ETPEEP8uDsD66ooEINjHK",
+      "url": "https://open.spotify.com/track/4ETPEEP8uDsD66ooEINjHK"
     },
     {
       "name": "As Ek Weet Hoe",
@@ -127,25 +117,35 @@
       "url": "https://open.spotify.com/track/6fSMqjzoFbtLglXIPEfUq9"
     },
     {
-      "name": "Bitch Lasagna - Instrumental",
-      "artist": "pewdiepie, Party in Backyard",
-      "album": "Bitch Lasagna (Instrumental)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733a29debddcd6f6b1a4952414",
-      "duration": "2:14",
-      "popularity": 19,
-      "uri": "spotify:track:6fgumpsxkg0snhrDktUHX4",
-      "url": "https://open.spotify.com/track/6fgumpsxkg0snhrDktUHX4"
+      "name": "PASSO BEM SOLTO - Slowed",
+      "artist": "ATLXS",
+      "album": "PASSO BEM SOLTO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27336385e0fad3c87e8e8f19071",
+      "duration": "1:56",
+      "popularity": 92,
+      "uri": "spotify:track:4sTlQPMyoFMPdhAJvErBN3",
+      "url": "https://open.spotify.com/track/4sTlQPMyoFMPdhAJvErBN3"
     },
     {
-      "name": "Ek Lewe, Ek Belowe",
-      "artist": "Francois van Coke, Die Heuwels Fantasties",
-      "album": "En Vriende",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2730d8d895cc98a97b3499be8eb",
-      "duration": "3:31",
-      "popularity": 31,
-      "uri": "spotify:track:6k3K1MJGoHcrOO4xcajb6u",
-      "url": "https://open.spotify.com/track/6k3K1MJGoHcrOO4xcajb6u"
+      "name": "Ek Sweer",
+      "artist": "Twee",
+      "album": "Piekniek Vir Twee",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f1e7008d65eeee22b36adf43",
+      "duration": "3:38",
+      "popularity": 51,
+      "uri": "spotify:track:6jA89tKOtMVp6cN6shxyS5",
+      "url": "https://open.spotify.com/track/6jA89tKOtMVp6cN6shxyS5"
+    },
+    {
+      "name": "Symptoms (feat. Luma)",
+      "artist": "MitiS, Luma",
+      "album": "Symptoms (feat. Luma)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735d662c24f38fa62dc2e259bd",
+      "duration": "3:46",
+      "popularity": 55,
+      "uri": "spotify:track:07sDxcYttYRG8I89MHgCEw",
+      "url": "https://open.spotify.com/track/07sDxcYttYRG8I89MHgCEw"
     }
   ],
-  "lastUpdated": "2025-06-30T01:57:37.980Z"
+  "lastUpdated": "2025-07-07T01:57:52.926Z"
 }
