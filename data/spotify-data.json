@@ -1,14 +1,6 @@
 {
   "topArtists": [
     {
-      "name": "Spoegwolf",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebb62b1c86e4333468d5dbb6e4",
-      "genres": [],
-      "popularity": 51,
-      "uri": "spotify:artist:6o4TnAxiqaQfZMLl55NFdn",
-      "url": "https://open.spotify.com/artist/6o4TnAxiqaQfZMLl55NFdn"
-    },
-    {
       "name": "Danny Bensi and Saunder Jurriaans",
       "image": "https://i.scdn.co/image/ab6761610000e5eb77a7369d88f96a2bb2f32540",
       "genres": [
@@ -19,18 +11,16 @@
       "url": "https://open.spotify.com/artist/7fO0iCzJh7IvVEFiFYfOC2"
     },
     {
-      "name": "Dead by April",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebf3770344c0b2952acd65b79f",
-      "genres": [
-        "metalcore"
-      ],
-      "popularity": 54,
-      "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
-      "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
+      "name": "Spoegwolf",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebb62b1c86e4333468d5dbb6e4",
+      "genres": [],
+      "popularity": 51,
+      "uri": "spotify:artist:6o4TnAxiqaQfZMLl55NFdn",
+      "url": "https://open.spotify.com/artist/6o4TnAxiqaQfZMLl55NFdn"
     },
     {
       "name": "Francois van Coke",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb90df232b2eb76b109a0b87d5",
+      "image": "https://i.scdn.co/image/ab6761610000e5eba3555698fba8b8d606d0ed00",
       "genres": [],
       "popularity": 46,
       "uri": "spotify:artist:7pJtnZQLPJmqzVfdIz7eFF",
@@ -43,6 +33,14 @@
       "popularity": 49,
       "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
       "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
+    },
+    {
+      "name": "Die Piesangskille",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb8283b82faf9927529a914e3b",
+      "genres": [],
+      "popularity": 47,
+      "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
+      "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
     }
   ],
   "topTracks": [
@@ -52,7 +50,7 @@
       "album": "Mutter",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2738b2c42026277efc3e058855b",
       "duration": "4:32",
-      "popularity": 82,
+      "popularity": 81,
       "uri": "spotify:track:3gVhsZtseYtY1fMuyYq06F",
       "url": "https://open.spotify.com/track/3gVhsZtseYtY1fMuyYq06F"
     },
@@ -67,44 +65,14 @@
       "url": "https://open.spotify.com/track/4fKgp4SRKvZOUx5MbzUffn"
     },
     {
-      "name": "Die Wêreld Is Mal",
-      "artist": "Francois van Coke",
-      "album": "Hierdie Is Die Lewe",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c5045e9ebd7f7c14ad869b60",
-      "duration": "3:05",
-      "popularity": 39,
-      "uri": "spotify:track:28YUDcWpsEwR6BP2kNovg4",
-      "url": "https://open.spotify.com/track/28YUDcWpsEwR6BP2kNovg4"
-    },
-    {
       "name": "Obliterate",
       "artist": "Micah Ariss, Chandler Burton",
       "album": "Obliterate",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273fdee63a6f30f827fa22d5ad4",
       "duration": "3:40",
-      "popularity": 62,
+      "popularity": 61,
       "uri": "spotify:track:69k94KPW9EKSELqRY4TH9m",
       "url": "https://open.spotify.com/track/69k94KPW9EKSELqRY4TH9m"
-    },
-    {
-      "name": "Seile",
-      "artist": "Spoegwolf",
-      "album": "See",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2736377d6e584a25cbec78b78ae",
-      "duration": "3:09",
-      "popularity": 35,
-      "uri": "spotify:track:0Msd4B0Xm3BPw510C3bvI0",
-      "url": "https://open.spotify.com/track/0Msd4B0Xm3BPw510C3bvI0"
-    },
-    {
-      "name": "You Are Loved (Don't Give Up)",
-      "artist": "Josh Groban",
-      "album": "Awake",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273e453a438858f7c0515a38663",
-      "duration": "4:48",
-      "popularity": 52,
-      "uri": "spotify:track:4ETPEEP8uDsD66ooEINjHK",
-      "url": "https://open.spotify.com/track/4ETPEEP8uDsD66ooEINjHK"
     },
     {
       "name": "As Ek Weet Hoe",
@@ -112,19 +80,9 @@
       "album": "As Ek Weet Hoe",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273636ca126466cb18ba6a6c571",
       "duration": "2:51",
-      "popularity": 30,
+      "popularity": 29,
       "uri": "spotify:track:6fSMqjzoFbtLglXIPEfUq9",
       "url": "https://open.spotify.com/track/6fSMqjzoFbtLglXIPEfUq9"
-    },
-    {
-      "name": "PASSO BEM SOLTO - Slowed",
-      "artist": "ATLXS",
-      "album": "PASSO BEM SOLTO",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27336385e0fad3c87e8e8f19071",
-      "duration": "1:56",
-      "popularity": 92,
-      "uri": "spotify:track:4sTlQPMyoFMPdhAJvErBN3",
-      "url": "https://open.spotify.com/track/4sTlQPMyoFMPdhAJvErBN3"
     },
     {
       "name": "Ek Sweer",
@@ -137,15 +95,55 @@
       "url": "https://open.spotify.com/track/6jA89tKOtMVp6cN6shxyS5"
     },
     {
+      "name": "Ages",
+      "artist": "Isolated",
+      "album": "Ages",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b4143f21d4a15262bcee83a6",
+      "duration": "3:00",
+      "popularity": 38,
+      "uri": "spotify:track:0C0hw9ZpLbfOu5evSrHyIv",
+      "url": "https://open.spotify.com/track/0C0hw9ZpLbfOu5evSrHyIv"
+    },
+    {
+      "name": "Dit Raak Beter (As Jy Ouer Raak)",
+      "artist": "Francois van Coke",
+      "album": "Hierdie Is Die Lewe",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c5045e9ebd7f7c14ad869b60",
+      "duration": "2:54",
+      "popularity": 45,
+      "uri": "spotify:track:3GAnF9T8guu1Tp0c2WkOXR",
+      "url": "https://open.spotify.com/track/3GAnF9T8guu1Tp0c2WkOXR"
+    },
+    {
+      "name": "NIE MÔRE NIE NOU",
+      "artist": "Die Heuwels Fantasties",
+      "album": "NIE MÔRE NIE NOU",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273098a92e7bd0715be26957df1",
+      "duration": "2:38",
+      "popularity": 42,
+      "uri": "spotify:track:5WdHAbIFzTyy5lsL1jAasG",
+      "url": "https://open.spotify.com/track/5WdHAbIFzTyy5lsL1jAasG"
+    },
+    {
       "name": "Symptoms (feat. Luma)",
       "artist": "MitiS, Luma",
       "album": "Symptoms (feat. Luma)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2735d662c24f38fa62dc2e259bd",
       "duration": "3:46",
-      "popularity": 55,
+      "popularity": 54,
       "uri": "spotify:track:07sDxcYttYRG8I89MHgCEw",
       "url": "https://open.spotify.com/track/07sDxcYttYRG8I89MHgCEw"
+    },
+    {
+      "name": "Seile",
+      "artist": "Spoegwolf",
+      "album": "See",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2736377d6e584a25cbec78b78ae",
+      "duration": "3:09",
+      "popularity": 34,
+      "uri": "spotify:track:0Msd4B0Xm3BPw510C3bvI0",
+      "url": "https://open.spotify.com/track/0Msd4B0Xm3BPw510C3bvI0"
     }
   ],
-  "lastUpdated": "2025-07-07T01:57:52.926Z"
+  "lastUpdated": "2025-07-14T02:01:28.506Z"
 }
