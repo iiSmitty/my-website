@@ -1,6 +1,17 @@
 {
   "topArtists": [
     {
+      "name": "Revelation Enterprises",
+      "image": "https://i.scdn.co/image/ab67616d0000b273e60bd8bfb9f8177aad0f3ba3",
+      "genres": [
+        "worship",
+        "gospel"
+      ],
+      "popularity": 20,
+      "uri": "spotify:artist:2xOUBmAH3Ob67sCRITrfiy",
+      "url": "https://open.spotify.com/artist/2xOUBmAH3Ob67sCRITrfiy"
+    },
+    {
       "name": "Danny Bensi and Saunder Jurriaans",
       "image": "https://i.scdn.co/image/ab6761610000e5eb77a7369d88f96a2bb2f32540",
       "genres": [
@@ -11,98 +22,47 @@
       "url": "https://open.spotify.com/artist/7fO0iCzJh7IvVEFiFYfOC2"
     },
     {
-      "name": "Spoegwolf",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebb62b1c86e4333468d5dbb6e4",
-      "genres": [],
-      "popularity": 51,
-      "uri": "spotify:artist:6o4TnAxiqaQfZMLl55NFdn",
-      "url": "https://open.spotify.com/artist/6o4TnAxiqaQfZMLl55NFdn"
+      "name": "Linkin Park",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
+      "genres": [
+        "nu metal",
+        "rap metal",
+        "rock",
+        "alternative metal"
+      ],
+      "popularity": 92,
+      "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
+      "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
     {
-      "name": "Francois van Coke",
-      "image": "https://i.scdn.co/image/ab6761610000e5eba3555698fba8b8d606d0ed00",
-      "genres": [],
-      "popularity": 46,
-      "uri": "spotify:artist:7pJtnZQLPJmqzVfdIz7eFF",
-      "url": "https://open.spotify.com/artist/7pJtnZQLPJmqzVfdIz7eFF"
+      "name": "Dead by April",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebf3770344c0b2952acd65b79f",
+      "genres": [
+        "metalcore"
+      ],
+      "popularity": 54,
+      "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
+      "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
     },
     {
-      "name": "Die Heuwels Fantasties",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb4015c64f99883877333020a9",
+      "name": "Glaskas",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb0ec7fef9f8fe50143e7a04db",
       "genres": [],
-      "popularity": 49,
-      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
-      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
-    },
-    {
-      "name": "Die Piesangskille",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb8283b82faf9927529a914e3b",
-      "genres": [],
-      "popularity": 47,
-      "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
-      "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
+      "popularity": 31,
+      "uri": "spotify:artist:3mbYAsXro0k8Rvi9GrMPPn",
+      "url": "https://open.spotify.com/artist/3mbYAsXro0k8Rvi9GrMPPn"
     }
   ],
   "topTracks": [
-    {
-      "name": "Sonne",
-      "artist": "Rammstein",
-      "album": "Mutter",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738b2c42026277efc3e058855b",
-      "duration": "4:32",
-      "popularity": 81,
-      "uri": "spotify:track:3gVhsZtseYtY1fMuyYq06F",
-      "url": "https://open.spotify.com/track/3gVhsZtseYtY1fMuyYq06F"
-    },
     {
       "name": "Oppieplaas",
       "artist": "Bacchus Nel",
       "album": "In Die Arms Van Die Nag",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2730cbb0afdf287aaae6d71bc94",
       "duration": "5:13",
-      "popularity": 34,
+      "popularity": 33,
       "uri": "spotify:track:4fKgp4SRKvZOUx5MbzUffn",
       "url": "https://open.spotify.com/track/4fKgp4SRKvZOUx5MbzUffn"
-    },
-    {
-      "name": "Obliterate",
-      "artist": "Micah Ariss, Chandler Burton",
-      "album": "Obliterate",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273fdee63a6f30f827fa22d5ad4",
-      "duration": "3:40",
-      "popularity": 61,
-      "uri": "spotify:track:69k94KPW9EKSELqRY4TH9m",
-      "url": "https://open.spotify.com/track/69k94KPW9EKSELqRY4TH9m"
-    },
-    {
-      "name": "As Ek Weet Hoe",
-      "artist": "Glaskas",
-      "album": "As Ek Weet Hoe",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273636ca126466cb18ba6a6c571",
-      "duration": "2:51",
-      "popularity": 29,
-      "uri": "spotify:track:6fSMqjzoFbtLglXIPEfUq9",
-      "url": "https://open.spotify.com/track/6fSMqjzoFbtLglXIPEfUq9"
-    },
-    {
-      "name": "Ek Sweer",
-      "artist": "Twee",
-      "album": "Piekniek Vir Twee",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f1e7008d65eeee22b36adf43",
-      "duration": "3:38",
-      "popularity": 51,
-      "uri": "spotify:track:6jA89tKOtMVp6cN6shxyS5",
-      "url": "https://open.spotify.com/track/6jA89tKOtMVp6cN6shxyS5"
-    },
-    {
-      "name": "Ages",
-      "artist": "Isolated",
-      "album": "Ages",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b4143f21d4a15262bcee83a6",
-      "duration": "3:00",
-      "popularity": 38,
-      "uri": "spotify:track:0C0hw9ZpLbfOu5evSrHyIv",
-      "url": "https://open.spotify.com/track/0C0hw9ZpLbfOu5evSrHyIv"
     },
     {
       "name": "Dit Raak Beter (As Jy Ouer Raak)",
@@ -115,35 +75,85 @@
       "url": "https://open.spotify.com/track/3GAnF9T8guu1Tp0c2WkOXR"
     },
     {
-      "name": "NIE MÔRE NIE NOU",
-      "artist": "Die Heuwels Fantasties",
-      "album": "NIE MÔRE NIE NOU",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273098a92e7bd0715be26957df1",
-      "duration": "2:38",
-      "popularity": 42,
-      "uri": "spotify:track:5WdHAbIFzTyy5lsL1jAasG",
-      "url": "https://open.spotify.com/track/5WdHAbIFzTyy5lsL1jAasG"
+      "name": "Ages",
+      "artist": "Isolated",
+      "album": "Ages",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b4143f21d4a15262bcee83a6",
+      "duration": "3:00",
+      "popularity": 38,
+      "uri": "spotify:track:0C0hw9ZpLbfOu5evSrHyIv",
+      "url": "https://open.spotify.com/track/0C0hw9ZpLbfOu5evSrHyIv"
     },
     {
-      "name": "Symptoms (feat. Luma)",
-      "artist": "MitiS, Luma",
-      "album": "Symptoms (feat. Luma)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735d662c24f38fa62dc2e259bd",
-      "duration": "3:46",
-      "popularity": 54,
-      "uri": "spotify:track:07sDxcYttYRG8I89MHgCEw",
-      "url": "https://open.spotify.com/track/07sDxcYttYRG8I89MHgCEw"
+      "name": "Ek Sweer",
+      "artist": "Twee",
+      "album": "Piekniek Vir Twee",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f1e7008d65eeee22b36adf43",
+      "duration": "3:38",
+      "popularity": 51,
+      "uri": "spotify:track:6jA89tKOtMVp6cN6shxyS5",
+      "url": "https://open.spotify.com/track/6jA89tKOtMVp6cN6shxyS5"
     },
     {
-      "name": "Seile",
-      "artist": "Spoegwolf",
-      "album": "See",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2736377d6e584a25cbec78b78ae",
-      "duration": "3:09",
-      "popularity": 34,
-      "uri": "spotify:track:0Msd4B0Xm3BPw510C3bvI0",
-      "url": "https://open.spotify.com/track/0Msd4B0Xm3BPw510C3bvI0"
+      "name": "Daar Is Meer",
+      "artist": "Revelation Enterprises, Doxa Deo, Arno Van Wyk",
+      "album": "Tot In Ewigheid",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273e60bd8bfb9f8177aad0f3ba3",
+      "duration": "3:40",
+      "popularity": 14,
+      "uri": "spotify:track:3cvAY2gwM4NXSUlpJRR9Wb",
+      "url": "https://open.spotify.com/track/3cvAY2gwM4NXSUlpJRR9Wb"
+    },
+    {
+      "name": "Obliterate",
+      "artist": "Micah Ariss, Chandler Burton",
+      "album": "Obliterate",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273fdee63a6f30f827fa22d5ad4",
+      "duration": "3:40",
+      "popularity": 61,
+      "uri": "spotify:track:69k94KPW9EKSELqRY4TH9m",
+      "url": "https://open.spotify.com/track/69k94KPW9EKSELqRY4TH9m"
+    },
+    {
+      "name": "Ek Sal Sing",
+      "artist": "Revelation Enterprises, Doxa Deo, Lean Buys",
+      "album": "Tot In Ewigheid",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273e60bd8bfb9f8177aad0f3ba3",
+      "duration": "3:55",
+      "popularity": 20,
+      "uri": "spotify:track:5Kd2oE7buQZP1qAh4fgsWZ",
+      "url": "https://open.spotify.com/track/5Kd2oE7buQZP1qAh4fgsWZ"
+    },
+    {
+      "name": "Sing En Sing",
+      "artist": "Revelation Enterprises, Doxa Deo, Arno Van Wyk",
+      "album": "Tot In Ewigheid",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273e60bd8bfb9f8177aad0f3ba3",
+      "duration": "3:44",
+      "popularity": 17,
+      "uri": "spotify:track:0CT1YVJ5zYU7P2qVmKLeGe",
+      "url": "https://open.spotify.com/track/0CT1YVJ5zYU7P2qVmKLeGe"
+    },
+    {
+      "name": "Oorweldig",
+      "artist": "Revelation Enterprises, Doxa Deo, Cyann Asher",
+      "album": "Tot In Ewigheid",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273e60bd8bfb9f8177aad0f3ba3",
+      "duration": "5:02",
+      "popularity": 9,
+      "uri": "spotify:track:5QqvysZsxV7FODEQQvJ0I6",
+      "url": "https://open.spotify.com/track/5QqvysZsxV7FODEQQvJ0I6"
+    },
+    {
+      "name": "Vlekkeloos",
+      "artist": "Revelation Enterprises, Doxa Deo, Petrich Brits",
+      "album": "Tot In Ewigheid",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273e60bd8bfb9f8177aad0f3ba3",
+      "duration": "3:35",
+      "popularity": 12,
+      "uri": "spotify:track:6WqlUX8Dj8ifsM4nVp9N5x",
+      "url": "https://open.spotify.com/track/6WqlUX8Dj8ifsM4nVp9N5x"
     }
   ],
-  "lastUpdated": "2025-07-14T02:01:28.506Z"
+  "lastUpdated": "2025-07-21T02:04:53.695Z"
 }
