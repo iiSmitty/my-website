@@ -12,22 +12,20 @@
       "url": "https://open.spotify.com/artist/2xOUBmAH3Ob67sCRITrfiy"
     },
     {
-      "name": "Dead by April",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebf3770344c0b2952acd65b79f",
-      "genres": [
-        "metalcore"
-      ],
-      "popularity": 54,
-      "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
-      "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
-    },
-    {
       "name": "Glaskas",
       "image": "https://i.scdn.co/image/ab6761610000e5eb0ec7fef9f8fe50143e7a04db",
       "genres": [],
       "popularity": 31,
       "uri": "spotify:artist:3mbYAsXro0k8Rvi9GrMPPn",
       "url": "https://open.spotify.com/artist/3mbYAsXro0k8Rvi9GrMPPn"
+    },
+    {
+      "name": "Francois van Coke",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb880d0210e214fd6763d82fb2",
+      "genres": [],
+      "popularity": 45,
+      "uri": "spotify:artist:7pJtnZQLPJmqzVfdIz7eFF",
+      "url": "https://open.spotify.com/artist/7pJtnZQLPJmqzVfdIz7eFF"
     },
     {
       "name": "Die Heuwels Fantasties",
@@ -38,29 +36,36 @@
       "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
     },
     {
-      "name": "Linkin Park",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
+      "name": "Marshmello",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb3b2498dc8a8c6eceed0a2db3",
       "genres": [
-        "nu metal",
-        "rap metal",
-        "rock",
-        "alternative metal"
+        "edm"
       ],
-      "popularity": 92,
-      "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
-      "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
+      "popularity": 84,
+      "uri": "spotify:artist:64KEffDW9EtZ1y2vBYgq8T",
+      "url": "https://open.spotify.com/artist/64KEffDW9EtZ1y2vBYgq8T"
     }
   ],
   "topTracks": [
     {
-      "name": "Dit Raak Beter (As Jy Ouer Raak)",
-      "artist": "Francois van Coke",
-      "album": "Hierdie Is Die Lewe",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c5045e9ebd7f7c14ad869b60",
-      "duration": "2:54",
-      "popularity": 45,
-      "uri": "spotify:track:3GAnF9T8guu1Tp0c2WkOXR",
-      "url": "https://open.spotify.com/track/3GAnF9T8guu1Tp0c2WkOXR"
+      "name": "Ages",
+      "artist": "Isolated",
+      "album": "Ages",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b4143f21d4a15262bcee83a6",
+      "duration": "3:00",
+      "popularity": 35,
+      "uri": "spotify:track:0C0hw9ZpLbfOu5evSrHyIv",
+      "url": "https://open.spotify.com/track/0C0hw9ZpLbfOu5evSrHyIv"
+    },
+    {
+      "name": "NIE MÔRE NIE NOU",
+      "artist": "Die Heuwels Fantasties",
+      "album": "NIE MÔRE NIE NOU",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273098a92e7bd0715be26957df1",
+      "duration": "2:38",
+      "popularity": 44,
+      "uri": "spotify:track:5WdHAbIFzTyy5lsL1jAasG",
+      "url": "https://open.spotify.com/track/5WdHAbIFzTyy5lsL1jAasG"
     },
     {
       "name": "Ek Sal Sing",
@@ -68,19 +73,9 @@
       "album": "Tot In Ewigheid",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273e60bd8bfb9f8177aad0f3ba3",
       "duration": "3:55",
-      "popularity": 20,
+      "popularity": 19,
       "uri": "spotify:track:5Kd2oE7buQZP1qAh4fgsWZ",
       "url": "https://open.spotify.com/track/5Kd2oE7buQZP1qAh4fgsWZ"
-    },
-    {
-      "name": "Ages",
-      "artist": "Isolated",
-      "album": "Ages",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b4143f21d4a15262bcee83a6",
-      "duration": "3:00",
-      "popularity": 37,
-      "uri": "spotify:track:0C0hw9ZpLbfOu5evSrHyIv",
-      "url": "https://open.spotify.com/track/0C0hw9ZpLbfOu5evSrHyIv"
     },
     {
       "name": "Sing En Sing",
@@ -88,7 +83,7 @@
       "album": "Tot In Ewigheid",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273e60bd8bfb9f8177aad0f3ba3",
       "duration": "3:44",
-      "popularity": 18,
+      "popularity": 17,
       "uri": "spotify:track:0CT1YVJ5zYU7P2qVmKLeGe",
       "url": "https://open.spotify.com/track/0CT1YVJ5zYU7P2qVmKLeGe"
     },
@@ -98,7 +93,7 @@
       "album": "Tot In Ewigheid",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273e60bd8bfb9f8177aad0f3ba3",
       "duration": "3:40",
-      "popularity": 14,
+      "popularity": 13,
       "uri": "spotify:track:3cvAY2gwM4NXSUlpJRR9Wb",
       "url": "https://open.spotify.com/track/3cvAY2gwM4NXSUlpJRR9Wb"
     },
@@ -108,7 +103,7 @@
       "album": "Tot In Ewigheid",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273e60bd8bfb9f8177aad0f3ba3",
       "duration": "5:02",
-      "popularity": 10,
+      "popularity": 9,
       "uri": "spotify:track:5QqvysZsxV7FODEQQvJ0I6",
       "url": "https://open.spotify.com/track/5QqvysZsxV7FODEQQvJ0I6"
     },
@@ -123,22 +118,12 @@
       "url": "https://open.spotify.com/track/714H6TbNytORzkNERuI5R5"
     },
     {
-      "name": "Ek Sweer",
-      "artist": "Twee",
-      "album": "Piekniek Vir Twee",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f1e7008d65eeee22b36adf43",
-      "duration": "3:38",
-      "popularity": 50,
-      "uri": "spotify:track:6jA89tKOtMVp6cN6shxyS5",
-      "url": "https://open.spotify.com/track/6jA89tKOtMVp6cN6shxyS5"
-    },
-    {
       "name": "My Vader",
       "artist": "Revelation Enterprises, Doxa Deo, Reinhardt Smit",
       "album": "Tot In Ewigheid",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273e60bd8bfb9f8177aad0f3ba3",
       "duration": "4:17",
-      "popularity": 13,
+      "popularity": 12,
       "uri": "spotify:track:2g5STxcnjyjVyFgquiLwJ0",
       "url": "https://open.spotify.com/track/2g5STxcnjyjVyFgquiLwJ0"
     },
@@ -151,7 +136,17 @@
       "popularity": 23,
       "uri": "spotify:track:4PpVBaGwY1XAxbd89r72S6",
       "url": "https://open.spotify.com/track/4PpVBaGwY1XAxbd89r72S6"
+    },
+    {
+      "name": "U Is Vir My",
+      "artist": "Revelation Enterprises, Doxa Deo, Eugene Lombard",
+      "album": "Tot In Ewigheid",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273e60bd8bfb9f8177aad0f3ba3",
+      "duration": "4:00",
+      "popularity": 16,
+      "uri": "spotify:track:4yujaLdkjf4Cqcp4fi0OhZ",
+      "url": "https://open.spotify.com/track/4yujaLdkjf4Cqcp4fi0OhZ"
     }
   ],
-  "lastUpdated": "2025-07-28T02:06:03.935Z"
+  "lastUpdated": "2025-08-04T02:10:19.138Z"
 }
