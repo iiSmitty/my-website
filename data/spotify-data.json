@@ -9,17 +9,6 @@
       "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
     },
     {
-      "name": "Revelation Enterprises",
-      "image": "https://i.scdn.co/image/ab67616d0000b273e60bd8bfb9f8177aad0f3ba3",
-      "genres": [
-        "worship",
-        "gospel"
-      ],
-      "popularity": 21,
-      "uri": "spotify:artist:2xOUBmAH3Ob67sCRITrfiy",
-      "url": "https://open.spotify.com/artist/2xOUBmAH3Ob67sCRITrfiy"
-    },
-    {
       "name": "Linkin Park",
       "image": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
       "genres": [
@@ -33,25 +22,46 @@
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
     {
-      "name": "Marshmello",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb3b2498dc8a8c6eceed0a2db3",
-      "genres": [
-        "edm"
-      ],
-      "popularity": 85,
-      "uri": "spotify:artist:64KEffDW9EtZ1y2vBYgq8T",
-      "url": "https://open.spotify.com/artist/64KEffDW9EtZ1y2vBYgq8T"
-    },
-    {
       "name": "Die Piesangskille",
       "image": "https://i.scdn.co/image/ab6761610000e5eb8283b82faf9927529a914e3b",
       "genres": [],
       "popularity": 47,
       "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
       "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
+    },
+    {
+      "name": "The Chainsmokers",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb4567279fac84a0375c3d819b",
+      "genres": [],
+      "popularity": 84,
+      "uri": "spotify:artist:69GGBxA162lTqCwzJG5jLp",
+      "url": "https://open.spotify.com/artist/69GGBxA162lTqCwzJG5jLp"
+    },
+    {
+      "name": "The Midnight",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebbeb65e1c821ecd888cf5e115",
+      "genres": [
+        "synthwave",
+        "vaporwave",
+        "synthpop",
+        "chillwave"
+      ],
+      "popularity": 62,
+      "uri": "spotify:artist:2NFrAuh8RQdQoS7iYFbckw",
+      "url": "https://open.spotify.com/artist/2NFrAuh8RQdQoS7iYFbckw"
     }
   ],
   "topTracks": [
+    {
+      "name": "Cry Me A River",
+      "artist": "3 Are Legend, Timbaland, W&W",
+      "album": "Cry Me A River",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735f2d89408addae6b3eb9cc1f",
+      "duration": "2:29",
+      "popularity": 60,
+      "uri": "spotify:track:41Z2O7ffAHWt6itnVpNuPi",
+      "url": "https://open.spotify.com/track/41Z2O7ffAHWt6itnVpNuPi"
+    },
     {
       "name": "Save The World",
       "artist": "Swedish House Mafia",
@@ -68,29 +78,29 @@
       "album": "Punk Goes Pop, Vol. 5",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2739e2763f238cfb913d21a2d69",
       "duration": "3:25",
-      "popularity": 62,
+      "popularity": 61,
       "uri": "spotify:track:6JBX1drGsMrTE8JrAYYoou",
       "url": "https://open.spotify.com/track/6JBX1drGsMrTE8JrAYYoou"
     },
     {
-      "name": "Tear Down The Idols",
-      "artist": "Avery Pkwy",
-      "album": "Fear Has Lost / Tear Down The Idols (Double Release)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27308f3a7c0ae4b43806f7db7e1",
-      "duration": "3:37",
-      "popularity": 33,
-      "uri": "spotify:track:2A0jkeSf63gTwthKy4XiZb",
-      "url": "https://open.spotify.com/track/2A0jkeSf63gTwthKy4XiZb"
-    },
-    {
       "name": "Kill Me Fast",
       "artist": "Three Days Grace",
-      "album": "Kill Me Fast",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c87d610074b8fc4d227394a6",
+      "album": "Alienation",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c09a186638a7dc5de2eb0b56",
       "duration": "3:17",
-      "popularity": 72,
-      "uri": "spotify:track:7C7riddHoIPSCW8rhwFSYc",
-      "url": "https://open.spotify.com/track/7C7riddHoIPSCW8rhwFSYc"
+      "popularity": 52,
+      "uri": "spotify:track:2CNqbrPKODRQxE8gCkHqEN",
+      "url": "https://open.spotify.com/track/2CNqbrPKODRQxE8gCkHqEN"
+    },
+    {
+      "name": "Tung Tung Tung Sahur (Italian Brainrot)",
+      "artist": "W&W",
+      "album": "Tung Tung Tung Sahur (Italian Brainrot)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733f2d4ba2412ee28b4cd68042",
+      "duration": "2:06",
+      "popularity": 46,
+      "uri": "spotify:track:5ES28tZBmoZyYCMtdU3eND",
+      "url": "https://open.spotify.com/track/5ES28tZBmoZyYCMtdU3eND"
     },
     {
       "name": "Reunion of Friends",
@@ -103,55 +113,45 @@
       "url": "https://open.spotify.com/track/0rpSIjKSmZ2SFO6vmLJpXl"
     },
     {
-      "name": "I'm With You",
-      "artist": "Keith Wallen",
-      "album": "I'm With You",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2732275a80678e06387bf08412d",
-      "duration": "3:44",
-      "popularity": 42,
-      "uri": "spotify:track:1YCnNYxSI6GsrTy5zy8wzN",
-      "url": "https://open.spotify.com/track/1YCnNYxSI6GsrTy5zy8wzN"
-    },
-    {
       "name": "NIE MÔRE NIE NOU",
       "artist": "Die Heuwels Fantasties",
       "album": "NIE MÔRE NIE NOU",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273098a92e7bd0715be26957df1",
       "duration": "2:38",
-      "popularity": 43,
+      "popularity": 42,
       "uri": "spotify:track:5WdHAbIFzTyy5lsL1jAasG",
       "url": "https://open.spotify.com/track/5WdHAbIFzTyy5lsL1jAasG"
     },
     {
-      "name": "Am I Broken",
-      "artist": "Behold the Beloved, Jon Micah Sumrall",
-      "album": "Harsh Realities",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735e7e91227b06da702927a7fe",
-      "duration": "4:38",
-      "popularity": 27,
-      "uri": "spotify:track:18gd4AMKJFGyYvg5meMRmv",
-      "url": "https://open.spotify.com/track/18gd4AMKJFGyYvg5meMRmv"
+      "name": "Ek Sweer",
+      "artist": "Twee",
+      "album": "Piekniek Vir Twee",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f1e7008d65eeee22b36adf43",
+      "duration": "3:38",
+      "popularity": 48,
+      "uri": "spotify:track:6jA89tKOtMVp6cN6shxyS5",
+      "url": "https://open.spotify.com/track/6jA89tKOtMVp6cN6shxyS5"
     },
     {
-      "name": "Sonne",
-      "artist": "Rammstein",
-      "album": "Mutter",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738b2c42026277efc3e058855b",
-      "duration": "4:32",
-      "popularity": 78,
-      "uri": "spotify:track:3gVhsZtseYtY1fMuyYq06F",
-      "url": "https://open.spotify.com/track/3gVhsZtseYtY1fMuyYq06F"
+      "name": "GOD'S GOT MY BACK",
+      "artist": "Forrest Frank",
+      "album": "GOD'S GOT MY BACK",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273800cc1c1f9d073959ae38f13",
+      "duration": "2:38",
+      "popularity": 73,
+      "uri": "spotify:track:08tPPfrrG7Hx0cWue5kk1y",
+      "url": "https://open.spotify.com/track/08tPPfrrG7Hx0cWue5kk1y"
     },
     {
-      "name": "Ages",
-      "artist": "Isolated",
-      "album": "Ages",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b4143f21d4a15262bcee83a6",
-      "duration": "3:00",
-      "popularity": 36,
-      "uri": "spotify:track:0C0hw9ZpLbfOu5evSrHyIv",
-      "url": "https://open.spotify.com/track/0C0hw9ZpLbfOu5evSrHyIv"
+      "name": "The Great Escape",
+      "artist": "BOYS LIKE GIRLS",
+      "album": "Boys Like Girls",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739d5d8ac73325fec119eecfb3",
+      "duration": "3:26",
+      "popularity": 66,
+      "uri": "spotify:track:56Tl3UgyZTqfZtvFNS31wm",
+      "url": "https://open.spotify.com/track/56Tl3UgyZTqfZtvFNS31wm"
     }
   ],
-  "lastUpdated": "2025-08-18T02:00:22.581Z"
+  "lastUpdated": "2025-08-25T01:49:51.451Z"
 }
