@@ -1,40 +1,17 @@
 {
   "topArtists": [
     {
-      "name": "Spoegwolf",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebb62b1c86e4333468d5dbb6e4",
-      "genres": [],
-      "popularity": 51,
-      "uri": "spotify:artist:6o4TnAxiqaQfZMLl55NFdn",
-      "url": "https://open.spotify.com/artist/6o4TnAxiqaQfZMLl55NFdn"
-    },
-    {
-      "name": "Danny Bensi and Saunder Jurriaans",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb77a7369d88f96a2bb2f32540",
+      "name": "Linkin Park",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
       "genres": [
-        "soundtrack"
+        "nu metal",
+        "rap metal",
+        "rock",
+        "alternative metal"
       ],
-      "popularity": 35,
-      "uri": "spotify:artist:7fO0iCzJh7IvVEFiFYfOC2",
-      "url": "https://open.spotify.com/artist/7fO0iCzJh7IvVEFiFYfOC2"
-    },
-    {
-      "name": "Dead by April",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebf3770344c0b2952acd65b79f",
-      "genres": [
-        "metalcore"
-      ],
-      "popularity": 54,
-      "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
-      "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
-    },
-    {
-      "name": "Francois van Coke",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb90df232b2eb76b109a0b87d5",
-      "genres": [],
-      "popularity": 46,
-      "uri": "spotify:artist:7pJtnZQLPJmqzVfdIz7eFF",
-      "url": "https://open.spotify.com/artist/7pJtnZQLPJmqzVfdIz7eFF"
+      "popularity": 91,
+      "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
+      "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
     {
       "name": "Die Heuwels Fantasties",
@@ -43,109 +20,138 @@
       "popularity": 49,
       "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
       "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
+    },
+    {
+      "name": "Die Piesangskille",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb8283b82faf9927529a914e3b",
+      "genres": [],
+      "popularity": 46,
+      "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
+      "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
+    },
+    {
+      "name": "The Midnight",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebbeb65e1c821ecd888cf5e115",
+      "genres": [
+        "synthwave",
+        "vaporwave",
+        "synthpop",
+        "chillwave"
+      ],
+      "popularity": 62,
+      "uri": "spotify:artist:2NFrAuh8RQdQoS7iYFbckw",
+      "url": "https://open.spotify.com/artist/2NFrAuh8RQdQoS7iYFbckw"
+    },
+    {
+      "name": "The Chainsmokers",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb4567279fac84a0375c3d819b",
+      "genres": [],
+      "popularity": 84,
+      "uri": "spotify:artist:69GGBxA162lTqCwzJG5jLp",
+      "url": "https://open.spotify.com/artist/69GGBxA162lTqCwzJG5jLp"
     }
   ],
   "topTracks": [
     {
-      "name": "Sonne",
-      "artist": "Rammstein",
-      "album": "Mutter",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738b2c42026277efc3e058855b",
-      "duration": "4:32",
-      "popularity": 82,
-      "uri": "spotify:track:3gVhsZtseYtY1fMuyYq06F",
-      "url": "https://open.spotify.com/track/3gVhsZtseYtY1fMuyYq06F"
+      "name": "GOD'S GOT MY BACK",
+      "artist": "Forrest Frank",
+      "album": "GOD'S GOT MY BACK",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273800cc1c1f9d073959ae38f13",
+      "duration": "2:38",
+      "popularity": 72,
+      "uri": "spotify:track:08tPPfrrG7Hx0cWue5kk1y",
+      "url": "https://open.spotify.com/track/08tPPfrrG7Hx0cWue5kk1y"
     },
     {
-      "name": "Oppieplaas",
-      "artist": "Bacchus Nel",
-      "album": "In Die Arms Van Die Nag",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2730cbb0afdf287aaae6d71bc94",
-      "duration": "5:13",
-      "popularity": 34,
-      "uri": "spotify:track:4fKgp4SRKvZOUx5MbzUffn",
-      "url": "https://open.spotify.com/track/4fKgp4SRKvZOUx5MbzUffn"
-    },
-    {
-      "name": "Die Wêreld Is Mal",
-      "artist": "Francois van Coke",
-      "album": "Hierdie Is Die Lewe",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c5045e9ebd7f7c14ad869b60",
-      "duration": "3:05",
-      "popularity": 39,
-      "uri": "spotify:track:28YUDcWpsEwR6BP2kNovg4",
-      "url": "https://open.spotify.com/track/28YUDcWpsEwR6BP2kNovg4"
-    },
-    {
-      "name": "Obliterate",
-      "artist": "Micah Ariss, Chandler Burton",
-      "album": "Obliterate",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273fdee63a6f30f827fa22d5ad4",
-      "duration": "3:40",
+      "name": "Cry Me A River",
+      "artist": "3 Are Legend, Timbaland, W&W",
+      "album": "Cry Me A River",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735f2d89408addae6b3eb9cc1f",
+      "duration": "2:29",
       "popularity": 62,
-      "uri": "spotify:track:69k94KPW9EKSELqRY4TH9m",
-      "url": "https://open.spotify.com/track/69k94KPW9EKSELqRY4TH9m"
+      "uri": "spotify:track:41Z2O7ffAHWt6itnVpNuPi",
+      "url": "https://open.spotify.com/track/41Z2O7ffAHWt6itnVpNuPi"
     },
     {
-      "name": "Seile",
-      "artist": "Spoegwolf",
-      "album": "See",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2736377d6e584a25cbec78b78ae",
-      "duration": "3:09",
-      "popularity": 35,
-      "uri": "spotify:track:0Msd4B0Xm3BPw510C3bvI0",
-      "url": "https://open.spotify.com/track/0Msd4B0Xm3BPw510C3bvI0"
-    },
-    {
-      "name": "You Are Loved (Don't Give Up)",
-      "artist": "Josh Groban",
-      "album": "Awake",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273e453a438858f7c0515a38663",
-      "duration": "4:48",
-      "popularity": 52,
-      "uri": "spotify:track:4ETPEEP8uDsD66ooEINjHK",
-      "url": "https://open.spotify.com/track/4ETPEEP8uDsD66ooEINjHK"
-    },
-    {
-      "name": "As Ek Weet Hoe",
-      "artist": "Glaskas",
-      "album": "As Ek Weet Hoe",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273636ca126466cb18ba6a6c571",
-      "duration": "2:51",
+      "name": "Save The World",
+      "artist": "Swedish House Mafia",
+      "album": "Until Now",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273544023aa98872d4deb347465",
+      "duration": "3:33",
       "popularity": 30,
-      "uri": "spotify:track:6fSMqjzoFbtLglXIPEfUq9",
-      "url": "https://open.spotify.com/track/6fSMqjzoFbtLglXIPEfUq9"
+      "uri": "spotify:track:2hIwUSQhBcBiw7hwGMfChM",
+      "url": "https://open.spotify.com/track/2hIwUSQhBcBiw7hwGMfChM"
     },
     {
-      "name": "PASSO BEM SOLTO - Slowed",
-      "artist": "ATLXS",
-      "album": "PASSO BEM SOLTO",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27336385e0fad3c87e8e8f19071",
-      "duration": "1:56",
-      "popularity": 92,
-      "uri": "spotify:track:4sTlQPMyoFMPdhAJvErBN3",
-      "url": "https://open.spotify.com/track/4sTlQPMyoFMPdhAJvErBN3"
+      "name": "Tung Tung Tung Sahur (Italian Brainrot)",
+      "artist": "W&W",
+      "album": "Tung Tung Tung Sahur (Italian Brainrot)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733f2d4ba2412ee28b4cd68042",
+      "duration": "2:06",
+      "popularity": 54,
+      "uri": "spotify:track:5ES28tZBmoZyYCMtdU3eND",
+      "url": "https://open.spotify.com/track/5ES28tZBmoZyYCMtdU3eND"
     },
     {
-      "name": "Ek Sweer",
-      "artist": "Twee",
-      "album": "Piekniek Vir Twee",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f1e7008d65eeee22b36adf43",
-      "duration": "3:38",
-      "popularity": 51,
-      "uri": "spotify:track:6jA89tKOtMVp6cN6shxyS5",
-      "url": "https://open.spotify.com/track/6jA89tKOtMVp6cN6shxyS5"
+      "name": "GOD & GUNS N’ ROSES",
+      "artist": "Tyler Braden",
+      "album": "devil and a prayer",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a3d067ad0e1a2b52dac0943d",
+      "duration": "3:36",
+      "popularity": 71,
+      "uri": "spotify:track:5sNC8TarbUdne9YBjbfShs",
+      "url": "https://open.spotify.com/track/5sNC8TarbUdne9YBjbfShs"
     },
     {
-      "name": "Symptoms (feat. Luma)",
-      "artist": "MitiS, Luma",
-      "album": "Symptoms (feat. Luma)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735d662c24f38fa62dc2e259bd",
-      "duration": "3:46",
-      "popularity": 55,
-      "uri": "spotify:track:07sDxcYttYRG8I89MHgCEw",
-      "url": "https://open.spotify.com/track/07sDxcYttYRG8I89MHgCEw"
+      "name": "Kill Me Fast",
+      "artist": "Three Days Grace",
+      "album": "Alienation",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c09a186638a7dc5de2eb0b56",
+      "duration": "3:17",
+      "popularity": 63,
+      "uri": "spotify:track:2CNqbrPKODRQxE8gCkHqEN",
+      "url": "https://open.spotify.com/track/2CNqbrPKODRQxE8gCkHqEN"
+    },
+    {
+      "name": "NERVOUS - ft. Masked Wolf & Skylar Grey",
+      "artist": "Elliott Taylor, Skylar Grey, Masked Wolf",
+      "album": "NERVOUS (ft. Masked Wolf & Skylar Grey)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273fb61b4518958428a887e253e",
+      "duration": "3:30",
+      "popularity": 54,
+      "uri": "spotify:track:07ZzxGl0tLqfLd50WGHNfZ",
+      "url": "https://open.spotify.com/track/07ZzxGl0tLqfLd50WGHNfZ"
+    },
+    {
+      "name": "Once and for All",
+      "artist": "Disciple",
+      "album": "O God Save Us All",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739843200ce96b1cbb24cbed16",
+      "duration": "3:34",
+      "popularity": 30,
+      "uri": "spotify:track:65ASvxiLEp5an3jOPKi0Y5",
+      "url": "https://open.spotify.com/track/65ASvxiLEp5an3jOPKi0Y5"
+    },
+    {
+      "name": "Am I Broken",
+      "artist": "Behold the Beloved, Jon Micah Sumrall",
+      "album": "Harsh Realities",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735e7e91227b06da702927a7fe",
+      "duration": "4:38",
+      "popularity": 27,
+      "uri": "spotify:track:18gd4AMKJFGyYvg5meMRmv",
+      "url": "https://open.spotify.com/track/18gd4AMKJFGyYvg5meMRmv"
+    },
+    {
+      "name": "Somebody That I Used To Know",
+      "artist": "Mayday Parade, Vic Fuentes",
+      "album": "Punk Goes Pop, Vol. 5",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739e2763f238cfb913d21a2d69",
+      "duration": "3:25",
+      "popularity": 61,
+      "uri": "spotify:track:6JBX1drGsMrTE8JrAYYoou",
+      "url": "https://open.spotify.com/track/6JBX1drGsMrTE8JrAYYoou"
     }
   ],
-  "lastUpdated": "2025-07-07T01:57:52.926Z"
+  "lastUpdated": "2025-09-01T01:56:51.301Z"
 }
