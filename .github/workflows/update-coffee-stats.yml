@@ -21,11 +21,16 @@ jobs:
       - name: Install dependencies
         run: npm install puppeteer
 
-      - name: Update coffee stats
+      - name: Update coffee stats (with retry)
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 10
+          max_attempts: 3
+          retry_wait_seconds: 30
+          command: node .github/scripts/coffee-scraper.js
         env:
           SEATTLE_COFFEE_USERNAME: ${{ secrets.SEATTLE_COFFEE_USERNAME }}
           SEATTLE_COFFEE_PASSWORD: ${{ secrets.SEATTLE_COFFEE_PASSWORD }}
-        run: node .github/scripts/coffee-scraper.js
 
       - name: Commit and push if changed
         run: |
