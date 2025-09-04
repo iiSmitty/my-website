@@ -1,5 +1,18 @@
 // Windows 95-style Decryption Easter Egg
 
+// Simple FOUC prevention - mark when JavaScript has loaded
+(function() {
+    // Add class as soon as this script runs
+    if (document.body) {
+        document.body.classList.add('js-loaded');
+    } else {
+        // If body doesn't exist yet, wait for it
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('js-loaded');
+        });
+    }
+})();
+
 // Replace these with your actual contact info
 const REAL_EMAIL = "info@andresmit.co.za";
 const REAL_PHONE = "(072) 338-6828";
