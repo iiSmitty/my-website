@@ -25,13 +25,10 @@ function showInfo(service) {
 
 // Function to open the My Tech window
 function openMyTechWindow() {
-    console.log("Opening My Tech window...");
-
     // Show the My Tech window
     const techWindow = document.getElementById('myTechWindow');
     if (techWindow) {
         techWindow.style.display = 'block';
-        console.log("My Tech window opened");
 
         // Bring to front
         const allWindows = document.querySelectorAll('.win95-window');
@@ -46,12 +43,9 @@ function openMyTechWindow() {
 
 // Function to close the My Tech window
 function closeMyTechWindow() {
-    console.log("Closing My Tech window...");
-
     const techWindow = document.getElementById('myTechWindow');
     if (techWindow) {
         techWindow.style.display = 'none';
-        console.log("My Tech window closed");
     }
 }
 
@@ -68,16 +62,11 @@ function selectTechItem(element) {
 
 // Function to handle deselecting icons when clicking outside
 function initializeDesktopClickHandler() {
-    console.log("Initializing desktop click handler...");
-
-    // This might be the body element or a div that represents the entire desktop area
-    // Update this selector to match your actual desktop background element
-    const desktopBackground = document.body; // or document.querySelector('.desktop-background');
+    const desktopBackground = document.body;
 
     desktopBackground.addEventListener('click', function(event) {
         // Check if the click is on the desktop background and not on an icon or a window
         if (!event.target.closest('.desktop-icon') && !event.target.closest('.win95-window')) {
-            console.log("Desktop background clicked, deselecting all icons");
             document.querySelectorAll('.desktop-icon').forEach(icon => icon.classList.remove('selected'));
         }
     });
@@ -85,54 +74,36 @@ function initializeDesktopClickHandler() {
 
 // Initialize all desktop icons and their functionality
 function initializeDesktopIcons() {
-    console.log("Initializing desktop icons...");
-
     // Make sure the desktop icons are visible - override inline style
     const desktopIconsContainer = document.querySelector('.desktop-icons');
     if (desktopIconsContainer) {
-        desktopIconsContainer.style.display = 'block'; // This overrides the inline style
-        console.log("Made desktop icons visible");
+        desktopIconsContainer.style.display = 'block';
     }
 
     // Add click handlers to all desktop icons
     const desktopIcons = document.querySelectorAll('.desktop-icon');
-    console.log("Found desktop icons:", desktopIcons.length);
 
     desktopIcons.forEach((icon, index) => {
         // Click handler to select the icon
         icon.addEventListener('click', function(event) {
-            console.log("Icon clicked:", index);
             desktopIcons.forEach(i => i.classList.remove('selected'));
             this.classList.add('selected');
-            // Stop the event from bubbling up to the document
             event.stopPropagation();
         });
 
         // For My Computer specifically, add double-click handler
         if (icon.querySelector('.ComputerIcon_32x32')) {
-            console.log("Found My Computer icon at index:", index);
-            icon.addEventListener('dblclick', function() {
-                console.log("My Computer double-clicked");
-                openMyTechWindow();
-            });
+            icon.addEventListener('dblclick', openMyTechWindow);
         }
 
         // For Source Code icon, add double-click handler
         if (icon.querySelector('.GitHubIcon_32x32')) {
-            console.log("Found Source Code icon at index:", index);
-            icon.addEventListener('dblclick', function() {
-                console.log("Source Code double-clicked");
-                openGitHubInstallerWindow();
-            });
+            icon.addEventListener('dblclick', openGitHubInstallerWindow);
         }
 
         // For Spotify icon, add double-click handler
         if (icon.querySelector('.SpotifyIcon_32x32')) {
-            console.log("Found Spotify icon at index:", index);
-            icon.addEventListener('dblclick', function() {
-                console.log("Spotify double-clicked");
-                openSpotifyWindow();
-            });
+            icon.addEventListener('dblclick', openSpotifyWindow);
         }
     });
 
@@ -150,13 +121,10 @@ function makeTechWindowDraggable() {
     const techTitleBar = document.getElementById('myTechTitleBar');
 
     if (!techWindow || !techTitleBar) {
-        console.log("Tech window or title bar not found yet");
         // Try again later if elements don't exist yet
         setTimeout(makeTechWindowDraggable, 500);
         return;
     }
-
-    console.log("Setting up draggable tech window");
 
     let isDragging = false;
     let offsetX, offsetY;
@@ -188,7 +156,6 @@ function makeTechWindowDraggable() {
 
 // When the document is ready, initialize everything
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("DOM is ready, initializing...");
     initializeDesktopIcons();
     makeIconsDraggable();
     addDeleteKeyFunctionality();
@@ -304,7 +271,6 @@ function makeWindowDraggable(windowId, titleBarId) {
     const titleBar = document.getElementById(titleBarId);
 
     if (!windowElement || !titleBar) {
-        console.log(`Window ${windowId} or title bar ${titleBarId} not found`);
         return;
     }
 
@@ -338,13 +304,10 @@ function makeWindowDraggable(windowId, titleBarId) {
 
 // Function to open the Spotify window
 function openSpotifyWindow() {
-    console.log("Opening Spotify window...");
-
     // Show the Spotify window
     const spotifyWindow = document.getElementById('spotifyWindow');
     if (spotifyWindow) {
         spotifyWindow.style.display = 'block';
-        console.log("Spotify window opened");
 
         // Bring to front
         const allWindows = document.querySelectorAll('.win95-window');
@@ -362,19 +325,15 @@ function openSpotifyWindow() {
 
 // Function to close the Spotify window
 function closeSpotifyWindow() {
-    console.log("Closing Spotify window...");
-
     const spotifyWindow = document.getElementById('spotifyWindow');
     if (spotifyWindow) {
         spotifyWindow.style.display = 'none';
-        console.log("Spotify window closed");
     }
 }
 
 // Function to load data from local JSON file
 async function loadSpotifyData() {
     try {
-        console.log("Loading Spotify data...");
         // Fetch the local JSON file from the data folder
         const response = await fetch('data/spotify-data.json');
 
@@ -383,7 +342,6 @@ async function loadSpotifyData() {
         }
 
         const data = await response.json();
-        console.log("Spotify data loaded successfully");
 
         // Display the data
         if (data.topArtists) {
@@ -439,7 +397,6 @@ async function loadSpotifyData() {
 
 // Function to display top artists
 function displayTopArtists(artists) {
-    console.log("Displaying top artists:", artists.length);
     artists.forEach((artist, index) => {
         if (index < 5) { // Limit to 5 artists
             const imageElement = document.getElementById(`artist-image-${index + 1}`);
@@ -460,8 +417,6 @@ function displayTopArtists(artists) {
 
 // Function to display top tracks
 function displayTopTracks(tracks) {
-    console.log("Displaying top tracks:", tracks.length);
-
     // Clear existing tracks
     const tracksList = document.querySelector('.spotify-tracks-list');
     if (tracksList) {
@@ -596,14 +551,10 @@ function addDeleteKeyFunctionality() {
     document.addEventListener('keydown', function(e) {
         // Check if the Delete key was pressed
         if (e.key === 'Delete') {
-            console.log("Delete key pressed");
-
             // Find the selected icon
             const selectedIcon = document.querySelector('.desktop-icon.selected');
 
             if (selectedIcon) {
-                console.log("Deleting selected icon:", selectedIcon.querySelector('span:last-child').textContent);
-
                 // Animate the deletion
                 selectedIcon.style.transition = 'opacity 0.3s';
                 selectedIcon.style.opacity = '0';
@@ -615,7 +566,6 @@ function addDeleteKeyFunctionality() {
                     // Check if all icons are now deleted
                     const remainingIcons = document.querySelectorAll('.desktop-icon');
                     if (remainingIcons.length === 0) {
-                        console.log("All icons deleted! Showing achievement...");
                         showAchievement();
                     }
                 }, 300);

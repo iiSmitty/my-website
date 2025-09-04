@@ -1,12 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Coffee stats script loaded');
     loadCoffeeStats();
 });
 
 async function loadCoffeeStats() {
     try {
-        console.log('Loading coffee stats...');
-
         const response = await fetch('data/coffee-stats.json');
 
         if (!response.ok) {
@@ -14,9 +11,6 @@ async function loadCoffeeStats() {
         }
 
         const data = await response.json();
-        console.log('Coffee data loaded:', data);
-
-        // Use the enhanced display function instead of the simple one
         updateEnhancedCoffeeDisplay(data);
 
     } catch (error) {
@@ -25,10 +19,7 @@ async function loadCoffeeStats() {
     }
 }
 
-// Updated JavaScript to use real balance data
 function updateEnhancedMetrics(totalVisits, currentBalance = null) {
-    console.log('updateEnhancedMetrics called with:', { totalVisits, currentBalance });
-
     // Estimated cups (assuming 1.5 cups per visit on average)
     const estimatedCups = Math.round(totalVisits * 1.5);
     const estimatedCupsElement = document.getElementById('coffee-estimated-cups');
@@ -67,14 +58,9 @@ function updateEnhancedMetrics(totalVisits, currentBalance = null) {
         }
     }
 
-    // UPDATED: Progress to next free coffee using REAL balance data
+    // Progress to next free coffee using real balance data
     const progressElement = document.getElementById('coffee-progress-fill');
     const progressTextElement = document.getElementById('coffee-progress-text');
-
-    console.log('Progress elements found:', {
-        progressElement: !!progressElement,
-        progressTextElement: !!progressTextElement
-    });
 
     if (progressElement && progressTextElement) {
         if (currentBalance !== null && currentBalance !== undefined) {
@@ -82,23 +68,17 @@ function updateEnhancedMetrics(totalVisits, currentBalance = null) {
             const progressPercent = (currentBalance / 10) * 100;
             progressElement.style.width = `${progressPercent}%`;
             progressTextElement.textContent = `${currentBalance}/10 visits`;
-
-            console.log(`✅ Updated progress with REAL balance: ${currentBalance}/10 (${progressPercent}%)`);
         } else {
             // Fallback to calculated estimate if balance not available
             const visitsTowardsFree = totalVisits % 10;
             const progressPercent = (visitsTowardsFree / 10) * 100;
             progressElement.style.width = `${progressPercent}%`;
             progressTextElement.textContent = `${visitsTowardsFree}/10 visits`;
-
-            console.log(`⚠️ Using fallback progress calculation: ${visitsTowardsFree}/10 (currentBalance was ${currentBalance})`);
         }
     }
 }
 
 function updateEnhancedCoffeeDisplay(data, isError = false) {
-    console.log('updateEnhancedCoffeeDisplay called with:', data);
-
     // Basic total visits
     const coffeeCountElement = document.getElementById('coffee-total-visits');
 
@@ -110,8 +90,7 @@ function updateEnhancedCoffeeDisplay(data, isError = false) {
             coffeeCountElement.textContent = data.totalSiteVisits.toLocaleString();
             coffeeCountElement.classList.remove('coffee-loading', 'coffee-error');
 
-            // Calculate and update enhanced metrics WITH current balance
-            console.log('Calling updateEnhancedMetrics with currentBalance:', data.currentBalance);
+            // Calculate and update enhanced metrics with current balance
             updateEnhancedMetrics(data.totalSiteVisits, data.currentBalance);
         }
     }

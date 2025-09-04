@@ -148,7 +148,6 @@ function trackActivity() {
 function initInactivityTracker() {
     // Check if body has the mobile class that your mobile-detection.js adds
     if (document.body.classList.contains('is-touch-device')) {
-        console.log("Mobile device detected. Screensaver disabled.");
         return;
     }
 
