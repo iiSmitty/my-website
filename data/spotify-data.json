@@ -30,25 +30,28 @@
       "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
     },
     {
-      "name": "The Midnight",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebbeb65e1c821ecd888cf5e115",
+      "name": "Disciple",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb5f5263b5a85ac5fab97ab6b8",
       "genres": [
-        "synthwave",
-        "vaporwave",
-        "synthpop",
-        "chillwave"
+        "christian rock",
+        "christian alternative rock",
+        "chinese rock",
+        "christian"
       ],
-      "popularity": 62,
-      "uri": "spotify:artist:2NFrAuh8RQdQoS7iYFbckw",
-      "url": "https://open.spotify.com/artist/2NFrAuh8RQdQoS7iYFbckw"
+      "popularity": 49,
+      "uri": "spotify:artist:4D9k73VomKTnVQ6ROnt8IO",
+      "url": "https://open.spotify.com/artist/4D9k73VomKTnVQ6ROnt8IO"
     },
     {
-      "name": "The Chainsmokers",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb4567279fac84a0375c3d819b",
-      "genres": [],
-      "popularity": 84,
-      "uri": "spotify:artist:69GGBxA162lTqCwzJG5jLp",
-      "url": "https://open.spotify.com/artist/69GGBxA162lTqCwzJG5jLp"
+      "name": "Ashes Remain",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebdfd9103906025688a81272f4",
+      "genres": [
+        "christian rock",
+        "christian alternative rock"
+      ],
+      "popularity": 55,
+      "uri": "spotify:artist:0fkTQEEyEyH71i9tDhS7CO",
+      "url": "https://open.spotify.com/artist/0fkTQEEyEyH71i9tDhS7CO"
     }
   ],
   "topTracks": [
@@ -68,29 +71,9 @@
       "album": "Cry Me A River",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2735f2d89408addae6b3eb9cc1f",
       "duration": "2:29",
-      "popularity": 62,
+      "popularity": 63,
       "uri": "spotify:track:41Z2O7ffAHWt6itnVpNuPi",
       "url": "https://open.spotify.com/track/41Z2O7ffAHWt6itnVpNuPi"
-    },
-    {
-      "name": "Save The World",
-      "artist": "Swedish House Mafia",
-      "album": "Until Now",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273544023aa98872d4deb347465",
-      "duration": "3:33",
-      "popularity": 30,
-      "uri": "spotify:track:2hIwUSQhBcBiw7hwGMfChM",
-      "url": "https://open.spotify.com/track/2hIwUSQhBcBiw7hwGMfChM"
-    },
-    {
-      "name": "Tung Tung Tung Sahur (Italian Brainrot)",
-      "artist": "W&W",
-      "album": "Tung Tung Tung Sahur (Italian Brainrot)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733f2d4ba2412ee28b4cd68042",
-      "duration": "2:06",
-      "popularity": 54,
-      "uri": "spotify:track:5ES28tZBmoZyYCMtdU3eND",
-      "url": "https://open.spotify.com/track/5ES28tZBmoZyYCMtdU3eND"
     },
     {
       "name": "GOD & GUNS N’ ROSES",
@@ -103,14 +86,24 @@
       "url": "https://open.spotify.com/track/5sNC8TarbUdne9YBjbfShs"
     },
     {
-      "name": "Kill Me Fast",
-      "artist": "Three Days Grace",
-      "album": "Alienation",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c09a186638a7dc5de2eb0b56",
-      "duration": "3:17",
-      "popularity": 63,
-      "uri": "spotify:track:2CNqbrPKODRQxE8gCkHqEN",
-      "url": "https://open.spotify.com/track/2CNqbrPKODRQxE8gCkHqEN"
+      "name": "Tung Tung Tung Sahur (Italian Brainrot)",
+      "artist": "W&W",
+      "album": "Tung Tung Tung Sahur (Italian Brainrot)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733f2d4ba2412ee28b4cd68042",
+      "duration": "2:06",
+      "popularity": 54,
+      "uri": "spotify:track:5ES28tZBmoZyYCMtdU3eND",
+      "url": "https://open.spotify.com/track/5ES28tZBmoZyYCMtdU3eND"
+    },
+    {
+      "name": "Save The World",
+      "artist": "Swedish House Mafia",
+      "album": "Until Now",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273544023aa98872d4deb347465",
+      "duration": "3:33",
+      "popularity": 30,
+      "uri": "spotify:track:2hIwUSQhBcBiw7hwGMfChM",
+      "url": "https://open.spotify.com/track/2hIwUSQhBcBiw7hwGMfChM"
     },
     {
       "name": "NERVOUS - ft. Masked Wolf & Skylar Grey",
@@ -118,7 +111,7 @@
       "album": "NERVOUS (ft. Masked Wolf & Skylar Grey)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273fb61b4518958428a887e253e",
       "duration": "3:30",
-      "popularity": 54,
+      "popularity": 53,
       "uri": "spotify:track:07ZzxGl0tLqfLd50WGHNfZ",
       "url": "https://open.spotify.com/track/07ZzxGl0tLqfLd50WGHNfZ"
     },
@@ -128,30 +121,40 @@
       "album": "O God Save Us All",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2739843200ce96b1cbb24cbed16",
       "duration": "3:34",
-      "popularity": 30,
+      "popularity": 29,
       "uri": "spotify:track:65ASvxiLEp5an3jOPKi0Y5",
       "url": "https://open.spotify.com/track/65ASvxiLEp5an3jOPKi0Y5"
     },
     {
-      "name": "Am I Broken",
-      "artist": "Behold the Beloved, Jon Micah Sumrall",
-      "album": "Harsh Realities",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735e7e91227b06da702927a7fe",
-      "duration": "4:38",
-      "popularity": 27,
-      "uri": "spotify:track:18gd4AMKJFGyYvg5meMRmv",
-      "url": "https://open.spotify.com/track/18gd4AMKJFGyYvg5meMRmv"
+      "name": "Payphone (Not Ashamed)",
+      "artist": "Covie, Covenant Olatunde, PSLP",
+      "album": "Covie (Deluxe Edition)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739219c6fa1a882e731cb000e6",
+      "duration": "4:15",
+      "popularity": 31,
+      "uri": "spotify:track:6B5htolbS7s669ylyZ4Fim",
+      "url": "https://open.spotify.com/track/6B5htolbS7s669ylyZ4Fim"
     },
     {
-      "name": "Somebody That I Used To Know",
-      "artist": "Mayday Parade, Vic Fuentes",
-      "album": "Punk Goes Pop, Vol. 5",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739e2763f238cfb913d21a2d69",
-      "duration": "3:25",
-      "popularity": 61,
-      "uri": "spotify:track:6JBX1drGsMrTE8JrAYYoou",
-      "url": "https://open.spotify.com/track/6JBX1drGsMrTE8JrAYYoou"
+      "name": "Thank You (Not So Bad)",
+      "artist": "Dimitri Vegas & Like Mike, Tiësto, Dido, W&W, Dimitri Vegas, Like Mike",
+      "album": "Thank You (Not So Bad)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2730aa08f8923434aab06e43b37",
+      "duration": "2:20",
+      "popularity": 82,
+      "uri": "spotify:track:09CnYHiZ5jGT1wr1TXJ9Zt",
+      "url": "https://open.spotify.com/track/09CnYHiZ5jGT1wr1TXJ9Zt"
+    },
+    {
+      "name": "Calm The Storm",
+      "artist": "Spoken",
+      "album": "Illusion",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27305be3eb80dde0cbd513f2711",
+      "duration": "3:43",
+      "popularity": 33,
+      "uri": "spotify:track:6X1BDCo701JlftMCFs6zHi",
+      "url": "https://open.spotify.com/track/6X1BDCo701JlftMCFs6zHi"
     }
   ],
-  "lastUpdated": "2025-09-01T01:56:51.301Z"
+  "lastUpdated": "2025-09-08T01:44:43.721Z"
 }
