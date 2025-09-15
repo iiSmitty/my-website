@@ -9,7 +9,7 @@
         "rock",
         "alternative metal"
       ],
-      "popularity": 91,
+      "popularity": 92,
       "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
@@ -22,12 +22,14 @@
       "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
     },
     {
-      "name": "Die Piesangskille",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb8283b82faf9927529a914e3b",
-      "genres": [],
-      "popularity": 46,
-      "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
-      "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
+      "name": "Dead by April",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebf3770344c0b2952acd65b79f",
+      "genres": [
+        "metalcore"
+      ],
+      "popularity": 53,
+      "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
+      "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
     },
     {
       "name": "Disciple",
@@ -43,27 +45,27 @@
       "url": "https://open.spotify.com/artist/4D9k73VomKTnVQ6ROnt8IO"
     },
     {
-      "name": "Ashes Remain",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebdfd9103906025688a81272f4",
+      "name": "Mayday Parade",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb1b8ccc2a3b4388af255ec086",
       "genres": [
-        "christian rock",
-        "christian alternative rock"
+        "pop punk",
+        "emo"
       ],
-      "popularity": 55,
-      "uri": "spotify:artist:0fkTQEEyEyH71i9tDhS7CO",
-      "url": "https://open.spotify.com/artist/0fkTQEEyEyH71i9tDhS7CO"
+      "popularity": 63,
+      "uri": "spotify:artist:3WfJ1OtrWI7RViX9DMyEGy",
+      "url": "https://open.spotify.com/artist/3WfJ1OtrWI7RViX9DMyEGy"
     }
   ],
   "topTracks": [
     {
       "name": "GOD'S GOT MY BACK",
       "artist": "Forrest Frank",
-      "album": "GOD'S GOT MY BACK",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273800cc1c1f9d073959ae38f13",
+      "album": "CHILD OF GOD II (BACK TO BACK)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738d1c0d7c2426551d15caa6de",
       "duration": "2:38",
-      "popularity": 72,
-      "uri": "spotify:track:08tPPfrrG7Hx0cWue5kk1y",
-      "url": "https://open.spotify.com/track/08tPPfrrG7Hx0cWue5kk1y"
+      "popularity": 54,
+      "uri": "spotify:track:1hRNPO5VMUdIXijSs2DAgt",
+      "url": "https://open.spotify.com/track/1hRNPO5VMUdIXijSs2DAgt"
     },
     {
       "name": "Cry Me A River",
@@ -71,7 +73,7 @@
       "album": "Cry Me A River",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2735f2d89408addae6b3eb9cc1f",
       "duration": "2:29",
-      "popularity": 63,
+      "popularity": 64,
       "uri": "spotify:track:41Z2O7ffAHWt6itnVpNuPi",
       "url": "https://open.spotify.com/track/41Z2O7ffAHWt6itnVpNuPi"
     },
@@ -91,29 +93,9 @@
       "album": "Tung Tung Tung Sahur (Italian Brainrot)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2733f2d4ba2412ee28b4cd68042",
       "duration": "2:06",
-      "popularity": 54,
+      "popularity": 55,
       "uri": "spotify:track:5ES28tZBmoZyYCMtdU3eND",
       "url": "https://open.spotify.com/track/5ES28tZBmoZyYCMtdU3eND"
-    },
-    {
-      "name": "Save The World",
-      "artist": "Swedish House Mafia",
-      "album": "Until Now",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273544023aa98872d4deb347465",
-      "duration": "3:33",
-      "popularity": 30,
-      "uri": "spotify:track:2hIwUSQhBcBiw7hwGMfChM",
-      "url": "https://open.spotify.com/track/2hIwUSQhBcBiw7hwGMfChM"
-    },
-    {
-      "name": "NERVOUS - ft. Masked Wolf & Skylar Grey",
-      "artist": "Elliott Taylor, Skylar Grey, Masked Wolf",
-      "album": "NERVOUS (ft. Masked Wolf & Skylar Grey)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273fb61b4518958428a887e253e",
-      "duration": "3:30",
-      "popularity": 53,
-      "uri": "spotify:track:07ZzxGl0tLqfLd50WGHNfZ",
-      "url": "https://open.spotify.com/track/07ZzxGl0tLqfLd50WGHNfZ"
     },
     {
       "name": "Once and for All",
@@ -126,6 +108,16 @@
       "url": "https://open.spotify.com/track/65ASvxiLEp5an3jOPKi0Y5"
     },
     {
+      "name": "NERVOUS - ft. Masked Wolf & Skylar Grey",
+      "artist": "Elliott Taylor, Skylar Grey, Masked Wolf",
+      "album": "NERVOUS (ft. Masked Wolf & Skylar Grey)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273fb61b4518958428a887e253e",
+      "duration": "3:30",
+      "popularity": 51,
+      "uri": "spotify:track:07ZzxGl0tLqfLd50WGHNfZ",
+      "url": "https://open.spotify.com/track/07ZzxGl0tLqfLd50WGHNfZ"
+    },
+    {
       "name": "Payphone (Not Ashamed)",
       "artist": "Covie, Covenant Olatunde, PSLP",
       "album": "Covie (Deluxe Edition)",
@@ -134,6 +126,16 @@
       "popularity": 31,
       "uri": "spotify:track:6B5htolbS7s669ylyZ4Fim",
       "url": "https://open.spotify.com/track/6B5htolbS7s669ylyZ4Fim"
+    },
+    {
+      "name": "Eye Of The Untold Her",
+      "artist": "Lindsey Stirling",
+      "album": "Duality",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273689a78fd89f92bc201139584",
+      "duration": "3:40",
+      "popularity": 50,
+      "uri": "spotify:track:57fVsBoiRK0ZXQ29acjGfb",
+      "url": "https://open.spotify.com/track/57fVsBoiRK0ZXQ29acjGfb"
     },
     {
       "name": "Thank You (Not So Bad)",
@@ -146,15 +148,15 @@
       "url": "https://open.spotify.com/track/09CnYHiZ5jGT1wr1TXJ9Zt"
     },
     {
-      "name": "Calm The Storm",
-      "artist": "Spoken",
-      "album": "Illusion",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27305be3eb80dde0cbd513f2711",
-      "duration": "3:43",
-      "popularity": 33,
-      "uri": "spotify:track:6X1BDCo701JlftMCFs6zHi",
-      "url": "https://open.spotify.com/track/6X1BDCo701JlftMCFs6zHi"
+      "name": "Use Somebody",
+      "artist": "Kings of Leon",
+      "album": "Only By The Night",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2732519d01c0cca06f134eeadd8",
+      "duration": "3:50",
+      "popularity": 80,
+      "uri": "spotify:track:5VGlqQANWDKJFl0MBG3sg2",
+      "url": "https://open.spotify.com/track/5VGlqQANWDKJFl0MBG3sg2"
     }
   ],
-  "lastUpdated": "2025-09-08T01:44:43.721Z"
+  "lastUpdated": "2025-09-15T01:45:57.488Z"
 }
