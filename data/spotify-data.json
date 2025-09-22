@@ -1,6 +1,27 @@
 {
   "topArtists": [
     {
+      "name": "Dead by April",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebf3770344c0b2952acd65b79f",
+      "genres": [
+        "metalcore"
+      ],
+      "popularity": 53,
+      "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
+      "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
+    },
+    {
+      "name": "Ashes Remain",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebdfd9103906025688a81272f4",
+      "genres": [
+        "christian rock",
+        "christian alternative rock"
+      ],
+      "popularity": 56,
+      "uri": "spotify:artist:0fkTQEEyEyH71i9tDhS7CO",
+      "url": "https://open.spotify.com/artist/0fkTQEEyEyH71i9tDhS7CO"
+    },
+    {
       "name": "Linkin Park",
       "image": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
       "genres": [
@@ -22,16 +43,6 @@
       "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
     },
     {
-      "name": "Dead by April",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebf3770344c0b2952acd65b79f",
-      "genres": [
-        "metalcore"
-      ],
-      "popularity": 53,
-      "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
-      "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
-    },
-    {
       "name": "Disciple",
       "image": "https://i.scdn.co/image/ab6761610000e5eb5f5263b5a85ac5fab97ab6b8",
       "genres": [
@@ -43,17 +54,6 @@
       "popularity": 49,
       "uri": "spotify:artist:4D9k73VomKTnVQ6ROnt8IO",
       "url": "https://open.spotify.com/artist/4D9k73VomKTnVQ6ROnt8IO"
-    },
-    {
-      "name": "Mayday Parade",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb1b8ccc2a3b4388af255ec086",
-      "genres": [
-        "pop punk",
-        "emo"
-      ],
-      "popularity": 63,
-      "uri": "spotify:artist:3WfJ1OtrWI7RViX9DMyEGy",
-      "url": "https://open.spotify.com/artist/3WfJ1OtrWI7RViX9DMyEGy"
     }
   ],
   "topTracks": [
@@ -63,19 +63,9 @@
       "album": "CHILD OF GOD II (BACK TO BACK)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2738d1c0d7c2426551d15caa6de",
       "duration": "2:38",
-      "popularity": 54,
+      "popularity": 59,
       "uri": "spotify:track:1hRNPO5VMUdIXijSs2DAgt",
       "url": "https://open.spotify.com/track/1hRNPO5VMUdIXijSs2DAgt"
-    },
-    {
-      "name": "Cry Me A River",
-      "artist": "3 Are Legend, Timbaland, W&W",
-      "album": "Cry Me A River",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735f2d89408addae6b3eb9cc1f",
-      "duration": "2:29",
-      "popularity": 64,
-      "uri": "spotify:track:41Z2O7ffAHWt6itnVpNuPi",
-      "url": "https://open.spotify.com/track/41Z2O7ffAHWt6itnVpNuPi"
     },
     {
       "name": "GOD & GUNS N’ ROSES",
@@ -88,44 +78,14 @@
       "url": "https://open.spotify.com/track/5sNC8TarbUdne9YBjbfShs"
     },
     {
-      "name": "Tung Tung Tung Sahur (Italian Brainrot)",
-      "artist": "W&W",
-      "album": "Tung Tung Tung Sahur (Italian Brainrot)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733f2d4ba2412ee28b4cd68042",
-      "duration": "2:06",
-      "popularity": 55,
-      "uri": "spotify:track:5ES28tZBmoZyYCMtdU3eND",
-      "url": "https://open.spotify.com/track/5ES28tZBmoZyYCMtdU3eND"
-    },
-    {
-      "name": "Once and for All",
-      "artist": "Disciple",
-      "album": "O God Save Us All",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739843200ce96b1cbb24cbed16",
-      "duration": "3:34",
-      "popularity": 29,
-      "uri": "spotify:track:65ASvxiLEp5an3jOPKi0Y5",
-      "url": "https://open.spotify.com/track/65ASvxiLEp5an3jOPKi0Y5"
-    },
-    {
-      "name": "NERVOUS - ft. Masked Wolf & Skylar Grey",
-      "artist": "Elliott Taylor, Skylar Grey, Masked Wolf",
-      "album": "NERVOUS (ft. Masked Wolf & Skylar Grey)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273fb61b4518958428a887e253e",
-      "duration": "3:30",
-      "popularity": 51,
-      "uri": "spotify:track:07ZzxGl0tLqfLd50WGHNfZ",
-      "url": "https://open.spotify.com/track/07ZzxGl0tLqfLd50WGHNfZ"
-    },
-    {
-      "name": "Payphone (Not Ashamed)",
-      "artist": "Covie, Covenant Olatunde, PSLP",
-      "album": "Covie (Deluxe Edition)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739219c6fa1a882e731cb000e6",
-      "duration": "4:15",
+      "name": "Oblivion",
+      "artist": "Jaisua, Kid Tris",
+      "album": "Oblivion",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273af89652b3d646cb271a99854",
+      "duration": "2:47",
       "popularity": 31,
-      "uri": "spotify:track:6B5htolbS7s669ylyZ4Fim",
-      "url": "https://open.spotify.com/track/6B5htolbS7s669ylyZ4Fim"
+      "uri": "spotify:track:6ppYbABpMExS1kLR0jIbfS",
+      "url": "https://open.spotify.com/track/6ppYbABpMExS1kLR0jIbfS"
     },
     {
       "name": "Eye Of The Untold Her",
@@ -148,6 +108,26 @@
       "url": "https://open.spotify.com/track/09CnYHiZ5jGT1wr1TXJ9Zt"
     },
     {
+      "name": "Payphone (Not Ashamed)",
+      "artist": "Covie, Covenant Olatunde, PSLP",
+      "album": "Covie (Deluxe Edition)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739219c6fa1a882e731cb000e6",
+      "duration": "4:15",
+      "popularity": 38,
+      "uri": "spotify:track:6B5htolbS7s669ylyZ4Fim",
+      "url": "https://open.spotify.com/track/6B5htolbS7s669ylyZ4Fim"
+    },
+    {
+      "name": "Hou Weer Moed",
+      "artist": "Spoegwolf, Emile Swiegers",
+      "album": "Water En Weerlig",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2732cdf94a399d360c4e0aadc83",
+      "duration": "4:06",
+      "popularity": 40,
+      "uri": "spotify:track:3tTofMu6TLag7kmB5HFe46",
+      "url": "https://open.spotify.com/track/3tTofMu6TLag7kmB5HFe46"
+    },
+    {
       "name": "Use Somebody",
       "artist": "Kings of Leon",
       "album": "Only By The Night",
@@ -156,7 +136,27 @@
       "popularity": 80,
       "uri": "spotify:track:5VGlqQANWDKJFl0MBG3sg2",
       "url": "https://open.spotify.com/track/5VGlqQANWDKJFl0MBG3sg2"
+    },
+    {
+      "name": "Ek Sal Nie Bang Wees Nie",
+      "artist": "Jo Black",
+      "album": "Ek Sal Nie Bang Wees Nie",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733e9a566ad7b87840fde72071",
+      "duration": "4:44",
+      "popularity": 41,
+      "uri": "spotify:track:0YAYhBmpFGVCgOBcdzjzBS",
+      "url": "https://open.spotify.com/track/0YAYhBmpFGVCgOBcdzjzBS"
+    },
+    {
+      "name": "Die Liedjie Oor Die Meisie (Ek Wil Jou Hê)",
+      "artist": "Glaskas",
+      "album": "Revolusie, Romantiek, Ruk en Rol",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273721cd6603a5b2e95402f9e04",
+      "duration": "2:55",
+      "popularity": 34,
+      "uri": "spotify:track:0MshehIqq1LGLiTrIawSo2",
+      "url": "https://open.spotify.com/track/0MshehIqq1LGLiTrIawSo2"
     }
   ],
-  "lastUpdated": "2025-09-15T01:45:57.488Z"
+  "lastUpdated": "2025-09-22T01:47:30.121Z"
 }
