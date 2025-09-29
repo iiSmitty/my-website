@@ -1,6 +1,14 @@
 {
   "topArtists": [
     {
+      "name": "Die Heuwels Fantasties",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb4015c64f99883877333020a9",
+      "genres": [],
+      "popularity": 50,
+      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
+      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
+    },
+    {
       "name": "Dead by April",
       "image": "https://i.scdn.co/image/ab6761610000e5ebf3770344c0b2952acd65b79f",
       "genres": [
@@ -9,17 +17,6 @@
       "popularity": 53,
       "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
       "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
-    },
-    {
-      "name": "Ashes Remain",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebdfd9103906025688a81272f4",
-      "genres": [
-        "christian rock",
-        "christian alternative rock"
-      ],
-      "popularity": 56,
-      "uri": "spotify:artist:0fkTQEEyEyH71i9tDhS7CO",
-      "url": "https://open.spotify.com/artist/0fkTQEEyEyH71i9tDhS7CO"
     },
     {
       "name": "Linkin Park",
@@ -35,12 +32,12 @@
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
     {
-      "name": "Die Heuwels Fantasties",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb4015c64f99883877333020a9",
+      "name": "Spoegwolf",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebd17cf98d6beb417a7497f92d",
       "genres": [],
-      "popularity": 49,
-      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
-      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
+      "popularity": 52,
+      "uri": "spotify:artist:6o4TnAxiqaQfZMLl55NFdn",
+      "url": "https://open.spotify.com/artist/6o4TnAxiqaQfZMLl55NFdn"
     },
     {
       "name": "Disciple",
@@ -58,26 +55,6 @@
   ],
   "topTracks": [
     {
-      "name": "GOD'S GOT MY BACK",
-      "artist": "Forrest Frank",
-      "album": "CHILD OF GOD II (BACK TO BACK)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738d1c0d7c2426551d15caa6de",
-      "duration": "2:38",
-      "popularity": 59,
-      "uri": "spotify:track:1hRNPO5VMUdIXijSs2DAgt",
-      "url": "https://open.spotify.com/track/1hRNPO5VMUdIXijSs2DAgt"
-    },
-    {
-      "name": "GOD & GUNS N’ ROSES",
-      "artist": "Tyler Braden",
-      "album": "devil and a prayer",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a3d067ad0e1a2b52dac0943d",
-      "duration": "3:36",
-      "popularity": 71,
-      "uri": "spotify:track:5sNC8TarbUdne9YBjbfShs",
-      "url": "https://open.spotify.com/track/5sNC8TarbUdne9YBjbfShs"
-    },
-    {
       "name": "Oblivion",
       "artist": "Jaisua, Kid Tris",
       "album": "Oblivion",
@@ -93,19 +70,19 @@
       "album": "Duality",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273689a78fd89f92bc201139584",
       "duration": "3:40",
-      "popularity": 50,
+      "popularity": 51,
       "uri": "spotify:track:57fVsBoiRK0ZXQ29acjGfb",
       "url": "https://open.spotify.com/track/57fVsBoiRK0ZXQ29acjGfb"
     },
     {
-      "name": "Thank You (Not So Bad)",
-      "artist": "Dimitri Vegas & Like Mike, Tiësto, Dido, W&W, Dimitri Vegas, Like Mike",
-      "album": "Thank You (Not So Bad)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2730aa08f8923434aab06e43b37",
-      "duration": "2:20",
-      "popularity": 82,
-      "uri": "spotify:track:09CnYHiZ5jGT1wr1TXJ9Zt",
-      "url": "https://open.spotify.com/track/09CnYHiZ5jGT1wr1TXJ9Zt"
+      "name": "GOD'S GOT MY BACK",
+      "artist": "Forrest Frank",
+      "album": "CHILD OF GOD II (BACK TO BACK)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738d1c0d7c2426551d15caa6de",
+      "duration": "2:38",
+      "popularity": 62,
+      "uri": "spotify:track:1hRNPO5VMUdIXijSs2DAgt",
+      "url": "https://open.spotify.com/track/1hRNPO5VMUdIXijSs2DAgt"
     },
     {
       "name": "Payphone (Not Ashamed)",
@@ -113,7 +90,7 @@
       "album": "Covie (Deluxe Edition)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2739219c6fa1a882e731cb000e6",
       "duration": "4:15",
-      "popularity": 38,
+      "popularity": 41,
       "uri": "spotify:track:6B5htolbS7s669ylyZ4Fim",
       "url": "https://open.spotify.com/track/6B5htolbS7s669ylyZ4Fim"
     },
@@ -128,35 +105,55 @@
       "url": "https://open.spotify.com/track/3tTofMu6TLag7kmB5HFe46"
     },
     {
-      "name": "Use Somebody",
-      "artist": "Kings of Leon",
-      "album": "Only By The Night",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2732519d01c0cca06f134eeadd8",
-      "duration": "3:50",
-      "popularity": 80,
-      "uri": "spotify:track:5VGlqQANWDKJFl0MBG3sg2",
-      "url": "https://open.spotify.com/track/5VGlqQANWDKJFl0MBG3sg2"
+      "name": "Simple Man",
+      "artist": "River Crombie",
+      "album": "Simple Man",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738c34a2af4ac828fafbc61ed4",
+      "duration": "5:03",
+      "popularity": 50,
+      "uri": "spotify:track:5MMPHXaJmVmok7rhQ6vHiW",
+      "url": "https://open.spotify.com/track/5MMPHXaJmVmok7rhQ6vHiW"
     },
     {
-      "name": "Ek Sal Nie Bang Wees Nie",
-      "artist": "Jo Black",
-      "album": "Ek Sal Nie Bang Wees Nie",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733e9a566ad7b87840fde72071",
-      "duration": "4:44",
-      "popularity": 41,
-      "uri": "spotify:track:0YAYhBmpFGVCgOBcdzjzBS",
-      "url": "https://open.spotify.com/track/0YAYhBmpFGVCgOBcdzjzBS"
+      "name": "We Are",
+      "artist": "HAEVN",
+      "album": "Eyes Closed",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27348203e11e59cdd8404fda817",
+      "duration": "4:46",
+      "popularity": 40,
+      "uri": "spotify:track:0WjKy5SeqCS8FffVQaT2zh",
+      "url": "https://open.spotify.com/track/0WjKy5SeqCS8FffVQaT2zh"
     },
     {
-      "name": "Die Liedjie Oor Die Meisie (Ek Wil Jou Hê)",
-      "artist": "Glaskas",
-      "album": "Revolusie, Romantiek, Ruk en Rol",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273721cd6603a5b2e95402f9e04",
-      "duration": "2:55",
-      "popularity": 34,
-      "uri": "spotify:track:0MshehIqq1LGLiTrIawSo2",
-      "url": "https://open.spotify.com/track/0MshehIqq1LGLiTrIawSo2"
+      "name": "Summer's Ending Soon",
+      "artist": "The Midnight",
+      "album": "Summer's Ending Soon",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273cad307e4a14fd59906b3a577",
+      "duration": "6:51",
+      "popularity": 59,
+      "uri": "spotify:track:3nTjq4UCsLiydG4q84TVyK",
+      "url": "https://open.spotify.com/track/3nTjq4UCsLiydG4q84TVyK"
+    },
+    {
+      "name": "Thank You (Not So Bad)",
+      "artist": "Dimitri Vegas & Like Mike, Tiësto, Dido, W&W, Dimitri Vegas, Like Mike",
+      "album": "Thank You (Not So Bad)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2730aa08f8923434aab06e43b37",
+      "duration": "2:20",
+      "popularity": 82,
+      "uri": "spotify:track:09CnYHiZ5jGT1wr1TXJ9Zt",
+      "url": "https://open.spotify.com/track/09CnYHiZ5jGT1wr1TXJ9Zt"
+    },
+    {
+      "name": "GOD & GUNS N’ ROSES",
+      "artist": "Tyler Braden",
+      "album": "devil and a prayer",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a3d067ad0e1a2b52dac0943d",
+      "duration": "3:36",
+      "popularity": 71,
+      "uri": "spotify:track:5sNC8TarbUdne9YBjbfShs",
+      "url": "https://open.spotify.com/track/5sNC8TarbUdne9YBjbfShs"
     }
   ],
-  "lastUpdated": "2025-09-22T01:47:30.121Z"
+  "lastUpdated": "2025-09-29T01:42:44.954Z"
 }
