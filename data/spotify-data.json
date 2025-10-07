@@ -1,6 +1,43 @@
 {
   "topArtists": [
     {
+      "name": "Die Heuwels Fantasties",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb4015c64f99883877333020a9",
+      "genres": [],
+      "popularity": 48,
+      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
+      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
+    },
+    {
+      "name": "Die Piesangskille",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb8283b82faf9927529a914e3b",
+      "genres": [],
+      "popularity": 45,
+      "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
+      "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
+    },
+    {
+      "name": "Dead by April",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebf3770344c0b2952acd65b79f",
+      "genres": [
+        "metalcore"
+      ],
+      "popularity": 52,
+      "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
+      "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
+    },
+    {
+      "name": "Mayday Parade",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb02b1303f6926ec11f5f8f91d",
+      "genres": [
+        "pop punk",
+        "emo"
+      ],
+      "popularity": 62,
+      "uri": "spotify:artist:3WfJ1OtrWI7RViX9DMyEGy",
+      "url": "https://open.spotify.com/artist/3WfJ1OtrWI7RViX9DMyEGy"
+    },
+    {
       "name": "Linkin Park",
       "image": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
       "genres": [
@@ -9,88 +46,91 @@
         "rock",
         "alternative metal"
       ],
-      "popularity": 91,
+      "popularity": 90,
       "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
-    },
-    {
-      "name": "Die Heuwels Fantasties",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb4015c64f99883877333020a9",
-      "genres": [],
-      "popularity": 49,
-      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
-      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
-    },
-    {
-      "name": "Die Piesangskille",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb8283b82faf9927529a914e3b",
-      "genres": [],
-      "popularity": 46,
-      "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
-      "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
-    },
-    {
-      "name": "The Midnight",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebbeb65e1c821ecd888cf5e115",
-      "genres": [
-        "synthwave",
-        "vaporwave",
-        "synthpop",
-        "chillwave"
-      ],
-      "popularity": 62,
-      "uri": "spotify:artist:2NFrAuh8RQdQoS7iYFbckw",
-      "url": "https://open.spotify.com/artist/2NFrAuh8RQdQoS7iYFbckw"
-    },
-    {
-      "name": "The Chainsmokers",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb4567279fac84a0375c3d819b",
-      "genres": [],
-      "popularity": 84,
-      "uri": "spotify:artist:69GGBxA162lTqCwzJG5jLp",
-      "url": "https://open.spotify.com/artist/69GGBxA162lTqCwzJG5jLp"
     }
   ],
   "topTracks": [
     {
-      "name": "GOD'S GOT MY BACK",
-      "artist": "Forrest Frank",
-      "album": "GOD'S GOT MY BACK",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273800cc1c1f9d073959ae38f13",
-      "duration": "2:38",
-      "popularity": 72,
-      "uri": "spotify:track:08tPPfrrG7Hx0cWue5kk1y",
-      "url": "https://open.spotify.com/track/08tPPfrrG7Hx0cWue5kk1y"
+      "name": "Oblivion",
+      "artist": "Jaisua, Kid Tris",
+      "album": "Oblivion",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273af89652b3d646cb271a99854",
+      "duration": "2:47",
+      "popularity": 31,
+      "uri": "spotify:track:6ppYbABpMExS1kLR0jIbfS",
+      "url": "https://open.spotify.com/track/6ppYbABpMExS1kLR0jIbfS"
     },
     {
-      "name": "Cry Me A River",
-      "artist": "3 Are Legend, Timbaland, W&W",
-      "album": "Cry Me A River",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735f2d89408addae6b3eb9cc1f",
-      "duration": "2:29",
-      "popularity": 62,
-      "uri": "spotify:track:41Z2O7ffAHWt6itnVpNuPi",
-      "url": "https://open.spotify.com/track/41Z2O7ffAHWt6itnVpNuPi"
+      "name": "Eye Of The Untold Her",
+      "artist": "Lindsey Stirling",
+      "album": "Duality",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273689a78fd89f92bc201139584",
+      "duration": "3:40",
+      "popularity": 51,
+      "uri": "spotify:track:57fVsBoiRK0ZXQ29acjGfb",
+      "url": "https://open.spotify.com/track/57fVsBoiRK0ZXQ29acjGfb"
     },
     {
-      "name": "Save The World",
-      "artist": "Swedish House Mafia",
-      "album": "Until Now",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273544023aa98872d4deb347465",
-      "duration": "3:33",
-      "popularity": 30,
-      "uri": "spotify:track:2hIwUSQhBcBiw7hwGMfChM",
-      "url": "https://open.spotify.com/track/2hIwUSQhBcBiw7hwGMfChM"
+      "name": "Simple Man",
+      "artist": "River Crombie",
+      "album": "Simple Man",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738c34a2af4ac828fafbc61ed4",
+      "duration": "5:03",
+      "popularity": 52,
+      "uri": "spotify:track:5MMPHXaJmVmok7rhQ6vHiW",
+      "url": "https://open.spotify.com/track/5MMPHXaJmVmok7rhQ6vHiW"
     },
     {
-      "name": "Tung Tung Tung Sahur (Italian Brainrot)",
-      "artist": "W&W",
-      "album": "Tung Tung Tung Sahur (Italian Brainrot)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733f2d4ba2412ee28b4cd68042",
-      "duration": "2:06",
-      "popularity": 54,
-      "uri": "spotify:track:5ES28tZBmoZyYCMtdU3eND",
-      "url": "https://open.spotify.com/track/5ES28tZBmoZyYCMtdU3eND"
+      "name": "LOST IN THE ECHO",
+      "artist": "Linkin Park",
+      "album": "LIVING THINGS",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273987fb4c5ec8790e9f637a4a4",
+      "duration": "3:25",
+      "popularity": 71,
+      "uri": "spotify:track:2oNYsdCasRRlz1shXFAz7D",
+      "url": "https://open.spotify.com/track/2oNYsdCasRRlz1shXFAz7D"
+    },
+    {
+      "name": "We Are",
+      "artist": "HAEVN",
+      "album": "Eyes Closed",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27348203e11e59cdd8404fda817",
+      "duration": "4:46",
+      "popularity": 41,
+      "uri": "spotify:track:0WjKy5SeqCS8FffVQaT2zh",
+      "url": "https://open.spotify.com/track/0WjKy5SeqCS8FffVQaT2zh"
+    },
+    {
+      "name": "Thank You (Not So Bad)",
+      "artist": "Dimitri Vegas & Like Mike, Tiësto, Dido, W&W, Dimitri Vegas, Like Mike",
+      "album": "Thank You (Not So Bad)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2730aa08f8923434aab06e43b37",
+      "duration": "2:20",
+      "popularity": 82,
+      "uri": "spotify:track:09CnYHiZ5jGT1wr1TXJ9Zt",
+      "url": "https://open.spotify.com/track/09CnYHiZ5jGT1wr1TXJ9Zt"
+    },
+    {
+      "name": "Ek Sal Nie Bang Wees Nie",
+      "artist": "Jo Black",
+      "album": "Ek Sal Nie Bang Wees Nie",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733e9a566ad7b87840fde72071",
+      "duration": "4:44",
+      "popularity": 45,
+      "uri": "spotify:track:0YAYhBmpFGVCgOBcdzjzBS",
+      "url": "https://open.spotify.com/track/0YAYhBmpFGVCgOBcdzjzBS"
+    },
+    {
+      "name": "Hou Weer Moed",
+      "artist": "Spoegwolf, Emile Swiegers",
+      "album": "Water En Weerlig",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2732cdf94a399d360c4e0aadc83",
+      "duration": "4:06",
+      "popularity": 40,
+      "uri": "spotify:track:3tTofMu6TLag7kmB5HFe46",
+      "url": "https://open.spotify.com/track/3tTofMu6TLag7kmB5HFe46"
     },
     {
       "name": "GOD & GUNS N’ ROSES",
@@ -98,60 +138,20 @@
       "album": "devil and a prayer",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273a3d067ad0e1a2b52dac0943d",
       "duration": "3:36",
-      "popularity": 71,
+      "popularity": 72,
       "uri": "spotify:track:5sNC8TarbUdne9YBjbfShs",
       "url": "https://open.spotify.com/track/5sNC8TarbUdne9YBjbfShs"
     },
     {
-      "name": "Kill Me Fast",
-      "artist": "Three Days Grace",
-      "album": "Alienation",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c09a186638a7dc5de2eb0b56",
-      "duration": "3:17",
-      "popularity": 63,
-      "uri": "spotify:track:2CNqbrPKODRQxE8gCkHqEN",
-      "url": "https://open.spotify.com/track/2CNqbrPKODRQxE8gCkHqEN"
-    },
-    {
-      "name": "NERVOUS - ft. Masked Wolf & Skylar Grey",
-      "artist": "Elliott Taylor, Skylar Grey, Masked Wolf",
-      "album": "NERVOUS (ft. Masked Wolf & Skylar Grey)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273fb61b4518958428a887e253e",
-      "duration": "3:30",
-      "popularity": 54,
-      "uri": "spotify:track:07ZzxGl0tLqfLd50WGHNfZ",
-      "url": "https://open.spotify.com/track/07ZzxGl0tLqfLd50WGHNfZ"
-    },
-    {
-      "name": "Once and for All",
-      "artist": "Disciple",
-      "album": "O God Save Us All",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739843200ce96b1cbb24cbed16",
-      "duration": "3:34",
-      "popularity": 30,
-      "uri": "spotify:track:65ASvxiLEp5an3jOPKi0Y5",
-      "url": "https://open.spotify.com/track/65ASvxiLEp5an3jOPKi0Y5"
-    },
-    {
-      "name": "Am I Broken",
-      "artist": "Behold the Beloved, Jon Micah Sumrall",
-      "album": "Harsh Realities",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735e7e91227b06da702927a7fe",
-      "duration": "4:38",
-      "popularity": 27,
-      "uri": "spotify:track:18gd4AMKJFGyYvg5meMRmv",
-      "url": "https://open.spotify.com/track/18gd4AMKJFGyYvg5meMRmv"
-    },
-    {
-      "name": "Somebody That I Used To Know",
-      "artist": "Mayday Parade, Vic Fuentes",
-      "album": "Punk Goes Pop, Vol. 5",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739e2763f238cfb913d21a2d69",
-      "duration": "3:25",
-      "popularity": 61,
-      "uri": "spotify:track:6JBX1drGsMrTE8JrAYYoou",
-      "url": "https://open.spotify.com/track/6JBX1drGsMrTE8JrAYYoou"
+      "name": "Die Liedjie Oor Die Meisie (Ek Wil Jou Hê)",
+      "artist": "Glaskas",
+      "album": "Revolusie, Romantiek, Ruk en Rol",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273721cd6603a5b2e95402f9e04",
+      "duration": "2:55",
+      "popularity": 35,
+      "uri": "spotify:track:0MshehIqq1LGLiTrIawSo2",
+      "url": "https://open.spotify.com/track/0MshehIqq1LGLiTrIawSo2"
     }
   ],
-  "lastUpdated": "2025-09-01T01:56:51.301Z"
+  "lastUpdated": "2025-10-06T01:41:10.484Z"
 }
