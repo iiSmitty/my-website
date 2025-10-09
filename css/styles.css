@@ -849,6 +849,18 @@ body.startup {
     filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
 }
 
+.SlackIcon_32x32 {
+    width: 32px;
+    height: 32px;
+    background-image: url(/icons/slack-white.svg);
+    display: inline-block;
+    margin-bottom: 4px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
+}
+
 .RecycleIcon_32x32 {
     width: 32px;
     height: 32px;

@@ -105,11 +105,16 @@ function initializeDesktopIcons() {
         if (icon.querySelector('.SpotifyIcon_32x32')) {
             icon.addEventListener('dblclick', openSpotifyWindow);
         }
+
+        if (icon.querySelector('.SlackIcon_32x32')) {
+            icon.addEventListener('dblclick', openSlackInviteWindow);
+        }
     });
 
     // Make windows draggable
     makeTechWindowDraggable();
     makeWindowDraggable('spotifyWindow', 'spotifyTitleBar');
+    makeWindowDraggable('slackWindow', 'slackTitleBar');
 
     // Initialize the desktop click handler
     initializeDesktopClickHandler();
@@ -446,6 +451,34 @@ function displayTopTracks(tracks) {
     } else {
         console.error("Could not find spotify-tracks-list element");
     }
+}
+
+// Function to open the Slack invite window
+function openSlackInviteWindow() {
+    const slackWindow = document.getElementById('slackWindow');
+    slackWindow.style.display = 'block';
+
+    // Bring to front
+    const allWindows = document.querySelectorAll('.win95-window');
+    allWindows.forEach(win => {
+        win.style.zIndex = 10;
+    });
+    slackWindow.style.zIndex = 100;
+}
+
+// Function to close the Slack window
+function closeSlackWindow() {
+    const slackWindow = document.getElementById('slackWindow');
+    if (slackWindow) {
+        slackWindow.style.display = 'none';
+    }
+}
+
+// Function to open Slack invitation
+function joinSlackCommunity() {
+    const slackInviteUrl = 'https://zatech.co.za/';
+    window.open(slackInviteUrl, '_blank');
+    closeSlackWindow();
 }
 
 // Function to make desktop icons draggable
