@@ -18,8 +18,8 @@ jobs:
         run: |
           echo "Checking https://www.andresmit.co.za..."
           
-          # Perform the check
-          response=$(curl -s -o /dev/null -w "%{http_code}|%{time_total}" https://www.andresmit.co.za)
+          # Perform the check (-L follows redirects)
+          response=$(curl -L -s -o /dev/null -w "%{http_code}|%{time_total}" https://www.andresmit.co.za)
           status_code=$(echo $response | cut -d'|' -f1)
           response_time=$(echo $response | cut -d'|' -f2)
           
