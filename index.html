@@ -99,6 +99,10 @@
             <span>Spotify</span>
         </div>
         <div class="desktop-icon">
+            <span class="SlackIcon_32x32"></span>
+            <span>Dev Community</span>
+        </div>
+        <div class="desktop-icon">
             <span class="RecycleIcon_32x32"></span>
             <span>Recycle Bin</span>
         </div>
@@ -529,6 +533,61 @@
             <button class="win95-btn" id="cancelBtn" onclick="closeGitHubInstallerWindow()">Cancel</button>
             <button class="win95-btn" style="margin-left: 10px;" id="nextBtn" disabled onclick="openGitHubPage()">Next
                 >
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Slack Invite Window -->
+<div class="win95-window" id="slackWindow"
+     style="display: none; position: fixed; top: 100px; left: 150px; z-index: 1000; width: 500px; background-color: #c0c0c0; border: 2px outset #fff;">
+    <!-- Windows 95 Title Bar -->
+    <div class="win95-title-bar" id="slackTitleBar">
+        <div class="win95-title" style="display: flex; align-items: center;">
+            <span>Join Our Dev Community</span>
+        </div>
+        <div class="win95-buttons">
+            <button class="win95-button win95-minimize">_</button>
+            <button class="win95-button win95-maximize">□</button>
+            <button class="win95-button win95-close" onclick="closeSlackWindow()">×</button>
+        </div>
+    </div>
+
+    <!-- Window Content -->
+    <div class="win95-window-content" style="padding: 16px; background-color: #c0c0c0;">
+        <div style="display: flex; margin-bottom: 20px;">
+            <div style="margin-right: 20px; display: flex; align-items: center; justify-content: center; width: 64px; height: 64px;">
+                <span class="SlackIcon_32x32" style="width: 64px; height: 64px; display: inline-block; background-size: contain;"></span>
+            </div>
+            <div>
+                <div style="font-weight: bold; font-size: 16px; margin-bottom: 5px;">Join Our Developer Community</div>
+                <div style="font-size: 12px;">Connect with fellow developers and share knowledge.</div>
+            </div>
+        </div>
+
+        <div style="border: 2px inset #ffffff; background-color: #ffffff; padding: 15px; margin-bottom: 15px; font-size: 12px;">
+            <p style="margin: 0 0 10px 0; line-height: 1.5;">
+                Our Slack workspace is a friendly community where developers of all levels are welcome to discuss projects, ask questions, and collaborate.
+            </p>
+
+            <div style="background-color: #ffffcc; padding: 12px; margin: 10px 0; border: 1px solid #808080;">
+                <p style="margin: 0 0 8px 0; font-weight: bold;">What you'll find:</p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li>Technical discussions and help</li>
+                    <li>Project collaboration opportunities</li>
+                    <li>Industry news and trends</li>
+                    <li>Networking with other developers</li>
+                    <li>Code reviews and feedback</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
+            <button class="win95-btn" onclick="joinSlackCommunity()" style="min-width: 120px; font-size: 12px; padding: 6px 12px;">
+                Join Community
+            </button>
+            <button class="win95-btn" onclick="closeSlackWindow()" style="min-width: 120px; font-size: 12px; padding: 6px 12px;">
+                Maybe Later
             </button>
         </div>
     </div>
