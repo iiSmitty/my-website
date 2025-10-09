@@ -1,4 +1,4 @@
-# Windows 95 Nostalgia Personal Website
+# Windows 95 Nostalgia Personal Website ![Website Status](https://github.com/iismitty/my-website/actions/workflows/uptime-monitor.yml/badge.svg)
 
 ![Windows 95 Logo](https://i.imgur.com/sqf7tWx.jpeg)
 
