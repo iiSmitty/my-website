@@ -17,12 +17,12 @@
       "id": 14612267531,
       "name": "The “perfect time” rarely comes",
       "start_date": "2025-05-27T15:58:25Z",
-      "elapsed_time": 2791,
-      "distance": 10000,
-      "normalized_time": 2791,
-      "pace_per_km": 279.1,
-      "formatted_time": "46:31",
-      "formatted_pace": "4:39/km",
+      "elapsed_time": 2893,
+      "distance": 10296.2,
+      "normalized_time": 2810,
+      "pace_per_km": 281,
+      "formatted_time": "46:50",
+      "formatted_pace": "4:41/km",
       "strava_url": "https://www.strava.com/activities/14612267531",
       "display_name": "10 Kilometers"
     },
@@ -41,10 +41,10 @@
     }
   },
   "completedCounts": {
-    "5k": 200,
+    "5k": 203,
     "10k": 87,
     "half_marathon": 13,
     "marathon": 0
   },
-  "lastUpdated": "2025-10-09T06:36:54.129Z"
+  "lastUpdated": "2025-10-21T06:37:07.015Z"
 }
