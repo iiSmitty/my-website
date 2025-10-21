@@ -4,38 +4,17 @@
       "name": "Die Heuwels Fantasties",
       "image": "https://i.scdn.co/image/ab6761610000e5eb4015c64f99883877333020a9",
       "genres": [],
-      "popularity": 48,
+      "popularity": 45,
       "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
       "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
     },
     {
-      "name": "Die Piesangskille",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb8283b82faf9927529a914e3b",
+      "name": "Spoegwolf",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebd17cf98d6beb417a7497f92d",
       "genres": [],
-      "popularity": 45,
-      "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
-      "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
-    },
-    {
-      "name": "Dead by April",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebf3770344c0b2952acd65b79f",
-      "genres": [
-        "metalcore"
-      ],
-      "popularity": 52,
-      "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
-      "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
-    },
-    {
-      "name": "Mayday Parade",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb02b1303f6926ec11f5f8f91d",
-      "genres": [
-        "pop punk",
-        "emo"
-      ],
-      "popularity": 62,
-      "uri": "spotify:artist:3WfJ1OtrWI7RViX9DMyEGy",
-      "url": "https://open.spotify.com/artist/3WfJ1OtrWI7RViX9DMyEGy"
+      "popularity": 47,
+      "uri": "spotify:artist:6o4TnAxiqaQfZMLl55NFdn",
+      "url": "https://open.spotify.com/artist/6o4TnAxiqaQfZMLl55NFdn"
     },
     {
       "name": "Linkin Park",
@@ -46,31 +25,39 @@
         "rock",
         "alternative metal"
       ],
-      "popularity": 90,
+      "popularity": 87,
       "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
+    },
+    {
+      "name": "Die Piesangskille",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb8283b82faf9927529a914e3b",
+      "genres": [],
+      "popularity": 43,
+      "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
+      "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
+    },
+    {
+      "name": "Marshmello",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb3b2498dc8a8c6eceed0a2db3",
+      "genres": [
+        "edm"
+      ],
+      "popularity": 79,
+      "uri": "spotify:artist:64KEffDW9EtZ1y2vBYgq8T",
+      "url": "https://open.spotify.com/artist/64KEffDW9EtZ1y2vBYgq8T"
     }
   ],
   "topTracks": [
     {
-      "name": "Oblivion",
-      "artist": "Jaisua, Kid Tris",
-      "album": "Oblivion",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273af89652b3d646cb271a99854",
-      "duration": "2:47",
-      "popularity": 31,
-      "uri": "spotify:track:6ppYbABpMExS1kLR0jIbfS",
-      "url": "https://open.spotify.com/track/6ppYbABpMExS1kLR0jIbfS"
-    },
-    {
-      "name": "Eye Of The Untold Her",
-      "artist": "Lindsey Stirling",
-      "album": "Duality",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273689a78fd89f92bc201139584",
-      "duration": "3:40",
-      "popularity": 51,
-      "uri": "spotify:track:57fVsBoiRK0ZXQ29acjGfb",
-      "url": "https://open.spotify.com/track/57fVsBoiRK0ZXQ29acjGfb"
+      "name": "LOST IN THE ECHO",
+      "artist": "Linkin Park",
+      "album": "LIVING THINGS",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273987fb4c5ec8790e9f637a4a4",
+      "duration": "3:25",
+      "popularity": 71,
+      "uri": "spotify:track:2oNYsdCasRRlz1shXFAz7D",
+      "url": "https://open.spotify.com/track/2oNYsdCasRRlz1shXFAz7D"
     },
     {
       "name": "Simple Man",
@@ -83,75 +70,85 @@
       "url": "https://open.spotify.com/track/5MMPHXaJmVmok7rhQ6vHiW"
     },
     {
-      "name": "LOST IN THE ECHO",
-      "artist": "Linkin Park",
-      "album": "LIVING THINGS",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273987fb4c5ec8790e9f637a4a4",
-      "duration": "3:25",
-      "popularity": 71,
-      "uri": "spotify:track:2oNYsdCasRRlz1shXFAz7D",
-      "url": "https://open.spotify.com/track/2oNYsdCasRRlz1shXFAz7D"
-    },
-    {
       "name": "We Are",
       "artist": "HAEVN",
       "album": "Eyes Closed",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27348203e11e59cdd8404fda817",
       "duration": "4:46",
-      "popularity": 41,
+      "popularity": 43,
       "uri": "spotify:track:0WjKy5SeqCS8FffVQaT2zh",
       "url": "https://open.spotify.com/track/0WjKy5SeqCS8FffVQaT2zh"
     },
     {
-      "name": "Thank You (Not So Bad)",
-      "artist": "Dimitri Vegas & Like Mike, Tiësto, Dido, W&W, Dimitri Vegas, Like Mike",
-      "album": "Thank You (Not So Bad)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2730aa08f8923434aab06e43b37",
-      "duration": "2:20",
-      "popularity": 82,
-      "uri": "spotify:track:09CnYHiZ5jGT1wr1TXJ9Zt",
-      "url": "https://open.spotify.com/track/09CnYHiZ5jGT1wr1TXJ9Zt"
+      "name": "After All The Bars Are Closed",
+      "artist": "Thomas Rhett",
+      "album": "About A Woman",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2730be8321d194b379cc1a3fe24",
+      "duration": "3:11",
+      "popularity": 71,
+      "uri": "spotify:track:5dxCaYXS5l2ZmMGAVGB2lQ",
+      "url": "https://open.spotify.com/track/5dxCaYXS5l2ZmMGAVGB2lQ"
     },
     {
-      "name": "Ek Sal Nie Bang Wees Nie",
-      "artist": "Jo Black",
-      "album": "Ek Sal Nie Bang Wees Nie",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733e9a566ad7b87840fde72071",
-      "duration": "4:44",
-      "popularity": 45,
-      "uri": "spotify:track:0YAYhBmpFGVCgOBcdzjzBS",
-      "url": "https://open.spotify.com/track/0YAYhBmpFGVCgOBcdzjzBS"
+      "name": "AURA of GLORY",
+      "artist": "Ogryzek",
+      "album": "AURA of GLORY",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273601e75b9ba05d8ab2c35ff89",
+      "duration": "4:00",
+      "popularity": 62,
+      "uri": "spotify:track:6lAsYn0DdP9nGlDdrdzNig",
+      "url": "https://open.spotify.com/track/6lAsYn0DdP9nGlDdrdzNig"
     },
     {
-      "name": "Hou Weer Moed",
-      "artist": "Spoegwolf, Emile Swiegers",
-      "album": "Water En Weerlig",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2732cdf94a399d360c4e0aadc83",
-      "duration": "4:06",
-      "popularity": 40,
-      "uri": "spotify:track:3tTofMu6TLag7kmB5HFe46",
-      "url": "https://open.spotify.com/track/3tTofMu6TLag7kmB5HFe46"
+      "name": "Fix You",
+      "artist": "Alex Melton",
+      "album": "Fix You",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27313cfc52514ba6b4127922be5",
+      "duration": "4:59",
+      "popularity": 37,
+      "uri": "spotify:track:7cXsWBxSZuqtDc8yHivVvq",
+      "url": "https://open.spotify.com/track/7cXsWBxSZuqtDc8yHivVvq"
     },
     {
-      "name": "GOD & GUNS N’ ROSES",
-      "artist": "Tyler Braden",
-      "album": "devil and a prayer",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a3d067ad0e1a2b52dac0943d",
-      "duration": "3:36",
-      "popularity": 72,
-      "uri": "spotify:track:5sNC8TarbUdne9YBjbfShs",
-      "url": "https://open.spotify.com/track/5sNC8TarbUdne9YBjbfShs"
+      "name": "Let the Sky Fall Down",
+      "artist": "Mr FijiWiji, Matt Van",
+      "album": "Lost Lost Lost",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273934c55bee3a8e189bdba8336",
+      "duration": "4:36",
+      "popularity": 25,
+      "uri": "spotify:track:0FX07LFN5Y4TA4eyGMNmol",
+      "url": "https://open.spotify.com/track/0FX07LFN5Y4TA4eyGMNmol"
     },
     {
-      "name": "Die Liedjie Oor Die Meisie (Ek Wil Jou Hê)",
-      "artist": "Glaskas",
-      "album": "Revolusie, Romantiek, Ruk en Rol",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273721cd6603a5b2e95402f9e04",
-      "duration": "2:55",
-      "popularity": 35,
-      "uri": "spotify:track:0MshehIqq1LGLiTrIawSo2",
-      "url": "https://open.spotify.com/track/0MshehIqq1LGLiTrIawSo2"
+      "name": "Jou Huis",
+      "artist": "Elvis Blue",
+      "album": "Jou Huis",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2736f2bc8583ce5711c842b0ee0",
+      "duration": "4:04",
+      "popularity": 33,
+      "uri": "spotify:track:3qSiZCOSzdc8pnQcwEvnLz",
+      "url": "https://open.spotify.com/track/3qSiZCOSzdc8pnQcwEvnLz"
+    },
+    {
+      "name": "Shatter Me",
+      "artist": "Lindsey Stirling, Halestorm",
+      "album": "Shatter Me (Deluxe)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f3e35e10bc22a07a4b86ff78",
+      "duration": "4:38",
+      "popularity": 57,
+      "uri": "spotify:track:5TSnqybKlP8IKZT3uGjr7G",
+      "url": "https://open.spotify.com/track/5TSnqybKlP8IKZT3uGjr7G"
+    },
+    {
+      "name": "Lenie Blou",
+      "artist": "Spoegwolf",
+      "album": "Swaartekrag",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b413a9699e0a2603dee72042",
+      "duration": "2:58",
+      "popularity": 48,
+      "uri": "spotify:track:10s1HbmFsDCKmMNcAbDLyV",
+      "url": "https://open.spotify.com/track/10s1HbmFsDCKmMNcAbDLyV"
     }
   ],
-  "lastUpdated": "2025-10-06T01:41:10.484Z"
+  "lastUpdated": "2025-10-20T01:49:40.226Z"
 }
