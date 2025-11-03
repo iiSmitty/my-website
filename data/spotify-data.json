@@ -9,9 +9,17 @@
         "rock",
         "alternative metal"
       ],
-      "popularity": 87,
+      "popularity": 88,
       "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
+    },
+    {
+      "name": "Spoegwolf",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebd17cf98d6beb417a7497f92d",
+      "genres": [],
+      "popularity": 48,
+      "uri": "spotify:artist:6o4TnAxiqaQfZMLl55NFdn",
+      "url": "https://open.spotify.com/artist/6o4TnAxiqaQfZMLl55NFdn"
     },
     {
       "name": "Die Heuwels Fantasties",
@@ -20,14 +28,6 @@
       "popularity": 45,
       "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
       "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
-    },
-    {
-      "name": "Spoegwolf",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebd17cf98d6beb417a7497f92d",
-      "genres": [],
-      "popularity": 47,
-      "uri": "spotify:artist:6o4TnAxiqaQfZMLl55NFdn",
-      "url": "https://open.spotify.com/artist/6o4TnAxiqaQfZMLl55NFdn"
     },
     {
       "name": "Marshmello",
@@ -40,12 +40,14 @@
       "url": "https://open.spotify.com/artist/64KEffDW9EtZ1y2vBYgq8T"
     },
     {
-      "name": "Die Piesangskille",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb8283b82faf9927529a914e3b",
-      "genres": [],
-      "popularity": 43,
-      "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
-      "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
+      "name": "Dead by April",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebf3770344c0b2952acd65b79f",
+      "genres": [
+        "metalcore"
+      ],
+      "popularity": 49,
+      "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
+      "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
     }
   ],
   "topTracks": [
@@ -58,16 +60,6 @@
       "popularity": 71,
       "uri": "spotify:track:2CkZIsVGVK7vOpWlPjJ2SE",
       "url": "https://open.spotify.com/track/2CkZIsVGVK7vOpWlPjJ2SE"
-    },
-    {
-      "name": "LOST IN THE ECHO",
-      "artist": "Linkin Park",
-      "album": "LIVING THINGS",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273987fb4c5ec8790e9f637a4a4",
-      "duration": "3:25",
-      "popularity": 71,
-      "uri": "spotify:track:2oNYsdCasRRlz1shXFAz7D",
-      "url": "https://open.spotify.com/track/2oNYsdCasRRlz1shXFAz7D"
     },
     {
       "name": "Jou Huis",
@@ -90,65 +82,75 @@
       "url": "https://open.spotify.com/track/5dxCaYXS5l2ZmMGAVGB2lQ"
     },
     {
+      "name": "Rooi Wit & Blou",
+      "artist": "Henru, Schwabie",
+      "album": "Rooi Wit & Blou",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273bad57d6999056688a4d71141",
+      "duration": "2:48",
+      "popularity": 36,
+      "uri": "spotify:track:2BoIVfNrLDsnhcjwd8eyNa",
+      "url": "https://open.spotify.com/track/2BoIVfNrLDsnhcjwd8eyNa"
+    },
+    {
+      "name": "Noorde",
+      "artist": "Spoegwolf",
+      "album": "Die Donker Toring",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273254f8c31cb262124ba88824d",
+      "duration": "3:16",
+      "popularity": 25,
+      "uri": "spotify:track:4mcqhWaI6ag6CAqFmSzaEY",
+      "url": "https://open.spotify.com/track/4mcqhWaI6ag6CAqFmSzaEY"
+    },
+    {
+      "name": "The Cure",
+      "artist": "The Chainsmokers",
+      "album": "Breathe",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27352830ff37aff9a3ffbb216d5",
+      "duration": "3:38",
+      "popularity": 67,
+      "uri": "spotify:track:6cHmI8DzAJthaPWHLxv9OM",
+      "url": "https://open.spotify.com/track/6cHmI8DzAJthaPWHLxv9OM"
+    },
+    {
       "name": "KEEP IT SIMPLE",
       "artist": "Forrest Frank",
       "album": "KEEP IT SIMPLE",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2731066d6d1f140e148d3ae29c7",
       "duration": "2:20",
-      "popularity": 52,
+      "popularity": 63,
       "uri": "spotify:track:1FkxNyq6WAGDvdZ1zjURFz",
       "url": "https://open.spotify.com/track/1FkxNyq6WAGDvdZ1zjURFz"
     },
     {
-      "name": "Simple Man",
-      "artist": "River Crombie",
-      "album": "Simple Man",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738c34a2af4ac828fafbc61ed4",
-      "duration": "5:03",
-      "popularity": 51,
-      "uri": "spotify:track:5MMPHXaJmVmok7rhQ6vHiW",
-      "url": "https://open.spotify.com/track/5MMPHXaJmVmok7rhQ6vHiW"
+      "name": "LOST IN THE ECHO",
+      "artist": "Linkin Park",
+      "album": "LIVING THINGS",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273987fb4c5ec8790e9f637a4a4",
+      "duration": "3:25",
+      "popularity": 70,
+      "uri": "spotify:track:2oNYsdCasRRlz1shXFAz7D",
+      "url": "https://open.spotify.com/track/2oNYsdCasRRlz1shXFAz7D"
     },
     {
-      "name": "Fix You",
-      "artist": "Alex Melton",
-      "album": "Fix You",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27313cfc52514ba6b4127922be5",
-      "duration": "4:59",
-      "popularity": 36,
-      "uri": "spotify:track:7cXsWBxSZuqtDc8yHivVvq",
-      "url": "https://open.spotify.com/track/7cXsWBxSZuqtDc8yHivVvq"
-    },
-    {
-      "name": "Let the Sky Fall Down",
-      "artist": "Mr FijiWiji, Matt Van",
-      "album": "Lost Lost Lost",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273934c55bee3a8e189bdba8336",
-      "duration": "4:36",
-      "popularity": 24,
-      "uri": "spotify:track:0FX07LFN5Y4TA4eyGMNmol",
-      "url": "https://open.spotify.com/track/0FX07LFN5Y4TA4eyGMNmol"
-    },
-    {
-      "name": "Shatter Me",
-      "artist": "Lindsey Stirling, Halestorm",
-      "album": "Shatter Me (Deluxe)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f3e35e10bc22a07a4b86ff78",
-      "duration": "4:38",
-      "popularity": 58,
-      "uri": "spotify:track:5TSnqybKlP8IKZT3uGjr7G",
-      "url": "https://open.spotify.com/track/5TSnqybKlP8IKZT3uGjr7G"
-    },
-    {
-      "name": "A Thousand Miles",
-      "artist": "Our Last Night",
-      "album": "Decades of Covers",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273cee5269c09925517c73257bb",
-      "duration": "3:58",
+      "name": "Teken",
+      "artist": "Spoegwolf",
+      "album": "Water En Weerlig",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2732cdf94a399d360c4e0aadc83",
+      "duration": "3:56",
       "popularity": 32,
-      "uri": "spotify:track:0SAUc0WXMYasTnp9MA1YeT",
-      "url": "https://open.spotify.com/track/0SAUc0WXMYasTnp9MA1YeT"
+      "uri": "spotify:track:5qKwzwNraMLrcqljLTTBB5",
+      "url": "https://open.spotify.com/track/5qKwzwNraMLrcqljLTTBB5"
+    },
+    {
+      "name": "Oblivion",
+      "artist": "Jaisua, Kid Tris",
+      "album": "Oblivion",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273af89652b3d646cb271a99854",
+      "duration": "2:47",
+      "popularity": 31,
+      "uri": "spotify:track:6ppYbABpMExS1kLR0jIbfS",
+      "url": "https://open.spotify.com/track/6ppYbABpMExS1kLR0jIbfS"
     }
   ],
-  "lastUpdated": "2025-10-27T01:53:07.857Z"
+  "lastUpdated": "2025-11-03T01:50:48.031Z"
 }
