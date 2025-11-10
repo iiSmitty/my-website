@@ -25,9 +25,19 @@
       "name": "Die Heuwels Fantasties",
       "image": "https://i.scdn.co/image/ab6761610000e5eb7e5ed68cd28045d603b7c82a",
       "genres": [],
-      "popularity": 45,
+      "popularity": 46,
       "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
       "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
+    },
+    {
+      "name": "Dead by April",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebf3770344c0b2952acd65b79f",
+      "genres": [
+        "metalcore"
+      ],
+      "popularity": 50,
+      "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
+      "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
     },
     {
       "name": "Marshmello",
@@ -38,16 +48,6 @@
       "popularity": 80,
       "uri": "spotify:artist:64KEffDW9EtZ1y2vBYgq8T",
       "url": "https://open.spotify.com/artist/64KEffDW9EtZ1y2vBYgq8T"
-    },
-    {
-      "name": "Dead by April",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebf3770344c0b2952acd65b79f",
-      "genres": [
-        "metalcore"
-      ],
-      "popularity": 49,
-      "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
-      "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
     }
   ],
   "topTracks": [
@@ -107,7 +107,7 @@
       "album": "Breathe",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27352830ff37aff9a3ffbb216d5",
       "duration": "3:38",
-      "popularity": 67,
+      "popularity": 68,
       "uri": "spotify:track:6cHmI8DzAJthaPWHLxv9OM",
       "url": "https://open.spotify.com/track/6cHmI8DzAJthaPWHLxv9OM"
     },
@@ -117,40 +117,40 @@
       "album": "KEEP IT SIMPLE",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2731066d6d1f140e148d3ae29c7",
       "duration": "2:20",
-      "popularity": 63,
+      "popularity": 65,
       "uri": "spotify:track:1FkxNyq6WAGDvdZ1zjURFz",
       "url": "https://open.spotify.com/track/1FkxNyq6WAGDvdZ1zjURFz"
     },
     {
-      "name": "LOST IN THE ECHO",
-      "artist": "Linkin Park",
-      "album": "LIVING THINGS",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273987fb4c5ec8790e9f637a4a4",
-      "duration": "3:25",
-      "popularity": 70,
-      "uri": "spotify:track:2oNYsdCasRRlz1shXFAz7D",
-      "url": "https://open.spotify.com/track/2oNYsdCasRRlz1shXFAz7D"
+      "name": "before you go",
+      "artist": "LSR/CITY",
+      "album": "before you go",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731c4949f372bd730ae1ad6371",
+      "duration": "4:18",
+      "popularity": 46,
+      "uri": "spotify:track:4y2wDeRQzaq6Yq2TiGTVCd",
+      "url": "https://open.spotify.com/track/4y2wDeRQzaq6Yq2TiGTVCd"
     },
     {
-      "name": "Teken",
-      "artist": "Spoegwolf",
-      "album": "Water En Weerlig",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2732cdf94a399d360c4e0aadc83",
-      "duration": "3:56",
-      "popularity": 32,
-      "uri": "spotify:track:5qKwzwNraMLrcqljLTTBB5",
-      "url": "https://open.spotify.com/track/5qKwzwNraMLrcqljLTTBB5"
+      "name": "Ritual Lights",
+      "artist": "Sammy Boller",
+      "album": "Ritual Lights",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c600ea1bb43cbed53aa6ef74",
+      "duration": "3:28",
+      "popularity": 33,
+      "uri": "spotify:track:5LTdAhYnIqtO7CAJ95opCv",
+      "url": "https://open.spotify.com/track/5LTdAhYnIqtO7CAJ95opCv"
     },
     {
-      "name": "Oblivion",
-      "artist": "Jaisua, Kid Tris",
-      "album": "Oblivion",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273af89652b3d646cb271a99854",
-      "duration": "2:47",
-      "popularity": 31,
-      "uri": "spotify:track:6ppYbABpMExS1kLR0jIbfS",
-      "url": "https://open.spotify.com/track/6ppYbABpMExS1kLR0jIbfS"
+      "name": "Rollin' Stone",
+      "artist": "Blake Whiten",
+      "album": "Rollin' Stone",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273419c319e86c6d164448f7a62",
+      "duration": "2:31",
+      "popularity": 72,
+      "uri": "spotify:track:1CxoluXWMslZp5T89ravj3",
+      "url": "https://open.spotify.com/track/1CxoluXWMslZp5T89ravj3"
     }
   ],
-  "lastUpdated": "2025-11-03T01:50:48.031Z"
+  "lastUpdated": "2025-11-10T01:52:05.598Z"
 }
