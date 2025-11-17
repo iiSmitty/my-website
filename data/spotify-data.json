@@ -9,7 +9,7 @@
         "rock",
         "alternative metal"
       ],
-      "popularity": 88,
+      "popularity": 89,
       "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
@@ -22,35 +22,46 @@
       "url": "https://open.spotify.com/artist/6o4TnAxiqaQfZMLl55NFdn"
     },
     {
+      "name": "Rooksein",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb2a56712841c5dc2fc0f0f641",
+      "genres": [],
+      "popularity": 37,
+      "uri": "spotify:artist:0TX0T9VkzOTEjsdzi1a4nT",
+      "url": "https://open.spotify.com/artist/0TX0T9VkzOTEjsdzi1a4nT"
+    },
+    {
       "name": "Die Heuwels Fantasties",
       "image": "https://i.scdn.co/image/ab6761610000e5eb7e5ed68cd28045d603b7c82a",
       "genres": [],
-      "popularity": 46,
+      "popularity": 47,
       "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
       "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
     },
     {
-      "name": "Dead by April",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebf3770344c0b2952acd65b79f",
+      "name": "Breaking Benjamin",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebff528d242b11fdc4261d05da",
       "genres": [
-        "metalcore"
+        "alternative metal",
+        "post-grunge",
+        "rock",
+        "hard rock"
       ],
-      "popularity": 50,
-      "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
-      "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
-    },
-    {
-      "name": "Marshmello",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb3b2498dc8a8c6eceed0a2db3",
-      "genres": [
-        "edm"
-      ],
-      "popularity": 80,
-      "uri": "spotify:artist:64KEffDW9EtZ1y2vBYgq8T",
-      "url": "https://open.spotify.com/artist/64KEffDW9EtZ1y2vBYgq8T"
+      "popularity": 72,
+      "uri": "spotify:artist:5BtHciL0e0zOP7prIHn3pP",
+      "url": "https://open.spotify.com/artist/5BtHciL0e0zOP7prIHn3pP"
     }
   ],
   "topTracks": [
+    {
+      "name": "before you go",
+      "artist": "LSR/CITY",
+      "album": "before you go",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731c4949f372bd730ae1ad6371",
+      "duration": "4:18",
+      "popularity": 48,
+      "uri": "spotify:track:4y2wDeRQzaq6Yq2TiGTVCd",
+      "url": "https://open.spotify.com/track/4y2wDeRQzaq6Yq2TiGTVCd"
+    },
     {
       "name": "Music for the Soul",
       "artist": "Sam Barber",
@@ -60,26 +71,6 @@
       "popularity": 71,
       "uri": "spotify:track:2CkZIsVGVK7vOpWlPjJ2SE",
       "url": "https://open.spotify.com/track/2CkZIsVGVK7vOpWlPjJ2SE"
-    },
-    {
-      "name": "Jou Huis",
-      "artist": "Elvis Blue",
-      "album": "Jou Huis",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2736f2bc8583ce5711c842b0ee0",
-      "duration": "4:04",
-      "popularity": 33,
-      "uri": "spotify:track:3qSiZCOSzdc8pnQcwEvnLz",
-      "url": "https://open.spotify.com/track/3qSiZCOSzdc8pnQcwEvnLz"
-    },
-    {
-      "name": "After All The Bars Are Closed",
-      "artist": "Thomas Rhett",
-      "album": "About A Woman",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2730be8321d194b379cc1a3fe24",
-      "duration": "3:11",
-      "popularity": 71,
-      "uri": "spotify:track:5dxCaYXS5l2ZmMGAVGB2lQ",
-      "url": "https://open.spotify.com/track/5dxCaYXS5l2ZmMGAVGB2lQ"
     },
     {
       "name": "Rooi Wit & Blou",
@@ -97,9 +88,19 @@
       "album": "Die Donker Toring",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273254f8c31cb262124ba88824d",
       "duration": "3:16",
-      "popularity": 25,
+      "popularity": 26,
       "uri": "spotify:track:4mcqhWaI6ag6CAqFmSzaEY",
       "url": "https://open.spotify.com/track/4mcqhWaI6ag6CAqFmSzaEY"
+    },
+    {
+      "name": "Ritual Lights",
+      "artist": "Sammy Boller",
+      "album": "Ritual Lights",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c600ea1bb43cbed53aa6ef74",
+      "duration": "3:28",
+      "popularity": 33,
+      "uri": "spotify:track:5LTdAhYnIqtO7CAJ95opCv",
+      "url": "https://open.spotify.com/track/5LTdAhYnIqtO7CAJ95opCv"
     },
     {
       "name": "The Cure",
@@ -122,24 +123,14 @@
       "url": "https://open.spotify.com/track/1FkxNyq6WAGDvdZ1zjURFz"
     },
     {
-      "name": "before you go",
-      "artist": "LSR/CITY",
-      "album": "before you go",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731c4949f372bd730ae1ad6371",
-      "duration": "4:18",
-      "popularity": 46,
-      "uri": "spotify:track:4y2wDeRQzaq6Yq2TiGTVCd",
-      "url": "https://open.spotify.com/track/4y2wDeRQzaq6Yq2TiGTVCd"
-    },
-    {
-      "name": "Ritual Lights",
-      "artist": "Sammy Boller",
-      "album": "Ritual Lights",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c600ea1bb43cbed53aa6ef74",
-      "duration": "3:28",
+      "name": "Jou Huis",
+      "artist": "Elvis Blue",
+      "album": "Jou Huis",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2736f2bc8583ce5711c842b0ee0",
+      "duration": "4:04",
       "popularity": 33,
-      "uri": "spotify:track:5LTdAhYnIqtO7CAJ95opCv",
-      "url": "https://open.spotify.com/track/5LTdAhYnIqtO7CAJ95opCv"
+      "uri": "spotify:track:3qSiZCOSzdc8pnQcwEvnLz",
+      "url": "https://open.spotify.com/track/3qSiZCOSzdc8pnQcwEvnLz"
     },
     {
       "name": "Rollin' Stone",
@@ -150,7 +141,17 @@
       "popularity": 72,
       "uri": "spotify:track:1CxoluXWMslZp5T89ravj3",
       "url": "https://open.spotify.com/track/1CxoluXWMslZp5T89ravj3"
+    },
+    {
+      "name": "MEMORY",
+      "artist": "Alex LeMirage, Fi Sullivan",
+      "album": "MEMORY",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27383ae1b7244ba17a425126218",
+      "duration": "3:16",
+      "popularity": 66,
+      "uri": "spotify:track:4XKYLo1eAUFETIt5PLy8ZG",
+      "url": "https://open.spotify.com/track/4XKYLo1eAUFETIt5PLy8ZG"
     }
   ],
-  "lastUpdated": "2025-11-10T01:52:05.598Z"
+  "lastUpdated": "2025-11-17T01:49:15.193Z"
 }
