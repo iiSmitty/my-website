@@ -1,20 +1,35 @@
 {
   "topArtists": [
     {
-      "name": "Spoegwolf",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebd17cf98d6beb417a7497f92d",
-      "genres": [],
-      "popularity": 49,
-      "uri": "spotify:artist:6o4TnAxiqaQfZMLl55NFdn",
-      "url": "https://open.spotify.com/artist/6o4TnAxiqaQfZMLl55NFdn"
+      "name": "Dead by April",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebf3770344c0b2952acd65b79f",
+      "genres": [
+        "metalcore"
+      ],
+      "popularity": 51,
+      "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
+      "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
     },
     {
-      "name": "Rooksein",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb2a56712841c5dc2fc0f0f641",
+      "name": "The Chainsmokers",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb4567279fac84a0375c3d819b",
       "genres": [],
-      "popularity": 38,
-      "uri": "spotify:artist:0TX0T9VkzOTEjsdzi1a4nT",
-      "url": "https://open.spotify.com/artist/0TX0T9VkzOTEjsdzi1a4nT"
+      "popularity": 81,
+      "uri": "spotify:artist:69GGBxA162lTqCwzJG5jLp",
+      "url": "https://open.spotify.com/artist/69GGBxA162lTqCwzJG5jLp"
+    },
+    {
+      "name": "Tauren Wells",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb66b488f06b2220e7f66d5a87",
+      "genres": [
+        "christian",
+        "worship",
+        "christian pop",
+        "ccm"
+      ],
+      "popularity": 63,
+      "uri": "spotify:artist:3SKza3YPBri1k43LB1Tqy4",
+      "url": "https://open.spotify.com/artist/3SKza3YPBri1k43LB1Tqy4"
     },
     {
       "name": "Linkin Park",
@@ -25,27 +40,22 @@
         "rock",
         "alternative metal"
       ],
-      "popularity": 89,
+      "popularity": 90,
       "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
     {
-      "name": "Marshmello",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb3b2498dc8a8c6eceed0a2db3",
+      "name": "Disciple",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb5f5263b5a85ac5fab97ab6b8",
       "genres": [
-        "edm"
+        "christian rock",
+        "christian alternative rock",
+        "chinese rock",
+        "christian"
       ],
-      "popularity": 81,
-      "uri": "spotify:artist:64KEffDW9EtZ1y2vBYgq8T",
-      "url": "https://open.spotify.com/artist/64KEffDW9EtZ1y2vBYgq8T"
-    },
-    {
-      "name": "The Chainsmokers",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb4567279fac84a0375c3d819b",
-      "genres": [],
-      "popularity": 81,
-      "uri": "spotify:artist:69GGBxA162lTqCwzJG5jLp",
-      "url": "https://open.spotify.com/artist/69GGBxA162lTqCwzJG5jLp"
+      "popularity": 47,
+      "uri": "spotify:artist:4D9k73VomKTnVQ6ROnt8IO",
+      "url": "https://open.spotify.com/artist/4D9k73VomKTnVQ6ROnt8IO"
     }
   ],
   "topTracks": [
@@ -60,14 +70,14 @@
       "url": "https://open.spotify.com/track/4y2wDeRQzaq6Yq2TiGTVCd"
     },
     {
-      "name": "Rooi Wit & Blou",
-      "artist": "Henru, Schwabie",
-      "album": "Rooi Wit & Blou",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273bad57d6999056688a4d71141",
-      "duration": "2:48",
-      "popularity": 37,
-      "uri": "spotify:track:2BoIVfNrLDsnhcjwd8eyNa",
-      "url": "https://open.spotify.com/track/2BoIVfNrLDsnhcjwd8eyNa"
+      "name": "Upside Down",
+      "artist": "Jack Johnson",
+      "album": "Jack Johnson And Friends: Sing-A-Longs And Lullabies For The Film Curious George",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731e0232d637e8313d3ef4923e",
+      "duration": "3:28",
+      "popularity": 71,
+      "uri": "spotify:track:6shRGWCtBUOPFLFTTqXZIC",
+      "url": "https://open.spotify.com/track/6shRGWCtBUOPFLFTTqXZIC"
     },
     {
       "name": "Ritual Lights",
@@ -80,14 +90,24 @@
       "url": "https://open.spotify.com/track/5LTdAhYnIqtO7CAJ95opCv"
     },
     {
-      "name": "The Cure",
-      "artist": "The Chainsmokers",
-      "album": "Breathe",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27352830ff37aff9a3ffbb216d5",
-      "duration": "3:38",
+      "name": "Dragostea Din Tei - W&W Remix",
+      "artist": "O-Zone, W&W",
+      "album": "Dragostea Din Tei (W&W Remix)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273e05648fadf59c516f5e15061",
+      "duration": "2:54",
+      "popularity": 40,
+      "uri": "spotify:track:0qRqEXT0bfAyAoVpA3qCuW",
+      "url": "https://open.spotify.com/track/0qRqEXT0bfAyAoVpA3qCuW"
+    },
+    {
+      "name": "Make It Rain",
+      "artist": "Riley Green",
+      "album": "Don't Mind If I Do (Deluxe)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27376f66db15bb6c47ea9aa6c64",
+      "duration": "4:12",
       "popularity": 68,
-      "uri": "spotify:track:6cHmI8DzAJthaPWHLxv9OM",
-      "url": "https://open.spotify.com/track/6cHmI8DzAJthaPWHLxv9OM"
+      "uri": "spotify:track:5uJUF0Az31PDoOjaYeT2Cy",
+      "url": "https://open.spotify.com/track/5uJUF0Az31PDoOjaYeT2Cy"
     },
     {
       "name": "MEMORY",
@@ -100,24 +120,14 @@
       "url": "https://open.spotify.com/track/4XKYLo1eAUFETIt5PLy8ZG"
     },
     {
-      "name": "Music for the Soul",
-      "artist": "Sam Barber",
-      "album": "Music for the Soul",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b27fffc818a9857d1f081c5d",
-      "duration": "3:44",
-      "popularity": 71,
-      "uri": "spotify:track:2CkZIsVGVK7vOpWlPjJ2SE",
-      "url": "https://open.spotify.com/track/2CkZIsVGVK7vOpWlPjJ2SE"
-    },
-    {
-      "name": "Noorde",
-      "artist": "Spoegwolf",
-      "album": "Die Donker Toring",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273254f8c31cb262124ba88824d",
-      "duration": "3:16",
-      "popularity": 26,
-      "uri": "spotify:track:4mcqhWaI6ag6CAqFmSzaEY",
-      "url": "https://open.spotify.com/track/4mcqhWaI6ag6CAqFmSzaEY"
+      "name": "Simple Man",
+      "artist": "River Crombie",
+      "album": "Simple Man",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738c34a2af4ac828fafbc61ed4",
+      "duration": "5:03",
+      "popularity": 50,
+      "uri": "spotify:track:5MMPHXaJmVmok7rhQ6vHiW",
+      "url": "https://open.spotify.com/track/5MMPHXaJmVmok7rhQ6vHiW"
     },
     {
       "name": "Rollin' Stone",
@@ -130,25 +140,25 @@
       "url": "https://open.spotify.com/track/1CxoluXWMslZp5T89ravj3"
     },
     {
-      "name": "Simple Man",
-      "artist": "River Crombie",
-      "album": "Simple Man",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738c34a2af4ac828fafbc61ed4",
-      "duration": "5:03",
-      "popularity": 51,
-      "uri": "spotify:track:5MMPHXaJmVmok7rhQ6vHiW",
-      "url": "https://open.spotify.com/track/5MMPHXaJmVmok7rhQ6vHiW"
+      "name": "Rise Up",
+      "artist": "Andra Day",
+      "album": "Cheers to the Fall",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273ccd9af18cc83991382c9ab9a",
+      "duration": "4:13",
+      "popularity": 72,
+      "uri": "spotify:track:0tV8pOpiNsKqUys0ilUcXz",
+      "url": "https://open.spotify.com/track/0tV8pOpiNsKqUys0ilUcXz"
     },
     {
-      "name": "Indigo (feat. Avery Anna)",
-      "artist": "Sam Barber, Avery Anna",
-      "album": "Restless Mind",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c944a2c490ed24e29eef5119",
-      "duration": "4:46",
-      "popularity": 83,
-      "uri": "spotify:track:1KZG1H1OCugGqIRmk1wF9m",
-      "url": "https://open.spotify.com/track/1KZG1H1OCugGqIRmk1wF9m"
+      "name": "Geel (Julie)",
+      "artist": "Spoegwolf",
+      "album": "Die Donker Toring",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273254f8c31cb262124ba88824d",
+      "duration": "2:54",
+      "popularity": 44,
+      "uri": "spotify:track:4Kgfh54cVwFPY4W2Wl1Ahg",
+      "url": "https://open.spotify.com/track/4Kgfh54cVwFPY4W2Wl1Ahg"
     }
   ],
-  "lastUpdated": "2025-11-24T01:55:09.214Z"
+  "lastUpdated": "2025-12-01T02:07:11.512Z"
 }
