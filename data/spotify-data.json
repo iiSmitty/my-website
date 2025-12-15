@@ -1,6 +1,27 @@
 {
   "topArtists": [
     {
+      "name": "Die Heuwels Fantasties",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb7e5ed68cd28045d603b7c82a",
+      "genres": [],
+      "popularity": 48,
+      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
+      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
+    },
+    {
+      "name": "Tauren Wells",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb66b488f06b2220e7f66d5a87",
+      "genres": [
+        "christian",
+        "worship",
+        "christian pop",
+        "ccm"
+      ],
+      "popularity": 64,
+      "uri": "spotify:artist:3SKza3YPBri1k43LB1Tqy4",
+      "url": "https://open.spotify.com/artist/3SKza3YPBri1k43LB1Tqy4"
+    },
+    {
       "name": "Linkin Park",
       "image": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
       "genres": [
@@ -14,46 +35,22 @@
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
     {
-      "name": "Tauren Wells",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb66b488f06b2220e7f66d5a87",
-      "genres": [
-        "christian",
-        "worship",
-        "christian pop",
-        "ccm"
-      ],
-      "popularity": 63,
-      "uri": "spotify:artist:3SKza3YPBri1k43LB1Tqy4",
-      "url": "https://open.spotify.com/artist/3SKza3YPBri1k43LB1Tqy4"
-    },
-    {
-      "name": "Die Heuwels Fantasties",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb7e5ed68cd28045d603b7c82a",
+      "name": "Die Piesangskille",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb8283b82faf9927529a914e3b",
       "genres": [],
-      "popularity": 48,
-      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
-      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
+      "popularity": 47,
+      "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
+      "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
     },
     {
-      "name": "Spoegwolf",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebd17cf98d6beb417a7497f92d",
-      "genres": [],
-      "popularity": 50,
-      "uri": "spotify:artist:6o4TnAxiqaQfZMLl55NFdn",
-      "url": "https://open.spotify.com/artist/6o4TnAxiqaQfZMLl55NFdn"
-    },
-    {
-      "name": "The Midnight",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebbeb65e1c821ecd888cf5e115",
+      "name": "Jack Johnson",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb0bf3ff1eaa4c0d6d664ccc3f",
       "genres": [
-        "synthwave",
-        "vaporwave",
-        "synthpop",
-        "chillwave"
+        "surf rock"
       ],
-      "popularity": 61,
-      "uri": "spotify:artist:2NFrAuh8RQdQoS7iYFbckw",
-      "url": "https://open.spotify.com/artist/2NFrAuh8RQdQoS7iYFbckw"
+      "popularity": 76,
+      "uri": "spotify:artist:3GBPw9NK25X1Wt2OUvOwY3",
+      "url": "https://open.spotify.com/artist/3GBPw9NK25X1Wt2OUvOwY3"
     }
   ],
   "topTracks": [
@@ -66,16 +63,6 @@
       "popularity": 71,
       "uri": "spotify:track:6shRGWCtBUOPFLFTTqXZIC",
       "url": "https://open.spotify.com/track/6shRGWCtBUOPFLFTTqXZIC"
-    },
-    {
-      "name": "Make It Rain",
-      "artist": "Riley Green",
-      "album": "Don't Mind If I Do (Deluxe)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27376f66db15bb6c47ea9aa6c64",
-      "duration": "4:12",
-      "popularity": 68,
-      "uri": "spotify:track:5uJUF0Az31PDoOjaYeT2Cy",
-      "url": "https://open.spotify.com/track/5uJUF0Az31PDoOjaYeT2Cy"
     },
     {
       "name": "Dragostea Din Tei - W&W Remix",
@@ -98,24 +85,14 @@
       "url": "https://open.spotify.com/track/2iXdwVdzA0KrI2Q0iZNJbX"
     },
     {
-      "name": "MEMORY",
-      "artist": "Alex LeMirage, Fi Sullivan",
-      "album": "MEMORY",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27383ae1b7244ba17a425126218",
-      "duration": "3:16",
-      "popularity": 66,
-      "uri": "spotify:track:4XKYLo1eAUFETIt5PLy8ZG",
-      "url": "https://open.spotify.com/track/4XKYLo1eAUFETIt5PLy8ZG"
-    },
-    {
-      "name": "before you go",
-      "artist": "LSR/CITY",
-      "album": "before you go",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731c4949f372bd730ae1ad6371",
-      "duration": "4:18",
-      "popularity": 49,
-      "uri": "spotify:track:4y2wDeRQzaq6Yq2TiGTVCd",
-      "url": "https://open.spotify.com/track/4y2wDeRQzaq6Yq2TiGTVCd"
+      "name": "Make It Rain",
+      "artist": "Riley Green",
+      "album": "Don't Mind If I Do (Deluxe)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27376f66db15bb6c47ea9aa6c64",
+      "duration": "4:12",
+      "popularity": 68,
+      "uri": "spotify:track:5uJUF0Az31PDoOjaYeT2Cy",
+      "url": "https://open.spotify.com/track/5uJUF0Az31PDoOjaYeT2Cy"
     },
     {
       "name": "Ek Dink Te Veel",
@@ -123,7 +100,7 @@
       "album": "Ek Dink Te Veel",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273075bff83bcda835619976c8f",
       "duration": "3:00",
-      "popularity": 32,
+      "popularity": 31,
       "uri": "spotify:track:0nJcHyQST727NW3jNhzlFh",
       "url": "https://open.spotify.com/track/0nJcHyQST727NW3jNhzlFh"
     },
@@ -138,25 +115,45 @@
       "url": "https://open.spotify.com/track/2Fs18NaCDuluPG1DHGw1XG"
     },
     {
+      "name": "Escape",
+      "artist": "Enrique Iglesias",
+      "album": "Escape",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27347527edce762c35fde07559c",
+      "duration": "3:28",
+      "popularity": 62,
+      "uri": "spotify:track:4anDsZBavxjw3Ktw6ICGYd",
+      "url": "https://open.spotify.com/track/4anDsZBavxjw3Ktw6ICGYd"
+    },
+    {
+      "name": "I Don't Want To Miss A Thing - From \"Armageddon\" Soundtrack",
+      "artist": "Aerosmith",
+      "album": "I Don't Want To Miss A Thing EP",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f039d2a6afcfab0827bb9bc0",
+      "duration": "4:59",
+      "popularity": 79,
+      "uri": "spotify:track:5qlJg0Wbj3sslxfwiaRNpq",
+      "url": "https://open.spotify.com/track/5qlJg0Wbj3sslxfwiaRNpq"
+    },
+    {
+      "name": "Hero",
+      "artist": "Enrique Iglesias",
+      "album": "Escape",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27347527edce762c35fde07559c",
+      "duration": "4:24",
+      "popularity": 69,
+      "uri": "spotify:track:1PAgmT6YqGhd6zT9kN9gIo",
+      "url": "https://open.spotify.com/track/1PAgmT6YqGhd6zT9kN9gIo"
+    },
+    {
       "name": "In Fire",
       "artist": "Tey Tee",
       "album": "In Fire",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2733fda249c762ca6f0b265529f",
       "duration": "3:16",
-      "popularity": 42,
+      "popularity": 41,
       "uri": "spotify:track:7woRgQ6cPcubZ9uEcqbt2R",
       "url": "https://open.spotify.com/track/7woRgQ6cPcubZ9uEcqbt2R"
-    },
-    {
-      "name": "KEEP IT SIMPLE",
-      "artist": "Forrest Frank",
-      "album": "KEEP IT SIMPLE",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731066d6d1f140e148d3ae29c7",
-      "duration": "2:20",
-      "popularity": 64,
-      "uri": "spotify:track:1FkxNyq6WAGDvdZ1zjURFz",
-      "url": "https://open.spotify.com/track/1FkxNyq6WAGDvdZ1zjURFz"
     }
   ],
-  "lastUpdated": "2025-12-08T01:52:42.336Z"
+  "lastUpdated": "2025-12-15T01:58:32.492Z"
 }
