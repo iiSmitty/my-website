@@ -1,14 +1,6 @@
 {
   "topArtists": [
     {
-      "name": "Die Heuwels Fantasties",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb7e5ed68cd28045d603b7c82a",
-      "genres": [],
-      "popularity": 48,
-      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
-      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
-    },
-    {
       "name": "Tauren Wells",
       "image": "https://i.scdn.co/image/ab6761610000e5eb66b488f06b2220e7f66d5a87",
       "genres": [
@@ -20,6 +12,16 @@
       "popularity": 64,
       "uri": "spotify:artist:3SKza3YPBri1k43LB1Tqy4",
       "url": "https://open.spotify.com/artist/3SKza3YPBri1k43LB1Tqy4"
+    },
+    {
+      "name": "Die Heuwels Fantasties",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb7e5ed68cd28045d603b7c82a",
+      "genres": [
+        "afrikaans pop"
+      ],
+      "popularity": 48,
+      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
+      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
     },
     {
       "name": "Linkin Park",
@@ -35,12 +37,17 @@
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
     {
-      "name": "Die Piesangskille",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb8283b82faf9927529a914e3b",
-      "genres": [],
-      "popularity": 47,
-      "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
-      "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
+      "name": "The Midnight",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebbeb65e1c821ecd888cf5e115",
+      "genres": [
+        "synthwave",
+        "vaporwave",
+        "synthpop",
+        "chillwave"
+      ],
+      "popularity": 62,
+      "uri": "spotify:artist:2NFrAuh8RQdQoS7iYFbckw",
+      "url": "https://open.spotify.com/artist/2NFrAuh8RQdQoS7iYFbckw"
     },
     {
       "name": "Jack Johnson",
@@ -65,16 +72,6 @@
       "url": "https://open.spotify.com/track/6shRGWCtBUOPFLFTTqXZIC"
     },
     {
-      "name": "Dragostea Din Tei - W&W Remix",
-      "artist": "O-Zone, W&W",
-      "album": "Dragostea Din Tei (W&W Remix)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273e05648fadf59c516f5e15061",
-      "duration": "2:54",
-      "popularity": 40,
-      "uri": "spotify:track:0qRqEXT0bfAyAoVpA3qCuW",
-      "url": "https://open.spotify.com/track/0qRqEXT0bfAyAoVpA3qCuW"
-    },
-    {
       "name": "Better Together",
       "artist": "Jack Johnson",
       "album": "In Between Dreams",
@@ -85,6 +82,16 @@
       "url": "https://open.spotify.com/track/2iXdwVdzA0KrI2Q0iZNJbX"
     },
     {
+      "name": "Ek Dink Te Veel",
+      "artist": "Schwabie, Tylo",
+      "album": "Ek Dink Te Veel",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273075bff83bcda835619976c8f",
+      "duration": "3:00",
+      "popularity": 30,
+      "uri": "spotify:track:0nJcHyQST727NW3jNhzlFh",
+      "url": "https://open.spotify.com/track/0nJcHyQST727NW3jNhzlFh"
+    },
+    {
       "name": "Make It Rain",
       "artist": "Riley Green",
       "album": "Don't Mind If I Do (Deluxe)",
@@ -93,16 +100,6 @@
       "popularity": 68,
       "uri": "spotify:track:5uJUF0Az31PDoOjaYeT2Cy",
       "url": "https://open.spotify.com/track/5uJUF0Az31PDoOjaYeT2Cy"
-    },
-    {
-      "name": "Ek Dink Te Veel",
-      "artist": "Schwabie, Tylo",
-      "album": "Ek Dink Te Veel",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273075bff83bcda835619976c8f",
-      "duration": "3:00",
-      "popularity": 31,
-      "uri": "spotify:track:0nJcHyQST727NW3jNhzlFh",
-      "url": "https://open.spotify.com/track/0nJcHyQST727NW3jNhzlFh"
     },
     {
       "name": "Life is a Highway",
@@ -135,6 +132,16 @@
       "url": "https://open.spotify.com/track/5qlJg0Wbj3sslxfwiaRNpq"
     },
     {
+      "name": "Dragostea Din Tei - W&W Remix",
+      "artist": "O-Zone, W&W",
+      "album": "Dragostea Din Tei (W&W Remix)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273e05648fadf59c516f5e15061",
+      "duration": "2:54",
+      "popularity": 41,
+      "uri": "spotify:track:0qRqEXT0bfAyAoVpA3qCuW",
+      "url": "https://open.spotify.com/track/0qRqEXT0bfAyAoVpA3qCuW"
+    },
+    {
       "name": "Hero",
       "artist": "Enrique Iglesias",
       "album": "Escape",
@@ -145,15 +152,15 @@
       "url": "https://open.spotify.com/track/1PAgmT6YqGhd6zT9kN9gIo"
     },
     {
-      "name": "In Fire",
-      "artist": "Tey Tee",
-      "album": "In Fire",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733fda249c762ca6f0b265529f",
+      "name": "Noorde",
+      "artist": "Spoegwolf",
+      "album": "Die Donker Toring",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273254f8c31cb262124ba88824d",
       "duration": "3:16",
-      "popularity": 41,
-      "uri": "spotify:track:7woRgQ6cPcubZ9uEcqbt2R",
-      "url": "https://open.spotify.com/track/7woRgQ6cPcubZ9uEcqbt2R"
+      "popularity": 28,
+      "uri": "spotify:track:4mcqhWaI6ag6CAqFmSzaEY",
+      "url": "https://open.spotify.com/track/4mcqhWaI6ag6CAqFmSzaEY"
     }
   ],
-  "lastUpdated": "2025-12-15T01:58:32.492Z"
+  "lastUpdated": "2025-12-22T02:00:05.060Z"
 }
