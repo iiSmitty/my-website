@@ -1,27 +1,24 @@
 {
   "topArtists": [
     {
-      "name": "Tauren Wells",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb66b488f06b2220e7f66d5a87",
-      "genres": [
-        "christian",
-        "worship",
-        "christian pop",
-        "ccm"
-      ],
-      "popularity": 64,
-      "uri": "spotify:artist:3SKza3YPBri1k43LB1Tqy4",
-      "url": "https://open.spotify.com/artist/3SKza3YPBri1k43LB1Tqy4"
-    },
-    {
-      "name": "Die Heuwels Fantasties",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb7e5ed68cd28045d603b7c82a",
+      "name": "Die Piesangskille",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb8283b82faf9927529a914e3b",
       "genres": [
         "afrikaans pop"
       ],
       "popularity": 48,
-      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
-      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
+      "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
+      "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
+    },
+    {
+      "name": "Spoegwolf",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebd17cf98d6beb417a7497f92d",
+      "genres": [
+        "afrikaans pop"
+      ],
+      "popularity": 51,
+      "uri": "spotify:artist:6o4TnAxiqaQfZMLl55NFdn",
+      "url": "https://open.spotify.com/artist/6o4TnAxiqaQfZMLl55NFdn"
     },
     {
       "name": "Linkin Park",
@@ -37,47 +34,35 @@
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
     {
-      "name": "The Midnight",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebbeb65e1c821ecd888cf5e115",
+      "name": "Enrique Iglesias",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb4fa1405802a42c665b0f2dd1",
       "genres": [
-        "synthwave",
-        "vaporwave",
-        "synthpop",
-        "chillwave"
+        "latin pop",
+        "latin"
       ],
-      "popularity": 62,
-      "uri": "spotify:artist:2NFrAuh8RQdQoS7iYFbckw",
-      "url": "https://open.spotify.com/artist/2NFrAuh8RQdQoS7iYFbckw"
+      "popularity": 80,
+      "uri": "spotify:artist:7qG3b048QCHVRO5Pv1T5lw",
+      "url": "https://open.spotify.com/artist/7qG3b048QCHVRO5Pv1T5lw"
     },
     {
-      "name": "Jack Johnson",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb0bf3ff1eaa4c0d6d664ccc3f",
+      "name": "Die Heuwels Fantasties",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb7e5ed68cd28045d603b7c82a",
       "genres": [
-        "surf rock"
+        "afrikaans pop"
       ],
-      "popularity": 76,
-      "uri": "spotify:artist:3GBPw9NK25X1Wt2OUvOwY3",
-      "url": "https://open.spotify.com/artist/3GBPw9NK25X1Wt2OUvOwY3"
+      "popularity": 49,
+      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
+      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
     }
   ],
   "topTracks": [
-    {
-      "name": "Upside Down",
-      "artist": "Jack Johnson",
-      "album": "Jack Johnson And Friends: Sing-A-Longs And Lullabies For The Film Curious George",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731e0232d637e8313d3ef4923e",
-      "duration": "3:28",
-      "popularity": 71,
-      "uri": "spotify:track:6shRGWCtBUOPFLFTTqXZIC",
-      "url": "https://open.spotify.com/track/6shRGWCtBUOPFLFTTqXZIC"
-    },
     {
       "name": "Better Together",
       "artist": "Jack Johnson",
       "album": "In Between Dreams",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273628dba01c669d89586967dc5",
       "duration": "3:27",
-      "popularity": 75,
+      "popularity": 73,
       "uri": "spotify:track:2iXdwVdzA0KrI2Q0iZNJbX",
       "url": "https://open.spotify.com/track/2iXdwVdzA0KrI2Q0iZNJbX"
     },
@@ -87,19 +72,9 @@
       "album": "Ek Dink Te Veel",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273075bff83bcda835619976c8f",
       "duration": "3:00",
-      "popularity": 30,
+      "popularity": 28,
       "uri": "spotify:track:0nJcHyQST727NW3jNhzlFh",
       "url": "https://open.spotify.com/track/0nJcHyQST727NW3jNhzlFh"
-    },
-    {
-      "name": "Make It Rain",
-      "artist": "Riley Green",
-      "album": "Don't Mind If I Do (Deluxe)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27376f66db15bb6c47ea9aa6c64",
-      "duration": "4:12",
-      "popularity": 68,
-      "uri": "spotify:track:5uJUF0Az31PDoOjaYeT2Cy",
-      "url": "https://open.spotify.com/track/5uJUF0Az31PDoOjaYeT2Cy"
     },
     {
       "name": "Life is a Highway",
@@ -107,7 +82,7 @@
       "album": "Me And My Gang",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273aa6b03f85a0f2cb16e88ec0c",
       "duration": "4:36",
-      "popularity": 74,
+      "popularity": 73,
       "uri": "spotify:track:2Fs18NaCDuluPG1DHGw1XG",
       "url": "https://open.spotify.com/track/2Fs18NaCDuluPG1DHGw1XG"
     },
@@ -117,7 +92,7 @@
       "album": "Escape",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27347527edce762c35fde07559c",
       "duration": "3:28",
-      "popularity": 62,
+      "popularity": 61,
       "uri": "spotify:track:4anDsZBavxjw3Ktw6ICGYd",
       "url": "https://open.spotify.com/track/4anDsZBavxjw3Ktw6ICGYd"
     },
@@ -127,19 +102,9 @@
       "album": "I Don't Want To Miss A Thing EP",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273f039d2a6afcfab0827bb9bc0",
       "duration": "4:59",
-      "popularity": 79,
+      "popularity": 78,
       "uri": "spotify:track:5qlJg0Wbj3sslxfwiaRNpq",
       "url": "https://open.spotify.com/track/5qlJg0Wbj3sslxfwiaRNpq"
-    },
-    {
-      "name": "Dragostea Din Tei - W&W Remix",
-      "artist": "O-Zone, W&W",
-      "album": "Dragostea Din Tei (W&W Remix)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273e05648fadf59c516f5e15061",
-      "duration": "2:54",
-      "popularity": 41,
-      "uri": "spotify:track:0qRqEXT0bfAyAoVpA3qCuW",
-      "url": "https://open.spotify.com/track/0qRqEXT0bfAyAoVpA3qCuW"
     },
     {
       "name": "Hero",
@@ -147,9 +112,29 @@
       "album": "Escape",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27347527edce762c35fde07559c",
       "duration": "4:24",
-      "popularity": 69,
+      "popularity": 68,
       "uri": "spotify:track:1PAgmT6YqGhd6zT9kN9gIo",
       "url": "https://open.spotify.com/track/1PAgmT6YqGhd6zT9kN9gIo"
+    },
+    {
+      "name": "Dragostea Din Tei - W&W Remix",
+      "artist": "O-Zone, W&W",
+      "album": "Dragostea Din Tei (W&W Remix)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273e05648fadf59c516f5e15061",
+      "duration": "2:54",
+      "popularity": 39,
+      "uri": "spotify:track:0qRqEXT0bfAyAoVpA3qCuW",
+      "url": "https://open.spotify.com/track/0qRqEXT0bfAyAoVpA3qCuW"
+    },
+    {
+      "name": "KEEP IT SIMPLE",
+      "artist": "Forrest Frank",
+      "album": "KEEP IT SIMPLE",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731066d6d1f140e148d3ae29c7",
+      "duration": "2:20",
+      "popularity": 61,
+      "uri": "spotify:track:1FkxNyq6WAGDvdZ1zjURFz",
+      "url": "https://open.spotify.com/track/1FkxNyq6WAGDvdZ1zjURFz"
     },
     {
       "name": "Noorde",
@@ -157,10 +142,20 @@
       "album": "Die Donker Toring",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273254f8c31cb262124ba88824d",
       "duration": "3:16",
-      "popularity": 28,
+      "popularity": 27,
       "uri": "spotify:track:4mcqhWaI6ag6CAqFmSzaEY",
       "url": "https://open.spotify.com/track/4mcqhWaI6ag6CAqFmSzaEY"
+    },
+    {
+      "name": "Goosebumps - Remix",
+      "artist": "Travis Scott, HVME",
+      "album": "Goosebumps (Remix)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273261927ea4874e8f375ad27ce",
+      "duration": "2:42",
+      "popularity": 73,
+      "uri": "spotify:track:5uEYRdEIh9Bo4fpjDd4Na9",
+      "url": "https://open.spotify.com/track/5uEYRdEIh9Bo4fpjDd4Na9"
     }
   ],
-  "lastUpdated": "2025-12-22T02:00:05.060Z"
+  "lastUpdated": "2025-12-29T02:04:36.875Z"
 }
