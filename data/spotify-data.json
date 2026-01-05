@@ -1,48 +1,32 @@
 {
   "topArtists": [
     {
+      "name": "Plush",
+      "image": "https://i.scdn.co/image/ab67616d0000b27362d9b641760d432ca69d933a",
+      "genres": [],
+      "popularity": 11,
+      "uri": "spotify:artist:2CgmL2hJBiVYsJWvtj9J2d",
+      "url": "https://open.spotify.com/artist/2CgmL2hJBiVYsJWvtj9J2d"
+    },
+    {
       "name": "Die Piesangskille",
       "image": "https://i.scdn.co/image/ab6761610000e5eb8283b82faf9927529a914e3b",
       "genres": [
         "afrikaans pop"
       ],
-      "popularity": 48,
+      "popularity": 49,
       "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
       "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
     },
     {
-      "name": "Spoegwolf",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebd17cf98d6beb417a7497f92d",
+      "name": "Vance Joy",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb4be87c6d504aa62024a87f48",
       "genres": [
-        "afrikaans pop"
+        "folk pop"
       ],
-      "popularity": 51,
-      "uri": "spotify:artist:6o4TnAxiqaQfZMLl55NFdn",
-      "url": "https://open.spotify.com/artist/6o4TnAxiqaQfZMLl55NFdn"
-    },
-    {
-      "name": "Linkin Park",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
-      "genres": [
-        "nu metal",
-        "rap metal",
-        "rock",
-        "alternative metal"
-      ],
-      "popularity": 90,
-      "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
-      "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
-    },
-    {
-      "name": "Enrique Iglesias",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb4fa1405802a42c665b0f2dd1",
-      "genres": [
-        "latin pop",
-        "latin"
-      ],
-      "popularity": 80,
-      "uri": "spotify:artist:7qG3b048QCHVRO5Pv1T5lw",
-      "url": "https://open.spotify.com/artist/7qG3b048QCHVRO5Pv1T5lw"
+      "popularity": 76,
+      "uri": "spotify:artist:10exVja0key0uqUkk6LJRT",
+      "url": "https://open.spotify.com/artist/10exVja0key0uqUkk6LJRT"
     },
     {
       "name": "Die Heuwels Fantasties",
@@ -53,98 +37,30 @@
       "popularity": 49,
       "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
       "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
+    },
+    {
+      "name": "Martin Garrix",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebf5b8ee60f1f4ee3453aba40b",
+      "genres": [
+        "edm",
+        "electronica",
+        "progressive house"
+      ],
+      "popularity": 76,
+      "uri": "spotify:artist:60d24wfXkVzDSfLS6hyCjZ",
+      "url": "https://open.spotify.com/artist/60d24wfXkVzDSfLS6hyCjZ"
     }
   ],
   "topTracks": [
     {
-      "name": "Better Together",
-      "artist": "Jack Johnson",
-      "album": "In Between Dreams",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273628dba01c669d89586967dc5",
-      "duration": "3:27",
-      "popularity": 73,
-      "uri": "spotify:track:2iXdwVdzA0KrI2Q0iZNJbX",
-      "url": "https://open.spotify.com/track/2iXdwVdzA0KrI2Q0iZNJbX"
-    },
-    {
-      "name": "Ek Dink Te Veel",
-      "artist": "Schwabie, Tylo",
-      "album": "Ek Dink Te Veel",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273075bff83bcda835619976c8f",
-      "duration": "3:00",
-      "popularity": 28,
-      "uri": "spotify:track:0nJcHyQST727NW3jNhzlFh",
-      "url": "https://open.spotify.com/track/0nJcHyQST727NW3jNhzlFh"
-    },
-    {
-      "name": "Life is a Highway",
-      "artist": "Rascal Flatts",
-      "album": "Me And My Gang",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273aa6b03f85a0f2cb16e88ec0c",
-      "duration": "4:36",
-      "popularity": 73,
-      "uri": "spotify:track:2Fs18NaCDuluPG1DHGw1XG",
-      "url": "https://open.spotify.com/track/2Fs18NaCDuluPG1DHGw1XG"
-    },
-    {
-      "name": "Escape",
-      "artist": "Enrique Iglesias",
-      "album": "Escape",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27347527edce762c35fde07559c",
-      "duration": "3:28",
-      "popularity": 61,
-      "uri": "spotify:track:4anDsZBavxjw3Ktw6ICGYd",
-      "url": "https://open.spotify.com/track/4anDsZBavxjw3Ktw6ICGYd"
-    },
-    {
-      "name": "I Don't Want To Miss A Thing - From \"Armageddon\" Soundtrack",
-      "artist": "Aerosmith",
-      "album": "I Don't Want To Miss A Thing EP",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f039d2a6afcfab0827bb9bc0",
-      "duration": "4:59",
-      "popularity": 78,
-      "uri": "spotify:track:5qlJg0Wbj3sslxfwiaRNpq",
-      "url": "https://open.spotify.com/track/5qlJg0Wbj3sslxfwiaRNpq"
-    },
-    {
-      "name": "Hero",
-      "artist": "Enrique Iglesias",
-      "album": "Escape",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27347527edce762c35fde07559c",
-      "duration": "4:24",
-      "popularity": 68,
-      "uri": "spotify:track:1PAgmT6YqGhd6zT9kN9gIo",
-      "url": "https://open.spotify.com/track/1PAgmT6YqGhd6zT9kN9gIo"
-    },
-    {
-      "name": "Dragostea Din Tei - W&W Remix",
-      "artist": "O-Zone, W&W",
-      "album": "Dragostea Din Tei (W&W Remix)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273e05648fadf59c516f5e15061",
-      "duration": "2:54",
-      "popularity": 39,
-      "uri": "spotify:track:0qRqEXT0bfAyAoVpA3qCuW",
-      "url": "https://open.spotify.com/track/0qRqEXT0bfAyAoVpA3qCuW"
-    },
-    {
-      "name": "KEEP IT SIMPLE",
-      "artist": "Forrest Frank",
-      "album": "KEEP IT SIMPLE",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731066d6d1f140e148d3ae29c7",
-      "duration": "2:20",
-      "popularity": 61,
-      "uri": "spotify:track:1FkxNyq6WAGDvdZ1zjURFz",
-      "url": "https://open.spotify.com/track/1FkxNyq6WAGDvdZ1zjURFz"
-    },
-    {
-      "name": "Noorde",
-      "artist": "Spoegwolf",
-      "album": "Die Donker Toring",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273254f8c31cb262124ba88824d",
-      "duration": "3:16",
-      "popularity": 27,
-      "uri": "spotify:track:4mcqhWaI6ag6CAqFmSzaEY",
-      "url": "https://open.spotify.com/track/4mcqhWaI6ag6CAqFmSzaEY"
+      "name": "Heard About A River - Live",
+      "artist": "Joel Case, Melissa Helser, Cageless Birds",
+      "album": "Let God Come In (Live)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273ce6d5cfd2135974748094c96",
+      "duration": "7:46",
+      "popularity": 51,
+      "uri": "spotify:track:02Ev3EfBX3j2irtlhTSPC7",
+      "url": "https://open.spotify.com/track/02Ev3EfBX3j2irtlhTSPC7"
     },
     {
       "name": "Goosebumps - Remix",
@@ -152,10 +68,90 @@
       "album": "Goosebumps (Remix)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273261927ea4874e8f375ad27ce",
       "duration": "2:42",
-      "popularity": 73,
+      "popularity": 74,
       "uri": "spotify:track:5uEYRdEIh9Bo4fpjDd4Na9",
       "url": "https://open.spotify.com/track/5uEYRdEIh9Bo4fpjDd4Na9"
+    },
+    {
+      "name": "Rage On",
+      "artist": "Plush",
+      "album": "Rage On",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731d2e37c4fe4077a077aad3e2",
+      "duration": "4:39",
+      "popularity": 4,
+      "uri": "spotify:track:1Vd8RKrbeboFWSKBwEo4nZ",
+      "url": "https://open.spotify.com/track/1Vd8RKrbeboFWSKBwEo4nZ"
+    },
+    {
+      "name": "Ek Dink Te Veel",
+      "artist": "Schwabie, Tylo",
+      "album": "Ek Dink Te Veel",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273075bff83bcda835619976c8f",
+      "duration": "3:00",
+      "popularity": 29,
+      "uri": "spotify:track:0nJcHyQST727NW3jNhzlFh",
+      "url": "https://open.spotify.com/track/0nJcHyQST727NW3jNhzlFh"
+    },
+    {
+      "name": "You",
+      "artist": "Neelix",
+      "album": "You",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27364490a5d6a8f10a0e80e87b0",
+      "duration": "4:32",
+      "popularity": 46,
+      "uri": "spotify:track:3chMdY4pJey3LA3q23Co3L",
+      "url": "https://open.spotify.com/track/3chMdY4pJey3LA3q23Co3L"
+    },
+    {
+      "name": "Good Times Go By Too Fast",
+      "artist": "Dylan Scott",
+      "album": "Livin' My Best Life",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27374314cdf579a07f83f6fdb55",
+      "duration": "2:49",
+      "popularity": 67,
+      "uri": "spotify:track:7INk3focyW89pATBgageU7",
+      "url": "https://open.spotify.com/track/7INk3focyW89pATBgageU7"
+    },
+    {
+      "name": "Today",
+      "artist": "Plush",
+      "album": "A Few Blinding Views",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273386a9bae0b0119099c0f96c2",
+      "duration": "3:40",
+      "popularity": 9,
+      "uri": "spotify:track:0ANqYbHwLUOkY1pafNPrvM",
+      "url": "https://open.spotify.com/track/0ANqYbHwLUOkY1pafNPrvM"
+    },
+    {
+      "name": "God Is with Us",
+      "artist": "Disciple",
+      "album": "Long Live the Rebels",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735891364fb36fb2eb3194aa6c",
+      "duration": "3:26",
+      "popularity": 33,
+      "uri": "spotify:track:1OF35r32QSekhhua3C97aL",
+      "url": "https://open.spotify.com/track/1OF35r32QSekhhua3C97aL"
+    },
+    {
+      "name": "Chlorine",
+      "artist": "Twenty One Pilots",
+      "album": "Trench",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273d1d301e737da4324479c6660",
+      "duration": "5:24",
+      "popularity": 77,
+      "uri": "spotify:track:23OXdR7YuUBVWh5hSnYJau",
+      "url": "https://open.spotify.com/track/23OXdR7YuUBVWh5hSnYJau"
+    },
+    {
+      "name": "End of the World",
+      "artist": "Kutless, Disciple",
+      "album": "End of the World (feat. Disciple)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27341acb43cc5206779b2d9c577",
+      "duration": "5:54",
+      "popularity": 25,
+      "uri": "spotify:track:23TxAMQmvHPLvu6tUbCfNG",
+      "url": "https://open.spotify.com/track/23TxAMQmvHPLvu6tUbCfNG"
     }
   ],
-  "lastUpdated": "2025-12-29T02:04:36.875Z"
+  "lastUpdated": "2026-01-05T02:07:52.119Z"
 }
