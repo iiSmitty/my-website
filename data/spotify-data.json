@@ -9,16 +9,6 @@
       "url": "https://open.spotify.com/artist/2CgmL2hJBiVYsJWvtj9J2d"
     },
     {
-      "name": "Die Piesangskille",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb8283b82faf9927529a914e3b",
-      "genres": [
-        "afrikaans pop"
-      ],
-      "popularity": 49,
-      "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
-      "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
-    },
-    {
       "name": "Vance Joy",
       "image": "https://i.scdn.co/image/ab6761610000e5eb4be87c6d504aa62024a87f48",
       "genres": [
@@ -39,16 +29,27 @@
       "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
     },
     {
-      "name": "Martin Garrix",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebf5b8ee60f1f4ee3453aba40b",
+      "name": "Linkin Park",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
       "genres": [
-        "edm",
-        "electronica",
-        "progressive house"
+        "nu metal",
+        "rap metal",
+        "rock",
+        "alternative metal"
       ],
-      "popularity": 76,
-      "uri": "spotify:artist:60d24wfXkVzDSfLS6hyCjZ",
-      "url": "https://open.spotify.com/artist/60d24wfXkVzDSfLS6hyCjZ"
+      "popularity": 90,
+      "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
+      "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
+    },
+    {
+      "name": "Die Piesangskille",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb8283b82faf9927529a914e3b",
+      "genres": [
+        "afrikaans pop"
+      ],
+      "popularity": 48,
+      "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
+      "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
     }
   ],
   "topTracks": [
@@ -58,7 +59,7 @@
       "album": "Let God Come In (Live)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273ce6d5cfd2135974748094c96",
       "duration": "7:46",
-      "popularity": 51,
+      "popularity": 52,
       "uri": "spotify:track:02Ev3EfBX3j2irtlhTSPC7",
       "url": "https://open.spotify.com/track/02Ev3EfBX3j2irtlhTSPC7"
     },
@@ -73,44 +74,14 @@
       "url": "https://open.spotify.com/track/5uEYRdEIh9Bo4fpjDd4Na9"
     },
     {
-      "name": "Rage On",
-      "artist": "Plush",
-      "album": "Rage On",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731d2e37c4fe4077a077aad3e2",
-      "duration": "4:39",
-      "popularity": 4,
-      "uri": "spotify:track:1Vd8RKrbeboFWSKBwEo4nZ",
-      "url": "https://open.spotify.com/track/1Vd8RKrbeboFWSKBwEo4nZ"
-    },
-    {
       "name": "Ek Dink Te Veel",
       "artist": "Schwabie, Tylo",
       "album": "Ek Dink Te Veel",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273075bff83bcda835619976c8f",
       "duration": "3:00",
-      "popularity": 29,
+      "popularity": 28,
       "uri": "spotify:track:0nJcHyQST727NW3jNhzlFh",
       "url": "https://open.spotify.com/track/0nJcHyQST727NW3jNhzlFh"
-    },
-    {
-      "name": "You",
-      "artist": "Neelix",
-      "album": "You",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27364490a5d6a8f10a0e80e87b0",
-      "duration": "4:32",
-      "popularity": 46,
-      "uri": "spotify:track:3chMdY4pJey3LA3q23Co3L",
-      "url": "https://open.spotify.com/track/3chMdY4pJey3LA3q23Co3L"
-    },
-    {
-      "name": "Good Times Go By Too Fast",
-      "artist": "Dylan Scott",
-      "album": "Livin' My Best Life",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27374314cdf579a07f83f6fdb55",
-      "duration": "2:49",
-      "popularity": 67,
-      "uri": "spotify:track:7INk3focyW89pATBgageU7",
-      "url": "https://open.spotify.com/track/7INk3focyW89pATBgageU7"
     },
     {
       "name": "Today",
@@ -123,35 +94,65 @@
       "url": "https://open.spotify.com/track/0ANqYbHwLUOkY1pafNPrvM"
     },
     {
-      "name": "God Is with Us",
-      "artist": "Disciple",
-      "album": "Long Live the Rebels",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735891364fb36fb2eb3194aa6c",
-      "duration": "3:26",
-      "popularity": 33,
-      "uri": "spotify:track:1OF35r32QSekhhua3C97aL",
-      "url": "https://open.spotify.com/track/1OF35r32QSekhhua3C97aL"
+      "name": "Halo - Live",
+      "artist": "Plush",
+      "album": "A Few Blinding Views",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273386a9bae0b0119099c0f96c2",
+      "duration": "4:57",
+      "popularity": 12,
+      "uri": "spotify:track:2AglQRQN8EojUQf6widn4w",
+      "url": "https://open.spotify.com/track/2AglQRQN8EojUQf6widn4w"
     },
     {
-      "name": "Chlorine",
-      "artist": "Twenty One Pilots",
-      "album": "Trench",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273d1d301e737da4324479c6660",
-      "duration": "5:24",
-      "popularity": 77,
-      "uri": "spotify:track:23OXdR7YuUBVWh5hSnYJau",
-      "url": "https://open.spotify.com/track/23OXdR7YuUBVWh5hSnYJau"
+      "name": "Rig Jou Oë Na Die Berge",
+      "artist": "Jo Black, Refentse",
+      "album": "Vegter",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273dea447dd7c0daaa65d88a59d",
+      "duration": "3:30",
+      "popularity": 39,
+      "uri": "spotify:track:2qQkH5zRywo59WeNbRW6DK",
+      "url": "https://open.spotify.com/track/2qQkH5zRywo59WeNbRW6DK"
     },
     {
-      "name": "End of the World",
-      "artist": "Kutless, Disciple",
-      "album": "End of the World (feat. Disciple)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27341acb43cc5206779b2d9c577",
-      "duration": "5:54",
-      "popularity": 25,
-      "uri": "spotify:track:23TxAMQmvHPLvu6tUbCfNG",
-      "url": "https://open.spotify.com/track/23TxAMQmvHPLvu6tUbCfNG"
+      "name": "You",
+      "artist": "Neelix",
+      "album": "You",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27364490a5d6a8f10a0e80e87b0",
+      "duration": "4:32",
+      "popularity": 45,
+      "uri": "spotify:track:3chMdY4pJey3LA3q23Co3L",
+      "url": "https://open.spotify.com/track/3chMdY4pJey3LA3q23Co3L"
+    },
+    {
+      "name": "Keep Your Head Up",
+      "artist": "Andy Grammer",
+      "album": "Andy Grammer",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273ef49291de801a09453197222",
+      "duration": "3:10",
+      "popularity": 66,
+      "uri": "spotify:track:2kebNtlS7DqWE54Z66FZIt",
+      "url": "https://open.spotify.com/track/2kebNtlS7DqWE54Z66FZIt"
+    },
+    {
+      "name": "Rage On",
+      "artist": "Plush",
+      "album": "Rage On",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731d2e37c4fe4077a077aad3e2",
+      "duration": "4:39",
+      "popularity": 4,
+      "uri": "spotify:track:1Vd8RKrbeboFWSKBwEo4nZ",
+      "url": "https://open.spotify.com/track/1Vd8RKrbeboFWSKBwEo4nZ"
+    },
+    {
+      "name": "Upside Down",
+      "artist": "Jack Johnson",
+      "album": "Jack Johnson And Friends: Sing-A-Longs And Lullabies For The Film Curious George",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731e0232d637e8313d3ef4923e",
+      "duration": "3:28",
+      "popularity": 71,
+      "uri": "spotify:track:6shRGWCtBUOPFLFTTqXZIC",
+      "url": "https://open.spotify.com/track/6shRGWCtBUOPFLFTTqXZIC"
     }
   ],
-  "lastUpdated": "2026-01-05T02:07:52.119Z"
+  "lastUpdated": "2026-01-12T02:04:10.518Z"
 }
