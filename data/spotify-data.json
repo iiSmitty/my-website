@@ -9,6 +9,16 @@
       "url": "https://open.spotify.com/artist/2CgmL2hJBiVYsJWvtj9J2d"
     },
     {
+      "name": "Deon Meiring",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb00e20a06d163d4d17cfb71d9",
+      "genres": [
+        "afrikaans pop"
+      ],
+      "popularity": 12,
+      "uri": "spotify:artist:5h2VPrb5uczuK8foqa2jby",
+      "url": "https://open.spotify.com/artist/5h2VPrb5uczuK8foqa2jby"
+    },
+    {
       "name": "Vance Joy",
       "image": "https://i.scdn.co/image/ab6761610000e5eb4be87c6d504aa62024a87f48",
       "genres": [
@@ -19,6 +29,18 @@
       "url": "https://open.spotify.com/artist/10exVja0key0uqUkk6LJRT"
     },
     {
+      "name": "Martin Garrix",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebf5b8ee60f1f4ee3453aba40b",
+      "genres": [
+        "edm",
+        "electronica",
+        "progressive house"
+      ],
+      "popularity": 77,
+      "uri": "spotify:artist:60d24wfXkVzDSfLS6hyCjZ",
+      "url": "https://open.spotify.com/artist/60d24wfXkVzDSfLS6hyCjZ"
+    },
+    {
       "name": "Die Heuwels Fantasties",
       "image": "https://i.scdn.co/image/ab6761610000e5eb7e5ed68cd28045d603b7c82a",
       "genres": [
@@ -27,29 +49,6 @@
       "popularity": 49,
       "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
       "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
-    },
-    {
-      "name": "Linkin Park",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
-      "genres": [
-        "nu metal",
-        "rap metal",
-        "rock",
-        "alternative metal"
-      ],
-      "popularity": 90,
-      "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
-      "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
-    },
-    {
-      "name": "Die Piesangskille",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb8283b82faf9927529a914e3b",
-      "genres": [
-        "afrikaans pop"
-      ],
-      "popularity": 48,
-      "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
-      "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
     }
   ],
   "topTracks": [
@@ -62,26 +61,6 @@
       "popularity": 52,
       "uri": "spotify:track:02Ev3EfBX3j2irtlhTSPC7",
       "url": "https://open.spotify.com/track/02Ev3EfBX3j2irtlhTSPC7"
-    },
-    {
-      "name": "Goosebumps - Remix",
-      "artist": "Travis Scott, HVME",
-      "album": "Goosebumps (Remix)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273261927ea4874e8f375ad27ce",
-      "duration": "2:42",
-      "popularity": 74,
-      "uri": "spotify:track:5uEYRdEIh9Bo4fpjDd4Na9",
-      "url": "https://open.spotify.com/track/5uEYRdEIh9Bo4fpjDd4Na9"
-    },
-    {
-      "name": "Ek Dink Te Veel",
-      "artist": "Schwabie, Tylo",
-      "album": "Ek Dink Te Veel",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273075bff83bcda835619976c8f",
-      "duration": "3:00",
-      "popularity": 28,
-      "uri": "spotify:track:0nJcHyQST727NW3jNhzlFh",
-      "url": "https://open.spotify.com/track/0nJcHyQST727NW3jNhzlFh"
     },
     {
       "name": "Today",
@@ -104,34 +83,34 @@
       "url": "https://open.spotify.com/track/2AglQRQN8EojUQf6widn4w"
     },
     {
-      "name": "Rig Jou Oë Na Die Berge",
-      "artist": "Jo Black, Refentse",
-      "album": "Vegter",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273dea447dd7c0daaa65d88a59d",
-      "duration": "3:30",
-      "popularity": 39,
-      "uri": "spotify:track:2qQkH5zRywo59WeNbRW6DK",
-      "url": "https://open.spotify.com/track/2qQkH5zRywo59WeNbRW6DK"
+      "name": "Love Story",
+      "artist": "Alex Melton",
+      "album": "Love Story",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c0ee08f8956af70ba1a1a6a7",
+      "duration": "3:27",
+      "popularity": 37,
+      "uri": "spotify:track:2Os06AJhmMt5A5EpjFb0q6",
+      "url": "https://open.spotify.com/track/2Os06AJhmMt5A5EpjFb0q6"
     },
     {
-      "name": "You",
-      "artist": "Neelix",
-      "album": "You",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27364490a5d6a8f10a0e80e87b0",
-      "duration": "4:32",
-      "popularity": 45,
-      "uri": "spotify:track:3chMdY4pJey3LA3q23Co3L",
-      "url": "https://open.spotify.com/track/3chMdY4pJey3LA3q23Co3L"
+      "name": "Tired",
+      "artist": "Alan Walker, Gavin James",
+      "album": "Tired",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273d8f6180f1483ef4d6ded503c",
+      "duration": "3:12",
+      "popularity": 61,
+      "uri": "spotify:track:3b5Li4QKDVBx1x7fQuu54a",
+      "url": "https://open.spotify.com/track/3b5Li4QKDVBx1x7fQuu54a"
     },
     {
-      "name": "Keep Your Head Up",
-      "artist": "Andy Grammer",
-      "album": "Andy Grammer",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273ef49291de801a09453197222",
-      "duration": "3:10",
-      "popularity": 66,
-      "uri": "spotify:track:2kebNtlS7DqWE54Z66FZIt",
-      "url": "https://open.spotify.com/track/2kebNtlS7DqWE54Z66FZIt"
+      "name": "Fearless Pt. II",
+      "artist": "Lost Sky, Chris Linton",
+      "album": "Fearless Pt. II",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273df7c14e866cf14a259563ca1",
+      "duration": "3:14",
+      "popularity": 69,
+      "uri": "spotify:track:4y1nvncvBhdoelqPMyXxis",
+      "url": "https://open.spotify.com/track/4y1nvncvBhdoelqPMyXxis"
     },
     {
       "name": "Rage On",
@@ -144,15 +123,35 @@
       "url": "https://open.spotify.com/track/1Vd8RKrbeboFWSKBwEo4nZ"
     },
     {
-      "name": "Upside Down",
-      "artist": "Jack Johnson",
-      "album": "Jack Johnson And Friends: Sing-A-Longs And Lullabies For The Film Curious George",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731e0232d637e8313d3ef4923e",
+      "name": "Heaven",
+      "artist": "DJ Sammy, Yanou, Do",
+      "album": "Greatest - DJ Sammy",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27307486074953b97497dc9ad1c",
+      "duration": "3:55",
+      "popularity": 59,
+      "uri": "spotify:track:5M2LFOy2TvzBVU5KCd6N8v",
+      "url": "https://open.spotify.com/track/5M2LFOy2TvzBVU5KCd6N8v"
+    },
+    {
+      "name": "Without You (feat. Usher)",
+      "artist": "David Guetta, USHER",
+      "album": "Nothing but the Beat 2.0",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273cbed1897404ad0491c4c2c91",
       "duration": "3:28",
-      "popularity": 71,
-      "uri": "spotify:track:6shRGWCtBUOPFLFTTqXZIC",
-      "url": "https://open.spotify.com/track/6shRGWCtBUOPFLFTTqXZIC"
+      "popularity": 70,
+      "uri": "spotify:track:1tAutlhI9FwnKn7fVgmd5P",
+      "url": "https://open.spotify.com/track/1tAutlhI9FwnKn7fVgmd5P"
+    },
+    {
+      "name": "Courtesy Call",
+      "artist": "Thousand Foot Krutch",
+      "album": "The End Is Where We Begin",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731a2e4290b83a4c810d019fcd",
+      "duration": "3:56",
+      "popularity": 76,
+      "uri": "spotify:track:0AOmbw8AwDnwXhHC3OhdVB",
+      "url": "https://open.spotify.com/track/0AOmbw8AwDnwXhHC3OhdVB"
     }
   ],
-  "lastUpdated": "2026-01-12T02:04:10.518Z"
+  "lastUpdated": "2026-01-19T02:04:37.124Z"
 }
