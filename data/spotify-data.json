@@ -9,6 +9,16 @@
       "url": "https://open.spotify.com/artist/2CgmL2hJBiVYsJWvtj9J2d"
     },
     {
+      "name": "Francois van Coke",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb880d0210e214fd6763d82fb2",
+      "genres": [
+        "afrikaans pop"
+      ],
+      "popularity": 44,
+      "uri": "spotify:artist:7pJtnZQLPJmqzVfdIz7eFF",
+      "url": "https://open.spotify.com/artist/7pJtnZQLPJmqzVfdIz7eFF"
+    },
+    {
       "name": "Deon Meiring",
       "image": "https://i.scdn.co/image/ab6761610000e5eb00e20a06d163d4d17cfb71d9",
       "genres": [
@@ -19,28 +29,6 @@
       "url": "https://open.spotify.com/artist/5h2VPrb5uczuK8foqa2jby"
     },
     {
-      "name": "Vance Joy",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb4be87c6d504aa62024a87f48",
-      "genres": [
-        "folk pop"
-      ],
-      "popularity": 76,
-      "uri": "spotify:artist:10exVja0key0uqUkk6LJRT",
-      "url": "https://open.spotify.com/artist/10exVja0key0uqUkk6LJRT"
-    },
-    {
-      "name": "Martin Garrix",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebf5b8ee60f1f4ee3453aba40b",
-      "genres": [
-        "edm",
-        "electronica",
-        "progressive house"
-      ],
-      "popularity": 77,
-      "uri": "spotify:artist:60d24wfXkVzDSfLS6hyCjZ",
-      "url": "https://open.spotify.com/artist/60d24wfXkVzDSfLS6hyCjZ"
-    },
-    {
       "name": "Die Heuwels Fantasties",
       "image": "https://i.scdn.co/image/ab6761610000e5eb7e5ed68cd28045d603b7c82a",
       "genres": [
@@ -49,6 +37,19 @@
       "popularity": 49,
       "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
       "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
+    },
+    {
+      "name": "Linkin Park",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
+      "genres": [
+        "nu metal",
+        "rap metal",
+        "rock",
+        "alternative metal"
+      ],
+      "popularity": 91,
+      "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
+      "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     }
   ],
   "topTracks": [
@@ -63,6 +64,86 @@
       "url": "https://open.spotify.com/track/02Ev3EfBX3j2irtlhTSPC7"
     },
     {
+      "name": "Ek Dink Te Veel",
+      "artist": "Schwabie, Tylo",
+      "album": "Ek Dink Te Veel",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273075bff83bcda835619976c8f",
+      "duration": "3:00",
+      "popularity": 28,
+      "uri": "spotify:track:0nJcHyQST727NW3jNhzlFh",
+      "url": "https://open.spotify.com/track/0nJcHyQST727NW3jNhzlFh"
+    },
+    {
+      "name": "Death Was Arrested",
+      "artist": "North Point Worship, Seth Condrey",
+      "album": "Death Was Arrested",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735a35c40c86707e4988794d52",
+      "duration": "4:55",
+      "popularity": 63,
+      "uri": "spotify:track:1rXQLRlZfNTj8uaxIsEZQi",
+      "url": "https://open.spotify.com/track/1rXQLRlZfNTj8uaxIsEZQi"
+    },
+    {
+      "name": "Make It Rain",
+      "artist": "Riley Green",
+      "album": "Don't Mind If I Do (Deluxe)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27376f66db15bb6c47ea9aa6c64",
+      "duration": "4:12",
+      "popularity": 69,
+      "uri": "spotify:track:5uJUF0Az31PDoOjaYeT2Cy",
+      "url": "https://open.spotify.com/track/5uJUF0Az31PDoOjaYeT2Cy"
+    },
+    {
+      "name": "Gelukkige Lewe",
+      "artist": "Francois van Coke",
+      "album": "Die Ruimte",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735ba82225885ef42556872351",
+      "duration": "2:48",
+      "popularity": 18,
+      "uri": "spotify:track:7MeHtKV9ksyhKCaZZ4ESIz",
+      "url": "https://open.spotify.com/track/7MeHtKV9ksyhKCaZZ4ESIz"
+    },
+    {
+      "name": "Belong Together",
+      "artist": "Mark Ambor",
+      "album": "Rockwood",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273da33127f62acdb0aca585e92",
+      "duration": "2:28",
+      "popularity": 78,
+      "uri": "spotify:track:0rtDE9zfXbamTlRUSwY7zy",
+      "url": "https://open.spotify.com/track/0rtDE9zfXbamTlRUSwY7zy"
+    },
+    {
+      "name": "Bedroom Posters (feat. Good Charlotte)",
+      "artist": "Yellowcard, Good Charlotte",
+      "album": "Bedroom Posters (feat. Good Charlotte)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27397a924373638bf51107e3778",
+      "duration": "3:38",
+      "popularity": 60,
+      "uri": "spotify:track:1L2Z2Xpta5CZ59kIazq9Xp",
+      "url": "https://open.spotify.com/track/1L2Z2Xpta5CZ59kIazq9Xp"
+    },
+    {
+      "name": "Vois sur ton chemin - Techno Mix",
+      "artist": "BENNETT",
+      "album": "Vois sur ton chemin (Techno Mix)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731b96e645016c4d431842aa93",
+      "duration": "2:58",
+      "popularity": 79,
+      "uri": "spotify:track:31nfdEooLEq7dn3UMcIeB5",
+      "url": "https://open.spotify.com/track/31nfdEooLEq7dn3UMcIeB5"
+    },
+    {
+      "name": "Home Alone (with Marnik)",
+      "artist": "Naeleck, Vini Vici, Marnik",
+      "album": "Home Alone (with Marnik)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f0c76520fb4d9a8d45972285",
+      "duration": "2:08",
+      "popularity": 68,
+      "uri": "spotify:track:7zyvQ8sb72g4RuwBpcuGUP",
+      "url": "https://open.spotify.com/track/7zyvQ8sb72g4RuwBpcuGUP"
+    },
+    {
       "name": "Today",
       "artist": "Plush",
       "album": "A Few Blinding Views",
@@ -71,87 +152,7 @@
       "popularity": 9,
       "uri": "spotify:track:0ANqYbHwLUOkY1pafNPrvM",
       "url": "https://open.spotify.com/track/0ANqYbHwLUOkY1pafNPrvM"
-    },
-    {
-      "name": "Halo - Live",
-      "artist": "Plush",
-      "album": "A Few Blinding Views",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273386a9bae0b0119099c0f96c2",
-      "duration": "4:57",
-      "popularity": 12,
-      "uri": "spotify:track:2AglQRQN8EojUQf6widn4w",
-      "url": "https://open.spotify.com/track/2AglQRQN8EojUQf6widn4w"
-    },
-    {
-      "name": "Love Story",
-      "artist": "Alex Melton",
-      "album": "Love Story",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c0ee08f8956af70ba1a1a6a7",
-      "duration": "3:27",
-      "popularity": 37,
-      "uri": "spotify:track:2Os06AJhmMt5A5EpjFb0q6",
-      "url": "https://open.spotify.com/track/2Os06AJhmMt5A5EpjFb0q6"
-    },
-    {
-      "name": "Tired",
-      "artist": "Alan Walker, Gavin James",
-      "album": "Tired",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273d8f6180f1483ef4d6ded503c",
-      "duration": "3:12",
-      "popularity": 61,
-      "uri": "spotify:track:3b5Li4QKDVBx1x7fQuu54a",
-      "url": "https://open.spotify.com/track/3b5Li4QKDVBx1x7fQuu54a"
-    },
-    {
-      "name": "Fearless Pt. II",
-      "artist": "Lost Sky, Chris Linton",
-      "album": "Fearless Pt. II",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273df7c14e866cf14a259563ca1",
-      "duration": "3:14",
-      "popularity": 69,
-      "uri": "spotify:track:4y1nvncvBhdoelqPMyXxis",
-      "url": "https://open.spotify.com/track/4y1nvncvBhdoelqPMyXxis"
-    },
-    {
-      "name": "Rage On",
-      "artist": "Plush",
-      "album": "Rage On",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731d2e37c4fe4077a077aad3e2",
-      "duration": "4:39",
-      "popularity": 4,
-      "uri": "spotify:track:1Vd8RKrbeboFWSKBwEo4nZ",
-      "url": "https://open.spotify.com/track/1Vd8RKrbeboFWSKBwEo4nZ"
-    },
-    {
-      "name": "Heaven",
-      "artist": "DJ Sammy, Yanou, Do",
-      "album": "Greatest - DJ Sammy",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27307486074953b97497dc9ad1c",
-      "duration": "3:55",
-      "popularity": 59,
-      "uri": "spotify:track:5M2LFOy2TvzBVU5KCd6N8v",
-      "url": "https://open.spotify.com/track/5M2LFOy2TvzBVU5KCd6N8v"
-    },
-    {
-      "name": "Without You (feat. Usher)",
-      "artist": "David Guetta, USHER",
-      "album": "Nothing but the Beat 2.0",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273cbed1897404ad0491c4c2c91",
-      "duration": "3:28",
-      "popularity": 70,
-      "uri": "spotify:track:1tAutlhI9FwnKn7fVgmd5P",
-      "url": "https://open.spotify.com/track/1tAutlhI9FwnKn7fVgmd5P"
-    },
-    {
-      "name": "Courtesy Call",
-      "artist": "Thousand Foot Krutch",
-      "album": "The End Is Where We Begin",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731a2e4290b83a4c810d019fcd",
-      "duration": "3:56",
-      "popularity": 76,
-      "uri": "spotify:track:0AOmbw8AwDnwXhHC3OhdVB",
-      "url": "https://open.spotify.com/track/0AOmbw8AwDnwXhHC3OhdVB"
     }
   ],
-  "lastUpdated": "2026-01-19T02:04:37.124Z"
+  "lastUpdated": "2026-01-26T02:09:20.818Z"
 }
