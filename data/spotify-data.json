@@ -1,14 +1,6 @@
 {
   "topArtists": [
     {
-      "name": "Plush",
-      "image": "https://i.scdn.co/image/ab67616d0000b27362d9b641760d432ca69d933a",
-      "genres": [],
-      "popularity": 11,
-      "uri": "spotify:artist:2CgmL2hJBiVYsJWvtj9J2d",
-      "url": "https://open.spotify.com/artist/2CgmL2hJBiVYsJWvtj9J2d"
-    },
-    {
       "name": "Francois van Coke",
       "image": "https://i.scdn.co/image/ab6761610000e5eb880d0210e214fd6763d82fb2",
       "genres": [
@@ -19,14 +11,23 @@
       "url": "https://open.spotify.com/artist/7pJtnZQLPJmqzVfdIz7eFF"
     },
     {
-      "name": "Deon Meiring",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb00e20a06d163d4d17cfb71d9",
+      "name": "Plush",
+      "image": "https://i.scdn.co/image/ab67616d0000b27362d9b641760d432ca69d933a",
+      "genres": [],
+      "popularity": 11,
+      "uri": "spotify:artist:2CgmL2hJBiVYsJWvtj9J2d",
+      "url": "https://open.spotify.com/artist/2CgmL2hJBiVYsJWvtj9J2d"
+    },
+    {
+      "name": "HAUSER",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb8c2521a454c69e84595ed504",
       "genres": [
-        "afrikaans pop"
+        "classical",
+        "classical crossover"
       ],
-      "popularity": 12,
-      "uri": "spotify:artist:5h2VPrb5uczuK8foqa2jby",
-      "url": "https://open.spotify.com/artist/5h2VPrb5uczuK8foqa2jby"
+      "popularity": 59,
+      "uri": "spotify:artist:2iSn12gFykgv92aTvPiH4s",
+      "url": "https://open.spotify.com/artist/2iSn12gFykgv92aTvPiH4s"
     },
     {
       "name": "Die Heuwels Fantasties",
@@ -39,17 +40,14 @@
       "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
     },
     {
-      "name": "Linkin Park",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
+      "name": "Deon Meiring",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb00e20a06d163d4d17cfb71d9",
       "genres": [
-        "nu metal",
-        "rap metal",
-        "rock",
-        "alternative metal"
+        "afrikaans pop"
       ],
-      "popularity": 91,
-      "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
-      "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
+      "popularity": 12,
+      "uri": "spotify:artist:5h2VPrb5uczuK8foqa2jby",
+      "url": "https://open.spotify.com/artist/5h2VPrb5uczuK8foqa2jby"
     }
   ],
   "topTracks": [
@@ -69,7 +67,7 @@
       "album": "Ek Dink Te Veel",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273075bff83bcda835619976c8f",
       "duration": "3:00",
-      "popularity": 28,
+      "popularity": 27,
       "uri": "spotify:track:0nJcHyQST727NW3jNhzlFh",
       "url": "https://open.spotify.com/track/0nJcHyQST727NW3jNhzlFh"
     },
@@ -79,9 +77,19 @@
       "album": "Death Was Arrested",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2735a35c40c86707e4988794d52",
       "duration": "4:55",
-      "popularity": 63,
+      "popularity": 62,
       "uri": "spotify:track:1rXQLRlZfNTj8uaxIsEZQi",
       "url": "https://open.spotify.com/track/1rXQLRlZfNTj8uaxIsEZQi"
+    },
+    {
+      "name": "Air on a G String",
+      "artist": "Johann Sebastian Bach, HAUSER, London Symphony Orchestra, Robert Ziegler",
+      "album": "Classic",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a0e19560289c8ef83ffb033b",
+      "duration": "4:49",
+      "popularity": 61,
+      "uri": "spotify:track:0mD1a7haZKdX9I0oPywrMb",
+      "url": "https://open.spotify.com/track/0mD1a7haZKdX9I0oPywrMb"
     },
     {
       "name": "Make It Rain",
@@ -89,7 +97,7 @@
       "album": "Don't Mind If I Do (Deluxe)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27376f66db15bb6c47ea9aa6c64",
       "duration": "4:12",
-      "popularity": 69,
+      "popularity": 68,
       "uri": "spotify:track:5uJUF0Az31PDoOjaYeT2Cy",
       "url": "https://open.spotify.com/track/5uJUF0Az31PDoOjaYeT2Cy"
     },
@@ -99,7 +107,7 @@
       "album": "Die Ruimte",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2735ba82225885ef42556872351",
       "duration": "2:48",
-      "popularity": 18,
+      "popularity": 17,
       "uri": "spotify:track:7MeHtKV9ksyhKCaZZ4ESIz",
       "url": "https://open.spotify.com/track/7MeHtKV9ksyhKCaZZ4ESIz"
     },
@@ -119,7 +127,7 @@
       "album": "Bedroom Posters (feat. Good Charlotte)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27397a924373638bf51107e3778",
       "duration": "3:38",
-      "popularity": 60,
+      "popularity": 61,
       "uri": "spotify:track:1L2Z2Xpta5CZ59kIazq9Xp",
       "url": "https://open.spotify.com/track/1L2Z2Xpta5CZ59kIazq9Xp"
     },
@@ -139,20 +147,10 @@
       "album": "Home Alone (with Marnik)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273f0c76520fb4d9a8d45972285",
       "duration": "2:08",
-      "popularity": 68,
+      "popularity": 66,
       "uri": "spotify:track:7zyvQ8sb72g4RuwBpcuGUP",
       "url": "https://open.spotify.com/track/7zyvQ8sb72g4RuwBpcuGUP"
-    },
-    {
-      "name": "Today",
-      "artist": "Plush",
-      "album": "A Few Blinding Views",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273386a9bae0b0119099c0f96c2",
-      "duration": "3:40",
-      "popularity": 9,
-      "uri": "spotify:track:0ANqYbHwLUOkY1pafNPrvM",
-      "url": "https://open.spotify.com/track/0ANqYbHwLUOkY1pafNPrvM"
     }
   ],
-  "lastUpdated": "2026-01-26T02:09:20.818Z"
+  "lastUpdated": "2026-02-02T02:33:07.509Z"
 }
