@@ -6,7 +6,7 @@
       "genres": [
         "afrikaans pop"
       ],
-      "popularity": 43,
+      "popularity": 41,
       "uri": "spotify:artist:7pJtnZQLPJmqzVfdIz7eFF",
       "url": "https://open.spotify.com/artist/7pJtnZQLPJmqzVfdIz7eFF"
     },
@@ -19,7 +19,7 @@
         "rock",
         "alternative metal"
       ],
-      "popularity": 91,
+      "popularity": 88,
       "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
@@ -29,7 +29,7 @@
       "genres": [
         "afrikaans pop"
       ],
-      "popularity": 48,
+      "popularity": 46,
       "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
       "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
     },
@@ -40,29 +40,42 @@
         "classical",
         "classical crossover"
       ],
-      "popularity": 59,
+      "popularity": 56,
       "uri": "spotify:artist:2iSn12gFykgv92aTvPiH4s",
       "url": "https://open.spotify.com/artist/2iSn12gFykgv92aTvPiH4s"
     },
     {
-      "name": "Deon Meiring",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb00e20a06d163d4d17cfb71d9",
+      "name": "Foo Fighters",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb2c7bb73afef60ef97ad6dcb2",
       "genres": [
-        "afrikaans pop"
+        "rock",
+        "post-grunge",
+        "alternative rock",
+        "grunge"
       ],
-      "popularity": 12,
-      "uri": "spotify:artist:5h2VPrb5uczuK8foqa2jby",
-      "url": "https://open.spotify.com/artist/5h2VPrb5uczuK8foqa2jby"
+      "popularity": 76,
+      "uri": "spotify:artist:7jy3rLJdDQY21OgRLCZ9sD",
+      "url": "https://open.spotify.com/artist/7jy3rLJdDQY21OgRLCZ9sD"
     }
   ],
   "topTracks": [
+    {
+      "name": "everlong - instrumental",
+      "artist": "no/vox, karaokey",
+      "album": "everlong (instrumental)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27314b81db8dc3fa39f3bbb4b90",
+      "duration": "4:48",
+      "popularity": 17,
+      "uri": "spotify:track:0VFOPer67s96LmWBTDAaFh",
+      "url": "https://open.spotify.com/track/0VFOPer67s96LmWBTDAaFh"
+    },
     {
       "name": "Best of You",
       "artist": "Foo Fighters",
       "album": "In Your Honor",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27350d3fff0dc3d9b55f164d8d6",
       "duration": "4:15",
-      "popularity": 75,
+      "popularity": 76,
       "uri": "spotify:track:5FZxsHWIvUsmSK1IAvm2pp",
       "url": "https://open.spotify.com/track/5FZxsHWIvUsmSK1IAvm2pp"
     },
@@ -70,7 +83,7 @@
       "name": "Vois sur ton chemin - Techno Mix",
       "artist": "BENNETT",
       "album": "Vois sur ton chemin (Techno Mix)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731b96e645016c4d431842aa93",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731c4b40593176f9b7b7be23b8",
       "duration": "2:58",
       "popularity": 79,
       "uri": "spotify:track:31nfdEooLEq7dn3UMcIeB5",
@@ -107,14 +120,14 @@
       "url": "https://open.spotify.com/track/0rtDE9zfXbamTlRUSwY7zy"
     },
     {
-      "name": "Bedroom Posters (feat. Good Charlotte)",
-      "artist": "Yellowcard, Good Charlotte",
-      "album": "Bedroom Posters (feat. Good Charlotte)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27397a924373638bf51107e3778",
-      "duration": "3:38",
-      "popularity": 61,
-      "uri": "spotify:track:1L2Z2Xpta5CZ59kIazq9Xp",
-      "url": "https://open.spotify.com/track/1L2Z2Xpta5CZ59kIazq9Xp"
+      "name": "Kings And Queens",
+      "artist": "Thirty Seconds To Mars",
+      "album": "This Is War (Deluxe)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273dc71afe98ba69bee55dddf4e",
+      "duration": "5:47",
+      "popularity": 63,
+      "uri": "spotify:track:4z21jCYxdhnEfvgqGSKByQ",
+      "url": "https://open.spotify.com/track/4z21jCYxdhnEfvgqGSKByQ"
     },
     {
       "name": "Hoor Jy My",
@@ -122,7 +135,7 @@
       "album": "Volume",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273ed2e40bded45573a488d0b87",
       "duration": "3:29",
-      "popularity": 42,
+      "popularity": 43,
       "uri": "spotify:track:0JRj7hhhtZd9xyRPln5uZ6",
       "url": "https://open.spotify.com/track/0JRj7hhhtZd9xyRPln5uZ6"
     },
@@ -132,30 +145,20 @@
       "album": "Ek Dink Te Veel",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273075bff83bcda835619976c8f",
       "duration": "3:00",
-      "popularity": 27,
+      "popularity": 28,
       "uri": "spotify:track:0nJcHyQST727NW3jNhzlFh",
       "url": "https://open.spotify.com/track/0nJcHyQST727NW3jNhzlFh"
     },
     {
-      "name": "River Flows in You",
-      "artist": "HAUSER, London Symphony Orchestra, Robert Ziegler",
-      "album": "River Flows in You",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733707dc2ffdc2729e27cc0c19",
-      "duration": "3:00",
-      "popularity": 50,
-      "uri": "spotify:track:2xCtrN9PYxH6WIOUj06jM6",
-      "url": "https://open.spotify.com/track/2xCtrN9PYxH6WIOUj06jM6"
-    },
-    {
-      "name": "Make It Rain",
-      "artist": "Riley Green",
-      "album": "Don't Mind If I Do (Deluxe)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27376f66db15bb6c47ea9aa6c64",
-      "duration": "4:12",
-      "popularity": 68,
-      "uri": "spotify:track:5uJUF0Az31PDoOjaYeT2Cy",
-      "url": "https://open.spotify.com/track/5uJUF0Az31PDoOjaYeT2Cy"
+      "name": "Bedroom Posters (feat. Good Charlotte)",
+      "artist": "Yellowcard, Good Charlotte",
+      "album": "Bedroom Posters (feat. Good Charlotte)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27397a924373638bf51107e3778",
+      "duration": "3:38",
+      "popularity": 60,
+      "uri": "spotify:track:1L2Z2Xpta5CZ59kIazq9Xp",
+      "url": "https://open.spotify.com/track/1L2Z2Xpta5CZ59kIazq9Xp"
     }
   ],
-  "lastUpdated": "2026-02-09T02:33:44.334Z"
+  "lastUpdated": "2026-02-16T02:32:10.116Z"
 }
