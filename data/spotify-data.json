@@ -1,16 +1,6 @@
 {
   "topArtists": [
     {
-      "name": "Francois van Coke",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb880d0210e214fd6763d82fb2",
-      "genres": [
-        "afrikaans pop"
-      ],
-      "popularity": 41,
-      "uri": "spotify:artist:7pJtnZQLPJmqzVfdIz7eFF",
-      "url": "https://open.spotify.com/artist/7pJtnZQLPJmqzVfdIz7eFF"
-    },
-    {
       "name": "Linkin Park",
       "image": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
       "genres": [
@@ -24,14 +14,18 @@
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
     {
-      "name": "Die Heuwels Fantasties",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb7e5ed68cd28045d603b7c82a",
+      "name": "Elevation Worship",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb6fa137c74960a6a81f11ee70",
       "genres": [
-        "afrikaans pop"
+        "worship",
+        "christian",
+        "ccm",
+        "gospel",
+        "pop worship"
       ],
-      "popularity": 46,
-      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
-      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
+      "popularity": 75,
+      "uri": "spotify:artist:3YCKuqpv9nCsIhJ2v8SMix",
+      "url": "https://open.spotify.com/artist/3YCKuqpv9nCsIhJ2v8SMix"
     },
     {
       "name": "HAUSER",
@@ -45,17 +39,27 @@
       "url": "https://open.spotify.com/artist/2iSn12gFykgv92aTvPiH4s"
     },
     {
-      "name": "Foo Fighters",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb2c7bb73afef60ef97ad6dcb2",
+      "name": "Francois van Coke",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb880d0210e214fd6763d82fb2",
       "genres": [
-        "rock",
-        "post-grunge",
-        "alternative rock",
-        "grunge"
+        "afrikaans pop"
       ],
-      "popularity": 76,
-      "uri": "spotify:artist:7jy3rLJdDQY21OgRLCZ9sD",
-      "url": "https://open.spotify.com/artist/7jy3rLJdDQY21OgRLCZ9sD"
+      "popularity": 41,
+      "uri": "spotify:artist:7pJtnZQLPJmqzVfdIz7eFF",
+      "url": "https://open.spotify.com/artist/7pJtnZQLPJmqzVfdIz7eFF"
+    },
+    {
+      "name": "Passion",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb6e1a59979a8bbd41d8a1df3b",
+      "genres": [
+        "worship",
+        "christian",
+        "ccm",
+        "pop worship"
+      ],
+      "popularity": 64,
+      "uri": "spotify:artist:6piIAIurGAryW5h1rqQC16",
+      "url": "https://open.spotify.com/artist/6piIAIurGAryW5h1rqQC16"
     }
   ],
   "topTracks": [
@@ -70,16 +74,6 @@
       "url": "https://open.spotify.com/track/0VFOPer67s96LmWBTDAaFh"
     },
     {
-      "name": "Best of You",
-      "artist": "Foo Fighters",
-      "album": "In Your Honor",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27350d3fff0dc3d9b55f164d8d6",
-      "duration": "4:15",
-      "popularity": 76,
-      "uri": "spotify:track:5FZxsHWIvUsmSK1IAvm2pp",
-      "url": "https://open.spotify.com/track/5FZxsHWIvUsmSK1IAvm2pp"
-    },
-    {
       "name": "Vois sur ton chemin - Techno Mix",
       "artist": "BENNETT",
       "album": "Vois sur ton chemin (Techno Mix)",
@@ -90,14 +84,44 @@
       "url": "https://open.spotify.com/track/31nfdEooLEq7dn3UMcIeB5"
     },
     {
-      "name": "Death Was Arrested",
-      "artist": "North Point Worship, Seth Condrey",
-      "album": "Death Was Arrested",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735a35c40c86707e4988794d52",
-      "duration": "4:55",
-      "popularity": 63,
-      "uri": "spotify:track:1rXQLRlZfNTj8uaxIsEZQi",
-      "url": "https://open.spotify.com/track/1rXQLRlZfNTj8uaxIsEZQi"
+      "name": "Kings And Queens",
+      "artist": "Thirty Seconds To Mars",
+      "album": "This Is War (Deluxe)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273dc71afe98ba69bee55dddf4e",
+      "duration": "5:47",
+      "popularity": 62,
+      "uri": "spotify:track:4z21jCYxdhnEfvgqGSKByQ",
+      "url": "https://open.spotify.com/track/4z21jCYxdhnEfvgqGSKByQ"
+    },
+    {
+      "name": "Best of You",
+      "artist": "Foo Fighters",
+      "album": "In Your Honor",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27350d3fff0dc3d9b55f164d8d6",
+      "duration": "4:15",
+      "popularity": 75,
+      "uri": "spotify:track:5FZxsHWIvUsmSK1IAvm2pp",
+      "url": "https://open.spotify.com/track/5FZxsHWIvUsmSK1IAvm2pp"
+    },
+    {
+      "name": "The Place Where We Belong",
+      "artist": "ELYAZ",
+      "album": "The Place Where We Belong",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f842ed56da32fa3ed04e2d98",
+      "duration": "3:45",
+      "popularity": 41,
+      "uri": "spotify:track:4J8BdAwDnIQv6DZnsIXQdf",
+      "url": "https://open.spotify.com/track/4J8BdAwDnIQv6DZnsIXQdf"
+    },
+    {
+      "name": "End of Beginning",
+      "artist": "Our Last Night",
+      "album": "End of Beginning",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273338d93c88482dc9c0625c142",
+      "duration": "2:17",
+      "popularity": 61,
+      "uri": "spotify:track:3MLRHl9LGmNkfzXq8o6CBc",
+      "url": "https://open.spotify.com/track/3MLRHl9LGmNkfzXq8o6CBc"
     },
     {
       "name": "Air on a G String",
@@ -105,60 +129,40 @@
       "album": "Classic",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273a0e19560289c8ef83ffb033b",
       "duration": "4:49",
-      "popularity": 61,
+      "popularity": 60,
       "uri": "spotify:track:0mD1a7haZKdX9I0oPywrMb",
       "url": "https://open.spotify.com/track/0mD1a7haZKdX9I0oPywrMb"
     },
     {
-      "name": "Belong Together",
-      "artist": "Mark Ambor",
-      "album": "Rockwood",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273da33127f62acdb0aca585e92",
-      "duration": "2:28",
-      "popularity": 78,
-      "uri": "spotify:track:0rtDE9zfXbamTlRUSwY7zy",
-      "url": "https://open.spotify.com/track/0rtDE9zfXbamTlRUSwY7zy"
-    },
-    {
-      "name": "Kings And Queens",
-      "artist": "Thirty Seconds To Mars",
-      "album": "This Is War (Deluxe)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273dc71afe98ba69bee55dddf4e",
-      "duration": "5:47",
-      "popularity": 63,
-      "uri": "spotify:track:4z21jCYxdhnEfvgqGSKByQ",
-      "url": "https://open.spotify.com/track/4z21jCYxdhnEfvgqGSKByQ"
-    },
-    {
-      "name": "Hoor Jy My",
-      "artist": "Die Heuwels Fantasties",
-      "album": "Volume",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273ed2e40bded45573a488d0b87",
-      "duration": "3:29",
-      "popularity": 43,
-      "uri": "spotify:track:0JRj7hhhtZd9xyRPln5uZ6",
-      "url": "https://open.spotify.com/track/0JRj7hhhtZd9xyRPln5uZ6"
-    },
-    {
-      "name": "Ek Dink Te Veel",
-      "artist": "Schwabie, Tylo",
-      "album": "Ek Dink Te Veel",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273075bff83bcda835619976c8f",
+      "name": "River Flows in You",
+      "artist": "HAUSER, London Symphony Orchestra, Robert Ziegler",
+      "album": "River Flows in You",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733707dc2ffdc2729e27cc0c19",
       "duration": "3:00",
-      "popularity": 28,
-      "uri": "spotify:track:0nJcHyQST727NW3jNhzlFh",
-      "url": "https://open.spotify.com/track/0nJcHyQST727NW3jNhzlFh"
+      "popularity": 50,
+      "uri": "spotify:track:2xCtrN9PYxH6WIOUj06jM6",
+      "url": "https://open.spotify.com/track/2xCtrN9PYxH6WIOUj06jM6"
     },
     {
-      "name": "Bedroom Posters (feat. Good Charlotte)",
-      "artist": "Yellowcard, Good Charlotte",
-      "album": "Bedroom Posters (feat. Good Charlotte)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27397a924373638bf51107e3778",
-      "duration": "3:38",
-      "popularity": 60,
-      "uri": "spotify:track:1L2Z2Xpta5CZ59kIazq9Xp",
-      "url": "https://open.spotify.com/track/1L2Z2Xpta5CZ59kIazq9Xp"
+      "name": "Carry You Home",
+      "artist": "Alex Warren",
+      "album": "You'll Be Alright, Kid (Chapter 1)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738d18d73bbfc8985d52865edf",
+      "duration": "2:46",
+      "popularity": 84,
+      "uri": "spotify:track:1wOp7yTVyH176bW1z9WAiv",
+      "url": "https://open.spotify.com/track/1wOp7yTVyH176bW1z9WAiv"
+    },
+    {
+      "name": "Nog ’n Keer",
+      "artist": "Almero",
+      "album": "Nog ’n Keer",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273587c797f0fe1dee7179e4d2c",
+      "duration": "2:45",
+      "popularity": 27,
+      "uri": "spotify:track:0KbStUUzcB2d0AZxyPLEyu",
+      "url": "https://open.spotify.com/track/0KbStUUzcB2d0AZxyPLEyu"
     }
   ],
-  "lastUpdated": "2026-02-16T02:32:10.116Z"
+  "lastUpdated": "2026-02-23T02:32:19.118Z"
 }
