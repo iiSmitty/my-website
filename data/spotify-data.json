@@ -1,19 +1,6 @@
 {
   "topArtists": [
     {
-      "name": "Linkin Park",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
-      "genres": [
-        "nu metal",
-        "rap metal",
-        "rock",
-        "alternative metal"
-      ],
-      "popularity": 88,
-      "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
-      "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
-    },
-    {
       "name": "Elevation Worship",
       "image": "https://i.scdn.co/image/ab6761610000e5eb6fa137c74960a6a81f11ee70",
       "genres": [
@@ -23,30 +10,9 @@
         "gospel",
         "pop worship"
       ],
-      "popularity": 75,
+      "popularity": 76,
       "uri": "spotify:artist:3YCKuqpv9nCsIhJ2v8SMix",
       "url": "https://open.spotify.com/artist/3YCKuqpv9nCsIhJ2v8SMix"
-    },
-    {
-      "name": "HAUSER",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb8c2521a454c69e84595ed504",
-      "genres": [
-        "classical",
-        "classical crossover"
-      ],
-      "popularity": 56,
-      "uri": "spotify:artist:2iSn12gFykgv92aTvPiH4s",
-      "url": "https://open.spotify.com/artist/2iSn12gFykgv92aTvPiH4s"
-    },
-    {
-      "name": "Francois van Coke",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb880d0210e214fd6763d82fb2",
-      "genres": [
-        "afrikaans pop"
-      ],
-      "popularity": 41,
-      "uri": "spotify:artist:7pJtnZQLPJmqzVfdIz7eFF",
-      "url": "https://open.spotify.com/artist/7pJtnZQLPJmqzVfdIz7eFF"
     },
     {
       "name": "Passion",
@@ -60,6 +26,37 @@
       "popularity": 64,
       "uri": "spotify:artist:6piIAIurGAryW5h1rqQC16",
       "url": "https://open.spotify.com/artist/6piIAIurGAryW5h1rqQC16"
+    },
+    {
+      "name": "Linkin Park",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
+      "genres": [
+        "nu metal",
+        "rap metal",
+        "rock",
+        "alternative metal"
+      ],
+      "popularity": 88,
+      "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
+      "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
+    },
+    {
+      "name": "Djo",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb4113d395582d3667b7978430",
+      "genres": [],
+      "popularity": 82,
+      "uri": "spotify:artist:5p9HO3XC5P3BLxJs5Mtrhm",
+      "url": "https://open.spotify.com/artist/5p9HO3XC5P3BLxJs5Mtrhm"
+    },
+    {
+      "name": "Die Heuwels Fantasties",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb7e5ed68cd28045d603b7c82a",
+      "genres": [
+        "afrikaans pop"
+      ],
+      "popularity": 45,
+      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
+      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
     }
   ],
   "topTracks": [
@@ -94,24 +91,34 @@
       "url": "https://open.spotify.com/track/4z21jCYxdhnEfvgqGSKByQ"
     },
     {
-      "name": "Best of You",
-      "artist": "Foo Fighters",
-      "album": "In Your Honor",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27350d3fff0dc3d9b55f164d8d6",
-      "duration": "4:15",
-      "popularity": 75,
-      "uri": "spotify:track:5FZxsHWIvUsmSK1IAvm2pp",
-      "url": "https://open.spotify.com/track/5FZxsHWIvUsmSK1IAvm2pp"
-    },
-    {
       "name": "The Place Where We Belong",
       "artist": "ELYAZ",
       "album": "The Place Where We Belong",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273f842ed56da32fa3ed04e2d98",
       "duration": "3:45",
-      "popularity": 41,
+      "popularity": 42,
       "uri": "spotify:track:4J8BdAwDnIQv6DZnsIXQdf",
       "url": "https://open.spotify.com/track/4J8BdAwDnIQv6DZnsIXQdf"
+    },
+    {
+      "name": "Praise (feat. Brandon Lake, Chris Brown & Chandler Moore)",
+      "artist": "Elevation Worship, Brandon Lake, Chris Brown, Chandler Moore",
+      "album": "CAN YOU IMAGINE?",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739ccc98bb244869e5e9836f37",
+      "duration": "5:04",
+      "popularity": 78,
+      "uri": "spotify:track:7Ee6XgP8EHKDhTMYLIndu9",
+      "url": "https://open.spotify.com/track/7Ee6XgP8EHKDhTMYLIndu9"
+    },
+    {
+      "name": "please stay",
+      "artist": "Nightcall",
+      "album": "please stay",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2730bca7ace7a91d36ca7361c83",
+      "duration": "4:06",
+      "popularity": 31,
+      "uri": "spotify:track:3DKYKyFYrwqpbiLjSHqJj5",
+      "url": "https://open.spotify.com/track/3DKYKyFYrwqpbiLjSHqJj5"
     },
     {
       "name": "End of Beginning",
@@ -124,24 +131,14 @@
       "url": "https://open.spotify.com/track/3MLRHl9LGmNkfzXq8o6CBc"
     },
     {
-      "name": "Air on a G String",
-      "artist": "Johann Sebastian Bach, HAUSER, London Symphony Orchestra, Robert Ziegler",
-      "album": "Classic",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a0e19560289c8ef83ffb033b",
-      "duration": "4:49",
-      "popularity": 60,
-      "uri": "spotify:track:0mD1a7haZKdX9I0oPywrMb",
-      "url": "https://open.spotify.com/track/0mD1a7haZKdX9I0oPywrMb"
-    },
-    {
-      "name": "River Flows in You",
-      "artist": "HAUSER, London Symphony Orchestra, Robert Ziegler",
-      "album": "River Flows in You",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733707dc2ffdc2729e27cc0c19",
-      "duration": "3:00",
-      "popularity": 50,
-      "uri": "spotify:track:2xCtrN9PYxH6WIOUj06jM6",
-      "url": "https://open.spotify.com/track/2xCtrN9PYxH6WIOUj06jM6"
+      "name": "Best of You",
+      "artist": "Foo Fighters",
+      "album": "In Your Honor",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27350d3fff0dc3d9b55f164d8d6",
+      "duration": "4:15",
+      "popularity": 75,
+      "uri": "spotify:track:5FZxsHWIvUsmSK1IAvm2pp",
+      "url": "https://open.spotify.com/track/5FZxsHWIvUsmSK1IAvm2pp"
     },
     {
       "name": "Carry You Home",
@@ -154,15 +151,15 @@
       "url": "https://open.spotify.com/track/1wOp7yTVyH176bW1z9WAiv"
     },
     {
-      "name": "Nog ’n Keer",
-      "artist": "Almero",
-      "album": "Nog ’n Keer",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273587c797f0fe1dee7179e4d2c",
-      "duration": "2:45",
-      "popularity": 27,
-      "uri": "spotify:track:0KbStUUzcB2d0AZxyPLEyu",
-      "url": "https://open.spotify.com/track/0KbStUUzcB2d0AZxyPLEyu"
+      "name": "The Diary of Jane - Single Version",
+      "artist": "Breaking Benjamin",
+      "album": "Phobia (Clean Version)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735aa75a47afe2804e280bd149",
+      "duration": "3:20",
+      "popularity": 77,
+      "uri": "spotify:track:0faXHILILebCGnJBPU6KJJ",
+      "url": "https://open.spotify.com/track/0faXHILILebCGnJBPU6KJJ"
     }
   ],
-  "lastUpdated": "2026-02-23T02:32:19.118Z"
+  "lastUpdated": "2026-03-02T02:27:36.162Z"
 }
