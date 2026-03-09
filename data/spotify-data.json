@@ -28,6 +28,25 @@
       "url": "https://open.spotify.com/artist/6piIAIurGAryW5h1rqQC16"
     },
     {
+      "name": "Djo",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb4113d395582d3667b7978430",
+      "genres": [],
+      "popularity": 82,
+      "uri": "spotify:artist:5p9HO3XC5P3BLxJs5Mtrhm",
+      "url": "https://open.spotify.com/artist/5p9HO3XC5P3BLxJs5Mtrhm"
+    },
+    {
+      "name": "The Lofi Christian",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebce8f2415c86343f1c0814f66",
+      "genres": [
+        "christian lo-fi",
+        "lo-fi"
+      ],
+      "popularity": 57,
+      "uri": "spotify:artist:7nPBddK18ZCiNbilAnpOoP",
+      "url": "https://open.spotify.com/artist/7nPBddK18ZCiNbilAnpOoP"
+    },
+    {
       "name": "Linkin Park",
       "image": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
       "genres": [
@@ -39,24 +58,6 @@
       "popularity": 88,
       "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
-    },
-    {
-      "name": "Djo",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb4113d395582d3667b7978430",
-      "genres": [],
-      "popularity": 82,
-      "uri": "spotify:artist:5p9HO3XC5P3BLxJs5Mtrhm",
-      "url": "https://open.spotify.com/artist/5p9HO3XC5P3BLxJs5Mtrhm"
-    },
-    {
-      "name": "Die Heuwels Fantasties",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb7e5ed68cd28045d603b7c82a",
-      "genres": [
-        "afrikaans pop"
-      ],
-      "popularity": 45,
-      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
-      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
     }
   ],
   "topTracks": [
@@ -71,6 +72,16 @@
       "url": "https://open.spotify.com/track/0VFOPer67s96LmWBTDAaFh"
     },
     {
+      "name": "Kings And Queens",
+      "artist": "Thirty Seconds To Mars",
+      "album": "This Is War (Deluxe)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273dc71afe98ba69bee55dddf4e",
+      "duration": "5:47",
+      "popularity": 63,
+      "uri": "spotify:track:4z21jCYxdhnEfvgqGSKByQ",
+      "url": "https://open.spotify.com/track/4z21jCYxdhnEfvgqGSKByQ"
+    },
+    {
       "name": "Vois sur ton chemin - Techno Mix",
       "artist": "BENNETT",
       "album": "Vois sur ton chemin (Techno Mix)",
@@ -79,16 +90,6 @@
       "popularity": 79,
       "uri": "spotify:track:31nfdEooLEq7dn3UMcIeB5",
       "url": "https://open.spotify.com/track/31nfdEooLEq7dn3UMcIeB5"
-    },
-    {
-      "name": "Kings And Queens",
-      "artist": "Thirty Seconds To Mars",
-      "album": "This Is War (Deluxe)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273dc71afe98ba69bee55dddf4e",
-      "duration": "5:47",
-      "popularity": 62,
-      "uri": "spotify:track:4z21jCYxdhnEfvgqGSKByQ",
-      "url": "https://open.spotify.com/track/4z21jCYxdhnEfvgqGSKByQ"
     },
     {
       "name": "The Place Where We Belong",
@@ -116,7 +117,7 @@
       "album": "please stay",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2730bca7ace7a91d36ca7361c83",
       "duration": "4:06",
-      "popularity": 31,
+      "popularity": 32,
       "uri": "spotify:track:3DKYKyFYrwqpbiLjSHqJj5",
       "url": "https://open.spotify.com/track/3DKYKyFYrwqpbiLjSHqJj5"
     },
@@ -131,14 +132,14 @@
       "url": "https://open.spotify.com/track/3MLRHl9LGmNkfzXq8o6CBc"
     },
     {
-      "name": "Best of You",
-      "artist": "Foo Fighters",
-      "album": "In Your Honor",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27350d3fff0dc3d9b55f164d8d6",
-      "duration": "4:15",
-      "popularity": 75,
-      "uri": "spotify:track:5FZxsHWIvUsmSK1IAvm2pp",
-      "url": "https://open.spotify.com/track/5FZxsHWIvUsmSK1IAvm2pp"
+      "name": "The Diary of Jane - Single Version",
+      "artist": "Breaking Benjamin",
+      "album": "Phobia (Clean Version)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735aa75a47afe2804e280bd149",
+      "duration": "3:20",
+      "popularity": 77,
+      "uri": "spotify:track:0faXHILILebCGnJBPU6KJJ",
+      "url": "https://open.spotify.com/track/0faXHILILebCGnJBPU6KJJ"
     },
     {
       "name": "Carry You Home",
@@ -151,15 +152,15 @@
       "url": "https://open.spotify.com/track/1wOp7yTVyH176bW1z9WAiv"
     },
     {
-      "name": "The Diary of Jane - Single Version",
-      "artist": "Breaking Benjamin",
-      "album": "Phobia (Clean Version)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735aa75a47afe2804e280bd149",
-      "duration": "3:20",
-      "popularity": 77,
-      "uri": "spotify:track:0faXHILILebCGnJBPU6KJJ",
-      "url": "https://open.spotify.com/track/0faXHILILebCGnJBPU6KJJ"
+      "name": "God I'm Just Grateful",
+      "artist": "Elevation Worship, Chandler Moore",
+      "album": "SO BE IT",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2730d7613f811064f945972f102",
+      "duration": "4:59",
+      "popularity": 63,
+      "uri": "spotify:track:21od4Ae35Nvx91Qel9gRiw",
+      "url": "https://open.spotify.com/track/21od4Ae35Nvx91Qel9gRiw"
     }
   ],
-  "lastUpdated": "2026-03-02T02:27:36.162Z"
+  "lastUpdated": "2026-03-09T02:30:35.181Z"
 }
