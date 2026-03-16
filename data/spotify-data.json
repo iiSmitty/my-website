@@ -23,17 +23,9 @@
         "ccm",
         "pop worship"
       ],
-      "popularity": 64,
+      "popularity": 65,
       "uri": "spotify:artist:6piIAIurGAryW5h1rqQC16",
       "url": "https://open.spotify.com/artist/6piIAIurGAryW5h1rqQC16"
-    },
-    {
-      "name": "Djo",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb4113d395582d3667b7978430",
-      "genres": [],
-      "popularity": 82,
-      "uri": "spotify:artist:5p9HO3XC5P3BLxJs5Mtrhm",
-      "url": "https://open.spotify.com/artist/5p9HO3XC5P3BLxJs5Mtrhm"
     },
     {
       "name": "The Lofi Christian",
@@ -42,34 +34,73 @@
         "christian lo-fi",
         "lo-fi"
       ],
-      "popularity": 57,
+      "popularity": 58,
       "uri": "spotify:artist:7nPBddK18ZCiNbilAnpOoP",
       "url": "https://open.spotify.com/artist/7nPBddK18ZCiNbilAnpOoP"
     },
     {
-      "name": "Linkin Park",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
+      "name": "Phil Wickham",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb3c613c49520e672bff7b85f7",
       "genres": [
-        "nu metal",
-        "rap metal",
-        "rock",
-        "alternative metal"
+        "worship",
+        "christian",
+        "ccm"
       ],
-      "popularity": 88,
-      "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
-      "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
+      "popularity": 70,
+      "uri": "spotify:artist:5d1JhBfyb58upMXCZOdbQu",
+      "url": "https://open.spotify.com/artist/5d1JhBfyb58upMXCZOdbQu"
+    },
+    {
+      "name": "Almero",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebf8dbd8e6413fd3d6b13bd4ca",
+      "genres": [
+        "afrikaans pop"
+      ],
+      "popularity": 29,
+      "uri": "spotify:artist:7dPungKhZV77MeaGRZwTNR",
+      "url": "https://open.spotify.com/artist/7dPungKhZV77MeaGRZwTNR"
     }
   ],
   "topTracks": [
     {
-      "name": "everlong - instrumental",
-      "artist": "no/vox, karaokey",
-      "album": "everlong (instrumental)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27314b81db8dc3fa39f3bbb4b90",
-      "duration": "4:48",
-      "popularity": 17,
-      "uri": "spotify:track:0VFOPer67s96LmWBTDAaFh",
-      "url": "https://open.spotify.com/track/0VFOPer67s96LmWBTDAaFh"
+      "name": "Vois sur ton chemin - Techno Mix",
+      "artist": "BENNETT",
+      "album": "Vois sur ton chemin (Techno Mix)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731c4b40593176f9b7b7be23b8",
+      "duration": "2:58",
+      "popularity": 79,
+      "uri": "spotify:track:31nfdEooLEq7dn3UMcIeB5",
+      "url": "https://open.spotify.com/track/31nfdEooLEq7dn3UMcIeB5"
+    },
+    {
+      "name": "Iris",
+      "artist": "The Goo Goo Dolls, Steve Aoki",
+      "album": "Iris",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c57d0367c948c90f91483d9d",
+      "duration": "3:19",
+      "popularity": 61,
+      "uri": "spotify:track:3zlLhEnV9yMRRSE3bFS0Xe",
+      "url": "https://open.spotify.com/track/3zlLhEnV9yMRRSE3bFS0Xe"
+    },
+    {
+      "name": "The Place Where We Belong",
+      "artist": "ELYAZ",
+      "album": "The Place Where We Belong",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f842ed56da32fa3ed04e2d98",
+      "duration": "3:45",
+      "popularity": 43,
+      "uri": "spotify:track:4J8BdAwDnIQv6DZnsIXQdf",
+      "url": "https://open.spotify.com/track/4J8BdAwDnIQv6DZnsIXQdf"
+    },
+    {
+      "name": "please stay",
+      "artist": "Nightcall",
+      "album": "please stay",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2730bca7ace7a91d36ca7361c83",
+      "duration": "4:06",
+      "popularity": 31,
+      "uri": "spotify:track:3DKYKyFYrwqpbiLjSHqJj5",
+      "url": "https://open.spotify.com/track/3DKYKyFYrwqpbiLjSHqJj5"
     },
     {
       "name": "Kings And Queens",
@@ -82,26 +113,6 @@
       "url": "https://open.spotify.com/track/4z21jCYxdhnEfvgqGSKByQ"
     },
     {
-      "name": "Vois sur ton chemin - Techno Mix",
-      "artist": "BENNETT",
-      "album": "Vois sur ton chemin (Techno Mix)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731c4b40593176f9b7b7be23b8",
-      "duration": "2:58",
-      "popularity": 79,
-      "uri": "spotify:track:31nfdEooLEq7dn3UMcIeB5",
-      "url": "https://open.spotify.com/track/31nfdEooLEq7dn3UMcIeB5"
-    },
-    {
-      "name": "The Place Where We Belong",
-      "artist": "ELYAZ",
-      "album": "The Place Where We Belong",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f842ed56da32fa3ed04e2d98",
-      "duration": "3:45",
-      "popularity": 42,
-      "uri": "spotify:track:4J8BdAwDnIQv6DZnsIXQdf",
-      "url": "https://open.spotify.com/track/4J8BdAwDnIQv6DZnsIXQdf"
-    },
-    {
       "name": "Praise (feat. Brandon Lake, Chris Brown & Chandler Moore)",
       "artist": "Elevation Worship, Brandon Lake, Chris Brown, Chandler Moore",
       "album": "CAN YOU IMAGINE?",
@@ -112,32 +123,12 @@
       "url": "https://open.spotify.com/track/7Ee6XgP8EHKDhTMYLIndu9"
     },
     {
-      "name": "please stay",
-      "artist": "Nightcall",
-      "album": "please stay",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2730bca7ace7a91d36ca7361c83",
-      "duration": "4:06",
-      "popularity": 32,
-      "uri": "spotify:track:3DKYKyFYrwqpbiLjSHqJj5",
-      "url": "https://open.spotify.com/track/3DKYKyFYrwqpbiLjSHqJj5"
-    },
-    {
-      "name": "End of Beginning",
-      "artist": "Our Last Night",
-      "album": "End of Beginning",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273338d93c88482dc9c0625c142",
-      "duration": "2:17",
-      "popularity": 61,
-      "uri": "spotify:track:3MLRHl9LGmNkfzXq8o6CBc",
-      "url": "https://open.spotify.com/track/3MLRHl9LGmNkfzXq8o6CBc"
-    },
-    {
       "name": "The Diary of Jane - Single Version",
       "artist": "Breaking Benjamin",
       "album": "Phobia (Clean Version)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2735aa75a47afe2804e280bd149",
       "duration": "3:20",
-      "popularity": 77,
+      "popularity": 78,
       "uri": "spotify:track:0faXHILILebCGnJBPU6KJJ",
       "url": "https://open.spotify.com/track/0faXHILILebCGnJBPU6KJJ"
     },
@@ -147,7 +138,7 @@
       "album": "You'll Be Alright, Kid (Chapter 1)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2738d18d73bbfc8985d52865edf",
       "duration": "2:46",
-      "popularity": 84,
+      "popularity": 85,
       "uri": "spotify:track:1wOp7yTVyH176bW1z9WAiv",
       "url": "https://open.spotify.com/track/1wOp7yTVyH176bW1z9WAiv"
     },
@@ -157,10 +148,20 @@
       "album": "SO BE IT",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2730d7613f811064f945972f102",
       "duration": "4:59",
-      "popularity": 63,
+      "popularity": 65,
       "uri": "spotify:track:21od4Ae35Nvx91Qel9gRiw",
       "url": "https://open.spotify.com/track/21od4Ae35Nvx91Qel9gRiw"
+    },
+    {
+      "name": "AURA of GLORY",
+      "artist": "Ogryzek",
+      "album": "AURA of GLORY",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273601e75b9ba05d8ab2c35ff89",
+      "duration": "4:00",
+      "popularity": 62,
+      "uri": "spotify:track:6lAsYn0DdP9nGlDdrdzNig",
+      "url": "https://open.spotify.com/track/6lAsYn0DdP9nGlDdrdzNig"
     }
   ],
-  "lastUpdated": "2026-03-09T02:30:35.181Z"
+  "lastUpdated": "2026-03-16T02:43:45.495Z"
 }
