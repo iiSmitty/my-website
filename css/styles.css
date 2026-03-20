@@ -1896,3 +1896,167 @@ body.is-touch-device .desktop-icons,
         gap: 12px;
     }
 }
+
+/* ==================================
+   Device Disconnected Notice
+   ================================== */
+
+.device-disconnected-dialog {
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+    margin: 16px 0;
+    font-family: 'MS Sans Serif', Arial, sans-serif;
+}
+
+.disconnected-title-bar {
+    background: linear-gradient(to right, #808000, #c0c000);
+    color: white;
+    padding: 3px 5px;
+    font-weight: bold;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.disconnected-title-icon {
+    font-size: 11px;
+}
+
+.disconnected-body {
+    display: flex;
+    padding: 15px;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.disconnected-icon-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 64px;
+    gap: 6px;
+}
+
+.disconnected-watch-icon {
+    font-size: 48px;
+    filter: grayscale(60%);
+    opacity: 0.7;
+}
+
+.disconnected-signal {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 16px;
+    position: relative;
+}
+
+.signal-bar {
+    display: inline-block;
+    width: 4px;
+    background-color: #808080;
+    border: 1px solid #606060;
+}
+
+.signal-bar.bar-1 { height: 4px; }
+.signal-bar.bar-2 { height: 7px; }
+.signal-bar.bar-3 { height: 10px; }
+.signal-bar.bar-4 { height: 14px; }
+
+.signal-x {
+    position: absolute;
+    top: -4px;
+    right: -8px;
+    color: #cc0000;
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 0 0 2px #ff0000;
+}
+
+.disconnected-message {
+    flex: 1;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.disconnected-headline {
+    font-weight: bold;
+    color: #000080;
+    font-size: 13px;
+    margin: 0 0 8px 0;
+}
+
+.disconnected-detail {
+    margin: 0 0 6px 0;
+    color: #333;
+}
+
+.disconnected-status-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    padding: 4px 6px;
+    background-color: #ffffcc;
+    border: 1px solid #808080;
+    font-size: 11px;
+}
+
+.disconnected-status-led {
+    width: 8px;
+    height: 8px;
+    background-color: #cc8800;
+    border-radius: 50%;
+    border: 1px solid #996600;
+    box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.2),
+    0 0 3px rgba(204, 136, 0, 0.5);
+    animation: ledPulseAmber 2s ease-in-out infinite;
+}
+
+@keyframes ledPulseAmber {
+    0%, 100% { background-color: #cc8800; box-shadow: 0 0 2px rgba(204, 136, 0, 0.3); }
+    50% { background-color: #ffaa00; box-shadow: 0 0 5px rgba(255, 170, 0, 0.6); }
+}
+
+.disconnected-status-text {
+    color: #666;
+    font-style: italic;
+}
+
+.disconnected-footer {
+    padding: 8px 15px 12px;
+    border-top: 1px solid #808080;
+}
+
+.disconnected-btn-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.disconnected-ok-btn {
+    min-width: 75px;
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 430px) {
+    .disconnected-body {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .disconnected-icon-area {
+        min-width: auto;
+    }
+
+    .disconnected-status-row {
+        justify-content: center;
+    }
+
+    .disconnected-btn-row {
+        justify-content: center;
+    }
+}

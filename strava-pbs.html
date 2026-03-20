@@ -40,6 +40,41 @@
             <span class="sync-text-content"></span>
         </div>
 
+        <!-- Device Disconnected Notice -->
+        <div class="device-disconnected-dialog">
+            <div class="disconnected-title-bar">
+                <div class="disconnected-title-icon">⚠</div>
+                <span>Garmin Fenix 7X — Device Disconnected</span>
+            </div>
+            <div class="disconnected-body">
+                <div class="disconnected-icon-area">
+                    <div class="disconnected-watch-icon">⌚</div>
+                    <div class="disconnected-signal">
+                        <span class="signal-bar bar-1"></span>
+                        <span class="signal-bar bar-2"></span>
+                        <span class="signal-bar bar-3"></span>
+                        <span class="signal-bar bar-4"></span>
+                        <div class="signal-x">✕</div>
+                    </div>
+                </div>
+                <div class="disconnected-message">
+                    <p class="disconnected-headline">GPS signal lost... runner has gone off-grid.</p>
+                    <p class="disconnected-detail">The watch has been put down. The runner is still out there somewhere — just vibes, no splits, no pace alerts, no VO2 max anxiety. Life got busy, but the road didn't go anywhere.</p>
+                    <p class="disconnected-detail">Plan: return to running for fun. No watch. No data. Just shoes and fresh air.</p>
+                    <div class="disconnected-status-row">
+                        <span class="disconnected-status-led"></span>
+                        <span class="disconnected-status-text">Auto-updates paused — data may be outdated</span>
+                    </div>
+                </div>
+            </div>
+            <div class="disconnected-footer">
+                <div class="disconnected-btn-row">
+                    <button class="win95-btn disconnected-ok-btn" onclick="this.closest('.device-disconnected-dialog').style.display='none'">OK</button>
+                    <button class="win95-btn" onclick="window.open('https://www.strava.com/athletes/andresmit','_blank')">View Strava Profile</button>
+                </div>
+            </div>
+        </div>
+
         <div id="loading" class="win95-box loading-box">
             <div class="win95-spinner"></div>
             <p>Loading personal bests...</p>
