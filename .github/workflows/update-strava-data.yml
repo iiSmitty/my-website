@@ -1,7 +1,5 @@
 name: Update Strava Data
 on:
-  schedule:
-    - cron: '0 6 * * *'  # Runs daily at 8:00 AM SAST (6:00 AM UTC, as SAST is UTC+2)
   workflow_dispatch:  # Allows manual triggering
 jobs:
   fetch-strava-data:
