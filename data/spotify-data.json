@@ -10,22 +10,9 @@
         "gospel",
         "pop worship"
       ],
-      "popularity": 76,
+      "popularity": 77,
       "uri": "spotify:artist:3YCKuqpv9nCsIhJ2v8SMix",
       "url": "https://open.spotify.com/artist/3YCKuqpv9nCsIhJ2v8SMix"
-    },
-    {
-      "name": "Passion",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb6e1a59979a8bbd41d8a1df3b",
-      "genres": [
-        "worship",
-        "christian",
-        "ccm",
-        "pop worship"
-      ],
-      "popularity": 65,
-      "uri": "spotify:artist:6piIAIurGAryW5h1rqQC16",
-      "url": "https://open.spotify.com/artist/6piIAIurGAryW5h1rqQC16"
     },
     {
       "name": "The Lofi Christian",
@@ -46,71 +33,64 @@
         "christian",
         "ccm"
       ],
-      "popularity": 70,
+      "popularity": 71,
       "uri": "spotify:artist:5d1JhBfyb58upMXCZOdbQu",
       "url": "https://open.spotify.com/artist/5d1JhBfyb58upMXCZOdbQu"
     },
     {
-      "name": "Almero",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebf8dbd8e6413fd3d6b13bd4ca",
+      "name": "Linkin Park",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
       "genres": [
-        "afrikaans pop"
+        "nu metal",
+        "rap metal",
+        "rock",
+        "alternative metal"
       ],
-      "popularity": 29,
-      "uri": "spotify:artist:7dPungKhZV77MeaGRZwTNR",
-      "url": "https://open.spotify.com/artist/7dPungKhZV77MeaGRZwTNR"
+      "popularity": 89,
+      "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
+      "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
+    },
+    {
+      "name": "Avicii",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebae07171f989fb39736674113",
+      "genres": [
+        "edm"
+      ],
+      "popularity": 80,
+      "uri": "spotify:artist:1vCWHaC5f2uS3yhpwWbIA6",
+      "url": "https://open.spotify.com/artist/1vCWHaC5f2uS3yhpwWbIA6"
     }
   ],
   "topTracks": [
-    {
-      "name": "Vois sur ton chemin - Techno Mix",
-      "artist": "BENNETT",
-      "album": "Vois sur ton chemin (Techno Mix)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731c4b40593176f9b7b7be23b8",
-      "duration": "2:58",
-      "popularity": 79,
-      "uri": "spotify:track:31nfdEooLEq7dn3UMcIeB5",
-      "url": "https://open.spotify.com/track/31nfdEooLEq7dn3UMcIeB5"
-    },
     {
       "name": "Iris",
       "artist": "The Goo Goo Dolls, Steve Aoki",
       "album": "Iris",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273c57d0367c948c90f91483d9d",
       "duration": "3:19",
-      "popularity": 61,
+      "popularity": 63,
       "uri": "spotify:track:3zlLhEnV9yMRRSE3bFS0Xe",
       "url": "https://open.spotify.com/track/3zlLhEnV9yMRRSE3bFS0Xe"
     },
     {
-      "name": "The Place Where We Belong",
-      "artist": "ELYAZ",
-      "album": "The Place Where We Belong",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f842ed56da32fa3ed04e2d98",
-      "duration": "3:45",
-      "popularity": 43,
-      "uri": "spotify:track:4J8BdAwDnIQv6DZnsIXQdf",
-      "url": "https://open.spotify.com/track/4J8BdAwDnIQv6DZnsIXQdf"
-    },
-    {
-      "name": "please stay",
-      "artist": "Nightcall",
-      "album": "please stay",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2730bca7ace7a91d36ca7361c83",
-      "duration": "4:06",
+      "name": "Holy Forever",
+      "artist": "Seventh Day Slumber",
+      "album": "Thy Kingdom Come",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27345d57a99f2e9d8ba8c39bcee",
+      "duration": "4:35",
       "popularity": 31,
-      "uri": "spotify:track:3DKYKyFYrwqpbiLjSHqJj5",
-      "url": "https://open.spotify.com/track/3DKYKyFYrwqpbiLjSHqJj5"
+      "uri": "spotify:track:3DKhJAdyjssQhYVjJUJUqt",
+      "url": "https://open.spotify.com/track/3DKhJAdyjssQhYVjJUJUqt"
     },
     {
-      "name": "Kings And Queens",
-      "artist": "Thirty Seconds To Mars",
-      "album": "This Is War (Deluxe)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273dc71afe98ba69bee55dddf4e",
-      "duration": "5:47",
-      "popularity": 63,
-      "uri": "spotify:track:4z21jCYxdhnEfvgqGSKByQ",
-      "url": "https://open.spotify.com/track/4z21jCYxdhnEfvgqGSKByQ"
+      "name": "Teenage Mutant Ninja Turtles Cartoon Opening Theme (1987)",
+      "artist": "Teenage Mutant Ninja Turtles",
+      "album": "Let's Kick Shell!",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2734e1ff56eb541da4b0450a6a8",
+      "duration": "1:00",
+      "popularity": 58,
+      "uri": "spotify:track:4QpB8RyVWCAcZ5bWRk14bo",
+      "url": "https://open.spotify.com/track/4QpB8RyVWCAcZ5bWRk14bo"
     },
     {
       "name": "Praise (feat. Brandon Lake, Chris Brown & Chandler Moore)",
@@ -118,29 +98,19 @@
       "album": "CAN YOU IMAGINE?",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2739ccc98bb244869e5e9836f37",
       "duration": "5:04",
-      "popularity": 78,
+      "popularity": 79,
       "uri": "spotify:track:7Ee6XgP8EHKDhTMYLIndu9",
       "url": "https://open.spotify.com/track/7Ee6XgP8EHKDhTMYLIndu9"
     },
     {
-      "name": "The Diary of Jane - Single Version",
-      "artist": "Breaking Benjamin",
-      "album": "Phobia (Clean Version)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735aa75a47afe2804e280bd149",
-      "duration": "3:20",
-      "popularity": 78,
-      "uri": "spotify:track:0faXHILILebCGnJBPU6KJJ",
-      "url": "https://open.spotify.com/track/0faXHILILebCGnJBPU6KJJ"
-    },
-    {
-      "name": "Carry You Home",
-      "artist": "Alex Warren",
-      "album": "You'll Be Alright, Kid (Chapter 1)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738d18d73bbfc8985d52865edf",
-      "duration": "2:46",
-      "popularity": 85,
-      "uri": "spotify:track:1wOp7yTVyH176bW1z9WAiv",
-      "url": "https://open.spotify.com/track/1wOp7yTVyH176bW1z9WAiv"
+      "name": "Talking to Myself",
+      "artist": "Linkin Park",
+      "album": "One More Light",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273145e1cf12538f5666511237d",
+      "duration": "3:51",
+      "popularity": 61,
+      "uri": "spotify:track:7nAfXgeHfDO50upcOjJOaq",
+      "url": "https://open.spotify.com/track/7nAfXgeHfDO50upcOjJOaq"
     },
     {
       "name": "God I'm Just Grateful",
@@ -148,9 +118,29 @@
       "album": "SO BE IT",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2730d7613f811064f945972f102",
       "duration": "4:59",
-      "popularity": 65,
+      "popularity": 66,
       "uri": "spotify:track:21od4Ae35Nvx91Qel9gRiw",
       "url": "https://open.spotify.com/track/21od4Ae35Nvx91Qel9gRiw"
+    },
+    {
+      "name": "Don't Look Down (feat. Usher)",
+      "artist": "Martin Garrix, USHER",
+      "album": "Don't Look Down (feat. Usher)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273de034bbdbe12c86285356121",
+      "duration": "3:43",
+      "popularity": 65,
+      "uri": "spotify:track:5M9jOReAKGZ2AttVefFjTY",
+      "url": "https://open.spotify.com/track/5M9jOReAKGZ2AttVefFjTY"
+    },
+    {
+      "name": "Stay (If You Wanna Dance)",
+      "artist": "Myles Smith",
+      "album": "Stay (If You Wanna Dance)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27374fe60cdbd694ff369ceba4a",
+      "duration": "3:05",
+      "popularity": 81,
+      "uri": "spotify:track:4GOYVxQPaKqen2QcoLtrlc",
+      "url": "https://open.spotify.com/track/4GOYVxQPaKqen2QcoLtrlc"
     },
     {
       "name": "AURA of GLORY",
@@ -158,10 +148,20 @@
       "album": "AURA of GLORY",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273601e75b9ba05d8ab2c35ff89",
       "duration": "4:00",
-      "popularity": 62,
+      "popularity": 63,
       "uri": "spotify:track:6lAsYn0DdP9nGlDdrdzNig",
       "url": "https://open.spotify.com/track/6lAsYn0DdP9nGlDdrdzNig"
+    },
+    {
+      "name": "Best of 2013 Mash-Up",
+      "artist": "Anthem Lights",
+      "album": "Anthem Lights Covers Part II",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735d73bf56517178a3d1bbf4b8",
+      "duration": "4:12",
+      "popularity": 37,
+      "uri": "spotify:track:7qzDSqVVZy9gEpjRrbuhs4",
+      "url": "https://open.spotify.com/track/7qzDSqVVZy9gEpjRrbuhs4"
     }
   ],
-  "lastUpdated": "2026-03-16T02:43:45.495Z"
+  "lastUpdated": "2026-03-23T02:35:19.152Z"
 }
