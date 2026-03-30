@@ -1,18 +1,27 @@
 {
   "topArtists": [
     {
-      "name": "Elevation Worship",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb6fa137c74960a6a81f11ee70",
+      "name": "Francois van Coke",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb880d0210e214fd6763d82fb2",
       "genres": [
-        "worship",
-        "christian",
-        "ccm",
-        "gospel",
-        "pop worship"
+        "afrikaans pop"
       ],
-      "popularity": 77,
-      "uri": "spotify:artist:3YCKuqpv9nCsIhJ2v8SMix",
-      "url": "https://open.spotify.com/artist/3YCKuqpv9nCsIhJ2v8SMix"
+      "popularity": 42,
+      "uri": "spotify:artist:7pJtnZQLPJmqzVfdIz7eFF",
+      "url": "https://open.spotify.com/artist/7pJtnZQLPJmqzVfdIz7eFF"
+    },
+    {
+      "name": "Linkin Park",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
+      "genres": [
+        "nu metal",
+        "rap metal",
+        "rock",
+        "alternative metal"
+      ],
+      "popularity": 89,
+      "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
+      "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
     {
       "name": "The Lofi Christian",
@@ -38,27 +47,16 @@
       "url": "https://open.spotify.com/artist/5d1JhBfyb58upMXCZOdbQu"
     },
     {
-      "name": "Linkin Park",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
+      "name": "Martin Garrix",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebf5b8ee60f1f4ee3453aba40b",
       "genres": [
-        "nu metal",
-        "rap metal",
-        "rock",
-        "alternative metal"
+        "edm",
+        "progressive house",
+        "electronica"
       ],
-      "popularity": 89,
-      "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
-      "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
-    },
-    {
-      "name": "Avicii",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebae07171f989fb39736674113",
-      "genres": [
-        "edm"
-      ],
-      "popularity": 80,
-      "uri": "spotify:artist:1vCWHaC5f2uS3yhpwWbIA6",
-      "url": "https://open.spotify.com/artist/1vCWHaC5f2uS3yhpwWbIA6"
+      "popularity": 75,
+      "uri": "spotify:artist:60d24wfXkVzDSfLS6hyCjZ",
+      "url": "https://open.spotify.com/artist/60d24wfXkVzDSfLS6hyCjZ"
     }
   ],
   "topTracks": [
@@ -68,7 +66,7 @@
       "album": "Iris",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273c57d0367c948c90f91483d9d",
       "duration": "3:19",
-      "popularity": 63,
+      "popularity": 64,
       "uri": "spotify:track:3zlLhEnV9yMRRSE3bFS0Xe",
       "url": "https://open.spotify.com/track/3zlLhEnV9yMRRSE3bFS0Xe"
     },
@@ -78,9 +76,19 @@
       "album": "Thy Kingdom Come",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27345d57a99f2e9d8ba8c39bcee",
       "duration": "4:35",
-      "popularity": 31,
+      "popularity": 42,
       "uri": "spotify:track:3DKhJAdyjssQhYVjJUJUqt",
       "url": "https://open.spotify.com/track/3DKhJAdyjssQhYVjJUJUqt"
+    },
+    {
+      "name": "Nie Alleen Nie",
+      "artist": "Francois van Coke",
+      "album": "Kanniedood",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739a1ab7441ab311fbbb519aa6",
+      "duration": "2:39",
+      "popularity": 23,
+      "uri": "spotify:track:0yXCVcqwnZdM2GVGtSMRS3",
+      "url": "https://open.spotify.com/track/0yXCVcqwnZdM2GVGtSMRS3"
     },
     {
       "name": "Teenage Mutant Ninja Turtles Cartoon Opening Theme (1987)",
@@ -88,19 +96,9 @@
       "album": "Let's Kick Shell!",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2734e1ff56eb541da4b0450a6a8",
       "duration": "1:00",
-      "popularity": 58,
+      "popularity": 59,
       "uri": "spotify:track:4QpB8RyVWCAcZ5bWRk14bo",
       "url": "https://open.spotify.com/track/4QpB8RyVWCAcZ5bWRk14bo"
-    },
-    {
-      "name": "Praise (feat. Brandon Lake, Chris Brown & Chandler Moore)",
-      "artist": "Elevation Worship, Brandon Lake, Chris Brown, Chandler Moore",
-      "album": "CAN YOU IMAGINE?",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739ccc98bb244869e5e9836f37",
-      "duration": "5:04",
-      "popularity": 79,
-      "uri": "spotify:track:7Ee6XgP8EHKDhTMYLIndu9",
-      "url": "https://open.spotify.com/track/7Ee6XgP8EHKDhTMYLIndu9"
     },
     {
       "name": "Talking to Myself",
@@ -108,19 +106,29 @@
       "album": "One More Light",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273145e1cf12538f5666511237d",
       "duration": "3:51",
-      "popularity": 61,
+      "popularity": 62,
       "uri": "spotify:track:7nAfXgeHfDO50upcOjJOaq",
       "url": "https://open.spotify.com/track/7nAfXgeHfDO50upcOjJOaq"
     },
     {
-      "name": "God I'm Just Grateful",
-      "artist": "Elevation Worship, Chandler Moore",
-      "album": "SO BE IT",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2730d7613f811064f945972f102",
-      "duration": "4:59",
-      "popularity": 66,
-      "uri": "spotify:track:21od4Ae35Nvx91Qel9gRiw",
-      "url": "https://open.spotify.com/track/21od4Ae35Nvx91Qel9gRiw"
+      "name": "Best of 2013 Mash-Up",
+      "artist": "Anthem Lights",
+      "album": "Anthem Lights Covers Part II",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735d73bf56517178a3d1bbf4b8",
+      "duration": "4:12",
+      "popularity": 38,
+      "uri": "spotify:track:7qzDSqVVZy9gEpjRrbuhs4",
+      "url": "https://open.spotify.com/track/7qzDSqVVZy9gEpjRrbuhs4"
+    },
+    {
+      "name": "SOS",
+      "artist": "Francois van Coke",
+      "album": "Kanniedood",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739a1ab7441ab311fbbb519aa6",
+      "duration": "4:29",
+      "popularity": 23,
+      "uri": "spotify:track:0z8sVm5EYxdzIzKNVJyuPl",
+      "url": "https://open.spotify.com/track/0z8sVm5EYxdzIzKNVJyuPl"
     },
     {
       "name": "Don't Look Down (feat. Usher)",
@@ -128,7 +136,7 @@
       "album": "Don't Look Down (feat. Usher)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273de034bbdbe12c86285356121",
       "duration": "3:43",
-      "popularity": 65,
+      "popularity": 66,
       "uri": "spotify:track:5M9jOReAKGZ2AttVefFjTY",
       "url": "https://open.spotify.com/track/5M9jOReAKGZ2AttVefFjTY"
     },
@@ -148,20 +156,10 @@
       "album": "AURA of GLORY",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273601e75b9ba05d8ab2c35ff89",
       "duration": "4:00",
-      "popularity": 63,
+      "popularity": 64,
       "uri": "spotify:track:6lAsYn0DdP9nGlDdrdzNig",
       "url": "https://open.spotify.com/track/6lAsYn0DdP9nGlDdrdzNig"
-    },
-    {
-      "name": "Best of 2013 Mash-Up",
-      "artist": "Anthem Lights",
-      "album": "Anthem Lights Covers Part II",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735d73bf56517178a3d1bbf4b8",
-      "duration": "4:12",
-      "popularity": 37,
-      "uri": "spotify:track:7qzDSqVVZy9gEpjRrbuhs4",
-      "url": "https://open.spotify.com/track/7qzDSqVVZy9gEpjRrbuhs4"
     }
   ],
-  "lastUpdated": "2026-03-23T02:35:19.152Z"
+  "lastUpdated": "2026-03-30T02:48:23.227Z"
 }
