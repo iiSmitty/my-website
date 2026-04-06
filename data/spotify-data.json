@@ -19,20 +19,33 @@
         "rock",
         "alternative metal"
       ],
-      "popularity": 89,
+      "popularity": 90,
       "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
     {
-      "name": "The Lofi Christian",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebce8f2415c86343f1c0814f66",
+      "name": "Seventh Day Slumber",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebe28374a7e105b212b1bb6acf",
       "genres": [
-        "christian lo-fi",
-        "lo-fi"
+        "christian rock",
+        "christian alternative rock",
+        "christian",
+        "chinese rock",
+        "ccm"
       ],
-      "popularity": 58,
-      "uri": "spotify:artist:7nPBddK18ZCiNbilAnpOoP",
-      "url": "https://open.spotify.com/artist/7nPBddK18ZCiNbilAnpOoP"
+      "popularity": 47,
+      "uri": "spotify:artist:6kFLnclYFc3gzpNt13wim5",
+      "url": "https://open.spotify.com/artist/6kFLnclYFc3gzpNt13wim5"
+    },
+    {
+      "name": "Marshmello",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb646c8a9d78f11834febcf978",
+      "genres": [
+        "edm"
+      ],
+      "popularity": 81,
+      "uri": "spotify:artist:64KEffDW9EtZ1y2vBYgq8T",
+      "url": "https://open.spotify.com/artist/64KEffDW9EtZ1y2vBYgq8T"
     },
     {
       "name": "Phil Wickham",
@@ -42,21 +55,9 @@
         "christian",
         "ccm"
       ],
-      "popularity": 71,
+      "popularity": 72,
       "uri": "spotify:artist:5d1JhBfyb58upMXCZOdbQu",
       "url": "https://open.spotify.com/artist/5d1JhBfyb58upMXCZOdbQu"
-    },
-    {
-      "name": "Martin Garrix",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebf5b8ee60f1f4ee3453aba40b",
-      "genres": [
-        "edm",
-        "progressive house",
-        "electronica"
-      ],
-      "popularity": 75,
-      "uri": "spotify:artist:60d24wfXkVzDSfLS6hyCjZ",
-      "url": "https://open.spotify.com/artist/60d24wfXkVzDSfLS6hyCjZ"
     }
   ],
   "topTracks": [
@@ -66,7 +67,7 @@
       "album": "Iris",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273c57d0367c948c90f91483d9d",
       "duration": "3:19",
-      "popularity": 64,
+      "popularity": 66,
       "uri": "spotify:track:3zlLhEnV9yMRRSE3bFS0Xe",
       "url": "https://open.spotify.com/track/3zlLhEnV9yMRRSE3bFS0Xe"
     },
@@ -76,7 +77,7 @@
       "album": "Thy Kingdom Come",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27345d57a99f2e9d8ba8c39bcee",
       "duration": "4:35",
-      "popularity": 42,
+      "popularity": 45,
       "uri": "spotify:track:3DKhJAdyjssQhYVjJUJUqt",
       "url": "https://open.spotify.com/track/3DKhJAdyjssQhYVjJUJUqt"
     },
@@ -111,22 +112,12 @@
       "url": "https://open.spotify.com/track/7nAfXgeHfDO50upcOjJOaq"
     },
     {
-      "name": "Best of 2013 Mash-Up",
-      "artist": "Anthem Lights",
-      "album": "Anthem Lights Covers Part II",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735d73bf56517178a3d1bbf4b8",
-      "duration": "4:12",
-      "popularity": 38,
-      "uri": "spotify:track:7qzDSqVVZy9gEpjRrbuhs4",
-      "url": "https://open.spotify.com/track/7qzDSqVVZy9gEpjRrbuhs4"
-    },
-    {
       "name": "SOS",
       "artist": "Francois van Coke",
       "album": "Kanniedood",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2739a1ab7441ab311fbbb519aa6",
       "duration": "4:29",
-      "popularity": 23,
+      "popularity": 24,
       "uri": "spotify:track:0z8sVm5EYxdzIzKNVJyuPl",
       "url": "https://open.spotify.com/track/0z8sVm5EYxdzIzKNVJyuPl"
     },
@@ -136,7 +127,7 @@
       "album": "Don't Look Down (feat. Usher)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273de034bbdbe12c86285356121",
       "duration": "3:43",
-      "popularity": 66,
+      "popularity": 67,
       "uri": "spotify:track:5M9jOReAKGZ2AttVefFjTY",
       "url": "https://open.spotify.com/track/5M9jOReAKGZ2AttVefFjTY"
     },
@@ -159,7 +150,17 @@
       "popularity": 64,
       "uri": "spotify:track:6lAsYn0DdP9nGlDdrdzNig",
       "url": "https://open.spotify.com/track/6lAsYn0DdP9nGlDdrdzNig"
+    },
+    {
+      "name": "Awake and Alive",
+      "artist": "Skillet",
+      "album": "Awake",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27389f8d16ffe15fccfa0a7e31d",
+      "duration": "3:29",
+      "popularity": 76,
+      "uri": "spotify:track:0nkzd3yNniB767zSDDdLZ3",
+      "url": "https://open.spotify.com/track/0nkzd3yNniB767zSDDdLZ3"
     }
   ],
-  "lastUpdated": "2026-03-30T02:48:23.227Z"
+  "lastUpdated": "2026-04-06T02:49:13.985Z"
 }
