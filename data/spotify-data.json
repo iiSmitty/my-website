@@ -13,7 +13,7 @@
     },
     {
       "name": "Francois van Coke",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb880d0210e214fd6763d82fb2",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb88ab6df308f8230bc16e2745",
       "genres": [
         "afrikaans pop"
       ],
@@ -49,21 +49,38 @@
       "url": "https://open.spotify.com/artist/6pRi6EIPXz4QJEOEsBaA0m"
     },
     {
-      "name": "Hillsong Worship",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebb84be6517b80fe83f9941252",
+      "name": "HAUSER",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb8c2521a454c69e84595ed504",
       "genres": [
-        "worship",
-        "christian",
-        "pop worship",
-        "ccm",
-        "gospel"
+        "classical",
+        "classical crossover"
       ],
-      "popularity": 75,
-      "uri": "spotify:artist:3SgHzT552wy2W8pNLaLk24",
-      "url": "https://open.spotify.com/artist/3SgHzT552wy2W8pNLaLk24"
+      "popularity": 59,
+      "uri": "spotify:artist:2iSn12gFykgv92aTvPiH4s",
+      "url": "https://open.spotify.com/artist/2iSn12gFykgv92aTvPiH4s"
     }
   ],
   "topTracks": [
+    {
+      "name": "Nie Alleen Nie",
+      "artist": "Francois van Coke",
+      "album": "Kanniedood",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739a1ab7441ab311fbbb519aa6",
+      "duration": "2:39",
+      "popularity": 23,
+      "uri": "spotify:track:0yXCVcqwnZdM2GVGtSMRS3",
+      "url": "https://open.spotify.com/track/0yXCVcqwnZdM2GVGtSMRS3"
+    },
+    {
+      "name": "SOS",
+      "artist": "Francois van Coke",
+      "album": "Kanniedood",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739a1ab7441ab311fbbb519aa6",
+      "duration": "4:29",
+      "popularity": 23,
+      "uri": "spotify:track:0z8sVm5EYxdzIzKNVJyuPl",
+      "url": "https://open.spotify.com/track/0z8sVm5EYxdzIzKNVJyuPl"
+    },
     {
       "name": "Iris",
       "artist": "The Goo Goo Dolls, Steve Aoki",
@@ -73,26 +90,6 @@
       "popularity": 66,
       "uri": "spotify:track:3zlLhEnV9yMRRSE3bFS0Xe",
       "url": "https://open.spotify.com/track/3zlLhEnV9yMRRSE3bFS0Xe"
-    },
-    {
-      "name": "Holy Forever",
-      "artist": "Seventh Day Slumber",
-      "album": "Thy Kingdom Come",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27345d57a99f2e9d8ba8c39bcee",
-      "duration": "4:35",
-      "popularity": 47,
-      "uri": "spotify:track:3DKhJAdyjssQhYVjJUJUqt",
-      "url": "https://open.spotify.com/track/3DKhJAdyjssQhYVjJUJUqt"
-    },
-    {
-      "name": "Nie Alleen Nie",
-      "artist": "Francois van Coke",
-      "album": "Kanniedood",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739a1ab7441ab311fbbb519aa6",
-      "duration": "2:39",
-      "popularity": 24,
-      "uri": "spotify:track:0yXCVcqwnZdM2GVGtSMRS3",
-      "url": "https://open.spotify.com/track/0yXCVcqwnZdM2GVGtSMRS3"
     },
     {
       "name": "Teenage Mutant Ninja Turtles Cartoon Opening Theme (1987)",
@@ -105,26 +102,6 @@
       "url": "https://open.spotify.com/track/4QpB8RyVWCAcZ5bWRk14bo"
     },
     {
-      "name": "Talking to Myself",
-      "artist": "Linkin Park",
-      "album": "One More Light",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273145e1cf12538f5666511237d",
-      "duration": "3:51",
-      "popularity": 62,
-      "uri": "spotify:track:7nAfXgeHfDO50upcOjJOaq",
-      "url": "https://open.spotify.com/track/7nAfXgeHfDO50upcOjJOaq"
-    },
-    {
-      "name": "SOS",
-      "artist": "Francois van Coke",
-      "album": "Kanniedood",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739a1ab7441ab311fbbb519aa6",
-      "duration": "4:29",
-      "popularity": 24,
-      "uri": "spotify:track:0z8sVm5EYxdzIzKNVJyuPl",
-      "url": "https://open.spotify.com/track/0z8sVm5EYxdzIzKNVJyuPl"
-    },
-    {
       "name": "Great Are You Lord - Live",
       "artist": "All Sons & Daughters, David Leonard",
       "album": "Live",
@@ -135,35 +112,55 @@
       "url": "https://open.spotify.com/track/2QRUTCdLyVznC9Rr6E5C37"
     },
     {
-      "name": "Don't Look Down (feat. Usher)",
-      "artist": "Martin Garrix, USHER",
-      "album": "Don't Look Down (feat. Usher)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273de034bbdbe12c86285356121",
-      "duration": "3:43",
-      "popularity": 66,
-      "uri": "spotify:track:5M9jOReAKGZ2AttVefFjTY",
-      "url": "https://open.spotify.com/track/5M9jOReAKGZ2AttVefFjTY"
-    },
-    {
-      "name": "Stay (If You Wanna Dance)",
-      "artist": "Myles Smith",
-      "album": "Stay (If You Wanna Dance)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27374fe60cdbd694ff369ceba4a",
-      "duration": "3:05",
-      "popularity": 81,
-      "uri": "spotify:track:4GOYVxQPaKqen2QcoLtrlc",
-      "url": "https://open.spotify.com/track/4GOYVxQPaKqen2QcoLtrlc"
-    },
-    {
       "name": "Here I Am To Worship",
       "artist": "Michael W. Smith",
       "album": "Worship Again",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2733d5eb770c0c00c425b223e6d",
       "duration": "4:56",
-      "popularity": 46,
+      "popularity": 45,
       "uri": "spotify:track:0GRkrdDS476AdjfI9ZlzaC",
       "url": "https://open.spotify.com/track/0GRkrdDS476AdjfI9ZlzaC"
+    },
+    {
+      "name": "Air on a G String",
+      "artist": "Johann Sebastian Bach, HAUSER, London Symphony Orchestra, Robert Ziegler",
+      "album": "Classic",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a0e19560289c8ef83ffb033b",
+      "duration": "4:49",
+      "popularity": 61,
+      "uri": "spotify:track:0mD1a7haZKdX9I0oPywrMb",
+      "url": "https://open.spotify.com/track/0mD1a7haZKdX9I0oPywrMb"
+    },
+    {
+      "name": "Maak Wakker",
+      "artist": "Francois van Coke, Elandré",
+      "album": "Kanniedood",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739a1ab7441ab311fbbb519aa6",
+      "duration": "3:21",
+      "popularity": 24,
+      "uri": "spotify:track:0tmD9NDjnpokE26IMpkQRY",
+      "url": "https://open.spotify.com/track/0tmD9NDjnpokE26IMpkQRY"
+    },
+    {
+      "name": "Clarinet Sonata No. 2 in Eb, Op. 120, No. 2",
+      "artist": "Johannes Brahms, Leslie Craven, Michael Pollock",
+      "album": "Nino Rota Centenary Album",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273878be6a59f37d683a7320d5e",
+      "duration": "8:13",
+      "popularity": 20,
+      "uri": "spotify:track:17xqcmWX9TBp7PM43LoPvT",
+      "url": "https://open.spotify.com/track/17xqcmWX9TBp7PM43LoPvT"
+    },
+    {
+      "name": "Am I Broken",
+      "artist": "Behold the Beloved, Jon Micah Sumrall",
+      "album": "Harsh Realities",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735e7e91227b06da702927a7fe",
+      "duration": "4:38",
+      "popularity": 30,
+      "uri": "spotify:track:18gd4AMKJFGyYvg5meMRmv",
+      "url": "https://open.spotify.com/track/18gd4AMKJFGyYvg5meMRmv"
     }
   ],
-  "lastUpdated": "2026-04-13T03:18:41.020Z"
+  "lastUpdated": "2026-04-20T03:19:09.622Z"
 }
