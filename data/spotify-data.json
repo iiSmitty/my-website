@@ -12,16 +12,6 @@
       "url": "https://open.spotify.com/artist/7nPBddK18ZCiNbilAnpOoP"
     },
     {
-      "name": "Francois van Coke",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb88ab6df308f8230bc16e2745",
-      "genres": [
-        "afrikaans pop"
-      ],
-      "popularity": 43,
-      "uri": "spotify:artist:7pJtnZQLPJmqzVfdIz7eFF",
-      "url": "https://open.spotify.com/artist/7pJtnZQLPJmqzVfdIz7eFF"
-    },
-    {
       "name": "Linkin Park",
       "image": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
       "genres": [
@@ -30,9 +20,20 @@
         "rock",
         "alternative metal"
       ],
-      "popularity": 90,
+      "popularity": 91,
       "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
+    },
+    {
+      "name": "HAUSER",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb8c2521a454c69e84595ed504",
+      "genres": [
+        "classical",
+        "classical crossover"
+      ],
+      "popularity": 59,
+      "uri": "spotify:artist:2iSn12gFykgv92aTvPiH4s",
+      "url": "https://open.spotify.com/artist/2iSn12gFykgv92aTvPiH4s"
     },
     {
       "name": "Chris Tomlin",
@@ -49,28 +50,21 @@
       "url": "https://open.spotify.com/artist/6pRi6EIPXz4QJEOEsBaA0m"
     },
     {
-      "name": "HAUSER",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb8c2521a454c69e84595ed504",
+      "name": "Armin van Buuren",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb60f60edeaa78efbf3d335b2c",
       "genres": [
-        "classical",
-        "classical crossover"
+        "trance",
+        "progressive trance",
+        "progressive house",
+        "electronica",
+        "edm"
       ],
-      "popularity": 59,
-      "uri": "spotify:artist:2iSn12gFykgv92aTvPiH4s",
-      "url": "https://open.spotify.com/artist/2iSn12gFykgv92aTvPiH4s"
+      "popularity": 75,
+      "uri": "spotify:artist:0SfsnGyD8FpIN4U4WCkBZ5",
+      "url": "https://open.spotify.com/artist/0SfsnGyD8FpIN4U4WCkBZ5"
     }
   ],
   "topTracks": [
-    {
-      "name": "Nie Alleen Nie",
-      "artist": "Francois van Coke",
-      "album": "Kanniedood",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739a1ab7441ab311fbbb519aa6",
-      "duration": "2:39",
-      "popularity": 23,
-      "uri": "spotify:track:0yXCVcqwnZdM2GVGtSMRS3",
-      "url": "https://open.spotify.com/track/0yXCVcqwnZdM2GVGtSMRS3"
-    },
     {
       "name": "SOS",
       "artist": "Francois van Coke",
@@ -82,24 +76,14 @@
       "url": "https://open.spotify.com/track/0z8sVm5EYxdzIzKNVJyuPl"
     },
     {
-      "name": "Iris",
-      "artist": "The Goo Goo Dolls, Steve Aoki",
-      "album": "Iris",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c57d0367c948c90f91483d9d",
-      "duration": "3:19",
-      "popularity": 66,
-      "uri": "spotify:track:3zlLhEnV9yMRRSE3bFS0Xe",
-      "url": "https://open.spotify.com/track/3zlLhEnV9yMRRSE3bFS0Xe"
-    },
-    {
-      "name": "Teenage Mutant Ninja Turtles Cartoon Opening Theme (1987)",
-      "artist": "Teenage Mutant Ninja Turtles",
-      "album": "Let's Kick Shell!",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2734e1ff56eb541da4b0450a6a8",
-      "duration": "1:00",
-      "popularity": 59,
-      "uri": "spotify:track:4QpB8RyVWCAcZ5bWRk14bo",
-      "url": "https://open.spotify.com/track/4QpB8RyVWCAcZ5bWRk14bo"
+      "name": "Good Things Go - Instrumental",
+      "artist": "Linkin Park",
+      "album": "From Zero: A Cappellas + Instrumentals",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273d2df489726cb8f11481245cc",
+      "duration": "3:25",
+      "popularity": 32,
+      "uri": "spotify:track:1gwFSA8DaSYmxYzXwfTVbJ",
+      "url": "https://open.spotify.com/track/1gwFSA8DaSYmxYzXwfTVbJ"
     },
     {
       "name": "Great Are You Lord - Live",
@@ -107,9 +91,49 @@
       "album": "Live",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273a8e0702fe4c197dc7b57e32a",
       "duration": "4:49",
-      "popularity": 73,
+      "popularity": 72,
       "uri": "spotify:track:2QRUTCdLyVznC9Rr6E5C37",
       "url": "https://open.spotify.com/track/2QRUTCdLyVznC9Rr6E5C37"
+    },
+    {
+      "name": "Soft Spot",
+      "artist": "keshi",
+      "album": "Requiem",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273617997bc09bb7fa23624eff5",
+      "duration": "3:24",
+      "popularity": 76,
+      "uri": "spotify:track:2aL4lMGhWdPpyPL6COPou7",
+      "url": "https://open.spotify.com/track/2aL4lMGhWdPpyPL6COPou7"
+    },
+    {
+      "name": "Always",
+      "artist": "Bon Jovi",
+      "album": "Cross Road (Sound & Vision) [2CD/DVD Sound & Vision]",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273ace2e8aa2dfdde12b3cb3158",
+      "duration": "5:53",
+      "popularity": 64,
+      "uri": "spotify:track:0Z2CgMqTyPxSMJVcZZ2rGX",
+      "url": "https://open.spotify.com/track/0Z2CgMqTyPxSMJVcZZ2rGX"
+    },
+    {
+      "name": "LOST IN THE ECHO - Instrumental",
+      "artist": "Linkin Park",
+      "album": "LIVING THINGS: Acapellas and Instrumentals",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c14832ac3b27313055748c03",
+      "duration": "3:25",
+      "popularity": 29,
+      "uri": "spotify:track:2CY69lML4UsQ90HgVW3Rdz",
+      "url": "https://open.spotify.com/track/2CY69lML4UsQ90HgVW3Rdz"
+    },
+    {
+      "name": "Peace Be Still",
+      "artist": "Seventh Day Slumber",
+      "album": "Thy Kingdom Come",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27345d57a99f2e9d8ba8c39bcee",
+      "duration": "4:10",
+      "popularity": 37,
+      "uri": "spotify:track:3BPn8YzeSjPKxcFyoZCGY9",
+      "url": "https://open.spotify.com/track/3BPn8YzeSjPKxcFyoZCGY9"
     },
     {
       "name": "Here I Am To Worship",
@@ -132,35 +156,15 @@
       "url": "https://open.spotify.com/track/0mD1a7haZKdX9I0oPywrMb"
     },
     {
-      "name": "Maak Wakker",
-      "artist": "Francois van Coke, Elandré",
+      "name": "Nie Alleen Nie",
+      "artist": "Francois van Coke",
       "album": "Kanniedood",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2739a1ab7441ab311fbbb519aa6",
-      "duration": "3:21",
-      "popularity": 24,
-      "uri": "spotify:track:0tmD9NDjnpokE26IMpkQRY",
-      "url": "https://open.spotify.com/track/0tmD9NDjnpokE26IMpkQRY"
-    },
-    {
-      "name": "Clarinet Sonata No. 2 in Eb, Op. 120, No. 2",
-      "artist": "Johannes Brahms, Leslie Craven, Michael Pollock",
-      "album": "Nino Rota Centenary Album",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273878be6a59f37d683a7320d5e",
-      "duration": "8:13",
-      "popularity": 20,
-      "uri": "spotify:track:17xqcmWX9TBp7PM43LoPvT",
-      "url": "https://open.spotify.com/track/17xqcmWX9TBp7PM43LoPvT"
-    },
-    {
-      "name": "Am I Broken",
-      "artist": "Behold the Beloved, Jon Micah Sumrall",
-      "album": "Harsh Realities",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735e7e91227b06da702927a7fe",
-      "duration": "4:38",
-      "popularity": 30,
-      "uri": "spotify:track:18gd4AMKJFGyYvg5meMRmv",
-      "url": "https://open.spotify.com/track/18gd4AMKJFGyYvg5meMRmv"
+      "duration": "2:39",
+      "popularity": 23,
+      "uri": "spotify:track:0yXCVcqwnZdM2GVGtSMRS3",
+      "url": "https://open.spotify.com/track/0yXCVcqwnZdM2GVGtSMRS3"
     }
   ],
-  "lastUpdated": "2026-04-20T03:19:09.622Z"
+  "lastUpdated": "2026-04-27T03:26:18.478Z"
 }
