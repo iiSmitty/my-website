@@ -7,9 +7,23 @@
         "christian lo-fi",
         "lo-fi"
       ],
-      "popularity": 59,
+      "popularity": 60,
       "uri": "spotify:artist:7nPBddK18ZCiNbilAnpOoP",
       "url": "https://open.spotify.com/artist/7nPBddK18ZCiNbilAnpOoP"
+    },
+    {
+      "name": "Elevation Worship",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb6fa137c74960a6a81f11ee70",
+      "genres": [
+        "worship",
+        "christian",
+        "ccm",
+        "gospel",
+        "pop worship"
+      ],
+      "popularity": 79,
+      "uri": "spotify:artist:3YCKuqpv9nCsIhJ2v8SMix",
+      "url": "https://open.spotify.com/artist/3YCKuqpv9nCsIhJ2v8SMix"
     },
     {
       "name": "Linkin Park",
@@ -45,43 +59,19 @@
         "pop worship",
         "country christian"
       ],
-      "popularity": 70,
+      "popularity": 71,
       "uri": "spotify:artist:6pRi6EIPXz4QJEOEsBaA0m",
       "url": "https://open.spotify.com/artist/6pRi6EIPXz4QJEOEsBaA0m"
-    },
-    {
-      "name": "Armin van Buuren",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb60f60edeaa78efbf3d335b2c",
-      "genres": [
-        "trance",
-        "progressive trance",
-        "progressive house",
-        "electronica",
-        "edm"
-      ],
-      "popularity": 75,
-      "uri": "spotify:artist:0SfsnGyD8FpIN4U4WCkBZ5",
-      "url": "https://open.spotify.com/artist/0SfsnGyD8FpIN4U4WCkBZ5"
     }
   ],
   "topTracks": [
-    {
-      "name": "SOS",
-      "artist": "Francois van Coke",
-      "album": "Kanniedood",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739a1ab7441ab311fbbb519aa6",
-      "duration": "4:29",
-      "popularity": 23,
-      "uri": "spotify:track:0z8sVm5EYxdzIzKNVJyuPl",
-      "url": "https://open.spotify.com/track/0z8sVm5EYxdzIzKNVJyuPl"
-    },
     {
       "name": "Good Things Go - Instrumental",
       "artist": "Linkin Park",
       "album": "From Zero: A Cappellas + Instrumentals",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273d2df489726cb8f11481245cc",
       "duration": "3:25",
-      "popularity": 32,
+      "popularity": 31,
       "uri": "spotify:track:1gwFSA8DaSYmxYzXwfTVbJ",
       "url": "https://open.spotify.com/track/1gwFSA8DaSYmxYzXwfTVbJ"
     },
@@ -94,6 +84,16 @@
       "popularity": 72,
       "uri": "spotify:track:2QRUTCdLyVznC9Rr6E5C37",
       "url": "https://open.spotify.com/track/2QRUTCdLyVznC9Rr6E5C37"
+    },
+    {
+      "name": "Tired",
+      "artist": "Alan Walker, Gavin James",
+      "album": "Tired",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273d8f6180f1483ef4d6ded503c",
+      "duration": "3:12",
+      "popularity": 62,
+      "uri": "spotify:track:3b5Li4QKDVBx1x7fQuu54a",
+      "url": "https://open.spotify.com/track/3b5Li4QKDVBx1x7fQuu54a"
     },
     {
       "name": "Soft Spot",
@@ -111,9 +111,19 @@
       "album": "Cross Road (Sound & Vision) [2CD/DVD Sound & Vision]",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273ace2e8aa2dfdde12b3cb3158",
       "duration": "5:53",
-      "popularity": 64,
+      "popularity": 65,
       "uri": "spotify:track:0Z2CgMqTyPxSMJVcZZ2rGX",
       "url": "https://open.spotify.com/track/0Z2CgMqTyPxSMJVcZZ2rGX"
+    },
+    {
+      "name": "Life With You",
+      "artist": "Seph Schlueter",
+      "album": "Counting My Blessings (Infinity Edition)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273cf621e412dd11624f0404d13",
+      "duration": "3:12",
+      "popularity": 49,
+      "uri": "spotify:track:0gZ9ap16DJE873Es7Pc7kT",
+      "url": "https://open.spotify.com/track/0gZ9ap16DJE873Es7Pc7kT"
     },
     {
       "name": "LOST IN THE ECHO - Instrumental",
@@ -131,7 +141,7 @@
       "album": "Thy Kingdom Come",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27345d57a99f2e9d8ba8c39bcee",
       "duration": "4:10",
-      "popularity": 37,
+      "popularity": 36,
       "uri": "spotify:track:3BPn8YzeSjPKxcFyoZCGY9",
       "url": "https://open.spotify.com/track/3BPn8YzeSjPKxcFyoZCGY9"
     },
@@ -154,17 +164,7 @@
       "popularity": 61,
       "uri": "spotify:track:0mD1a7haZKdX9I0oPywrMb",
       "url": "https://open.spotify.com/track/0mD1a7haZKdX9I0oPywrMb"
-    },
-    {
-      "name": "Nie Alleen Nie",
-      "artist": "Francois van Coke",
-      "album": "Kanniedood",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739a1ab7441ab311fbbb519aa6",
-      "duration": "2:39",
-      "popularity": 23,
-      "uri": "spotify:track:0yXCVcqwnZdM2GVGtSMRS3",
-      "url": "https://open.spotify.com/track/0yXCVcqwnZdM2GVGtSMRS3"
     }
   ],
-  "lastUpdated": "2026-04-27T03:26:18.478Z"
+  "lastUpdated": "2026-05-04T03:32:31.555Z"
 }
