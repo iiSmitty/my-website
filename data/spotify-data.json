@@ -12,18 +12,15 @@
       "url": "https://open.spotify.com/artist/7nPBddK18ZCiNbilAnpOoP"
     },
     {
-      "name": "Elevation Worship",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb6fa137c74960a6a81f11ee70",
+      "name": "HAUSER",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb8c2521a454c69e84595ed504",
       "genres": [
-        "worship",
-        "christian",
-        "ccm",
-        "gospel",
-        "pop worship"
+        "classical",
+        "classical crossover"
       ],
-      "popularity": 79,
-      "uri": "spotify:artist:3YCKuqpv9nCsIhJ2v8SMix",
-      "url": "https://open.spotify.com/artist/3YCKuqpv9nCsIhJ2v8SMix"
+      "popularity": 59,
+      "uri": "spotify:artist:2iSn12gFykgv92aTvPiH4s",
+      "url": "https://open.spotify.com/artist/2iSn12gFykgv92aTvPiH4s"
     },
     {
       "name": "Linkin Park",
@@ -39,51 +36,64 @@
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
     {
-      "name": "HAUSER",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb8c2521a454c69e84595ed504",
+      "name": "Die Heuwels Fantasties",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb7e5ed68cd28045d603b7c82a",
       "genres": [
-        "classical",
-        "classical crossover"
+        "afrikaans pop"
       ],
-      "popularity": 59,
-      "uri": "spotify:artist:2iSn12gFykgv92aTvPiH4s",
-      "url": "https://open.spotify.com/artist/2iSn12gFykgv92aTvPiH4s"
+      "popularity": 47,
+      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
+      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
     },
     {
-      "name": "Chris Tomlin",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb802bb2bb7b9db696e444096d",
-      "genres": [
-        "christian",
-        "worship",
-        "ccm",
-        "pop worship",
-        "country christian"
-      ],
-      "popularity": 71,
-      "uri": "spotify:artist:6pRi6EIPXz4QJEOEsBaA0m",
-      "url": "https://open.spotify.com/artist/6pRi6EIPXz4QJEOEsBaA0m"
+      "name": "Alex Warren",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb0c171cdae49ecf6f783b8934",
+      "genres": [],
+      "popularity": 88,
+      "uri": "spotify:artist:0fTSzq9jAh4c36UVb4V7CB",
+      "url": "https://open.spotify.com/artist/0fTSzq9jAh4c36UVb4V7CB"
     }
   ],
   "topTracks": [
+    {
+      "name": "What I See (feat. Chris Brown)",
+      "artist": "Elevation Worship, Chris Brown",
+      "album": "LION",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2732803df6496300a18cbadc589",
+      "duration": "4:36",
+      "popularity": 60,
+      "uri": "spotify:track:4A6zhvBNk6MAUp4u07p7kD",
+      "url": "https://open.spotify.com/track/4A6zhvBNk6MAUp4u07p7kD"
+    },
+    {
+      "name": "Air on a G String",
+      "artist": "Johann Sebastian Bach, HAUSER, London Symphony Orchestra, Robert Ziegler",
+      "album": "Classic",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a0e19560289c8ef83ffb033b",
+      "duration": "4:49",
+      "popularity": 61,
+      "uri": "spotify:track:0mD1a7haZKdX9I0oPywrMb",
+      "url": "https://open.spotify.com/track/0mD1a7haZKdX9I0oPywrMb"
+    },
+    {
+      "name": "Slide",
+      "artist": "The Goo Goo Dolls",
+      "album": "Dizzy up the Girl",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273eda9478c39a21e1cdc6609ca",
+      "duration": "3:32",
+      "popularity": 78,
+      "uri": "spotify:track:0nnwn7LWHCAu09jfuH1xTA",
+      "url": "https://open.spotify.com/track/0nnwn7LWHCAu09jfuH1xTA"
+    },
     {
       "name": "Good Things Go - Instrumental",
       "artist": "Linkin Park",
       "album": "From Zero: A Cappellas + Instrumentals",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273d2df489726cb8f11481245cc",
       "duration": "3:25",
-      "popularity": 31,
+      "popularity": 32,
       "uri": "spotify:track:1gwFSA8DaSYmxYzXwfTVbJ",
       "url": "https://open.spotify.com/track/1gwFSA8DaSYmxYzXwfTVbJ"
-    },
-    {
-      "name": "Great Are You Lord - Live",
-      "artist": "All Sons & Daughters, David Leonard",
-      "album": "Live",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a8e0702fe4c197dc7b57e32a",
-      "duration": "4:49",
-      "popularity": 72,
-      "uri": "spotify:track:2QRUTCdLyVznC9Rr6E5C37",
-      "url": "https://open.spotify.com/track/2QRUTCdLyVznC9Rr6E5C37"
     },
     {
       "name": "Tired",
@@ -101,7 +111,7 @@
       "album": "Requiem",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273617997bc09bb7fa23624eff5",
       "duration": "3:24",
-      "popularity": 76,
+      "popularity": 77,
       "uri": "spotify:track:2aL4lMGhWdPpyPL6COPou7",
       "url": "https://open.spotify.com/track/2aL4lMGhWdPpyPL6COPou7"
     },
@@ -121,7 +131,7 @@
       "album": "Counting My Blessings (Infinity Edition)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273cf621e412dd11624f0404d13",
       "duration": "3:12",
-      "popularity": 49,
+      "popularity": 50,
       "uri": "spotify:track:0gZ9ap16DJE873Es7Pc7kT",
       "url": "https://open.spotify.com/track/0gZ9ap16DJE873Es7Pc7kT"
     },
@@ -141,30 +151,10 @@
       "album": "Thy Kingdom Come",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27345d57a99f2e9d8ba8c39bcee",
       "duration": "4:10",
-      "popularity": 36,
+      "popularity": 35,
       "uri": "spotify:track:3BPn8YzeSjPKxcFyoZCGY9",
       "url": "https://open.spotify.com/track/3BPn8YzeSjPKxcFyoZCGY9"
-    },
-    {
-      "name": "Here I Am To Worship",
-      "artist": "Michael W. Smith",
-      "album": "Worship Again",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733d5eb770c0c00c425b223e6d",
-      "duration": "4:56",
-      "popularity": 45,
-      "uri": "spotify:track:0GRkrdDS476AdjfI9ZlzaC",
-      "url": "https://open.spotify.com/track/0GRkrdDS476AdjfI9ZlzaC"
-    },
-    {
-      "name": "Air on a G String",
-      "artist": "Johann Sebastian Bach, HAUSER, London Symphony Orchestra, Robert Ziegler",
-      "album": "Classic",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a0e19560289c8ef83ffb033b",
-      "duration": "4:49",
-      "popularity": 61,
-      "uri": "spotify:track:0mD1a7haZKdX9I0oPywrMb",
-      "url": "https://open.spotify.com/track/0mD1a7haZKdX9I0oPywrMb"
     }
   ],
-  "lastUpdated": "2026-05-04T03:32:31.555Z"
+  "lastUpdated": "2026-05-11T03:50:47.792Z"
 }
