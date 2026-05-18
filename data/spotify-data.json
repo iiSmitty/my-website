@@ -1,17 +1,6 @@
 {
   "topArtists": [
     {
-      "name": "The Lofi Christian",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebce8f2415c86343f1c0814f66",
-      "genres": [
-        "christian lo-fi",
-        "lo-fi"
-      ],
-      "popularity": 60,
-      "uri": "spotify:artist:7nPBddK18ZCiNbilAnpOoP",
-      "url": "https://open.spotify.com/artist/7nPBddK18ZCiNbilAnpOoP"
-    },
-    {
       "name": "HAUSER",
       "image": "https://i.scdn.co/image/ab6761610000e5eb8c2521a454c69e84595ed504",
       "genres": [
@@ -46,35 +35,23 @@
       "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
     },
     {
-      "name": "Alex Warren",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb0c171cdae49ecf6f783b8934",
+      "name": "keshi",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb3a0f8f319aeef1aa4115f5e8",
       "genres": [],
-      "popularity": 88,
-      "uri": "spotify:artist:0fTSzq9jAh4c36UVb4V7CB",
-      "url": "https://open.spotify.com/artist/0fTSzq9jAh4c36UVb4V7CB"
+      "popularity": 75,
+      "uri": "spotify:artist:3pc0bOVB5whxmD50W79wwO",
+      "url": "https://open.spotify.com/artist/3pc0bOVB5whxmD50W79wwO"
+    },
+    {
+      "name": "The Chainsmokers",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb4567279fac84a0375c3d819b",
+      "genres": [],
+      "popularity": 83,
+      "uri": "spotify:artist:69GGBxA162lTqCwzJG5jLp",
+      "url": "https://open.spotify.com/artist/69GGBxA162lTqCwzJG5jLp"
     }
   ],
   "topTracks": [
-    {
-      "name": "What I See (feat. Chris Brown)",
-      "artist": "Elevation Worship, Chris Brown",
-      "album": "LION",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2732803df6496300a18cbadc589",
-      "duration": "4:36",
-      "popularity": 60,
-      "uri": "spotify:track:4A6zhvBNk6MAUp4u07p7kD",
-      "url": "https://open.spotify.com/track/4A6zhvBNk6MAUp4u07p7kD"
-    },
-    {
-      "name": "Air on a G String",
-      "artist": "Johann Sebastian Bach, HAUSER, London Symphony Orchestra, Robert Ziegler",
-      "album": "Classic",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a0e19560289c8ef83ffb033b",
-      "duration": "4:49",
-      "popularity": 61,
-      "uri": "spotify:track:0mD1a7haZKdX9I0oPywrMb",
-      "url": "https://open.spotify.com/track/0mD1a7haZKdX9I0oPywrMb"
-    },
     {
       "name": "Slide",
       "artist": "The Goo Goo Dolls",
@@ -86,24 +63,34 @@
       "url": "https://open.spotify.com/track/0nnwn7LWHCAu09jfuH1xTA"
     },
     {
-      "name": "Good Things Go - Instrumental",
-      "artist": "Linkin Park",
-      "album": "From Zero: A Cappellas + Instrumentals",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273d2df489726cb8f11481245cc",
-      "duration": "3:25",
-      "popularity": 32,
-      "uri": "spotify:track:1gwFSA8DaSYmxYzXwfTVbJ",
-      "url": "https://open.spotify.com/track/1gwFSA8DaSYmxYzXwfTVbJ"
+      "name": "What I See (feat. Chris Brown)",
+      "artist": "Elevation Worship, Chris Brown",
+      "album": "LION",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2732803df6496300a18cbadc589",
+      "duration": "4:36",
+      "popularity": 59,
+      "uri": "spotify:track:4A6zhvBNk6MAUp4u07p7kD",
+      "url": "https://open.spotify.com/track/4A6zhvBNk6MAUp4u07p7kD"
     },
     {
-      "name": "Tired",
-      "artist": "Alan Walker, Gavin James",
-      "album": "Tired",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273d8f6180f1483ef4d6ded503c",
-      "duration": "3:12",
-      "popularity": 62,
-      "uri": "spotify:track:3b5Li4QKDVBx1x7fQuu54a",
-      "url": "https://open.spotify.com/track/3b5Li4QKDVBx1x7fQuu54a"
+      "name": "All Night Long (All Night) - Single Version",
+      "artist": "Lionel Richie",
+      "album": "Back To Front",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a47127db3e929f64a2795666",
+      "duration": "4:18",
+      "popularity": 74,
+      "uri": "spotify:track:4czNORk5MjW5WOn98bki32",
+      "url": "https://open.spotify.com/track/4czNORk5MjW5WOn98bki32"
+    },
+    {
+      "name": "In My Head",
+      "artist": "Jason Derulo",
+      "album": "Jason Derulo (International)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273293e8055dd8814fcdf4742f7",
+      "duration": "3:19",
+      "popularity": 74,
+      "uri": "spotify:track:6St9lR6dhV2tpCNVz7qfrS",
+      "url": "https://open.spotify.com/track/6St9lR6dhV2tpCNVz7qfrS"
     },
     {
       "name": "Soft Spot",
@@ -116,22 +103,12 @@
       "url": "https://open.spotify.com/track/2aL4lMGhWdPpyPL6COPou7"
     },
     {
-      "name": "Always",
-      "artist": "Bon Jovi",
-      "album": "Cross Road (Sound & Vision) [2CD/DVD Sound & Vision]",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273ace2e8aa2dfdde12b3cb3158",
-      "duration": "5:53",
-      "popularity": 65,
-      "uri": "spotify:track:0Z2CgMqTyPxSMJVcZZ2rGX",
-      "url": "https://open.spotify.com/track/0Z2CgMqTyPxSMJVcZZ2rGX"
-    },
-    {
       "name": "Life With You",
       "artist": "Seph Schlueter",
       "album": "Counting My Blessings (Infinity Edition)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273cf621e412dd11624f0404d13",
       "duration": "3:12",
-      "popularity": 50,
+      "popularity": 51,
       "uri": "spotify:track:0gZ9ap16DJE873Es7Pc7kT",
       "url": "https://open.spotify.com/track/0gZ9ap16DJE873Es7Pc7kT"
     },
@@ -146,15 +123,35 @@
       "url": "https://open.spotify.com/track/2CY69lML4UsQ90HgVW3Rdz"
     },
     {
-      "name": "Peace Be Still",
-      "artist": "Seventh Day Slumber",
-      "album": "Thy Kingdom Come",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27345d57a99f2e9d8ba8c39bcee",
-      "duration": "4:10",
-      "popularity": 35,
-      "uri": "spotify:track:3BPn8YzeSjPKxcFyoZCGY9",
-      "url": "https://open.spotify.com/track/3BPn8YzeSjPKxcFyoZCGY9"
+      "name": "Always",
+      "artist": "Bon Jovi",
+      "album": "Cross Road (Sound & Vision) [2CD/DVD Sound & Vision]",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273ace2e8aa2dfdde12b3cb3158",
+      "duration": "5:53",
+      "popularity": 65,
+      "uri": "spotify:track:0Z2CgMqTyPxSMJVcZZ2rGX",
+      "url": "https://open.spotify.com/track/0Z2CgMqTyPxSMJVcZZ2rGX"
+    },
+    {
+      "name": "Albinoni Adagio",
+      "artist": "Tomaso Albinoni, HAUSER, Robert Ziegler, London Symphony Orchestra",
+      "album": "Classic II",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738cb889021242ce6b9ed8e35f",
+      "duration": "5:55",
+      "popularity": 43,
+      "uri": "spotify:track:0gZFQRqbfk7gPnTAQviAx4",
+      "url": "https://open.spotify.com/track/0gZFQRqbfk7gPnTAQviAx4"
+    },
+    {
+      "name": "Good Things Go - Instrumental",
+      "artist": "Linkin Park",
+      "album": "From Zero: A Cappellas + Instrumentals",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273d2df489726cb8f11481245cc",
+      "duration": "3:25",
+      "popularity": 32,
+      "uri": "spotify:track:1gwFSA8DaSYmxYzXwfTVbJ",
+      "url": "https://open.spotify.com/track/1gwFSA8DaSYmxYzXwfTVbJ"
     }
   ],
-  "lastUpdated": "2026-05-11T03:50:47.792Z"
+  "lastUpdated": "2026-05-18T03:58:54.224Z"
 }
