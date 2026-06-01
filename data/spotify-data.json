@@ -6,7 +6,7 @@
       "genres": [
         "neoclassical"
       ],
-      "popularity": 64,
+      "popularity": 63,
       "uri": "spotify:artist:0fauHpmSHwodVYIjTqOGHz",
       "url": "https://open.spotify.com/artist/0fauHpmSHwodVYIjTqOGHz"
     },
@@ -20,6 +20,14 @@
       "popularity": 56,
       "uri": "spotify:artist:2iSn12gFykgv92aTvPiH4s",
       "url": "https://open.spotify.com/artist/2iSn12gFykgv92aTvPiH4s"
+    },
+    {
+      "name": "Alex Warren",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb0c171cdae49ecf6f783b8934",
+      "genres": [],
+      "popularity": 85,
+      "uri": "spotify:artist:0fTSzq9jAh4c36UVb4V7CB",
+      "url": "https://open.spotify.com/artist/0fTSzq9jAh4c36UVb4V7CB"
     },
     {
       "name": "Forrest Frank",
@@ -45,18 +53,6 @@
       "popularity": 51,
       "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
       "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
-    },
-    {
-      "name": "Martin Garrix",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebf5b8ee60f1f4ee3453aba40b",
-      "genres": [
-        "edm",
-        "progressive house",
-        "electronica"
-      ],
-      "popularity": 75,
-      "uri": "spotify:artist:60d24wfXkVzDSfLS6hyCjZ",
-      "url": "https://open.spotify.com/artist/60d24wfXkVzDSfLS6hyCjZ"
     }
   ],
   "topTracks": [
@@ -66,19 +62,9 @@
       "album": "Jason Derulo (International)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273293e8055dd8814fcdf4742f7",
       "duration": "3:19",
-      "popularity": 74,
+      "popularity": 75,
       "uri": "spotify:track:6St9lR6dhV2tpCNVz7qfrS",
       "url": "https://open.spotify.com/track/6St9lR6dhV2tpCNVz7qfrS"
-    },
-    {
-      "name": "What I See (feat. Chris Brown)",
-      "artist": "Elevation Worship, Chris Brown",
-      "album": "LION",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2732803df6496300a18cbadc589",
-      "duration": "4:36",
-      "popularity": 59,
-      "uri": "spotify:track:4A6zhvBNk6MAUp4u07p7kD",
-      "url": "https://open.spotify.com/track/4A6zhvBNk6MAUp4u07p7kD"
     },
     {
       "name": "DAISIES",
@@ -86,7 +72,7 @@
       "album": "SWAG",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273d65c4773bc5061fd27facc5b",
       "duration": "2:56",
-      "popularity": 96,
+      "popularity": 95,
       "uri": "spotify:track:5BZsQlgw21vDOAjoqkNgKb",
       "url": "https://open.spotify.com/track/5BZsQlgw21vDOAjoqkNgKb"
     },
@@ -106,29 +92,9 @@
       "album": "Back To Front",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273a47127db3e929f64a2795666",
       "duration": "4:18",
-      "popularity": 74,
+      "popularity": 75,
       "uri": "spotify:track:4czNORk5MjW5WOn98bki32",
       "url": "https://open.spotify.com/track/4czNORk5MjW5WOn98bki32"
-    },
-    {
-      "name": "I",
-      "artist": "Yiruma",
-      "album": "First Love (The Original & the Very First Recording)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2734bdb66d1335f8571240e755f",
-      "duration": "4:10",
-      "popularity": 46,
-      "uri": "spotify:track:14KYk4234ad6eQ2MhVzyla",
-      "url": "https://open.spotify.com/track/14KYk4234ad6eQ2MhVzyla"
-    },
-    {
-      "name": "Embrace of Silence",
-      "artist": "Yiruma",
-      "album": "Piano",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273ca6f3df70ef0abcdfbf4c6d9",
-      "duration": "2:53",
-      "popularity": 45,
-      "uri": "spotify:track:1qD8aL3CA2I0rzSPrPO7mY",
-      "url": "https://open.spotify.com/track/1qD8aL3CA2I0rzSPrPO7mY"
     },
     {
       "name": "Kiss The Rain",
@@ -141,16 +107,6 @@
       "url": "https://open.spotify.com/track/7vd1j4IDTU0koES9M8dvBQ"
     },
     {
-      "name": "River Flows In You",
-      "artist": "Yiruma",
-      "album": "First Love (The Original & the Very First Recording)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2734bdb66d1335f8571240e755f",
-      "duration": "3:08",
-      "popularity": 74,
-      "uri": "spotify:track:2agBDIr9MYDUducQPC1sFU",
-      "url": "https://open.spotify.com/track/2agBDIr9MYDUducQPC1sFU"
-    },
-    {
       "name": "May Be",
       "artist": "Yiruma",
       "album": "First Love (The Original & the Very First Recording)",
@@ -159,7 +115,47 @@
       "popularity": 57,
       "uri": "spotify:track:42WpwYm7DYxbbVbUO35LUX",
       "url": "https://open.spotify.com/track/42WpwYm7DYxbbVbUO35LUX"
+    },
+    {
+      "name": "When The Love Falls",
+      "artist": "Yiruma",
+      "album": "First Love (The Original & the Very First Recording)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2734bdb66d1335f8571240e755f",
+      "duration": "3:17",
+      "popularity": 53,
+      "uri": "spotify:track:0DVnuLTzoFyQS0ZV9Ygqsb",
+      "url": "https://open.spotify.com/track/0DVnuLTzoFyQS0ZV9Ygqsb"
+    },
+    {
+      "name": "Hope",
+      "artist": "Yiruma",
+      "album": "P.N.O.N.I (The Original & the Very First Recording)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b44d6e73a7b8911c955401ce",
+      "duration": "2:50",
+      "popularity": 46,
+      "uri": "spotify:track:0JsQgMKqwYdDDGjXzMwCPU",
+      "url": "https://open.spotify.com/track/0JsQgMKqwYdDDGjXzMwCPU"
+    },
+    {
+      "name": "Lifetime",
+      "artist": "Justin Bieber",
+      "album": "Justice (Triple Chucks Deluxe)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a01fed49fe3a84a9919cef29",
+      "duration": "3:27",
+      "popularity": 66,
+      "uri": "spotify:track:10Z9RbwrTbQ0gQeNRJ2dC1",
+      "url": "https://open.spotify.com/track/10Z9RbwrTbQ0gQeNRJ2dC1"
+    },
+    {
+      "name": "I",
+      "artist": "Yiruma",
+      "album": "First Love (The Original & the Very First Recording)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2734bdb66d1335f8571240e755f",
+      "duration": "4:10",
+      "popularity": 46,
+      "uri": "spotify:track:14KYk4234ad6eQ2MhVzyla",
+      "url": "https://open.spotify.com/track/14KYk4234ad6eQ2MhVzyla"
     }
   ],
-  "lastUpdated": "2026-05-25T04:07:08.384Z"
+  "lastUpdated": "2026-06-01T04:22:48.596Z"
 }
