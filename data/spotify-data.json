@@ -11,40 +11,6 @@
       "url": "https://open.spotify.com/artist/0fauHpmSHwodVYIjTqOGHz"
     },
     {
-      "name": "HAUSER",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb8c2521a454c69e84595ed504",
-      "genres": [
-        "classical",
-        "classical crossover"
-      ],
-      "popularity": 56,
-      "uri": "spotify:artist:2iSn12gFykgv92aTvPiH4s",
-      "url": "https://open.spotify.com/artist/2iSn12gFykgv92aTvPiH4s"
-    },
-    {
-      "name": "Alex Warren",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb0c171cdae49ecf6f783b8934",
-      "genres": [],
-      "popularity": 85,
-      "uri": "spotify:artist:0fTSzq9jAh4c36UVb4V7CB",
-      "url": "https://open.spotify.com/artist/0fTSzq9jAh4c36UVb4V7CB"
-    },
-    {
-      "name": "Forrest Frank",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebfc23429951b765040e928baf",
-      "genres": [
-        "christian",
-        "christian pop",
-        "christian hip hop",
-        "worship",
-        "christian lo-fi",
-        "christian r&b"
-      ],
-      "popularity": 77,
-      "uri": "spotify:artist:1scVfBymTr3CeZ4imMj1QJ",
-      "url": "https://open.spotify.com/artist/1scVfBymTr3CeZ4imMj1QJ"
-    },
-    {
       "name": "Dead by April",
       "image": "https://i.scdn.co/image/ab6761610000e5ebf3770344c0b2952acd65b79f",
       "genres": [
@@ -53,19 +19,43 @@
       "popularity": 51,
       "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
       "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
+    },
+    {
+      "name": "Linkin Park",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
+      "genres": [
+        "nu metal",
+        "rap metal",
+        "rock",
+        "alternative metal"
+      ],
+      "popularity": 89,
+      "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
+      "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
+    },
+    {
+      "name": "The Goo Goo Dolls",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebe7b66b8c4ba729848574df7a",
+      "genres": [],
+      "popularity": 77,
+      "uri": "spotify:artist:2sil8z5kiy4r76CRTXxBCA",
+      "url": "https://open.spotify.com/artist/2sil8z5kiy4r76CRTXxBCA"
+    },
+    {
+      "name": "Manafest",
+      "image": "https://i.scdn.co/image/ab6761610000e5eba449bc360f32cbe77d6e236b",
+      "genres": [
+        "christian rock",
+        "christian hip hop",
+        "christian alternative rock",
+        "rap rock"
+      ],
+      "popularity": 45,
+      "uri": "spotify:artist:4uOFEWy9mIcvQbr03IbPcL",
+      "url": "https://open.spotify.com/artist/4uOFEWy9mIcvQbr03IbPcL"
     }
   ],
   "topTracks": [
-    {
-      "name": "In My Head",
-      "artist": "Jason Derulo",
-      "album": "Jason Derulo (International)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273293e8055dd8814fcdf4742f7",
-      "duration": "3:19",
-      "popularity": 75,
-      "uri": "spotify:track:6St9lR6dhV2tpCNVz7qfrS",
-      "url": "https://open.spotify.com/track/6St9lR6dhV2tpCNVz7qfrS"
-    },
     {
       "name": "DAISIES",
       "artist": "Justin Bieber",
@@ -77,14 +67,34 @@
       "url": "https://open.spotify.com/track/5BZsQlgw21vDOAjoqkNgKb"
     },
     {
-      "name": "Slide",
-      "artist": "The Goo Goo Dolls",
-      "album": "Dizzy up the Girl",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273eda9478c39a21e1cdc6609ca",
-      "duration": "3:32",
-      "popularity": 78,
-      "uri": "spotify:track:0nnwn7LWHCAu09jfuH1xTA",
-      "url": "https://open.spotify.com/track/0nnwn7LWHCAu09jfuH1xTA"
+      "name": "In My Head",
+      "artist": "Jason Derulo",
+      "album": "Jason Derulo (International)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273293e8055dd8814fcdf4742f7",
+      "duration": "3:19",
+      "popularity": 75,
+      "uri": "spotify:track:6St9lR6dhV2tpCNVz7qfrS",
+      "url": "https://open.spotify.com/track/6St9lR6dhV2tpCNVz7qfrS"
+    },
+    {
+      "name": "Hope",
+      "artist": "Yiruma",
+      "album": "P.N.O.N.I (The Original & the Very First Recording)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b44d6e73a7b8911c955401ce",
+      "duration": "2:50",
+      "popularity": 46,
+      "uri": "spotify:track:0JsQgMKqwYdDDGjXzMwCPU",
+      "url": "https://open.spotify.com/track/0JsQgMKqwYdDDGjXzMwCPU"
+    },
+    {
+      "name": "If I Could See You Again",
+      "artist": "Yiruma",
+      "album": "First Love (The Original & the Very First Recording)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2734bdb66d1335f8571240e755f",
+      "duration": "3:25",
+      "popularity": 49,
+      "uri": "spotify:track:19mdKKBhLAYrEO5vVSkmIv",
+      "url": "https://open.spotify.com/track/19mdKKBhLAYrEO5vVSkmIv"
     },
     {
       "name": "All Night Long (All Night) - Single Version",
@@ -107,14 +117,34 @@
       "url": "https://open.spotify.com/track/7vd1j4IDTU0koES9M8dvBQ"
     },
     {
+      "name": "River Flows In You",
+      "artist": "Yiruma",
+      "album": "First Love (The Original & the Very First Recording)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2734bdb66d1335f8571240e755f",
+      "duration": "3:08",
+      "popularity": 74,
+      "uri": "spotify:track:2agBDIr9MYDUducQPC1sFU",
+      "url": "https://open.spotify.com/track/2agBDIr9MYDUducQPC1sFU"
+    },
+    {
       "name": "May Be",
       "artist": "Yiruma",
       "album": "First Love (The Original & the Very First Recording)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2734bdb66d1335f8571240e755f",
       "duration": "4:00",
-      "popularity": 57,
+      "popularity": 58,
       "uri": "spotify:track:42WpwYm7DYxbbVbUO35LUX",
       "url": "https://open.spotify.com/track/42WpwYm7DYxbbVbUO35LUX"
+    },
+    {
+      "name": "Slide",
+      "artist": "The Goo Goo Dolls",
+      "album": "Dizzy up the Girl",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273eda9478c39a21e1cdc6609ca",
+      "duration": "3:32",
+      "popularity": 78,
+      "uri": "spotify:track:0nnwn7LWHCAu09jfuH1xTA",
+      "url": "https://open.spotify.com/track/0nnwn7LWHCAu09jfuH1xTA"
     },
     {
       "name": "When The Love Falls",
@@ -125,37 +155,7 @@
       "popularity": 53,
       "uri": "spotify:track:0DVnuLTzoFyQS0ZV9Ygqsb",
       "url": "https://open.spotify.com/track/0DVnuLTzoFyQS0ZV9Ygqsb"
-    },
-    {
-      "name": "Hope",
-      "artist": "Yiruma",
-      "album": "P.N.O.N.I (The Original & the Very First Recording)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b44d6e73a7b8911c955401ce",
-      "duration": "2:50",
-      "popularity": 46,
-      "uri": "spotify:track:0JsQgMKqwYdDDGjXzMwCPU",
-      "url": "https://open.spotify.com/track/0JsQgMKqwYdDDGjXzMwCPU"
-    },
-    {
-      "name": "Lifetime",
-      "artist": "Justin Bieber",
-      "album": "Justice (Triple Chucks Deluxe)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a01fed49fe3a84a9919cef29",
-      "duration": "3:27",
-      "popularity": 66,
-      "uri": "spotify:track:10Z9RbwrTbQ0gQeNRJ2dC1",
-      "url": "https://open.spotify.com/track/10Z9RbwrTbQ0gQeNRJ2dC1"
-    },
-    {
-      "name": "I",
-      "artist": "Yiruma",
-      "album": "First Love (The Original & the Very First Recording)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2734bdb66d1335f8571240e755f",
-      "duration": "4:10",
-      "popularity": 46,
-      "uri": "spotify:track:14KYk4234ad6eQ2MhVzyla",
-      "url": "https://open.spotify.com/track/14KYk4234ad6eQ2MhVzyla"
     }
   ],
-  "lastUpdated": "2026-06-01T04:22:48.596Z"
+  "lastUpdated": "2026-06-08T04:18:30.037Z"
 }
