@@ -26,7 +26,6 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
     let decryptAnimation;
     let decryptProgressBar;
     let decryptText;
-    let soundToggle;
     let soundEnabled = true;
 
     // Initialize when DOM is loaded
@@ -43,15 +42,6 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
         const mainContent = document.querySelector('.win95-container');
         if (mainContent) {
             mainContent.style.display = 'none';
-        }
-
-        // Sound toggle
-        soundToggle = document.getElementById('sound-toggle');
-        if (soundToggle) {
-            soundToggle.addEventListener('click', function() {
-                soundEnabled = !soundEnabled;
-                this.textContent = soundEnabled ? '🔊' : '🔇';
-            });
         }
 
         // Add click handler to decrypt button
@@ -349,10 +339,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     container.style.margin = container.dataset.originalMargin;
                     container.dataset.isMaximized = '';
 
-                    // Show desktop icons when restored
-                    if (desktopIcons && !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
                         'ontouchstart' in window ||
-                        navigator.maxTouchPoints > 0)) {
+                        navigator.maxTouchPoints > 0;
+
+                    // Show desktop icons when restored
+                    if (desktopIcons && !isMobile) {
                         desktopIcons.style.display = 'block';
                     }
                 }
