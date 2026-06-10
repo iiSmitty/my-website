@@ -208,14 +208,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const statusItems = [
             { text: 'Page loaded successfully' },
             { text: 'Visitors: 1,337' },
-            { text: 'Last updated: August 24, 1995' }
+            { html: '<span class="date-label">Last updated: </span>August 24, 1995' }
         ];
 
         // Create standard status items
         statusItems.forEach(item => {
             const statusItem = document.createElement('div');
             statusItem.className = 'status-item';
-            statusItem.textContent = item.text;
+            if (item.html) {
+                statusItem.innerHTML = item.html;
+            } else {
+                statusItem.textContent = item.text;
+            }
             statusBarTop.appendChild(statusItem);
         });
 
@@ -234,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const cfText = document.createElement('span');
         cfText.textContent = 'Cloudflare Pages';
-        cfText.style.cssText = 'font-family:"MS Sans Serif",Tahoma,Arial,sans-serif;font-size:11px;white-space:nowrap;';
+        cfText.style.cssText = 'white-space:nowrap;';
 
         cfItem.appendChild(cfDot);
         cfItem.appendChild(cfText);

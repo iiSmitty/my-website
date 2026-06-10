@@ -2060,3 +2060,40 @@ body.is-touch-device .desktop-icons,
         justify-content: center;
     }
 }
+
+/* Status bar — mobile 2×2 panel grid */
+@media screen and (max-width: 430px) {
+    .win95-status-bar {
+        font-size: 12px;
+    }
+
+    .status-bar-top {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px;
+    }
+
+    /* Page loaded: top-left, CF badge: top-right, Visitors + Last updated: bottom row */
+    .status-bar-top .status-item:nth-child(2) { order: 3; }
+    .status-bar-top .status-item:nth-child(3) { order: 4; }
+    .status-bar-top .status-item:nth-child(4) { order: 2; }
+
+    .date-label { display: none; }
+
+    /* Win95 inset panel border + text truncation for each grid cell */
+    .status-bar-top .status-item {
+        border-top: 1px solid #808080;
+        border-left: 1px solid #808080;
+        border-right: 1px solid #ffffff;
+        border-bottom: 1px solid #ffffff;
+        padding: 2px 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .status-bar-bottom {
+        padding: 4px 0 2px;
+        line-height: 1.5;
+    }
+}
