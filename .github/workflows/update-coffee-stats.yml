@@ -2,8 +2,10 @@ name: Update Coffee Stats
 
 on:
   schedule:
-    - cron: '0 8 * * *'  # Daily at 8 AM UTC (10 AM SAST)
-  workflow_dispatch:     # Manual trigger
+    - cron: '0 8 * * *'   # 10 AM SAST - primary
+    - cron: '0 12 * * *'  # 2 PM SAST  - backup if primary missed
+    - cron: '0 16 * * *'  # 6 PM SAST  - last resort
+  workflow_dispatch:       # Manual trigger (always runs, ignores skip check)
 
 jobs:
   update-coffee-stats:
@@ -18,10 +20,41 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Check if already updated today
+        id: check_update
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "skip=false" >> $GITHUB_OUTPUT
+            echo "Manual trigger — running regardless"
+            exit 0
+          fi
+          if [ -f "data/coffee-stats.json" ]; then
+            LAST_UPDATED=$(node -e "try{const d=require('./data/coffee-stats.json');console.log(d.lastUpdated||'')}catch(e){console.log('')}")
+            TODAY=$(date -u +%Y-%m-%d)
+            if [[ "$LAST_UPDATED" == "$TODAY"* ]]; then
+              echo "skip=true" >> $GITHUB_OUTPUT
+              echo "Already updated today ($LAST_UPDATED) — skipping"
+            else
+              echo "skip=false" >> $GITHUB_OUTPUT
+              echo "Not yet updated today — proceeding"
+            fi
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Cache puppeteer
+        if: steps.check_update.outputs.skip != 'true'
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-puppeteer-v1
+
       - name: Install dependencies
+        if: steps.check_update.outputs.skip != 'true'
         run: npm install puppeteer
 
       - name: Update coffee stats (with retry)
+        if: steps.check_update.outputs.skip != 'true'
         uses: nick-fields/retry@v3
         with:
           timeout_minutes: 10
@@ -33,10 +66,15 @@ jobs:
           SEATTLE_COFFEE_PASSWORD: ${{ secrets.SEATTLE_COFFEE_PASSWORD }}
 
       - name: Commit and push if changed
+        if: steps.check_update.outputs.skip != 'true'
         run: |
           git config --local user.email "292474565+waynemanor-butler@users.noreply.github.com"
           git config --local user.name "Alfred Pennyworth"
           git add data/coffee-stats.json
-          git diff --quiet && git diff --staged --quiet || git commit -m "Update coffee stats - $(date)"
-          git pull --rebase origin main
-          git push
+          if git diff --quiet && git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update coffee stats - $(date)"
+            git pull --rebase origin main
+            git push
+          fi
