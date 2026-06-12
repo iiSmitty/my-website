@@ -13,9 +13,10 @@
     }
 })();
 
-// Replace these with your actual contact info
-const REAL_EMAIL = "info@andresmit.co.za";
-const REAL_PHONE = "";
+const CONTACT_API_URL = "https://andresmit.co.za/api/contact";
+
+let REAL_EMAIL = null;
+let REAL_PHONE = null;
 
 // Skip browser-specific code if running in Node
 if (typeof window !== 'undefined' && typeof document !== 'undefined') {
@@ -154,13 +155,27 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
     }
 
     function startDecryption() {
-        // Disable button during process
         decryptButton.disabled = true;
-
-        // Show decrypt animation
         decryptAnimation.style.display = 'block';
+        updateProgress(0, "Connecting to secure server...");
 
-        // Win95 decryption simulation
+        fetch(CONTACT_API_URL)
+            .then(res => {
+                if (!res.ok) throw new Error('Worker returned ' + res.status);
+                return res.json();
+            })
+            .then(data => {
+                REAL_EMAIL = data.email;
+                REAL_PHONE = data.phone;
+                runDecryptionAnimation();
+            })
+            .catch(() => {
+                updateProgress(0, "Connection failed. Try again.");
+                decryptButton.disabled = false;
+            });
+    }
+
+    function runDecryptionAnimation() {
         updateProgress(0, "Initializing decryption protocol...");
 
         setTimeout(() => {
