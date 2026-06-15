@@ -6,7 +6,7 @@
       "genres": [
         "neoclassical"
       ],
-      "popularity": 63,
+      "popularity": 64,
       "uri": "spotify:artist:0fauHpmSHwodVYIjTqOGHz",
       "url": "https://open.spotify.com/artist/0fauHpmSHwodVYIjTqOGHz"
     },
@@ -16,7 +16,7 @@
       "genres": [
         "metalcore"
       ],
-      "popularity": 51,
+      "popularity": 52,
       "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
       "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
     },
@@ -34,28 +34,35 @@
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
     {
-      "name": "The Goo Goo Dolls",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebe7b66b8c4ba729848574df7a",
+      "name": "Alex Warren",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb35f6a81fda1041fd9a5828fb",
       "genres": [],
-      "popularity": 77,
-      "uri": "spotify:artist:2sil8z5kiy4r76CRTXxBCA",
-      "url": "https://open.spotify.com/artist/2sil8z5kiy4r76CRTXxBCA"
+      "popularity": 85,
+      "uri": "spotify:artist:0fTSzq9jAh4c36UVb4V7CB",
+      "url": "https://open.spotify.com/artist/0fTSzq9jAh4c36UVb4V7CB"
     },
     {
-      "name": "Manafest",
-      "image": "https://i.scdn.co/image/ab6761610000e5eba449bc360f32cbe77d6e236b",
+      "name": "Francois van Coke",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb88ab6df308f8230bc16e2745",
       "genres": [
-        "christian rock",
-        "christian hip hop",
-        "christian alternative rock",
-        "rap rock"
+        "afrikaans pop"
       ],
-      "popularity": 45,
-      "uri": "spotify:artist:4uOFEWy9mIcvQbr03IbPcL",
-      "url": "https://open.spotify.com/artist/4uOFEWy9mIcvQbr03IbPcL"
+      "popularity": 42,
+      "uri": "spotify:artist:7pJtnZQLPJmqzVfdIz7eFF",
+      "url": "https://open.spotify.com/artist/7pJtnZQLPJmqzVfdIz7eFF"
     }
   ],
   "topTracks": [
+    {
+      "name": "Sunflower - Spider-Man: Into the Spider-Verse",
+      "artist": "Post Malone, Swae Lee",
+      "album": "Hollywood's Bleeding",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739478c87599550dd73bfa7e02",
+      "duration": "2:37",
+      "popularity": 86,
+      "uri": "spotify:track:0RiRZpuVRbi7oqRdSMwhQY",
+      "url": "https://open.spotify.com/track/0RiRZpuVRbi7oqRdSMwhQY"
+    },
     {
       "name": "DAISIES",
       "artist": "Justin Bieber",
@@ -82,7 +89,7 @@
       "album": "P.N.O.N.I (The Original & the Very First Recording)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273b44d6e73a7b8911c955401ce",
       "duration": "2:50",
-      "popularity": 46,
+      "popularity": 47,
       "uri": "spotify:track:0JsQgMKqwYdDDGjXzMwCPU",
       "url": "https://open.spotify.com/track/0JsQgMKqwYdDDGjXzMwCPU"
     },
@@ -92,19 +99,9 @@
       "album": "First Love (The Original & the Very First Recording)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2734bdb66d1335f8571240e755f",
       "duration": "3:25",
-      "popularity": 49,
+      "popularity": 50,
       "uri": "spotify:track:19mdKKBhLAYrEO5vVSkmIv",
       "url": "https://open.spotify.com/track/19mdKKBhLAYrEO5vVSkmIv"
-    },
-    {
-      "name": "All Night Long (All Night) - Single Version",
-      "artist": "Lionel Richie",
-      "album": "Back To Front",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a47127db3e929f64a2795666",
-      "duration": "4:18",
-      "popularity": 75,
-      "uri": "spotify:track:4czNORk5MjW5WOn98bki32",
-      "url": "https://open.spotify.com/track/4czNORk5MjW5WOn98bki32"
     },
     {
       "name": "Kiss The Rain",
@@ -137,16 +134,6 @@
       "url": "https://open.spotify.com/track/42WpwYm7DYxbbVbUO35LUX"
     },
     {
-      "name": "Slide",
-      "artist": "The Goo Goo Dolls",
-      "album": "Dizzy up the Girl",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273eda9478c39a21e1cdc6609ca",
-      "duration": "3:32",
-      "popularity": 78,
-      "uri": "spotify:track:0nnwn7LWHCAu09jfuH1xTA",
-      "url": "https://open.spotify.com/track/0nnwn7LWHCAu09jfuH1xTA"
-    },
-    {
       "name": "When The Love Falls",
       "artist": "Yiruma",
       "album": "First Love (The Original & the Very First Recording)",
@@ -155,7 +142,17 @@
       "popularity": 53,
       "uri": "spotify:track:0DVnuLTzoFyQS0ZV9Ygqsb",
       "url": "https://open.spotify.com/track/0DVnuLTzoFyQS0ZV9Ygqsb"
+    },
+    {
+      "name": "Slide",
+      "artist": "The Goo Goo Dolls",
+      "album": "Dizzy up the Girl",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273eda9478c39a21e1cdc6609ca",
+      "duration": "3:32",
+      "popularity": 79,
+      "uri": "spotify:track:0nnwn7LWHCAu09jfuH1xTA",
+      "url": "https://open.spotify.com/track/0nnwn7LWHCAu09jfuH1xTA"
     }
   ],
-  "lastUpdated": "2026-06-08T04:18:30.037Z"
+  "lastUpdated": "2026-06-15T04:46:06.557Z"
 }
