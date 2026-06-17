@@ -46,12 +46,16 @@ jobs:
         if: steps.check_update.outputs.skip != 'true'
         uses: actions/cache@v4
         with:
-          path: node_modules
-          key: ${{ runner.os }}-puppeteer-v1
+          path: |
+            node_modules
+            ~/.cache/puppeteer
+          key: ${{ runner.os }}-puppeteer-v2
 
       - name: Install dependencies
         if: steps.check_update.outputs.skip != 'true'
-        run: npm install puppeteer
+        run: |
+          npm install puppeteer
+          npx puppeteer browsers install chrome
 
       - name: Update coffee stats (with retry)
         if: steps.check_update.outputs.skip != 'true'
