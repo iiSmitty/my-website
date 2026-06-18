@@ -1611,40 +1611,6 @@ body.is-touch-device .desktop-icons,
     min-height: 120px;
 }
 
-.coffee-icon-area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-width: 80px;
-    padding: 10px;
-}
-
-.coffee-program-icon {
-    text-align: center;
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 2px;
-}
-
-.coffee-program-icon:hover {
-    background-color: #000080;
-    color: white;
-}
-
-.coffee-icon-large {
-    font-size: 48px;
-    margin-bottom: 5px;
-    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.3));
-}
-
-.coffee-program-label {
-    font-size: 11px;
-    font-weight: bold;
-    word-wrap: break-word;
-    max-width: 70px;
-}
-
 .coffee-details-panel {
     flex: 1;
     background-color: #ffffff;
@@ -1700,16 +1666,54 @@ body.is-touch-device .desktop-icons,
     color: #8B4513;
 }
 
-.coffee-metric-badge {
-    font-size: 12px;
+/* Loyalty Status — Win95 GroupBox + medal sprite */
+.coffee-loyalty-group {
+    border: 2px groove #c0c0c0;
+    margin: 0;
+    padding: 6px 10px 9px;
+}
+
+.coffee-loyalty-group legend {
+    font-size: 10px;
     font-weight: bold;
-    color: #fff;
-    background: linear-gradient(to right, #FFD700, #FFA500);
-    padding: 2px 6px;
-    border-radius: 2px;
-    display: inline-block;
-    width: fit-content;
-    border: 1px outset #FFD700;
+    color: #000080;
+    text-transform: uppercase;
+    padding: 0 4px;
+    margin-left: 2px;
+}
+
+.coffee-loyalty-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.coffee-loyalty-medal {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    background-image: url('../images/loyalty-coins.png');
+    background-repeat: no-repeat;
+    /* Sheet is 64x16 (4 cells of 16px). Shown 2x: 128x32, each cell 32px. */
+    background-size: 128px 32px;
+    background-position: 0 0;
+    image-rendering: pixelated;
+}
+
+.coffee-loyalty-medal.tier-bronze   { background-position:   0    0; }
+.coffee-loyalty-medal.tier-silver   { background-position: -32px 0; }
+.coffee-loyalty-medal.tier-gold     { background-position: -64px 0; }
+.coffee-loyalty-medal.tier-platinum { background-position: -96px 0; }
+
+.coffee-loyalty-field {
+    flex: 1;
+    font-size: 13px;
+    font-weight: bold;
+    color: #000080;
+    background: #fff;
+    padding: 5px 8px;
+    border: 2px inset #c0c0c0;
+    letter-spacing: 0.3px;
 }
 
 .coffee-progress-container {
@@ -1779,19 +1783,6 @@ body.is-touch-device .desktop-icons,
         border: 1px inset #dfdfdf;
     }
 
-    .win95-box .coffee-icon-area {
-        min-width: auto;
-        padding: 15px;
-        align-self: stretch;
-        background-color: #ffffff;
-        border-bottom: 1px solid #c0c0c0;
-    }
-
-    .win95-box .coffee-icon-large {
-        font-size: 36px;
-        margin-bottom: 5px;
-    }
-
     .win95-box .coffee-details-panel {
         padding: 15px;
         gap: 15px;
@@ -1843,11 +1834,19 @@ body.is-touch-device .desktop-icons,
         font-weight: bold;
     }
 
-    .win95-box .coffee-metric-badge {
-        font-size: 14px;
-        padding: 4px 12px;
-        align-self: center;
-        margin: 0 auto;
+    .win95-box .coffee-loyalty-group {
+        background-color: #f8f8f8;
+        border: 2px groove #c0c0c0;
+        padding: 8px 12px 12px;
+    }
+
+    .win95-box .coffee-loyalty-group legend {
+        font-size: 12px;
+    }
+
+    .win95-box .coffee-loyalty-field {
+        font-size: 16px;
+        background-color: #ffffff;
     }
 
     .win95-box .coffee-progress-container {

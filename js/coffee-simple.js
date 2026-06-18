@@ -42,20 +42,25 @@ function updateEnhancedMetrics(totalVisits, currentBalance = null) {
 
     // Loyalty status based on visit count
     const loyaltyElement = document.getElementById('coffee-loyalty-status');
+    const medalElement = document.getElementById('coffee-loyalty-medal');
+
+    let tier;
+    if (totalVisits >= 150) {
+        tier = 'platinum';
+    } else if (totalVisits >= 100) {
+        tier = 'gold';
+    } else if (totalVisits >= 50) {
+        tier = 'silver';
+    } else {
+        tier = 'bronze';
+    }
+
     if (loyaltyElement) {
-        if (totalVisits >= 150) {
-            loyaltyElement.textContent = 'Platinum';
-            loyaltyElement.style.background = 'linear-gradient(to right, #E5E4E2, #C0C0C0)';
-        } else if (totalVisits >= 100) {
-            loyaltyElement.textContent = 'Gold';
-            loyaltyElement.style.background = 'linear-gradient(to right, #FFD700, #FFA500)';
-        } else if (totalVisits >= 50) {
-            loyaltyElement.textContent = 'Silver';
-            loyaltyElement.style.background = 'linear-gradient(to right, #C0C0C0, #A0A0A0)';
-        } else {
-            loyaltyElement.textContent = 'Bronze';
-            loyaltyElement.style.background = 'linear-gradient(to right, #CD7F32, #B8860B)';
-        }
+        const label = tier.charAt(0).toUpperCase() + tier.slice(1);
+        loyaltyElement.textContent = `${label} Member`;
+    }
+    if (medalElement) {
+        medalElement.className = `coffee-loyalty-medal tier-${tier}`;
     }
 
     // Progress to next free coffee using real balance data
