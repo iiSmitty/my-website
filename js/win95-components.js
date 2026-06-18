@@ -382,7 +382,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to play the Windows 95 shutdown video
     function playShutdownVideo() {
-        // Create a fullscreen overlay for the video
+        // Hybrid approach: embed the YouTube player in-page for the majority of
+        // visitors, but layer a "Watch on YouTube" fallback + close button on top.
+        // The embedded player depends on third-party cookies for Google's consent
+        // flow, which privacy browsers (Brave, etc.) block -- producing an endless
+        // consent.google.com redirect loop. Those visitors can use the fallback,
+        // which opens the normal watch page (a top-level, first-party context that
+        // plays everywhere). Everyone else just watches the embed.
+        const watchUrl = 'https://www.youtube.com/watch?v=lAkuJXGldrM&autoplay=1';
+
+        // Fullscreen overlay for the video
         const videoOverlay = document.createElement('div');
         videoOverlay.style.position = 'fixed';
         videoOverlay.style.top = '0';
@@ -395,16 +404,71 @@ document.addEventListener('DOMContentLoaded', function() {
         videoOverlay.style.justifyContent = 'center';
         videoOverlay.style.alignItems = 'center';
 
-        // Create YouTube iframe
+        // The embedded player (works for most browsers)
         const iframe = document.createElement('iframe');
         iframe.width = '100%';
         iframe.height = '100%';
-        iframe.src = 'https://www.youtube-nocookie.com/embed/lAkuJXGldrM?autoplay=1&playsinline=1&rel=0';
+        iframe.src = 'https://www.youtube.com/embed/lAkuJXGldrM?autoplay=1&playsinline=1&rel=0';
+        iframe.title = 'YouTube video player';
         iframe.frameBorder = '0';
-        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.referrerPolicy = 'strict-origin-when-cross-origin';
         iframe.allowFullscreen = true;
-
         videoOverlay.appendChild(iframe);
+
+        const closeOverlay = function () {
+            if (videoOverlay.parentNode) {
+                document.body.removeChild(videoOverlay);
+            }
+            document.removeEventListener('keydown', onKey);
+        };
+
+        // Fallback link for visitors whose browser blocks the embed (Brave, etc.)
+        const fallback = document.createElement('a');
+        fallback.href = watchUrl;
+        fallback.target = '_blank';
+        fallback.rel = 'noopener';
+        fallback.textContent = 'Trouble loading? ▸ Watch on YouTube';
+        fallback.style.position = 'fixed';
+        fallback.style.bottom = '16px';
+        fallback.style.left = '50%';
+        fallback.style.transform = 'translateX(-50%)';
+        fallback.style.zIndex = '2001';
+        fallback.style.color = '#ffffff';
+        fallback.style.opacity = '0.8';
+        fallback.style.fontFamily = '"MS Sans Serif", Tahoma, sans-serif';
+        fallback.style.fontSize = '14px';
+        fallback.style.textDecoration = 'underline';
+        fallback.addEventListener('click', closeOverlay);
+        videoOverlay.appendChild(fallback);
+
+        // Close button so the overlay is never a dead-end
+        const closeBtn = document.createElement('button');
+        closeBtn.textContent = '✕';
+        closeBtn.setAttribute('aria-label', 'Close video');
+        closeBtn.style.position = 'fixed';
+        closeBtn.style.top = '12px';
+        closeBtn.style.right = '16px';
+        closeBtn.style.zIndex = '2001';
+        closeBtn.style.background = 'rgba(0,0,0,0.5)';
+        closeBtn.style.color = '#ffffff';
+        closeBtn.style.border = '1px solid rgba(255,255,255,0.5)';
+        closeBtn.style.borderRadius = '4px';
+        closeBtn.style.cursor = 'pointer';
+        closeBtn.style.fontSize = '18px';
+        closeBtn.style.lineHeight = '1';
+        closeBtn.style.padding = '6px 10px';
+        closeBtn.addEventListener('click', closeOverlay);
+        videoOverlay.appendChild(closeBtn);
+
+        // Escape also dismisses the overlay
+        function onKey(e) {
+            if (e.key === 'Escape') {
+                closeOverlay();
+            }
+        }
+        document.addEventListener('keydown', onKey);
+
         document.body.appendChild(videoOverlay);
     }
 
