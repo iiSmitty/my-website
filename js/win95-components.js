@@ -399,7 +399,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const iframe = document.createElement('iframe');
         iframe.width = '100%';
         iframe.height = '100%';
-        iframe.src = 'https://www.youtube.com/embed/lAkuJXGldrM?autoplay=1';
+        iframe.src = 'https://www.youtube-nocookie.com/embed/lAkuJXGldrM?autoplay=1&playsinline=1&rel=0';
         iframe.frameBorder = '0';
         iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
         iframe.allowFullscreen = true;
