@@ -74,11 +74,13 @@ jobs:
         run: |
           git config --local user.email "292474565+waynemanor-butler@users.noreply.github.com"
           git config --local user.name "Alfred Pennyworth"
-          git add data/coffee-stats.json
-          if git diff --quiet && git diff --staged --quiet; then
+          if git diff --quiet data/coffee-stats.json; then
             echo "No changes to commit"
           else
-            git commit -m "Update coffee stats - $(date)"
+            COMMIT_MSG=$(node .github/scripts/generate-commit-message.js)
+            echo "Commit message: $COMMIT_MSG"
+            git add data/coffee-stats.json
+            git commit -m "$COMMIT_MSG"
             git pull --rebase origin main
             git push
           fi

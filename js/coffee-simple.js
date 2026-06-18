@@ -111,6 +111,6 @@ function updateEnhancedCoffeeDisplay(data, isError = false) {
         const year = updateDate.getFullYear();
         const formattedDate = `${day}/${month}/${year}`;
 
-        coffeeUpdatedElement.textContent = `Last synced: ${formattedDate}`;
+        coffeeUpdatedElement.textContent = `Last updated: ${formattedDate}`;
     }
 }

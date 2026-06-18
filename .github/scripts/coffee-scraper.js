@@ -326,7 +326,29 @@ async function updateCoffeeStatsFileOptimized() {
                 fs.mkdirSync(dataDir, { recursive: true });
             }
             const dataPath = path.join(dataDir, 'coffee-stats.json');
+
+            // Only persist when the meaningful numbers actually move.
+            // lastUpdated alone changing every run is what caused the daily
+            // "pointless" commits — skipping the write keeps git diff clean.
+            let existing = {};
+            if (fs.existsSync(dataPath)) {
+                try {
+                    existing = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+                } catch (e) {
+                    existing = {};
+                }
+            }
+
+            const changed = existing.totalSiteVisits !== stats.totalSiteVisits
+                || existing.currentBalance !== stats.currentBalance;
+
+            if (!changed) {
+                console.log('No change in visits or balance — leaving file untouched');
+                return existing;
+            }
+
             fs.writeFileSync(dataPath, JSON.stringify(stats, null, 2));
+            console.log('Stats changed — file updated');
             return stats;
         } else {
             throw new Error('Failed to get coffee stats');
