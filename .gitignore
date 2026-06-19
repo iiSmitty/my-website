@@ -6,6 +6,11 @@ node_modules/
 *.min.js
 *.min.css
 
+# Playwright test artifacts
+test-results/
+playwright-report/
+.last-run.json
+
 # OS / editor cruft
 .DS_Store
 Thumbs.db
