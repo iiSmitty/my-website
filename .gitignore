@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Generated build artifacts — minified files are produced by `npm run build`.
+# Source stays readable in the repo; these are never hand-edited or committed.
+*.min.js
+*.min.css
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+
+# IDE config (JetBrains/WebStorm)
+.idea/
