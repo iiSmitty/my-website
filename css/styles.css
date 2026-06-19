@@ -1019,6 +1019,103 @@ body.is-touch-device .desktop-icons,
     flex: 4;
 }
 
+/* ===== Retired / dead device (Sony WF-1000XM4) ===== */
+/* Win95 "disabled" look: greyed text with an engraved white highlight,
+   plus a Device-Manager-style red error badge. */
+.tech-item--dead .tech-item-name s {
+    color: #808080;
+    text-shadow: 1px 1px 0 #ffffff;
+}
+
+.tech-item--dead .tech-item-type,
+.tech-item--dead .tech-item-details {
+    color: #808080;
+    text-shadow: 1px 1px 0 #ffffff;
+    font-style: italic;
+}
+
+.dead-badge {
+    color: #d00000;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 1;
+    margin-right: 5px;
+    text-shadow: none;
+}
+
+/* When selected, invert like a normal row but keep the badge red. */
+.tech-item--dead.selected .tech-item-name s,
+.tech-item--dead.selected .tech-item-type,
+.tech-item--dead.selected .tech-item-details {
+    color: #ffffff;
+    text-shadow: none;
+}
+
+/* ===== Dead-device error dialog ===== */
+.dead-dialog-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.dead-dialog-overlay.open {
+    display: block;
+}
+
+.dead-dialog {
+    position: fixed;
+    /* Centered on open via JS (left/top in px) so the title bar can be dragged. */
+    top: 50%;
+    left: 50%;
+    width: 360px;
+    max-width: calc(100vw - 24px);
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.dead-dialog-body {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 14px 10px;
+    font-size: 12px;
+}
+
+.dead-dialog-icon {
+    flex: 0 0 auto;
+    width: 32px;
+    height: 32px;
+}
+
+.dead-dialog-icon svg {
+    width: 32px;
+    height: 32px;
+    display: block;
+}
+
+.dead-dialog-text {
+    line-height: 1.4;
+}
+
+.dead-dialog-text strong {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.dead-dialog-code {
+    color: #808080;
+    font-family: "MS Sans Serif", Arial, sans-serif;
+}
+
+.dead-dialog-buttons {
+    display: flex;
+    justify-content: center;
+    padding: 6px 0 14px;
+}
+
 #myTechWindow {
     position: fixed; /* Changed from absolute to fixed */
     top: 50px;
