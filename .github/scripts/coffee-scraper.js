@@ -15,13 +15,18 @@ if (!SEATTLE_USERNAME || !SEATTLE_PASSWORD) {
 
 async function getTotalVisitsOptimized() {
     let browser;
+    let page;
     const startTime = Date.now();
 
     try {
         console.log('Starting Seattle Coffee scraper...');
 
-        // Launch with optimization settings
+        // Launch with optimization settings.
+        // Set HEADFUL=1 locally to watch the browser (e.g. to see if the
+        // login iframe ever appears); CI stays headless by default.
         browser = await puppeteer.launch({
+            headless: process.env.HEADFUL ? false : 'new',
+            slowMo: process.env.HEADFUL ? 50 : 0,
             args: [
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
@@ -38,7 +43,7 @@ async function getTotalVisitsOptimized() {
             ]
         });
 
-        const page = await browser.newPage();
+        page = await browser.newPage();
 
         // Block non-essential resources
         await page.setRequestInterception(true);
@@ -75,11 +80,13 @@ async function getTotalVisitsOptimized() {
         console.log('Loading loyalty page...');
         await page.goto('https://www.seattlecoffeecompany.co.za/loyalty/', {
             waitUntil: 'domcontentloaded',
-            timeout: 15000
+            timeout: 30000
         });
 
         console.log('Accessing login iframe...');
-        await page.waitForSelector('iframe[src*="coffee.toget.me"]', { timeout: 8000 });
+        // CI (US-based runners) is slower to reach this ZA site than a local
+        // machine, so the iframe can take well over the old 8s budget to appear.
+        await page.waitForSelector('iframe[src*="coffee.toget.me"]', { timeout: 25000 });
 
         const iframeElement = await page.$('iframe[src*="coffee.toget.me"]');
         const iframe = await iframeElement.contentFrame();
@@ -95,8 +102,8 @@ async function getTotalVisitsOptimized() {
 
         // Wait for login fields
         const [mobileField, passwordField] = await Promise.all([
-            iframe.waitForSelector('input[formcontrolname="mobileNumber"]', { timeout: 6000 }),
-            iframe.waitForSelector('input[formcontrolname="password"]', { timeout: 6000 })
+            iframe.waitForSelector('input[formcontrolname="mobileNumber"]', { timeout: 15000 }),
+            iframe.waitForSelector('input[formcontrolname="password"]', { timeout: 15000 })
         ]);
 
         await mobileField.click({ clickCount: 3 });
@@ -171,6 +178,29 @@ async function getTotalVisitsOptimized() {
     } catch (error) {
         const totalTime = ((Date.now() - startTime) / 1000).toFixed(1);
         console.error(`Error after ${totalTime}s:`, error.message);
+
+        // Diagnostics: if we got far enough to have a page, capture what the
+        // runner actually saw. A timeout on the iframe wait is almost always
+        // timing, but if the site ever changes this turns a blind timeout into
+        // an obvious "the iframe src is now X" (or a screenshot of a new gate).
+        if (page) {
+            try {
+                const iframeSrcs = await page.$$eval('iframe', frames =>
+                    frames.map(f => f.src || '(no src)'));
+                console.error('Iframes present on page:',
+                    iframeSrcs.length ? iframeSrcs : '(none)');
+            } catch (e) {
+                console.error('Could not enumerate iframes:', e.message);
+            }
+            try {
+                const shotPath = path.join(__dirname, 'coffee-scraper-failure.png');
+                await page.screenshot({ path: shotPath, fullPage: true });
+                console.error(`Saved failure screenshot to ${shotPath}`);
+            } catch (e) {
+                console.error('Could not capture screenshot:', e.message);
+            }
+        }
+
         return null;
     } finally {
         if (browser) {
