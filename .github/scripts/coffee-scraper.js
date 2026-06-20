@@ -102,8 +102,8 @@ async function getTotalVisitsOptimized() {
 
         // Wait for login fields
         const [mobileField, passwordField] = await Promise.all([
-            iframe.waitForSelector('input[formcontrolname="mobileNumber"]', { timeout: 15000 }),
-            iframe.waitForSelector('input[formcontrolname="password"]', { timeout: 15000 })
+            iframe.waitForSelector('input[formcontrolname="mobileNumber"]', { timeout: 25000 }),
+            iframe.waitForSelector('input[formcontrolname="password"]', { timeout: 25000 })
         ]);
 
         await mobileField.click({ clickCount: 3 });
