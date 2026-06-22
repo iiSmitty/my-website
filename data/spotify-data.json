@@ -29,17 +29,9 @@
         "rock",
         "alternative metal"
       ],
-      "popularity": 89,
+      "popularity": 90,
       "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
-    },
-    {
-      "name": "Alex Warren",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb35f6a81fda1041fd9a5828fb",
-      "genres": [],
-      "popularity": 85,
-      "uri": "spotify:artist:0fTSzq9jAh4c36UVb4V7CB",
-      "url": "https://open.spotify.com/artist/0fTSzq9jAh4c36UVb4V7CB"
     },
     {
       "name": "Francois van Coke",
@@ -50,6 +42,16 @@
       "popularity": 42,
       "uri": "spotify:artist:7pJtnZQLPJmqzVfdIz7eFF",
       "url": "https://open.spotify.com/artist/7pJtnZQLPJmqzVfdIz7eFF"
+    },
+    {
+      "name": "Die Heuwels Fantasties",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb7e5ed68cd28045d603b7c82a",
+      "genres": [
+        "afrikaans pop"
+      ],
+      "popularity": 45,
+      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
+      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
     }
   ],
   "topTracks": [
@@ -74,14 +76,74 @@
       "url": "https://open.spotify.com/track/5BZsQlgw21vDOAjoqkNgKb"
     },
     {
-      "name": "In My Head",
-      "artist": "Jason Derulo",
-      "album": "Jason Derulo (International)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273293e8055dd8814fcdf4742f7",
-      "duration": "3:19",
-      "popularity": 75,
-      "uri": "spotify:track:6St9lR6dhV2tpCNVz7qfrS",
-      "url": "https://open.spotify.com/track/6St9lR6dhV2tpCNVz7qfrS"
+      "name": "Lifetime",
+      "artist": "Justin Bieber",
+      "album": "Justice (Triple Chucks Deluxe)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a01fed49fe3a84a9919cef29",
+      "duration": "3:27",
+      "popularity": 67,
+      "uri": "spotify:track:10Z9RbwrTbQ0gQeNRJ2dC1",
+      "url": "https://open.spotify.com/track/10Z9RbwrTbQ0gQeNRJ2dC1"
+    },
+    {
+      "name": "Heart",
+      "artist": "Yiruma",
+      "album": "Piano",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273ca6f3df70ef0abcdfbf4c6d9",
+      "duration": "3:41",
+      "popularity": 50,
+      "uri": "spotify:track:12uKPMZ4pjNNwMQAYXlS4D",
+      "url": "https://open.spotify.com/track/12uKPMZ4pjNNwMQAYXlS4D"
+    },
+    {
+      "name": "Wait There",
+      "artist": "Yiruma",
+      "album": "The Best - Reminiscent 10th Anniversary",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273753900acd464d31f3c7e6e4e",
+      "duration": "4:06",
+      "popularity": 50,
+      "uri": "spotify:track:2U23anbtk7V1UpCSFXzFAm",
+      "url": "https://open.spotify.com/track/2U23anbtk7V1UpCSFXzFAm"
+    },
+    {
+      "name": "Sunset Bird",
+      "artist": "Yiruma",
+      "album": "River Flows In You",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2734c70baab4550e497314d7abd",
+      "duration": "3:11",
+      "popularity": 49,
+      "uri": "spotify:track:3JbR4uAoCFIEi2l8RKgdJH",
+      "url": "https://open.spotify.com/track/3JbR4uAoCFIEi2l8RKgdJH"
+    },
+    {
+      "name": "Beauty And A Beat",
+      "artist": "Our Last Night",
+      "album": "Beauty And A Beat",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27379246c1deba9aeef4760b339",
+      "duration": "3:47",
+      "popularity": 62,
+      "uri": "spotify:track:2tVnJCm2TuAfWLj5GDLY9k",
+      "url": "https://open.spotify.com/track/2tVnJCm2TuAfWLj5GDLY9k"
+    },
+    {
+      "name": "Promise Me - 09 | 26",
+      "artist": "Dead by April",
+      "album": "Promise Me (09 | 26)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2730b2f0ebdeaeee90854aae686",
+      "duration": "3:28",
+      "popularity": 53,
+      "uri": "spotify:track:4lmYbOkYADhQPBJVX2SoGU",
+      "url": "https://open.spotify.com/track/4lmYbOkYADhQPBJVX2SoGU"
+    },
+    {
+      "name": "without u - unplugged",
+      "artist": "LSR/CITY",
+      "album": "without u (unplugged)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c14cda5b8fc3f379549d00cf",
+      "duration": "3:48",
+      "popularity": 47,
+      "uri": "spotify:track:6xsBOf6S5MfJ7BPuGTBAps",
+      "url": "https://open.spotify.com/track/6xsBOf6S5MfJ7BPuGTBAps"
     },
     {
       "name": "Hope",
@@ -92,67 +154,7 @@
       "popularity": 47,
       "uri": "spotify:track:0JsQgMKqwYdDDGjXzMwCPU",
       "url": "https://open.spotify.com/track/0JsQgMKqwYdDDGjXzMwCPU"
-    },
-    {
-      "name": "If I Could See You Again",
-      "artist": "Yiruma",
-      "album": "First Love (The Original & the Very First Recording)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2734bdb66d1335f8571240e755f",
-      "duration": "3:25",
-      "popularity": 50,
-      "uri": "spotify:track:19mdKKBhLAYrEO5vVSkmIv",
-      "url": "https://open.spotify.com/track/19mdKKBhLAYrEO5vVSkmIv"
-    },
-    {
-      "name": "Kiss The Rain",
-      "artist": "Yiruma",
-      "album": "From The Yellow Room (The Original & the Very First Recording)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a9173cdb5fc02e5dafc32a03",
-      "duration": "4:20",
-      "popularity": 65,
-      "uri": "spotify:track:7vd1j4IDTU0koES9M8dvBQ",
-      "url": "https://open.spotify.com/track/7vd1j4IDTU0koES9M8dvBQ"
-    },
-    {
-      "name": "River Flows In You",
-      "artist": "Yiruma",
-      "album": "First Love (The Original & the Very First Recording)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2734bdb66d1335f8571240e755f",
-      "duration": "3:08",
-      "popularity": 74,
-      "uri": "spotify:track:2agBDIr9MYDUducQPC1sFU",
-      "url": "https://open.spotify.com/track/2agBDIr9MYDUducQPC1sFU"
-    },
-    {
-      "name": "May Be",
-      "artist": "Yiruma",
-      "album": "First Love (The Original & the Very First Recording)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2734bdb66d1335f8571240e755f",
-      "duration": "4:00",
-      "popularity": 58,
-      "uri": "spotify:track:42WpwYm7DYxbbVbUO35LUX",
-      "url": "https://open.spotify.com/track/42WpwYm7DYxbbVbUO35LUX"
-    },
-    {
-      "name": "When The Love Falls",
-      "artist": "Yiruma",
-      "album": "First Love (The Original & the Very First Recording)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2734bdb66d1335f8571240e755f",
-      "duration": "3:17",
-      "popularity": 53,
-      "uri": "spotify:track:0DVnuLTzoFyQS0ZV9Ygqsb",
-      "url": "https://open.spotify.com/track/0DVnuLTzoFyQS0ZV9Ygqsb"
-    },
-    {
-      "name": "Slide",
-      "artist": "The Goo Goo Dolls",
-      "album": "Dizzy up the Girl",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273eda9478c39a21e1cdc6609ca",
-      "duration": "3:32",
-      "popularity": 79,
-      "uri": "spotify:track:0nnwn7LWHCAu09jfuH1xTA",
-      "url": "https://open.spotify.com/track/0nnwn7LWHCAu09jfuH1xTA"
     }
   ],
-  "lastUpdated": "2026-06-15T04:46:06.557Z"
+  "lastUpdated": "2026-06-22T04:45:56.227Z"
 }
