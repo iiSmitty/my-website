@@ -19,7 +19,7 @@ jobs:
           node-version: '16'
 
       - name: Install dependencies
-        run: npm install axios # Add any other packages you need for spotify-data-fetcher.js
+        run: npm install axios --no-save
 
       - name: Fetch Spotify data
         run: node .github/scripts/spotify-data-fetcher.js
@@ -29,9 +29,7 @@ jobs:
           SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
 
       - name: Clean up Node.js files
-        run: |
-          rm -rf node_modules
-          rm -f package.json package-lock.json
+        run: rm -rf node_modules
 
       - name: Commit and push if changed
         run: |
