@@ -104,29 +104,33 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
                 <button class="win95-button win95-close" style="visibility:hidden">×</button>
             </div>
             <div class="win95-dialog-content">
-                <div class="dialog-logo">
-                    <div class="windows-logo">
-                        <div class="bottom-left"></div>
-                        <div class="bottom-right"></div>
-                    </div>
-                </div>
                 <div class="dialog-message">
                     Welcome to Windows 95
                 </div>
-                <div class="dialog-buttons">
-                    <button class="win95-button-large" id="start-windows">Start Windows</button>
+                <div class="startup-taskbar">
+                    <button class="win95-start-button" id="start-windows" aria-label="Start — click here to begin">
+                        <span class="start-flag" aria-hidden="true">
+                            <span class="start-flag-css"><i></i><i></i><i></i><i></i></span>
+                        </span>
+                        <span class="start-label">Start</span>
+                    </button>
+                    <div class="start-hint">
+                        <span class="start-hint-arrow" aria-hidden="true">&#8656;</span>
+                        <span class="start-hint-text">Click here to begin.</span>
+                    </div>
                 </div>
             </div>
         `;
 
-        // Set the background to teal
-        document.body.style.backgroundColor = '#008080';
+        // Enter startup mode: teal background, full-height centering, no scroll
+        document.body.classList.add('startup');
 
         // Add to body
         document.body.appendChild(dialog);
 
-        // Get the Start Windows button
+        // Get the Start Windows button and focus it for keyboard users
         const startButton = document.getElementById('start-windows');
+        startButton.focus();
 
         // Add click handler to Start Windows button
         startButton.addEventListener('click', function() {
@@ -134,7 +138,8 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
             playWin95Sound('complete');
             startupSoundPlayed = true;
 
-            // Hide dialog with fade effect
+            // Leave startup mode and hide dialog with fade effect
+            document.body.classList.remove('startup');
             dialog.style.opacity = '0';
             setTimeout(() => {
                 dialog.style.display = 'none';

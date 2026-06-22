@@ -459,6 +459,138 @@ body.startup {
     margin-top: 15px;
 }
 
+/* Startup "Click here to begin." taskbar */
+.win95-dialog:has(.startup-taskbar) {
+    width: auto;
+    min-width: 280px;
+    max-width: min(440px, calc(100vw - 24px));
+}
+
+.startup-taskbar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background-color: #c0c0c0;
+    border-top: 2px solid #dfdfdf;
+    padding: 8px 12px;
+    margin: 18px -15px -15px; /* bleed to the dialog edges, like a real taskbar */
+}
+
+.win95-start-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    padding: 3px 9px 3px 4px;
+    font-family: "MS Sans Serif", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1;
+    color: #000000;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.win95-start-button:active {
+    border-style: inset;
+    padding: 4px 8px 2px 5px;
+}
+
+.win95-start-button:focus-visible {
+    outline: 1px dotted #000000;
+    outline-offset: 2px;
+}
+
+.start-flag {
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    flex-shrink: 0;
+}
+
+.start-label {
+    letter-spacing: 0.5px;
+}
+
+/* The waving 4-pane Windows flag, drawn in CSS (pure Win95 colors) */
+.start-flag-css {
+    width: 18px;
+    height: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1px;
+    transform: skewX(-9deg);
+}
+
+.start-flag-css i {
+    display: block;
+}
+
+.start-flag-css i:nth-child(1) { background-color: #ff0000; }
+.start-flag-css i:nth-child(2) { background-color: #00ff00; }
+.start-flag-css i:nth-child(3) { background-color: #0000ff; }
+.start-flag-css i:nth-child(4) { background-color: #ffff00; }
+
+.start-hint {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: start-hint-pulse 1.1s steps(2, end) infinite;
+}
+
+.start-hint-arrow {
+    color: #ffe000;
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 1;
+    text-shadow: 1px 1px 0 #9a8500;
+}
+
+.start-hint-text {
+    font-family: "MS Sans Serif", Arial, sans-serif;
+    font-size: 16px;
+    color: #000000;
+    white-space: nowrap;
+}
+
+@keyframes start-hint-pulse {
+    0%   { opacity: 1; }
+    50%  { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+/* Respect users who prefer reduced motion: no flashing hint */
+@media (prefers-reduced-motion: reduce) {
+    .start-hint {
+        animation: none;
+    }
+}
+
+/* Keep the Start button + hint on one line on narrow phones */
+@media (max-width: 360px) {
+    .startup-taskbar {
+        gap: 10px;
+        padding: 8px 10px;
+    }
+
+    .start-hint {
+        gap: 6px;
+    }
+
+    .start-hint-arrow {
+        font-size: 20px;
+    }
+
+    .start-hint-text {
+        font-size: 13px;
+    }
+}
+
 .faith-message {
     color: #000080; /* Windows 95 blue */
     font-weight: bold;
