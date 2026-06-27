@@ -54,7 +54,7 @@ jobs:
       - name: Install dependencies
         if: steps.check_update.outputs.skip != 'true'
         run: |
-          npm install puppeteer
+          npm install puppeteer --no-save
           npx puppeteer browsers install chrome
 
       - name: Update coffee stats (with retry)
@@ -90,6 +90,6 @@ jobs:
             echo "Commit message: $COMMIT_MSG"
             git add data/coffee-stats.json
             git commit -m "$COMMIT_MSG"
-            git pull --rebase origin main
+            git pull --rebase --autostash origin main
             git push
           fi
