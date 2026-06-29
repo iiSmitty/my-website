@@ -4,7 +4,7 @@
       "name": "Yiruma",
       "image": "https://i.scdn.co/image/ab6761610000e5eb4e986b80ca52a03792ac1b3f",
       "genres": [
-        "neoclassical"
+        "afrikaans pop"
       ],
       "popularity": 64,
       "uri": "spotify:artist:0fauHpmSHwodVYIjTqOGHz",
@@ -39,7 +39,7 @@
       "genres": [
         "afrikaans pop"
       ],
-      "popularity": 42,
+      "popularity": 43,
       "uri": "spotify:artist:7pJtnZQLPJmqzVfdIz7eFF",
       "url": "https://open.spotify.com/artist/7pJtnZQLPJmqzVfdIz7eFF"
     },
@@ -47,9 +47,9 @@
       "name": "Die Heuwels Fantasties",
       "image": "https://i.scdn.co/image/ab6761610000e5eb7e5ed68cd28045d603b7c82a",
       "genres": [
-        "afrikaans pop"
+        "neoclassical"
       ],
-      "popularity": 45,
+      "popularity": 46,
       "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
       "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
     }
@@ -66,54 +66,14 @@
       "url": "https://open.spotify.com/track/0RiRZpuVRbi7oqRdSMwhQY"
     },
     {
-      "name": "DAISIES",
-      "artist": "Justin Bieber",
-      "album": "SWAG",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273d65c4773bc5061fd27facc5b",
-      "duration": "2:56",
-      "popularity": 95,
-      "uri": "spotify:track:5BZsQlgw21vDOAjoqkNgKb",
-      "url": "https://open.spotify.com/track/5BZsQlgw21vDOAjoqkNgKb"
-    },
-    {
-      "name": "Lifetime",
-      "artist": "Justin Bieber",
-      "album": "Justice (Triple Chucks Deluxe)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a01fed49fe3a84a9919cef29",
-      "duration": "3:27",
-      "popularity": 67,
-      "uri": "spotify:track:10Z9RbwrTbQ0gQeNRJ2dC1",
-      "url": "https://open.spotify.com/track/10Z9RbwrTbQ0gQeNRJ2dC1"
-    },
-    {
-      "name": "Heart",
-      "artist": "Yiruma",
-      "album": "Piano",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273ca6f3df70ef0abcdfbf4c6d9",
-      "duration": "3:41",
-      "popularity": 50,
-      "uri": "spotify:track:12uKPMZ4pjNNwMQAYXlS4D",
-      "url": "https://open.spotify.com/track/12uKPMZ4pjNNwMQAYXlS4D"
-    },
-    {
-      "name": "Wait There",
-      "artist": "Yiruma",
-      "album": "The Best - Reminiscent 10th Anniversary",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273753900acd464d31f3c7e6e4e",
-      "duration": "4:06",
-      "popularity": 50,
-      "uri": "spotify:track:2U23anbtk7V1UpCSFXzFAm",
-      "url": "https://open.spotify.com/track/2U23anbtk7V1UpCSFXzFAm"
-    },
-    {
-      "name": "Sunset Bird",
-      "artist": "Yiruma",
-      "album": "River Flows In You",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2734c70baab4550e497314d7abd",
-      "duration": "3:11",
-      "popularity": 49,
-      "uri": "spotify:track:3JbR4uAoCFIEi2l8RKgdJH",
-      "url": "https://open.spotify.com/track/3JbR4uAoCFIEi2l8RKgdJH"
+      "name": "You've Got a Friend in Me",
+      "artist": "Randy Newman",
+      "album": "Toy Story (Original Motion Picture Soundtrack)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739e26f06f82a65f3ceb6c259c",
+      "duration": "2:04",
+      "popularity": 77,
+      "uri": "spotify:track:2stkLJ0JNcXkIRDNF3ld6c",
+      "url": "https://open.spotify.com/track/2stkLJ0JNcXkIRDNF3ld6c"
     },
     {
       "name": "Beauty And A Beat",
@@ -126,14 +86,14 @@
       "url": "https://open.spotify.com/track/2tVnJCm2TuAfWLj5GDLY9k"
     },
     {
-      "name": "Promise Me - 09 | 26",
-      "artist": "Dead by April",
-      "album": "Promise Me (09 | 26)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2730b2f0ebdeaeee90854aae686",
-      "duration": "3:28",
-      "popularity": 53,
-      "uri": "spotify:track:4lmYbOkYADhQPBJVX2SoGU",
-      "url": "https://open.spotify.com/track/4lmYbOkYADhQPBJVX2SoGU"
+      "name": "It Girl",
+      "artist": "Jason Derulo",
+      "album": "Future History (Deluxe Edition)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27381541b43fcbc56488853de26",
+      "duration": "3:12",
+      "popularity": 75,
+      "uri": "spotify:track:4fINc8dnfcz7AdhFYVA4i7",
+      "url": "https://open.spotify.com/track/4fINc8dnfcz7AdhFYVA4i7"
     },
     {
       "name": "without u - unplugged",
@@ -146,15 +106,55 @@
       "url": "https://open.spotify.com/track/6xsBOf6S5MfJ7BPuGTBAps"
     },
     {
-      "name": "Hope",
+      "name": "Slide",
+      "artist": "The Goo Goo Dolls",
+      "album": "Dizzy up the Girl",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273eda9478c39a21e1cdc6609ca",
+      "duration": "3:32",
+      "popularity": 78,
+      "uri": "spotify:track:0nnwn7LWHCAu09jfuH1xTA",
+      "url": "https://open.spotify.com/track/0nnwn7LWHCAu09jfuH1xTA"
+    },
+    {
+      "name": "Kyk",
+      "artist": "Brendan Peyper",
+      "album": "Kyk",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273bf13266ef0a1fffd9626d81a",
+      "duration": "3:28",
+      "popularity": 49,
+      "uri": "spotify:track:0xaGU2EmiHBkS92f7ngSgm",
+      "url": "https://open.spotify.com/track/0xaGU2EmiHBkS92f7ngSgm"
+    },
+    {
+      "name": "Nie Alleen Nie",
+      "artist": "Francois van Coke",
+      "album": "Kanniedood",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739a1ab7441ab311fbbb519aa6",
+      "duration": "2:39",
+      "popularity": 26,
+      "uri": "spotify:track:0yXCVcqwnZdM2GVGtSMRS3",
+      "url": "https://open.spotify.com/track/0yXCVcqwnZdM2GVGtSMRS3"
+    },
+    {
+      "name": "Heart",
       "artist": "Yiruma",
-      "album": "P.N.O.N.I (The Original & the Very First Recording)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b44d6e73a7b8911c955401ce",
-      "duration": "2:50",
-      "popularity": 47,
-      "uri": "spotify:track:0JsQgMKqwYdDDGjXzMwCPU",
-      "url": "https://open.spotify.com/track/0JsQgMKqwYdDDGjXzMwCPU"
+      "album": "Piano",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273ca6f3df70ef0abcdfbf4c6d9",
+      "duration": "3:41",
+      "popularity": 50,
+      "uri": "spotify:track:12uKPMZ4pjNNwMQAYXlS4D",
+      "url": "https://open.spotify.com/track/12uKPMZ4pjNNwMQAYXlS4D"
+    },
+    {
+      "name": "Dexter - The blood theme",
+      "artist": "Geek Music",
+      "album": "Dexter - The Blood Theme",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273fc3ca027cebcd37703dca3f7",
+      "duration": "2:13",
+      "popularity": 51,
+      "uri": "spotify:track:1NSigpoXX8d3On3V10KyZp",
+      "url": "https://open.spotify.com/track/1NSigpoXX8d3On3V10KyZp"
     }
   ],
-  "lastUpdated": "2026-06-22T04:45:56.227Z"
+  "lastUpdated": "2026-06-29T04:13:51.260Z"
 }
