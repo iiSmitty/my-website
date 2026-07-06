@@ -1,26 +1,6 @@
 {
   "topArtists": [
     {
-      "name": "Yiruma",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb4e986b80ca52a03792ac1b3f",
-      "genres": [
-        "afrikaans pop"
-      ],
-      "popularity": 64,
-      "uri": "spotify:artist:0fauHpmSHwodVYIjTqOGHz",
-      "url": "https://open.spotify.com/artist/0fauHpmSHwodVYIjTqOGHz"
-    },
-    {
-      "name": "Dead by April",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebf3770344c0b2952acd65b79f",
-      "genres": [
-        "metalcore"
-      ],
-      "popularity": 52,
-      "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
-      "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
-    },
-    {
       "name": "Linkin Park",
       "image": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
       "genres": [
@@ -34,6 +14,17 @@
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
     {
+      "name": "Our Last Night",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb9284eb7ab597b8b48e46bbdd",
+      "genres": [
+        "post-hardcore",
+        "metalcore"
+      ],
+      "popularity": 66,
+      "uri": "spotify:artist:00YTqRClk82aMchQQpYMd5",
+      "url": "https://open.spotify.com/artist/00YTqRClk82aMchQQpYMd5"
+    },
+    {
       "name": "Francois van Coke",
       "image": "https://i.scdn.co/image/ab6761610000e5eb88ab6df308f8230bc16e2745",
       "genres": [
@@ -44,14 +35,27 @@
       "url": "https://open.spotify.com/artist/7pJtnZQLPJmqzVfdIz7eFF"
     },
     {
-      "name": "Die Heuwels Fantasties",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb7e5ed68cd28045d603b7c82a",
+      "name": "Forrest Frank",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebfc23429951b765040e928baf",
       "genres": [
-        "neoclassical"
+        "christian",
+        "christian pop",
+        "christian hip hop",
+        "worship",
+        "christian lo-fi",
+        "christian r&b"
       ],
-      "popularity": 46,
-      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
-      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
+      "popularity": 79,
+      "uri": "spotify:artist:1scVfBymTr3CeZ4imMj1QJ",
+      "url": "https://open.spotify.com/artist/1scVfBymTr3CeZ4imMj1QJ"
+    },
+    {
+      "name": "Randy Newman",
+      "image": "https://i.scdn.co/image/ab6772690000c46cce7143d8941faa26b2bea7aa",
+      "genres": [],
+      "popularity": 65,
+      "uri": "spotify:artist:3HQyFCFFfJO3KKBlUfZsyW",
+      "url": "https://open.spotify.com/artist/3HQyFCFFfJO3KKBlUfZsyW"
     }
   ],
   "topTracks": [
@@ -71,7 +75,7 @@
       "album": "Toy Story (Original Motion Picture Soundtrack)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2739e26f06f82a65f3ceb6c259c",
       "duration": "2:04",
-      "popularity": 77,
+      "popularity": 78,
       "uri": "spotify:track:2stkLJ0JNcXkIRDNF3ld6c",
       "url": "https://open.spotify.com/track/2stkLJ0JNcXkIRDNF3ld6c"
     },
@@ -81,9 +85,19 @@
       "album": "Beauty And A Beat",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27379246c1deba9aeef4760b339",
       "duration": "3:47",
-      "popularity": 62,
+      "popularity": 61,
       "uri": "spotify:track:2tVnJCm2TuAfWLj5GDLY9k",
       "url": "https://open.spotify.com/track/2tVnJCm2TuAfWLj5GDLY9k"
+    },
+    {
+      "name": "The Other Side",
+      "artist": "Jason Derulo",
+      "album": "Tattoos",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273ba30e4d27e93015180b4924d",
+      "duration": "3:46",
+      "popularity": 69,
+      "uri": "spotify:track:6OPZtIV3uoZQT1YkoiEQH9",
+      "url": "https://open.spotify.com/track/6OPZtIV3uoZQT1YkoiEQH9"
     },
     {
       "name": "It Girl",
@@ -96,24 +110,24 @@
       "url": "https://open.spotify.com/track/4fINc8dnfcz7AdhFYVA4i7"
     },
     {
+      "name": "Repeat It",
+      "artist": "Martin Garrix, Ed Sheeran",
+      "album": "Repeat It",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27399acb124b8c5a05f39e839d2",
+      "duration": "3:11",
+      "popularity": 74,
+      "uri": "spotify:track:6TWWauThn6z8xOFpG4XF3O",
+      "url": "https://open.spotify.com/track/6TWWauThn6z8xOFpG4XF3O"
+    },
+    {
       "name": "without u - unplugged",
       "artist": "LSR/CITY",
       "album": "without u (unplugged)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273c14cda5b8fc3f379549d00cf",
       "duration": "3:48",
-      "popularity": 47,
+      "popularity": 46,
       "uri": "spotify:track:6xsBOf6S5MfJ7BPuGTBAps",
       "url": "https://open.spotify.com/track/6xsBOf6S5MfJ7BPuGTBAps"
-    },
-    {
-      "name": "Slide",
-      "artist": "The Goo Goo Dolls",
-      "album": "Dizzy up the Girl",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273eda9478c39a21e1cdc6609ca",
-      "duration": "3:32",
-      "popularity": 78,
-      "uri": "spotify:track:0nnwn7LWHCAu09jfuH1xTA",
-      "url": "https://open.spotify.com/track/0nnwn7LWHCAu09jfuH1xTA"
     },
     {
       "name": "Kyk",
@@ -136,16 +150,6 @@
       "url": "https://open.spotify.com/track/0yXCVcqwnZdM2GVGtSMRS3"
     },
     {
-      "name": "Heart",
-      "artist": "Yiruma",
-      "album": "Piano",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273ca6f3df70ef0abcdfbf4c6d9",
-      "duration": "3:41",
-      "popularity": 50,
-      "uri": "spotify:track:12uKPMZ4pjNNwMQAYXlS4D",
-      "url": "https://open.spotify.com/track/12uKPMZ4pjNNwMQAYXlS4D"
-    },
-    {
       "name": "Dexter - The blood theme",
       "artist": "Geek Music",
       "album": "Dexter - The Blood Theme",
@@ -156,5 +160,5 @@
       "url": "https://open.spotify.com/track/1NSigpoXX8d3On3V10KyZp"
     }
   ],
-  "lastUpdated": "2026-06-29T04:13:51.260Z"
+  "lastUpdated": "2026-07-06T03:51:14.536Z"
 }
