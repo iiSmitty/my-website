@@ -9,7 +9,7 @@
         "rock",
         "alternative metal"
       ],
-      "popularity": 90,
+      "popularity": 91,
       "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
@@ -25,14 +25,12 @@
       "url": "https://open.spotify.com/artist/00YTqRClk82aMchQQpYMd5"
     },
     {
-      "name": "Francois van Coke",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb88ab6df308f8230bc16e2745",
-      "genres": [
-        "afrikaans pop"
-      ],
-      "popularity": 43,
-      "uri": "spotify:artist:7pJtnZQLPJmqzVfdIz7eFF",
-      "url": "https://open.spotify.com/artist/7pJtnZQLPJmqzVfdIz7eFF"
+      "name": "Randy Newman",
+      "image": "https://i.scdn.co/image/ab6772690000c46cce7143d8941faa26b2bea7aa",
+      "genres": [],
+      "popularity": 65,
+      "uri": "spotify:artist:3HQyFCFFfJO3KKBlUfZsyW",
+      "url": "https://open.spotify.com/artist/3HQyFCFFfJO3KKBlUfZsyW"
     },
     {
       "name": "Forrest Frank",
@@ -50,24 +48,26 @@
       "url": "https://open.spotify.com/artist/1scVfBymTr3CeZ4imMj1QJ"
     },
     {
-      "name": "Randy Newman",
-      "image": "https://i.scdn.co/image/ab6772690000c46cce7143d8941faa26b2bea7aa",
-      "genres": [],
-      "popularity": 65,
-      "uri": "spotify:artist:3HQyFCFFfJO3KKBlUfZsyW",
-      "url": "https://open.spotify.com/artist/3HQyFCFFfJO3KKBlUfZsyW"
+      "name": "Die Heuwels Fantasties",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb7e5ed68cd28045d603b7c82a",
+      "genres": [
+        "afrikaans pop"
+      ],
+      "popularity": 46,
+      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
+      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
     }
   ],
   "topTracks": [
     {
-      "name": "Sunflower - Spider-Man: Into the Spider-Verse",
-      "artist": "Post Malone, Swae Lee",
-      "album": "Hollywood's Bleeding",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739478c87599550dd73bfa7e02",
-      "duration": "2:37",
-      "popularity": 86,
-      "uri": "spotify:track:0RiRZpuVRbi7oqRdSMwhQY",
-      "url": "https://open.spotify.com/track/0RiRZpuVRbi7oqRdSMwhQY"
+      "name": "Numb",
+      "artist": "Habib Ice",
+      "album": "Numb",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2732d855aec0febc1e1eb35e044",
+      "duration": "4:49",
+      "popularity": 46,
+      "uri": "spotify:track:5OXwkab4Hk5KweGDb2qF0H",
+      "url": "https://open.spotify.com/track/5OXwkab4Hk5KweGDb2qF0H"
     },
     {
       "name": "You've Got a Friend in Me",
@@ -80,14 +80,34 @@
       "url": "https://open.spotify.com/track/2stkLJ0JNcXkIRDNF3ld6c"
     },
     {
-      "name": "Beauty And A Beat",
-      "artist": "Our Last Night",
-      "album": "Beauty And A Beat",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27379246c1deba9aeef4760b339",
-      "duration": "3:47",
-      "popularity": 61,
-      "uri": "spotify:track:2tVnJCm2TuAfWLj5GDLY9k",
-      "url": "https://open.spotify.com/track/2tVnJCm2TuAfWLj5GDLY9k"
+      "name": "Repeat It",
+      "artist": "Martin Garrix, Ed Sheeran",
+      "album": "Repeat It",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27399acb124b8c5a05f39e839d2",
+      "duration": "3:11",
+      "popularity": 77,
+      "uri": "spotify:track:6TWWauThn6z8xOFpG4XF3O",
+      "url": "https://open.spotify.com/track/6TWWauThn6z8xOFpG4XF3O"
+    },
+    {
+      "name": "Tubthumping",
+      "artist": "Chumbawamba",
+      "album": "Tubthumper",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2736cfc470251e23a7bb6a38d66",
+      "duration": "4:38",
+      "popularity": 76,
+      "uri": "spotify:track:22HYEJveCvykVDHDiEEmjZ",
+      "url": "https://open.spotify.com/track/22HYEJveCvykVDHDiEEmjZ"
+    },
+    {
+      "name": "Married Life - From \"Up\"/Score",
+      "artist": "Michael Giacchino",
+      "album": "Up (Originalnyi Saundtrek)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27345e59926b24fcb5b43701d79",
+      "duration": "4:10",
+      "popularity": 14,
+      "uri": "spotify:track:6CYJhYI8FzH1IwhSNTvRTN",
+      "url": "https://open.spotify.com/track/6CYJhYI8FzH1IwhSNTvRTN"
     },
     {
       "name": "The Other Side",
@@ -105,60 +125,40 @@
       "album": "Future History (Deluxe Edition)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27381541b43fcbc56488853de26",
       "duration": "3:12",
-      "popularity": 75,
+      "popularity": 76,
       "uri": "spotify:track:4fINc8dnfcz7AdhFYVA4i7",
       "url": "https://open.spotify.com/track/4fINc8dnfcz7AdhFYVA4i7"
     },
     {
-      "name": "Repeat It",
-      "artist": "Martin Garrix, Ed Sheeran",
-      "album": "Repeat It",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27399acb124b8c5a05f39e839d2",
-      "duration": "3:11",
+      "name": "Welcome to My Life",
+      "artist": "Simple Plan",
+      "album": "Still Not Getting Any...",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2736cb8cbc645eebdfc0ebffa72",
+      "duration": "3:26",
       "popularity": 74,
-      "uri": "spotify:track:6TWWauThn6z8xOFpG4XF3O",
-      "url": "https://open.spotify.com/track/6TWWauThn6z8xOFpG4XF3O"
+      "uri": "spotify:track:10rChmECwPcvTTj4w07hq4",
+      "url": "https://open.spotify.com/track/10rChmECwPcvTTj4w07hq4"
     },
     {
-      "name": "without u - unplugged",
-      "artist": "LSR/CITY",
-      "album": "without u (unplugged)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c14cda5b8fc3f379549d00cf",
-      "duration": "3:48",
-      "popularity": 46,
-      "uri": "spotify:track:6xsBOf6S5MfJ7BPuGTBAps",
-      "url": "https://open.spotify.com/track/6xsBOf6S5MfJ7BPuGTBAps"
+      "name": "Up From the Bottom",
+      "artist": "Linkin Park",
+      "album": "From Zero (Deluxe Edition)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27385091942613ffa9be596af76",
+      "duration": "3:03",
+      "popularity": 77,
+      "uri": "spotify:track:2SwdMXPvGdciXamSjfoNH9",
+      "url": "https://open.spotify.com/track/2SwdMXPvGdciXamSjfoNH9"
     },
     {
-      "name": "Kyk",
-      "artist": "Brendan Peyper",
-      "album": "Kyk",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273bf13266ef0a1fffd9626d81a",
-      "duration": "3:28",
-      "popularity": 49,
-      "uri": "spotify:track:0xaGU2EmiHBkS92f7ngSgm",
-      "url": "https://open.spotify.com/track/0xaGU2EmiHBkS92f7ngSgm"
-    },
-    {
-      "name": "Nie Alleen Nie",
-      "artist": "Francois van Coke",
-      "album": "Kanniedood",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739a1ab7441ab311fbbb519aa6",
-      "duration": "2:39",
-      "popularity": 26,
-      "uri": "spotify:track:0yXCVcqwnZdM2GVGtSMRS3",
-      "url": "https://open.spotify.com/track/0yXCVcqwnZdM2GVGtSMRS3"
-    },
-    {
-      "name": "Dexter - The blood theme",
-      "artist": "Geek Music",
-      "album": "Dexter - The Blood Theme",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273fc3ca027cebcd37703dca3f7",
-      "duration": "2:13",
-      "popularity": 51,
-      "uri": "spotify:track:1NSigpoXX8d3On3V10KyZp",
-      "url": "https://open.spotify.com/track/1NSigpoXX8d3On3V10KyZp"
+      "name": "Los Angeles",
+      "artist": "The Midnight",
+      "album": "Days of Thunder",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273dffe8e5a1e7c4eed82fbbfd5",
+      "duration": "6:29",
+      "popularity": 62,
+      "uri": "spotify:track:5MPLeS9KdZlA04OOCUb5Bt",
+      "url": "https://open.spotify.com/track/5MPLeS9KdZlA04OOCUb5Bt"
     }
   ],
-  "lastUpdated": "2026-07-06T03:51:14.536Z"
+  "lastUpdated": "2026-07-13T03:18:34.507Z"
 }
