@@ -1,6 +1,17 @@
 {
   "topArtists": [
     {
+      "name": "The Glitch Mob",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebc6571fd463203a0bf67e229d",
+      "genres": [
+        "glitch",
+        "dubstep"
+      ],
+      "popularity": 58,
+      "uri": "spotify:artist:3a9qv6NLHnsVxJUtKOMHvD",
+      "url": "https://open.spotify.com/artist/3a9qv6NLHnsVxJUtKOMHvD"
+    },
+    {
       "name": "Linkin Park",
       "image": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
       "genres": [
@@ -28,7 +39,7 @@
       "name": "Randy Newman",
       "image": "https://i.scdn.co/image/ab6772690000c46cce7143d8941faa26b2bea7aa",
       "genres": [],
-      "popularity": 65,
+      "popularity": 66,
       "uri": "spotify:artist:3HQyFCFFfJO3KKBlUfZsyW",
       "url": "https://open.spotify.com/artist/3HQyFCFFfJO3KKBlUfZsyW"
     },
@@ -46,16 +57,6 @@
       "popularity": 79,
       "uri": "spotify:artist:1scVfBymTr3CeZ4imMj1QJ",
       "url": "https://open.spotify.com/artist/1scVfBymTr3CeZ4imMj1QJ"
-    },
-    {
-      "name": "Die Heuwels Fantasties",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb7e5ed68cd28045d603b7c82a",
-      "genres": [
-        "afrikaans pop"
-      ],
-      "popularity": 46,
-      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
-      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
     }
   ],
   "topTracks": [
@@ -65,9 +66,19 @@
       "album": "Numb",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2732d855aec0febc1e1eb35e044",
       "duration": "4:49",
-      "popularity": 46,
+      "popularity": 45,
       "uri": "spotify:track:5OXwkab4Hk5KweGDb2qF0H",
       "url": "https://open.spotify.com/track/5OXwkab4Hk5KweGDb2qF0H"
+    },
+    {
+      "name": "Tubthumping",
+      "artist": "Chumbawamba",
+      "album": "Tubthumper",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2736cfc470251e23a7bb6a38d66",
+      "duration": "4:38",
+      "popularity": 77,
+      "uri": "spotify:track:22HYEJveCvykVDHDiEEmjZ",
+      "url": "https://open.spotify.com/track/22HYEJveCvykVDHDiEEmjZ"
     },
     {
       "name": "You've Got a Friend in Me",
@@ -80,26 +91,6 @@
       "url": "https://open.spotify.com/track/2stkLJ0JNcXkIRDNF3ld6c"
     },
     {
-      "name": "Repeat It",
-      "artist": "Martin Garrix, Ed Sheeran",
-      "album": "Repeat It",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27399acb124b8c5a05f39e839d2",
-      "duration": "3:11",
-      "popularity": 77,
-      "uri": "spotify:track:6TWWauThn6z8xOFpG4XF3O",
-      "url": "https://open.spotify.com/track/6TWWauThn6z8xOFpG4XF3O"
-    },
-    {
-      "name": "Tubthumping",
-      "artist": "Chumbawamba",
-      "album": "Tubthumper",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2736cfc470251e23a7bb6a38d66",
-      "duration": "4:38",
-      "popularity": 76,
-      "uri": "spotify:track:22HYEJveCvykVDHDiEEmjZ",
-      "url": "https://open.spotify.com/track/22HYEJveCvykVDHDiEEmjZ"
-    },
-    {
       "name": "Married Life - From \"Up\"/Score",
       "artist": "Michael Giacchino",
       "album": "Up (Originalnyi Saundtrek)",
@@ -108,6 +99,26 @@
       "popularity": 14,
       "uri": "spotify:track:6CYJhYI8FzH1IwhSNTvRTN",
       "url": "https://open.spotify.com/track/6CYJhYI8FzH1IwhSNTvRTN"
+    },
+    {
+      "name": "Repeat It",
+      "artist": "Martin Garrix, Ed Sheeran",
+      "album": "Repeat It",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27399acb124b8c5a05f39e839d2",
+      "duration": "3:11",
+      "popularity": 79,
+      "uri": "spotify:track:6TWWauThn6z8xOFpG4XF3O",
+      "url": "https://open.spotify.com/track/6TWWauThn6z8xOFpG4XF3O"
+    },
+    {
+      "name": "The Fate of Ophelia",
+      "artist": "Our Last Night",
+      "album": "The Fate of Ophelia",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27303b1389a6679d3d1592e7124",
+      "duration": "3:37",
+      "popularity": 68,
+      "uri": "spotify:track:7ggenkMBaa7obYGuAC9zzz",
+      "url": "https://open.spotify.com/track/7ggenkMBaa7obYGuAC9zzz"
     },
     {
       "name": "The Other Side",
@@ -148,17 +159,7 @@
       "popularity": 77,
       "uri": "spotify:track:2SwdMXPvGdciXamSjfoNH9",
       "url": "https://open.spotify.com/track/2SwdMXPvGdciXamSjfoNH9"
-    },
-    {
-      "name": "Los Angeles",
-      "artist": "The Midnight",
-      "album": "Days of Thunder",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273dffe8e5a1e7c4eed82fbbfd5",
-      "duration": "6:29",
-      "popularity": 62,
-      "uri": "spotify:track:5MPLeS9KdZlA04OOCUb5Bt",
-      "url": "https://open.spotify.com/track/5MPLeS9KdZlA04OOCUb5Bt"
     }
   ],
-  "lastUpdated": "2026-07-13T03:18:34.507Z"
+  "lastUpdated": "2026-07-20T03:26:25.163Z"
 }
