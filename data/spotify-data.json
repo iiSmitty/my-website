@@ -12,6 +12,16 @@
       "url": "https://open.spotify.com/artist/3a9qv6NLHnsVxJUtKOMHvD"
     },
     {
+      "name": "Dead by April",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebf3770344c0b2952acd65b79f",
+      "genres": [
+        "metalcore"
+      ],
+      "popularity": 52,
+      "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
+      "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
+    },
+    {
       "name": "Linkin Park",
       "image": "https://i.scdn.co/image/ab6761610000e5eb527d95dabbe8b8b527e8136f",
       "genres": [
@@ -25,26 +35,15 @@
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
     {
-      "name": "Dead by April",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebf3770344c0b2952acd65b79f",
+      "name": "Nickelback",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb2b4ea46f1ccb49ec25e74273",
       "genres": [
-        "metalcore"
+        "post-grunge",
+        "rock"
       ],
-      "popularity": 52,
-      "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
-      "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
-    },
-    {
-      "name": "Martin Garrix",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebf5b8ee60f1f4ee3453aba40b",
-      "genres": [
-        "edm",
-        "progressive house",
-        "electronica"
-      ],
-      "popularity": 78,
-      "uri": "spotify:artist:60d24wfXkVzDSfLS6hyCjZ",
-      "url": "https://open.spotify.com/artist/60d24wfXkVzDSfLS6hyCjZ"
+      "popularity": 82,
+      "uri": "spotify:artist:6deZN1bslXzeGvOLaLMOIF",
+      "url": "https://open.spotify.com/artist/6deZN1bslXzeGvOLaLMOIF"
     },
     {
       "name": "Michael Giacchino",
@@ -53,32 +52,12 @@
         "soundtrack",
         "score"
       ],
-      "popularity": 67,
+      "popularity": 69,
       "uri": "spotify:artist:4kLvhMAuCloLxoP1aVM7Lr",
       "url": "https://open.spotify.com/artist/4kLvhMAuCloLxoP1aVM7Lr"
     }
   ],
   "topTracks": [
-    {
-      "name": "Tubthumping",
-      "artist": "Chumbawamba",
-      "album": "Tubthumper",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2736cfc470251e23a7bb6a38d66",
-      "duration": "4:38",
-      "popularity": 76,
-      "uri": "spotify:track:22HYEJveCvykVDHDiEEmjZ",
-      "url": "https://open.spotify.com/track/22HYEJveCvykVDHDiEEmjZ"
-    },
-    {
-      "name": "Numb - Dark Country Version",
-      "artist": "Lyrics Cowboy",
-      "album": "Linkin Park in Dark Country (Dark Country Version)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a967ef2c85c3cc010f462015",
-      "duration": "4:48",
-      "popularity": 47,
-      "uri": "spotify:track:1EAOkkvsaNQDzWHJgyr6Vi",
-      "url": "https://open.spotify.com/track/1EAOkkvsaNQDzWHJgyr6Vi"
-    },
     {
       "name": "Married Life - From \"Up\"/Score",
       "artist": "Michael Giacchino",
@@ -88,6 +67,26 @@
       "popularity": 13,
       "uri": "spotify:track:6CYJhYI8FzH1IwhSNTvRTN",
       "url": "https://open.spotify.com/track/6CYJhYI8FzH1IwhSNTvRTN"
+    },
+    {
+      "name": "Bangkinners",
+      "artist": "Francois van Coke",
+      "album": "Bangkinners",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735675c0fc22f2e1425d0ac45c",
+      "duration": "2:43",
+      "popularity": 36,
+      "uri": "spotify:track:31Hq2CG7LLW8pT5dVptsKu",
+      "url": "https://open.spotify.com/track/31Hq2CG7LLW8pT5dVptsKu"
+    },
+    {
+      "name": "Leave (Get Out)",
+      "artist": "Our Last Night",
+      "album": "Leave (Get Out)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27394a85a379e613da43cb81200",
+      "duration": "3:21",
+      "popularity": 62,
+      "uri": "spotify:track:6Lue9MrOY1bv852jhqjwF7",
+      "url": "https://open.spotify.com/track/6Lue9MrOY1bv852jhqjwF7"
     },
     {
       "name": "Beautiful Life",
@@ -100,26 +99,6 @@
       "url": "https://open.spotify.com/track/2SEKMZuNE4e3sckh8WUo1K"
     },
     {
-      "name": "Welcome to My Life",
-      "artist": "Simple Plan",
-      "album": "Still Not Getting Any...",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2736cb8cbc645eebdfc0ebffa72",
-      "duration": "3:26",
-      "popularity": 74,
-      "uri": "spotify:track:10rChmECwPcvTTj4w07hq4",
-      "url": "https://open.spotify.com/track/10rChmECwPcvTTj4w07hq4"
-    },
-    {
-      "name": "Up From the Bottom",
-      "artist": "Linkin Park",
-      "album": "From Zero (Deluxe Edition)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27385091942613ffa9be596af76",
-      "duration": "3:03",
-      "popularity": 76,
-      "uri": "spotify:track:2SwdMXPvGdciXamSjfoNH9",
-      "url": "https://open.spotify.com/track/2SwdMXPvGdciXamSjfoNH9"
-    },
-    {
       "name": "Fortune Days",
       "artist": "The Glitch Mob",
       "album": "Drink the Sea",
@@ -130,35 +109,55 @@
       "url": "https://open.spotify.com/track/5VWVVSABdgccboSdrKGiZH"
     },
     {
-      "name": "Our Heritage",
-      "artist": "Die Heuwels Fantasties, JR, Soweto Gospel Choir, HHP",
-      "album": "Our Heritage",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f6e4c73263ba7f46a997ecd5",
-      "duration": "2:59",
-      "popularity": 26,
-      "uri": "spotify:track:5cAwcy1JKv4sKd9yHMKL36",
-      "url": "https://open.spotify.com/track/5cAwcy1JKv4sKd9yHMKL36"
+      "name": "The Fate of Ophelia",
+      "artist": "Our Last Night",
+      "album": "The Fate of Ophelia",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27303b1389a6679d3d1592e7124",
+      "duration": "3:37",
+      "popularity": 67,
+      "uri": "spotify:track:7ggenkMBaa7obYGuAC9zzz",
+      "url": "https://open.spotify.com/track/7ggenkMBaa7obYGuAC9zzz"
     },
     {
-      "name": "So Onskuldig",
-      "artist": "Rooksein",
-      "album": "Kyk Op",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27341d13419bac2999c384eaff8",
-      "duration": "3:44",
-      "popularity": 18,
-      "uri": "spotify:track:6MleOKFzjVvYQaC2IXDIm2",
-      "url": "https://open.spotify.com/track/6MleOKFzjVvYQaC2IXDIm2"
+      "name": "This Is War",
+      "artist": "Thirty Seconds To Mars",
+      "album": "This Is War (Deluxe)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273dc71afe98ba69bee55dddf4e",
+      "duration": "5:26",
+      "popularity": 69,
+      "uri": "spotify:track:01v7kv0RTVaX4Vs8GcOGOP",
+      "url": "https://open.spotify.com/track/01v7kv0RTVaX4Vs8GcOGOP"
     },
     {
-      "name": "Repeat It",
-      "artist": "Martin Garrix, Ed Sheeran",
-      "album": "Repeat It",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27399acb124b8c5a05f39e839d2",
-      "duration": "3:11",
-      "popularity": 79,
-      "uri": "spotify:track:6TWWauThn6z8xOFpG4XF3O",
-      "url": "https://open.spotify.com/track/6TWWauThn6z8xOFpG4XF3O"
+      "name": "Far Away - 2020 Remaster",
+      "artist": "Nickelback",
+      "album": "All The Right Reasons (15th Anniversary Expanded Edition)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273bad7e941f557e06019b87fd4",
+      "duration": "3:58",
+      "popularity": 77,
+      "uri": "spotify:track:05rWggLwQ2weA4D2cRAt55",
+      "url": "https://open.spotify.com/track/05rWggLwQ2weA4D2cRAt55"
+    },
+    {
+      "name": "Gotta Be Somebody",
+      "artist": "Nickelback",
+      "album": "Dark Horse",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f74baf63e915712df348e647",
+      "duration": "4:12",
+      "popularity": 72,
+      "uri": "spotify:track:06T10fEzN8ZCcqzQZYA184",
+      "url": "https://open.spotify.com/track/06T10fEzN8ZCcqzQZYA184"
+    },
+    {
+      "name": "Dear Maria, Count Me In",
+      "artist": "All Time Low",
+      "album": "So Wrong, It's Right",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c8913cd7b91bb7f6bbbec305",
+      "duration": "3:02",
+      "popularity": 82,
+      "uri": "spotify:track:0JJP0IS4w0fJx01EcrfkDe",
+      "url": "https://open.spotify.com/track/0JJP0IS4w0fJx01EcrfkDe"
     }
   ],
-  "lastUpdated": "2026-08-03T03:17:07.976Z"
+  "lastUpdated": "2026-08-10T01:59:58.747Z"
 }
