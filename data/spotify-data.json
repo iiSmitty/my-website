@@ -1,14 +1,15 @@
 {
   "topArtists": [
     {
-      "name": "Yiruma",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb4e986b80ca52a03792ac1b3f",
+      "name": "The Glitch Mob",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebc6571fd463203a0bf67e229d",
       "genres": [
-        "neoclassical"
+        "glitch",
+        "dubstep"
       ],
-      "popularity": 64,
-      "uri": "spotify:artist:0fauHpmSHwodVYIjTqOGHz",
-      "url": "https://open.spotify.com/artist/0fauHpmSHwodVYIjTqOGHz"
+      "popularity": 59,
+      "uri": "spotify:artist:3a9qv6NLHnsVxJUtKOMHvD",
+      "url": "https://open.spotify.com/artist/3a9qv6NLHnsVxJUtKOMHvD"
     },
     {
       "name": "Dead by April",
@@ -29,132 +30,134 @@
         "rock",
         "alternative metal"
       ],
-      "popularity": 90,
+      "popularity": 91,
       "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
     {
-      "name": "Francois van Coke",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb88ab6df308f8230bc16e2745",
+      "name": "Nickelback",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb2b4ea46f1ccb49ec25e74273",
       "genres": [
-        "afrikaans pop"
+        "post-grunge",
+        "rock"
       ],
-      "popularity": 42,
-      "uri": "spotify:artist:7pJtnZQLPJmqzVfdIz7eFF",
-      "url": "https://open.spotify.com/artist/7pJtnZQLPJmqzVfdIz7eFF"
+      "popularity": 82,
+      "uri": "spotify:artist:6deZN1bslXzeGvOLaLMOIF",
+      "url": "https://open.spotify.com/artist/6deZN1bslXzeGvOLaLMOIF"
     },
     {
-      "name": "Die Heuwels Fantasties",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb7e5ed68cd28045d603b7c82a",
+      "name": "Michael Giacchino",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb9945209ac13720afd7eea2e3",
       "genres": [
-        "afrikaans pop"
+        "soundtrack",
+        "score"
       ],
-      "popularity": 45,
-      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
-      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
+      "popularity": 69,
+      "uri": "spotify:artist:4kLvhMAuCloLxoP1aVM7Lr",
+      "url": "https://open.spotify.com/artist/4kLvhMAuCloLxoP1aVM7Lr"
     }
   ],
   "topTracks": [
     {
-      "name": "Sunflower - Spider-Man: Into the Spider-Verse",
-      "artist": "Post Malone, Swae Lee",
-      "album": "Hollywood's Bleeding",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739478c87599550dd73bfa7e02",
-      "duration": "2:37",
-      "popularity": 86,
-      "uri": "spotify:track:0RiRZpuVRbi7oqRdSMwhQY",
-      "url": "https://open.spotify.com/track/0RiRZpuVRbi7oqRdSMwhQY"
+      "name": "Married Life - From \"Up\"/Score",
+      "artist": "Michael Giacchino",
+      "album": "Up (Originalnyi Saundtrek)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27345e59926b24fcb5b43701d79",
+      "duration": "4:10",
+      "popularity": 13,
+      "uri": "spotify:track:6CYJhYI8FzH1IwhSNTvRTN",
+      "url": "https://open.spotify.com/track/6CYJhYI8FzH1IwhSNTvRTN"
     },
     {
-      "name": "DAISIES",
-      "artist": "Justin Bieber",
-      "album": "SWAG",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273d65c4773bc5061fd27facc5b",
-      "duration": "2:56",
-      "popularity": 95,
-      "uri": "spotify:track:5BZsQlgw21vDOAjoqkNgKb",
-      "url": "https://open.spotify.com/track/5BZsQlgw21vDOAjoqkNgKb"
+      "name": "Bangkinners",
+      "artist": "Francois van Coke",
+      "album": "Bangkinners",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735675c0fc22f2e1425d0ac45c",
+      "duration": "2:43",
+      "popularity": 36,
+      "uri": "spotify:track:31Hq2CG7LLW8pT5dVptsKu",
+      "url": "https://open.spotify.com/track/31Hq2CG7LLW8pT5dVptsKu"
     },
     {
-      "name": "Lifetime",
-      "artist": "Justin Bieber",
-      "album": "Justice (Triple Chucks Deluxe)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a01fed49fe3a84a9919cef29",
-      "duration": "3:27",
-      "popularity": 67,
-      "uri": "spotify:track:10Z9RbwrTbQ0gQeNRJ2dC1",
-      "url": "https://open.spotify.com/track/10Z9RbwrTbQ0gQeNRJ2dC1"
-    },
-    {
-      "name": "Heart",
-      "artist": "Yiruma",
-      "album": "Piano",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273ca6f3df70ef0abcdfbf4c6d9",
-      "duration": "3:41",
-      "popularity": 50,
-      "uri": "spotify:track:12uKPMZ4pjNNwMQAYXlS4D",
-      "url": "https://open.spotify.com/track/12uKPMZ4pjNNwMQAYXlS4D"
-    },
-    {
-      "name": "Wait There",
-      "artist": "Yiruma",
-      "album": "The Best - Reminiscent 10th Anniversary",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273753900acd464d31f3c7e6e4e",
-      "duration": "4:06",
-      "popularity": 50,
-      "uri": "spotify:track:2U23anbtk7V1UpCSFXzFAm",
-      "url": "https://open.spotify.com/track/2U23anbtk7V1UpCSFXzFAm"
-    },
-    {
-      "name": "Sunset Bird",
-      "artist": "Yiruma",
-      "album": "River Flows In You",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2734c70baab4550e497314d7abd",
-      "duration": "3:11",
-      "popularity": 49,
-      "uri": "spotify:track:3JbR4uAoCFIEi2l8RKgdJH",
-      "url": "https://open.spotify.com/track/3JbR4uAoCFIEi2l8RKgdJH"
-    },
-    {
-      "name": "Beauty And A Beat",
+      "name": "Leave (Get Out)",
       "artist": "Our Last Night",
-      "album": "Beauty And A Beat",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27379246c1deba9aeef4760b339",
-      "duration": "3:47",
+      "album": "Leave (Get Out)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27394a85a379e613da43cb81200",
+      "duration": "3:21",
       "popularity": 62,
-      "uri": "spotify:track:2tVnJCm2TuAfWLj5GDLY9k",
-      "url": "https://open.spotify.com/track/2tVnJCm2TuAfWLj5GDLY9k"
+      "uri": "spotify:track:6Lue9MrOY1bv852jhqjwF7",
+      "url": "https://open.spotify.com/track/6Lue9MrOY1bv852jhqjwF7"
     },
     {
-      "name": "Promise Me - 09 | 26",
-      "artist": "Dead by April",
-      "album": "Promise Me (09 | 26)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2730b2f0ebdeaeee90854aae686",
-      "duration": "3:28",
-      "popularity": 53,
-      "uri": "spotify:track:4lmYbOkYADhQPBJVX2SoGU",
-      "url": "https://open.spotify.com/track/4lmYbOkYADhQPBJVX2SoGU"
+      "name": "Beautiful Life",
+      "artist": "Switchfoot",
+      "album": "Forever Now",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2737951c65b78a8fbafad95d693",
+      "duration": "3:54",
+      "popularity": 61,
+      "uri": "spotify:track:2SEKMZuNE4e3sckh8WUo1K",
+      "url": "https://open.spotify.com/track/2SEKMZuNE4e3sckh8WUo1K"
     },
     {
-      "name": "without u - unplugged",
-      "artist": "LSR/CITY",
-      "album": "without u (unplugged)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c14cda5b8fc3f379549d00cf",
-      "duration": "3:48",
-      "popularity": 47,
-      "uri": "spotify:track:6xsBOf6S5MfJ7BPuGTBAps",
-      "url": "https://open.spotify.com/track/6xsBOf6S5MfJ7BPuGTBAps"
+      "name": "Fortune Days",
+      "artist": "The Glitch Mob",
+      "album": "Drink the Sea",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273bd4a1098dd7c86d8aa4580f5",
+      "duration": "6:22",
+      "popularity": 52,
+      "uri": "spotify:track:5VWVVSABdgccboSdrKGiZH",
+      "url": "https://open.spotify.com/track/5VWVVSABdgccboSdrKGiZH"
     },
     {
-      "name": "Hope",
-      "artist": "Yiruma",
-      "album": "P.N.O.N.I (The Original & the Very First Recording)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b44d6e73a7b8911c955401ce",
-      "duration": "2:50",
-      "popularity": 47,
-      "uri": "spotify:track:0JsQgMKqwYdDDGjXzMwCPU",
-      "url": "https://open.spotify.com/track/0JsQgMKqwYdDDGjXzMwCPU"
+      "name": "The Fate of Ophelia",
+      "artist": "Our Last Night",
+      "album": "The Fate of Ophelia",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27303b1389a6679d3d1592e7124",
+      "duration": "3:37",
+      "popularity": 67,
+      "uri": "spotify:track:7ggenkMBaa7obYGuAC9zzz",
+      "url": "https://open.spotify.com/track/7ggenkMBaa7obYGuAC9zzz"
+    },
+    {
+      "name": "This Is War",
+      "artist": "Thirty Seconds To Mars",
+      "album": "This Is War (Deluxe)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273dc71afe98ba69bee55dddf4e",
+      "duration": "5:26",
+      "popularity": 69,
+      "uri": "spotify:track:01v7kv0RTVaX4Vs8GcOGOP",
+      "url": "https://open.spotify.com/track/01v7kv0RTVaX4Vs8GcOGOP"
+    },
+    {
+      "name": "Far Away - 2020 Remaster",
+      "artist": "Nickelback",
+      "album": "All The Right Reasons (15th Anniversary Expanded Edition)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273bad7e941f557e06019b87fd4",
+      "duration": "3:58",
+      "popularity": 77,
+      "uri": "spotify:track:05rWggLwQ2weA4D2cRAt55",
+      "url": "https://open.spotify.com/track/05rWggLwQ2weA4D2cRAt55"
+    },
+    {
+      "name": "Gotta Be Somebody",
+      "artist": "Nickelback",
+      "album": "Dark Horse",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f74baf63e915712df348e647",
+      "duration": "4:12",
+      "popularity": 72,
+      "uri": "spotify:track:06T10fEzN8ZCcqzQZYA184",
+      "url": "https://open.spotify.com/track/06T10fEzN8ZCcqzQZYA184"
+    },
+    {
+      "name": "Dear Maria, Count Me In",
+      "artist": "All Time Low",
+      "album": "So Wrong, It's Right",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c8913cd7b91bb7f6bbbec305",
+      "duration": "3:02",
+      "popularity": 82,
+      "uri": "spotify:track:0JJP0IS4w0fJx01EcrfkDe",
+      "url": "https://open.spotify.com/track/0JJP0IS4w0fJx01EcrfkDe"
     }
   ],
-  "lastUpdated": "2026-06-22T04:45:56.227Z"
+  "lastUpdated": "2026-08-10T01:59:58.747Z"
 }
