@@ -84,11 +84,35 @@ async function getTotalVisitsOptimized() {
         });
 
         console.log('Accessing login iframe...');
-        // CI (US-based runners) is slower to reach this ZA site than a local
-        // machine, so the iframe can take well over the old 8s budget to appear.
-        await page.waitForSelector('iframe[src*="coffee.toget.me"]', { timeout: 25000 });
+        // The loyalty page now lazy-loads the login iframe via WP Rocket: the
+        // real URL sits in data-src and only becomes src once the iframe scrolls
+        // into the viewport. Headless CI never scrolls it into view, so src
+        // stayed empty and the old `iframe[src*="coffee.toget.me"]` wait timed
+        // out. Match on data-src (or src, for backward compat), then promote
+        // data-src -> src ourselves to force the login frame to load.
+        // CI (US-based runners) is also slower to reach this ZA site than a
+        // local machine, so allow a generous budget for the iframe to appear.
+        await page.waitForSelector(
+            'iframe[data-src*="coffee.toget.me"], iframe[src*="coffee.toget.me"]',
+            { timeout: 25000 }
+        );
 
-        const iframeElement = await page.$('iframe[src*="coffee.toget.me"]');
+        await page.evaluate(() => {
+            const frames = Array.from(
+                document.querySelectorAll('iframe[data-src*="coffee.toget.me"]')
+            );
+            // The page renders desktop + mobile variants; prefer a visible one.
+            const target = frames.find(f => f.offsetParent !== null) || frames[0];
+            if (target && !target.src) {
+                target.src = target.getAttribute('data-src');
+            }
+        });
+
+        // Wait for the frame to actually navigate to the loyalty app.
+        const iframeElement = await page.waitForSelector(
+            'iframe[src*="coffee.toget.me"]',
+            { timeout: 25000 }
+        );
         const iframe = await iframeElement.contentFrame();
 
         if (!iframe) {
@@ -186,7 +210,7 @@ async function getTotalVisitsOptimized() {
         if (page) {
             try {
                 const iframeSrcs = await page.$$eval('iframe', frames =>
-                    frames.map(f => f.src || '(no src)'));
+                    frames.map(f => f.src || f.getAttribute('data-src') || '(no src)'));
                 console.error('Iframes present on page:',
                     iframeSrcs.length ? iframeSrcs : '(none)');
             } catch (e) {
@@ -267,8 +291,25 @@ class OptimizedCoffeeSession {
             timeout: 15000
         });
 
-        await this.page.waitForSelector('iframe[src*="coffee.toget.me"]', { timeout: 8000 });
-        const iframeElement = await this.page.$('iframe[src*="coffee.toget.me"]');
+        // See getTotalVisitsOptimized: the login iframe is lazy-loaded via
+        // WP Rocket (real URL in data-src), so promote data-src -> src ourselves.
+        await this.page.waitForSelector(
+            'iframe[data-src*="coffee.toget.me"], iframe[src*="coffee.toget.me"]',
+            { timeout: 8000 }
+        );
+        await this.page.evaluate(() => {
+            const frames = Array.from(
+                document.querySelectorAll('iframe[data-src*="coffee.toget.me"]')
+            );
+            const target = frames.find(f => f.offsetParent !== null) || frames[0];
+            if (target && !target.src) {
+                target.src = target.getAttribute('data-src');
+            }
+        });
+        const iframeElement = await this.page.waitForSelector(
+            'iframe[src*="coffee.toget.me"]',
+            { timeout: 8000 }
+        );
         this.iframe = await iframeElement.contentFrame();
 
         await new Promise(resolve => setTimeout(resolve, 800));
