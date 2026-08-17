@@ -1,25 +1,14 @@
 {
   "topArtists": [
     {
-      "name": "The Glitch Mob",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebc6571fd463203a0bf67e229d",
+      "name": "Jon Lind",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb23b24de886d487d55dfac9d7",
       "genres": [
-        "glitch",
-        "dubstep"
+        "country christian"
       ],
-      "popularity": 59,
-      "uri": "spotify:artist:3a9qv6NLHnsVxJUtKOMHvD",
-      "url": "https://open.spotify.com/artist/3a9qv6NLHnsVxJUtKOMHvD"
-    },
-    {
-      "name": "Dead by April",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebf3770344c0b2952acd65b79f",
-      "genres": [
-        "metalcore"
-      ],
-      "popularity": 52,
-      "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
-      "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
+      "popularity": 34,
+      "uri": "spotify:artist:1KwIL1B59vKjSV2vgbtDfq",
+      "url": "https://open.spotify.com/artist/1KwIL1B59vKjSV2vgbtDfq"
     },
     {
       "name": "Linkin Park",
@@ -35,46 +24,43 @@
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
     {
-      "name": "Nickelback",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb2b4ea46f1ccb49ec25e74273",
+      "name": "Lucas Maree",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb9ada3948798b3603a86ff8bb",
       "genres": [
-        "post-grunge",
-        "rock"
+        "afrikaans pop"
       ],
-      "popularity": 82,
-      "uri": "spotify:artist:6deZN1bslXzeGvOLaLMOIF",
-      "url": "https://open.spotify.com/artist/6deZN1bslXzeGvOLaLMOIF"
+      "popularity": 19,
+      "uri": "spotify:artist:4vDSGXGCMQc3aER86G4fTm",
+      "url": "https://open.spotify.com/artist/4vDSGXGCMQc3aER86G4fTm"
     },
     {
-      "name": "Michael Giacchino",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb9945209ac13720afd7eea2e3",
+      "name": "John Williams",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb86b13e4d2e65ebf694384ef4",
       "genres": [
         "soundtrack",
         "score"
       ],
-      "popularity": 69,
-      "uri": "spotify:artist:4kLvhMAuCloLxoP1aVM7Lr",
-      "url": "https://open.spotify.com/artist/4kLvhMAuCloLxoP1aVM7Lr"
+      "popularity": 71,
+      "uri": "spotify:artist:3dRfiJ2650SZu6GbydcHNb",
+      "url": "https://open.spotify.com/artist/3dRfiJ2650SZu6GbydcHNb"
+    },
+    {
+      "name": "Jonathan Geer",
+      "image": "https://i.scdn.co/image/ab67616d0000b2732b5a03a119167450c4a5c9c8",
+      "genres": [],
+      "popularity": 40,
+      "uri": "spotify:artist:6fyUMxz3J2qb6Nq6HhCCGt",
+      "url": "https://open.spotify.com/artist/6fyUMxz3J2qb6Nq6HhCCGt"
     }
   ],
   "topTracks": [
-    {
-      "name": "Married Life - From \"Up\"/Score",
-      "artist": "Michael Giacchino",
-      "album": "Up (Originalnyi Saundtrek)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27345e59926b24fcb5b43701d79",
-      "duration": "4:10",
-      "popularity": 13,
-      "uri": "spotify:track:6CYJhYI8FzH1IwhSNTvRTN",
-      "url": "https://open.spotify.com/track/6CYJhYI8FzH1IwhSNTvRTN"
-    },
     {
       "name": "Bangkinners",
       "artist": "Francois van Coke",
       "album": "Bangkinners",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2735675c0fc22f2e1425d0ac45c",
       "duration": "2:43",
-      "popularity": 36,
+      "popularity": 37,
       "uri": "spotify:track:31Hq2CG7LLW8pT5dVptsKu",
       "url": "https://open.spotify.com/track/31Hq2CG7LLW8pT5dVptsKu"
     },
@@ -99,65 +85,75 @@
       "url": "https://open.spotify.com/track/2SEKMZuNE4e3sckh8WUo1K"
     },
     {
-      "name": "Fortune Days",
-      "artist": "The Glitch Mob",
-      "album": "Drink the Sea",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273bd4a1098dd7c86d8aa4580f5",
-      "duration": "6:22",
-      "popularity": 52,
-      "uri": "spotify:track:5VWVVSABdgccboSdrKGiZH",
-      "url": "https://open.spotify.com/track/5VWVVSABdgccboSdrKGiZH"
+      "name": "The Day I Fall In Love (Karaoke Demonstration With Lead Vocal - In The Style Of Dolly Parton/James Ingram)",
+      "artist": "The Karaoke Channel",
+      "album": "The Karaoke Channel - Hard To Find Favorites: Country",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2732ab3261a6f777485244b31fd",
+      "duration": "4:06",
+      "popularity": 0,
+      "uri": "spotify:track:0OJwK9fOy7zAIKh9Mm8Zpp",
+      "url": "https://open.spotify.com/track/0OJwK9fOy7zAIKh9Mm8Zpp"
     },
     {
-      "name": "The Fate of Ophelia",
-      "artist": "Our Last Night",
-      "album": "The Fate of Ophelia",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27303b1389a6679d3d1592e7124",
-      "duration": "3:37",
-      "popularity": 67,
-      "uri": "spotify:track:7ggenkMBaa7obYGuAC9zzz",
-      "url": "https://open.spotify.com/track/7ggenkMBaa7obYGuAC9zzz"
+      "name": "DARKSIDE 2",
+      "artist": "CHMCL SØUP",
+      "album": "DARKSIDE 2",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27340fb2637b2357d24ce8e154f",
+      "duration": "2:16",
+      "popularity": 51,
+      "uri": "spotify:track:0dBatmVHLJ1fmX027R80JH",
+      "url": "https://open.spotify.com/track/0dBatmVHLJ1fmX027R80JH"
     },
     {
-      "name": "This Is War",
-      "artist": "Thirty Seconds To Mars",
-      "album": "This Is War (Deluxe)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273dc71afe98ba69bee55dddf4e",
-      "duration": "5:26",
+      "name": "Victoriabaai",
+      "artist": "Lucas Maree",
+      "album": "Kiekies",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738739adad935b9a0385c314a8",
+      "duration": "3:33",
+      "popularity": 28,
+      "uri": "spotify:track:5KQI0cWqhXxRMjXN1O3xAG",
+      "url": "https://open.spotify.com/track/5KQI0cWqhXxRMjXN1O3xAG"
+    },
+    {
+      "name": "Pray It Anyway",
+      "artist": "Jon Lind",
+      "album": "Pray It Anyway",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273dd1cfa31baee788d5319e81d",
+      "duration": "3:14",
+      "popularity": 45,
+      "uri": "spotify:track:5KRfllPvnPYXcESIvhtFBU",
+      "url": "https://open.spotify.com/track/5KRfllPvnPYXcESIvhtFBU"
+    },
+    {
+      "name": "The Other Side",
+      "artist": "Jason Derulo",
+      "album": "Tattoos",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273ba30e4d27e93015180b4924d",
+      "duration": "3:46",
       "popularity": 69,
-      "uri": "spotify:track:01v7kv0RTVaX4Vs8GcOGOP",
-      "url": "https://open.spotify.com/track/01v7kv0RTVaX4Vs8GcOGOP"
+      "uri": "spotify:track:6OPZtIV3uoZQT1YkoiEQH9",
+      "url": "https://open.spotify.com/track/6OPZtIV3uoZQT1YkoiEQH9"
     },
     {
-      "name": "Far Away - 2020 Remaster",
-      "artist": "Nickelback",
-      "album": "All The Right Reasons (15th Anniversary Expanded Edition)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273bad7e941f557e06019b87fd4",
-      "duration": "3:58",
-      "popularity": 77,
-      "uri": "spotify:track:05rWggLwQ2weA4D2cRAt55",
-      "url": "https://open.spotify.com/track/05rWggLwQ2weA4D2cRAt55"
+      "name": "Nog Een Koppie Koffie",
+      "artist": "Lucas Maree",
+      "album": "Miljoen",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27315e6c3bde0dfc0d7d5b690fc",
+      "duration": "3:11",
+      "popularity": 19,
+      "uri": "spotify:track:5byjXRoKfSZTopcNCU4sFd",
+      "url": "https://open.spotify.com/track/5byjXRoKfSZTopcNCU4sFd"
     },
     {
-      "name": "Gotta Be Somebody",
-      "artist": "Nickelback",
-      "album": "Dark Horse",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f74baf63e915712df348e647",
-      "duration": "4:12",
-      "popularity": 72,
-      "uri": "spotify:track:06T10fEzN8ZCcqzQZYA184",
-      "url": "https://open.spotify.com/track/06T10fEzN8ZCcqzQZYA184"
-    },
-    {
-      "name": "Dear Maria, Count Me In",
-      "artist": "All Time Low",
-      "album": "So Wrong, It's Right",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c8913cd7b91bb7f6bbbec305",
-      "duration": "3:02",
-      "popularity": 82,
-      "uri": "spotify:track:0JJP0IS4w0fJx01EcrfkDe",
-      "url": "https://open.spotify.com/track/0JJP0IS4w0fJx01EcrfkDe"
+      "name": "WORTHY",
+      "artist": "Jon Lind",
+      "album": "WORTHY",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27388f6758af83ea00560defa8c",
+      "duration": "3:29",
+      "popularity": 22,
+      "uri": "spotify:track:7evKqzOSR1bG6nTsWx8zQN",
+      "url": "https://open.spotify.com/track/7evKqzOSR1bG6nTsWx8zQN"
     }
   ],
-  "lastUpdated": "2026-08-10T01:59:58.747Z"
+  "lastUpdated": "2026-08-17T01:23:58.298Z"
 }
