@@ -6,9 +6,28 @@
       "genres": [
         "country christian"
       ],
-      "popularity": 34,
+      "popularity": 35,
       "uri": "spotify:artist:1KwIL1B59vKjSV2vgbtDfq",
       "url": "https://open.spotify.com/artist/1KwIL1B59vKjSV2vgbtDfq"
+    },
+    {
+      "name": "Old Time Hawkey",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebe70d893cca82088efddbbbc6",
+      "genres": [],
+      "popularity": 28,
+      "uri": "spotify:artist:0FNI4Dw7Ya3oShSYGrYrNq",
+      "url": "https://open.spotify.com/artist/0FNI4Dw7Ya3oShSYGrYrNq"
+    },
+    {
+      "name": "John Williams",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb86b13e4d2e65ebf694384ef4",
+      "genres": [
+        "soundtrack",
+        "score"
+      ],
+      "popularity": 72,
+      "uri": "spotify:artist:3dRfiJ2650SZu6GbydcHNb",
+      "url": "https://open.spotify.com/artist/3dRfiJ2650SZu6GbydcHNb"
     },
     {
       "name": "Linkin Park",
@@ -19,38 +38,20 @@
         "rock",
         "alternative metal"
       ],
-      "popularity": 91,
+      "popularity": 92,
       "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
     },
     {
-      "name": "Lucas Maree",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb9ada3948798b3603a86ff8bb",
-      "genres": [
-        "afrikaans pop"
-      ],
-      "popularity": 19,
-      "uri": "spotify:artist:4vDSGXGCMQc3aER86G4fTm",
-      "url": "https://open.spotify.com/artist/4vDSGXGCMQc3aER86G4fTm"
-    },
-    {
-      "name": "John Williams",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb86b13e4d2e65ebf694384ef4",
+      "name": "Alexandre Desplat",
+      "image": "https://i.scdn.co/image/ab6772690000c46cf9a8d4c2fbbdba7962061bf9",
       "genres": [
         "soundtrack",
         "score"
       ],
-      "popularity": 71,
-      "uri": "spotify:artist:3dRfiJ2650SZu6GbydcHNb",
-      "url": "https://open.spotify.com/artist/3dRfiJ2650SZu6GbydcHNb"
-    },
-    {
-      "name": "Jonathan Geer",
-      "image": "https://i.scdn.co/image/ab67616d0000b2732b5a03a119167450c4a5c9c8",
-      "genres": [],
-      "popularity": 40,
-      "uri": "spotify:artist:6fyUMxz3J2qb6Nq6HhCCGt",
-      "url": "https://open.spotify.com/artist/6fyUMxz3J2qb6Nq6HhCCGt"
+      "popularity": 63,
+      "uri": "spotify:artist:71jzN72g8qWMCMkWC5p1Z0",
+      "url": "https://open.spotify.com/artist/71jzN72g8qWMCMkWC5p1Z0"
     }
   ],
   "topTracks": [
@@ -63,16 +64,6 @@
       "popularity": 37,
       "uri": "spotify:track:31Hq2CG7LLW8pT5dVptsKu",
       "url": "https://open.spotify.com/track/31Hq2CG7LLW8pT5dVptsKu"
-    },
-    {
-      "name": "Leave (Get Out)",
-      "artist": "Our Last Night",
-      "album": "Leave (Get Out)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27394a85a379e613da43cb81200",
-      "duration": "3:21",
-      "popularity": 62,
-      "uri": "spotify:track:6Lue9MrOY1bv852jhqjwF7",
-      "url": "https://open.spotify.com/track/6Lue9MrOY1bv852jhqjwF7"
     },
     {
       "name": "Beautiful Life",
@@ -105,6 +96,16 @@
       "url": "https://open.spotify.com/track/0dBatmVHLJ1fmX027R80JH"
     },
     {
+      "name": "Can't Sleep, Eh? (Donnybrook Falls)",
+      "artist": "Old Time Hawkey",
+      "album": "Can't Sleep, Eh? (Peach Oatmeal)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273d2512acf34bf86d564ff4f25",
+      "duration": "3:19",
+      "popularity": 21,
+      "uri": "spotify:track:3RUBtZgb7gEZFLItbhNQZA",
+      "url": "https://open.spotify.com/track/3RUBtZgb7gEZFLItbhNQZA"
+    },
+    {
       "name": "Victoriabaai",
       "artist": "Lucas Maree",
       "album": "Kiekies",
@@ -125,6 +126,16 @@
       "url": "https://open.spotify.com/track/5KRfllPvnPYXcESIvhtFBU"
     },
     {
+      "name": "Leave (Get Out)",
+      "artist": "Our Last Night",
+      "album": "Leave (Get Out)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27394a85a379e613da43cb81200",
+      "duration": "3:21",
+      "popularity": 62,
+      "uri": "spotify:track:6Lue9MrOY1bv852jhqjwF7",
+      "url": "https://open.spotify.com/track/6Lue9MrOY1bv852jhqjwF7"
+    },
+    {
       "name": "The Other Side",
       "artist": "Jason Derulo",
       "album": "Tattoos",
@@ -143,17 +154,7 @@
       "popularity": 19,
       "uri": "spotify:track:5byjXRoKfSZTopcNCU4sFd",
       "url": "https://open.spotify.com/track/5byjXRoKfSZTopcNCU4sFd"
-    },
-    {
-      "name": "WORTHY",
-      "artist": "Jon Lind",
-      "album": "WORTHY",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27388f6758af83ea00560defa8c",
-      "duration": "3:29",
-      "popularity": 22,
-      "uri": "spotify:track:7evKqzOSR1bG6nTsWx8zQN",
-      "url": "https://open.spotify.com/track/7evKqzOSR1bG6nTsWx8zQN"
     }
   ],
-  "lastUpdated": "2026-08-17T01:23:58.298Z"
+  "lastUpdated": "2026-08-24T01:25:40.512Z"
 }
