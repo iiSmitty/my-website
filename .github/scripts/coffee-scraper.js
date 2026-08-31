@@ -124,10 +124,15 @@ async function getTotalVisitsOptimized() {
 
         console.log('Logging in...');
 
-        // Wait for login fields
+        // The loyalty app was re-platformed (coffee.toget.me now redirects to
+        // seattle.loyalty-electronicline.com) and rebuilt on Tailwind, so the
+        // old Angular `formcontrolname` hooks and `.ui-button` are gone. The
+        // form now exposes: input.mobile-input, input[type="password"], and a
+        // submit button. A country-code <select> defaults to +27, which matches
+        // the stored ZA username, so we leave it untouched.
         const [mobileField, passwordField] = await Promise.all([
-            iframe.waitForSelector('input[formcontrolname="mobileNumber"]', { timeout: 25000 }),
-            iframe.waitForSelector('input[formcontrolname="password"]', { timeout: 25000 })
+            iframe.waitForSelector('input.mobile-input', { timeout: 25000 }),
+            iframe.waitForSelector('input[type="password"]', { timeout: 25000 })
         ]);
 
         await mobileField.click({ clickCount: 3 });
@@ -136,7 +141,7 @@ async function getTotalVisitsOptimized() {
         await passwordField.click({ clickCount: 3 });
         await passwordField.type(SEATTLE_PASSWORD, { delay: 20 });
 
-        const loginButton = await iframe.$('.ui-button');
+        const loginButton = await iframe.$('button[type="submit"]');
         await loginButton.click();
 
         console.log('Extracting stats...');
@@ -152,31 +157,35 @@ async function getTotalVisitsOptimized() {
 
             try {
                 coffeeData = await iframe.evaluate(() => {
-                    const overviewBoxes = document.querySelectorAll('.overview-box-count.ng-star-inserted');
-
-                    if (overviewBoxes.length === 0) {
+                    // The rebuilt dashboard renders each stat as an <app-info-card>
+                    // with a `.heading` label and a `.info-card-value` number, so we
+                    // match on the visible label rather than guessing by numeric
+                    // range (the old approach couldn't tell "Beverages Points
+                    // Balance" apart from "Free Beverages Available" — both 0-10).
+                    const cards = Array.from(document.querySelectorAll('app-info-card'));
+                    if (cards.length === 0) {
                         return null;
                     }
 
-                    let totalVisits = null;
-                    let currentBalance = null;
-
-                    for (const box of overviewBoxes) {
-                        const text = box.textContent?.trim();
-                        if (!text) continue;
-
-                        const number = parseInt(text, 10);
-                        if (isNaN(number)) continue;
-
-                        // Total visits: larger number (50-2000 range)
-                        if (number >= 50 && number <= 2000 && totalVisits === null) {
-                            totalVisits = number;
+                    const readCard = (label) => {
+                        for (const card of cards) {
+                            const heading = card.querySelector('.heading')?.textContent?.trim();
+                            if (heading === label) {
+                                const value = parseInt(
+                                    card.querySelector('.info-card-value')?.textContent?.trim(),
+                                    10
+                                );
+                                return isNaN(value) ? null : value;
+                            }
                         }
-                        // Current balance: smaller number (0-10 range)
-                        else if (number >= 0 && number <= 10 && currentBalance === null) {
-                            currentBalance = number;
-                        }
-                    }
+                        return null;
+                    };
+
+                    // totalSiteVisits <- "Total Site Visits"
+                    // currentBalance  <- "Beverages Points Balance" (progress /10
+                    //   toward the next free coffee, per js/coffee-simple.js)
+                    const totalVisits = readCard('Total Site Visits');
+                    const currentBalance = readCard('Beverages Points Balance');
 
                     return (totalVisits !== null && currentBalance !== null)
                         ? { totalVisits, currentBalance }
@@ -196,6 +205,44 @@ async function getTotalVisitsOptimized() {
             console.log(`Coffee data extracted in ${totalTime}s:`, coffeeData);
             return coffeeData;
         } else {
+            // Extraction relies on `app-info-card` labels ("Total Site Visits",
+            // "Beverages Points Balance"). If the app is rebuilt again and those
+            // labels/structure change, dump what the logged-in frame actually
+            // shows so the fix is obvious instead of a blind timeout. We report
+            // the card labels+values if any cards exist, else fall back to raw
+            // numeric leaves (which also flags a login that silently failed).
+            // Best-effort only.
+            try {
+                const diag = await iframe.evaluate(() => {
+                    const cards = Array.from(document.querySelectorAll('app-info-card'));
+                    if (cards.length) {
+                        return {
+                            kind: 'cards',
+                            items: cards.map(c => ({
+                                label: c.querySelector('.heading')?.textContent?.trim() || '(no label)',
+                                value: c.querySelector('.info-card-value')?.textContent?.trim() || '(no value)'
+                            }))
+                        };
+                    }
+                    return {
+                        kind: 'numeric-leaves',
+                        items: Array.from(document.querySelectorAll('body *'))
+                            .filter(el => el.children.length === 0
+                                && /^\d{1,4}$/.test((el.textContent || '').trim()))
+                            .slice(0, 30)
+                            .map(el => `<${el.tagName.toLowerCase()} class="${el.className}">${el.textContent.trim()}`)
+                    };
+                });
+                if (diag.kind === 'cards') {
+                    console.error('app-info-card labels/values present (label match may have changed):',
+                        diag.items.length ? diag.items : '(no cards)');
+                } else {
+                    console.error('No app-info-card found; numeric elements in frame (login may have failed):',
+                        diag.items.length ? diag.items : '(none)');
+                }
+            } catch (e) {
+                console.error('Could not enumerate dashboard:', e.message);
+            }
             throw new Error(`Could not extract coffee data after ${totalTime}s (${attempts} attempts)`);
         }
 
@@ -314,9 +361,11 @@ class OptimizedCoffeeSession {
 
         await new Promise(resolve => setTimeout(resolve, 800));
 
+        // See getTotalVisitsOptimized: the re-platformed app replaced the old
+        // formcontrolname hooks / .ui-button with these selectors.
         const [mobileField, passwordField] = await Promise.all([
-            this.iframe.waitForSelector('input[formcontrolname="mobileNumber"]', { timeout: 6000 }),
-            this.iframe.waitForSelector('input[formcontrolname="password"]', { timeout: 6000 })
+            this.iframe.waitForSelector('input.mobile-input', { timeout: 6000 }),
+            this.iframe.waitForSelector('input[type="password"]', { timeout: 6000 })
         ]);
 
         await mobileField.click({ clickCount: 3 });
@@ -325,7 +374,7 @@ class OptimizedCoffeeSession {
         await passwordField.click({ clickCount: 3 });
         await passwordField.type(SEATTLE_PASSWORD, { delay: 15 });
 
-        const loginButton = await this.iframe.$('.ui-button');
+        const loginButton = await this.iframe.$('button[type="submit"]');
         await loginButton.click();
 
         await new Promise(resolve => setTimeout(resolve, 1500));
@@ -343,12 +392,17 @@ class OptimizedCoffeeSession {
         console.log('Extracting visit count...');
 
         return await this.iframe.evaluate(() => {
-            const overviewBoxes = document.querySelectorAll('.overview-box-count.ng-star-inserted');
-
-            for (const box of overviewBoxes) {
-                const number = parseInt(box.textContent?.trim(), 10);
-                if (number >= 50 && number <= 2000 && !isNaN(number)) {
-                    return number;
+            // Match the "Total Site Visits" card by its label (see
+            // getTotalVisitsOptimized for why label-based beats range-based).
+            const cards = Array.from(document.querySelectorAll('app-info-card'));
+            for (const card of cards) {
+                const heading = card.querySelector('.heading')?.textContent?.trim();
+                if (heading === 'Total Site Visits') {
+                    const number = parseInt(
+                        card.querySelector('.info-card-value')?.textContent?.trim(),
+                        10
+                    );
+                    return isNaN(number) ? null : number;
                 }
             }
             return null;
