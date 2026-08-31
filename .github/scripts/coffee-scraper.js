@@ -148,8 +148,14 @@ async function getTotalVisitsOptimized() {
 
         let coffeeData = null;
         let attempts = 0;
-        const maxAttempts = 20;
-        const pollInterval = 200;
+        // The info-grid holding the stat cards is `*ngIf`-gated on the
+        // authenticated stats API resolving, which lags login noticeably on the
+        // US-based CI runner (the loyalty backend is in ZA). The old 4s budget
+        // (20 x 200ms) was fine locally but expired before the cards populated
+        // in CI — the stamp circles rendered but the numbers hadn't. Poll for
+        // up to ~30s so the cards have time to appear.
+        const maxAttempts = 60;
+        const pollInterval = 500;
 
         while (attempts < maxAttempts) {
             await new Promise(resolve => setTimeout(resolve, pollInterval));
