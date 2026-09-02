@@ -22,11 +22,17 @@ async function getTotalVisitsOptimized() {
         console.log('Starting Seattle Coffee scraper...');
 
         // Launch with optimization settings.
-        // Set HEADFUL=1 locally to watch the browser (e.g. to see if the
-        // login iframe ever appears); CI stays headless by default.
+        // Set HEADFUL=1 locally to watch the browser drive the login;
+        // CI stays headless by default.
         browser = await puppeteer.launch({
             headless: process.env.HEADFUL ? false : 'new',
             slowMo: process.env.HEADFUL ? 50 : 0,
+            // Bound how long a single CDP command may hang. The default is 180s,
+            // which let one wedged call (a cross-origin iframe redirect) freeze a
+            // run for ~191s x 3 retries = ~11min. Nothing we do legitimately
+            // exceeds the poll budget, so fail fast and let the retry wrapper
+            // start a clean attempt instead.
+            protocolTimeout: 60000,
             args: [
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
@@ -45,29 +51,17 @@ async function getTotalVisitsOptimized() {
 
         page = await browser.newPage();
 
-        // Block non-essential resources
+        // Block only heavy, non-essential resources by type. We now load the
+        // loyalty SPA directly (no ad-laden WordPress wrapper), so the old
+        // URL-substring blocklist is unnecessary and risky — a substring like
+        // "tracking"/"google" could match one of the app's own script or API
+        // requests and silently break login. Type-based blocking can't do that.
         await page.setRequestInterception(true);
         page.on('request', (req) => {
             const resourceType = req.resourceType();
-            const url = req.url();
-
             if (resourceType === 'image' ||
                 resourceType === 'font' ||
-                resourceType === 'media' ||
-                resourceType === 'manifest' ||
-                url.includes('analytics') ||
-                url.includes('gtag') ||
-                url.includes('facebook') ||
-                url.includes('google') ||
-                url.includes('tracking') ||
-                url.includes('ads') ||
-                url.includes('.png') ||
-                url.includes('.jpg') ||
-                url.includes('.jpeg') ||
-                url.includes('.gif') ||
-                url.includes('.svg') ||
-                url.includes('.woff') ||
-                url.includes('.ttf')) {
+                resourceType === 'media') {
                 req.abort();
             } else {
                 req.continue();
@@ -77,62 +71,30 @@ async function getTotalVisitsOptimized() {
         await page.setViewport({ width: 1024, height: 768 });
         await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36');
 
-        console.log('Loading loyalty page...');
-        await page.goto('https://www.seattlecoffeecompany.co.za/loyalty/', {
+        // Drive the loyalty SPA directly instead of through the WordPress page's
+        // lazy-loaded iframe. The old path (load seattlecoffeecompany.co.za/
+        // loyalty/ -> wait for a WP-Rocket lazy iframe -> promote data-src ->
+        // let coffee.toget.me redirect cross-origin to
+        // seattle.loyalty-electronicline.com) was deeply flaky: driving a frame
+        // that redirects underneath Puppeteer would wedge a CDP call for ~3min.
+        // The app is fully usable standalone, so we go straight to its real URL
+        // and interact with the top-level page — no iframe, no redirect, no
+        // WordPress. coffee.toget.me still redirects here, but we skip that hop.
+        console.log('Loading loyalty app...');
+        await page.goto('https://seattle.loyalty-electronicline.com/#/login', {
             waitUntil: 'domcontentloaded',
             timeout: 30000
         });
 
-        console.log('Accessing login iframe...');
-        // The loyalty page now lazy-loads the login iframe via WP Rocket: the
-        // real URL sits in data-src and only becomes src once the iframe scrolls
-        // into the viewport. Headless CI never scrolls it into view, so src
-        // stayed empty and the old `iframe[src*="coffee.toget.me"]` wait timed
-        // out. Match on data-src (or src, for backward compat), then promote
-        // data-src -> src ourselves to force the login frame to load.
-        // CI (US-based runners) is also slower to reach this ZA site than a
-        // local machine, so allow a generous budget for the iframe to appear.
-        await page.waitForSelector(
-            'iframe[data-src*="coffee.toget.me"], iframe[src*="coffee.toget.me"]',
-            { timeout: 25000 }
-        );
-
-        await page.evaluate(() => {
-            const frames = Array.from(
-                document.querySelectorAll('iframe[data-src*="coffee.toget.me"]')
-            );
-            // The page renders desktop + mobile variants; prefer a visible one.
-            const target = frames.find(f => f.offsetParent !== null) || frames[0];
-            if (target && !target.src) {
-                target.src = target.getAttribute('data-src');
-            }
-        });
-
-        // Wait for the frame to actually navigate to the loyalty app.
-        const iframeElement = await page.waitForSelector(
-            'iframe[src*="coffee.toget.me"]',
-            { timeout: 25000 }
-        );
-        const iframe = await iframeElement.contentFrame();
-
-        if (!iframe) {
-            throw new Error('Could not access iframe content');
-        }
-
-        // Wait for form to load
-        await new Promise(resolve => setTimeout(resolve, 1000));
-
         console.log('Logging in...');
 
-        // The loyalty app was re-platformed (coffee.toget.me now redirects to
-        // seattle.loyalty-electronicline.com) and rebuilt on Tailwind, so the
-        // old Angular `formcontrolname` hooks and `.ui-button` are gone. The
-        // form now exposes: input.mobile-input, input[type="password"], and a
-        // submit button. A country-code <select> defaults to +27, which matches
-        // the stored ZA username, so we leave it untouched.
+        // Re-platformed, Tailwind-rebuilt form: input.mobile-input,
+        // input[type="password"], button[type="submit"]. A country-code <select>
+        // defaults to +27, matching the stored ZA username, so we leave it.
+        // CI (US runners) is slow to reach this ZA app, so allow a wide budget.
         const [mobileField, passwordField] = await Promise.all([
-            iframe.waitForSelector('input.mobile-input', { timeout: 25000 }),
-            iframe.waitForSelector('input[type="password"]', { timeout: 25000 })
+            page.waitForSelector('input.mobile-input', { timeout: 30000 }),
+            page.waitForSelector('input[type="password"]', { timeout: 30000 })
         ]);
 
         await mobileField.click({ clickCount: 3 });
@@ -141,8 +103,14 @@ async function getTotalVisitsOptimized() {
         await passwordField.click({ clickCount: 3 });
         await passwordField.type(SEATTLE_PASSWORD, { delay: 20 });
 
-        const loginButton = await iframe.$('button[type="submit"]');
-        await loginButton.click();
+        // The submit button stays `disabled` until Angular's reactive form
+        // validates the typed input, so clicking too early is a silent no-op.
+        // Wait for it to enable, then click.
+        await page.waitForFunction(() => {
+            const b = document.querySelector('button[type="submit"]');
+            return b && !b.disabled;
+        }, { timeout: 10000 });
+        await page.click('button[type="submit"]');
 
         console.log('Extracting stats...');
 
@@ -162,7 +130,7 @@ async function getTotalVisitsOptimized() {
             attempts++;
 
             try {
-                coffeeData = await iframe.evaluate(() => {
+                coffeeData = await page.evaluate(() => {
                     // The rebuilt dashboard renders each stat as an <app-info-card>
                     // with a `.heading` label and a `.info-card-value` number, so we
                     // match on the visible label rather than guessing by numeric
@@ -213,13 +181,13 @@ async function getTotalVisitsOptimized() {
         } else {
             // Extraction relies on `app-info-card` labels ("Total Site Visits",
             // "Beverages Points Balance"). If the app is rebuilt again and those
-            // labels/structure change, dump what the logged-in frame actually
+            // labels/structure change, dump what the logged-in page actually
             // shows so the fix is obvious instead of a blind timeout. We report
             // the card labels+values if any cards exist, else fall back to raw
             // numeric leaves (which also flags a login that silently failed).
             // Best-effort only.
             try {
-                const diag = await iframe.evaluate(() => {
+                const diag = await page.evaluate(() => {
                     const cards = Array.from(document.querySelectorAll('app-info-card'));
                     if (cards.length) {
                         return {
@@ -257,17 +225,15 @@ async function getTotalVisitsOptimized() {
         console.error(`Error after ${totalTime}s:`, error.message);
 
         // Diagnostics: if we got far enough to have a page, capture what the
-        // runner actually saw. A timeout on the iframe wait is almost always
-        // timing, but if the site ever changes this turns a blind timeout into
-        // an obvious "the iframe src is now X" (or a screenshot of a new gate).
+        // runner actually saw. Most failures here are timing; logging the live
+        // URL turns a blind timeout into an obvious "we ended up at X" (e.g. an
+        // unexpected redirect or a maintenance gate) and the screenshot shows
+        // any new login/consent wall.
         if (page) {
             try {
-                const iframeSrcs = await page.$$eval('iframe', frames =>
-                    frames.map(f => f.src || f.getAttribute('data-src') || '(no src)'));
-                console.error('Iframes present on page:',
-                    iframeSrcs.length ? iframeSrcs : '(none)');
+                console.error('Current page URL:', page.url());
             } catch (e) {
-                console.error('Could not enumerate iframes:', e.message);
+                console.error('Could not read page URL:', e.message);
             }
             try {
                 const shotPath = path.join(__dirname, 'coffee-scraper-failure.png');
@@ -282,147 +248,6 @@ async function getTotalVisitsOptimized() {
     } finally {
         if (browser) {
             await browser.close();
-        }
-    }
-}
-
-// Reusable session class for multiple requests
-class OptimizedCoffeeSession {
-    constructor() {
-        this.browser = null;
-        this.page = null;
-        this.iframe = null;
-        this.isLoggedIn = false;
-        this.lastLoginTime = null;
-    }
-
-    async initialize() {
-        if (this.browser) return;
-
-        console.log('Initializing session...');
-
-        this.browser = await puppeteer.launch({
-            args: [
-                '--no-sandbox',
-                '--disable-setuid-sandbox',
-                '--disable-dev-shm-usage',
-                '--disable-gpu',
-                '--disable-images',
-                '--disable-extensions'
-            ]
-        });
-
-        this.page = await this.browser.newPage();
-
-        // Block non-essential resources
-        await this.page.setRequestInterception(true);
-        this.page.on('request', (req) => {
-            const resourceType = req.resourceType();
-            if (resourceType === 'image' ||
-                resourceType === 'font' ||
-                resourceType === 'media') {
-                req.abort();
-            } else {
-                req.continue();
-            }
-        });
-
-        await this.page.setViewport({ width: 1024, height: 768 });
-    }
-
-    async login() {
-        // Check if session is still valid (5 minutes)
-        if (this.isLoggedIn && this.lastLoginTime &&
-            (Date.now() - this.lastLoginTime) < 300000) {
-            return;
-        }
-
-        console.log('Logging in...');
-
-        await this.page.goto('https://www.seattlecoffeecompany.co.za/loyalty/', {
-            waitUntil: 'domcontentloaded',
-            timeout: 15000
-        });
-
-        // See getTotalVisitsOptimized: the login iframe is lazy-loaded via
-        // WP Rocket (real URL in data-src), so promote data-src -> src ourselves.
-        await this.page.waitForSelector(
-            'iframe[data-src*="coffee.toget.me"], iframe[src*="coffee.toget.me"]',
-            { timeout: 8000 }
-        );
-        await this.page.evaluate(() => {
-            const frames = Array.from(
-                document.querySelectorAll('iframe[data-src*="coffee.toget.me"]')
-            );
-            const target = frames.find(f => f.offsetParent !== null) || frames[0];
-            if (target && !target.src) {
-                target.src = target.getAttribute('data-src');
-            }
-        });
-        const iframeElement = await this.page.waitForSelector(
-            'iframe[src*="coffee.toget.me"]',
-            { timeout: 8000 }
-        );
-        this.iframe = await iframeElement.contentFrame();
-
-        await new Promise(resolve => setTimeout(resolve, 800));
-
-        // See getTotalVisitsOptimized: the re-platformed app replaced the old
-        // formcontrolname hooks / .ui-button with these selectors.
-        const [mobileField, passwordField] = await Promise.all([
-            this.iframe.waitForSelector('input.mobile-input', { timeout: 6000 }),
-            this.iframe.waitForSelector('input[type="password"]', { timeout: 6000 })
-        ]);
-
-        await mobileField.click({ clickCount: 3 });
-        await mobileField.type(SEATTLE_USERNAME, { delay: 15 });
-
-        await passwordField.click({ clickCount: 3 });
-        await passwordField.type(SEATTLE_PASSWORD, { delay: 15 });
-
-        const loginButton = await this.iframe.$('button[type="submit"]');
-        await loginButton.click();
-
-        await new Promise(resolve => setTimeout(resolve, 1500));
-
-        this.isLoggedIn = true;
-        this.lastLoginTime = Date.now();
-        console.log('Login complete');
-    }
-
-    async getTotalVisits() {
-        if (!this.isLoggedIn) {
-            await this.login();
-        }
-
-        console.log('Extracting visit count...');
-
-        return await this.iframe.evaluate(() => {
-            // Match the "Total Site Visits" card by its label (see
-            // getTotalVisitsOptimized for why label-based beats range-based).
-            const cards = Array.from(document.querySelectorAll('app-info-card'));
-            for (const card of cards) {
-                const heading = card.querySelector('.heading')?.textContent?.trim();
-                if (heading === 'Total Site Visits') {
-                    const number = parseInt(
-                        card.querySelector('.info-card-value')?.textContent?.trim(),
-                        10
-                    );
-                    return isNaN(number) ? null : number;
-                }
-            }
-            return null;
-        });
-    }
-
-    async close() {
-        if (this.browser) {
-            await this.browser.close();
-            this.browser = null;
-            this.page = null;
-            this.iframe = null;
-            this.isLoggedIn = false;
-            this.lastLoginTime = null;
         }
     }
 }
@@ -492,7 +317,9 @@ async function updateCoffeeStatsFileOptimized() {
 }
 
 module.exports = {
-    OptimizedCoffeeSession
+    getTotalVisitsOptimized,
+    getCoffeeStatsOptimized,
+    updateCoffeeStatsFileOptimized
 };
 
 if (require.main === module) {
