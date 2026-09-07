@@ -30,14 +30,14 @@
       "url": "https://open.spotify.com/artist/3dRfiJ2650SZu6GbydcHNb"
     },
     {
-      "name": "Die Piesangskille",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb0f9f1c72174154cbc8733c70",
+      "name": "Calvin Harris",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb8ebba5e60113b48de8c11f6b",
       "genres": [
-        "afrikaans pop"
+        "edm"
       ],
-      "popularity": 47,
-      "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
-      "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
+      "popularity": 89,
+      "uri": "spotify:artist:7CajNmpbOovFoOoasH2HaY",
+      "url": "https://open.spotify.com/artist/7CajNmpbOovFoOoasH2HaY"
     },
     {
       "name": "Alexandre Desplat",
@@ -52,6 +52,26 @@
     }
   ],
   "topTracks": [
+    {
+      "name": "Hear Me Now",
+      "artist": "Alok, Zeeba, Bruno Martini",
+      "album": "Hear Me Now (feat. Zeeba)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731f57e82299920d9eba745182",
+      "duration": "3:14",
+      "popularity": 81,
+      "uri": "spotify:track:39cmB3ZoTOLwOTq7tMNqKa",
+      "url": "https://open.spotify.com/track/39cmB3ZoTOLwOTq7tMNqKa"
+    },
+    {
+      "name": "Oasis",
+      "artist": "KSHMR, Ampermut, Gobi Desert Collective, TEJA",
+      "album": "Mirage",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273869647fd83651079774d52c3",
+      "duration": "3:24",
+      "popularity": 42,
+      "uri": "spotify:track:7pRdEhpq44UII3Qu62Q1tc",
+      "url": "https://open.spotify.com/track/7pRdEhpq44UII3Qu62Q1tc"
+    },
     {
       "name": "The Day I Fall In Love (Karaoke Demonstration With Lead Vocal - In The Style Of Dolly Parton/James Ingram)",
       "artist": "The Karaoke Channel",
@@ -68,19 +88,9 @@
       "album": "DARKSIDE 2",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27340fb2637b2357d24ce8e154f",
       "duration": "2:16",
-      "popularity": 51,
+      "popularity": 52,
       "uri": "spotify:track:0dBatmVHLJ1fmX027R80JH",
       "url": "https://open.spotify.com/track/0dBatmVHLJ1fmX027R80JH"
-    },
-    {
-      "name": "Bangkinners",
-      "artist": "Francois van Coke",
-      "album": "Bangkinners",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735675c0fc22f2e1425d0ac45c",
-      "duration": "2:43",
-      "popularity": 36,
-      "uri": "spotify:track:31Hq2CG7LLW8pT5dVptsKu",
-      "url": "https://open.spotify.com/track/31Hq2CG7LLW8pT5dVptsKu"
     },
     {
       "name": "Geel - Julie",
@@ -88,7 +98,7 @@
       "album": "Die Donker Toring",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2737c6a39c57910e6e22cf675ff",
       "duration": "2:54",
-      "popularity": 40,
+      "popularity": 42,
       "uri": "spotify:track:3HIENx4KzUx8ggWnQPAwj7",
       "url": "https://open.spotify.com/track/3HIENx4KzUx8ggWnQPAwj7"
     },
@@ -123,22 +133,12 @@
       "url": "https://open.spotify.com/track/5KRfllPvnPYXcESIvhtFBU"
     },
     {
-      "name": "Leave (Get Out)",
-      "artist": "Our Last Night",
-      "album": "Leave (Get Out)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27394a85a379e613da43cb81200",
-      "duration": "3:21",
-      "popularity": 61,
-      "uri": "spotify:track:6Lue9MrOY1bv852jhqjwF7",
-      "url": "https://open.spotify.com/track/6Lue9MrOY1bv852jhqjwF7"
-    },
-    {
       "name": "The Other Side",
       "artist": "Jason Derulo",
       "album": "Tattoos",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273ba30e4d27e93015180b4924d",
       "duration": "3:46",
-      "popularity": 70,
+      "popularity": 71,
       "uri": "spotify:track:6OPZtIV3uoZQT1YkoiEQH9",
       "url": "https://open.spotify.com/track/6OPZtIV3uoZQT1YkoiEQH9"
     },
@@ -148,10 +148,10 @@
       "album": "Miljoen",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27315e6c3bde0dfc0d7d5b690fc",
       "duration": "3:11",
-      "popularity": 20,
+      "popularity": 21,
       "uri": "spotify:track:5byjXRoKfSZTopcNCU4sFd",
       "url": "https://open.spotify.com/track/5byjXRoKfSZTopcNCU4sFd"
     }
   ],
-  "lastUpdated": "2026-08-31T04:30:15.909Z"
+  "lastUpdated": "2026-09-07T03:36:44.137Z"
 }
