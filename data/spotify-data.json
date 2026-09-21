@@ -1,14 +1,6 @@
 {
   "topArtists": [
     {
-      "name": "Old Time Hawkey",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebe70d893cca82088efddbbbc6",
-      "genres": [],
-      "popularity": 28,
-      "uri": "spotify:artist:0FNI4Dw7Ya3oShSYGrYrNq",
-      "url": "https://open.spotify.com/artist/0FNI4Dw7Ya3oShSYGrYrNq"
-    },
-    {
       "name": "Alesso",
       "image": "https://i.scdn.co/image/ab6761610000e5eb42b3fb34e3451c79c55cbe73",
       "genres": [
@@ -39,15 +31,24 @@
       "url": "https://open.spotify.com/artist/7CajNmpbOovFoOoasH2HaY"
     },
     {
-      "name": "John Williams",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb86b13e4d2e65ebf694384ef4",
+      "name": "Die Heuwels Fantasties",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb7e5ed68cd28045d603b7c82a",
       "genres": [
-        "soundtrack",
-        "score"
+        "afrikaans pop"
       ],
-      "popularity": 72,
-      "uri": "spotify:artist:3dRfiJ2650SZu6GbydcHNb",
-      "url": "https://open.spotify.com/artist/3dRfiJ2650SZu6GbydcHNb"
+      "popularity": 48,
+      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
+      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
+    },
+    {
+      "name": "The Ink Spots",
+      "image": "https://i.scdn.co/image/ab67616d0000b273383811a9b3081023c612fb7b",
+      "genres": [
+        "adult standards"
+      ],
+      "popularity": 57,
+      "uri": "spotify:artist:5bOsFzuJ6QZMr86ezC4oXY",
+      "url": "https://open.spotify.com/artist/5bOsFzuJ6QZMr86ezC4oXY"
     }
   ],
   "topTracks": [
@@ -57,7 +58,7 @@
       "album": "Hear Me Now (feat. Zeeba)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2731f57e82299920d9eba745182",
       "duration": "3:14",
-      "popularity": 82,
+      "popularity": 81,
       "uri": "spotify:track:39cmB3ZoTOLwOTq7tMNqKa",
       "url": "https://open.spotify.com/track/39cmB3ZoTOLwOTq7tMNqKa"
     },
@@ -72,54 +73,24 @@
       "url": "https://open.spotify.com/track/51aUT9st5zo01tC3g6TIdE"
     },
     {
-      "name": "Whole Again",
-      "artist": "Matisse & Sadko, SIX40TWO",
-      "album": "Whole Again",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27381ea9b85fee7359499cf0b6d",
-      "duration": "2:57",
-      "popularity": 62,
-      "uri": "spotify:track:0yZB1yPbdmzMFjZElCD4Lb",
-      "url": "https://open.spotify.com/track/0yZB1yPbdmzMFjZElCD4Lb"
-    },
-    {
-      "name": "If It Makes You Happy",
-      "artist": "Our Last Night",
-      "album": "If It Makes You Happy",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273cb1962250117cef7807ad58d",
-      "duration": "4:15",
-      "popularity": 63,
-      "uri": "spotify:track:6Aso6pa4PPbt3ec409TFRh",
-      "url": "https://open.spotify.com/track/6Aso6pa4PPbt3ec409TFRh"
-    },
-    {
       "name": "Versions Of Me",
       "artist": "Blackcode, Jordan Jade",
       "album": "Versions Of Me",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2735f15800fd642817c99cf0fb1",
       "duration": "3:11",
-      "popularity": 46,
+      "popularity": 48,
       "uri": "spotify:track:0JOQP4LlNj1PehUqiowXGf",
       "url": "https://open.spotify.com/track/0JOQP4LlNj1PehUqiowXGf"
     },
     {
-      "name": "Turn The Lights Off",
-      "artist": "Kato, Jon",
-      "album": "Discolized",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2732046ff71c29ccec4268dcac6",
+      "name": "Whole Again",
+      "artist": "Matisse & Sadko, SIX40TWO",
+      "album": "Whole Again",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27381ea9b85fee7359499cf0b6d",
       "duration": "2:57",
-      "popularity": 80,
-      "uri": "spotify:track:0wHayguZd1CeQDLYohXNMS",
-      "url": "https://open.spotify.com/track/0wHayguZd1CeQDLYohXNMS"
-    },
-    {
-      "name": "Words (feat. Zara Larsson)",
-      "artist": "Alesso, Zara Larsson",
-      "album": "Words (feat. Zara Larsson)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738f9c368d8d0f5792ffc5d38e",
-      "duration": "2:22",
-      "popularity": 76,
-      "uri": "spotify:track:1bgKMxPQU7JIZEhNsM1vFs",
-      "url": "https://open.spotify.com/track/1bgKMxPQU7JIZEhNsM1vFs"
+      "popularity": 61,
+      "uri": "spotify:track:0yZB1yPbdmzMFjZElCD4Lb",
+      "url": "https://open.spotify.com/track/0yZB1yPbdmzMFjZElCD4Lb"
     },
     {
       "name": "Beautiful Now",
@@ -132,6 +103,36 @@
       "url": "https://open.spotify.com/track/2ISSQPb9LHHiV6ng2NXosL"
     },
     {
+      "name": "If It Makes You Happy",
+      "artist": "Our Last Night",
+      "album": "If It Makes You Happy",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273cb1962250117cef7807ad58d",
+      "duration": "4:15",
+      "popularity": 62,
+      "uri": "spotify:track:6Aso6pa4PPbt3ec409TFRh",
+      "url": "https://open.spotify.com/track/6Aso6pa4PPbt3ec409TFRh"
+    },
+    {
+      "name": "Turn The Lights Off",
+      "artist": "Kato, Jon",
+      "album": "Discolized",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2732046ff71c29ccec4268dcac6",
+      "duration": "2:57",
+      "popularity": 79,
+      "uri": "spotify:track:0wHayguZd1CeQDLYohXNMS",
+      "url": "https://open.spotify.com/track/0wHayguZd1CeQDLYohXNMS"
+    },
+    {
+      "name": "Words (feat. Zara Larsson)",
+      "artist": "Alesso, Zara Larsson",
+      "album": "Words (feat. Zara Larsson)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738f9c368d8d0f5792ffc5d38e",
+      "duration": "2:22",
+      "popularity": 75,
+      "uri": "spotify:track:1bgKMxPQU7JIZEhNsM1vFs",
+      "url": "https://open.spotify.com/track/1bgKMxPQU7JIZEhNsM1vFs"
+    },
+    {
       "name": "Geel - Julie",
       "artist": "Spoegwolf",
       "album": "Die Donker Toring",
@@ -142,15 +143,15 @@
       "url": "https://open.spotify.com/track/3HIENx4KzUx8ggWnQPAwj7"
     },
     {
-      "name": "Can't Sleep, Eh? (Donnybrook Falls)",
-      "artist": "Old Time Hawkey",
-      "album": "Can't Sleep, Eh? (Peach Oatmeal)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273d2512acf34bf86d564ff4f25",
-      "duration": "3:19",
-      "popularity": 21,
-      "uri": "spotify:track:3RUBtZgb7gEZFLItbhNQZA",
-      "url": "https://open.spotify.com/track/3RUBtZgb7gEZFLItbhNQZA"
+      "name": "Barfuß am Klavier",
+      "artist": "AnnenMayKantereit",
+      "album": "Alles nix konkretes",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27353368d5c0af58c7a9000ea4a",
+      "duration": "3:15",
+      "popularity": 66,
+      "uri": "spotify:track:4kr64ggr6ALZGxnkGdhK7b",
+      "url": "https://open.spotify.com/track/4kr64ggr6ALZGxnkGdhK7b"
     }
   ],
-  "lastUpdated": "2026-09-14T04:01:10.041Z"
+  "lastUpdated": "2026-09-21T04:00:36.701Z"
 }
