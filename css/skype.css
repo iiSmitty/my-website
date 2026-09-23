@@ -28,8 +28,8 @@
 /* Green "online" tick that sits on the corner of an avatar */
 .skype-presence {
     position: absolute;
-    right: -6px;
-    bottom: -6px;
+    right: -2px;
+    bottom: -2px;
     width: 18px;
     height: 18px;
 }
@@ -119,14 +119,15 @@
     border: 2px inset #ffffff;
 }
 
-/* The avatar doubles as the extra-life button */
+/* Round avatar, like Skype's. It doubles as the extra-life button. */
 .skype-avatar {
     position: relative;
     flex: 0 0 auto;
     margin: 0;
     padding: 0;
-    background-color: #c0c0c0;
-    border: 2px inset #ffffff;
+    background: none;
+    border: none;
+    border-radius: 50%;
     cursor: pointer;
 }
 
@@ -134,6 +135,8 @@
     display: block;
     width: 96px;
     height: 96px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px #c0c0c0;
 }
 
 .skype-avatar:active img {
@@ -297,6 +300,9 @@
 
 .skype-chat-note {
     margin: 0;
+    padding: 4px 16px 6px;
+    line-height: 1.4;
+    text-wrap: balance;
     color: #808080;
     font-size: 11px;
     text-align: center;
@@ -316,6 +322,10 @@
 
 .skype-message-text {
     margin-top: 1px;
+}
+
+.skype-emoticon {
+    vertical-align: middle;
 }
 
 .skype-message--new {

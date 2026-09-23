@@ -32,6 +32,11 @@ const SKYPE_MAX_LIVES = 99;
 const SKYPE_TYPING_DELAY = 1800;
 const SKYPE_MESSAGE_DELAY = 4300;
 
+// Skype's animated "(wave)" emoticon for the reply, with a still frame for
+// reduced motion (CSS can't pause a GIF)
+const SKYPE_EMOTICON_HI = 'images/skype-hi.gif';
+const SKYPE_EMOTICON_HI_STILL = 'images/skype-hi.png';
+
 let skypeLives = SKYPE_STARTING_LIVES;
 let skypeStylesPromise = null;
 let skypeChatTimers = [];
@@ -309,8 +314,9 @@ function playSkypeReturn() {
         `${describeTimeAway(SKYPE_PROFILE.lastMessage, now)} later`;
     live.innerHTML = '';
 
-    // Start loading the sound now so it is ready when the message lands
+    // Start loading the sound and emoticon now so they are ready when the message lands
     const messageSound = new Audio('sounds/skype-message.mp3');
+    new Image().src = prefersReducedMotion() ? SKYPE_EMOTICON_HI_STILL : SKYPE_EMOTICON_HI;
 
     skypeChatTimers.forEach(clearTimeout);
     skypeChatTimers = [
@@ -329,7 +335,13 @@ function playSkypeReturn() {
                         <b>${SKYPE_PROFILE.displayName}</b>
                         <time datetime="${now.toISOString()}">Today ${formatSkypeDateTime(now).split(' ')[1]}</time>
                     </div>
-                    <div class="skype-message-text">back :)</div>
+                    <div class="skype-message-text">
+                        back
+                        <picture>
+                            <source srcset="${SKYPE_EMOTICON_HI_STILL}" media="(prefers-reduced-motion: reduce)">
+                            <img class="skype-emoticon" src="${SKYPE_EMOTICON_HI}" alt="(wave)" title="Hi" width="20" height="20">
+                        </picture>
+                    </div>
                 </div>`;
             chat.scrollTop = chat.scrollHeight;
             playSkypeSound(messageSound);

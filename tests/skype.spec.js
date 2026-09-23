@@ -16,7 +16,7 @@ test.describe('desktop', () => {
         await page.locator('#start-windows').click();
         await page.waitForLoadState('networkidle');
 
-        expect(requested.filter((url) => /skype\.min\.css|skype-avatar|skype-message/.test(url))).toEqual([]);
+        expect(requested.filter((url) => /skype\.min\.css|skype-avatar|skype-message|skype-hi/.test(url))).toEqual([]);
         await expect(page.locator('#skypeWindow')).toHaveCount(0);
     });
 
@@ -46,7 +46,9 @@ test.describe('desktop', () => {
 
         // 2014-me said "brb"... and eventually comes back
         await expect(skypeWindow.locator('.skype-chat')).toContainText('brb');
-        await expect(skypeWindow.locator('.skype-chat')).toContainText('back :)', { timeout: 10000 });
+        const reply = skypeWindow.locator('.skype-message--new');
+        await expect(reply).toContainText('back', { timeout: 10000 });
+        await expect(reply.getByRole('img', { name: '(wave)' })).toHaveJSProperty('complete', true);
 
         // Extra lives
         await expect(page.locator('#skypeLivesCount')).toHaveText('3');
@@ -94,5 +96,11 @@ test.describe('reduced motion', () => {
         });
         expect(oneUpAnimation).toBe('none');
         await expect(page.locator('#skypeLivesCount')).toHaveText('4');
+
+        // The waving emoticon is swapped for a still frame
+        const emoticon = page.locator('#skypeWindow .skype-emoticon');
+        await expect(emoticon).toBeVisible({ timeout: 10000 });
+        await expect(emoticon).toHaveJSProperty('complete', true);
+        expect(await emoticon.evaluate((img) => img.currentSrc)).toMatch(/skype-hi\.png$/);
     });
 });
