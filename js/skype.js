@@ -46,7 +46,7 @@ let skypeAudioContext = null;
 // Small presence badge (green tick) on the avatar
 const SKYPE_PRESENCE_SVG = `
     <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="8" cy="8" r="7" fill="#7fba00" stroke="#ffffff" stroke-width="2"/>
+        <circle cx="8" cy="8" r="7" stroke="#ffffff" stroke-width="2"/>
         <path d="M4.6 8.3l2.2 2.2 4.5-4.6" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>`;
 

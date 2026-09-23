@@ -5,7 +5,7 @@
 
 .skype-window {
     --skype-blue: #00aff0;
-    --skype-green: #7fba00;
+    --skype-green: #7dae26;
 }
 
 .skype-logo {
@@ -29,10 +29,14 @@
 /* Inset so it sits on the round avatar, not outside it */
 .skype-presence {
     position: absolute;
-    right: 6px;
-    bottom: 6px;
-    width: 18px;
-    height: 18px;
+    right: 4px;
+    bottom: 4px;
+    width: 22px;
+    height: 22px;
+}
+
+.skype-presence circle {
+    fill: var(--skype-green);
 }
 
 .skype-presence svg {
@@ -49,7 +53,7 @@
     margin-right: 5px;
     border-radius: 50%;
     background-color: var(--skype-green);
-    border: 1px solid #4f7500;
+    border: 1px solid #557a17;
     vertical-align: middle;
 }
 
