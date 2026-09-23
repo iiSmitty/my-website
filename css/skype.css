@@ -26,10 +26,11 @@
 }
 
 /* Green "online" tick that sits on the corner of an avatar */
+/* Inset so it sits on the round avatar, not outside it */
 .skype-presence {
     position: absolute;
-    right: -2px;
-    bottom: -2px;
+    right: 6px;
+    bottom: 6px;
     width: 18px;
     height: 18px;
 }

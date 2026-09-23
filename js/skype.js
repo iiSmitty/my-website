@@ -172,7 +172,7 @@ function buildSkypeWindow() {
 
     skypeWindow.innerHTML = `
         <div class="win95-title-bar" id="skypeTitleBar">
-            <div class="win95-title" id="skypeWindowTitle">${SKYPE_LOGO_SVG} Skype&trade;</div>
+            <div class="win95-title" id="skypeWindowTitle">${SKYPE_LOGO_SVG} Skype&trade; - ${profile.skypeName}</div>
             <div class="win95-buttons">
                 <button class="win95-button win95-minimize" type="button" tabindex="-1" aria-hidden="true">_</button>
                 <button class="win95-button win95-maximize" type="button" tabindex="-1" aria-hidden="true">&#9633;</button>

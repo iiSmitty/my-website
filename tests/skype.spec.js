@@ -25,7 +25,7 @@ test.describe('desktop', () => {
         await page.locator('#start-windows').click();
         await page.locator('.desktop-icon', { hasText: 'Recycle Bin' }).dblclick();
 
-        const skypeWindow = page.getByRole('dialog', { name: 'Skype™' });
+        const skypeWindow = page.getByRole('dialog', { name: 'Skype™ - andrez.smit' });
         await expect(skypeWindow).toBeVisible();
         await expect(skypeWindow).toBeFocused();
         await expect(skypeWindow).toHaveCSS('position', 'fixed');
