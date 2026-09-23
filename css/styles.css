@@ -253,6 +253,50 @@ h2 {
     display: none;
 }
 
+/* Turnstile checkbox in a Win95 GroupBox. The widget is always rendered (it
+   can't solve from inside display: none); only the frame around it is hidden
+   until Cloudflare asks for a click. */
+.decrypt-turnstile {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    text-align: center;
+}
+
+.decrypt-turnstile > legend,
+.decrypt-turnstile > p {
+    display: none;
+}
+
+.decrypt-turnstile.is-interactive {
+    border: 2px groove #c0c0c0;
+    margin: 0 0 10px;
+    padding: 6px 10px 12px;
+}
+
+.decrypt-turnstile.is-interactive > legend {
+    display: block;
+    font-size: 10px;
+    font-weight: bold;
+    color: #000080;
+    text-transform: uppercase;
+    padding: 0 4px;
+    margin-left: 2px;
+    text-align: left;
+}
+
+.decrypt-turnstile.is-interactive > p {
+    display: block;
+    margin: 4px 0 10px;
+    font-size: 12px;
+}
+
+#decrypt-turnstile {
+    display: flex;
+    justify-content: center;
+}
+
 .decrypt-progress {
     border: 2px inset #ffffff;
     background-color: #ffffff;

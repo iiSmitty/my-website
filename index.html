@@ -225,8 +225,12 @@
                     <button class="win95-button-large" id="decrypt-button">Decrypt Contact Info</button>
                 </div>
                 <div class="win95-decrypt-animation" id="decrypt-animation">
-                    <!-- Turnstile only appears here if Cloudflare wants a human to click -->
-                    <div class="decrypt-turnstile" id="decrypt-turnstile"></div>
+                    <!-- Turnstile renders invisibly; the group box only shows if Cloudflare wants a human to click -->
+                    <fieldset class="decrypt-turnstile" id="decrypt-turnstile-panel">
+                        <legend>Security Check</legend>
+                        <p>Windows needs to confirm you are not a robot.</p>
+                        <div id="decrypt-turnstile"></div>
+                    </fieldset>
                     <div class="decrypt-progress">
                         <div class="decrypt-bar" id="decrypt-progress-bar"></div>
                     </div>

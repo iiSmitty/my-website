@@ -6,29 +6,50 @@ const { test, expect } = require('@playwright/test');
 const EMAIL = 'hello@example.com';
 const TOKEN = 'stub-turnstile-token';
 
-// Stands in for challenges.cloudflare.com/turnstile/v0/api.js: passes at once
-// and records how the widget was rendered.
-const TURNSTILE_STUB = `
+// Stands in for challenges.cloudflare.com/turnstile/v0/api.js and records how
+// the widget was rendered. It passes at once, or with `interactive` it asks for
+// a click and waits for window.completeTurnstile().
+const turnstileStub = ({ interactive }) => `
     window.turnstile = {
         render(container, options) {
             window.turnstileRenders = (window.turnstileRenders || []).concat({ container, action: options.action });
-            setTimeout(() => options.callback(${JSON.stringify(TOKEN)}));
+            const pass = () => options.callback(${JSON.stringify(TOKEN)});
+            if (${interactive}) {
+                setTimeout(() => options['before-interactive-callback']());
+                window.completeTurnstile = () => {
+                    options['after-interactive-callback']();
+                    pass();
+                };
+            } else {
+                setTimeout(pass);
+            }
             return 'widget-1';
         },
         remove() {},
     };
 `;
 
-async function stubTurnstile(page) {
+async function stubTurnstile(page, { interactive = false } = {}) {
     await page.route('https://challenges.cloudflare.com/turnstile/**', (route) =>
-        route.fulfill({ contentType: 'text/javascript', body: TURNSTILE_STUB }));
+        route.fulfill({ contentType: 'text/javascript', body: turnstileStub({ interactive }) }));
 }
 
 async function openContactSection(page) {
+    // A fake clock that still ticks in real time, so waitForReveal can skip ahead
+    await page.clock.install();
     await page.goto('/');
     await page.locator('#start-windows').click();
     await page.locator('#floppyLoader').click();
     return page.locator('.section-content', { has: page.locator('#decrypt-button') });
+}
+
+// The reveal is a deliberate ~5s animation. Fast-forward the page's clock while
+// waiting for it, so a busy machine can't make the test time out.
+async function waitForReveal(page) {
+    await expect.poll(async () => {
+        await page.clock.runFor(1000);
+        return page.locator('#decrypt-button').textContent();
+    }).toBe('Information Decrypted!');
 }
 
 test.describe('desktop', () => {
@@ -56,11 +77,31 @@ test.describe('desktop', () => {
         await expect(contact).not.toContainText('Phone');
 
         await page.locator('#decrypt-button').click();
-        await expect(page.locator('#decrypt-button')).toHaveText('Information Decrypted!', { timeout: 10000 });
+        await waitForReveal(page);
         await expect(contact.getByRole('link', { name: EMAIL })).toHaveAttribute('href', `mailto:${EMAIL}`);
 
         expect(posted).toEqual([{ method: 'POST', body: { token: TOKEN } }]);
         expect(await page.evaluate(() => window.turnstileRenders)).toEqual([{ container: '#decrypt-turnstile', action: 'contact' }]);
+        // Nobody was asked to click, so the Security Check frame never showed
+        await expect(contact.getByText('Security Check')).toBeHidden();
+    });
+
+    test('the Security Check frame only appears while Turnstile wants a click', async ({ page }) => {
+        await stubTurnstile(page, { interactive: true });
+        await page.route('**/api/contact', (route) => route.fulfill({ json: { email: EMAIL } }));
+
+        const contact = await openContactSection(page);
+        await page.locator('#decrypt-button').click();
+
+        await expect(contact.getByText('Security Check')).toBeVisible();
+        await expect(contact.getByText('Windows needs to confirm you are not a robot.')).toBeVisible();
+        await expect(page.locator('#decrypt-text')).toHaveText('Waiting for human verification...');
+
+        await page.evaluate(() => window.completeTurnstile());
+
+        await waitForReveal(page);
+        await expect(contact.getByRole('link', { name: EMAIL })).toBeVisible();
+        await expect(contact.getByText('Security Check')).toBeHidden();
     });
 
     test('a rejected token leaves the email hidden and lets the visitor retry', async ({ page }) => {

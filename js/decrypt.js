@@ -214,9 +214,15 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
     async function getTurnstileToken() {
         const turnstile = await loadTurnstile();
 
+        const panel = document.getElementById('decrypt-turnstile-panel');
+        const showPanel = (visible) => panel.classList.toggle('is-interactive', visible);
+
         return new Promise((resolve, reject) => {
             let widgetId;
-            const removeWidget = () => turnstile.remove(widgetId);
+            const removeWidget = () => {
+                turnstile.remove(widgetId);
+                showPanel(false);
+            };
             const fail = () => {
                 removeWidget();
                 reject(new Error('Turnstile challenge failed'));
@@ -226,7 +232,15 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
                 sitekey: TURNSTILE_SITE_KEY,
                 action: TURNSTILE_ACTION,
                 appearance: 'interaction-only',
+                theme: 'light',
                 retry: 'never',
+                'before-interactive-callback': () => {
+                    showPanel(true);
+                    updateProgress(0, "Waiting for human verification...");
+                },
+                'after-interactive-callback': () => {
+                    updateProgress(0, "Scanning for robots...");
+                },
                 callback: (token) => {
                     removeWidget();
                     resolve(token);
