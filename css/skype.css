@@ -474,6 +474,11 @@
         padding: 10px 8px 8px;
     }
 
+    .skype-menu-bar .win95-menu-item {
+        padding: 2px 4px;
+        margin-right: 0;
+    }
+
     .skype-toast {
         left: 12px;
         right: 12px;
@@ -483,6 +488,10 @@
 }
 
 @media screen and (max-width: 360px) {
+    .skype-menu-bar .win95-menu-item {
+        padding: 2px 2px;
+    }
+
     .skype-avatar img {
         width: 72px;
         height: 72px;
