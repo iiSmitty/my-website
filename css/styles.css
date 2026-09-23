@@ -334,6 +334,16 @@ th {
     padding: 0 5px;
 }
 
+/* The visitor counter secretly opens the Skype easter egg (skype.js) */
+#visitor-counter[role="button"] {
+    cursor: pointer;
+}
+
+#visitor-counter[role="button"]:focus-visible {
+    outline: 1px dotted #000000;
+    outline-offset: -1px;
+}
+
 /* Windows 95-style links */
 a {
     color: #0000FF;

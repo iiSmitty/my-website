@@ -1,0 +1,512 @@
+/* ==================================
+   Skype 2014 Easter Egg
+   Loaded on demand by js/skype.js
+   ================================== */
+
+.skype-window,
+.skype-toast {
+    --skype-blue: #00aff0;
+    --skype-green: #7fba00;
+}
+
+.skype-logo {
+    display: block;
+    flex: 0 0 auto;
+    width: 14px;
+    height: 14px;
+}
+
+.skype-window .win95-title,
+.skype-toast .win95-title {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* Green "online" tick that sits on the corner of an avatar */
+.skype-presence {
+    position: absolute;
+    right: -6px;
+    bottom: -6px;
+    width: 18px;
+    height: 18px;
+}
+
+.skype-presence svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.skype-status-dot {
+    display: inline-block;
+    flex: 0 0 auto;
+    width: 8px;
+    height: 8px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: var(--skype-green);
+    border: 1px solid #4f7500;
+    vertical-align: middle;
+}
+
+/* ----- Profile window ----- */
+
+.skype-window {
+    position: fixed;
+    /* Centered on open via JS (left/top in px) so the title bar can be dragged. */
+    top: 8px;
+    left: 8px;
+    z-index: 1000;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 460px;
+    max-width: calc(100vw - 16px);
+    max-height: calc(100vh - 16px);
+    max-height: calc(100dvh - 16px);
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+}
+
+.skype-window[hidden] {
+    display: none;
+}
+
+/* Focus lands on the window itself when it opens; the title bar already shows it's active */
+.skype-window:focus {
+    outline: none;
+}
+
+#skypeTitleBar {
+    cursor: move;
+}
+
+.skype-menu-bar {
+    flex: 0 0 auto;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.skype-menu-bar .win95-menu-item {
+    flex: 0 0 auto;
+    cursor: default;
+}
+
+.skype-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 0;
+    padding: 8px;
+    overflow-y: auto;
+}
+
+/* White profile card with a thin Skype-blue band along the top */
+.skype-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 10px 10px;
+    background-color: #ffffff;
+    background-image: linear-gradient(var(--skype-blue), var(--skype-blue));
+    background-size: 100% 3px;
+    background-repeat: no-repeat;
+    border: 2px inset #ffffff;
+}
+
+/* The avatar doubles as the extra-life button */
+.skype-avatar {
+    position: relative;
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 0;
+    background-color: #c0c0c0;
+    border: 2px inset #ffffff;
+    cursor: pointer;
+}
+
+.skype-avatar img {
+    display: block;
+    width: 96px;
+    height: 96px;
+}
+
+.skype-avatar:active img {
+    transform: translate(1px, 1px);
+}
+
+.skype-avatar:focus-visible {
+    outline: 1px dotted #000000;
+    outline-offset: 2px;
+}
+
+.skype-identity {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    min-width: 0;
+}
+
+.skype-display-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.skype-status {
+    display: flex;
+    align-items: center;
+}
+
+/* Mood message as a Win95 tooltip balloon */
+.skype-mood {
+    padding: 3px 6px;
+    background-color: #ffffcc;
+    border: 1px solid #808080;
+    font-style: italic;
+}
+
+.skype-lives {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.skype-heart {
+    color: #d00000;
+    font-size: 14px;
+}
+
+.skype-lives-count {
+    display: inline-block;
+    min-width: 2ch;
+    font-family: "Courier New", monospace;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.skype-lives-count.is-bumped {
+    animation: skype-bump 0.3s ease-out;
+}
+
+.skype-lives-max {
+    padding: 0 3px;
+    background-color: #000080;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.skype-lives-max[hidden] {
+    display: none;
+}
+
+/* Floating arcade "1UP" */
+.skype-oneup {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #00e000;
+    font-family: "Courier New", monospace;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+    pointer-events: none;
+    animation: skype-oneup 0.9s ease-out forwards;
+}
+
+@keyframes skype-oneup {
+    from { opacity: 1; transform: translate(-50%, 0); }
+    to   { opacity: 0; transform: translate(-50%, -40px); }
+}
+
+@keyframes skype-bump {
+    50% { transform: scale(1.4); }
+}
+
+/* Win95 GroupBox, matching the coffee "Membership Status" box */
+.skype-details {
+    margin: 0;
+    padding: 6px 10px 9px;
+    border: 2px groove #c0c0c0;
+}
+
+.skype-details legend {
+    margin-left: 2px;
+    padding: 0 4px;
+    color: #000080;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.skype-fields {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 5px 12px;
+    margin: 0;
+}
+
+.skype-fields dt {
+    font-weight: bold;
+}
+
+.skype-fields dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.skype-muted {
+    color: #808080;
+    font-style: italic;
+}
+
+/* Blacked-out phone digits, like a declassified document */
+.skype-redacted {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    cursor: help;
+}
+
+.skype-redact-bar {
+    display: inline-block;
+    height: 11px;
+    background-color: #000000;
+}
+
+/* ----- Conversation pane ----- */
+
+.skype-chat {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 0 0 auto;
+    height: 140px;
+    padding: 6px 8px;
+    overflow-y: auto;
+    background-color: #ffffff;
+    border: 2px inset #ffffff;
+}
+
+.skype-chat-note {
+    margin: 0;
+    color: #808080;
+    font-size: 11px;
+    text-align: center;
+}
+
+.skype-message-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    color: #808080;
+    font-size: 11px;
+}
+
+.skype-message-meta b {
+    color: #000080;
+}
+
+.skype-message-text {
+    margin-top: 1px;
+}
+
+.skype-message--new {
+    padding: 2px 4px;
+    margin: 0 -4px;
+    background-color: #e5f7fe;
+}
+
+.skype-chat-divider {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #808080;
+    font-size: 11px;
+}
+
+.skype-chat-divider::before,
+.skype-chat-divider::after {
+    content: '';
+    flex: 1;
+    border-top: 1px solid #c0c0c0;
+}
+
+.skype-typing {
+    color: #808080;
+    font-style: italic;
+}
+
+.skype-typing-dots span {
+    animation: skype-typing 1.2s infinite;
+}
+
+.skype-typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.skype-typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes skype-typing {
+    0%, 60%, 100% { opacity: 1; }
+    30% { opacity: 0; }
+}
+
+/* Sunken status bar panels */
+.skype-statusbar {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 2px;
+    padding: 2px;
+    font-size: 11px;
+}
+
+.skype-statusbar > span {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 2px 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
+
+.skype-statusbar > span:first-child {
+    flex: 0 0 auto;
+}
+
+/* ----- "Has come online" notification ----- */
+
+.skype-toast {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 9999;
+    box-sizing: border-box;
+    width: 270px;
+    padding: 2px;
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+    animation: skype-toast-in 0.3s ease-out;
+}
+
+.skype-toast[hidden] {
+    display: none;
+}
+
+.skype-toast-body {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 2px;
+    padding: 10px 8px;
+    background-color: #ffffff;
+    border: 2px inset #ffffff;
+    color: #000000;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.skype-toast-body:focus-visible {
+    outline: 1px dotted #000000;
+    outline-offset: -5px;
+}
+
+.skype-toast-avatar {
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.skype-toast-avatar img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #808080;
+}
+
+.skype-toast-avatar .skype-presence {
+    right: -5px;
+    bottom: -5px;
+    width: 14px;
+    height: 14px;
+}
+
+.skype-toast-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.skype-toast-mood {
+    color: #808080;
+    font-style: italic;
+}
+
+.skype-toast-link {
+    color: #0000ff;
+    text-decoration: underline;
+}
+
+@keyframes skype-toast-in {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ----- Phones ----- */
+
+@media screen and (max-width: 430px) {
+    .skype-header {
+        gap: 12px;
+        padding: 10px 8px 8px;
+    }
+
+    .skype-toast {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .skype-avatar img {
+        width: 72px;
+        height: 72px;
+    }
+
+    .skype-fields {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0;
+    }
+
+    .skype-fields dd {
+        margin-bottom: 5px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .skype-toast,
+    .skype-lives-count.is-bumped,
+    .skype-typing-dots span {
+        animation: none;
+    }
+
+    /* Still show the "1UP", just without the float */
+    .skype-oneup {
+        animation: none;
+    }
+}

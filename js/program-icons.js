@@ -190,6 +190,11 @@ function initializeDesktopIcons() {
         if (icon.querySelector('.SlackIcon_32x32')) {
             icon.addEventListener('dblclick', openSlackInviteWindow);
         }
+
+        // Something from 2014 is still in the Recycle Bin (skype.js)
+        if (icon.querySelector('.RecycleIcon_32x32')) {
+            icon.addEventListener('dblclick', () => openSkypeWindow());
+        }
     });
 
     // Make windows draggable

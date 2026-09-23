@@ -215,7 +215,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const statusItems = [
             { text: 'Page loaded successfully' },
-            { text: 'Visitors: 1,337' },
+            // The id is a hook for the Skype easter egg (skype.js)
+            { text: 'Visitors: 1,337', id: 'visitor-counter' },
             { html: '<span class="date-label">Last updated: </span>August 24, 1995' }
         ];
 
@@ -223,6 +224,9 @@ document.addEventListener('DOMContentLoaded', function() {
         statusItems.forEach(item => {
             const statusItem = document.createElement('div');
             statusItem.className = 'status-item';
+            if (item.id) {
+                statusItem.id = item.id;
+            }
             if (item.html) {
                 statusItem.innerHTML = item.html;
             } else {
