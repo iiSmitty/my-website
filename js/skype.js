@@ -28,6 +28,10 @@ const SKYPE_PROFILE = {
 const SKYPE_STARTING_LIVES = 3;
 const SKYPE_MAX_LIVES = 99;
 
+// Give people a moment to take in the profile before the chat comes alive
+const SKYPE_TYPING_DELAY = 1800;
+const SKYPE_MESSAGE_DELAY = 4300;
+
 let skypeLives = SKYPE_STARTING_LIVES;
 let skypeStylesPromise = null;
 let skypeChatTimers = [];
@@ -71,9 +75,8 @@ function loadSkypeStyles() {
     return skypeStylesPromise;
 }
 
-function playSkypeSound(type) {
+function playSkypeSound(sound) {
     try {
-        const sound = new Audio(`sounds/win95-${type}.mp3`);
         sound.volume = 0.5;
         sound.play().catch(() => {});
     } catch (e) {
@@ -164,7 +167,7 @@ function buildSkypeWindow() {
 
     skypeWindow.innerHTML = `
         <div class="win95-title-bar" id="skypeTitleBar">
-            <div class="win95-title" id="skypeWindowTitle">${SKYPE_LOGO_SVG} Skype&trade; - ${profile.displayName}</div>
+            <div class="win95-title" id="skypeWindowTitle">${SKYPE_LOGO_SVG} Skype&trade;</div>
             <div class="win95-buttons">
                 <button class="win95-button win95-minimize" type="button" tabindex="-1" aria-hidden="true">_</button>
                 <button class="win95-button win95-maximize" type="button" tabindex="-1" aria-hidden="true">&#9633;</button>
@@ -306,6 +309,9 @@ function playSkypeReturn() {
         `${describeTimeAway(SKYPE_PROFILE.lastMessage, now)} later`;
     live.innerHTML = '';
 
+    // Start loading the sound now so it is ready when the message lands
+    const messageSound = new Audio('sounds/skype-message.mp3');
+
     skypeChatTimers.forEach(clearTimeout);
     skypeChatTimers = [
         setTimeout(() => {
@@ -314,7 +320,7 @@ function playSkypeReturn() {
                     &#9998; ${SKYPE_PROFILE.displayName} is typing<span class="skype-typing-dots"><span>.</span><span>.</span><span>.</span></span>
                 </div>`;
             chat.scrollTop = chat.scrollHeight;
-        }, 900),
+        }, SKYPE_TYPING_DELAY),
 
         setTimeout(() => {
             live.innerHTML = `
@@ -326,8 +332,8 @@ function playSkypeReturn() {
                     <div class="skype-message-text">back :)</div>
                 </div>`;
             chat.scrollTop = chat.scrollHeight;
-            playSkypeSound('access');
-        }, 2900)
+            playSkypeSound(messageSound);
+        }, SKYPE_MESSAGE_DELAY)
     ];
 }
 

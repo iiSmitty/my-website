@@ -16,7 +16,7 @@ test.describe('desktop', () => {
         await page.locator('#start-windows').click();
         await page.waitForLoadState('networkidle');
 
-        expect(requested.filter((url) => /skype\.min\.css|skype-avatar/.test(url))).toEqual([]);
+        expect(requested.filter((url) => /skype\.min\.css|skype-avatar|skype-message/.test(url))).toEqual([]);
         await expect(page.locator('#skypeWindow')).toHaveCount(0);
     });
 
@@ -25,7 +25,7 @@ test.describe('desktop', () => {
         await page.locator('#start-windows').click();
         await page.locator('.desktop-icon', { hasText: 'Recycle Bin' }).dblclick();
 
-        const skypeWindow = page.getByRole('dialog', { name: /Skype.*André Smit/ });
+        const skypeWindow = page.getByRole('dialog', { name: 'Skype™' });
         await expect(skypeWindow).toBeVisible();
         await expect(skypeWindow).toBeFocused();
         await expect(skypeWindow).toHaveCSS('position', 'fixed');
@@ -46,7 +46,7 @@ test.describe('desktop', () => {
 
         // 2014-me said "brb"... and eventually comes back
         await expect(skypeWindow.locator('.skype-chat')).toContainText('brb');
-        await expect(skypeWindow.locator('.skype-chat')).toContainText('back :)');
+        await expect(skypeWindow.locator('.skype-chat')).toContainText('back :)', { timeout: 10000 });
 
         // Extra lives
         await expect(page.locator('#skypeLivesCount')).toHaveText('3');
