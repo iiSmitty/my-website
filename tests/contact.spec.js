@@ -34,26 +34,35 @@ async function stubTurnstile(page, { interactive = false } = {}) {
         route.fulfill({ contentType: 'text/javascript', body: turnstileStub({ interactive }) }));
 }
 
+// The floppy loader and the reveal are deliberate multi-second animations run
+// on timers. Fast-forward the page's clock while waiting for them, so the tests
+// are quick and a busy machine can't time them out.
+async function fastForwardUntil(page, read, expected) {
+    await expect.poll(async () => {
+        await page.clock.runFor(1000);
+        return read();
+    }, { timeout: 20000 }).toBe(expected);
+}
+
 async function openContactSection(page) {
-    // A fake clock that still ticks in real time, so waitForReveal can skip ahead
+    // A fake clock that still ticks in real time, so fastForwardUntil can skip ahead
     await page.clock.install();
     await page.goto('/');
     await page.locator('#start-windows').click();
     await page.locator('#floppyLoader').click();
+    await fastForwardUntil(page, () => page.locator('#decrypt-button').isVisible(), true);
     return page.locator('.section-content', { has: page.locator('#decrypt-button') });
 }
 
-// The reveal is a deliberate ~5s animation. Fast-forward the page's clock while
-// waiting for it, so a busy machine can't make the test time out.
 async function waitForReveal(page) {
-    await expect.poll(async () => {
-        await page.clock.runFor(1000);
-        return page.locator('#decrypt-button').textContent();
-    }).toBe('Information Decrypted!');
+    await fastForwardUntil(page, () => page.locator('#decrypt-button').textContent(), 'Information Decrypted!');
 }
 
 test.describe('desktop', () => {
     test.use({ viewport: { width: 1280, height: 800 } });
+    // Startup, floppy loader, Turnstile and the reveal: the longest flow in the
+    // suite, so it gets Playwright's tripled timeout under parallel load
+    test.slow();
 
     test('nothing contact-related loads until Decrypt is clicked', async ({ page }) => {
         const requested = [];
