@@ -16,14 +16,12 @@
 const CONTACT_API_URL = "https://andresmit.co.za/api/contact";
 
 let REAL_EMAIL = null;
-let REAL_PHONE = null;
 
 // Skip browser-specific code if running in Node
 if (typeof window !== 'undefined' && typeof document !== 'undefined') {
     // Elements
     let decryptButton;
     let encryptedEmail;
-    let encryptedPhone;
     let decryptAnimation;
     let decryptProgressBar;
     let decryptText;
@@ -34,7 +32,6 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
         // Get elements
         decryptButton = document.getElementById('decrypt-button');
         encryptedEmail = document.getElementById('encrypted-email');
-        encryptedPhone = document.getElementById('encrypted-phone');
         decryptAnimation = document.getElementById('decrypt-animation');
         decryptProgressBar = document.getElementById('decrypt-progress-bar');
         decryptText = document.getElementById('decrypt-text');
@@ -174,7 +171,6 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
             })
             .then(data => {
                 REAL_EMAIL = data.email;
-                REAL_PHONE = data.phone;
                 runDecryptionAnimation();
             })
             .catch(() => {
@@ -206,9 +202,7 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
         }, 3200);
 
         setTimeout(() => {
-            updateProgress(80, "Decrypting phone number...");
-            startPhoneDecryption();
-            // No sound here
+            updateProgress(80, "Verifying integrity...");
         }, 4000);
 
         setTimeout(() => {
@@ -238,21 +232,6 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
             setTimeout(() => {
                 emailChars[i] = targetChars[i];
                 encryptedEmail.textContent = emailChars.join('');
-            }, i * 80); // Reveal each character with a delay
-        }
-    }
-
-    function startPhoneDecryption() {
-        // Gradual reveal of phone number character by character
-        let currentPhone = "(***) ***-****";
-        let targetPhone = REAL_PHONE;
-        let phoneChars = currentPhone.split('');
-        let targetChars = targetPhone.split('');
-
-        for (let i = 0; i < targetChars.length; i++) {
-            setTimeout(() => {
-                phoneChars[i] = targetChars[i];
-                encryptedPhone.textContent = phoneChars.join('');
             }, i * 80); // Reveal each character with a delay
         }
     }

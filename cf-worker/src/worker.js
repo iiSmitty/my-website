@@ -23,12 +23,12 @@ export default {
       return new Response('Not found', { status: 404 });
     }
 
-    if (!env.CONTACT_PHONE || !env.CONTACT_EMAIL) {
+    if (!env.CONTACT_EMAIL) {
       return new Response('Secrets not configured', { status: 500 });
     }
 
     return new Response(
-      JSON.stringify({ phone: env.CONTACT_PHONE, email: env.CONTACT_EMAIL }),
+      JSON.stringify({ email: env.CONTACT_EMAIL }),
       {
         headers: {
           ...corsHeaders,
