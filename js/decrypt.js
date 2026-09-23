@@ -13,7 +13,12 @@
     }
 })();
 
+// The contact worker (cf-worker/) only hands out the email for a Turnstile token
 const CONTACT_API_URL = "https://andresmit.co.za/api/contact";
+const TURNSTILE_SCRIPT_URL = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+const TURNSTILE_SITE_KEY = "0x4AAAAAAFBIasdLcwxPVgu5";
+// Must match TURNSTILE_ACTION in cf-worker/src/worker.js
+const TURNSTILE_ACTION = "contact";
 
 let REAL_EMAIL = null;
 
@@ -159,24 +164,78 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
         });
     }
 
-    function startDecryption() {
+    async function startDecryption() {
         decryptButton.disabled = true;
         decryptAnimation.style.display = 'block';
-        updateProgress(0, "Connecting to secure server...");
+        updateProgress(0, "Scanning for robots...");
 
-        fetch(CONTACT_API_URL)
-            .then(res => {
-                if (!res.ok) throw new Error('Worker returned ' + res.status);
-                return res.json();
-            })
-            .then(data => {
-                REAL_EMAIL = data.email;
-                runDecryptionAnimation();
-            })
-            .catch(() => {
-                updateProgress(0, "Connection failed. Try again.");
-                decryptButton.disabled = false;
+        try {
+            const token = await getTurnstileToken();
+
+            updateProgress(0, "Connecting to secure server...");
+            const res = await fetch(CONTACT_API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ token }),
             });
+            if (!res.ok) throw new Error('Worker returned ' + res.status);
+
+            REAL_EMAIL = (await res.json()).email;
+            runDecryptionAnimation();
+        } catch {
+            updateProgress(0, "Connection failed. Try again.");
+            decryptButton.disabled = false;
+        }
+    }
+
+    // Turnstile is only loaded once someone asks for the contact details
+    let turnstileLoading = null;
+
+    function loadTurnstile() {
+        if (!turnstileLoading) {
+            turnstileLoading = new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = TURNSTILE_SCRIPT_URL;
+                script.onload = () => resolve(window.turnstile);
+                script.onerror = () => {
+                    // Let the next click try again
+                    script.remove();
+                    turnstileLoading = null;
+                    reject(new Error('Turnstile failed to load'));
+                };
+                document.head.appendChild(script);
+            });
+        }
+        return turnstileLoading;
+    }
+
+    // Resolves with a fresh single-use token. The widget stays invisible unless
+    // Cloudflare wants the visitor to click a checkbox.
+    async function getTurnstileToken() {
+        const turnstile = await loadTurnstile();
+
+        return new Promise((resolve, reject) => {
+            let widgetId;
+            const removeWidget = () => turnstile.remove(widgetId);
+            const fail = () => {
+                removeWidget();
+                reject(new Error('Turnstile challenge failed'));
+            };
+
+            widgetId = turnstile.render('#decrypt-turnstile', {
+                sitekey: TURNSTILE_SITE_KEY,
+                action: TURNSTILE_ACTION,
+                appearance: 'interaction-only',
+                retry: 'never',
+                callback: (token) => {
+                    removeWidget();
+                    resolve(token);
+                },
+                'error-callback': fail,
+                'expired-callback': fail,
+                'timeout-callback': fail,
+            });
+        });
     }
 
     function runDecryptionAnimation() {

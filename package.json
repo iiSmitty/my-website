@@ -5,7 +5,8 @@
   "description": "Windows 95-themed personal portfolio site",
   "scripts": {
     "build": "node build.js",
-    "test": "npm run build && playwright test"
+    "test": "npm run build && npm run test:worker && playwright test",
+    "test:worker": "node --test \"cf-worker/test/*.test.js\""
   },
   "devDependencies": {
     "@playwright/test": "1.61.0",
