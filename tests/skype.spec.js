@@ -87,8 +87,12 @@ test.describe('reduced motion', () => {
         await page.locator('.desktop-icon', { hasText: 'Recycle Bin' }).dblclick();
 
         await expect(page.locator('#skypeWindow')).toBeVisible();
-        await page.locator('#skypeWindow .skype-avatar').click();
-        await expect(page.locator('#skypeWindow .skype-oneup')).toHaveCSS('animation-name', 'none');
+        // The "1UP" only lives for 600ms, so read its style in the same tick as the click
+        const oneUpAnimation = await page.evaluate(() => {
+            document.querySelector('#skypeWindow .skype-avatar').click();
+            return getComputedStyle(document.querySelector('#skypeWindow .skype-oneup')).animationName;
+        });
+        expect(oneUpAnimation).toBe('none');
         await expect(page.locator('#skypeLivesCount')).toHaveText('4');
     });
 });
