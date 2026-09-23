@@ -1015,6 +1015,68 @@ body.startup {
     filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
 }
 
+.BriefcaseIcon_32x32 {
+    width: 32px;
+    height: 32px;
+    background-image: url(/icons/briefcase.svg);
+    display: inline-block;
+    margin-bottom: 4px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.BriefcaseIcon_16x16 {
+    width: 16px;
+    height: 16px;
+    background: url(/icons/briefcase.svg) no-repeat center / 16px 16px;
+    display: inline-block;
+    vertical-align: -3px;
+    margin-right: 3px;
+}
+
+/* Experience desktop window: a frame around /experience?embed */
+.xp-desktop-window {
+    display: flex;
+    flex-direction: column;
+    width: min(920px, calc(100vw - 40px));
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+    padding: 2px;
+}
+
+.xp-desktop-window iframe {
+    display: block;
+    width: 100%;
+    height: min(600px, calc(100vh - 100px));
+    border: none;
+}
+
+.xp-desktop-window[hidden] {
+    display: none;
+}
+
+/* Maximize fills the screen. !important beats the inline top/left that
+   dragging leaves behind, so restoring returns the window to where it was. */
+.xp-desktop-window.is-maximized {
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.xp-desktop-window.is-maximized iframe {
+    flex: 1;
+    height: auto;
+}
+
+/* While a window is dragged, a frame under the cursor would swallow the
+   mousemove events and the window would stick */
+.win95-window.is-dragging iframe {
+    pointer-events: none;
+}
+
 /* Desktop Icons */
 .desktop-icons {
     position: absolute;

@@ -48,7 +48,8 @@
             "@context": "https://schema.org",
             "@type": "Person",
             "name": "André Smit",
-            "jobTitle": "Software Engineer",
+            "jobTitle": "Entry Level Developer",
+            "worksFor": { "@type": "Organization", "name": "Interfront SOC Ltd" },
             "description": "Problem Solver and Software Engineer",
             "url": "https://andresmit.co.za",
             "sameAs": [
@@ -99,6 +100,10 @@
             <span>Spotify</span>
         </div>
         <div class="desktop-icon">
+            <span class="BriefcaseIcon_32x32"></span>
+            <span>Experience</span>
+        </div>
+        <div class="desktop-icon">
             <span class="SlackIcon_32x32"></span>
             <span>Dev Community</span>
         </div>
@@ -135,7 +140,8 @@
             </div>
             <div class="win95-box section-content">
                 <p>Hello, world! I'm a software engineer based in Cape Town. I specialize in .NET Framework, and I'm
-                    passionate about creating efficient, clean code.</p>
+                    passionate about creating efficient, clean code. Browse my
+                    <a href="experience" class="win95-link">work experience</a> to see where I've been.</p>
                 <p>When I'm not coding, you can find me running on trails and tar roads, hiking, enjoying good coffee,
                     or shooting.</p>
                 <p>Follow my running adventures on <a href="https://www.strava.com/athletes/andresmit"
@@ -173,7 +179,7 @@
                 </div>
                 <div class="icon-description-separator"></div>
                 <div class="program-info" id="infoBox">
-                    Click an icon to learn more about what I'm focusing on as a graduate developer...
+                    Click an icon to learn more about what I'm focusing on as an entry level developer...
                 </div>
                 <div class="win95-status-mini">
                     <span>5 items</span>
@@ -207,8 +213,7 @@
                         <td><span class="skill-dots">&#9679;&#9679;&#9679;&#9679;&#9679;</span></td>
                     </tr>
                 </table>
-                <p class="skills-note">* Recently graduated with MAGNA CUM LAUDE and actively expanding my development
-                    skills</p>
+                <p class="skills-note">* Graduated MAGNA CUM LAUDE and actively expanding my development skills</p>
             </div>
 
             <div class="section-header">
@@ -414,6 +419,27 @@
             <div id="tech-item-counter">0 object(s)</div>
         </div>
     </div>
+</div>
+
+<!-- Experience Window: hosts /experience in embedded mode, so the work
+     history lives in one place (experience.html). The frame only loads on
+     first open. -->
+<div class="win95-window xp-desktop-window" id="experienceWindow" hidden
+     style="position: fixed; top: 40px; left: 110px; z-index: 1000;">
+    <div class="win95-title-bar" id="experienceTitleBar">
+        <div class="win95-title">
+            <span class="BriefcaseIcon_16x16"></span>
+            Exploring - Experience
+        </div>
+        <div class="win95-buttons">
+            <button class="win95-button win95-minimize">_</button>
+            <button class="win95-button win95-maximize" onclick="toggleExperienceWindowMaximized()"
+                    aria-label="Maximize">□</button>
+            <button class="win95-button win95-close" onclick="closeExperienceWindow()"
+                    aria-label="Close">×</button>
+        </div>
+    </div>
+    <iframe id="experienceFrame" title="Work experience" data-src="experience?embed"></iframe>
 </div>
 
 <!-- Spotify Window -->

@@ -1,0 +1,676 @@
+/* Work Experience page (experience.html)
+ *
+ * Three layouts from one piece of markup:
+ *   - Explorer (screen, >= 720px, JS ready): folder tree + details pane
+ *   - Stacked  (phones, no JS): every company in a column, newest first
+ *   - Print    (File > Print / Save as PDF): the stacked layout, minus chrome
+ */
+
+[hidden] {
+    display: none !important;
+}
+
+.xp-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.xp-window {
+    max-width: 960px;
+}
+
+.xp-print-only {
+    display: none;
+}
+
+/* ===== Icons (pixel-art SVGs in /icons) ===== */
+
+.xp-icon {
+    display: inline-block;
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    background: no-repeat center / 16px 16px;
+    image-rendering: pixelated;
+    vertical-align: -3px;
+}
+
+.xp-icon--folder {
+    background-image: url(/icons/folder-closed.svg);
+}
+
+.xp-icon--briefcase {
+    background-image: url(/icons/briefcase.svg);
+}
+
+[aria-selected="true"] > .xp-tree-row .xp-icon--folder {
+    background-image: url(/icons/folder-open.svg);
+}
+
+/* ===== Toolbar: Up, address bar, filter ===== */
+
+.xp-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 6px;
+    border-bottom: 1px solid #808080;
+    box-shadow: 0 1px 0 #ffffff;
+    font-size: 11px;
+}
+
+.xp-up {
+    min-width: 0;
+    padding: 2px 8px;
+    font-size: 11px;
+}
+
+.xp-up:focus-visible {
+    outline: 1px dotted #000000;
+    outline-offset: -4px;
+}
+
+.xp-address {
+    flex: 1;
+    min-width: 0;
+    margin-bottom: 0;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+.xp-address-field {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: #ffffff;
+    padding: 3px 4px;
+    box-shadow: inset 1px 1px #808080, inset -1px -1px #dfdfdf, inset 2px 2px #000000;
+}
+
+.xp-filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+/* Win95 checkbox: sunken white well with a pixel tick */
+.xp-filter-input {
+    appearance: none;
+    width: 13px;
+    height: 13px;
+    margin: 0;
+    background: #ffffff no-repeat center;
+    box-shadow: inset -1px -1px #ffffff, inset 1px 1px #808080, inset -2px -2px #dfdfdf, inset 2px 2px #000000;
+    cursor: pointer;
+}
+
+.xp-filter-input:checked {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' shape-rendering='crispEdges'%3E%3Cpath d='M6 0h1v3H6v1H5v1H4v1H3v1H2V6H1V5H0V2h1v1h1v1h1V3h1V2h1V1h1z'/%3E%3C/svg%3E");
+}
+
+.xp-filter-input:focus-visible + span {
+    outline: 1px dotted #000000;
+}
+
+/* ===== Company articles (shared by every layout) ===== */
+
+.xp-content-pane {
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.xp-company {
+    background-color: #ffffff;
+    box-shadow: inset 1px 1px #808080, inset -1px -1px #dfdfdf, inset 2px 2px #000000, inset -2px -2px #ffffff;
+    padding: 12px 14px;
+    margin: 0 10px 12px;
+}
+
+.xp-company-name {
+    margin: 0 0 2px;
+    text-align: left;
+    font-size: 15px;
+    color: #000080;
+}
+
+.xp-meta {
+    margin: 0;
+    color: #404040;
+    font-size: 11px;
+}
+
+.xp-company-span {
+    color: #000000;
+}
+
+.xp-tenure {
+    white-space: nowrap;
+}
+
+.xp-roles {
+    list-style: none;
+    margin: 12px 0 0;
+    padding: 0;
+}
+
+/* Each role hangs off a Win95 tree-style dotted rail, like LinkedIn's timeline.
+ * Deliberately no `position` on roles or titles: positioned elements are
+ * painted last, which scrambles the text order of a saved PDF (and with it,
+ * how applicant-tracking systems read the CV). */
+.xp-role {
+    padding: 0 0 12px 18px;
+}
+
+.xp-role:last-child {
+    padding-bottom: 0;
+}
+
+.xp-roles:has(> .xp-role + .xp-role) > .xp-role {
+    border-left: 1px dotted #808080;
+    margin-left: 4px;
+    padding-left: 14px;
+}
+
+/* The rail ends at the last role's bullet: an 8px dotted stub on the border line */
+.xp-roles:has(> .xp-role + .xp-role) > .xp-role:last-child {
+    border-left-color: transparent;
+    background: repeating-linear-gradient(#808080 0 1px, transparent 1px 2px) 0 0 / 1px 8px no-repeat border-box;
+}
+
+.xp-role-title {
+    margin: 0 0 1px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.xp-role-title::before {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin: 0 11px 0 -18px;
+    vertical-align: 2px;
+    background-color: #000080;
+    box-shadow: 1px 1px #808080;
+}
+
+.xp-promotion {
+    margin: 8px 0 0 -2px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #008000;
+}
+
+.xp-role.is-target > .xp-role-title {
+    background-color: #ffffcc;
+    outline: 1px dotted #000000;
+}
+
+.xp-highlights {
+    margin: 6px 0 0;
+    padding-left: 16px;
+}
+
+.xp-highlights li {
+    margin-bottom: 2px;
+}
+
+.xp-skills {
+    margin: 6px 0 0;
+    font-size: 11px;
+}
+
+/* ===== Stacked layout (default: phones, no JS) ===== */
+
+.xp-doc-header {
+    padding: 4px 10px 0;
+}
+
+.xp-folder-name {
+    display: inline-block;
+    margin: 8px 10px 6px;
+    padding: 3px 6px;
+    font-size: 12px;
+    text-align: left;
+    color: #000000;
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+}
+
+.xp-folder .xp-company-name {
+    font-size: 15px;
+}
+
+.xp-contents-header,
+.xp-folder > .xp-listing {
+    display: none;
+}
+
+.xp-toolbar .xp-up,
+.xp-toolbar .xp-address,
+.xp-tree-pane,
+.xp-statusbar {
+    display: none;
+}
+
+.xp-toolbar {
+    justify-content: flex-end;
+}
+
+/* ===== Details view (the listing of a folder) ===== */
+
+.xp-listing {
+    margin: 0 10px 12px;
+}
+
+.xp-details {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    font-size: 11px;
+}
+
+.xp-details,
+.xp-details th,
+.xp-details td {
+    border: none;
+}
+
+.xp-details th,
+.xp-details td {
+    padding: 3px 6px;
+    vertical-align: top;
+}
+
+.xp-details thead th {
+    padding: 2px 6px;
+    font-weight: normal;
+    white-space: nowrap;
+    background-color: #c0c0c0;
+    box-shadow: inset -1px -1px #000000, inset 1px 1px #ffffff, inset -2px -2px #808080;
+}
+
+.xp-details tbody th {
+    background-color: transparent;
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+.xp-details tbody tr {
+    cursor: pointer;
+}
+
+.xp-details tbody a {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: #000000;
+}
+
+.xp-details tbody a:focus-visible {
+    outline: 1px dotted #000000;
+}
+
+.xp-col-type,
+.xp-col-dates,
+.xp-col-duration {
+    white-space: nowrap;
+}
+
+@media (max-width: 719px) {
+    .xp-col-type,
+    .xp-col-dates {
+        display: none;
+    }
+}
+
+@media (max-width: 479px) {
+    .xp-col-position {
+        display: none;
+    }
+
+    .xp-toolbar {
+        justify-content: flex-start;
+    }
+}
+
+/* ===== Explorer layout ===== */
+
+@media screen and (min-width: 720px) {
+    .xp-ready .xp-toolbar {
+        justify-content: flex-start;
+    }
+
+    .xp-ready .xp-toolbar .xp-up,
+    .xp-ready .xp-toolbar .xp-address {
+        display: flex;
+    }
+
+    .xp-ready .xp-explorer {
+        display: grid;
+        grid-template-columns: minmax(190px, 240px) 1fr;
+        gap: 3px;
+        height: clamp(420px, 68vh, 680px);
+        padding: 3px;
+    }
+
+    .xp-ready .xp-tree-pane,
+    .xp-ready .xp-content-pane {
+        min-height: 0;
+        overflow: auto;
+        background-color: #ffffff;
+        box-shadow: inset 1px 1px #808080, inset -1px -1px #dfdfdf, inset 2px 2px #000000, inset -2px -2px #ffffff;
+    }
+
+    .xp-ready .xp-tree-pane {
+        display: block;
+    }
+
+    .xp-ready .xp-pane-header {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        display: block;
+        margin: 2px 2px 0;
+        padding: 2px 6px;
+        font-size: 11px;
+        background-color: #c0c0c0;
+        box-shadow: inset -1px -1px #808080, inset 1px 1px #ffffff;
+    }
+
+    /* Only the selected node shows in the right pane */
+    .xp-ready .xp-doc-header {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+    }
+
+    .xp-ready .xp-company,
+    .xp-ready .xp-listing,
+    .xp-ready .xp-folder-name {
+        display: none;
+    }
+
+    .xp-ready .xp-company.is-current,
+    .xp-ready .is-current > .xp-listing {
+        display: block;
+    }
+
+    .xp-ready .xp-company {
+        margin: 0;
+        padding: 12px 16px 16px;
+        box-shadow: none;
+        background-color: transparent;
+    }
+
+    .xp-ready .xp-listing {
+        margin: 2px;
+    }
+
+    .xp-ready .xp-details tbody tr:focus-within {
+        background-color: #000080;
+    }
+
+    .xp-ready .xp-details tbody tr:focus-within,
+    .xp-ready .xp-details tbody tr:focus-within a {
+        color: #ffffff;
+    }
+
+    .xp-ready .xp-statusbar {
+        display: flex;
+        gap: 2px;
+        padding: 0 3px 3px;
+        font-size: 11px;
+    }
+
+    .xp-statusbar span {
+        padding: 2px 6px;
+        min-height: 14px;
+        box-shadow: inset 1px 1px #808080, inset -1px -1px #ffffff;
+    }
+
+    .xp-status-count {
+        flex: 0 0 170px;
+    }
+
+    .xp-status-detail {
+        flex: 1;
+    }
+}
+
+/* ===== Embedded (experience?embed, inside the home page's desktop window) ===== */
+
+.xp-embedded body {
+    padding: 0;
+    background-color: #c0c0c0;
+}
+
+/* The host window has its own title bar; the page's menu and status bar
+   would just repeat the home page's */
+.xp-embedded .win95-title-bar,
+.xp-embedded .win95-menu-bar,
+.xp-embedded .win95-status-bar {
+    display: none;
+}
+
+.xp-embedded .xp-window {
+    max-width: none;
+    border: none;
+    box-shadow: none;
+}
+
+@media screen and (min-width: 720px) {
+    /* Fill the frame: toolbar, explorer, status bar. !important because
+       decrypt.js reveals the container with an inline display: block. */
+    .xp-embedded .xp-window.xp-ready {
+        display: grid !important;
+        grid-template-rows: auto minmax(0, 1fr) auto;
+        height: 100vh;
+    }
+
+    .xp-embedded .xp-ready .xp-explorer {
+        height: auto;
+        min-height: 0;
+    }
+}
+
+/* ===== Folder tree ===== */
+
+.xp-tree,
+.xp-tree ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.xp-tree {
+    padding: 4px 6px 8px 2px;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.xp-tree ul {
+    padding-left: 16px;
+}
+
+.xp-tree li {
+    position: relative;
+}
+
+.xp-tree [aria-expanded="false"] > ul {
+    display: none;
+}
+
+/* Dotted connector lines: a vertical rail per group, a stub per item */
+.xp-tree ul > li::before,
+.xp-tree ul > li::after {
+    content: "";
+    position: absolute;
+    left: 8px;
+    pointer-events: none;
+}
+
+.xp-tree ul > li::before {
+    top: 0;
+    bottom: 0;
+    border-left: 1px dotted #808080;
+}
+
+.xp-tree ul > li:last-child::before {
+    bottom: auto;
+    height: 9px;
+}
+
+.xp-tree ul > li::after {
+    top: 9px;
+    width: 8px;
+    border-top: 1px dotted #808080;
+}
+
+.xp-tree li:focus {
+    outline: none;
+}
+
+.xp-tree-row {
+    display: flex;
+    align-items: center;
+    height: 18px;
+    cursor: pointer;
+}
+
+.xp-twisty {
+    position: relative;
+    z-index: 1;
+    width: 16px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+/* The +/- box, only on folders that contain folders */
+[aria-expanded] > .xp-tree-row .xp-twisty::before {
+    position: absolute;
+    left: 4px;
+    top: 5px;
+    width: 7px;
+    height: 7px;
+    border: 1px solid #808080;
+    background-color: #ffffff;
+    font: 9px/7px "Courier New", monospace;
+    text-align: center;
+    color: #000000;
+}
+
+[aria-expanded="true"] > .xp-tree-row .xp-twisty::before {
+    content: "-";
+}
+
+[aria-expanded="false"] > .xp-tree-row .xp-twisty::before {
+    content: "+";
+}
+
+.xp-tree-label {
+    margin-left: 3px;
+    padding: 1px 2px;
+}
+
+[aria-selected="true"] > .xp-tree-row .xp-tree-label {
+    background-color: #000080;
+    color: #ffffff;
+}
+
+.xp-tree li:focus-visible > .xp-tree-row .xp-tree-label {
+    outline: 1px dotted #000000;
+    outline-offset: 0;
+}
+
+[aria-selected="true"]:focus-visible > .xp-tree-row .xp-tree-label {
+    outline-color: #ffff00;
+}
+
+/* ===== Print / Save as PDF ===== */
+
+@media print {
+    @page {
+        margin: 14mm 16mm;
+    }
+
+    body {
+        background: #ffffff;
+        padding: 0;
+    }
+
+    .win95-container {
+        max-width: none;
+        border: none;
+        box-shadow: none;
+        background: #ffffff;
+    }
+
+    .win95-title-bar,
+    .win95-menu-bar,
+    .win95-status-bar,
+    .xp-toolbar,
+    .xp-listing {
+        display: none !important;
+    }
+
+    .xp-print-only {
+        display: block;
+        margin: 4px 0 0;
+        text-align: center;
+        font-size: 11px;
+    }
+
+    .xp-doc-header {
+        padding: 0 0 8px;
+        margin-bottom: 12px;
+        border-bottom: 2px solid #000080;
+    }
+
+    .xp-doc-header h1 {
+        margin: 0;
+        font-size: 20px;
+    }
+
+    .xp-company {
+        margin: 0 0 14px;
+        padding: 0;
+        box-shadow: none;
+    }
+
+    .xp-role {
+        break-inside: avoid;
+    }
+
+    .xp-company-name,
+    .xp-folder-name {
+        break-after: avoid;
+    }
+
+    .xp-folder-name {
+        display: block;
+        margin: 16px 0 8px;
+        padding: 0 0 2px;
+        border: none;
+        border-bottom: 1px solid #808080;
+        background: none;
+        font-size: 13px;
+    }
+
+    .xp-role-title::before {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}

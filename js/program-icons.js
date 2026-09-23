@@ -19,7 +19,7 @@ function showInfo(service) {
             infoBox.innerHTML = "<b>Code Optimization</b><br>Improving code efficiency and readability. Practicing techniques to write cleaner, faster code while developing my skills in performance analysis.";
             break;
         default:
-            infoBox.innerHTML = "Click an icon to learn more about what I'm focusing on as a graduate developer...";
+            infoBox.innerHTML = "Click an icon to learn more about what I'm focusing on as an entry level developer...";
     }
 }
 
@@ -183,6 +183,10 @@ function initializeDesktopIcons() {
             icon.addEventListener('dblclick', openSpotifyWindow);
         }
 
+        if (icon.querySelector('.BriefcaseIcon_32x32')) {
+            icon.addEventListener('dblclick', openExperienceWindow);
+        }
+
         if (icon.querySelector('.SlackIcon_32x32')) {
             icon.addEventListener('dblclick', openSlackInviteWindow);
         }
@@ -192,6 +196,7 @@ function initializeDesktopIcons() {
     makeTechWindowDraggable();
     makeWindowDraggable('spotifyWindow', 'spotifyTitleBar');
     makeWindowDraggable('slackWindow', 'slackTitleBar');
+    makeWindowDraggable('experienceWindow', 'experienceTitleBar');
 
     // Initialize the desktop click handler
     initializeDesktopClickHandler();
@@ -361,6 +366,7 @@ function makeWindowDraggable(windowId, titleBarId) {
 
     titleBar.addEventListener('mousedown', function(e) {
         isDragging = true;
+        windowElement.classList.add('is-dragging');
         offsetX = e.clientX - windowElement.getBoundingClientRect().left;
         offsetY = e.clientY - windowElement.getBoundingClientRect().top;
 
@@ -381,7 +387,47 @@ function makeWindowDraggable(windowId, titleBarId) {
 
     document.addEventListener('mouseup', function() {
         isDragging = false;
+        windowElement.classList.remove('is-dragging');
     });
+}
+
+// Function to open the Experience window (experience.html in embedded mode)
+function openExperienceWindow() {
+    const experienceWindow = document.getElementById('experienceWindow');
+    const frame = document.getElementById('experienceFrame');
+    if (!experienceWindow || !frame) {
+        console.error("Could not find experienceWindow element");
+        return;
+    }
+
+    // Load the page on first open only, so the home page doesn't pay for it
+    if (!frame.getAttribute('src')) {
+        frame.setAttribute('src', frame.dataset.src);
+    }
+
+    experienceWindow.hidden = false;
+
+    // Bring to front
+    document.querySelectorAll('.win95-window').forEach(win => {
+        win.style.zIndex = 10;
+    });
+    experienceWindow.style.zIndex = 100;
+}
+
+// Function to close the Experience window
+function closeExperienceWindow() {
+    const experienceWindow = document.getElementById('experienceWindow');
+    if (experienceWindow) {
+        experienceWindow.hidden = true;
+    }
+}
+
+// Maximize fills the screen; pressing it again restores the window
+function toggleExperienceWindowMaximized() {
+    const experienceWindow = document.getElementById('experienceWindow');
+    if (experienceWindow) {
+        experienceWindow.classList.toggle('is-maximized');
+    }
 }
 
 // Function to open the Spotify window

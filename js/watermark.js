@@ -5,8 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
         'ontouchstart' in window ||
         navigator.maxTouchPoints > 0;
 
-    // Don't show watermark on mobile devices
-    if (isMobile) {
+    // Don't show watermark on mobile devices, or twice when a page is framed
+    // inside another (e.g. the Experience desktop window)
+    if (isMobile || window.self !== window.top) {
         return;
     }
 

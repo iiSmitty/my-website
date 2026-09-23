@@ -15,11 +15,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 text: 'File',
                 accessKey: 'F',
                 dropdown: [
-                    { text: 'Home', accessKey: 'H', link: './' },
-                    { text: 'Strava PBs', accessKey: 'S', link: './strava-pbs' },
+                    { text: 'Home', accessKey: 'H', link: './', pages: ['', 'index', 'home'] },
+                    { text: 'Work Experience', accessKey: 'W', link: './experience', pages: ['experience'] },
+                    { text: 'Strava PBs', accessKey: 'S', link: './strava-pbs', pages: ['strava-pbs'] },
                     { text: 'LinkedIn Profile', accessKey: 'L', link: 'https://www.linkedin.com/in/andrezsmit/', target: '_blank'},
+                    // Only offered where the page has a print stylesheet worth saving as a PDF
+                    { text: 'Print / Save as PDF', accessKey: 'P', action: 'print', onlyOn: ['experience'] },
                     { text: 'Exit', accessKey: 'X', action: 'exit' }
-                ]
+                ].filter(dropdownItem => !dropdownItem.onlyOn || dropdownItem.onlyOn.includes(currentPage))
             },
             { text: 'Edit', accessKey: 'E', link: '#' },
             { text: 'View', accessKey: 'V', link: '#' },
@@ -130,13 +133,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     dropdownElement.dataset.accessKey = dropdownItem.accessKey ? dropdownItem.accessKey.toLowerCase() : '';
 
                     // Highlight active page in dropdown
-                    if ((dropdownItem.text === 'Home' && (currentPage === 'home' || currentPage === '' || currentPage === 'index')) ||
-                        (dropdownItem.text === 'Strava PBs' && currentPage === 'strava-pbs')) {
+                    if (dropdownItem.pages && dropdownItem.pages.includes(currentPage)) {
                         dropdownElement.classList.add('active-dropdown-item');
                     }
 
                     // Check for special actions first
-                    if (dropdownItem.action === 'exit') {
+                    if (dropdownItem.action === 'print') {
+                        dropdownElement.addEventListener('click', function() {
+                            dropdownContent.classList.remove('show');
+                            menuItem.classList.remove('active-menu-item');
+                            window.print();
+                        });
+                    } else if (dropdownItem.action === 'exit') {
                         dropdownElement.addEventListener('click', function() {
                             console.log('Exit clicked'); // Debug log
 

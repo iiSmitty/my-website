@@ -62,8 +62,11 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
             window.location.pathname.includes('404') ||
             document.body.classList.contains('error-404');
 
+        // Pages people land on from a shared link (e.g. a CV) opt out of the startup ritual
+        const skipsStartup = document.body.hasAttribute('data-skip-startup');
+
         // Only show the startup dialog if we're not navigating internally and not on a 404 page
-        if (!isInternalNavigation && !is404Page) {
+        if (!isInternalNavigation && !is404Page && !skipsStartup) {
             // Create a "Windows is starting up" dialog
             createStartupDialog();
         } else {
