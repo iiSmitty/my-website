@@ -5,16 +5,6 @@ const { test, expect } = require('@playwright/test');
 // (+27 or a leading 0, then 9 digits in the usual groupings) fails the test.
 const saPhoneNumber = /(\+\s*27|\b0)[\s-]*\d{2}[\s-]*\d{3}[\s-]*\d{4}/;
 
-// Boot the home page past the startup dialog and floppy loader, so the status
-// bar (and its visitor counter) is on screen.
-async function bootHomePage(page, { touch = false } = {}) {
-    await page.goto('/');
-    const press = (locator) => (touch ? locator.tap() : locator.click());
-    await press(page.locator('#start-windows'));
-    await press(page.locator('#floppyLoader'));
-    await expect(page.locator('#visitor-counter')).toBeVisible();
-}
-
 test.describe('desktop', () => {
     test.use({ viewport: { width: 1280, height: 800 } });
 
@@ -68,36 +58,15 @@ test.describe('desktop', () => {
         await expect(skypeWindow).toBeHidden();
     });
 
-    test('the visitor counter brings André online, by mouse and keyboard', async ({ page }) => {
-        await bootHomePage(page);
-        const counter = page.locator('#visitor-counter');
-        const toast = page.locator('#skypeToast');
+    test('Escape closes the window', async ({ page }) => {
+        await page.goto('/');
+        await page.locator('#start-windows').click();
+        await page.locator('.desktop-icon', { hasText: 'Recycle Bin' }).dblclick();
+
         const skypeWindow = page.locator('#skypeWindow');
-
-        await counter.click();
-        await expect(toast).toBeVisible();
-        await expect(toast).toContainText('André Smit has come online');
-        await toast.getByRole('button', { name: /has come online/ }).click();
-        await expect(toast).toBeHidden();
-        await expect(skypeWindow).toBeVisible();
-
-        // Escape closes and hands focus back to the counter
-        await page.keyboard.press('Escape');
-        await expect(skypeWindow).toBeHidden();
-        await expect(counter).toBeFocused();
-
-        // Keyboard only: Enter shows the notification (focused), Enter opens it
-        await page.keyboard.press('Enter');
-        await expect(toast.getByRole('button', { name: /has come online/ })).toBeFocused();
-        await page.keyboard.press('Enter');
         await expect(skypeWindow).toBeVisible();
         await page.keyboard.press('Escape');
         await expect(skypeWindow).toBeHidden();
-
-        // The notification can be dismissed on its own
-        await counter.click();
-        await toast.getByRole('button', { name: 'Dismiss notification' }).click();
-        await expect(toast).toBeHidden();
     });
 
     test('no phone number anywhere in the shipped source', async ({ request }) => {
@@ -105,36 +74,6 @@ test.describe('desktop', () => {
             const body = await (await request.get(path)).text();
             expect(body, path).not.toMatch(saPhoneNumber);
         }
-    });
-});
-
-test.describe('phone', () => {
-    test.use({ viewport: { width: 375, height: 812 }, hasTouch: true, isMobile: true });
-
-    test('tapping the visitor counter opens a window that fits the screen', async ({ page }) => {
-        await bootHomePage(page, { touch: true });
-
-        await page.locator('#visitor-counter').tap();
-        await page.locator('#skypeToast .skype-toast-body').tap();
-
-        const skypeWindow = page.locator('#skypeWindow');
-        await expect(skypeWindow).toBeVisible();
-        expect(await skypeWindow.innerText()).not.toMatch(saPhoneNumber);
-
-        const box = await skypeWindow.boundingBox();
-        expect(box.x).toBeGreaterThanOrEqual(0);
-        expect(box.y).toBeGreaterThanOrEqual(0);
-        expect(box.x + box.width).toBeLessThanOrEqual(375);
-        expect(box.y + box.height).toBeLessThanOrEqual(812);
-
-        const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
-        expect(overflow).toBeLessThanOrEqual(0);
-
-        await page.locator('#skypeWindow .skype-avatar').tap();
-        await expect(page.locator('#skypeLivesCount')).toHaveText('4');
-
-        await page.locator('#skypeWindow .win95-close').tap();
-        await expect(skypeWindow).toBeHidden();
     });
 });
 

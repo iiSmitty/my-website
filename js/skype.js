@@ -2,10 +2,7 @@
 // A friend's old Skype contact export still had my 2014 profile in it. This
 // brings that contact card back as a Win95 window.
 //
-// Two ways in:
-//  - Desktop: double-click the Recycle Bin (wired up in program-icons.js).
-//  - Anywhere, touch included: click/tap the "Visitors" counter in the status
-//    bar. A "has come online" notification pops up; open it to see the profile.
+// Opened by double-clicking the Recycle Bin (wired up in program-icons.js).
 //
 // Nothing is built until it's first needed: the stylesheet, avatar and DOM
 // only load on the first trigger, so the home page doesn't pay for them.
@@ -30,16 +27,14 @@ const SKYPE_PROFILE = {
 
 const SKYPE_STARTING_LIVES = 3;
 const SKYPE_MAX_LIVES = 99;
-const SKYPE_TOAST_DURATION = 10000;
 
 let skypeLives = SKYPE_STARTING_LIVES;
 let skypeStylesPromise = null;
-let skypeToastTimer = null;
 let skypeChatTimers = [];
 let skypeReturnFocus = null;
 let skypeAudioContext = null;
 
-// Small presence badge (green tick) used on the avatar and the notification
+// Small presence badge (green tick) on the avatar
 const SKYPE_PRESENCE_SVG = `
     <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
         <circle cx="8" cy="8" r="7" fill="#7fba00" stroke="#ffffff" stroke-width="2"/>
@@ -151,80 +146,6 @@ function centerSkypeWindow(skypeWindow) {
     const rect = skypeWindow.getBoundingClientRect();
     skypeWindow.style.left = Math.max(8, (window.innerWidth - rect.width) / 2) + 'px';
     skypeWindow.style.top = Math.max(8, (window.innerHeight - rect.height) / 2) + 'px';
-}
-
-// --- "Has come online" notification ----------------------------------------
-
-function buildSkypeToast() {
-    const toast = document.createElement('div');
-    toast.className = 'skype-toast';
-    toast.id = 'skypeToast';
-    toast.hidden = true;
-    toast.innerHTML = `
-        <div class="win95-title-bar">
-            <div class="win95-title">${SKYPE_LOGO_SVG} Skype</div>
-            <div class="win95-buttons">
-                <button class="win95-button win95-close" type="button" aria-label="Dismiss notification">&times;</button>
-            </div>
-        </div>
-        <button class="skype-toast-body" type="button">
-            <span class="skype-toast-avatar">
-                <img src="${SKYPE_PROFILE.avatar}" alt="" width="40" height="40">
-                <span class="skype-presence" aria-hidden="true">${SKYPE_PRESENCE_SVG}</span>
-            </span>
-            <span class="skype-toast-text">
-                <span><b>${SKYPE_PROFILE.displayName}</b> has come online</span>
-                <span class="skype-toast-mood">${SKYPE_PROFILE.mood}</span>
-                <span class="skype-toast-link">View profile</span>
-            </span>
-        </button>`;
-    document.body.appendChild(toast);
-
-    toast.querySelector('.win95-close').addEventListener('click', hideSkypeToast);
-    toast.querySelector('.skype-toast-body').addEventListener('click', function () {
-        hideSkypeToast();
-        openSkypeWindow(skypeReturnFocus);
-    });
-
-    // Don't auto-dismiss while someone is reading or interacting with it
-    toast.addEventListener('mouseenter', () => clearTimeout(skypeToastTimer));
-    toast.addEventListener('focusin', () => clearTimeout(skypeToastTimer));
-    toast.addEventListener('mouseleave', scheduleSkypeToastHide);
-    toast.addEventListener('focusout', scheduleSkypeToastHide);
-
-    return toast;
-}
-
-function scheduleSkypeToastHide() {
-    clearTimeout(skypeToastTimer);
-    skypeToastTimer = setTimeout(hideSkypeToast, SKYPE_TOAST_DURATION);
-}
-
-async function showSkypeToast(options = {}) {
-    skypeReturnFocus = options.returnFocus || null;
-    await loadSkypeStyles();
-
-    const toast = document.getElementById('skypeToast') || buildSkypeToast();
-    toast.hidden = false;
-    playSkypeSound('access');
-    scheduleSkypeToastHide();
-
-    // Keyboard users land on the notification so Enter opens it
-    if (options.focus) {
-        toast.querySelector('.skype-toast-body').focus({ preventScroll: true });
-    }
-}
-
-function hideSkypeToast() {
-    clearTimeout(skypeToastTimer);
-    const toast = document.getElementById('skypeToast');
-    if (!toast || toast.hidden) return;
-
-    const hadFocus = toast.contains(document.activeElement);
-    toast.hidden = true;
-    if (hadFocus && skypeReturnFocus && skypeReturnFocus.isConnected) {
-        skypeReturnFocus.focus();
-    }
 }
 
 // --- Profile window ---------------------------------------------------------
@@ -341,8 +262,8 @@ function buildSkypeWindow() {
     return skypeWindow;
 }
 
-async function openSkypeWindow(returnFocus) {
-    const opener = returnFocus || document.activeElement;
+async function openSkypeWindow() {
+    const opener = document.activeElement;
     await loadSkypeStyles();
 
     const skypeWindow = document.getElementById('skypeWindow') || buildSkypeWindow();
@@ -437,41 +358,7 @@ function collectExtraLife() {
 
 // --- Wiring -----------------------------------------------------------------
 
-document.addEventListener('DOMContentLoaded', function () {
-    // The status bar is built by win95-components.js, which runs first
-    const visitorCounter = document.getElementById('visitor-counter');
-    if (visitorCounter) {
-        visitorCounter.setAttribute('role', 'button');
-        visitorCounter.tabIndex = 0;
-        visitorCounter.title = 'Who\'s online?';
-
-        visitorCounter.addEventListener('click', function () {
-            showSkypeToast({ returnFocus: visitorCounter });
-        });
-        visitorCounter.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                showSkypeToast({ returnFocus: visitorCounter, focus: true });
-            }
-        });
-    }
-
-    // Esc closes the window first, then the notification
-    document.addEventListener('keydown', function (e) {
-        if (e.key !== 'Escape') return;
-
-        const skypeWindow = document.getElementById('skypeWindow');
-        const toast = document.getElementById('skypeToast');
-        if (skypeWindow && !skypeWindow.hidden) {
-            closeSkypeWindow();
-        } else if (toast && !toast.hidden) {
-            hideSkypeToast();
-        }
-    });
-
-    // Keep the window on screen when a phone rotates
-    window.addEventListener('resize', function () {
-        const skypeWindow = document.getElementById('skypeWindow');
-        if (skypeWindow && !skypeWindow.hidden) centerSkypeWindow(skypeWindow);
-    });
+// Esc closes the window
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeSkypeWindow();
 });

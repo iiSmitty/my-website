@@ -3,8 +3,7 @@
    Loaded on demand by js/skype.js
    ================================== */
 
-.skype-window,
-.skype-toast {
+.skype-window {
     --skype-blue: #00aff0;
     --skype-green: #7fba00;
 }
@@ -16,8 +15,7 @@
     height: 14px;
 }
 
-.skype-window .win95-title,
-.skype-toast .win95-title {
+.skype-window .win95-title {
     display: flex;
     align-items: center;
     gap: 4px;
@@ -384,131 +382,7 @@
     flex: 0 0 auto;
 }
 
-/* ----- "Has come online" notification ----- */
-
-.skype-toast {
-    position: fixed;
-    right: 16px;
-    bottom: 16px;
-    z-index: 9999;
-    box-sizing: border-box;
-    width: 270px;
-    padding: 2px;
-    background-color: #c0c0c0;
-    border: 2px outset #ffffff;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
-    font-size: 12px;
-    animation: skype-toast-in 0.3s ease-out;
-}
-
-.skype-toast[hidden] {
-    display: none;
-}
-
-.skype-toast-body {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    margin-top: 2px;
-    padding: 10px 8px;
-    background-color: #ffffff;
-    border: 2px inset #ffffff;
-    color: #000000;
-    font: inherit;
-    text-align: left;
-    cursor: pointer;
-}
-
-.skype-toast-body:focus-visible {
-    outline: 1px dotted #000000;
-    outline-offset: -5px;
-}
-
-.skype-toast-avatar {
-    position: relative;
-    flex: 0 0 auto;
-}
-
-.skype-toast-avatar img {
-    display: block;
-    width: 40px;
-    height: 40px;
-    border: 1px solid #808080;
-}
-
-.skype-toast-avatar .skype-presence {
-    right: -5px;
-    bottom: -5px;
-    width: 14px;
-    height: 14px;
-}
-
-.skype-toast-text {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    min-width: 0;
-}
-
-.skype-toast-mood {
-    color: #808080;
-    font-style: italic;
-}
-
-.skype-toast-link {
-    color: #0000ff;
-    text-decoration: underline;
-}
-
-@keyframes skype-toast-in {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ----- Phones ----- */
-
-@media screen and (max-width: 430px) {
-    .skype-header {
-        gap: 12px;
-        padding: 10px 8px 8px;
-    }
-
-    .skype-menu-bar .win95-menu-item {
-        padding: 2px 4px;
-        margin-right: 0;
-    }
-
-    .skype-toast {
-        left: 12px;
-        right: 12px;
-        bottom: 12px;
-        width: auto;
-    }
-}
-
-@media screen and (max-width: 360px) {
-    .skype-menu-bar .win95-menu-item {
-        padding: 2px 2px;
-    }
-
-    .skype-avatar img {
-        width: 72px;
-        height: 72px;
-    }
-
-    .skype-fields {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 0;
-    }
-
-    .skype-fields dd {
-        margin-bottom: 5px;
-    }
-}
-
 @media (prefers-reduced-motion: reduce) {
-    .skype-toast,
     .skype-lives-count.is-bumped,
     .skype-typing-dots span {
         animation: none;
