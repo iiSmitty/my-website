@@ -20,6 +20,10 @@ function isOurError(text) {
 for (const page of pages) {
     test(`${page} loads with no errors`, async ({ page: p }) => {
         const errors = [];
+        // Chrome's "Failed to load resource" console error doesn't say which
+        // resource, so keep the failed URLs to show alongside it
+        const failedRequests = [];
+        p.on('requestfailed', (request) => failedRequests.push(`${request.url()} (${request.failure().errorText})`));
 
         // Uncaught exceptions (e.g. "p5 is not defined") always count.
         p.on('pageerror', (err) => errors.push(`pageerror: ${err.message}`));
@@ -42,6 +46,6 @@ for (const page of pages) {
         });
         await p.waitForTimeout(500);
 
-        expect(errors, `Unexpected errors on ${page}:\n${errors.join('\n')}`).toEqual([]);
+        expect(errors, `Unexpected errors on ${page}:\n${errors.join('\n')}\n\nFailed requests:\n${failedRequests.join('\n')}`).toEqual([]);
     });
 }
