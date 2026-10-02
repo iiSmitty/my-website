@@ -1,0 +1,62 @@
+name: Update Watching
+
+on:
+  schedule:
+    - cron: '0 2 * * 1'    # Mondays 04:00 SAST, two hours after the Spotify update
+  workflow_dispatch:         # Manual trigger
+  # When the fetcher changes, refresh the data straight away rather than at
+  # the next scheduled run. Can't loop: the workflow's own commits only touch
+  # data/watching.json, and pushes made with GITHUB_TOKEN don't trigger workflows.
+  push:
+    branches: [main]
+    paths:
+      - .github/scripts/watching-fetcher.js
+      - .github/workflows/update-watching.yml
+
+# One run at a time, so two runs can't race to push the same file
+concurrency:
+  group: update-watching
+  cancel-in-progress: false
+
+jobs:
+  update-watching:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      # No dependencies to install: the script only uses Node's built-in fetch
+      - name: Fetch from Trakt (with retry)
+        id: fetch
+        uses: nick-fields/retry@v4
+        with:
+          timeout_minutes: 5
+          max_attempts: 3
+          retry_wait_seconds: 30
+          command: node .github/scripts/watching-fetcher.js
+        env:
+          TRAKT_CLIENT_ID: ${{ secrets.TRAKT_CLIENT_ID }}
+          TMDB_READ_TOKEN: ${{ secrets.TMDB_READ_TOKEN }}
+
+      # The script only writes the file when something changed
+      - name: Commit and push if changed
+        env:
+          # Passed through env, not inlined, because it contains show titles
+          COMMIT_MSG: ${{ steps.fetch.outputs.message }}
+        run: |
+          if git diff --quiet data/watching.json; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git config --local user.email "292474565+waynemanor-butler@users.noreply.github.com"
+          git config --local user.name "Alfred Pennyworth"
+          git add data/watching.json
+          git commit -m "${COMMIT_MSG:-📼 The Videos folder has been tidied, sir.}"
+          git pull --rebase --autostash origin main
+          git push

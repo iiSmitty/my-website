@@ -1069,6 +1069,17 @@ body.startup {
     background-position: center;
 }
 
+/* Windows multimedia "Video" icon, via React95 (@react95/icons, MediaVideo) */
+.VideosIcon_32x32 {
+    width: 32px;
+    height: 32px;
+    background-image: url(/icons/media-video-32.png);
+    display: inline-block;
+    margin-bottom: 4px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .BriefcaseIcon_16x16 {
     width: 16px;
     height: 16px;

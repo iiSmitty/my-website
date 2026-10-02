@@ -1,0 +1,545 @@
+/* ==================================
+   Videos folder
+   Loaded on demand by js/watching.js
+   ================================== */
+
+/* ----- Icons ----- */
+/* Original Windows icons via React95 (@react95/icons): MediaVideo for the
+   folder, Media Player's "Video Clip" (Mplayer11) for the files. Scaled only
+   in whole steps, so the pixels stay crisp. */
+
+.VideosIcon_16x16,
+.VideoFileIcon_16x16,
+.VideoFileIcon_32x32,
+.videos-poster-fallback {
+    display: inline-block;
+    flex: 0 0 auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    image-rendering: pixelated;
+}
+
+.VideosIcon_16x16 {
+    width: 16px;
+    height: 16px;
+    background-image: url(/icons/media-video-16.png);
+}
+
+.VideoFileIcon_16x16 {
+    width: 16px;
+    height: 16px;
+    background-image: url(/icons/video-clip-16.png);
+}
+
+.VideoFileIcon_32x32 {
+    width: 32px;
+    height: 32px;
+    background-image: url(/icons/video-clip-32.png);
+}
+
+/* ----- Window ----- */
+
+.videos-window {
+    position: fixed;
+    /* Centered on open via JS (left/top in px) so the title bar can be dragged. */
+    top: 8px;
+    left: 8px;
+    z-index: 1000;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 760px;
+    max-width: calc(100vw - 16px);
+    max-height: calc(100vh - 16px);
+    max-height: calc(100dvh - 16px);
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+}
+
+.videos-window[hidden] {
+    display: none;
+}
+
+/* Focus lands on the window itself when it opens; the title bar already shows it's active */
+.videos-window:focus {
+    outline: none;
+}
+
+.videos-window.is-loading,
+.videos-window.is-loading * {
+    cursor: progress;
+}
+
+#videosTitleBar {
+    cursor: move;
+}
+
+.videos-window .win95-title {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    min-width: 0;
+}
+
+.videos-menu-bar {
+    flex: 0 0 auto;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.videos-menu-bar .win95-menu-item {
+    flex: 0 0 auto;
+    cursor: default;
+}
+
+/* Toolbar band with an etched line above and below */
+.videos-address {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 4px;
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #808080;
+    box-shadow: 0 -1px 0 #808080, 0 1px 0 #ffffff;
+    font-size: 11px;
+}
+
+.videos-address-label {
+    flex: 0 0 auto;
+    padding-left: 2px;
+}
+
+/* Sunken combo box: icon, path and a drop-down arrow button */
+.videos-address-field {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    gap: 4px;
+    min-width: 0;
+    height: 20px;
+    box-sizing: border-box;
+    padding-left: 3px;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+    box-shadow: inset 1px 1px #000000, inset -1px -1px #c0c0c0;
+}
+
+.videos-address-path {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.videos-address-drop {
+    flex: 0 0 auto;
+    align-self: stretch;
+    width: 16px;
+    margin: 2px 2px 2px 0;
+    background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 4' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h7v1H6v1H5v1H4v1H3V3H2V2H1V1H0z'/%3E%3C/svg%3E") center / 7px 4px no-repeat,
+        #c0c0c0;
+    border: 1px solid;
+    border-color: #ffffff #000000 #000000 #ffffff;
+    box-shadow: inset -1px -1px #808080;
+}
+
+.videos-body {
+    display: flex;
+    min-height: 0;
+    height: 360px;
+    margin: 4px;
+    background-color: #ffffff;
+    border: 2px inset #ffffff;
+}
+
+/* ----- Web view pane (IE4's "View as Web Page") ----- */
+
+.videos-webview {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 190px;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    overflow-y: auto;
+    border-right: 1px solid #c0c0c0;
+    font-size: 11px;
+}
+
+.videos-preview {
+    flex: 1 0 auto;
+}
+
+.videos-hint {
+    margin: 0;
+    color: #000000;
+}
+
+.videos-poster {
+    width: 120px;
+    height: 180px;
+    margin-bottom: 8px;
+    background-color: #c0c0c0;
+    border: 1px solid #808080;
+}
+
+.videos-poster img {
+    display: block;
+    width: 120px;
+    height: 180px;
+    object-fit: cover;
+}
+
+.videos-poster-fallback {
+    width: 100%;
+    height: 100%;
+    background-image: url(/icons/video-clip-32.png);
+    background-size: 64px 64px;
+}
+
+.videos-preview-title {
+    margin-bottom: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+}
+
+.videos-preview-line {
+    margin-bottom: 2px;
+    overflow-wrap: anywhere;
+}
+
+.videos-preview-link {
+    display: inline-block;
+    margin-top: 6px;
+    color: #0000ff;
+}
+
+.videos-preview-link:visited {
+    color: #800080;
+}
+
+.videos-credit {
+    margin: 10px 0 0;
+    color: #808080;
+    font-size: 10px;
+    line-height: 1.3;
+}
+
+/* ----- Details view ----- */
+
+.videos-files {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: auto;
+}
+
+.videos-list {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 11px;
+}
+
+.videos-list[hidden] {
+    display: none;
+}
+
+/* Column headers are buttons in Explorer */
+.videos-list th {
+    position: sticky;
+    top: 0;
+    padding: 2px 6px;
+    background-color: #c0c0c0;
+    border: 1px solid;
+    border-color: #ffffff #808080 #808080 #ffffff;
+    font-weight: normal;
+    text-align: left;
+    white-space: nowrap;
+}
+
+/* Name gets the room; the others are sized to their longest value
+   ("Now playing", "S2E09" plus progress bar, "30/09/2026 21:00") */
+.videos-col-name {
+    width: 42%;
+}
+
+.videos-col-status {
+    width: 16%;
+}
+
+.videos-col-details {
+    width: 22%;
+}
+
+.videos-col-modified {
+    width: 20%;
+}
+
+.videos-list td {
+    padding: 2px 6px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.videos-row {
+    cursor: default;
+}
+
+.videos-row:focus {
+    outline: none;
+}
+
+.videos-name-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    max-width: 100%;
+    padding: 0 2px;
+    vertical-align: middle;
+}
+
+/* Only the part before the extension shrinks: "Addams Family Va….mpg" */
+.videos-name-text {
+    display: inline-flex;
+    min-width: 0;
+}
+
+.videos-name-base {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.videos-name-ext {
+    flex: 0 0 auto;
+}
+
+/* Explorer highlights just the file name, not the whole row */
+.videos-row[aria-selected="true"] .videos-name-text {
+    background-color: #000080;
+    color: #ffffff;
+}
+
+.videos-row:focus .videos-name-text {
+    outline: 1px dotted #000000;
+}
+
+.videos-row--empty td {
+    color: #808080;
+    font-style: italic;
+}
+
+.videos-details-inner {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Win95 progress bar: navy blocks in a sunken track */
+.videos-progress {
+    display: inline-block;
+    flex: 1 1 auto;
+    max-width: 64px;
+    height: 10px;
+    padding: 1px;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+}
+
+.videos-progress-fill {
+    display: block;
+    height: 100%;
+    min-width: 6px;
+    background: repeating-linear-gradient(to right, #000080 0 5px, transparent 5px 7px);
+}
+
+/* ----- Error ("The device is not ready.") ----- */
+
+.videos-error {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px 16px;
+}
+
+.videos-error[hidden] {
+    display: none;
+}
+
+.videos-error-icon svg {
+    display: block;
+    width: 32px;
+    height: 32px;
+}
+
+.videos-error-text p {
+    margin: 0 0 8px;
+}
+
+.videos-error-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+/* ----- Status bar ----- */
+
+.videos-statusbar {
+    display: flex;
+    gap: 2px;
+    padding: 0 2px 2px;
+    font-size: 11px;
+}
+
+.videos-statusbar > span {
+    padding: 1px 4px;
+    border: 1px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+}
+
+.videos-statusbar > span:first-child {
+    flex: 1 1 auto;
+}
+
+.videos-statusbar a {
+    color: #0000ff;
+}
+
+/* ----- Properties dialog (inside the shared .dead-dialog frame) ----- */
+
+.videos-props {
+    width: 340px;
+    font-size: 11px;
+}
+
+/* "Addams Family Values.mpg Properties" can be wider than the dialog */
+.videos-props .win95-title {
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.videos-props-tabs {
+    display: flex;
+    padding: 8px 8px 0;
+}
+
+.videos-props-tab {
+    position: relative;
+    top: 1px;
+    padding: 2px 10px 3px;
+    background-color: #c0c0c0;
+    border: 1px solid;
+    border-color: #ffffff #808080 #c0c0c0 #ffffff;
+    border-radius: 3px 3px 0 0;
+}
+
+.videos-props-sheet {
+    margin: 0 8px;
+    padding: 12px 10px 10px;
+    border: 1px solid;
+    border-color: #ffffff #808080 #808080 #ffffff;
+}
+
+.videos-props-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 10px;
+    overflow-wrap: anywhere;
+}
+
+/* Etched separator between groups */
+.videos-props-head,
+.videos-props-fields {
+    border-bottom: 1px solid #808080;
+    box-shadow: 0 1px 0 #ffffff;
+}
+
+.videos-props-fields {
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    gap: 6px 8px;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.videos-props-fields dt {
+    margin: 0;
+}
+
+.videos-props-fields dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.videos-props-attributes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+    padding-top: 10px;
+}
+
+.videos-props-attributes span {
+    width: 84px;
+}
+
+.videos-props-attributes label {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+}
+
+/* Classic sunken white checkbox. They're display-only, but Win95 drew them
+   enabled, so the disabled state keeps the normal look. */
+.videos-props-attributes input {
+    appearance: none;
+    width: 13px;
+    height: 13px;
+    margin: 0;
+    background: #ffffff center / 9px 9px no-repeat;
+    border: 1px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+    box-shadow: inset 1px 1px #000000, inset -1px -1px #c0c0c0;
+}
+
+.videos-props-attributes input:checked {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Cpath d='M6 0h1v2H6v1H5v1H4v1H3v1H2V5H1V4H0V2h1v1h1v1h1V3h1V2h1V1h1z'/%3E%3C/svg%3E");
+}
+
+.videos-props-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+    padding: 10px 8px;
+}
+
+.videos-props-buttons .win95-btn {
+    min-width: 70px;
+}
+
+/* ----- Narrow windows: stack the web view above the list ----- */
+
+@media (max-width: 600px) {
+    .videos-body {
+        flex-direction: column;
+        height: auto;
+        min-height: 0;
+        overflow-y: auto;
+    }
+
+    .videos-webview {
+        flex: 0 0 auto;
+        border-right: none;
+        border-bottom: 1px solid #c0c0c0;
+    }
+}

@@ -1,0 +1,51 @@
+{
+  "lastUpdated": "2026-10-02T13:51:03.807Z",
+  "current": {
+    "title": "House",
+    "year": 2004,
+    "traktId": 1399,
+    "tmdbId": 1408,
+    "slug": "house",
+    "poster": "/3Cz7ySOQJmqiuTdrc6CY0r65yDI.jpg",
+    "episode": {
+      "season": 2,
+      "number": 9,
+      "title": "Deception"
+    },
+    "watched": 31,
+    "aired": 177,
+    "lastWatchedAt": "2026-10-02T12:42:00.000Z"
+  },
+  "previous": {
+    "title": "Reacher",
+    "year": 2022,
+    "traktId": 155536,
+    "tmdbId": 108978,
+    "slug": "reacher",
+    "poster": "/f1VCQIG2iCyOookdgOzwtUpwWC0.jpg",
+    "episodes": 32,
+    "finishedAt": "2026-09-16T19:00:00.000Z"
+  },
+  "movies": [
+    {
+      "title": "Addams Family Values",
+      "year": 1993,
+      "traktId": 1842,
+      "tmdbId": 2758,
+      "slug": "addams-family-values-1993",
+      "runtime": 94,
+      "poster": "/sdxT2VjVSx9DRicwnuECUdBHeE7.jpg",
+      "watchedAt": "2026-09-30T19:00:00.000Z"
+    },
+    {
+      "title": "Patch Adams",
+      "year": 1998,
+      "traktId": 5515,
+      "tmdbId": 10312,
+      "slug": "patch-adams-1998",
+      "runtime": 115,
+      "poster": "/xN1aKur5ddWQSXTqvzDPJD2TCxe.jpg",
+      "watchedAt": "2026-09-29T19:00:00.000Z"
+    }
+  ]
+}

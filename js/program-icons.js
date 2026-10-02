@@ -183,6 +183,11 @@ function initializeDesktopIcons() {
             icon.addEventListener('dblclick', openSpotifyWindow);
         }
 
+        // What I'm watching (watching.js)
+        if (icon.querySelector('.VideosIcon_32x32')) {
+            icon.addEventListener('dblclick', () => openVideosWindow());
+        }
+
         if (icon.querySelector('.BriefcaseIcon_32x32')) {
             icon.addEventListener('dblclick', openExperienceWindow);
         }
