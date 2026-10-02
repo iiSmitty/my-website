@@ -49,7 +49,7 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
 
         // Add click handler to decrypt button
         if (decryptButton) {
-            decryptButton.addEventListener('click', startDecryption);
+            decryptButton.addEventListener('click', onDecryptClick);
         }
 
         // Check if this is an internal navigation from another page on your site
@@ -164,28 +164,44 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
         });
     }
 
+    // Developers on a desktop get the DECRYPT.EXE coding challenge first
+    // (decrypt-exe.js); everyone else goes straight to the decryption
+    function onDecryptClick() {
+        if (window.DecryptExe && window.DecryptExe.isAvailable()) {
+            window.DecryptExe.open();
+        } else {
+            startDecryption();
+        }
+    }
+
     async function startDecryption() {
         decryptButton.disabled = true;
         decryptAnimation.style.display = 'block';
         updateProgress(0, "Scanning for robots...");
 
         try {
-            const token = await getTurnstileToken();
+            const token = await getTurnstileToken(document.getElementById('decrypt-turnstile-panel'), {
+                onInteractive: () => updateProgress(0, "Waiting for human verification..."),
+                onInteractiveDone: () => updateProgress(0, "Scanning for robots..."),
+            });
 
             updateProgress(0, "Connecting to secure server...");
-            const res = await fetch(CONTACT_API_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ token }),
-            });
-            if (!res.ok) throw new Error('Worker returned ' + res.status);
-
-            REAL_EMAIL = (await res.json()).email;
+            REAL_EMAIL = await fetchContactEmail(token);
             runDecryptionAnimation();
         } catch {
             updateProgress(0, "Connection failed. Try again.");
             decryptButton.disabled = false;
         }
+    }
+
+    async function fetchContactEmail(token) {
+        const res = await fetch(CONTACT_API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ token }),
+        });
+        if (!res.ok) throw new Error('Worker returned ' + res.status);
+        return (await res.json()).email;
     }
 
     // Turnstile is only loaded once someone asks for the contact details
@@ -209,12 +225,11 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
         return turnstileLoading;
     }
 
-    // Resolves with a fresh single-use token. The widget stays invisible unless
-    // Cloudflare wants the visitor to click a checkbox.
-    async function getTurnstileToken() {
+    // Resolves with a fresh single-use token. The widget renders into a
+    // .decrypt-turnstile panel and stays invisible unless Cloudflare wants the
+    // visitor to click a checkbox, which is when the panel shows.
+    async function getTurnstileToken(panel, { onInteractive, onInteractiveDone }) {
         const turnstile = await loadTurnstile();
-
-        const panel = document.getElementById('decrypt-turnstile-panel');
         const showPanel = (visible) => panel.classList.toggle('is-interactive', visible);
 
         return new Promise((resolve, reject) => {
@@ -228,7 +243,7 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
                 reject(new Error('Turnstile challenge failed'));
             };
 
-            widgetId = turnstile.render('#decrypt-turnstile', {
+            widgetId = turnstile.render(panel.querySelector('.decrypt-turnstile-widget'), {
                 sitekey: TURNSTILE_SITE_KEY,
                 action: TURNSTILE_ACTION,
                 appearance: 'interaction-only',
@@ -236,11 +251,9 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
                 retry: 'never',
                 'before-interactive-callback': () => {
                     showPanel(true);
-                    updateProgress(0, "Waiting for human verification...");
+                    onInteractive();
                 },
-                'after-interactive-callback': () => {
-                    updateProgress(0, "Scanning for robots...");
-                },
+                'after-interactive-callback': onInteractiveDone,
                 callback: (token) => {
                     removeWidget();
                     resolve(token);
@@ -284,16 +297,28 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
             playWin95Sound('access');
 
             // After small delay, create mailto link for email
-            setTimeout(() => {
-                encryptedEmail.innerHTML = `<a href="mailto:${REAL_EMAIL}">${REAL_EMAIL}</a>`;
-
-                // Change button text
-                decryptButton.textContent = "Information Decrypted!";
-                decryptButton.style.backgroundColor = "#90ee90"; // Light green
-            }, 500);
+            setTimeout(finishReveal, 500);
         }, 4800);
     }
 
+    // DECRYPT.EXE already did the decrypting, so skip the progress bar and
+    // just reveal the email in the Contact Me section
+    function showDecryptedEmail(email) {
+        REAL_EMAIL = email;
+        decryptButton.disabled = true;
+        const revealTime = startEmailDecryption();
+        setTimeout(finishReveal, revealTime);
+    }
+
+    function finishReveal() {
+        encryptedEmail.innerHTML = `<a href="mailto:${REAL_EMAIL}">${REAL_EMAIL}</a>`;
+
+        // Change button text
+        decryptButton.textContent = "Information Decrypted!";
+        decryptButton.style.backgroundColor = "#90ee90"; // Light green
+    }
+
+    // Returns how long the reveal takes, in ms
     function startEmailDecryption() {
         // Gradual reveal of email character by character
         let currentEmail = "************@********.***";
@@ -307,7 +332,16 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
                 encryptedEmail.textContent = emailChars.join('');
             }, i * 80); // Reveal each character with a delay
         }
+        return targetChars.length * 80;
     }
+
+    // Shared with DECRYPT.EXE (decrypt-exe.js)
+    window.ContactGate = {
+        getTurnstileToken,
+        fetchContactEmail,
+        showDecryptedEmail,
+        startDecryption,
+    };
 
     function updateProgress(percent, message) {
         // Update progress bar

@@ -1,0 +1,274 @@
+/* ==================================
+   DECRYPT.EXE Easter Egg
+   Loaded on demand by js/decrypt-exe.js
+   ================================== */
+
+/* ----- Shared window frame ----- */
+
+.decrypt-exe-window {
+    position: fixed;
+    /* Placed on open via JS (left/top in px) so the title bar can be dragged. */
+    top: 8px;
+    left: 8px;
+    z-index: 1000;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    max-width: calc(100vw - 16px);
+    max-height: calc(100vh - 16px);
+    max-height: calc(100dvh - 16px);
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+}
+
+.decrypt-exe-window[hidden] {
+    display: none;
+}
+
+/* Focus lands inside the window; the title bar already shows it's active */
+.decrypt-exe-window:focus {
+    outline: none;
+}
+
+.decrypt-exe-window .win95-title-bar {
+    cursor: move;
+}
+
+.decrypt-exe-window .win95-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* ----- Notepad ----- */
+
+.decrypt-exe-notepad {
+    width: 560px;
+}
+
+.decrypt-exe-menu-bar .win95-menu-item {
+    cursor: default;
+}
+
+.decrypt-exe-editor {
+    box-sizing: border-box;
+    width: 100%;
+    height: 340px;
+    min-height: 0;
+    margin: 0;
+    padding: 4px 6px;
+    resize: none;
+    border: 2px inset #ffffff;
+    border-radius: 0;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: "Fixedsys", "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.35;
+    tab-size: 4;
+    white-space: pre;
+    overflow: auto;
+}
+
+.decrypt-exe-editor:focus {
+    outline: none;
+}
+
+.decrypt-exe-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 8px;
+}
+
+.decrypt-exe-keys {
+    margin-right: auto;
+    color: #404040;
+    font-size: 11px;
+}
+
+.decrypt-exe-actions .win95-button-large:disabled {
+    color: #808080;
+    text-shadow: 1px 1px 0 #ffffff;
+    cursor: default;
+}
+
+/* ----- MS-DOS Prompt ----- */
+
+.decrypt-exe-dos {
+    width: 480px;
+}
+
+.decrypt-exe-console {
+    box-sizing: border-box;
+    height: 386px;
+    min-height: 0;
+    padding: 4px 6px;
+    overflow-y: auto;
+    border: 2px inset #ffffff;
+    background-color: #000000;
+    color: #c0c0c0;
+    font-family: "Fixedsys", "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.35;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+/* Keep blank lines from collapsing */
+.decrypt-exe-console > div:empty::before {
+    content: "\200b";
+}
+
+.decrypt-exe-fail,
+.decrypt-exe-bright {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.decrypt-exe-cursor {
+    animation: decrypt-exe-blink 1s steps(1) infinite;
+}
+
+@keyframes decrypt-exe-blink {
+    50% { visibility: hidden; }
+}
+
+/* The Security Check frame (styles.css) inside the DOS window's grey border */
+.decrypt-exe-dos .decrypt-turnstile.is-interactive {
+    margin: 8px;
+    background-color: #c0c0c0;
+}
+
+/* ----- "This program has performed an illegal operation" ----- */
+
+.decrypt-exe-error {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+    width: 360px;
+    max-width: calc(100vw - 16px);
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+}
+
+.decrypt-exe-error-body {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 6px 14px;
+    padding: 14px 12px 10px;
+}
+
+.decrypt-exe-error-body p {
+    margin: 0 0 8px;
+}
+
+.decrypt-exe-error-buttons {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.decrypt-exe-error-buttons .win95-button-large {
+    min-width: 84px;
+}
+
+.decrypt-exe-error-details {
+    margin: 0 12px 12px;
+    padding: 6px;
+    max-height: 160px;
+    overflow: auto;
+    border: 2px inset #ffffff;
+    background-color: #ffffff;
+    font-family: "Courier New", monospace;
+    font-size: 12px;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* ----- Blue screen ----- */
+
+.decrypt-exe-bsod {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background-color: #0000aa;
+    color: #ffffff;
+    font-family: "Fixedsys", "Courier New", monospace;
+    font-size: 16px;
+    line-height: 1.5;
+    cursor: default;
+}
+
+.decrypt-exe-bsod:focus {
+    outline: none;
+}
+
+.decrypt-exe-bsod-screen {
+    max-width: 640px;
+}
+
+.decrypt-exe-bsod-screen p {
+    margin: 0 0 1.5em;
+}
+
+.decrypt-exe-bsod-title,
+.decrypt-exe-bsod-continue {
+    text-align: center;
+}
+
+.decrypt-exe-bsod-title span {
+    padding: 0 6px;
+    background-color: #aaaaaa;
+    color: #0000aa;
+}
+
+/* ----- Clippy (reuses clippy.css; the options are real buttons here) ----- */
+
+/* Bottom-right, clear of Notepad's buttons (clippy.css centres him) */
+.decrypt-exe-clippy {
+    left: auto;
+    right: 24px;
+    transform: none;
+    animation-name: decrypt-exe-clippy-enter;
+}
+
+@keyframes decrypt-exe-clippy-enter {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.decrypt-exe-clippy .clippy-options button {
+    display: flex;
+    align-items: flex-start;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #0000ff;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.decrypt-exe-clippy .clippy-options button:hover,
+.decrypt-exe-clippy .clippy-options button:focus-visible {
+    text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .decrypt-exe-cursor {
+        animation: none;
+    }
+}

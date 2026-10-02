@@ -292,7 +292,7 @@ h2 {
     font-size: 12px;
 }
 
-#decrypt-turnstile {
+.decrypt-turnstile-widget {
     display: flex;
     justify-content: center;
 }
