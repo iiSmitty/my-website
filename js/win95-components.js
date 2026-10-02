@@ -2,7 +2,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Track the active dropdown for keyboard navigation
     let activeDropdown = null;
-    let isAltKeyPressed = false;
 
     // Create the menu bar component
     function createMenuBar(currentPage) {
@@ -515,14 +514,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Set up keyboard navigation
     document.addEventListener('keydown', function(event) {
-        // Check for Alt key
-        if (event.key === 'Alt') {
-            isAltKeyPressed = true;
-            return;
-        }
-
-        // If Alt is being held down, check for menu access keys
-        if (isAltKeyPressed) {
+        // Alt + letter opens a menu. Read Alt from the event itself: tracking
+        // it with keydown/keyup gets stuck after Alt+Tab (the keyup happens in
+        // another window), which then swallowed plain F/E/V/H typing.
+        if (event.altKey && event.key !== 'Alt') {
             const key = event.key.toLowerCase();
             const menuItems = document.querySelectorAll('.win95-menu-item');
 
@@ -543,8 +538,10 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        // If a dropdown is active, navigate with arrow keys and execute with Enter or access keys
-        if (activeDropdown && activeDropdown.classList.contains('show')) {
+        // If a dropdown is active, navigate with arrow keys and execute with Enter or access keys.
+        // Not while typing in a text field (e.g. DECRYPT.EXE's Notepad), whose keys are its own.
+        const isTyping = event.target.closest && event.target.closest('input, textarea, [contenteditable]');
+        if (activeDropdown && activeDropdown.classList.contains('show') && !isTyping) {
             const dropdownItems = activeDropdown.querySelectorAll('.win95-dropdown-item');
 
             // Get currently focused item (if any)
@@ -596,12 +593,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 menuItem.classList.remove('active-menu-item');
                 activeDropdown = null;
             }
-        }
-    });
-
-    document.addEventListener('keyup', function(event) {
-        if (event.key === 'Alt') {
-            isAltKeyPressed = false;
         }
     });
 
