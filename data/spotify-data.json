@@ -1,40 +1,12 @@
 {
   "topArtists": [
     {
-      "name": "Alesso",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb42b3fb34e3451c79c55cbe73",
-      "genres": [
-        "edm"
-      ],
-      "popularity": 76,
-      "uri": "spotify:artist:4AVFqumd2ogHFlRbKIjp1t",
-      "url": "https://open.spotify.com/artist/4AVFqumd2ogHFlRbKIjp1t"
-    },
-    {
-      "name": "Alex Warren",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb0548e7c357122cda80128c8f",
-      "genres": [],
-      "popularity": 87,
-      "uri": "spotify:artist:0fTSzq9jAh4c36UVb4V7CB",
-      "url": "https://open.spotify.com/artist/0fTSzq9jAh4c36UVb4V7CB"
-    },
-    {
-      "name": "Kygo",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebe5ea1aa1404629c12ad86658",
-      "genres": [
-        "tropical house"
-      ],
-      "popularity": 80,
-      "uri": "spotify:artist:23fqKkggKUBHNkbKtXEls4",
-      "url": "https://open.spotify.com/artist/23fqKkggKUBHNkbKtXEls4"
-    },
-    {
       "name": "Marshmello",
       "image": "https://i.scdn.co/image/ab6761610000e5ebfa62d7b4d09a4ea9b4c5f05d",
       "genres": [
         "edm"
       ],
-      "popularity": 84,
+      "popularity": 83,
       "uri": "spotify:artist:64KEffDW9EtZ1y2vBYgq8T",
       "url": "https://open.spotify.com/artist/64KEffDW9EtZ1y2vBYgq8T"
     },
@@ -50,6 +22,35 @@
       "popularity": 92,
       "uri": "spotify:artist:6XyY86QOPPrYVGvF9ch6wz",
       "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz"
+    },
+    {
+      "name": "Our Last Night",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb9284eb7ab597b8b48e46bbdd",
+      "genres": [
+        "post-hardcore",
+        "metalcore"
+      ],
+      "popularity": 66,
+      "uri": "spotify:artist:00YTqRClk82aMchQQpYMd5",
+      "url": "https://open.spotify.com/artist/00YTqRClk82aMchQQpYMd5"
+    },
+    {
+      "name": "Die Heuwels Fantasties",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb7e5ed68cd28045d603b7c82a",
+      "genres": [
+        "afrikaans pop"
+      ],
+      "popularity": 48,
+      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
+      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
+    },
+    {
+      "name": "Alex Warren",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb0548e7c357122cda80128c8f",
+      "genres": [],
+      "popularity": 87,
+      "uri": "spotify:artist:0fTSzq9jAh4c36UVb4V7CB",
+      "url": "https://open.spotify.com/artist/0fTSzq9jAh4c36UVb4V7CB"
     }
   ],
   "topTracks": [
@@ -69,19 +70,9 @@
       "album": "Rooksein & Vriende",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27366ad16e2fed7d2ed7f36411a",
       "duration": "3:37",
-      "popularity": 25,
+      "popularity": 23,
       "uri": "spotify:track:6Da3UWaRd8i9ou8BUTnaVh",
       "url": "https://open.spotify.com/track/6Da3UWaRd8i9ou8BUTnaVh"
-    },
-    {
-      "name": "Hear Me Now",
-      "artist": "Alok, Zeeba, Bruno Martini",
-      "album": "Hear Me Now (feat. Zeeba)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731f57e82299920d9eba745182",
-      "duration": "3:14",
-      "popularity": 80,
-      "uri": "spotify:track:39cmB3ZoTOLwOTq7tMNqKa",
-      "url": "https://open.spotify.com/track/39cmB3ZoTOLwOTq7tMNqKa"
     },
     {
       "name": "RESCUER",
@@ -99,7 +90,7 @@
       "album": "Versions Of Me",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2735f15800fd642817c99cf0fb1",
       "duration": "3:11",
-      "popularity": 45,
+      "popularity": 43,
       "uri": "spotify:track:0JOQP4LlNj1PehUqiowXGf",
       "url": "https://open.spotify.com/track/0JOQP4LlNj1PehUqiowXGf"
     },
@@ -109,19 +100,9 @@
       "album": "Whole Again",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27381ea9b85fee7359499cf0b6d",
       "duration": "2:57",
-      "popularity": 60,
+      "popularity": 59,
       "uri": "spotify:track:0yZB1yPbdmzMFjZElCD4Lb",
       "url": "https://open.spotify.com/track/0yZB1yPbdmzMFjZElCD4Lb"
-    },
-    {
-      "name": "Beautiful Now",
-      "artist": "Zedd, Jon Bellion",
-      "album": "True Colors",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273d040bc5b46915b49a64d7b1d",
-      "duration": "3:38",
-      "popularity": 74,
-      "uri": "spotify:track:2ISSQPb9LHHiV6ng2NXosL",
-      "url": "https://open.spotify.com/track/2ISSQPb9LHHiV6ng2NXosL"
     },
     {
       "name": "The Day I Fall In Love (Karaoke Demonstration With Lead Vocal - In The Style Of Dolly Parton/James Ingram)",
@@ -134,16 +115,6 @@
       "url": "https://open.spotify.com/track/0OJwK9fOy7zAIKh9Mm8Zpp"
     },
     {
-      "name": "Turn The Lights Off",
-      "artist": "Kato, Jon",
-      "album": "Discolized",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2732046ff71c29ccec4268dcac6",
-      "duration": "2:57",
-      "popularity": 78,
-      "uri": "spotify:track:0wHayguZd1CeQDLYohXNMS",
-      "url": "https://open.spotify.com/track/0wHayguZd1CeQDLYohXNMS"
-    },
-    {
       "name": "Every Breath You Take",
       "artist": "The Police",
       "album": "Synchronicity (Remastered 2003)",
@@ -152,7 +123,37 @@
       "popularity": 94,
       "uri": "spotify:track:1JSTJqkT5qHq8MDJnJbRE1",
       "url": "https://open.spotify.com/track/1JSTJqkT5qHq8MDJnJbRE1"
+    },
+    {
+      "name": "Valerie",
+      "artist": "Steve Winwood",
+      "album": "Talking Back To The Night",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273475f52997f4a82ff0740bcc9",
+      "duration": "4:06",
+      "popularity": 73,
+      "uri": "spotify:track:3aAuIvgJGdp4wWd60riWfB",
+      "url": "https://open.spotify.com/track/3aAuIvgJGdp4wWd60riWfB"
+    },
+    {
+      "name": "Barfuß am Klavier",
+      "artist": "AnnenMayKantereit",
+      "album": "Alles nix konkretes",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27353368d5c0af58c7a9000ea4a",
+      "duration": "3:15",
+      "popularity": 65,
+      "uri": "spotify:track:4kr64ggr6ALZGxnkGdhK7b",
+      "url": "https://open.spotify.com/track/4kr64ggr6ALZGxnkGdhK7b"
+    },
+    {
+      "name": "before you go",
+      "artist": "Gareth Emery, LSR/CITY",
+      "album": "before you go",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731c4949f372bd730ae1ad6371",
+      "duration": "4:18",
+      "popularity": 43,
+      "uri": "spotify:track:4y2wDeRQzaq6Yq2TiGTVCd",
+      "url": "https://open.spotify.com/track/4y2wDeRQzaq6Yq2TiGTVCd"
     }
   ],
-  "lastUpdated": "2026-09-28T04:24:49.405Z"
+  "lastUpdated": "2026-10-05T04:44:43.028Z"
 }
