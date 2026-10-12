@@ -1,6 +1,8 @@
-// The programs on the desktop. Their desktop icons and the Start menu's
-// Programs folder (taskbar.js) both open them from here.
+// The programs on the desktop. Their desktop icons (for those that have one)
+// and the Start menu's Programs folder (taskbar.js) both open them from here.
 const DESKTOP_PROGRAMS = [
+    // TASKMGR.EXE (taskmgr.js)
+    { name: 'Task Manager', icon: 'TaskManagerIcon_16x16', open: () => openTaskManager() },
     { name: 'My Computer', desktopIcon: 'ComputerIcon_32x32', icon: 'ComputerIcon_16x16', open: () => openMyTechWindow() },
     { name: 'Source Code', desktopIcon: 'GitHubIcon_32x32', icon: 'GitHubIcon_16x16 WhiteIcon', open: () => openGitHubInstallerWindow() },
     { name: 'Spotify', desktopIcon: 'SpotifyIcon_32x32', icon: 'SpotifyIcon_16x16 WhiteIcon', open: () => openSpotifyWindow() },
@@ -168,7 +170,8 @@ function initializeDesktopIcons() {
             event.stopPropagation();
         });
 
-        const program = DESKTOP_PROGRAMS.find(candidate => icon.querySelector(`.${candidate.desktopIcon}`));
+        const program = DESKTOP_PROGRAMS.find(candidate =>
+            candidate.desktopIcon && icon.querySelector(`.${candidate.desktopIcon}`));
         if (program) {
             icon.addEventListener('dblclick', () => program.open());
         }

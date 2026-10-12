@@ -123,6 +123,8 @@ test.describe('desktop', () => {
 
     test('Properties shows the file details', async ({ page }) => {
         await openVideos(page, watching());
+        // The rows load after the window opens; keys pressed before then go nowhere
+        await expect(rows(page).nth(0)).toBeFocused();
 
         // Enter opens Properties for the selected file
         await page.keyboard.press('ArrowDown');

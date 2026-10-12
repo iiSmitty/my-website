@@ -39,6 +39,13 @@ body.has-taskbar:not(.startup):not(.is-touch-device) {
     user-select: none;
 }
 
+/* The main window's title has its icon (the flag is the Start button's alone) */
+.win95-container > .win95-title-bar .win95-title {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
 /* Only the active window has a blue title bar */
 .wm-window.is-inactive > .win95-title-bar {
     background: linear-gradient(to right, #808080, #b5b5b5);
@@ -335,10 +342,26 @@ body.is-touch-device .taskbar {
     min-width: 150px;
 }
 
-.start-submenu .start-menu-item {
+.start-submenu .start-menu-item,
+.taskbar-menu .start-menu-item {
     height: 22px;
     gap: 6px;
     padding-right: 16px;
+}
+
+/* The taskbar's right-click menu opens above the taskbar, where it was clicked */
+.taskbar-menu {
+    flex-direction: column;
+    min-width: 160px;
+}
+
+/* Its items have no icons, just the gutter a menu keeps for them */
+.taskbar-menu .start-menu-icon {
+    display: none;
+}
+
+.taskbar-menu .start-menu-item {
+    padding-left: 20px;
 }
 
 .start-submenu .start-menu-icon {

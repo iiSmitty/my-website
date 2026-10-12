@@ -678,7 +678,11 @@ function removeDecryptExeClippy() {
 document.addEventListener('keydown', function (e) {
     if (!decryptExeIsOpen() || document.getElementById('decryptExeBsod')) return;
 
-    if (e.key === 'Escape') {
+    // These keys are for whichever window has focus, so only when it's one of these
+    const inDecryptExe = e.target.closest && e.target.closest('.decrypt-exe-window');
+    const inErrorDialog = e.target.closest && e.target.closest('#decryptExeError');
+
+    if (e.key === 'Escape' && (inDecryptExe || inErrorDialog)) {
         if (document.getElementById('decryptExeError')) {
             closeDecryptExeError();
         } else {
@@ -688,7 +692,6 @@ document.addEventListener('keydown', function (e) {
     }
 
     // F5 (or Ctrl+Enter) runs the self-test instead of reloading the page
-    const inDecryptExe = e.target.closest && e.target.closest('.decrypt-exe-window');
     if (inDecryptExe && (e.key === 'F5' || (e.key === 'Enter' && (e.ctrlKey || e.metaKey)))) {
         e.preventDefault();
         runSelfTest();

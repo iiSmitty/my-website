@@ -183,6 +183,15 @@ function openStartSubmenu(parent, { focusFirst = false } = {}) {
     });
     submenu.hidden = false;
     parent.setAttribute('aria-expanded', 'true');
+
+    // A submenu that would run off the bottom of the desktop moves up until it
+    // sits on the taskbar, as Windows does
+    submenu.style.top = '';
+    const overflow = submenu.getBoundingClientRect().bottom - document.getElementById('taskbar').getBoundingClientRect().top;
+    if (overflow > 0) {
+        submenu.style.top = `${submenu.offsetTop - overflow}px`;
+    }
+
     if (focusFirst) startMenuItems(submenu)[0].focus({ preventScroll: true });
 }
 
@@ -297,6 +306,112 @@ function onStartMenuKeydown(event) {
     event.stopPropagation();
 }
 
+// --- Right-click menu ------------------------------------------------------
+// The taskbar's own menu, with the two items NT4 had that work here
+
+function buildTaskbarMenu() {
+    const menu = taskbarEl('div', 'start-menu taskbar-menu');
+    menu.id = 'taskbarMenu';
+    menu.setAttribute('role', 'menu');
+    menu.setAttribute('aria-label', 'Taskbar');
+    menu.tabIndex = -1;
+    menu.hidden = true;
+
+    const minimizeAll = buildStartMenuItem('Minimize All Windows', { accessKey: 'm' });
+    startMenuActions.set(minimizeAll, () => WindowManager.minimizeAll());
+    const taskManager = buildStartMenuItem('Task Manager...', { accessKey: 'k' });
+    startMenuActions.set(taskManager, () => openTaskManager());
+    const separator = taskbarEl('div', 'start-menu-separator');
+    separator.setAttribute('role', 'separator');
+    menu.append(minimizeAll, separator, taskManager);
+
+    menu.addEventListener('click', event => {
+        const item = event.target.closest('.start-menu-item');
+        if (!item) return;
+        closeTaskbarMenu();
+        startMenuActions.get(item)();
+    });
+    menu.addEventListener('mouseover', event => {
+        const item = event.target.closest('.start-menu-item');
+        if (item) item.focus({ preventScroll: true });
+    });
+    menu.addEventListener('keydown', onTaskbarMenuKeydown);
+    return menu;
+}
+
+function taskbarMenu() {
+    return document.getElementById('taskbarMenu');
+}
+
+function openTaskbarMenu(event) {
+    // Not on the Start menu, which is a menu already
+    if (event.target.closest('#startMenu, #taskbarMenu')) return;
+    event.preventDefault();
+    closeStartMenu();
+
+    const menu = taskbarMenu();
+    const taskbar = document.getElementById('taskbar');
+    // A keyboard (Shift+F10, the menu key) gives no pointer position, so the menu opens at the focused item
+    const x = event.clientX || event.target.getBoundingClientRect().left;
+    menu.returnFocus = document.activeElement;
+    menu.hidden = false;
+    menu.style.left = Math.max(2, Math.min(x, taskbar.clientWidth - menu.offsetWidth - 2)) + 'px';
+
+    const keyboard = event.button !== 2;
+    if (keyboard) {
+        startMenuItems(menu)[0].focus({ preventScroll: true });
+    } else {
+        menu.focus({ preventScroll: true });
+    }
+}
+
+function closeTaskbarMenu({ returnFocus = false } = {}) {
+    const menu = taskbarMenu();
+    if (!menu || menu.hidden) return;
+    menu.hidden = true;
+    if (returnFocus && menu.returnFocus && menu.returnFocus.isConnected) {
+        menu.returnFocus.focus({ preventScroll: true });
+    }
+}
+
+function onTaskbarMenuKeydown(event) {
+    const menu = taskbarMenu();
+    const items = startMenuItems(menu);
+    const index = items.indexOf(event.target);
+    const focus = target => target.focus({ preventScroll: true });
+
+    switch (event.key) {
+        case 'ArrowDown':
+            focus(items[(index + 1) % items.length]);
+            break;
+        case 'ArrowUp':
+            focus(items[index <= 0 ? items.length - 1 : index - 1]);
+            break;
+        case 'Home':
+            focus(items[0]);
+            break;
+        case 'End':
+            focus(items[items.length - 1]);
+            break;
+        case 'Enter':
+        case ' ':
+            if (index === -1) return;
+            event.target.click();
+            break;
+        case 'Escape':
+        case 'Tab':
+            closeTaskbarMenu({ returnFocus: true });
+            break;
+        default: {
+            const item = items.find(candidate => candidate.dataset.accessKey === event.key.toLowerCase());
+            if (!item) return;
+            item.click();
+        }
+    }
+    event.preventDefault();
+    event.stopPropagation();
+}
+
 // --- Window buttons --------------------------------------------------------
 
 function buildTaskbarButton(win) {
@@ -401,7 +516,8 @@ function buildTaskbar() {
     clock.id = 'taskbarClock';
     tray.append(clock);
 
-    taskbar.append(start, buildStartMenu(), windowList, tray);
+    taskbar.append(start, buildStartMenu(), buildTaskbarMenu(), windowList, tray);
+    taskbar.addEventListener('contextmenu', openTaskbarMenu);
     startTaskbarClock(clock);
     return taskbar;
 }
@@ -413,20 +529,27 @@ document.addEventListener('DOMContentLoaded', function () {
     WindowManager.subscribe(renderTaskbarButtons);
     renderTaskbarButtons();
 
-    // A click anywhere else closes the Start menu
+    // A click anywhere else closes the Start menu and the taskbar's menu
     document.addEventListener('pointerdown', event => {
         if (isStartMenuOpen() && !event.target.closest('#startMenu, #taskbarStart')) {
             closeStartMenu();
         }
+        if (!event.target.closest('#taskbarMenu')) closeTaskbarMenu();
     });
     // So does clicking into another window's iframe, or leaving the page
-    window.addEventListener('blur', () => closeStartMenu());
+    window.addEventListener('blur', () => {
+        closeStartMenu();
+        closeTaskbarMenu();
+    });
 
-    // Ctrl+Esc opens the Start menu, as it does on Windows
+    // Ctrl+Esc opens the Start menu, as it does on Windows. Caught on the way
+    // down, so the window with focus never sees an Escape and closes itself.
     document.addEventListener('keydown', event => {
-        if (event.key === 'Escape' && event.ctrlKey && !document.body.classList.contains('startup')) {
+        // (Ctrl+Shift+Esc is Task Manager's, in taskmgr.js)
+        if (event.key === 'Escape' && event.ctrlKey && !event.shiftKey && !document.body.classList.contains('startup')) {
             event.preventDefault();
+            event.stopPropagation();
             toggleStartMenu({ focusFirst: true });
         }
-    });
+    }, true);
 });

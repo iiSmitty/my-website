@@ -1083,6 +1083,27 @@ body.startup {
 .SpotifyIcon_16x16 { background-image: url(/icons/spotify-white.png); }
 .BriefcaseIcon_16x16 { background-image: url(/icons/briefcase.svg); }
 
+/* The main window's icon: the profile loads from a floppy. This is the
+   floppy-disk.ico icon's own 16px image, which Windows drew separately. */
+.FloppyDiskIcon_16x16 {
+    display: inline-block;
+    flex: 0 0 auto;
+    width: 16px;
+    height: 16px;
+    background: url(/icons/floppy-disk-16.png) no-repeat center;
+}
+
+/* Task Manager: Win95's System Monitor icon, via React95 (@react95/icons,
+   Sysmon1000), taken down to 16px pixel for pixel */
+.TaskManagerIcon_16x16 {
+    display: inline-block;
+    flex: 0 0 auto;
+    width: 16px;
+    height: 16px;
+    background: url(/icons/system-monitor-16.png) no-repeat center;
+    vertical-align: -3px;
+}
+
 /* Windows multimedia "Video" icon, via React95 (@react95/icons, MediaVideo).
    Its pixels are drawn at 16px, so they stay crisp. */
 .VideosIcon_16x16 {

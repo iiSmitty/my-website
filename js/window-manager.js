@@ -88,6 +88,22 @@ const WindowManager = (() => {
         notify();
     }
 
+    // Closes a window the way its own close button does, so its module can
+    // tidy up (stop timers, close both DECRYPT.EXE windows, and so on)
+    function requestClose(win) {
+        const closeButton = win.querySelector(':scope > .win95-title-bar .win95-close');
+        if (closeButton) {
+            closeButton.click();
+        } else {
+            close(win);
+        }
+    }
+
+    function minimizeAll() {
+        opened.filter(isShowing).forEach(win => win.classList.add('is-minimized'));
+        setActive(null);
+    }
+
     function minimize(win) {
         if (!isShowing(win)) return;
         const hadFocus = win.contains(document.activeElement);
@@ -280,7 +296,9 @@ const WindowManager = (() => {
         register,
         open,
         close,
+        requestClose,
         minimize,
+        minimizeAll,
         restore,
         activate,
         toggleMaximize,

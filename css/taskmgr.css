@@ -1,0 +1,443 @@
+/* ==================================
+   TASKMGR.EXE
+   Loaded on demand by js/taskmgr.js
+   ================================== */
+
+/* ----- Window ----- */
+
+.taskmgr-window {
+    position: fixed;
+    /* Centered on open via JS (left/top in px) so the title bar can be dragged. */
+    top: 8px;
+    left: 8px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 520px;
+    max-width: calc(100vw - 16px);
+    max-height: calc(100vh - 16px);
+    max-height: calc(100dvh - 16px);
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    font-size: 11px;
+}
+
+.taskmgr-window[hidden] {
+    display: none;
+}
+
+#taskmgrTitleBar {
+    cursor: move;
+}
+
+.taskmgr-window .win95-title {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    min-width: 0;
+}
+
+.TaskManagerIcon_16x16 {
+    margin: 0;
+}
+
+.taskmgr-window.is-loading .taskmgr-sheet {
+    cursor: progress;
+}
+
+/* ----- Tabs (a Win95 property sheet) ----- */
+
+.taskmgr-tabs {
+    display: flex;
+    padding: 6px 6px 0;
+}
+
+.taskmgr-tab {
+    position: relative;
+    margin-right: -1px;
+    padding: 3px 8px 2px;
+    border: 1px solid;
+    border-color: #ffffff #404040 transparent #ffffff;
+    border-bottom: none;
+    border-radius: 3px 3px 0 0;
+    background-color: #c0c0c0;
+    font: inherit;
+    color: #000000;
+    cursor: pointer;
+}
+
+/* The selected tab stands taller and joins the sheet below it */
+.taskmgr-tab[aria-selected="true"] {
+    z-index: 1;
+    margin: -2px -2px -1px;
+    padding: 4px 10px 4px;
+}
+
+.taskmgr-tab:focus-visible {
+    outline: 1px dotted #000000;
+    outline-offset: -4px;
+}
+
+.taskmgr-sheet {
+    margin: 0 6px 6px;
+    padding: 8px;
+    border: 1px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+}
+
+/* Every tab is the same size, as on a property sheet */
+.taskmgr-panel {
+    display: flex;
+    flex-direction: column;
+    height: 304px;
+}
+
+.taskmgr-panel[hidden] {
+    display: none;
+}
+
+/* ----- Lists ----- */
+
+.taskmgr-list-frame {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+    background-color: #ffffff;
+    border: 2px inset #ffffff;
+}
+
+.taskmgr-list {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.taskmgr-list[hidden] {
+    display: none;
+}
+
+/* Column headers are buttons, as in Explorer */
+.taskmgr-list th {
+    position: sticky;
+    top: 0;
+    padding: 2px 6px;
+    background-color: #c0c0c0;
+    border: 1px solid;
+    border-color: #ffffff #808080 #808080 #ffffff;
+    font-weight: normal;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.taskmgr-list td {
+    padding: 1px 6px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.taskmgr-list tr {
+    cursor: default;
+}
+
+.taskmgr-list tr:focus {
+    outline: none;
+}
+
+.taskmgr-list tbody tr[aria-selected="true"] {
+    background-color: #000080;
+    color: #ffffff;
+}
+
+.taskmgr-list tbody tr:focus td:first-child {
+    outline: 1px dotted #ffffff;
+    outline-offset: -1px;
+}
+
+.taskmgr-list .is-not-responding .taskmgr-col-status {
+    color: #c00000;
+}
+
+.taskmgr-list .is-not-responding[aria-selected="true"] .taskmgr-col-status {
+    color: #ffffff;
+}
+
+/* A task is its window's title bar icon and title */
+.taskmgr-task-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+.taskmgr-task-label > [class*="Icon_16x16"],
+.taskmgr-task-label > svg {
+    flex: 0 0 16px;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+}
+
+/* White logos (GitHub, Spotify) are made for the blue title bars; on the
+   white list they're drawn black, and go back to white on a selected row */
+.taskmgr-task-label > .WhiteIcon {
+    filter: brightness(0);
+}
+
+.taskmgr-list tr[aria-selected="true"] .WhiteIcon {
+    filter: none;
+}
+
+.taskmgr-task-label > span:last-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#taskmgrApplications .taskmgr-col-status {
+    width: 90px;
+}
+
+/* Processes: sized to their longest values ("Not Responding", "12/10/2026 08:36") */
+.taskmgr-col-pid { width: 64px; }
+#taskmgrProcesses .taskmgr-col-status { width: 84px; }
+.taskmgr-col-time { width: 52px; }
+.taskmgr-col-last { width: 98px; }
+
+.taskmgr-col-pid,
+.taskmgr-col-time {
+    font-variant-numeric: tabular-nums;
+}
+
+.taskmgr-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.taskmgr-buttons .win95-btn {
+    font-size: 11px;
+}
+
+/* ----- Can't reach GitHub ----- */
+
+.taskmgr-error {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px 16px;
+    font-size: 12px;
+}
+
+.taskmgr-error[hidden] {
+    display: none;
+}
+
+.taskmgr-error p {
+    margin: 0 0 12px;
+    line-height: 1.4;
+}
+
+/* ----- Performance ----- */
+
+.taskmgr-charts {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 6px 8px;
+}
+
+/* Win95 GroupBox: an etched line the legend sits in */
+.taskmgr-group {
+    margin: 0;
+    padding: 4px 8px 8px;
+    border: 2px groove #c0c0c0;
+    min-width: 0;
+}
+
+.taskmgr-group legend {
+    padding: 0 3px;
+}
+
+/* NT4's meters: a column of green LEDs on black, the value underneath */
+.taskmgr-meter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    height: 76px;
+    padding: 6px 0 4px;
+    box-sizing: border-box;
+    background-color: #000000;
+    border: 2px inset #ffffff;
+}
+
+.taskmgr-meter-bar {
+    position: relative;
+    flex: 1 1 auto;
+    width: 30px;
+    /* Unlit LEDs */
+    background: repeating-linear-gradient(to top, #008000 0 2px, #000000 2px 3px);
+    background-size: 13px 3px;
+    background-position: center;
+    background-repeat: repeat-y;
+}
+
+.taskmgr-meter-fill {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(to top, #00ff00 0 2px, #000000 2px 3px);
+    background-size: 13px 3px;
+    background-position: center bottom;
+    background-repeat: repeat-y;
+}
+
+.taskmgr-meter-value {
+    color: #00ff00;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.taskmgr-graph {
+    display: block;
+    width: 100%;
+    height: 76px;
+    box-sizing: border-box;
+    background-color: #000000;
+    border: 2px inset #ffffff;
+}
+
+.taskmgr-grid {
+    stroke: #008040;
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+}
+
+.taskmgr-line {
+    fill: none;
+    stroke: #00ff00;
+    stroke-width: 1.5;
+    vector-effect: non-scaling-stroke;
+}
+
+/* Failed runs, in the red NT4 used for kernel time */
+.taskmgr-line--failed {
+    stroke: #ff0000;
+}
+
+.taskmgr-totals-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.taskmgr-totals dl {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2px 8px;
+    margin: 2px 0 0;
+}
+
+.taskmgr-totals dt,
+.taskmgr-totals dd {
+    margin: 0;
+}
+
+.taskmgr-totals dd {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ----- Status bar ----- */
+
+.taskmgr-statusbar {
+    display: flex;
+    gap: 2px;
+    padding: 0 2px 2px;
+}
+
+.taskmgr-statusbar > span {
+    flex: 1 1 0;
+    padding: 1px 4px;
+    border: 1px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+    white-space: nowrap;
+}
+
+/* ----- Message boxes and Properties (inside the shared .dead-dialog frame) ----- */
+
+.taskmgr-dialog {
+    width: 360px;
+    font-size: 11px;
+}
+
+.taskmgr-dialog .win95-title {
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.taskmgr-dialog .win95-title-bar {
+    cursor: move;
+}
+
+.taskmgr-dialog-body {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 14px 6px;
+    font-size: 12px;
+}
+
+.taskmgr-dialog-icon {
+    flex: 0 0 auto;
+    image-rendering: pixelated;
+}
+
+.taskmgr-dialog-text {
+    min-width: 0;
+    line-height: 1.4;
+}
+
+.taskmgr-dialog-text p {
+    margin: 0 0 8px;
+}
+
+.taskmgr-dialog-heading {
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.taskmgr-dialog-fields {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2px 10px;
+    margin: 10px 0 8px;
+    padding-top: 8px;
+    border-top: 1px solid #808080;
+    box-shadow: inset 0 1px #ffffff;
+    font-size: 11px;
+}
+
+.taskmgr-dialog-fields dt,
+.taskmgr-dialog-fields dd {
+    margin: 0;
+}
+
+.taskmgr-dialog-link {
+    display: block;
+    color: #0000ff;
+    font-size: 11px;
+}
+
+.taskmgr-dialog-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 0 14px;
+}

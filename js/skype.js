@@ -254,6 +254,10 @@ function buildSkypeWindow() {
 
     skypeWindow.querySelector('.win95-close').addEventListener('click', closeSkypeWindow);
     skypeWindow.querySelector('.skype-avatar').addEventListener('click', collectExtraLife);
+    // Esc closes the window, when it has focus (not every window on the desktop)
+    skypeWindow.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeSkypeWindow();
+    });
 
     // Drag, stack and minimize like the other desktop windows
     WindowManager.register(skypeWindow);
@@ -361,10 +365,3 @@ function collectExtraLife() {
     avatar.appendChild(popup);
     setTimeout(() => popup.remove(), prefersReducedMotion() ? 600 : 900);
 }
-
-// --- Wiring -----------------------------------------------------------------
-
-// Esc closes the window
-document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeSkypeWindow();
-});

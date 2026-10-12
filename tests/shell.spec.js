@@ -49,7 +49,7 @@ test.describe('desktop', () => {
         await expect(programs).toBeVisible();
         // The Recycle Bin is an easter egg, so it isn't listed
         await expect(programs.getByRole('menuitem')).toHaveText([
-            'Dev Community', 'Experience', 'My Computer', 'Source Code', 'Spotify', 'Videos'
+            'Dev Community', 'Experience', 'My Computer', 'Source Code', 'Spotify', 'Task Manager', 'Videos'
         ]);
 
         await programs.getByRole('menuitem', { name: 'Spotify' }).click();
@@ -57,6 +57,19 @@ test.describe('desktop', () => {
         await expect(page.locator('#spotifyWindow')).toBeVisible();
         await expect(taskbarButton(page, 'Spotify')).toHaveAttribute('aria-pressed', 'true');
         await expect(taskbarButton(page, 'Windows 95')).toHaveAttribute('aria-pressed', 'false');
+    });
+
+    test('a submenu too tall for the space below it moves up to stay on screen', async ({ page }) => {
+        // Short enough that Programs would run past the taskbar
+        await page.setViewportSize({ width: 1280, height: 600 });
+        await boot(page);
+        await startButton(page).click();
+        await startMenu(page).getByRole('menuitem', { name: 'Programs' }).hover();
+
+        const programs = await page.getByRole('menu', { name: 'Programs' }).boundingBox();
+        const bar = await taskbar(page).boundingBox();
+        expect(programs.y).toBeGreaterThanOrEqual(0);
+        expect(programs.y + programs.height).toBeLessThanOrEqual(bar.y + 1);
     });
 
     test('Favorites are real links', async ({ page }) => {
