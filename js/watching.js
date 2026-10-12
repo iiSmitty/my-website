@@ -217,13 +217,6 @@ function buildVideosItems(data, now) {
 
 // --- Window ----------------------------------------------------------------
 
-function bringVideosWindowToFront(videosWindow) {
-    document.querySelectorAll('.win95-window').forEach(win => {
-        win.style.zIndex = 10;
-    });
-    videosWindow.style.zIndex = 100;
-}
-
 function centerVideosElement(element) {
     const rect = element.getBoundingClientRect();
     element.style.left = Math.max(8, (window.innerWidth - rect.width) / 2) + 'px';
@@ -316,7 +309,6 @@ function buildVideosWindow() {
     videosWindow.querySelector('.win95-close').addEventListener('click', closeVideosWindow);
     videosWindow.querySelector('#videosRetry').addEventListener('click', loadVideosFolder);
     videosWindow.querySelector('#videosCancel').addEventListener('click', closeVideosWindow);
-    videosWindow.addEventListener('mousedown', () => bringVideosWindowToFront(videosWindow));
     videosWindow.addEventListener('keydown', event => {
         if (event.key === 'Escape') closeVideosWindow();
     });
@@ -332,10 +324,8 @@ function buildVideosWindow() {
     });
     rows.addEventListener('keydown', handleVideosRowKey);
 
-    // Drag by the title bar, consistent with the other windows (program-icons.js)
-    if (typeof makeWindowDraggable === 'function') {
-        makeWindowDraggable('videosWindow', 'videosTitleBar');
-    }
+    // Drag, stack and minimize like the other desktop windows
+    WindowManager.register(videosWindow);
 
     return videosWindow;
 }
@@ -345,10 +335,7 @@ async function openVideosWindow() {
     await loadVideosStyles();
 
     const videosWindow = document.getElementById('videosWindow') || buildVideosWindow();
-    const wasOpen = !videosWindow.hidden;
-
-    videosWindow.hidden = false;
-    bringVideosWindowToFront(videosWindow);
+    const wasOpen = WindowManager.open(videosWindow);
 
     // Re-opening an open window just brings it forward
     if (wasOpen) {
@@ -367,7 +354,7 @@ function closeVideosWindow() {
     if (!videosWindow || videosWindow.hidden) return;
 
     closeVideosProperties();
-    videosWindow.hidden = true;
+    WindowManager.close(videosWindow);
 
     if (videosReturnFocus && videosReturnFocus.isConnected) {
         videosReturnFocus.focus();
@@ -634,7 +621,8 @@ function buildVideosProperties() {
         }
     });
 
-    makeWindowDraggable('videosPropertiesWindow', 'videosPropertiesTitleBar');
+    WindowManager.makeDraggable(overlay.querySelector('#videosPropertiesWindow'),
+        overlay.querySelector('#videosPropertiesTitleBar'));
     return overlay;
 }
 

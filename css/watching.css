@@ -4,11 +4,11 @@
    ================================== */
 
 /* ----- Icons ----- */
-/* Original Windows icons via React95 (@react95/icons): MediaVideo for the
-   folder, Media Player's "Video Clip" (Mplayer11) for the files. Scaled only
-   in whole steps, so the pixels stay crisp. */
+/* Original Windows icons via React95 (@react95/icons): Media Player's "Video
+   Clip" (Mplayer11) for the files. Scaled only in whole steps, so the pixels
+   stay crisp. The folder's own icon (VideosIcon_16x16) is in styles.css, as the
+   Start menu shows it before this stylesheet loads. */
 
-.VideosIcon_16x16,
 .VideoFileIcon_16x16,
 .VideoFileIcon_32x32,
 .videos-poster-fallback {
@@ -17,12 +17,6 @@
     background-repeat: no-repeat;
     background-position: center;
     image-rendering: pixelated;
-}
-
-.VideosIcon_16x16 {
-    width: 16px;
-    height: 16px;
-    background-image: url(/icons/media-video-16.png);
 }
 
 .VideoFileIcon_16x16 {

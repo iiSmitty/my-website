@@ -24,6 +24,7 @@
 
     <link rel="stylesheet" href="css/styles.min.css">
     <link rel="stylesheet" href="css/clippy.min.css">
+    <link rel="stylesheet" href="css/shell.min.css">
 
     <meta name="google-site-verification" content="4mBSgpHgBoB_5VaH5Bc33VskCK3xblH1pUvTSBksBn8"/>
 
@@ -69,6 +70,38 @@
 </head>
 <body>
 
+<!-- Desktop Icons: on the desktop itself, so they stay put when the main window moves or minimizes -->
+<div class="desktop-icons">
+    <div class="desktop-icon">
+        <span class="ComputerIcon_32x32"></span>
+        <span>My Computer</span>
+    </div>
+    <div class="desktop-icon">
+        <span class="GitHubIcon_32x32"></span>
+        <span>Source Code</span>
+    </div>
+    <div class="desktop-icon">
+        <span class="SpotifyIcon_32x32"></span>
+        <span>Spotify</span>
+    </div>
+    <div class="desktop-icon">
+        <span class="VideosIcon_32x32"></span>
+        <span>Videos</span>
+    </div>
+    <div class="desktop-icon">
+        <span class="BriefcaseIcon_32x32"></span>
+        <span>Experience</span>
+    </div>
+    <div class="desktop-icon">
+        <span class="SlackIcon_32x32"></span>
+        <span>Dev Community</span>
+    </div>
+    <div class="desktop-icon">
+        <span class="RecycleIcon_32x32"></span>
+        <span>Recycle Bin</span>
+    </div>
+</div>
+
 <div class="win95-container">
     <!-- Windows 95 Title Bar -->
     <div class="win95-title-bar">
@@ -83,38 +116,6 @@
     <!-- Windows 95 Menu Bar -->
     <div class="win95-menu-bar">
         <!-- Placeholder for JavaScript component -->
-    </div>
-
-    <!-- Desktop Icons -->
-    <div class="desktop-icons">
-        <div class="desktop-icon">
-            <span class="ComputerIcon_32x32"></span>
-            <span>My Computer</span>
-        </div>
-        <div class="desktop-icon">
-            <span class="GitHubIcon_32x32"></span>
-            <span>Source Code</span>
-        </div>
-        <div class="desktop-icon">
-            <span class="SpotifyIcon_32x32"></span>
-            <span>Spotify</span>
-        </div>
-        <div class="desktop-icon">
-            <span class="VideosIcon_32x32"></span>
-            <span>Videos</span>
-        </div>
-        <div class="desktop-icon">
-            <span class="BriefcaseIcon_32x32"></span>
-            <span>Experience</span>
-        </div>
-        <div class="desktop-icon">
-            <span class="SlackIcon_32x32"></span>
-            <span>Dev Community</span>
-        </div>
-        <div class="desktop-icon">
-            <span class="RecycleIcon_32x32"></span>
-            <span>Recycle Bin</span>
-        </div>
     </div>
 
     <!-- Content Area -->
@@ -311,8 +312,8 @@
 </div>
 
 <!-- My Tech Window -->
-<div class="win95-window" id="myTechWindow"
-     style="display: none; position: fixed; top: 50px; left: 50px; z-index: 1000; width: 600px;">
+<div class="win95-window" id="myTechWindow" hidden
+     style="position: fixed; top: 50px; left: 50px; width: 600px;">
     <!-- Windows 95 Title Bar -->
     <div class="win95-title-bar" id="myTechTitleBar">
         <div class="win95-title">
@@ -434,7 +435,7 @@
      history lives in one place (experience.html). The frame only loads on
      first open. -->
 <div class="win95-window xp-desktop-window" id="experienceWindow" hidden
-     style="position: fixed; top: 40px; left: 110px; z-index: 1000;">
+     style="position: fixed; top: 40px; left: 110px;">
     <div class="win95-title-bar" id="experienceTitleBar">
         <div class="win95-title">
             <span class="BriefcaseIcon_16x16"></span>
@@ -442,8 +443,7 @@
         </div>
         <div class="win95-buttons">
             <button class="win95-button win95-minimize">_</button>
-            <button class="win95-button win95-maximize" onclick="toggleExperienceWindowMaximized()"
-                    aria-label="Maximize">□</button>
+            <button class="win95-button win95-maximize">□</button>
             <button class="win95-button win95-close" onclick="closeExperienceWindow()"
                     aria-label="Close">×</button>
         </div>
@@ -452,11 +452,12 @@
 </div>
 
 <!-- Spotify Window -->
-<div class="win95-window" id="spotifyWindow"
-     style="display: none; position: fixed; top: 50px; left: 50px; z-index: 1000; width: 600px;">
+<div class="win95-window" id="spotifyWindow" hidden
+     style="position: fixed; top: 50px; left: 50px; width: 600px;">
     <!-- Windows 95 Title Bar -->
     <div class="win95-title-bar" id="spotifyTitleBar">
         <div class="win95-title">
+            <span class="SpotifyIcon_16x16 WhiteIcon"></span>
             Spotify
         </div>
         <div class="win95-buttons">
@@ -530,11 +531,12 @@
 </div>
 
 <!-- GitHub Installer Window -->
-<div class="win95-window" id="githubInstallerWindow"
-     style="display: none; position: fixed; top: 80px; left: 120px; z-index: 1000; width: 450px; background-color: #c0c0c0; border: 2px outset #fff;">
+<div class="win95-window" id="githubInstallerWindow" hidden
+     style="position: fixed; top: 80px; left: 120px; width: 450px; background-color: #c0c0c0; border: 2px outset #fff;">
     <!-- Windows 95 Title Bar -->
     <div class="win95-title-bar" id="githubInstallerTitleBar">
         <div class="win95-title" style="display: flex; align-items: center;">
+            <span class="GitHubIcon_16x16 WhiteIcon"></span>
             <span>GitHub Installation Wizard</span>
         </div>
         <div class="win95-buttons">
@@ -580,11 +582,12 @@
 </div>
 
 <!-- Slack Invite Window -->
-<div class="win95-window" id="slackWindow"
-     style="display: none; position: fixed; top: 100px; left: 150px; z-index: 1000; width: 500px; background-color: #c0c0c0; border: 2px outset #fff;">
+<div class="win95-window" id="slackWindow" hidden
+     style="position: fixed; top: 100px; left: 150px; width: 500px; background-color: #c0c0c0; border: 2px outset #fff;">
     <!-- Windows 95 Title Bar -->
     <div class="win95-title-bar" id="slackTitleBar">
         <div class="win95-title" style="display: flex; align-items: center;">
+            <span class="SlackIcon_16x16"></span>
             <span>Join Our Dev Community</span>
         </div>
         <div class="win95-buttons">
@@ -635,6 +638,7 @@
 </div>
 
 <script defer src="js/utils.min.js"></script>
+<script defer src="js/window-manager.min.js"></script>
 <script defer src="js/decrypt.min.js"></script>
 <script defer src="js/decrypt-exe.min.js"></script>
 <script defer src="js/clippy.min.js"></script>
@@ -649,6 +653,7 @@
 <script defer src="js/coffee-simple.min.js"></script>
 <script defer src="js/skype.min.js"></script>
 <script defer src="js/watching.min.js"></script>
+<script defer src="js/taskbar.min.js"></script>
 
 </body>
 </html>

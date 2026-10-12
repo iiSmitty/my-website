@@ -114,9 +114,7 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
                 </div>
                 <div class="startup-taskbar">
                     <button class="win95-start-button" id="start-windows" aria-label="Start — click here to begin">
-                        <span class="start-flag" aria-hidden="true">
-                            <span class="start-flag-css"><i></i><i></i><i></i><i></i></span>
-                        </span>
+                        <span class="WindowsLogoIcon_16x16" aria-hidden="true"></span>
                         <span class="start-label">Start</span>
                     </button>
                     <div class="start-hint">
@@ -377,6 +375,10 @@ document.addEventListener('DOMContentLoaded', function() {
             showClosingDialog();
         });
     }
+
+    // On the home page the window manager (window-manager.js) minimizes and
+    // maximizes the main window, with a taskbar to restore it from
+    if (window.WindowManager) return;
 
     // Also handle minimize and maximize for a complete experience
     const minimizeButton = document.querySelector('.win95-button.win95-minimize');

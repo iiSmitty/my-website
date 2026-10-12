@@ -1,0 +1,358 @@
+/* ==================================
+   Shell: windows, taskbar and Start menu
+   js/window-manager.js and js/taskbar.js
+   ================================== */
+
+:root {
+    --taskbar-size: 28px;
+    /* The space the taskbar takes from the desktop: none until it shows */
+    --taskbar-height: 0px;
+}
+
+body.has-taskbar:not(.startup):not(.is-touch-device) {
+    --taskbar-height: var(--taskbar-size);
+    /* Keep the bottom of the page clear of the taskbar */
+    padding-bottom: calc(20px + var(--taskbar-height));
+}
+
+/* ----- Windows ----- */
+
+/* Closed windows have the hidden attribute (even before the scripts run);
+   minimized ones are still open, just not shown */
+.win95-window[hidden],
+.wm-window[hidden],
+.wm-window.is-minimized {
+    display: none !important;
+}
+
+/* Focus lands on the window itself; the title bar already shows it's active */
+.wm-window:focus {
+    outline: none;
+}
+
+/* The main window sits in the page, but stacks with the floating windows */
+.win95-container.wm-window {
+    position: relative;
+}
+
+.wm-window > .win95-title-bar {
+    user-select: none;
+}
+
+/* Only the active window has a blue title bar */
+.wm-window.is-inactive > .win95-title-bar {
+    background: linear-gradient(to right, #808080, #b5b5b5);
+    color: #c0c0c0;
+}
+
+.wm-window .win95-button:not(:disabled) {
+    cursor: pointer;
+}
+
+.wm-window .win95-button:active:not(:disabled) {
+    border-style: inset;
+}
+
+/* A window that can't be resized has a greyed-out maximize button */
+.wm-window .win95-button:disabled {
+    color: #808080;
+    text-shadow: 1px 1px 0 #ffffff;
+}
+
+/* Maximized, a floating window fills the desktop above the taskbar.
+   !important beats the inline top/left that dragging leaves behind, so
+   restoring returns the window to where it was. */
+.wm-window.is-maximized:not(.win95-container) {
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw;
+    max-width: none;
+    height: calc(100vh - var(--taskbar-height));
+    max-height: none;
+    box-sizing: border-box;
+}
+
+/* The main window fills the width of the desktop instead */
+body:has(> .win95-container.is-maximized) {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
+
+.win95-container.is-maximized {
+    max-width: none;
+    min-height: calc(100vh - var(--taskbar-height));
+    box-sizing: border-box;
+}
+
+/* ----- Taskbar ----- */
+
+.taskbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Above the windows (100+), below modal dialogs (2000) */
+    z-index: 1500;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    height: var(--taskbar-size);
+    box-sizing: border-box;
+    padding: 2px;
+    background-color: #c0c0c0;
+    border-top: 1px solid #dfdfdf;
+    box-shadow: inset 0 1px #ffffff;
+    font-family: "MS Sans Serif", Arial, sans-serif;
+    font-size: 11px;
+    color: #000000;
+}
+
+/* The startup screen has its own Start button, and phones have no desktop */
+body.startup .taskbar,
+body.is-touch-device .taskbar {
+    display: none;
+}
+
+/* Raised Win95 buttons */
+.taskbar-start,
+.taskbar-button {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    height: 22px;
+    box-sizing: border-box;
+    padding: 0 4px;
+    border: none;
+    background-color: #c0c0c0;
+    box-shadow: inset -1px -1px #000000, inset 1px 1px #ffffff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* Pressed: the open Start menu, or the active window */
+.taskbar-start[aria-expanded="true"],
+.taskbar-button[aria-pressed="true"] {
+    box-shadow: inset 1px 1px #000000, inset -1px -1px #ffffff, inset 2px 2px #808080, inset -2px -2px #dfdfdf;
+    padding-top: 2px;
+    padding-left: 5px;
+    padding-right: 3px;
+}
+
+.taskbar-start:focus-visible,
+.taskbar-button:focus-visible {
+    outline: 1px dotted #000000;
+    outline-offset: -4px;
+}
+
+.taskbar-start {
+    flex: 0 0 auto;
+    padding-right: 6px;
+    font-weight: bold;
+}
+
+.taskbar-windows {
+    flex: 1 1 auto;
+    display: flex;
+    gap: 3px;
+    min-width: 0;
+    padding-left: 2px;
+}
+
+.taskbar-button {
+    flex: 0 1 160px;
+    min-width: 0;
+}
+
+/* The active window's button is pushed in, with the checkered face Win95 gave it */
+.taskbar-button[aria-pressed="true"] {
+    font-weight: bold;
+    background-image: repeating-conic-gradient(#ffffff 0% 25%, #c0c0c0 0% 50%);
+    background-size: 2px 2px;
+}
+
+.taskbar-button > [class*="Icon_16x16"],
+.taskbar-button > svg {
+    flex: 0 0 16px;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+}
+
+.taskbar-button-label {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.taskbar-tray {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    height: 22px;
+    box-sizing: border-box;
+    padding: 0 10px;
+    box-shadow: inset 1px 1px #808080, inset -1px -1px #ffffff;
+    white-space: nowrap;
+}
+
+/* ----- Start menu ----- */
+
+.start-menu {
+    position: absolute;
+    left: 2px;
+    bottom: calc(100% - 2px);
+    display: flex;
+    padding: 3px;
+    background-color: #c0c0c0;
+    box-shadow: inset -1px -1px #000000, inset 1px 1px #dfdfdf, inset -2px -2px #808080, inset 2px 2px #ffffff;
+}
+
+.start-menu[hidden] {
+    display: none;
+}
+
+.start-menu:focus {
+    outline: none;
+}
+
+/* The grey "Windows95" banner up the side */
+.start-menu-banner {
+    width: 21px;
+    box-sizing: border-box;
+    padding-top: 4px;
+    background-color: #808080;
+    color: #c0c0c0;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font: 18px/21px Arial, sans-serif;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.start-menu-banner b {
+    font-weight: 900;
+}
+
+.start-menu-banner span {
+    color: #ffffff;
+}
+
+.start-menu-items {
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+}
+
+.start-menu-entry {
+    position: relative;
+}
+
+.start-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    height: 38px;
+    box-sizing: border-box;
+    padding: 0 8px 0 4px;
+    border: none;
+    background: transparent;
+    font: inherit;
+    font-size: 12px;
+    color: #000000;
+    text-align: left;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+/* The selected item: pointed at, or reached with the arrow keys */
+.start-menu-item:focus {
+    outline: none;
+    background-color: #000080;
+    color: #ffffff;
+}
+
+.start-menu-item[aria-expanded="true"]:not(:focus) {
+    background-color: #000080;
+    color: #ffffff;
+}
+
+.start-menu-icon {
+    flex: 0 0 auto;
+    width: 32px;
+    height: 32px;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+/* The original Windows icons, via React95 (@react95/icons): Shell32's
+   Programs and Shut Down, IE4's Favorites folder (Shdocvw) and Internet
+   shortcut (Url) */
+.StartProgramsIcon { background-image: url(/icons/programs-32.png); }
+.StartFavoritesIcon { background-image: url(/icons/favorites-32.png); }
+.StartShutDownIcon { background-image: url(/icons/shut-down-32.png); }
+
+.InternetShortcutIcon_16x16 {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url(/icons/internet-shortcut-16.png) no-repeat center;
+}
+
+.start-menu-label {
+    flex: 1 1 auto;
+    padding-right: 12px;
+}
+
+/* The ▶ on an item that opens a submenu */
+.start-menu-arrow {
+    flex: 0 0 auto;
+    width: 0;
+    height: 0;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 4px solid currentColor;
+}
+
+.start-menu-separator {
+    margin: 3px 2px;
+    border-top: 1px solid #808080;
+    border-bottom: 1px solid #ffffff;
+}
+
+/* Submenus open to the right, with small icons */
+.start-submenu {
+    left: calc(100% - 3px);
+    top: -3px;
+    bottom: auto;
+    flex-direction: column;
+    min-width: 150px;
+}
+
+.start-submenu .start-menu-item {
+    height: 22px;
+    gap: 6px;
+    padding-right: 16px;
+}
+
+.start-submenu .start-menu-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* White logos (GitHub, Spotify) are made for the blue title bars; on
+   grey they're drawn black, and go back to white when their item is selected */
+.taskbar .WhiteIcon,
+.start-menu .WhiteIcon {
+    filter: brightness(0);
+}
+
+.start-menu-item:focus .WhiteIcon {
+    filter: none;
+}

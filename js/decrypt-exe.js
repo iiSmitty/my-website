@@ -166,14 +166,6 @@ function decryptExeIsOpen() {
     return Boolean(notepad && !notepad.hidden);
 }
 
-// Same "bring to front" behaviour as the other desktop windows
-function bringDecryptExeWindowToFront(win) {
-    document.querySelectorAll('.win95-window').forEach(other => {
-        other.style.zIndex = 10;
-    });
-    win.style.zIndex = 100;
-}
-
 // Notepad and the DOS prompt side by side if they fit, otherwise cascaded
 function placeDecryptExeWindows(notepad, dos) {
     const gap = 16;
@@ -359,14 +351,9 @@ function buildDecryptExe() {
 
     [notepad, dos].forEach(win => {
         win.querySelector('.win95-close').addEventListener('click', closeDecryptExe);
-        win.addEventListener('mousedown', () => bringDecryptExeWindowToFront(win));
+        // Drag, stack and minimize like the other desktop windows
+        WindowManager.register(win);
     });
-
-    // Drag by the title bar, consistent with the other windows (program-icons.js)
-    if (typeof makeWindowDraggable === 'function') {
-        makeWindowDraggable('decryptExeNotepad', 'decryptExeNotepadTitleBar');
-        makeWindowDraggable('decryptExeDos', 'decryptExeDosTitleBar');
-    }
 
     dosPrint('Microsoft(R) Windows 95');
     dosPrint('   (C)Copyright Microsoft Corp 1981-1995.');
@@ -387,24 +374,25 @@ async function openDecryptExe() {
     }
     const notepad = document.getElementById('decryptExeNotepad');
     const dos = document.getElementById('decryptExeDos');
+    const wasOpen = decryptExeIsOpen();
 
-    if (notepad.hidden) {
+    // Notepad last, so it ends up in front (this also restores minimized windows)
+    WindowManager.open(dos);
+    WindowManager.open(notepad);
+
+    if (!wasOpen) {
         decryptExeReturnFocus = opener && opener !== document.body ? opener : null;
-        notepad.hidden = false;
-        dos.hidden = false;
         placeDecryptExeWindows(notepad, dos);
     }
 
-    bringDecryptExeWindowToFront(dos);
-    bringDecryptExeWindowToFront(notepad);
     document.getElementById('decryptExeEditor').focus({ preventScroll: true });
 }
 
 function closeDecryptExe() {
     if (!decryptExeIsOpen()) return;
 
-    document.getElementById('decryptExeNotepad').hidden = true;
-    document.getElementById('decryptExeDos').hidden = true;
+    WindowManager.close(document.getElementById('decryptExeNotepad'));
+    WindowManager.close(document.getElementById('decryptExeDos'));
     closeDecryptExeError();
     removeDecryptExeClippy();
 

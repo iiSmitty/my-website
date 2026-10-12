@@ -1,3 +1,18 @@
+// The programs on the desktop. Their desktop icons and the Start menu's
+// Programs folder (taskbar.js) both open them from here.
+const DESKTOP_PROGRAMS = [
+    { name: 'My Computer', desktopIcon: 'ComputerIcon_32x32', icon: 'ComputerIcon_16x16', open: () => openMyTechWindow() },
+    { name: 'Source Code', desktopIcon: 'GitHubIcon_32x32', icon: 'GitHubIcon_16x16 WhiteIcon', open: () => openGitHubInstallerWindow() },
+    { name: 'Spotify', desktopIcon: 'SpotifyIcon_32x32', icon: 'SpotifyIcon_16x16 WhiteIcon', open: () => openSpotifyWindow() },
+    // What I'm watching (watching.js)
+    { name: 'Videos', desktopIcon: 'VideosIcon_32x32', icon: 'VideosIcon_16x16', open: () => openVideosWindow() },
+    { name: 'Experience', desktopIcon: 'BriefcaseIcon_32x32', icon: 'BriefcaseIcon_16x16', open: () => openExperienceWindow() },
+    { name: 'Dev Community', desktopIcon: 'SlackIcon_32x32', icon: 'SlackIcon_16x16', open: () => openSlackInviteWindow() },
+    // Something from 2014 is still in the Recycle Bin (skype.js). It's an
+    // easter egg, so the Start menu doesn't give it away.
+    { name: 'Recycle Bin', desktopIcon: 'RecycleIcon_32x32', open: () => openSkypeWindow(), inStartMenu: false }
+];
+
 // Function to display info when program icons are clicked
 function showInfo(service) {
     const infoBox = document.getElementById('infoBox');
@@ -25,28 +40,12 @@ function showInfo(service) {
 
 // Function to open the My Tech window
 function openMyTechWindow() {
-    // Show the My Tech window
-    const techWindow = document.getElementById('myTechWindow');
-    if (techWindow) {
-        techWindow.style.display = 'block';
-
-        // Bring to front
-        const allWindows = document.querySelectorAll('.win95-window');
-        allWindows.forEach(win => {
-            win.style.zIndex = 10;
-        });
-        techWindow.style.zIndex = 100;
-    } else {
-        console.error("Could not find myTechWindow element");
-    }
+    WindowManager.open(document.getElementById('myTechWindow'));
 }
 
 // Function to close the My Tech window
 function closeMyTechWindow() {
-    const techWindow = document.getElementById('myTechWindow');
-    if (techWindow) {
-        techWindow.style.display = 'none';
-    }
+    WindowManager.close(document.getElementById('myTechWindow'));
 }
 
 // Function to select a tech item
@@ -111,7 +110,8 @@ function showDeadDeviceDialog(element) {
         });
 
         // Drag by the title bar, consistent with the other windows.
-        makeWindowDraggable('deadDeviceWindow', 'deadDeviceTitleBar');
+        WindowManager.makeDraggable(document.getElementById('deadDeviceWindow'),
+            document.getElementById('deadDeviceTitleBar'));
     }
 
     overlay.querySelector('#deadDialogTitle').textContent = `${name} Properties`;
@@ -160,7 +160,7 @@ function initializeDesktopIcons() {
     // Add click handlers to all desktop icons
     const desktopIcons = document.querySelectorAll('.desktop-icon');
 
-    desktopIcons.forEach((icon, index) => {
+    desktopIcons.forEach(icon => {
         // Click handler to select the icon
         icon.addEventListener('click', function(event) {
             desktopIcons.forEach(i => i.classList.remove('selected'));
@@ -168,91 +168,31 @@ function initializeDesktopIcons() {
             event.stopPropagation();
         });
 
-        // For My Computer specifically, add double-click handler
-        if (icon.querySelector('.ComputerIcon_32x32')) {
-            icon.addEventListener('dblclick', openMyTechWindow);
-        }
-
-        // For Source Code icon, add double-click handler
-        if (icon.querySelector('.GitHubIcon_32x32')) {
-            icon.addEventListener('dblclick', openGitHubInstallerWindow);
-        }
-
-        // For Spotify icon, add double-click handler
-        if (icon.querySelector('.SpotifyIcon_32x32')) {
-            icon.addEventListener('dblclick', openSpotifyWindow);
-        }
-
-        // What I'm watching (watching.js)
-        if (icon.querySelector('.VideosIcon_32x32')) {
-            icon.addEventListener('dblclick', () => openVideosWindow());
-        }
-
-        if (icon.querySelector('.BriefcaseIcon_32x32')) {
-            icon.addEventListener('dblclick', openExperienceWindow);
-        }
-
-        if (icon.querySelector('.SlackIcon_32x32')) {
-            icon.addEventListener('dblclick', openSlackInviteWindow);
-        }
-
-        // Something from 2014 is still in the Recycle Bin (skype.js)
-        if (icon.querySelector('.RecycleIcon_32x32')) {
-            icon.addEventListener('dblclick', () => openSkypeWindow());
+        const program = DESKTOP_PROGRAMS.find(candidate => icon.querySelector(`.${candidate.desktopIcon}`));
+        if (program) {
+            icon.addEventListener('dblclick', () => program.open());
         }
     });
-
-    // Make windows draggable
-    makeTechWindowDraggable();
-    makeWindowDraggable('spotifyWindow', 'spotifyTitleBar');
-    makeWindowDraggable('slackWindow', 'slackTitleBar');
-    makeWindowDraggable('experienceWindow', 'experienceTitleBar');
 
     // Initialize the desktop click handler
     initializeDesktopClickHandler();
 }
 
-// Function to make the tech window draggable
-function makeTechWindowDraggable() {
-    const techWindow = document.getElementById('myTechWindow');
-    const techTitleBar = document.getElementById('myTechTitleBar');
+// The windows that are part of the page. The ones built on first open
+// (Skype, Videos, DECRYPT.EXE) register themselves.
+function registerDesktopWindows() {
+    // The main window sits in the page rather than floating, so it isn't dragged
+    WindowManager.register(document.querySelector('.win95-container'), { maximizable: true, draggable: false });
 
-    if (!techWindow || !techTitleBar) {
-        // Try again later if elements don't exist yet
-        setTimeout(makeTechWindowDraggable, 500);
-        return;
-    }
-
-    let isDragging = false;
-    let offsetX, offsetY;
-
-    techTitleBar.addEventListener('mousedown', function(e) {
-        isDragging = true;
-        offsetX = e.clientX - techWindow.getBoundingClientRect().left;
-        offsetY = e.clientY - techWindow.getBoundingClientRect().top;
-
-        // Bring window to front
-        const allWindows = document.querySelectorAll('.win95-window');
-        allWindows.forEach(win => {
-            win.style.zIndex = 10;
-        });
-        techWindow.style.zIndex = 100;
+    ['myTechWindow', 'spotifyWindow', 'githubInstallerWindow', 'slackWindow'].forEach(id => {
+        WindowManager.register(document.getElementById(id));
     });
-
-    document.addEventListener('mousemove', function(e) {
-        if (!isDragging) return;
-
-        techWindow.style.left = (e.clientX - offsetX) + 'px';
-        techWindow.style.top = (e.clientY - offsetY) + 'px';
-    });
-
-    document.addEventListener('mouseup', function() {
-        isDragging = false;
-    });
+    WindowManager.register(document.getElementById('experienceWindow'), { maximizable: true });
 }
 
 // When the document is ready, initialize everything
 document.addEventListener('DOMContentLoaded', function() {
+    registerDesktopWindows();
     initializeDesktopIcons();
     makeIconsDraggable();
     addDeleteKeyFunctionality();
@@ -261,19 +201,17 @@ document.addEventListener('DOMContentLoaded', function() {
 // Function to open the GitHub installer window
 function openGitHubInstallerWindow() {
     const installerWindow = document.getElementById('githubInstallerWindow');
-    installerWindow.style.display = 'block';
 
-    // Start the installation process
-    startInstallation();
-
-    // Make the window draggable
-    makeWindowDraggable('githubInstallerWindow', 'githubInstallerTitleBar');
+    // Re-opening an open window just brings it forward
+    if (!WindowManager.open(installerWindow)) {
+        startInstallation();
+    }
 }
 
 // Function to close the GitHub installer window
 function closeGitHubInstallerWindow() {
-    const installerWindow = document.getElementById('githubInstallerWindow');
-    installerWindow.style.display = 'none';
+    clearTimeout(installationTimer);
+    WindowManager.close(document.getElementById('githubInstallerWindow'));
 }
 
 // Function to open GitHub page in a new tab
@@ -303,9 +241,12 @@ const installationSteps = [
 ];
 
 let currentStep = 0;
+// The next step's timer, so closing the wizard stops it
+let installationTimer = null;
 
 // Start the installation process
 function startInstallation() {
+    clearTimeout(installationTimer);
     currentStep = 0;
     const progressBar = document.getElementById('progressBar');
     const installationLog = document.getElementById('installationLog');
@@ -339,7 +280,7 @@ function processNextStep() {
         progressBar.style.width = `${progress}%`;
 
         // Move to next step after delay
-        setTimeout(processNextStep, step.delay);
+        installationTimer = setTimeout(processNextStep, step.delay);
 
         currentStep++;
 
@@ -362,111 +303,34 @@ function addLogEntry(text, className = '') {
     installationLog.scrollTop = installationLog.scrollHeight;
 }
 
-// Function to make windows draggable (reusable for all windows)
-function makeWindowDraggable(windowId, titleBarId) {
-    const windowElement = document.getElementById(windowId);
-    const titleBar = document.getElementById(titleBarId);
-
-    if (!windowElement || !titleBar) {
-        return;
-    }
-
-    let isDragging = false;
-    let offsetX, offsetY;
-
-    titleBar.addEventListener('mousedown', function(e) {
-        isDragging = true;
-        windowElement.classList.add('is-dragging');
-        offsetX = e.clientX - windowElement.getBoundingClientRect().left;
-        offsetY = e.clientY - windowElement.getBoundingClientRect().top;
-
-        // Bring window to front
-        const allWindows = document.querySelectorAll('.win95-window');
-        allWindows.forEach(win => {
-            win.style.zIndex = 10;
-        });
-        windowElement.style.zIndex = 100;
-    });
-
-    document.addEventListener('mousemove', function(e) {
-        if (!isDragging) return;
-
-        windowElement.style.left = (e.clientX - offsetX) + 'px';
-        windowElement.style.top = (e.clientY - offsetY) + 'px';
-    });
-
-    document.addEventListener('mouseup', function() {
-        isDragging = false;
-        windowElement.classList.remove('is-dragging');
-    });
-}
-
 // Function to open the Experience window (experience.html in embedded mode)
 function openExperienceWindow() {
-    const experienceWindow = document.getElementById('experienceWindow');
     const frame = document.getElementById('experienceFrame');
-    if (!experienceWindow || !frame) {
-        console.error("Could not find experienceWindow element");
-        return;
-    }
 
     // Load the page on first open only, so the home page doesn't pay for it
     if (!frame.getAttribute('src')) {
         frame.setAttribute('src', frame.dataset.src);
     }
 
-    experienceWindow.hidden = false;
-
-    // Bring to front
-    document.querySelectorAll('.win95-window').forEach(win => {
-        win.style.zIndex = 10;
-    });
-    experienceWindow.style.zIndex = 100;
+    WindowManager.open(document.getElementById('experienceWindow'));
 }
 
 // Function to close the Experience window
 function closeExperienceWindow() {
-    const experienceWindow = document.getElementById('experienceWindow');
-    if (experienceWindow) {
-        experienceWindow.hidden = true;
-    }
-}
-
-// Maximize fills the screen; pressing it again restores the window
-function toggleExperienceWindowMaximized() {
-    const experienceWindow = document.getElementById('experienceWindow');
-    if (experienceWindow) {
-        experienceWindow.classList.toggle('is-maximized');
-    }
+    WindowManager.close(document.getElementById('experienceWindow'));
 }
 
 // Function to open the Spotify window
 function openSpotifyWindow() {
-    // Show the Spotify window
-    const spotifyWindow = document.getElementById('spotifyWindow');
-    if (spotifyWindow) {
-        spotifyWindow.style.display = 'block';
-
-        // Bring to front
-        const allWindows = document.querySelectorAll('.win95-window');
-        allWindows.forEach(win => {
-            win.style.zIndex = 10;
-        });
-        spotifyWindow.style.zIndex = 100;
-
-        // Load Spotify data
+    // Re-opening an open window just brings it forward
+    if (!WindowManager.open(document.getElementById('spotifyWindow'))) {
         loadSpotifyData();
-    } else {
-        console.error("Could not find spotifyWindow element");
     }
 }
 
 // Function to close the Spotify window
 function closeSpotifyWindow() {
-    const spotifyWindow = document.getElementById('spotifyWindow');
-    if (spotifyWindow) {
-        spotifyWindow.style.display = 'none';
-    }
+    WindowManager.close(document.getElementById('spotifyWindow'));
 }
 
 // Function to load data from local JSON file
@@ -588,23 +452,12 @@ function displayTopTracks(tracks) {
 
 // Function to open the Slack invite window
 function openSlackInviteWindow() {
-    const slackWindow = document.getElementById('slackWindow');
-    slackWindow.style.display = 'block';
-
-    // Bring to front
-    const allWindows = document.querySelectorAll('.win95-window');
-    allWindows.forEach(win => {
-        win.style.zIndex = 10;
-    });
-    slackWindow.style.zIndex = 100;
+    WindowManager.open(document.getElementById('slackWindow'));
 }
 
 // Function to close the Slack window
 function closeSlackWindow() {
-    const slackWindow = document.getElementById('slackWindow');
-    if (slackWindow) {
-        slackWindow.style.display = 'none';
-    }
+    WindowManager.close(document.getElementById('slackWindow'));
 }
 
 // Function to open Slack invitation

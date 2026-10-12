@@ -144,14 +144,6 @@ function describeTimeAway(since, now) {
     return parts.length ? parts.join(', ') : 'A little while';
 }
 
-// Same "bring to front" behaviour as the other desktop windows
-function bringSkypeWindowToFront(skypeWindow) {
-    document.querySelectorAll('.win95-window').forEach(win => {
-        win.style.zIndex = 10;
-    });
-    skypeWindow.style.zIndex = 100;
-}
-
 function centerSkypeWindow(skypeWindow) {
     const rect = skypeWindow.getBoundingClientRect();
     skypeWindow.style.left = Math.max(8, (window.innerWidth - rect.width) / 2) + 'px';
@@ -262,12 +254,9 @@ function buildSkypeWindow() {
 
     skypeWindow.querySelector('.win95-close').addEventListener('click', closeSkypeWindow);
     skypeWindow.querySelector('.skype-avatar').addEventListener('click', collectExtraLife);
-    skypeWindow.addEventListener('mousedown', () => bringSkypeWindowToFront(skypeWindow));
 
-    // Drag by the title bar, consistent with the other windows (program-icons.js)
-    if (typeof makeWindowDraggable === 'function') {
-        makeWindowDraggable('skypeWindow', 'skypeTitleBar');
-    }
+    // Drag, stack and minimize like the other desktop windows
+    WindowManager.register(skypeWindow);
 
     return skypeWindow;
 }
@@ -277,10 +266,7 @@ async function openSkypeWindow() {
     await loadSkypeStyles();
 
     const skypeWindow = document.getElementById('skypeWindow') || buildSkypeWindow();
-    const wasOpen = !skypeWindow.hidden;
-
-    skypeWindow.hidden = false;
-    bringSkypeWindowToFront(skypeWindow);
+    const wasOpen = WindowManager.open(skypeWindow);
     skypeWindow.focus({ preventScroll: true });
 
     // Re-opening an open window just brings it forward
@@ -295,7 +281,7 @@ function closeSkypeWindow() {
     const skypeWindow = document.getElementById('skypeWindow');
     if (!skypeWindow || skypeWindow.hidden) return;
 
-    skypeWindow.hidden = true;
+    WindowManager.close(skypeWindow);
     skypeChatTimers.forEach(clearTimeout);
     skypeChatTimers = [];
 

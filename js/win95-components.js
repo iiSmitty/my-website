@@ -279,7 +279,8 @@ document.addEventListener('DOMContentLoaded', function() {
         overlay.style.width = '100%';
         overlay.style.height = '100%';
         overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-        overlay.style.zIndex = '1000';
+        // Above the windows and the taskbar, like the other modal dialogs
+        overlay.style.zIndex = '2000';
         overlay.style.display = 'flex';
         overlay.style.justifyContent = 'center';
         overlay.style.alignItems = 'center';

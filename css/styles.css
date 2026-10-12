@@ -546,39 +546,19 @@ body.startup {
     outline-offset: 2px;
 }
 
-.start-flag {
-    width: 20px;
-    height: 20px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 0;
-    flex-shrink: 0;
-}
-
 .start-label {
     letter-spacing: 0.5px;
 }
 
-/* The waving 4-pane Windows flag, drawn in CSS (pure Win95 colors) */
-.start-flag-css {
-    width: 18px;
-    height: 18px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 1px;
-    transform: skewX(-9deg);
+/* The Windows flag from the Start button, via React95 (@react95/icons, User1:
+   icon 1 of Win95's user.exe) */
+.WindowsLogoIcon_16x16 {
+    display: inline-block;
+    flex: 0 0 auto;
+    width: 16px;
+    height: 16px;
+    background: url(/icons/windows-logo-16.png) no-repeat center;
 }
-
-.start-flag-css i {
-    display: block;
-}
-
-.start-flag-css i:nth-child(1) { background-color: #ff0000; }
-.start-flag-css i:nth-child(2) { background-color: #00ff00; }
-.start-flag-css i:nth-child(3) { background-color: #0000ff; }
-.start-flag-css i:nth-child(4) { background-color: #ffff00; }
 
 .start-hint {
     display: flex;
@@ -1080,13 +1060,38 @@ body.startup {
     background-position: center;
 }
 
+/* Small icons, for title bars, taskbar buttons and the Start menu */
+.ComputerIcon_16x16,
+.GitHubIcon_16x16,
+.SlackIcon_16x16,
+.SpotifyIcon_16x16,
 .BriefcaseIcon_16x16 {
     width: 16px;
     height: 16px;
-    background: url(/icons/briefcase.svg) no-repeat center / 16px 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
     display: inline-block;
+    flex: 0 0 auto;
     vertical-align: -3px;
     margin-right: 3px;
+}
+
+.ComputerIcon_16x16 { background-image: url(/icons/computer.ico); }
+.GitHubIcon_16x16 { background-image: url(/icons/github-mark-white.png); }
+.SlackIcon_16x16 { background-image: url(/icons/slack-white.svg); }
+.SpotifyIcon_16x16 { background-image: url(/icons/spotify-white.png); }
+.BriefcaseIcon_16x16 { background-image: url(/icons/briefcase.svg); }
+
+/* Windows multimedia "Video" icon, via React95 (@react95/icons, MediaVideo).
+   Its pixels are drawn at 16px, so they stay crisp. */
+.VideosIcon_16x16 {
+    display: inline-block;
+    flex: 0 0 auto;
+    width: 16px;
+    height: 16px;
+    background: url(/icons/media-video-16.png) no-repeat center;
+    image-rendering: pixelated;
 }
 
 /* Experience desktop window: a frame around /experience?embed */
@@ -1107,20 +1112,7 @@ body.startup {
     border: none;
 }
 
-.xp-desktop-window[hidden] {
-    display: none;
-}
-
-/* Maximize fills the screen. !important beats the inline top/left that
-   dragging leaves behind, so restoring returns the window to where it was. */
-.xp-desktop-window.is-maximized {
-    top: 0 !important;
-    left: 0 !important;
-    width: 100vw;
-    height: 100vh;
-    box-sizing: border-box;
-}
-
+/* Maximized (css/shell.css), the page fills the window */
 .xp-desktop-window.is-maximized iframe {
     flex: 1;
     height: auto;
