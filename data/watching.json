@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-05T08:20:58.433Z",
+  "lastUpdated": "2026-10-12T08:37:00.045Z",
   "current": {
     "title": "House",
     "year": 2004,
@@ -8,13 +8,13 @@
     "slug": "house",
     "poster": "/3Cz7ySOQJmqiuTdrc6CY0r65yDI.jpg",
     "episode": {
-      "season": 2,
-      "number": 22,
-      "title": "Forever"
+      "season": 3,
+      "number": 12,
+      "title": "One Day, One Room"
     },
-    "watched": 44,
+    "watched": 58,
     "aired": 177,
-    "lastWatchedAt": "2026-10-05T06:38:00.000Z"
+    "lastWatchedAt": "2026-10-12T06:49:00.000Z"
   },
   "previous": {
     "title": "Reacher",
