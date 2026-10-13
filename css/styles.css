@@ -2215,7 +2215,8 @@ body.is-touch-device .desktop-icons,
     .win95-box .coffee-metric-item {
         background-color: #f8f8f8;
         padding: 12px;
-        border: 2px inset #dfdfdf;
+        border: 2px solid;
+        border-color: #808080 #c0c0c0 #c0c0c0 #808080; /* sunken, with light edges that still show on white */
         gap: 6px;
         text-align: center;
     }
@@ -2256,7 +2257,8 @@ body.is-touch-device .desktop-icons,
         margin-top: 15px;
         background-color: #f8f8f8;
         padding: 12px;
-        border: 2px inset #dfdfdf;
+        border: 2px solid;
+        border-color: #808080 #c0c0c0 #c0c0c0 #808080; /* sunken, with light edges that still show on white */
     }
 
     .win95-box .coffee-progress-header {
@@ -2274,7 +2276,8 @@ body.is-touch-device .desktop-icons,
         margin-top: 15px;
         padding: 8px;
         background-color: #f8f8f8;
-        border: 2px inset #dfdfdf;
+        border: 2px solid;
+        border-color: #808080 #c0c0c0 #c0c0c0 #808080; /* sunken, with light edges that still show on white */
         border-radius: 0;
         justify-content: center;
     }
