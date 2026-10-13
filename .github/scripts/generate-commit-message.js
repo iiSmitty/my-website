@@ -45,16 +45,24 @@ function readOld() {
 
 // --- message pools (Alfred is the committer, so first person works) ---
 
+// A free coffee earned: ten points on the card, banked for later
 const freeCoffeeLines = [
-    'Reward claimed. Even the Dark Knight needs his espresso.',
-    'A free cup, redeemed. Crime-fighting is thirsty work, sir.',
-    'The card resets. Ten visits, one reward — a tidy bit of accounting.',
+    'The card resets. Ten points, one reward — a tidy bit of accounting.',
     'Complimentary brew secured. Master Wayne always did appreciate the small victories.',
     'A reward well earned, sir. I shall have the Batmobile warmed up.',
-    'Free coffee acquired. The only heist Gotham permits.',
-    'Ten stamps, one cup, no charge. Justice, of a caffeinated sort.',
     'The loyalty card comes good. Even vigilantes deserve a perk now and then.',
-    'Redeemed at last. I do hope it was a flat white, Master Wayne.',
+    'Another free cup in the bank, sir. I shall guard it with my life.',
+    'Ten points, one reward banked. Prudent as ever, Master Wayne.',
+];
+
+// A banked free coffee actually drunk
+const redeemedLines = [
+    (n) => `Master Wayne has cashed in a free coffee. That makes ${n}, sir.`,
+    (n) => `Reward claimed — free cup #${n}. Even the Dark Knight needs his espresso.`,
+    (n) => `A free cup, redeemed. Crime-fighting is thirsty work, sir. (${n} and counting.)`,
+    (n) => `Free coffee #${n} acquired. The only heist Gotham permits.`,
+    (n) => `Ten stamps, one cup, no charge. Free coffee #${n} — justice, of a caffeinated sort.`,
+    (n) => `Redeemed at last: free cup #${n}. I do hope it was a flat white, Master Wayne.`,
 ];
 
 const milestoneLines = [
@@ -95,29 +103,41 @@ const fallbackLines = [
     'The books are balanced and the coffee is accounted for.',
 ];
 
+// True when both files have the field and it went up. A file from before the
+// free coffee stats were recorded has neither free coffee field.
+function rose(oldStats, newStats, field) {
+    return Number.isFinite(oldStats[field]) && Number.isFinite(newStats[field]) &&
+        newStats[field] > oldStats[field];
+}
+
 function buildMessage(oldStats, newStats) {
     const oldTotal = Number(oldStats.totalSiteVisits) || 0;
     const newTotal = Number(newStats.totalSiteVisits) || 0;
     const oldBal = Number(oldStats.currentBalance) || 0;
     const newBal = Number(newStats.currentBalance) || 0;
 
-    // 1. Free coffee earned — balance dropped (e.g. 9 -> 0).
-    if (newBal < oldBal) {
+    // 1. Free coffee redeemed.
+    if (rose(oldStats, newStats, 'freeBeveragesRedeemed')) {
+        return `☕ ${pick(redeemedLines)(newStats.freeBeveragesRedeemed)}`;
+    }
+
+    // 2. Free coffee earned — balance wrapped (e.g. 9 -> 0) or one more banked.
+    if (newBal < oldBal || rose(oldStats, newStats, 'freeBeveragesAvailable')) {
         return `☕ ${pick(freeCoffeeLines)}`;
     }
 
-    // 2. Milestone visit — crossed a multiple of MILESTONE_STEP.
+    // 3. Milestone visit — crossed a multiple of MILESTONE_STEP.
     if (Math.floor(newTotal / MILESTONE_STEP) > Math.floor(oldTotal / MILESTONE_STEP)) {
         const milestone = Math.floor(newTotal / MILESTONE_STEP) * MILESTONE_STEP;
         return `☕ ${pick(milestoneLines)(milestone)}`;
     }
 
-    // 3. Balance ticked up.
+    // 4. Balance ticked up.
     if (newBal > oldBal) {
         return `☕ ${pick(balanceUpLines)(newBal)}`;
     }
 
-    // 4. Total moved but balance flat (or any other forward change).
+    // 5. Total moved but balance flat (or any other forward change).
     if (newTotal > oldTotal) {
         return `☕ ${pick(totalUpLines)(newTotal)}`;
     }
@@ -125,5 +145,8 @@ function buildMessage(oldStats, newStats) {
     return `☕ ${pick(fallbackLines)}`;
 }
 
-const message = buildMessage(readOld(), readNew());
-process.stdout.write(message);
+if (require.main === module) {
+    process.stdout.write(buildMessage(readOld(), readNew()));
+}
+
+module.exports = { buildMessage };

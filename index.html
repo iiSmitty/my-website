@@ -253,7 +253,7 @@
                     <div class="coffee-details-panel">
                         <div class="coffee-details-header">
                             <span class="coffee-app-title">Seattle Coffee Statistics</span>
-                            <span class="coffee-version">v1.1</span>
+                            <span class="coffee-version">v1.2</span>
                         </div>
 
                         <!-- Loyalty Status — Win95 GroupBox -->
@@ -268,34 +268,37 @@
                         <div class="coffee-metrics-grid">
                             <div class="coffee-metric-item">
                                 <div class="coffee-metric-label">Total Visits</div>
-                                <div class="coffee-metric-value" id="coffee-total-visits">137</div>
+                                <div class="coffee-metric-value" id="coffee-total-visits">—</div>
+                                <div class="coffee-metric-sub" id="coffee-monthly-avg"></div>
                             </div>
 
                             <div class="coffee-metric-item">
-                                <div class="coffee-metric-label">Estimated Cups</div>
-                                <div class="coffee-metric-value" id="coffee-estimated-cups">205</div>
+                                <div class="coffee-metric-label">Cups of Coffee</div>
+                                <div class="coffee-metric-value" id="coffee-cups">—</div>
+                                <div class="coffee-metric-sub" id="coffee-cups-per-visit"></div>
                             </div>
 
                             <div class="coffee-metric-item">
-                                <div class="coffee-metric-label">Monthly Average</div>
-                                <div class="coffee-metric-value" id="coffee-monthly-avg">~11</div>
+                                <div class="coffee-metric-label">Free Coffees Earned</div>
+                                <div class="coffee-metric-value" id="coffee-free-earned">—</div>
+                                <div class="coffee-metric-sub" id="coffee-free-detail"></div>
                             </div>
                         </div>
 
-                        <!-- Progress Bar -->
+                        <!-- Progress: a 10-cell punch card, one cell per point -->
                         <div class="coffee-progress-container">
                             <div class="coffee-progress-header">
                                 <span>Next Free Coffee</span>
-                                <span id="coffee-progress-text">7/10 visits</span>
+                                <span id="coffee-progress-text"></span>
                             </div>
                             <div class="coffee-progress-track">
-                                <div class="coffee-progress-bar" id="coffee-progress-fill" style="width: 70%;"></div>
+                                <div class="coffee-progress-bar" id="coffee-progress-fill" style="width: 0%;"></div>
                             </div>
                         </div>
 
                         <!-- Last Updated Info -->
                         <div class="coffee-status-line">
-                            <span id="coffee-last-updated">Last synced: 26/06/2025</span>
+                            <span id="coffee-last-updated"></span>
                         </div>
                     </div>
                 </div>

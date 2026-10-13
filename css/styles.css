@@ -2000,16 +2000,26 @@ body.is-touch-device .desktop-icons,
     font-style: italic;
 }
 
+/* Three headline tiles in a row, split by thin dividers. Plain class
+   selectors so the stacked phone layout below (.win95-box ...) overrides them. */
 .coffee-metrics-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
 }
 
 .coffee-metric-item {
     display: flex;
     flex-direction: column;
     gap: 2px;
+    min-width: 0;
+    padding: 2px 12px;
+    border-left: 1px solid #c0c0c0;
+}
+
+.coffee-metric-item:first-child {
+    padding-left: 0;
+    border-left: 0;
 }
 
 .coffee-metric-label {
@@ -2020,9 +2030,30 @@ body.is-touch-device .desktop-icons,
 }
 
 .coffee-metric-value {
-    font-size: 16px;
+    font-size: 20px;
+    line-height: 24px;
     font-weight: bold;
     color: #8B4513;
+}
+
+/* Arial's tilde sits up by the cap height; drop it to the middle of the digits */
+.coffee-approx {
+    position: relative;
+    top: 0.2em;
+    margin-right: 1px;
+}
+
+/* One line of context under each headline number */
+.coffee-metric-sub {
+    font-size: 11px;
+    color: #444;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.coffee-metric-sub.is-quiet {
+    color: #808080;
 }
 
 /* Loyalty Status — Win95 GroupBox + medal sprite */
@@ -2087,35 +2118,41 @@ body.is-touch-device .desktop-icons,
     font-weight: bold;
 }
 
+.coffee-progress-header span:last-child {
+    font-weight: normal;
+    color: #444;
+}
+
+/* Punch card: ten cells, one per point. The content box is the empty-cell
+   colour and an overlay draws a white gap every 10%. The gaps sit on top of
+   the fill, so a partial fill always ends on a cell edge, and an empty card
+   still shows its ten slots instead of looking unloaded. */
 .coffee-progress-track {
-    height: 16px;
-    background-color: #c0c0c0;
-    border: 1px inset #808080;
+    height: 12px;
+    padding: 2px;
+    border: 2px inset #ffffff;
+    background: #dadada content-box;
     position: relative;
     overflow: hidden;
 }
 
-.coffee-progress-bar {
-    height: 100%;
-    background: linear-gradient(to right, #8B4513, #D2691E);
-    transition: width 0.5s ease;
-    position: relative;
-}
-
-.coffee-progress-bar::after {
+.coffee-progress-track::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 2px,
-            rgba(255,255,255,0.1) 2px,
-            rgba(255,255,255,0.1) 4px
-    );
+    top: 2px;
+    bottom: 2px;
+    left: 2px;
+    right: 0; /* runs 2px past the cells so the last gap lands on the edge */
+    background: repeating-linear-gradient(to right,
+        transparent 0 calc(10% - 2px),
+        #ffffff calc(10% - 2px) 10%);
+    pointer-events: none;
+}
+
+.coffee-progress-bar {
+    height: 100%;
+    background: #8B4513;
+    transition: width 0.3s steps(10, end);
 }
 
 .coffee-status-line {
@@ -2190,7 +2227,13 @@ body.is-touch-device .desktop-icons,
 
     .win95-box .coffee-metric-value {
         font-size: 24px;
+        line-height: 28px;
         font-weight: bold;
+    }
+
+    .win95-box .coffee-metric-sub {
+        font-size: 12px;
+        white-space: normal;
     }
 
     .win95-box .coffee-loyalty-group {

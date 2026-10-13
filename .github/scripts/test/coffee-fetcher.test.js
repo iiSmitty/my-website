@@ -24,12 +24,12 @@ const PANELS = [
     panel('Free Beverages Available', '6', { id: 'coffee', giftPromptText: 'Gift a free coffee', giftQtyIncrementRate: 1 })
 ];
 
-test('readStats picks visits and balance by panel title', () => {
-    assert.deepEqual(readStats(PANELS), { totalSiteVisits: 164, currentBalance: 3 });
+test('readStats picks each stat by panel title', () => {
+    assert.deepEqual(readStats(PANELS), { totalSiteVisits: 164, currentBalance: 3, freeBeveragesRedeemed: 26, freeBeveragesAvailable: 6 });
 });
 
 test('readStats does not depend on panel order', () => {
-    assert.deepEqual(readStats([...PANELS].reverse()), { totalSiteVisits: 164, currentBalance: 3 });
+    assert.deepEqual(readStats([...PANELS].reverse()), { totalSiteVisits: 164, currentBalance: 3, freeBeveragesRedeemed: 26, freeBeveragesAvailable: 6 });
 });
 
 test('readStats names the missing panel and lists what it found', () => {
@@ -64,10 +64,21 @@ test('loginForm rejects a number that is not South African', () => {
     assert.throws(() => loginForm('12345', 'pw'), /South African mobile number/);
 });
 
+const STATS = { totalSiteVisits: 164, currentBalance: 3, freeBeveragesRedeemed: 26, freeBeveragesAvailable: 6 };
+
 test('hasChanged ignores lastUpdated', () => {
-    const stored = { totalSiteVisits: 164, currentBalance: 3, lastUpdated: '2026-09-27T13:26:15.635Z', success: true };
-    assert.equal(hasChanged(stored, { totalSiteVisits: 164, currentBalance: 3 }), false);
-    assert.equal(hasChanged(stored, { totalSiteVisits: 165, currentBalance: 3 }), true);
-    assert.equal(hasChanged(stored, { totalSiteVisits: 164, currentBalance: 4 }), true);
-    assert.equal(hasChanged(null, { totalSiteVisits: 164, currentBalance: 3 }), true);
+    const stored = { ...STATS, lastUpdated: '2026-09-27T13:26:15.635Z', success: true };
+    assert.equal(hasChanged(stored, STATS), false);
+});
+
+test('hasChanged notices any stat moving', () => {
+    const stored = { ...STATS, lastUpdated: '2026-09-27T13:26:15.635Z', success: true };
+    for (const field of Object.keys(STATS)) {
+        assert.equal(hasChanged(stored, { ...STATS, [field]: STATS[field] + 1 }), true, field);
+    }
+});
+
+test('hasChanged writes a file from before the free coffee stats, or none at all', () => {
+    assert.equal(hasChanged({ totalSiteVisits: 164, currentBalance: 3, success: true }, STATS), true);
+    assert.equal(hasChanged(null, STATS), true);
 });

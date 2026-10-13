@@ -1,6 +1,8 @@
 {
   "totalSiteVisits": 164,
   "currentBalance": 0,
+  "freeBeveragesRedeemed": 26,
+  "freeBeveragesAvailable": 6,
   "lastUpdated": "2026-09-27T13:26:15.635Z",
   "success": true
 }

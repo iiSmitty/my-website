@@ -9,7 +9,7 @@
  *  2. Authentication/Login: trades the credentials for a session token
  *  3. Dashboard/GetLoyaltyPanels: the stat cards shown on the dashboard
  *
- * The file is only written when the visits or balance change, so a quiet run
+ * The file is only written when one of the stats changes, so a quiet run
  * doesn't commit (and redeploy) the site. Any failure exits non-zero before
  * writing, so the site keeps showing the last good data.
  *
@@ -31,7 +31,10 @@ const DATA_PATH = path.join(__dirname, '..', '..', 'data', 'coffee-stats.json');
 const PANELS = {
     totalSiteVisits: 'Total Site Visits',
     // Progress (out of 10) toward the next free coffee
-    currentBalance: 'Beverages Points Balance'
+    currentBalance: 'Beverages Points Balance',
+    freeBeveragesRedeemed: 'Free Beverages Redeemed',
+    // Earned but not yet claimed
+    freeBeveragesAvailable: 'Free Beverages Available'
 };
 
 // --- API client ----------------------------------------------------------------
@@ -141,7 +144,7 @@ async function main() {
     console.log('Coffee stats:', stats);
 
     if (!hasChanged(readStored(), stats)) {
-        console.log('No change in visits or balance');
+        console.log('No change in the stats');
         return;
     }
 
