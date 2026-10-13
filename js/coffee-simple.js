@@ -63,15 +63,6 @@ function monthlyText(monthly) {
     return `about ${monthly} ${monthly === 1 ? 'visit' : 'visits'} a month`;
 }
 
-// Arial draws "~" up near the top of the digits, so it gets its own span to
-// sit it level with them
-function setApproximate(element, value) {
-    const tilde = document.createElement('span');
-    tilde.className = 'coffee-approx';
-    tilde.textContent = '~';
-    element.replaceChildren(tilde, value.toLocaleString());
-}
-
 function freeCoffeeText(m) {
     if (m.earned === null) return '';
     if (m.earned === 0) return `First one at ${POINTS_PER_FREE} points`;
@@ -91,10 +82,10 @@ function updateEnhancedMetrics(m) {
 
     setText('coffee-monthly-avg', monthlyText(m.monthly));
 
-    const cupsElement = document.getElementById('coffee-cups');
+    // "≈" rather than "~": fonts centre it on the digits, but put "~" at
+    // different heights
+    const cupsElement = setText('coffee-cups', m.cups === null ? dash : `≈${m.cups.toLocaleString()}`);
     if (cupsElement) {
-        if (m.cups === null) cupsElement.textContent = dash;
-        else setApproximate(cupsElement, m.cups);
         // The cups figure rests on one point per drink, so show the working
         cupsElement.title = m.cups === null ? '' :
             `${m.bought.toLocaleString()} bought (1 point per drink) + ${m.redeemed.toLocaleString()} free = ${m.cups.toLocaleString()}`;

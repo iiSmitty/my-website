@@ -2036,13 +2036,6 @@ body.is-touch-device .desktop-icons,
     color: #8B4513;
 }
 
-/* Arial's tilde sits up by the cap height; drop it to the middle of the digits */
-.coffee-approx {
-    position: relative;
-    top: 0.2em;
-    margin-right: 1px;
-}
-
 /* One line of context under each headline number */
 .coffee-metric-sub {
     font-size: 11px;

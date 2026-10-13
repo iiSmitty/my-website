@@ -34,7 +34,7 @@ test.describe('desktop', () => {
 
         await expect(page.locator('#coffee-monthly-avg')).toHaveText(/^about \d+ visits a month$/);
         // 32 earned x 10 points = 320 bought, plus 26 free
-        await expect(page.locator('#coffee-cups')).toHaveText('~346');
+        await expect(page.locator('#coffee-cups')).toHaveText('≈346');
         await expect(page.locator('#coffee-cups')).toHaveAttribute('title', '320 bought (1 point per drink) + 26 free = 346');
         await expect(page.locator('#coffee-cups-per-visit')).toHaveText('about 2.1 per visit');
         await expect(page.locator('#coffee-free-earned')).toHaveText('32');
