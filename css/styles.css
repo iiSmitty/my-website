@@ -2130,7 +2130,8 @@ body.is-touch-device .desktop-icons,
 .coffee-progress-track {
     height: 12px;
     padding: 2px;
-    border: 2px inset #ffffff;
+    /* A grey inset, so the light edges still show against the white panel */
+    border: 2px inset #808080;
     background: #dadada content-box;
     position: relative;
     overflow: hidden;
@@ -2266,7 +2267,6 @@ body.is-touch-device .desktop-icons,
 
     .win95-box .coffee-progress-track {
         height: 20px;
-        border: 2px inset #808080;
     }
 
     .win95-box .coffee-status-line {
