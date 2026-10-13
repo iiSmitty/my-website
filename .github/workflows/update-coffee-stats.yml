@@ -42,41 +42,17 @@ jobs:
             echo "skip=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Cache puppeteer
-        if: steps.check_update.outputs.skip != 'true'
-        uses: actions/cache@v5
-        with:
-          path: |
-            node_modules
-            ~/.cache/puppeteer
-          key: ${{ runner.os }}-puppeteer-v2
-
-      - name: Install dependencies
-        if: steps.check_update.outputs.skip != 'true'
-        run: |
-          npm install puppeteer --no-save
-          npx puppeteer browsers install chrome
-
       - name: Update coffee stats (with retry)
         if: steps.check_update.outputs.skip != 'true'
         uses: nick-fields/retry@v4
         with:
-          timeout_minutes: 10
+          timeout_minutes: 2
           max_attempts: 3
           retry_wait_seconds: 30
-          command: node .github/scripts/coffee-scraper.js
+          command: node .github/scripts/coffee-fetcher.js
         env:
           SEATTLE_COFFEE_USERNAME: ${{ secrets.SEATTLE_COFFEE_USERNAME }}
           SEATTLE_COFFEE_PASSWORD: ${{ secrets.SEATTLE_COFFEE_PASSWORD }}
-
-      - name: Upload failure screenshot
-        if: failure()
-        uses: actions/upload-artifact@v7
-        with:
-          name: coffee-scraper-failure
-          path: .github/scripts/coffee-scraper-failure.png
-          if-no-files-found: ignore
-          retention-days: 7
 
       - name: Commit and push if changed
         if: steps.check_update.outputs.skip != 'true'
