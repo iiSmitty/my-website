@@ -49,6 +49,9 @@ jobs:
           timeout_minutes: 2
           max_attempts: 3
           retry_wait_seconds: 30
+          # Only retry exit code 1. The fetcher exits 2 when the login is refused,
+          # and logging in again with a bad password could lock the account.
+          retry_on_exit_code: 1
           command: node .github/scripts/coffee-fetcher.js
         env:
           SEATTLE_COFFEE_USERNAME: ${{ secrets.SEATTLE_COFFEE_USERNAME }}

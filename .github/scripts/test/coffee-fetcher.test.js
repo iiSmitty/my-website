@@ -1,6 +1,6 @@
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
-const { hasChanged, loginForm, readStats } = require('../coffee-fetcher.js');
+const { NoRetryError, fetchPanels, hasChanged, loginForm, readStats } = require('../coffee-fetcher.js');
 
 // Shape matches what GetLoyaltyPanels actually returns (October 2026)
 
@@ -81,4 +81,72 @@ test('hasChanged notices any stat moving', () => {
 test('hasChanged writes a file from before the free coffee stats, or none at all', () => {
     assert.equal(hasChanged({ totalSiteVisits: 164, currentBalance: 3, success: true }, STATS), true);
     assert.equal(hasChanged(null, STATS), true);
+});
+
+// --- Logging in ------------------------------------------------------------------
+
+const PROGRAMME = { code: 'sc', programId: 2222 };
+const SESSION = { isLoggedOn: true, userModel: { token: 'session-token' } };
+
+function envelope(payload, code = 200, message = null) {
+    return { code, message, payload, messageKey: null, headingKey: null, notificiationTypeId: null };
+}
+
+/** Stands in for the portal: answers each path from `routes`, records each request */
+function fakePortal(t, routes) {
+    const requests = [];
+    t.mock.method(globalThis, 'fetch', async (url, init) => {
+        const { pathname } = new URL(url);
+        requests.push({ pathname, init });
+        const answer = routes[pathname];
+        if (answer instanceof Error) throw answer;
+        const { status = 200, body } = answer;
+        return new Response(typeof body === 'string' ? body : JSON.stringify(body), { status });
+    });
+    return requests;
+}
+
+test('fetchPanels logs in with the programme headers and reads the panels with the token', async (t) => {
+    const requests = fakePortal(t, {
+        '/api/PreAuthentication': { body: envelope(PROGRAMME) },
+        '/api/Authentication/Login': { body: envelope(SESSION) },
+        '/api/Dashboard/GetLoyaltyPanels': { body: envelope(PANELS) }
+    });
+
+    assert.deepEqual(await fetchPanels('0821234567', 'pw'), PANELS);
+
+    const [, login, panels] = requests;
+    assert.equal(login.init.headers.ProgrammeShortcode, 'sc');
+    assert.equal(login.init.headers.ProgrammeId, '2222');
+    const sent = JSON.parse(Buffer.from(JSON.parse(login.init.body).privateData, 'base64').toString());
+    assert.deepEqual(sent, { password: 'pw', dialCode: '+27', logonType: 2, typeValue: '821234567' });
+    assert.equal(panels.init.headers.ElpToken, 'session-token');
+});
+
+test('a login the portal turns down is not retried', async (t) => {
+    for (const refusal of [
+        { body: envelope(null, 400, 'Invalid username or password') },
+        { status: 401, body: envelope(null, 401) },
+        { body: envelope({ isLoggedOn: false, userModel: null }) }
+    ]) {
+        fakePortal(t, { '/api/PreAuthentication': { body: envelope(PROGRAMME) }, '/api/Authentication/Login': refusal });
+        await assert.rejects(fetchPanels('0821234567', 'pw'), NoRetryError);
+        t.mock.restoreAll();
+    }
+});
+
+test('a login that fails for some other reason can be retried', async (t) => {
+    for (const failure of [
+        { status: 502, body: '<html>Bad Gateway</html>' },
+        { body: envelope(null, 500, 'Something went wrong') },
+        new TypeError('fetch failed')
+    ]) {
+        fakePortal(t, { '/api/PreAuthentication': { body: envelope(PROGRAMME) }, '/api/Authentication/Login': failure });
+        await assert.rejects(fetchPanels('0821234567', 'pw'), (error) => !(error instanceof NoRetryError));
+        t.mock.restoreAll();
+    }
+});
+
+test('a username that is not a phone number or email is not retried', () => {
+    assert.throws(() => loginForm('12345', 'pw'), NoRetryError);
 });

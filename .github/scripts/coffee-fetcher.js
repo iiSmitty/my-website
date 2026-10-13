@@ -40,6 +40,22 @@ const PANELS = {
 // --- API client ----------------------------------------------------------------
 
 /**
+ * A failure that retrying won't fix, such as a refused login or missing
+ * credentials. The workflow only retries other failures, because logging in
+ * again and again with a bad password could get the account locked.
+ */
+class NoRetryError extends Error {}
+const NO_RETRY_EXIT_CODE = 2;
+
+class ApiError extends Error {
+    constructor(message, code) {
+        super(message);
+        // The portal's code: from its JSON envelope, else the HTTP status
+        this.code = code;
+    }
+}
+
+/**
  * The portal wraps every response as { code, message, payload }, and reports
  * failures in `code` and `message` even when the HTTP status is 200.
  */
@@ -58,7 +74,8 @@ async function call(method, pathname, { headers = {}, body } = {}) {
     }
     if (!response.ok || !json || json.code !== 200) {
         const detail = (json && json.message) || text.replace(/\s+/g, ' ').slice(0, 200);
-        throw new Error(`${method} ${pathname} failed: ${response.status} ${response.statusText}${detail ? ` - ${detail}` : ''}`);
+        const code = json && Number.isInteger(json.code) && json.code !== 200 ? json.code : response.status;
+        throw new ApiError(`${method} ${pathname} failed: ${response.status} ${response.statusText}${detail ? ` - ${detail}` : ''}`, code);
     }
     return json.payload;
 }
@@ -77,7 +94,7 @@ function loginForm(username, password) {
     if (mobile.startsWith(DIAL_CODE)) mobile = mobile.slice(DIAL_CODE.length);
     if (mobile.startsWith('0')) mobile = mobile.slice(1);
     if (!/^\d{9}$/.test(mobile)) {
-        throw new Error('SEATTLE_COFFEE_USERNAME must be an email or a South African mobile number');
+        throw new NoRetryError('SEATTLE_COFFEE_USERNAME must be an email or a South African mobile number');
     }
     return { password, dialCode: DIAL_CODE, logonType: 2, typeValue: mobile };
 }
@@ -92,9 +109,19 @@ async function fetchPanels(username, password) {
 
     // The portal base64-encodes the form; it isn't encryption
     const privateData = Buffer.from(JSON.stringify(loginForm(username, password))).toString('base64');
-    const session = await call('POST', '/api/Authentication/Login', { headers, body: { privateData } });
+    let session;
+    try {
+        session = await call('POST', '/api/Authentication/Login', { headers, body: { privateData } });
+    } catch (error) {
+        // A 4xx is the portal saying no; anything else (5xx, a network
+        // error, a page that isn't JSON) may pass on a retry
+        if (error instanceof ApiError && error.code >= 400 && error.code < 500) {
+            throw new NoRetryError(`Login refused, not retrying: ${error.message}`);
+        }
+        throw error;
+    }
     const token = session && session.isLoggedOn && session.userModel && session.userModel.token;
-    if (!token) throw new Error('Login did not return a session token');
+    if (!token) throw new NoRetryError('Login refused, not retrying: no session token returned');
 
     return call('GET', '/api/Dashboard/GetLoyaltyPanels', { headers: { ...headers, ElpToken: token } });
 }
@@ -137,7 +164,7 @@ async function main() {
     const password = process.env.SEATTLE_COFFEE_PASSWORD;
     if (!username || !password) {
         console.error('Missing required environment variables: SEATTLE_COFFEE_USERNAME, SEATTLE_COFFEE_PASSWORD');
-        process.exit(1);
+        process.exit(NO_RETRY_EXIT_CODE);
     }
 
     const stats = readStats(await fetchPanels(username, password));
@@ -156,8 +183,8 @@ async function main() {
 if (require.main === module) {
     main().catch(error => {
         console.error(error.message);
-        process.exit(1);
+        process.exit(error instanceof NoRetryError ? NO_RETRY_EXIT_CODE : 1);
     });
 }
 
-module.exports = { hasChanged, loginForm, readStats };
+module.exports = { NoRetryError, fetchPanels, hasChanged, loginForm, readStats };
