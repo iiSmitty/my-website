@@ -40,9 +40,9 @@ for (const page of pages) {
         // Force latent code paths that normally only run after a delay. The
         // screensaver waits 3 minutes of inactivity — trigger it immediately so
         // a regression like the missing p5 library surfaces in the test instead
-        // of in production days later.
-        await p.evaluate(() => {
-            if (typeof startScreensaver === 'function') startScreensaver();
+        // of in production days later. It loads p5 on demand, so wait for it.
+        await p.evaluate(async () => {
+            if (typeof startScreensaver === 'function') await startScreensaver();
         });
         await p.waitForTimeout(500);
 

@@ -92,8 +92,7 @@ test.describe('desktop', () => {
         await page.locator('.win95-dropdown-item', { hasText: 'How This Site Works' }).click();
 
         await expect(page).toHaveURL(/\/#how-it-works$/);
-        // The page's scripts run at DOMContentLoaded, which waits for every
-        // deferred script (p5 from a CDN among them)
+        // The URL changes before the new page's scripts have run
         await page.waitForLoadState('domcontentloaded');
         await expect(page.locator('#start-windows')).toHaveCount(0);
         await expect(page.locator('#floppyLoader')).toHaveCount(0);

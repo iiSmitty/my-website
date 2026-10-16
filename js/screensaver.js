@@ -5,6 +5,33 @@ let timer;
 let screensaverActive = false;
 let p5Instance;
 
+// p5.js is about 1 MB, and only the screensaver uses it, so it loads the
+// first time the screensaver starts rather than with the page. Pinned to this
+// exact file: the hash is the one cdnjs publishes for it.
+const P5_URL = 'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/p5.min.js';
+const P5_INTEGRITY = 'sha512-I0Pwwz3PPNQkWes+rcSoQqikKFfRmTfGQrcNzZbm8ALaUyJuFdyRinl805shE8xT6iEWsWgvRxdXb3yhQNXKoA==';
+let p5Promise = null;
+
+function loadP5() {
+    if (!p5Promise) {
+        p5Promise = new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = P5_URL;
+            script.integrity = P5_INTEGRITY;
+            script.crossOrigin = 'anonymous';
+            script.onload = resolve;
+            script.onerror = () => {
+                // Let the next start try again
+                p5Promise = null;
+                script.remove();
+                reject(new Error('p5.js did not load'));
+            };
+            document.head.appendChild(script);
+        });
+    }
+    return p5Promise;
+}
+
 // P5.js screensaver code
 // Based on https://github.com/miresk/flying-windows by miresk
 const screensaver = (p) => {
@@ -89,19 +116,30 @@ function createScreensaverContainer() {
     return container;
 }
 
-// Start the screensaver
-function startScreensaver() {
+// Start the screensaver. Resolves once it's running, or once it has given up
+// because p5.js wouldn't load.
+async function startScreensaver() {
     if (screensaverActive) return;
+    screensaverActive = true;
 
     const container = document.getElementById('screensaver-container') || createScreensaverContainer();
-    container.style.display = 'block';
 
-    // Initialize p5 instance
     if (!p5Instance) {
-        p5Instance = new p5(screensaver, container);
+        try {
+            await loadP5();
+        } catch {
+            // No screensaver, rather than an empty layer over the page
+            screensaverActive = false;
+            resetTimer();
+            return;
+        }
+        // Back before p5.js arrived: it starts next time instead
+        if (!screensaverActive) return;
+        // A start made while this one waited may have got there first
+        if (!p5Instance) p5Instance = new p5(screensaver, container);
     }
 
-    screensaverActive = true;
+    container.style.display = 'block';
 }
 
 // Stop the screensaver
