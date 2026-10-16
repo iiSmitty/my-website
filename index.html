@@ -279,34 +279,26 @@
             <div class="win95-box section-content">
                 <div class="program-manager">
                     <div class="program-group">
-                        <div class="program-item" role="button" tabindex="0" aria-controls="infoBox" onclick="showInfo('backend')">
-                            <span class="Msnp32ServerIcon_32x32"></span>
-                            <span>Backend.exe</span>
+                        <div class="program-item" role="button" tabindex="0" aria-controls="infoBox" aria-pressed="false" onclick="showInfo('integration', this)">
+                            <span class="IntegrationIcon_32x32" aria-hidden="true"></span>
+                            <span>Integration.dll</span>
                         </div>
-                        <div class="program-item" role="button" tabindex="0" aria-controls="infoBox" onclick="showInfo('frontend')">
-                            <span class="MspaintIcon_32x32"></span>
-                            <span>Frontend.exe</span>
+                        <div class="program-item" role="button" tabindex="0" aria-controls="infoBox" aria-pressed="false" onclick="showInfo('outsystems', this)">
+                            <span class="OutSystemsIcon_32x32" aria-hidden="true"></span>
+                            <span>OutSystems.oml</span>
                         </div>
-                        <div class="program-item" role="button" tabindex="0" aria-controls="infoBox" onclick="showInfo('database')">
-                            <span class="ReaderDiskIcon_32x32"></span>
-                            <span>Database.mdb</span>
-                        </div>
-                        <div class="program-item" role="button" tabindex="0" aria-controls="infoBox" onclick="showInfo('architecture')">
-                            <span class="Regedit100_32x32"></span>
-                            <span>Architecture.vsd</span>
-                        </div>
-                        <div class="program-item" role="button" tabindex="0" aria-controls="infoBox" onclick="showInfo('optimization')">
-                            <span class="Msrating100_32x32"></span>
-                            <span>Optimize.bat</span>
+                        <div class="program-item" role="button" tabindex="0" aria-controls="infoBox" aria-pressed="false" onclick="showInfo('claude', this)">
+                            <span class="ClaudeIcon_32x32" aria-hidden="true"></span>
+                            <span>Claude.exe</span>
                         </div>
                     </div>
                 </div>
                 <div class="icon-description-separator"></div>
                 <div class="program-info" id="infoBox" aria-live="polite">
-                    Click an icon to learn more about what I'm focusing on as an entry level developer...
+                    Click an icon to see what I work on.
                 </div>
                 <div class="win95-status-mini">
-                    <span>5 items</span>
+                    <span>3 items</span>
                     <span>640K memory free</span>
                 </div>
             </div>

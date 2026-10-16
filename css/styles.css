@@ -881,45 +881,22 @@ body.startup {
 
 /* What I Do */
 
-.Msnp32ServerIcon_32x32 {
+/* Icons via React95 (@react95/icons): FileSettings, Win95's icon for a
+   system file like a DLL; Plugin2, a file of building blocks; Textchat2 */
+.IntegrationIcon_32x32,
+.OutSystemsIcon_32x32,
+.ClaudeIcon_32x32 {
     width: 32px;
     height: 32px;
-    background-image: url(/icons/server-icon.ico);
     display: inline-block;
     margin-bottom: 4px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-.MspaintIcon_32x32 {
-    width: 32px;
-    height: 32px;
-    background-image: url(/icons/mspaint.ico);
-    display: inline-block;
-    margin-bottom: 4px;
-}
-
-.ReaderDiskIcon_32x32 {
-    width: 32px;
-    height: 32px;
-    background-image: url(/icons/database.ico);
-    display: inline-block;
-    margin-bottom: 4px;
-}
-
-.Regedit100_32x32 {
-    width: 32px;
-    height: 32px;
-    background-image: url(/icons/regedit-100.ico);
-    display: inline-block;
-    margin-bottom: 4px;
-}
-
-.Msrating100_32x32 {
-    width: 32px;
-    height: 32px;
-    background-image: url(/icons/msrating-109.ico);
-    display: inline-block;
-    margin-bottom: 4px;
-}
+.IntegrationIcon_32x32 { background-image: url(/icons/file-settings-32.png); }
+.OutSystemsIcon_32x32 { background-image: url(/icons/plugin-file-32.png); }
+.ClaudeIcon_32x32 { background-image: url(/icons/text-chat-32.png); }
 
 .program-manager {
     display: flex;
@@ -941,10 +918,28 @@ body.startup {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80px;
+    width: 96px;
     cursor: pointer;
     text-align: center;
     padding: 4px;
+}
+
+/* All three programs fit across a phone */
+@media screen and (max-width: 430px) {
+    .program-item {
+        width: 33.333%;
+        box-sizing: border-box;
+        padding: 4px 2px;
+        /* Win95's own icon labels were 8pt */
+        font-size: 11px;
+    }
+}
+
+/* The chosen program's name is highlighted, as Explorer does */
+.program-item.selected > span:last-child {
+    background-color: #000080;
+    color: #ffffff;
+    padding: 0 2px;
 }
 
 .program-item:hover {
@@ -963,6 +958,118 @@ body.startup {
     padding: 10px;
     min-height: 60px;
     margin-top: 8px;
+    line-height: 1.5;
+}
+
+/* A chosen program, as Win95's Properties sheet for a file: icon and name,
+   then Type, Location and Modified, then the story, with etched lines between */
+/* Win95's window edge, all four lines of it. Its outer light line is grey
+   rather than white, so the top and left still show on the white box. */
+.file-props {
+    padding: 14px 16px 16px;
+    background-color: #c0c0c0;
+    box-shadow:
+        inset 1px 1px #dfdfdf,
+        inset -1px -1px #000000,
+        inset 2px 2px #ffffff,
+        inset -2px -2px #808080;
+}
+
+.file-props-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.file-props-header > span {
+    margin-bottom: 0;
+}
+
+.file-props-name {
+    font-size: 13px;
+}
+
+.file-props-fields,
+.file-props-story {
+    margin: 12px 0 0;
+    padding-top: 10px;
+    border-top: 1px solid #808080;
+    box-shadow: inset 0 1px #ffffff;
+}
+
+.file-props-fields {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 3px 12px;
+    font-size: 12px;
+}
+
+.file-props-fields div {
+    display: contents;
+}
+
+.file-props-fields dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+/* A folder name blacked out, for the system that isn't mine to name */
+.redacted {
+    display: inline-block;
+    width: 7em;
+    height: 0.9em;
+    vertical-align: -1px;
+    background-color: #000000;
+}
+
+.file-props-story {
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.file-props-story p,
+.file-props-story ul {
+    max-width: 75ch;
+    margin: 0 0 10px;
+}
+
+.file-props-story ul {
+    padding-left: 20px;
+}
+
+.file-props-story > :last-child {
+    margin-bottom: 0;
+}
+
+/* The values are short enough to keep beside their labels on a phone */
+@media screen and (max-width: 430px) {
+    .file-props {
+        padding: 12px;
+    }
+
+    .file-props-fields {
+        grid-template-columns: 64px 1fr;
+        gap: 3px 8px;
+    }
+
+    .redacted {
+        width: 4.5em;
+    }
+}
+
+/* The punchline: Windows' own refusal, red cross and all */
+.access-denied {
+    white-space: nowrap;
+}
+
+/* Sits on the text's baseline, like the 16px icons in the title bars */
+.access-denied-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    vertical-align: -3px;
+    background: url(/icons/error-32.png) no-repeat center / 16px 16px;
 }
 
 .icon-description-separator {

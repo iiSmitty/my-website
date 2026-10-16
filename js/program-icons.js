@@ -15,29 +15,92 @@ const DESKTOP_PROGRAMS = [
     { name: 'Recycle Bin', desktopIcon: 'RecycleIcon_32x32', open: () => openSkypeWindow(), inStartMenu: false }
 ];
 
-// Function to display info when program icons are clicked
-function showInfo(service) {
-    const infoBox = document.getElementById('infoBox');
+// What I Do: each program, shown the way Win95 showed a file's Properties.
+// Which system I work on at Interfront isn't mine to name, so it says so the
+// way Windows would. All of this is my own text, so it's set as HTML.
+const ACCESS_DENIED = '<span class="access-denied"><span class="access-denied-icon" aria-hidden="true"></span>Access is denied.</span>';
+const REDACTED = '<span class="redacted" role="img" aria-label="Access is denied"></span>';
 
-    switch(service) {
-        case 'backend':
-            infoBox.innerHTML = "<b>Backend Development</b><br>Working with .NET Framework to develop server-side logic. Learning to build APIs and services while following best practices for maintainable code.";
-            break;
-        case 'frontend':
-            infoBox.innerHTML = "<b>Frontend Development</b><br>Creating user interfaces with HTML/CSS. Developing web pages that are responsive and user-friendly while expanding my skills in modern web technologies.";
-            break;
-        case 'database':
-            infoBox.innerHTML = "<b>Database Design</b><br>Working with SQL databases and learning efficient schema design. Implementing database solutions while building experience with data management concepts.";
-            break;
-        case 'architecture':
-            infoBox.innerHTML = "<b>System Architecture</b><br>Learning about system design principles. Understanding how different components work together to create cohesive applications as I grow my development experience.";
-            break;
-        case 'optimization':
-            infoBox.innerHTML = "<b>Code Optimization</b><br>Improving code efficiency and readability. Practicing techniques to write cleaner, faster code while developing my skills in performance analysis.";
-            break;
-        default:
-            infoBox.innerHTML = "Click an icon to learn more about what I'm focusing on as an entry level developer...";
+const WHAT_I_DO = {
+    integration: {
+        name: 'Integration.dll',
+        icon: 'IntegrationIcon_32x32',
+        type: 'Application extension',
+        location: 'C:\\Interfront\\' + REDACTED + '\\',
+        modified: 'Feb 2025 &ndash; Present',
+        story: `
+            <p>I'm an integration developer at Interfront, working in .NET Framework and C# on one of
+            South Africa's biggest systems. Which one? ${ACCESS_DENIED}</p>
+            <p>My team owns the APIs between the frontend and the database, so when something breaks, we
+            usually hear first:</p>
+            <ul>
+                <li>a date in the wrong format</li>
+                <li>a value that won't convert</li>
+                <li>a token that expires too early</li>
+            </ul>
+            <p>The job is to find out whether it's the frontend, the database or us, then fix it.
+            Sometimes that takes a SQL query or two to prove which.</p>
+            <p>There's always something new: projects and extensions to make it better for everyone who
+            uses it.</p>`
+    },
+    outsystems: {
+        name: 'OutSystems.oml',
+        icon: 'OutSystemsIcon_32x32',
+        type: 'OutSystems module',
+        location: 'C:\\Integralis\\Zuzani\\',
+        modified: 'Oct 2021 &ndash; Feb 2025',
+        story: `
+            <p>My first big project, at Integralis: an internal document management system for our sister
+            company, <a href="https://www.zuzanigroup.com/" target="_blank" rel="noopener noreferrer">Zuzani</a>.
+            For most of it I was the only developer, so I learned OutSystems and built at the same time.
+            Low-code isn't traditional coding, and it has limits you have to learn to work around.</p>
+            <p>Later I trained a second developer to work on it with me. Along the way I was mentored by
+            <a href="https://adplist.org/mentors/daniel-kuhlmann" target="_blank" rel="noopener noreferrer">Daniël Kuhlmann</a>,
+            an OutSystems MVP, through ADPList.</p>`
+    },
+    claude: {
+        name: 'Claude.exe',
+        icon: 'ClaudeIcon_32x32',
+        type: 'Application',
+        location: 'C:\\Program Files\\Claude\\',
+        modified: 'Every day',
+        story: `
+            <p>I make a deliberate effort to use Claude well. AI has changed the whole software development
+            life cycle, and anyone who refuses to use it is going to miss the bus.</p>
+            <p>We have seniors who keep us honest, so we learn from them and don't blindly trust what Claude
+            writes. It's a process, and it takes time.</p>`
     }
+};
+
+function whatIDoProperties(program) {
+    const field = (label, value) => `<div><dt>${label}:</dt><dd>${value}</dd></div>`;
+    return `
+        <div class="file-props">
+            <div class="file-props-header">
+                <span class="${program.icon}" aria-hidden="true"></span>
+                <b class="file-props-name">${program.name}</b>
+            </div>
+            <dl class="file-props-fields">
+                ${field('Type', program.type)}
+                ${field('Location', program.location)}
+                ${field('Modified', program.modified)}
+            </dl>
+            <div class="file-props-story">${program.story}</div>
+        </div>`;
+}
+
+// Shows a program's Properties, and marks its icon as the chosen one
+function showInfo(service, item) {
+    const program = WHAT_I_DO[service];
+    document.getElementById('infoBox').innerHTML = program
+        ? whatIDoProperties(program)
+        : 'Click an icon to see what I work on.';
+
+    document.querySelectorAll('.program-item[role="button"]').forEach(other => {
+        const chosen = other === item;
+        other.classList.toggle('selected', chosen);
+        other.setAttribute('aria-pressed', String(chosen));
+    });
 }
 
 // Help > How This Site Works (the menu bar and the Start menu). Brings the
