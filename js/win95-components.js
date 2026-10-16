@@ -25,7 +25,13 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             { text: 'Edit', accessKey: 'E', link: '#' },
             { text: 'View', accessKey: 'V', link: '#' },
-            { text: 'Help', accessKey: 'H', link: '#' }
+            {
+                text: 'Help',
+                accessKey: 'H',
+                dropdown: [
+                    { text: 'How This Site Works', accessKey: 'W', action: 'site-help' }
+                ]
+            }
         ];
 
         // Close any open dropdowns when clicking elsewhere
@@ -142,6 +148,19 @@ document.addEventListener('DOMContentLoaded', function() {
                             dropdownContent.classList.remove('show');
                             menuItem.classList.remove('active-menu-item');
                             window.print();
+                        });
+                    } else if (dropdownItem.action === 'site-help') {
+                        dropdownElement.addEventListener('click', function() {
+                            dropdownContent.classList.remove('show');
+                            menuItem.classList.remove('active-menu-item');
+
+                            // The home page has the section (program-icons.js);
+                            // other pages go there and land on it
+                            if (typeof openSiteHelp === 'function') {
+                                openSiteHelp();
+                            } else {
+                                window.location.href = './#how-it-works';
+                            }
                         });
                     } else if (dropdownItem.action === 'exit') {
                         dropdownElement.addEventListener('click', function() {

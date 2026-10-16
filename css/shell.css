@@ -304,6 +304,12 @@ body.is-touch-device .taskbar {
 .StartProgramsIcon { background-image: url(/icons/programs-32.png); }
 .StartFavoritesIcon { background-image: url(/icons/favorites-32.png); }
 .StartShutDownIcon { background-image: url(/icons/shut-down-32.png); }
+/* Drawn on a 16px grid, so doubled pixel for pixel */
+.StartHelpIcon {
+    background-image: url(/icons/help-book.svg);
+    background-size: 32px 32px;
+    image-rendering: pixelated;
+}
 
 .InternetShortcutIcon_16x16 {
     display: inline-block;

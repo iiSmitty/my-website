@@ -124,11 +124,26 @@
             <span class="blink">&#9733;</span> Welcome to my personal website! <span class="blink">&#9733;</span>
         </div>
 
-        <h1>André Smit</h1>
-        <h2>Problem Solver</h2>
+        <!-- Who this is, as Win95's System Properties would put it. Visible
+             before the floppy loads, so a quick look still answers it. -->
+        <header class="identity">
+            <span class="identity-icon" aria-hidden="true"></span>
+            <div class="identity-text">
+                <p class="identity-overline">Software engineer &middot; Cape Town, South Africa</p>
+                <h1 class="identity-name"><b>André</b> Smit</h1>
+                <p class="identity-tagline">Problem Solver</p>
+                <dl class="identity-specs">
+                    <div><dt>Now</dt><dd>Entry Level Developer at Interfront SOC Ltd</dd></div>
+                    <div><dt>Works in</dt><dd>.NET Framework and C#</dd></div>
+                    <div><dt>Developing since</dt><dd>2021 &middot; <a href="experience" class="win95-link">work experience</a></dd></div>
+                    <div><dt>This site</dt><dd>Hand-built, no framework &middot; <a href="#how-it-works" class="win95-link" data-site-help>how it works</a></dd></div>
+                </dl>
+            </div>
+        </header>
 
         <!-- Floppy Disk Loader -->
-        <div class="win95-box floppy-container interactive" id="floppyLoader">
+        <div class="win95-box floppy-container interactive" id="floppyLoader"
+             role="button" tabindex="0" aria-controls="mainProfileContent" aria-expanded="false">
             <div class="floppy-content">
                 <span class="FloppyDiskIcon_32x32 floppy-icon"></span>
                 <span class="floppy-text">Click to Load Profile...</span>
@@ -138,7 +153,7 @@
         </div>
 
         <!-- === WRAPPER FOR HIDDEN CONTENT START === -->
-        <div id="mainProfileContent" class="hidden-content-section">
+        <div id="mainProfileContent" class="hidden-content-section" tabindex="-1">
 
             <div class="section-header">
                 <div class="section-title">About Me</div>
@@ -154,36 +169,140 @@
                     and let's connect!</p>
             </div>
 
+            <!-- How This Site Works: a WinHelp-style contents page. Each book is
+                 a native <details>, so it works without JS and on every device.
+                 A shortcut button either opens the source on GitHub or, on the
+                 desktop, launches the window that shows the thing running. -->
+            <section class="site-help" id="how-it-works" aria-labelledby="how-it-works-title">
+                <div class="section-header">
+                    <h2 class="section-title" id="how-it-works-title" tabindex="-1">How This Site Works</h2>
+                </div>
+                <div class="win95-box section-content help-contents">
+                    <p class="help-intro">Behind the nostalgia, this desktop is real software. Open a book to see
+                        how a part of it works, and why it's built that way.</p>
+
+                    <details class="help-topic">
+                        <summary><span class="help-book" aria-hidden="true"></span><span class="help-topic-title">No framework, on purpose</span></summary>
+                        <div class="help-page">
+                            <p>Plain HTML, CSS and JavaScript: no React, no Tailwind, no bundler. The only build step
+                                is a short esbuild script, and it minifies each file on its own rather than bundling
+                                them. The pages call global functions straight from their HTML, and a bundler would
+                                rename or drop those and quietly break buttons.</p>
+                            <p>The build also reports every file's Brotli size, because that's what Cloudflare
+                                actually sends.</p>
+                            <ul class="help-shortcuts">
+                                <li><a class="help-shortcut" href="https://github.com/iiSmitty/my-website/blob/main/build.js"
+                                       target="_blank" rel="noopener noreferrer"><span class="help-jump" aria-hidden="true"></span>Read build.js</a></li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details class="help-topic">
+                        <summary><span class="help-book" aria-hidden="true"></span><span class="help-topic-title">A window manager, written from scratch</span></summary>
+                        <div class="help-page">
+                            <p>Every window on this desktop registers with one small module, so they all open, stack,
+                                drag, minimize and maximize the same way, and the taskbar has a single place to learn
+                                what's open.</p>
+                            <p>The details are where it earns its keep: a drag keeps going when the pointer crosses an
+                                embedded page, a window can't be dragged off the top of the screen, and minimizing hands
+                                keyboard focus to the window's taskbar button instead of dropping it.</p>
+                            <ul class="help-shortcuts">
+                                <li class="help-launch"><button type="button" class="help-shortcut" data-program="Experience"><span class="help-jump" aria-hidden="true"></span>Open the Experience window</button></li>
+                                <li><a class="help-shortcut" href="https://github.com/iiSmitty/my-website/blob/main/js/window-manager.js"
+                                       target="_blank" rel="noopener noreferrer"><span class="help-jump" aria-hidden="true"></span>Read window-manager.js</a></li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details class="help-topic">
+                        <summary><span class="help-book" aria-hidden="true"></span><span class="help-topic-title">Data that keeps itself fresh</span></summary>
+                        <div class="help-page">
+                            <p>The site is static files, yet it's never stale. Scheduled GitHub Actions read Spotify,
+                                Trakt and my coffee loyalty card, then commit the results to the repository as JSON for
+                                the pages to read. Bots have made most of this repo's commits.</p>
+                            <p>The coffee job runs up to three times a day and stops once it has the day's numbers.
+                                It retries a failed request, but never a refused login: trying a bad password again
+                                could lock the account.</p>
+                            <ul class="help-shortcuts">
+                                <li class="help-launch"><button type="button" class="help-shortcut" data-program="Task Manager"><span class="help-jump" aria-hidden="true"></span>Open Task Manager to see the jobs, live</button></li>
+                                <li><a class="help-shortcut" href="https://github.com/iiSmitty/my-website/tree/main/.github/workflows"
+                                       target="_blank" rel="noopener noreferrer"><span class="help-jump" aria-hidden="true"></span>Browse the workflows</a></li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details class="help-topic">
+                        <summary><span class="help-book" aria-hidden="true"></span><span class="help-topic-title">An email address scrapers can't read</span></summary>
+                        <div class="help-page">
+                            <p>My email address isn't anywhere in this page's source. Decrypt Contact Info first asks
+                                Cloudflare Turnstile whether you're human, then sends its token to a small Cloudflare
+                                Worker.</p>
+                            <p>The Worker checks the token with Cloudflare, including that it was issued for this
+                                action on this site, and only then returns the address. A token solved anywhere else
+                                doesn't count.</p>
+                            <ul class="help-shortcuts">
+                                <li><a class="help-shortcut" href="#contact"><span class="help-jump" aria-hidden="true"></span>Go to Contact Me</a></li>
+                                <li><a class="help-shortcut" href="https://github.com/iiSmitty/my-website/blob/main/cf-worker/src/worker.js"
+                                       target="_blank" rel="noopener noreferrer"><span class="help-jump" aria-hidden="true"></span>Read worker.js</a></li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details class="help-topic">
+                        <summary><span class="help-book" aria-hidden="true"></span><span class="help-topic-title">Tested before every commit</span></summary>
+                        <div class="help-page">
+                            <p>A git hook builds the site and runs the whole test suite before each commit: Node's
+                                built-in test runner for the Worker and the data fetchers, and Playwright for the pages
+                                themselves.</p>
+                            <p>The smoke test fails on any console error from the site's own code, and it starts the
+                                screensaver straight away, so code that normally waits for three idle minutes still
+                                runs. Playwright drives the Microsoft Edge already on the machine instead of
+                                downloading a browser a corporate proxy would block.</p>
+                            <ul class="help-shortcuts">
+                                <li><a class="help-shortcut" href="https://github.com/iiSmitty/my-website/tree/main/tests"
+                                       target="_blank" rel="noopener noreferrer"><span class="help-jump" aria-hidden="true"></span>Browse the tests</a></li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <div class="win95-status-mini">
+                        <span>5 topics</span>
+                        <a href="https://github.com/iiSmitty/my-website" class="win95-link" target="_blank"
+                           rel="noopener noreferrer">Source on GitHub</a>
+                    </div>
+                </div>
+            </section>
+
             <div class="section-header">
                 <div class="section-title">What I Do</div>
             </div>
             <div class="win95-box section-content">
                 <div class="program-manager">
                     <div class="program-group">
-                        <div class="program-item" onclick="showInfo('backend')">
+                        <div class="program-item" role="button" tabindex="0" aria-controls="infoBox" onclick="showInfo('backend')">
                             <span class="Msnp32ServerIcon_32x32"></span>
                             <span>Backend.exe</span>
                         </div>
-                        <div class="program-item" onclick="showInfo('frontend')">
+                        <div class="program-item" role="button" tabindex="0" aria-controls="infoBox" onclick="showInfo('frontend')">
                             <span class="MspaintIcon_32x32"></span>
                             <span>Frontend.exe</span>
                         </div>
-                        <div class="program-item" onclick="showInfo('database')">
+                        <div class="program-item" role="button" tabindex="0" aria-controls="infoBox" onclick="showInfo('database')">
                             <span class="ReaderDiskIcon_32x32"></span>
                             <span>Database.mdb</span>
                         </div>
-                        <div class="program-item" onclick="showInfo('architecture')">
+                        <div class="program-item" role="button" tabindex="0" aria-controls="infoBox" onclick="showInfo('architecture')">
                             <span class="Regedit100_32x32"></span>
                             <span>Architecture.vsd</span>
                         </div>
-                        <div class="program-item" onclick="showInfo('optimization')">
+                        <div class="program-item" role="button" tabindex="0" aria-controls="infoBox" onclick="showInfo('optimization')">
                             <span class="Msrating100_32x32"></span>
                             <span>Optimize.bat</span>
                         </div>
                     </div>
                 </div>
                 <div class="icon-description-separator"></div>
-                <div class="program-info" id="infoBox">
+                <div class="program-info" id="infoBox" aria-live="polite">
                     Click an icon to learn more about what I'm focusing on as an entry level developer...
                 </div>
                 <div class="win95-status-mini">
@@ -221,7 +340,7 @@
                 <p class="skills-note">* Graduated MAGNA CUM LAUDE and actively expanding my development skills</p>
             </div>
 
-            <div class="section-header">
+            <div class="section-header" id="contact">
                 <div class="section-title">Contact Me</div>
             </div>
             <div class="win95-box section-content">

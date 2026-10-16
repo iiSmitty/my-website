@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" shape-rendering="crispEdges">
+  <!-- A closed WinHelp book: navy cover, pages along the bottom, a yellow ? -->
+  <rect x="2" y="1" width="12" height="14" fill="#000"/>
+  <rect x="3" y="2" width="10" height="10" fill="#000080"/>
+  <rect x="3" y="2" width="1" height="10" fill="#1084d0"/>
+  <rect x="3" y="12" width="10" height="2" fill="#fff"/>
+  <rect x="4" y="13" width="9" height="1" fill="#c0c0c0"/>
+  <path d="M7 4h3v1h1v2h-1v1H9v1H8V7h1V6h1V5H8v1H7z" fill="#ffff00"/>
+  <rect x="8" y="10" width="1" height="1" fill="#ffff00"/>
+</svg>

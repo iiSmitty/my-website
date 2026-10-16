@@ -101,6 +101,10 @@ function buildStartMenu() {
     const favorites = TASKBAR_FAVORITES.map(favorite =>
         buildStartMenuItem(favorite.name, { icon: 'InternetShortcutIcon_16x16', href: favorite.url }));
 
+    // Win95's Help opened Windows Help; this one opens How This Site Works (program-icons.js)
+    const help = buildStartMenuItem('Help', { icon: 'StartHelpIcon', accessKey: 'h' });
+    startMenuActions.set(help, () => openSiteHelp());
+
     const shutDown = buildStartMenuItem('Shut Down...', { icon: 'StartShutDownIcon', accessKey: 'u' });
     startMenuActions.set(shutDown, () => window.showClosingDialog());
 
@@ -111,6 +115,7 @@ function buildStartMenu() {
     items.append(
         buildStartSubmenu('Programs', { icon: 'StartProgramsIcon', accessKey: 'p' }, programs),
         buildStartSubmenu('Favorites', { icon: 'StartFavoritesIcon', accessKey: 'a' }, favorites),
+        help,
         separator,
         shutDown
     );

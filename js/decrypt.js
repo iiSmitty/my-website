@@ -158,6 +158,10 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
                 if (desktopIcons) {
                     desktopIcons.style.display = 'block';
                 }
+
+                // A link to a section (e.g. /#how-it-works) lands on it once Windows has started
+                const target = location.hash.length > 1 && document.getElementById(location.hash.slice(1));
+                if (target) target.scrollIntoView();
             }, 500);
         });
     }

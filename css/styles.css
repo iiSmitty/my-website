@@ -2494,3 +2494,314 @@ body.is-touch-device .desktop-icons,
         line-height: 1.5;
     }
 }
+/* ==================================
+   Identity: who this is, the way Win95's
+   System Properties would put it
+   ================================== */
+
+.identity {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 20px 6px 22px;
+}
+
+/* My Computer's icon, doubled pixel for pixel */
+.identity-icon {
+    flex: 0 0 auto;
+    width: 64px;
+    height: 64px;
+    background: url(/icons/computer.ico) no-repeat center / 64px 64px;
+    image-rendering: pixelated;
+}
+
+.identity-text {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.identity-overline {
+    margin: 0 0 4px;
+    font-size: 12px;
+}
+
+/* Set like the Windows 95 wordmark on the Start menu: heavy, then regular */
+.identity-name {
+    margin: 0;
+    text-align: left;
+    color: #000080;
+    font-family: Arial, sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+}
+
+.identity-name b {
+    font-family: "Arial Black", Arial, sans-serif;
+    font-weight: 900;
+}
+
+/* What software engineers are */
+.identity-tagline {
+    margin: 2px 0 0;
+    color: #000080;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Under an etched line, like a property sheet's */
+.identity-specs {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 3px 16px;
+    margin: 12px 0 0;
+    padding-top: 10px;
+    border-top: 1px solid #808080;
+    box-shadow: inset 0 1px #ffffff;
+    font-size: 12px;
+}
+
+.identity-specs div {
+    display: contents;
+}
+
+.identity-specs dt::after {
+    content: ":";
+}
+
+.identity-specs dd {
+    margin: 0;
+}
+
+@media screen and (max-width: 480px) {
+    .identity {
+        align-items: flex-start;
+        gap: 12px;
+        margin: 14px 2px 18px;
+    }
+
+    .identity-icon {
+        width: 40px;
+        height: 40px;
+        background-size: 40px 40px;
+    }
+
+    .identity-name {
+        font-size: 28px;
+    }
+
+    /* Labels over their values, with no room for two columns */
+    .identity-specs {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .identity-specs dt {
+        font-weight: bold;
+    }
+
+    .identity-specs div + div dt {
+        margin-top: 6px;
+    }
+}
+
+/* Section titles that are real headings look like the others */
+.section-header h2.section-title {
+    margin: 0;
+    color: inherit;
+    font-size: inherit;
+    text-align: left;
+}
+
+.section-title:focus {
+    outline: none;
+}
+
+.section-title:focus-visible {
+    outline: 1px dotted #000000;
+    outline-offset: 2px;
+}
+
+#mainProfileContent:focus {
+    outline: none;
+}
+
+/* Shown at once when someone is jumping straight to one of its sections */
+.hidden-content-section.is-instant {
+    transform: none;
+    transition: none;
+}
+
+#how-it-works,
+#contact {
+    scroll-margin-top: 12px;
+}
+
+/* Keyboard focus shows as Win95's dotted rectangle */
+.floppy-container:focus-visible {
+    outline: 1px dotted #000000;
+    outline-offset: -5px;
+}
+
+.program-item:focus-visible {
+    outline: 1px dotted #000000;
+}
+
+/* ==================================
+   How This Site Works: a WinHelp
+   contents page of books
+   ================================== */
+
+.help-intro {
+    margin: 0 0 10px;
+}
+
+.help-topic > summary {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: fit-content;
+    max-width: 100%;
+    padding: 3px 0;
+    cursor: pointer;
+    list-style: none;
+}
+
+.help-topic > summary::-webkit-details-marker {
+    display: none;
+}
+
+.help-book {
+    flex: 0 0 auto;
+    width: 16px;
+    height: 16px;
+    background: url(/icons/help-book.svg) no-repeat center;
+}
+
+.help-topic[open] > summary .help-book {
+    background-image: url(/icons/help-book-open.svg);
+}
+
+.help-topic-title {
+    padding: 1px 3px;
+    border: 1px dotted transparent;
+}
+
+/* The chosen book is highlighted, like a selection in the Contents tab */
+.help-topic[open] > summary .help-topic-title {
+    background-color: #000080;
+    color: #ffffff;
+}
+
+.help-topic > summary:hover .help-topic-title {
+    text-decoration: underline;
+}
+
+.help-topic > summary:focus {
+    outline: none;
+}
+
+.help-topic > summary:focus-visible .help-topic-title {
+    border-color: #000000;
+}
+
+.help-topic[open] > summary:focus-visible .help-topic-title {
+    border-color: #ffff00;
+}
+
+/* The topic page sits under its book, joined by the tree's dotted line */
+.help-page {
+    max-width: 62ch;
+    margin: 2px 0 10px 7px;
+    padding: 4px 0 6px 17px;
+    border-left: 1px dotted #808080;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.help-page p {
+    margin: 0 0 8px;
+}
+
+.help-shortcuts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    margin: 10px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* WinHelp's jumps were green and underlined; its shortcut button opened the
+   thing the topic was about */
+.help-shortcut,
+.help-shortcut:visited {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #008000;
+    font: inherit;
+    font-size: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.help-shortcut:focus {
+    outline: none;
+}
+
+.help-shortcut:focus-visible {
+    outline: 1px dotted #000000;
+    outline-offset: 2px;
+}
+
+.help-jump {
+    flex: 0 0 auto;
+    width: 15px;
+    height: 13px;
+    box-sizing: border-box;
+    border: 1px solid;
+    border-color: #ffffff #000000 #000000 #ffffff;
+    box-shadow: inset -1px -1px #808080;
+    background: #c0c0c0 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 7' shape-rendering='crispEdges'%3E%3Cpath d='M5 0h1v1h1v1h1v1h1v1H8v1H7v1H6v1H5V5H3v1H2v1H1V6H0V3h1V2h1V1h3z' fill='%23000'/%3E%3C/svg%3E") no-repeat center / 9px 7px;
+}
+
+.help-shortcut:active .help-jump {
+    border-color: #000000 #ffffff #ffffff #000000;
+    box-shadow: inset 1px 1px #808080;
+    background-position: calc(50% + 1px) calc(50% + 1px);
+}
+
+/* Programs open in windows on the desktop, which touch devices don't get */
+body.is-touch-device .help-launch {
+    display: none;
+}
+
+/* ==================================
+   Reduced motion: the same steps,
+   without the movement
+   ================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .blink,
+    .floppy-container.loading,
+    .floppy-container.loading .floppy-icon,
+    .floppy-container.loading .floppy-drive-light {
+        animation: none;
+    }
+
+    .floppy-container.dissolving .pixel-overlay {
+        display: none;
+    }
+
+    .floppy-container,
+    .hidden-content-section,
+    .hidden-content-section.visible {
+        transform: none;
+        transition: none;
+    }
+}
