@@ -28,7 +28,8 @@ test.describe('desktop', () => {
         await boot(page);
         await expect(page.getByRole('heading', { level: 1 })).toHaveText('André Smit');
         await expect(page.locator('.identity-tagline')).toHaveText('Problem Solver');
-        await expect(page.locator('.identity-specs')).toContainText('Entry Level Developer at Interfront SOC Ltd');
+        // What it says is checked against the experience page in current-role.spec.js
+        await expect(page.locator('.identity-specs dt')).toHaveText(['Now', 'Works in', 'Developing since', 'This site']);
         await expect(page.locator('#mainProfileContent')).toBeHidden();
     });
 
