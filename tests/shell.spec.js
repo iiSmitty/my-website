@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+const { test, expect } = require('./fixtures');
 
 // The window manager (js/window-manager.js) and the taskbar and Start menu
 // (js/taskbar.js) on the home page's desktop.

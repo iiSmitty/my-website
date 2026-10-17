@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+const { test, expect } = require('./fixtures');
 
 // The Videos folder reads data/watching.json, so every test serves its own
 // copy rather than depending on what the workflow last committed.

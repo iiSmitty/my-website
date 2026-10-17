@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+const { test, expect } = require('./fixtures');
 const { fastForwardUntil } = require('./contact-helpers');
 
 // Coffee Analytics on the home page (js/coffee-simple.js), fed from

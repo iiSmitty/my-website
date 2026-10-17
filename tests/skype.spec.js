@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+const { test, expect } = require('./fixtures');
 
 // The Skype easter egg shows an old profile that had real phone numbers on it.
 // They must never reach the page: anything shaped like a South African number

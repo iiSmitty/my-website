@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+const { test, expect } = require('./fixtures');
 const { TOKEN, stubTurnstile, stubContactApi, fastForwardUntil, openContactSection, waitForReveal } = require('./contact-helpers');
 
 // DECRYPT.EXE: on a desktop, "Decrypt Contact Info" opens Notepad and an

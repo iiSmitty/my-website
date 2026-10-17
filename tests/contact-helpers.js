@@ -1,4 +1,4 @@
-const { expect } = require('@playwright/test');
+const { expect } = require('./fixtures');
 
 // Shared by contact.spec.js and decrypt-exe.spec.js.
 //

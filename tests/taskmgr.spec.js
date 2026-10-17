@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+const { test, expect } = require('./fixtures');
 
 // TASKMGR.EXE reads the GitHub Actions API, so every test serves its own
 // answers rather than depending on GitHub (or its rate limit).

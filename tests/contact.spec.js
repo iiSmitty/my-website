@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+const { test, expect } = require('./fixtures');
 const { TOKEN, stubTurnstile, stubContactApi, openContactSection, waitForReveal } = require('./contact-helpers');
 
 // The plain "Decrypt Contact Info" flow: a progress bar, Turnstile and the

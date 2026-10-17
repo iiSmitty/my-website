@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+const { test, expect } = require('./fixtures');
 
 // My current job title and employer appear in four places: the role list on
 // the experience page (the source of truth: the role that runs to "Present"),

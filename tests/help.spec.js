@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+const { test, expect } = require('./fixtures');
 
 // The home page's identity block, and How This Site Works: its WinHelp-style
 // topics, and the ways in (the Help menu, the Start menu, the identity's link,

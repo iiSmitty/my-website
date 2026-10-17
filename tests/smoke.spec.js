@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+const { test, expect } = require('./fixtures');
 
 // Every HTML page that should load cleanly. Add new pages here as the site grows.
 const pages = ['index.html', 'strava-pbs.html', 'experience.html', '404.html'];

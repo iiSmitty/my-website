@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+const { test, expect } = require('./fixtures');
 
 // Durations are computed from "now", so pin the clock. Every expected string
 // below is what LinkedIn shows for the same dates in September 2026.

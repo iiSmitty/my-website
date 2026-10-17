@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { test, expect } = require('@playwright/test');
+const { test, expect } = require('./fixtures');
 
 // What I Do on the home page: three programs, each telling what I work on
 // when chosen (js/program-icons.js).

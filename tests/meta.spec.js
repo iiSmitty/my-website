@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+const { test, expect } = require('./fixtures');
 
 // Link previews (Open Graph and Twitter cards). The image is served from the
 // site itself, so a third-party host going away can't break every shared link.

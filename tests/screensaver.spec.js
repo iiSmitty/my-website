@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+const { test, expect } = require('./fixtures');
 
 // The flying windows screensaver (js/screensaver.js). p5.js is only fetched
 // the first time the screensaver starts, not with the page.
