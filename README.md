@@ -1,6 +1,6 @@
 # Windows 95 Nostalgia Personal Website
 
-![Windows 95 Logo](https://i.imgur.com/sqf7tWx.jpeg)
+![Windows 95 Logo](images/og-image.jpg)
 
 *"Where do you want to go today?"*
 
