@@ -350,6 +350,99 @@ th {
     letter-spacing: 2px;
 }
 
+/* My Skills, as Explorer's Details view: raised column headers over plain
+   rows, no grid lines */
+.details-view,
+.details-view th,
+.details-view td {
+    border: 0;
+}
+
+.details-view th {
+    padding: 2px 6px;
+    font-weight: normal;
+    white-space: nowrap;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+    box-shadow: inset 1px 1px #ffffff, 1px 1px #000000;
+}
+
+.details-view td {
+    padding: 4px 6px;
+    vertical-align: top;
+}
+
+.details-view td:nth-child(3),
+.details-view td:nth-child(4) {
+    white-space: nowrap;
+}
+
+.details-view tbody tr:first-child td {
+    padding-top: 7px;
+}
+
+/* On a phone each skill is a little card: its name, then labelled details */
+@media screen and (max-width: 480px) {
+    .details-view,
+    .details-view tbody,
+    .details-view tr,
+    .details-view td {
+        display: block;
+    }
+
+    /* Still read out as column headers, just not shown */
+    .details-view thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+
+    .details-view tr {
+        padding: 8px 0;
+        border-bottom: 1px dotted #808080;
+    }
+
+    .details-view tr:last-child {
+        border-bottom: 0;
+    }
+
+    .details-view td,
+    .details-view tbody tr:first-child td {
+        padding: 1px 0;
+    }
+
+    .details-view td:first-child {
+        font-weight: bold;
+    }
+
+    .details-view td:nth-child(3),
+    .details-view td:nth-child(4) {
+        white-space: normal;
+    }
+
+    .details-view td[data-label]::before {
+        content: attr(data-label) ": ";
+        color: #000080;
+    }
+
+    /* Since and Used share a line: "Since 2025 · Daily" */
+    .details-view td:nth-child(3),
+    .details-view td:nth-child(4) {
+        display: inline;
+    }
+
+    .details-view td:nth-child(3)::before {
+        content: "Since ";
+    }
+
+    .details-view td:nth-child(4)::before {
+        content: " \00b7  ";
+    }
+}
+
 /* Windows 95 Status Bar */
 .win95-status-bar {
     background-color: #c0c0c0;
@@ -882,8 +975,10 @@ body.startup {
 /* What I Do */
 
 /* Icons via React95 (@react95/icons): FileSettings, Win95's icon for a
-   system file like a DLL; Plugin2, a file of building blocks; Textchat2 */
+   system file like a DLL; Filexfer129, a form sent on to a telephone, as a
+   lead is to a call centre; Plugin2, a file of building blocks; Textchat2 */
 .IntegrationIcon_32x32,
+.PipelineIcon_32x32,
 .OutSystemsIcon_32x32,
 .ClaudeIcon_32x32 {
     width: 32px;
@@ -895,6 +990,7 @@ body.startup {
 }
 
 .IntegrationIcon_32x32 { background-image: url(/icons/file-settings-32.png); }
+.PipelineIcon_32x32 { background-image: url(/icons/file-transfer-32.png); }
 .OutSystemsIcon_32x32 { background-image: url(/icons/plugin-file-32.png); }
 .ClaudeIcon_32x32 { background-image: url(/icons/text-chat-32.png); }
 
@@ -924,10 +1020,14 @@ body.startup {
     padding: 4px;
 }
 
-/* All three programs fit across a phone */
+/* Two by two on a phone */
 @media screen and (max-width: 430px) {
+    .program-group {
+        row-gap: 12px;
+    }
+
     .program-item {
-        width: 33.333%;
+        width: 50%;
         box-sizing: border-box;
         padding: 4px 2px;
         /* Win95's own icon labels were 8pt */

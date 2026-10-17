@@ -21,7 +21,7 @@ test.describe('desktop', () => {
     test('each program tells its story, and only the chosen one is highlighted', async ({ page }) => {
         await bootWithProfile(page);
         await expect(infoBox(page)).toHaveText('Click an icon to see what I work on.');
-        await expect(page.locator('.program-item')).toHaveCount(3);
+        await expect(page.locator('.program-item')).toHaveCount(4);
 
         await program(page, 'Integration.dll').click();
         // Shown as the file's Properties: name, then Type, Location and Modified, then the story
@@ -32,6 +32,10 @@ test.describe('desktop', () => {
         await expect(infoBox(page)).toContainText('integration developer at Interfront');
         await expect(infoBox(page).locator('.access-denied')).toHaveText('Access is denied.');
         await expect(program(page, 'Integration.dll')).toHaveAttribute('aria-pressed', 'true');
+
+        await program(page, 'LeadPipeline.exe').click();
+        await expect(infoBox(page).locator('.file-props-fields dd').first()).toHaveText('Azure Function App');
+        await expect(infoBox(page)).toContainText('a retry never creates the same lead twice');
 
         await program(page, 'OutSystems.oml').click();
         await expect(infoBox(page)).toContainText('document management system');
@@ -56,6 +60,39 @@ test.describe('desktop', () => {
             await expect(link).toHaveAttribute('target', '_blank');
             await expect(link).toHaveAttribute('rel', /noopener/);
         }
+    });
+});
+
+// My Skills, as Explorer's Details view: where, since when and how often,
+// not a self-rating
+test.describe('My Skills', () => {
+    const skills = (page) => page.getByRole('table');
+    const firstSkill = (page) => skills(page).getByRole('row').nth(1);
+
+    test.describe('desktop', () => {
+        test.use({ viewport: { width: 1280, height: 800 } });
+
+        test('each skill says where, since when and how often', async ({ page }) => {
+            await bootWithProfile(page);
+            await expect(skills(page).getByRole('columnheader')).toHaveText(['Name', 'Where I use it', 'Since', 'Used']);
+            await expect(skills(page).getByRole('row')).toHaveCount(11);
+            await expect(firstSkill(page).getByRole('cell')).toHaveText(['C# / .NET Framework', 'Interfront: integration APIs, and client work before that', '2025', 'Daily']);
+        });
+    });
+
+    test.describe('phone', () => {
+        test.use({ viewport: { width: 375, height: 812 }, hasTouch: true, isMobile: true });
+
+        test('rows stack into cards, and stay a table for screen readers', async ({ page }) => {
+            await bootWithProfile(page);
+            await expect(skills(page).getByRole('columnheader')).toHaveCount(4);
+            const cells = firstSkill(page).getByRole('cell');
+            const [name, where] = await cells.evaluateAll(els => els.slice(0, 2).map(el => el.getBoundingClientRect().toJSON()));
+            // The name sits above its details instead of beside them
+            expect(where.top).toBeGreaterThanOrEqual(name.bottom - 1);
+            const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+            expect(overflow).toBeLessThanOrEqual(0);
+        });
     });
 });
 

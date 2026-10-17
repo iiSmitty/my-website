@@ -27,7 +27,7 @@ const WHAT_I_DO = {
         icon: 'IntegrationIcon_32x32',
         type: 'Application extension',
         location: 'C:\\Interfront\\' + REDACTED + '\\',
-        modified: 'Feb 2025 &ndash; Present',
+        modified: 'Jul 2026 &ndash; Present',
         story: `
             <p>I'm an integration developer at Interfront, working in .NET Framework and C# on one of
             South Africa's biggest systems. Which one? ${ACCESS_DENIED}</p>
@@ -42,6 +42,28 @@ const WHAT_I_DO = {
             Sometimes that takes a SQL query or two to prove which.</p>
             <p>There's always something new: projects and extensions to make it better for everyone who
             uses it.</p>`
+    },
+    pipeline: {
+        name: 'LeadPipeline.exe',
+        icon: 'PipelineIcon_32x32',
+        type: 'Azure Function App',
+        location: 'C:\\Interfront\\Clients\\',
+        modified: 'Mar &ndash; Jul 2026',
+        story: `
+            <p>My first year and a half at Interfront was client work: two websites, one mostly frontend
+            and one full stack in C#, then the biggest piece. We moved a client's ad leads off an old
+            frontend setup and onto Azure, which is much faster and far easier to maintain.</p>
+            <p>A senior colleague designed the architecture; I put the meat on the bones. Leads arrive
+            from the website, TikTok, Facebook and WhatsApp, then pass through a chain of small Azure
+            Functions joined by queues:</p>
+            <ul>
+                <li>normalise and validate</li>
+                <li>check for duplicates</li>
+                <li>route to the right call centre</li>
+            </ul>
+            <p>Every step records that it's done, so a retry never creates the same lead twice. I built
+            the integrations for two of the four destination systems, with their API docs, and wrote the
+            onboarding guide and runbooks for the developers taking over.</p>`
     },
     outsystems: {
         name: 'OutSystems.oml',

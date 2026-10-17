@@ -283,6 +283,10 @@
                             <span class="IntegrationIcon_32x32" aria-hidden="true"></span>
                             <span>Integration.dll</span>
                         </div>
+                        <div class="program-item" role="button" tabindex="0" aria-controls="infoBox" aria-pressed="false" onclick="showInfo('pipeline', this)">
+                            <span class="PipelineIcon_32x32" aria-hidden="true"></span>
+                            <span>LeadPipeline.exe</span>
+                        </div>
                         <div class="program-item" role="button" tabindex="0" aria-controls="infoBox" aria-pressed="false" onclick="showInfo('outsystems', this)">
                             <span class="OutSystemsIcon_32x32" aria-hidden="true"></span>
                             <span>OutSystems.oml</span>
@@ -298,7 +302,7 @@
                     Click an icon to see what I work on.
                 </div>
                 <div class="win95-status-mini">
-                    <span>3 items</span>
+                    <span>4 items</span>
                     <span>640K memory free</span>
                 </div>
             </div>
@@ -307,29 +311,85 @@
                 <div class="section-title">My Skills</div>
             </div>
             <div class="win95-box section-content">
-                <table>
-                    <tr>
-                        <th>Skill</th>
-                        <th>Experience Level</th>
-                    </tr>
-                    <tr>
-                        <td>.NET Framework</td>
-                        <td><span class="skill-dots">&#9679;&#9679;&#9679;&#9675;&#9675;</span></td>
-                    </tr>
-                    <tr>
-                        <td>HTML/CSS</td>
-                        <td><span class="skill-dots">&#9679;&#9679;&#9679;&#9675;&#9675;</span></td>
-                    </tr>
-                    <tr>
-                        <td>SQL</td>
-                        <td><span class="skill-dots">&#9679;&#9679;&#9675;&#9675;&#9675;</span></td>
-                    </tr>
-                    <tr>
-                        <td>Windows 95 Nostalgia</td>
-                        <td><span class="skill-dots">&#9679;&#9679;&#9679;&#9679;&#9679;</span></td>
-                    </tr>
+                <!-- Explorer's Details view: where each skill is used, since when and
+                     how often, rather than a self-rating. The roles keep it a table for
+                     screen readers when phones stack the rows. -->
+                <table class="details-view" role="table">
+                    <thead role="rowgroup">
+                        <tr role="row">
+                            <th scope="col" role="columnheader">Name</th>
+                            <th scope="col" role="columnheader">Where I use it</th>
+                            <th scope="col" role="columnheader">Since</th>
+                            <th scope="col" role="columnheader">Used</th>
+                        </tr>
+                    </thead>
+                    <tbody role="rowgroup">
+                        <tr role="row">
+                            <td role="cell">C# / .NET Framework</td>
+                            <td role="cell" data-label="Where">Interfront: integration APIs, and client work before that</td>
+                            <td role="cell" data-label="Since">2025</td>
+                            <td role="cell" data-label="Used">Daily</td>
+                        </tr>
+                        <tr role="row">
+                            <td role="cell">Visual Studio</td>
+                            <td role="cell" data-label="Where">Interfront: all my C# work</td>
+                            <td role="cell" data-label="Since">2025</td>
+                            <td role="cell" data-label="Used">Daily</td>
+                        </tr>
+                        <tr role="row">
+                            <td role="cell">Bruno</td>
+                            <td role="cell" data-label="Where">Interfront: testing APIs</td>
+                            <td role="cell" data-label="Since">2025</td>
+                            <td role="cell" data-label="Used">Daily</td>
+                        </tr>
+                        <tr role="row">
+                            <td role="cell">Git</td>
+                            <td role="cell" data-label="Where">Everywhere</td>
+                            <td role="cell" data-label="Since">2021</td>
+                            <td role="cell" data-label="Used">Daily</td>
+                        </tr>
+                        <tr role="row">
+                            <td role="cell">JavaScript, HTML, CSS</td>
+                            <td role="cell" data-label="Where">This site, by hand, no framework</td>
+                            <td role="cell" data-label="Since">2025</td>
+                            <td role="cell" data-label="Used">Weekly</td>
+                        </tr>
+                        <tr role="row">
+                            <td role="cell">SQL</td>
+                            <td role="cell" data-label="Where">Proving where a bug lives</td>
+                            <td role="cell" data-label="Since">2025</td>
+                            <td role="cell" data-label="Used">When needed</td>
+                        </tr>
+                        <tr role="row">
+                            <td role="cell">Azure Functions</td>
+                            <td role="cell" data-label="Where">Interfront: a client's lead pipeline, with Storage queues and tables</td>
+                            <td role="cell" data-label="Since">2026</td>
+                            <td role="cell" data-label="Used">Daily, Mar &ndash; Jul 2026</td>
+                        </tr>
+                        <tr role="row">
+                            <td role="cell">ASP.NET (Razor)</td>
+                            <td role="cell" data-label="Where">Interfront: a client's full-stack website</td>
+                            <td role="cell" data-label="Since">2025</td>
+                            <td role="cell" data-label="Used">Feb &ndash; Oct 2025</td>
+                        </tr>
+                        <tr role="row">
+                            <td role="cell">OutSystems</td>
+                            <td role="cell" data-label="Where">Integralis: the Zuzani document system</td>
+                            <td role="cell" data-label="Since">2021</td>
+                            <td role="cell" data-label="Used">3&frac12; years, until 2025</td>
+                        </tr>
+                        <tr role="row">
+                            <td role="cell">Windows 95 Nostalgia</td>
+                            <td role="cell" data-label="Where">Here</td>
+                            <td role="cell" data-label="Since">1995</td>
+                            <td role="cell" data-label="Used"><span class="skill-dots" role="img" aria-label="Five out of five">&#9679;&#9679;&#9679;&#9679;&#9679;</span></td>
+                        </tr>
+                    </tbody>
                 </table>
-                <p class="skills-note">* Graduated MAGNA CUM LAUDE and actively expanding my development skills</p>
+                <div class="win95-status-mini">
+                    <span>10 object(s)</span>
+                    <span>Most used first</span>
+                </div>
             </div>
 
             <div class="section-header" id="contact">
