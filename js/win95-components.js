@@ -164,8 +164,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         });
                     } else if (dropdownItem.action === 'exit') {
                         dropdownElement.addEventListener('click', function() {
-                            console.log('Exit clicked'); // Debug log
-
                             // First close the dropdown
                             dropdownContent.classList.remove('show');
                             menuItem.classList.remove('active-menu-item');
