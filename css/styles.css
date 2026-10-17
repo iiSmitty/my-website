@@ -1322,6 +1322,181 @@ body.startup {
     image-rendering: pixelated;
 }
 
+/* GitHub installer and Dev Community windows. Scoped by window, so these win
+   over the general rules (.win95-btn, .SlackIcon_32x32, ul) as the inline
+   styles they replace did. */
+#githubInstallerWindow,
+#slackWindow {
+    position: fixed;
+    background-color: #c0c0c0;
+    border: 2px outset #fff;
+}
+
+#githubInstallerWindow {
+    top: 80px;
+    left: 120px;
+    width: 450px;
+}
+
+#slackWindow {
+    top: 100px;
+    left: 150px;
+    width: 500px;
+}
+
+#githubInstallerWindow .win95-title,
+#slackWindow .win95-title {
+    display: flex;
+    align-items: center;
+}
+
+#githubInstallerWindow .win95-window-content,
+#slackWindow .win95-window-content {
+    padding: 16px;
+    background-color: #c0c0c0;
+}
+
+#githubInstallerWindow .installer-header {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#githubInstallerWindow .installer-icon {
+    margin-right: 20px;
+}
+
+#githubInstallerWindow .installer-heading {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#githubInstallerWindow .installer-subheading {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+#installationLog {
+    font-size: 12px;
+    height: 100px;
+    border: 1px inset #808080;
+    background-color: #ffffff;
+    overflow-y: auto;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+#statusText {
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+
+#githubInstallerWindow .installer-progress {
+    border: 1px inset #808080;
+    height: 20px;
+    background-color: #ffffff;
+    margin: 20px 0;
+    position: relative;
+}
+
+/* program-icons.js widens it a step at a time */
+#progressBar {
+    height: 100%;
+    width: 0;
+    background-color: #000080;
+    transition: width 0.3s;
+}
+
+#githubInstallerWindow .installer-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+#githubInstallerWindow #nextBtn {
+    margin-left: 10px;
+}
+
+#slackWindow .slack-header {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#slackWindow .slack-logo-box {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+}
+
+#slackWindow .slack-logo {
+    width: 64px;
+    height: 64px;
+    display: inline-block;
+    background-size: contain;
+}
+
+#slackWindow .slack-heading {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+#slackWindow .slack-subheading {
+    font-size: 12px;
+}
+
+#slackWindow .slack-about {
+    border: 2px inset #ffffff;
+    background-color: #ffffff;
+    padding: 15px;
+    margin-bottom: 15px;
+    font-size: 12px;
+}
+
+#slackWindow .slack-about > p {
+    margin: 0 0 10px 0;
+    line-height: 1.5;
+}
+
+#slackWindow .slack-perks {
+    background-color: #ffffcc;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #808080;
+}
+
+#slackWindow .slack-perks p {
+    margin: 0 0 8px 0;
+    font-weight: bold;
+}
+
+#slackWindow .slack-perks ul {
+    margin: 0;
+    padding-left: 20px;
+    line-height: 1.8;
+}
+
+#slackWindow .slack-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#slackWindow .slack-actions .win95-btn {
+    min-width: 120px;
+    font-size: 12px;
+    padding: 6px 12px;
+}
+
+#experienceWindow {
+    position: fixed;
+    top: 40px;
+    left: 110px;
+}
+
 /* Experience desktop window: a frame around /experience?embed */
 .xp-desktop-window {
     display: flex;
@@ -1597,7 +1772,10 @@ body.is-touch-device .desktop-icons,
 }
 
 #spotifyWindow {
-    width: 650px; /* Match your screenshot better */
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    width: 600px;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
     border: 2px outset #dfdfdf;
     font-family: 'MS Sans Serif', Arial, sans-serif;
@@ -2351,6 +2529,7 @@ body.is-touch-device .desktop-icons,
 }
 
 .coffee-progress-bar {
+    width: 0; /* coffee-simple.js fills it, one cell per point */
     height: 100%;
     background: #8B4513;
     transition: width 0.3s steps(10, end);
