@@ -60,11 +60,17 @@ class ApiError extends Error {
  * failures in `code` and `message` even when the HTTP status is 200.
  */
 async function call(method, pathname, { headers = {}, body } = {}) {
-    const response = await fetch(`${PORTAL_API}${pathname}`, {
-        method,
-        headers: { accept: 'application/json', 'content-type': 'application/json', ...headers },
-        body: body === undefined ? undefined : JSON.stringify(body)
-    });
+    let response;
+    try {
+        response = await fetch(`${PORTAL_API}${pathname}`, {
+            method,
+            headers: { accept: 'application/json', 'content-type': 'application/json', ...headers },
+            body: body === undefined ? undefined : JSON.stringify(body)
+        });
+    } catch (error) {
+        // A network failure (DNS, TLS, a refused connection); kept as the cause
+        throw new Error(`${method} ${pathname} failed`, { cause: error });
+    }
     const text = await response.text();
     let json = null;
     try {
@@ -151,6 +157,25 @@ function hasChanged(stored, stats) {
 
 // --- Main ----------------------------------------------------------------------------
 
+/**
+ * An error's message followed by the chain of causes behind it. fetch reports
+ * every network failure as just "fetch failed", with the actual reason (such
+ * as a certificate it can't verify) in its cause.
+ */
+function describeError(error) {
+    const parts = [];
+    for (let e = error; e !== undefined && e !== null && parts.length < 5; e = e.cause) {
+        if (!(e instanceof Error)) {
+            parts.push(String(e));
+            break;
+        }
+        // Node's system errors carry a code, e.g. ECONNREFUSED or UNABLE_TO_VERIFY_LEAF_SIGNATURE
+        const code = typeof e.code === 'string' ? e.code : '';
+        parts.push(e.message && code ? `${e.message} (${code})` : e.message || code || e.name);
+    }
+    return parts.join(': ');
+}
+
 function readStored() {
     try {
         return JSON.parse(fs.readFileSync(DATA_PATH, 'utf8'));
@@ -182,9 +207,9 @@ async function main() {
 
 if (require.main === module) {
     main().catch(error => {
-        console.error(error.message);
+        console.error(describeError(error));
         process.exit(error instanceof NoRetryError ? NO_RETRY_EXIT_CODE : 1);
     });
 }
 
-module.exports = { NoRetryError, fetchPanels, hasChanged, loginForm, readStats };
+module.exports = { NoRetryError, describeError, fetchPanels, hasChanged, loginForm, readStats };

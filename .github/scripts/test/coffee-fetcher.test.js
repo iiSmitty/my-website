@@ -1,6 +1,6 @@
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
-const { NoRetryError, fetchPanels, hasChanged, loginForm, readStats } = require('../coffee-fetcher.js');
+const { NoRetryError, describeError, fetchPanels, hasChanged, loginForm, readStats } = require('../coffee-fetcher.js');
 
 // Shape matches what GetLoyaltyPanels actually returns (October 2026)
 
@@ -149,4 +149,33 @@ test('a login that fails for some other reason can be retried', async (t) => {
 
 test('a username that is not a phone number or email is not retried', () => {
     assert.throws(() => loginForm('12345', 'pw'), NoRetryError);
+});
+
+// --- Reporting failures ----------------------------------------------------------
+
+/** What fetch throws when the portal's certificate can't be verified */
+function tlsFailure() {
+    const cause = Object.assign(new Error('unable to verify the first certificate'), { code: 'UNABLE_TO_VERIFY_LEAF_SIGNATURE' });
+    return new TypeError('fetch failed', { cause });
+}
+
+test('a network failure names the request and keeps the reason fetch hides in its cause', async (t) => {
+    fakePortal(t, { '/api/PreAuthentication': tlsFailure() });
+
+    await assert.rejects(fetchPanels('0821234567', 'pw'), (error) => {
+        assert.equal(
+            describeError(error),
+            'GET /api/PreAuthentication?host=seattle.loyalty-electronicline.com failed: fetch failed: unable to verify the first certificate (UNABLE_TO_VERIFY_LEAF_SIGNATURE)'
+        );
+        return true;
+    });
+});
+
+test('describeError leaves an error without a cause as its message', () => {
+    assert.equal(describeError(new NoRetryError('Login refused, not retrying')), 'Login refused, not retrying');
+});
+
+test('describeError falls back to the code of an error without a message', () => {
+    const refused = Object.assign(new AggregateError([], ''), { code: 'ECONNREFUSED' });
+    assert.equal(describeError(new TypeError('fetch failed', { cause: refused })), 'fetch failed: ECONNREFUSED');
 });

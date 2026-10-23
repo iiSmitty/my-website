@@ -56,6 +56,9 @@ jobs:
         env:
           SEATTLE_COFFEE_USERNAME: ${{ secrets.SEATTLE_COFFEE_USERNAME }}
           SEATTLE_COFFEE_PASSWORD: ${{ secrets.SEATTLE_COFFEE_PASSWORD }}
+          # The portal's API leaves its intermediate certificate out of the TLS
+          # handshake, which Node can't work around; the file explains
+          NODE_EXTRA_CA_CERTS: ${{ github.workspace }}/.github/certs/lets-encrypt-gen-y-rsa.pem
 
       - name: Commit and push if changed
         if: steps.check_update.outputs.skip != 'true'
