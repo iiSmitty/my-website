@@ -274,6 +274,45 @@ test.describe('desktop', () => {
         await expect(page.locator('#myTechWindow')).toBeVisible();
     });
 
+    test('a click selects one desktop icon, and clicking the desktop deselects it', async ({ page }) => {
+        await boot(page);
+        const selected = page.locator('.desktop-icon.selected');
+
+        await page.locator('.desktop-icon', { hasText: 'Spotify' }).click();
+        await page.locator('.desktop-icon', { hasText: 'Videos' }).click();
+        await expect(selected).toHaveCount(1);
+        await expect(selected).toHaveText('Videos');
+
+        // Somewhere with nothing on it but the desktop
+        const empty = await page.evaluate(() => {
+            for (let x = innerWidth - 5; x > 0; x -= 20) {
+                for (let y = 40; y < innerHeight - 60; y += 20) {
+                    if (document.elementFromPoint(x, y) === document.body) return { x, y };
+                }
+            }
+            return null;
+        });
+        expect(empty).not.toBeNull();
+        await page.mouse.click(empty.x, empty.y);
+        await expect(selected).toHaveCount(0);
+    });
+
+    test('a desktop icon is dragged to wherever it\'s dropped', async ({ page }) => {
+        await boot(page);
+        const icon = page.locator('.desktop-icon', { hasText: 'Experience' });
+        const before = await icon.boundingBox();
+
+        await page.mouse.move(before.x + before.width / 2, before.y + before.height / 2);
+        await page.mouse.down();
+        await page.mouse.move(before.x + before.width / 2 + 200, before.y + before.height / 2 + 120, { steps: 5 });
+        await page.mouse.up();
+
+        const after = await icon.boundingBox();
+        expect(after.x).toBeCloseTo(before.x + 200, 0);
+        expect(after.y).toBeCloseTo(before.y + 120, 0);
+        await expect(icon).toHaveClass(/selected/);
+    });
+
     test('deleting every desktop icon unlocks an achievement, and only then fetches its sound', async ({ page }) => {
         const soundRequests = [];
         page.on('request', request => {

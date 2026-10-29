@@ -48,4 +48,17 @@ for (const page of pages) {
 
         expect(errors, `Unexpected errors on ${page}:\n${errors.join('\n')}\n\nFailed requests:\n${failedRequests.join('\n')}`).toEqual([]);
     });
+
+    // Inline onclick="someFunction(...)" handlers call globals from the page's
+    // scripts, so a function that's renamed, or whose script isn't loaded,
+    // only fails when someone clicks
+    test(`${page}'s inline click handlers call functions that exist`, async ({ page: p }) => {
+        await p.goto(`/${page}`, { waitUntil: 'load' });
+        const missing = await p.evaluate(() => [...document.querySelectorAll('[onclick]')]
+            .map(element => element.getAttribute('onclick').trim().match(/^([A-Za-z_$][\w$]*)\(/))
+            .filter(Boolean)
+            .map(match => match[1])
+            .filter(name => typeof window[name] !== 'function'));
+        expect(missing).toEqual([]);
+    });
 }
