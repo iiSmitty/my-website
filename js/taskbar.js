@@ -3,7 +3,7 @@
 // open window (window-manager.js) and the clock. Like the desktop icons it's
 // desktop only; styles hide it on touch devices.
 //
-// The Start menu's Programs folder lists DESKTOP_PROGRAMS (program-icons.js),
+// The Start menu's Programs folder lists DESKTOP_PROGRAMS (desktop.js),
 // so everything can still be opened after the desktop icons have been deleted.
 
 const TASKBAR_FAVORITES = [
@@ -101,7 +101,7 @@ function buildStartMenu() {
     const favorites = TASKBAR_FAVORITES.map(favorite =>
         buildStartMenuItem(favorite.name, { icon: 'InternetShortcutIcon_16x16', href: favorite.url }));
 
-    // Win95's Help opened Windows Help; this one opens How This Site Works (program-icons.js)
+    // Win95's Help opened Windows Help; this one opens How This Site Works (site-help.js)
     const help = buildStartMenuItem('Help', { icon: 'StartHelpIcon', accessKey: 'h' });
     startMenuActions.set(help, () => openSiteHelp());
 

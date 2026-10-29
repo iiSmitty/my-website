@@ -3,7 +3,7 @@ const path = require('path');
 const { test, expect } = require('./fixtures');
 
 // What I Do on the home page: three programs, each telling what I work on
-// when chosen (js/program-icons.js).
+// when chosen (js/what-i-do.js).
 
 async function bootWithProfile(page) {
     await page.goto('/');

@@ -1398,7 +1398,7 @@ body.startup {
     position: relative;
 }
 
-/* program-icons.js widens it a step at a time */
+/* github-installer.js widens it a step at a time */
 #progressBar {
     height: 100%;
     width: 0;

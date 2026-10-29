@@ -2,7 +2,7 @@
 // A friend's old Skype contact export still had my 2014 profile in it. This
 // brings that contact card back as a Win95 window.
 //
-// Opened by double-clicking the Recycle Bin (wired up in program-icons.js).
+// Opened by double-clicking the Recycle Bin (wired up in desktop.js).
 //
 // Nothing is built until it's first needed: the stylesheet, avatar and DOM
 // only load on the first trigger, so the home page doesn't pay for them.

@@ -815,9 +815,19 @@
 <script defer src="js/decrypt-exe.min.js"></script>
 <script defer src="js/clippy.min.js"></script>
 <script defer src="js/win95-components.min.js"></script>
-<script defer src="js/program-icons.min.js"></script>
+<!-- The desktop and its windows. Each window's script registers it with the
+     window manager. -->
+<script defer src="js/desktop.min.js"></script>
+<script defer src="js/my-computer.min.js"></script>
+<script defer src="js/spotify.min.js"></script>
+<script defer src="js/github-installer.min.js"></script>
+<script defer src="js/slack.min.js"></script>
+<script defer src="js/experience-window.min.js"></script>
+<script defer src="js/what-i-do.min.js"></script>
+<script defer src="js/site-help.min.js"></script>
+<!-- After desktop.js, which shows the desktop icons: this removes them on
+     touch devices, and hides them while the startup dialog is up -->
 <script defer src="js/mobile-detection.min.js"></script>
-<script defer src="js/tech-counter.min.js"></script>
 <script defer src="js/screensaver.min.js"></script>
 <script defer src="js/watermark.min.js"></script>
 <script defer src="js/floppy-disk.min.js"></script>

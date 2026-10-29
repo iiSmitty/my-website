@@ -4,7 +4,7 @@
 // refreshed from Trakt weekly by .github/workflows/update-watching.yml.
 //
 // Opened by double-clicking the Videos desktop icon (wired up in
-// program-icons.js). Like the Skype window, nothing loads until then: the
+// desktop.js). Like the Skype window, nothing loads until then: the
 // stylesheet, data and posters only load on first open.
 
 const VIDEOS_DATA_URL = 'data/watching.json';

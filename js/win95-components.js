@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             dropdownContent.classList.remove('show');
                             menuItem.classList.remove('active-menu-item');
 
-                            // The home page has the section (program-icons.js);
+                            // The home page has the section (site-help.js);
                             // other pages go there and land on it
                             if (typeof openSiteHelp === 'function') {
                                 openSiteHelp();
