@@ -1,4 +1,5 @@
-// win95-components.js
+// The parts every page shares: the main window's menu bar (File, Edit, View,
+// Help) and status bar, the Shut Down dialog, and Alt+letter menu shortcuts
 document.addEventListener('DOMContentLoaded', function() {
     // Track the active dropdown for keyboard navigation
     let activeDropdown = null;
@@ -503,7 +504,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const path = window.location.pathname;
         const page = path.split('/').pop().replace('.html', '');
 
-        // Find the elements we need to replace
+        // Only the first menu bar and status bar on the page are replaced: the
+        // main window's. Other windows' menu bars are plain decoration.
         const existingMenuBar = document.querySelector('.win95-menu-bar');
         const existingStatusBar = document.querySelector('.win95-status-bar');
 
@@ -614,7 +616,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Add this to your stylesheet or add a style tag
+    // The dropdown item chosen with the arrow keys
     const style = document.createElement('style');
     style.textContent = `
         .keyboard-focused {

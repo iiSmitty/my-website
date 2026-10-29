@@ -95,12 +95,9 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
         });
     });
 
-    // Track if startup sound has been played
-    let startupSoundPlayed = false;
-
-    // Create a Windows 95 startup dialog that plays sound when clicked
+    // "Welcome to Windows 95": clicking Start plays the startup sound and shows
+    // the desktop
     function createStartupDialog() {
-        // Create dialog elements
         const dialog = document.createElement('div');
         dialog.className = 'win95-dialog';
         dialog.innerHTML = `
@@ -128,32 +125,26 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
         // Enter startup mode: teal background, full-height centering, no scroll
         document.body.classList.add('startup');
 
-        // Add to body
         document.body.appendChild(dialog);
 
-        // Get the Start Windows button and focus it for keyboard users
+        // Focused, so keyboard users can start with Enter
         const startButton = document.getElementById('start-windows');
         startButton.focus();
 
-        // Add click handler to Start Windows button
         startButton.addEventListener('click', function() {
-            // Play startup sound
             playWin95Sound('complete');
-            startupSoundPlayed = true;
 
-            // Leave startup mode and hide dialog with fade effect
+            // Leave startup mode and fade the dialog out
             document.body.classList.remove('startup');
             dialog.style.opacity = '0';
             setTimeout(() => {
                 dialog.style.display = 'none';
 
-                // Show the main content
                 const mainContent = document.querySelector('.win95-container');
                 if (mainContent) {
                     mainContent.style.display = 'block';
                 }
 
-                // Show desktop icons
                 const desktopIcons = document.querySelector('.desktop-icons');
                 if (desktopIcons) {
                     desktopIcons.style.display = 'block';
@@ -272,12 +263,10 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
 
         setTimeout(() => {
             updateProgress(15, "Accessing encrypted data...");
-            // No sound here
         }, 800);
 
         setTimeout(() => {
             updateProgress(30, "Breaking encryption...");
-            // No sound here
         }, 1600);
 
         setTimeout(() => {
@@ -295,10 +284,9 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
 
         setTimeout(() => {
             updateProgress(100, "Decryption complete!");
-            // Play access sound when decryption is complete
             playWin95Sound('access');
 
-            // After small delay, create mailto link for email
+            // Then the revealed address becomes a mailto link
             setTimeout(finishReveal, 500);
         }, 4800);
     }
@@ -315,14 +303,13 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
     function finishReveal() {
         encryptedEmail.innerHTML = `<a href="mailto:${REAL_EMAIL}">${REAL_EMAIL}</a>`;
 
-        // Change button text
         decryptButton.textContent = "Information Decrypted!";
         decryptButton.style.backgroundColor = "#90ee90"; // Light green
     }
 
-    // Returns how long the reveal takes, in ms
+    // Reveals the email one character every 80ms over the asterisks.
+    // Returns how long the reveal takes, in ms.
     function startEmailDecryption() {
-        // Gradual reveal of email character by character
         let currentEmail = "************@********.***";
         let targetEmail = REAL_EMAIL;
         let emailChars = currentEmail.split('');
@@ -332,7 +319,7 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
             setTimeout(() => {
                 emailChars[i] = targetChars[i];
                 encryptedEmail.textContent = emailChars.join('');
-            }, i * 80); // Reveal each character with a delay
+            }, i * 80);
         }
         return targetChars.length * 80;
     }
@@ -346,10 +333,7 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
     };
 
     function updateProgress(percent, message) {
-        // Update progress bar
         decryptProgressBar.style.width = `${percent}%`;
-
-        // Update message
         decryptText.textContent = message;
     }
 
@@ -368,14 +352,14 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
     console.log("This script is designed to run in a browser environment.");
 }
 
-// Add this to your JavaScript file (e.g., decrypt.js)
+// The page's main window: its close button asks to shut down, and on pages
+// without the window manager its minimize and maximize buttons are handled here
 document.addEventListener('DOMContentLoaded', function() {
-    // Get the close button
+    // The first close button on the page is the main window's
     const closeButton = document.querySelector('.win95-button.win95-close');
 
     if (closeButton) {
         closeButton.addEventListener('click', function() {
-            // Show a Windows 95 style "closing" dialog
             showClosingDialog();
         });
     }

@@ -213,24 +213,9 @@ async function loadAndDisplayStravaData() {
     }
 }
 
-// Home link navigation handler
-function setupHomeNavigation() {
-    const homeLink = document.getElementById('home-link');
-    if (homeLink) {
-        homeLink.addEventListener('click', function() {
-            // Set a session storage flag to indicate internal navigation
-            sessionStorage.setItem('internalNavigation', 'true');
-            // Navigate to the home page without extension
-            window.location.href = './index';
-        });
-    }
-}
-
-// Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     loadAndDisplayStravaData()
         .catch(error => {
             console.error('Failed to load Strava data:', error);
         });
-    setupHomeNavigation();
 });

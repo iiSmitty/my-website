@@ -1,9 +1,9 @@
-// Detect iOS device
+// Clippy pops up on iPhones and iPads to tease Apple users
+
 function isIOS() {
     return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 }
 
-// Show Clippy when the page loads for iOS users
 document.addEventListener('DOMContentLoaded', function() {
     if (isIOS()) {
         setTimeout(showClippy, 3000); // Show Clippy after 3 seconds
@@ -11,11 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function showClippy() {
-    // Create Clippy container
     const clippy = document.createElement('div');
     clippy.className = 'clippy-container';
 
-    // Get random Clippy message and options
+    // One of these, at random
     const messageOptions = [
         {
             message: "It looks like you're using an Apple device.",
@@ -42,7 +41,6 @@ function showClippy() {
 
     const randomOption = messageOptions[Math.floor(Math.random() * messageOptions.length)];
 
-    // Set Clippy HTML
     clippy.innerHTML = `
         <div class="clippy-popup">
             <div class="clippy-content">
@@ -76,14 +74,13 @@ function dismissClippy(wasHelpful) {
         }
 
         if (wasHelpful) {
-            // Show a follow-up message if they clicked the help option
+            // The "help" option gets a punchline before Clippy leaves
             const message = document.querySelector('.clippy-message');
             const options = document.querySelector('.clippy-options');
             if (message && options) {
                 message.textContent = "I'll help you experience the magic of Windows 95! Just kidding, this is just a nostalgic website.";
                 options.style.display = 'none';
 
-                // Add a delay before dismissing
                 setTimeout(() => {
                     clippy.classList.add('clippy-exit');
                     setTimeout(() => {
@@ -96,19 +93,12 @@ function dismissClippy(wasHelpful) {
             }
         }
 
-        // Normal dismiss with smoother animation
+        // Fade away, then remove
         clippy.classList.add('clippy-exit');
         setTimeout(() => {
             if (clippy.parentNode) {
                 clippy.parentNode.removeChild(clippy);
             }
         }, 500);
-    }
-}
-
-// This is more reliable than clippy.remove()
-function removeElement(element) {
-    if (element && element.parentNode) {
-        element.parentNode.removeChild(element);
     }
 }

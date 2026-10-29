@@ -184,7 +184,7 @@ function trackActivity() {
 
 // Initialize the inactivity tracker
 function initInactivityTracker() {
-    // Check if body has the mobile class that your mobile-detection.js adds
+    // Desktop only (mobile-detection.js sets the class, and runs first)
     if (document.body.classList.contains('is-touch-device')) {
         return;
     }

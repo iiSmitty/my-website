@@ -169,24 +169,19 @@ function initializeProgramItems() {
     });
 }
 
-// Function to open the My Tech window
 function openMyTechWindow() {
     WindowManager.open(document.getElementById('myTechWindow'));
 }
 
-// Function to close the My Tech window
 function closeMyTechWindow() {
     WindowManager.close(document.getElementById('myTechWindow'));
 }
 
-// Function to select a tech item
+// Only one row of My Computer is selected at a time
 function selectTechItem(element) {
-    // Clear any previously selected items
     document.querySelectorAll('.tech-item').forEach(item => {
         item.classList.remove('selected');
     });
-
-    // Select the clicked item
     element.classList.add('selected');
 }
 
@@ -268,19 +263,18 @@ function closeDeadDeviceDialog() {
     document.removeEventListener('keydown', deadDeviceEscHandler);
 }
 
-// Function to handle deselecting icons when clicking outside
+// Clicking anywhere but an icon or a window deselects the desktop icons
 function initializeDesktopClickHandler() {
     const desktopBackground = document.body;
 
     desktopBackground.addEventListener('click', function(event) {
-        // Check if the click is on the desktop background and not on an icon or a window
         if (!event.target.closest('.desktop-icon') && !event.target.closest('.win95-window')) {
             document.querySelectorAll('.desktop-icon').forEach(icon => icon.classList.remove('selected'));
         }
     });
 }
 
-// Initialize all desktop icons and their functionality
+// A click selects a desktop icon, a double-click opens its program
 function initializeDesktopIcons() {
     // Make sure the desktop icons are visible - override inline style
     const desktopIconsContainer = document.querySelector('.desktop-icons');
@@ -288,11 +282,9 @@ function initializeDesktopIcons() {
         desktopIconsContainer.style.display = 'block';
     }
 
-    // Add click handlers to all desktop icons
     const desktopIcons = document.querySelectorAll('.desktop-icon');
 
     desktopIcons.forEach(icon => {
-        // Click handler to select the icon
         icon.addEventListener('click', function(event) {
             desktopIcons.forEach(i => i.classList.remove('selected'));
             this.classList.add('selected');
@@ -306,7 +298,6 @@ function initializeDesktopIcons() {
         }
     });
 
-    // Initialize the desktop click handler
     initializeDesktopClickHandler();
 }
 
@@ -322,7 +313,6 @@ function registerDesktopWindows() {
     WindowManager.register(document.getElementById('experienceWindow'), { maximizable: true });
 }
 
-// When the document is ready, initialize everything
 document.addEventListener('DOMContentLoaded', function() {
     registerDesktopWindows();
     initializeDesktopIcons();
@@ -332,7 +322,6 @@ document.addEventListener('DOMContentLoaded', function() {
     addDeleteKeyFunctionality();
 });
 
-// Function to open the GitHub installer window
 function openGitHubInstallerWindow() {
     const installerWindow = document.getElementById('githubInstallerWindow');
 
@@ -342,23 +331,19 @@ function openGitHubInstallerWindow() {
     }
 }
 
-// Function to close the GitHub installer window
 function closeGitHubInstallerWindow() {
     clearTimeout(installationTimer);
     WindowManager.close(document.getElementById('githubInstallerWindow'));
 }
 
-// Function to open GitHub page in a new tab
+// The installer's Next button: the GitHub profile, in a new tab
 function openGitHubPage() {
-    // Your GitHub URL
     const githubUrl = 'https://github.com/iiSmitty';
     window.open(githubUrl, '_blank');
-
-    // Close the installer window
     closeGitHubInstallerWindow();
 }
 
-// Installation steps with delays (in ms)
+// Each step shows for its delay (in ms) before the next one
 const installationSteps = [
     { text: "Checking system requirements...", delay: 1000 },
     { text: "Searching for existing GitHub installations...", delay: 1500 },
@@ -378,7 +363,7 @@ let currentStep = 0;
 // The next step's timer, so closing the wizard stops it
 let installationTimer = null;
 
-// Start the installation process
+// Starts the installation over from the first step
 function startInstallation() {
     clearTimeout(installationTimer);
     currentStep = 0;
@@ -386,12 +371,10 @@ function startInstallation() {
     const installationLog = document.getElementById('installationLog');
     const nextBtn = document.getElementById('nextBtn');
 
-    // Reset UI
     progressBar.style.width = '0%';
     nextBtn.disabled = true;
     installationLog.innerHTML = '<div>Starting installation process...</div>';
 
-    // Process each step with its delay
     processNextStep();
 }
 
@@ -403,22 +386,17 @@ function processNextStep() {
     if (currentStep < installationSteps.length) {
         const step = installationSteps[currentStep];
 
-        // Update status text
         statusText.textContent = step.text;
-
-        // Add to log
         addLogEntry(step.text);
 
-        // Update progress bar
         const progress = ((currentStep + 1) / installationSteps.length) * 100;
         progressBar.style.width = `${progress}%`;
 
-        // Move to next step after delay
         installationTimer = setTimeout(processNextStep, step.delay);
 
         currentStep++;
 
-        // Enable Next button when done
+        // The last step enables Next straight away, without waiting out its delay
         if (currentStep === installationSteps.length) {
             nextBtn.disabled = false;
             addLogEntry("Ready to connect to GitHub repositories!", "completed");
@@ -437,7 +415,7 @@ function addLogEntry(text, className = '') {
     installationLog.scrollTop = installationLog.scrollHeight;
 }
 
-// Function to open the Experience window (experience.html in embedded mode)
+// The Experience window shows experience.html in embedded mode
 function openExperienceWindow() {
     const frame = document.getElementById('experienceFrame');
 
@@ -449,12 +427,10 @@ function openExperienceWindow() {
     WindowManager.open(document.getElementById('experienceWindow'));
 }
 
-// Function to close the Experience window
 function closeExperienceWindow() {
     WindowManager.close(document.getElementById('experienceWindow'));
 }
 
-// Function to open the Spotify window
 function openSpotifyWindow() {
     // Re-opening an open window just brings it forward
     if (!WindowManager.open(document.getElementById('spotifyWindow'))) {
@@ -462,15 +438,15 @@ function openSpotifyWindow() {
     }
 }
 
-// Function to close the Spotify window
 function closeSpotifyWindow() {
     WindowManager.close(document.getElementById('spotifyWindow'));
 }
 
-// Function to load data from local JSON file
+// data/spotify-data.json is refreshed by a GitHub Action (spotify-data-fetcher.js)
 async function loadSpotifyData() {
+    const lastUpdatedText = document.querySelector('#spotifyLastUpdated .sync-text-content');
+
     try {
-        // Fetch the local JSON file from the data folder
         const response = await fetch('data/spotify-data.json');
 
         if (!response.ok) {
@@ -479,7 +455,6 @@ async function loadSpotifyData() {
 
         const data = await response.json();
 
-        // Display the data
         if (data.topArtists) {
             displayTopArtists(data.topArtists);
         }
@@ -488,83 +463,42 @@ async function loadSpotifyData() {
             displayTopTracks(data.topTracks);
         }
 
-        // Update to use the shared formatCustomDateTime function
         if (data.lastUpdated) {
-            const formattedTime = formatCustomDateTime(data.lastUpdated);
-
-            // Get the last updated container
-            const lastUpdatedContainer = document.getElementById('spotifyLastUpdated');
-
-            if (lastUpdatedContainer) {
-                // Check if we have the structure with LED indicator
-                const textElement = lastUpdatedContainer.querySelector('.sync-text-content');
-
-                if (textElement) {
-                    // Just update the text content
-                    textElement.textContent = `LAST UPDATED: ${formattedTime}`;
-                } else {
-                    // Create the new structure completely
-                    lastUpdatedContainer.innerHTML = `
-                        <div class="refresh-time">
-                            <div class="sync-indicator"></div>
-                            <div class="sync-text-content">LAST UPDATED: ${formattedTime}</div>
-                        </div>
-                    `;
-                }
-            } else {
-                // Fall back to the original element if the new container doesn't exist
-                const lastUpdatedElement = document.getElementById('lastUpdated');
-                if (lastUpdatedElement) {
-                    lastUpdatedElement.textContent = `LAST UPDATED: ${formattedTime}`;
-                }
-            }
+            lastUpdatedText.textContent = `LAST UPDATED: ${formatCustomDateTime(data.lastUpdated)}`;
         }
 
     } catch (error) {
         console.error('Error loading Spotify data:', error);
-
-        // Update the last updated text if there's an error
-        const textElement = document.getElementById('spotifyLastUpdated')?.querySelector('.sync-text-content');
-        if (textElement) {
-            textElement.textContent = "Error loading data.";
-        }
+        lastUpdatedText.textContent = "Error loading data.";
     }
 }
 
-// Function to display top artists
+// The window has room for five artists
 function displayTopArtists(artists) {
     artists.forEach((artist, index) => {
-        if (index < 5) { // Limit to 5 artists
+        if (index < 5) {
             const imageElement = document.getElementById(`artist-image-${index + 1}`);
             const nameElement = document.getElementById(`artist-name-${index + 1}`);
 
             if (imageElement && nameElement) {
-                // Set artist image
                 if (artist.image) {
                     imageElement.src = artist.image;
                 }
-
-                // Set artist name
                 nameElement.textContent = artist.name;
             }
         }
     });
 }
 
-// Function to display top tracks
 function displayTopTracks(tracks) {
-    // Clear existing tracks
     const tracksList = document.querySelector('.spotify-tracks-list');
     if (tracksList) {
-        // Clear the list first
         tracksList.innerHTML = '';
 
-        // Add each track
         tracks.forEach((track, index) => {
             const trackElement = document.createElement('div');
             trackElement.className = 'spotify-track-item';
 
-            // Build the track item HTML
             trackElement.innerHTML = `
                 <div class="track-number">${index + 1}</div>
                 <div class="track-art-container">
@@ -576,7 +510,6 @@ function displayTopTracks(tracks) {
                 </div>
             `;
 
-            // Add to the tracks list
             tracksList.appendChild(trackElement);
         });
     } else {
@@ -584,24 +517,22 @@ function displayTopTracks(tracks) {
     }
 }
 
-// Function to open the Slack invite window
 function openSlackInviteWindow() {
     WindowManager.open(document.getElementById('slackWindow'));
 }
 
-// Function to close the Slack window
 function closeSlackWindow() {
     WindowManager.close(document.getElementById('slackWindow'));
 }
 
-// Function to open Slack invitation
+// The Join Community button: ZATech's invite page, in a new tab
 function joinSlackCommunity() {
     const slackInviteUrl = 'https://zatech.co.za/';
     window.open(slackInviteUrl, '_blank');
     closeSlackWindow();
 }
 
-// Function to make desktop icons draggable
+// Desktop icons can be dragged anywhere on the desktop with the left button
 function makeIconsDraggable() {
     const desktopIcons = document.querySelectorAll('.desktop-icon');
 
@@ -609,74 +540,65 @@ function makeIconsDraggable() {
         let isDragging = false;
         let offsetX, offsetY;
 
-        // Mouse down event to start dragging
         icon.addEventListener('mousedown', function(e) {
-            // Only start dragging if it's not a double-click
-            // (use a timer to detect double-clicks)
+            // The second press of a double-click opens the program, so it
+            // doesn't start a drag
             const currentTime = new Date().getTime();
             const clickDelay = 200; // milliseconds
 
             if (icon.lastClickTime && (currentTime - icon.lastClickTime < clickDelay)) {
-                // This is a double-click, don't start dragging
                 return;
             }
 
-            // Only start dragging on left mouse button (button 0)
             if (e.button !== 0) return;
 
-            // Remember last click time for double-click detection
             icon.lastClickTime = currentTime;
 
-            // Select the icon first
             desktopIcons.forEach(i => i.classList.remove('selected'));
             icon.classList.add('selected');
 
-            // Set up dragging
             isDragging = true;
             offsetX = e.clientX - icon.getBoundingClientRect().left;
             offsetY = e.clientY - icon.getBoundingClientRect().top;
 
-            // Prevent default behavior and event bubbling
             e.preventDefault();
             e.stopPropagation();
         });
 
-        // Mouse move event for dragging
         document.addEventListener('mousemove', function(e) {
             if (!isDragging) return;
 
-            // Calculate new position
             const desktopIconsContainer = document.querySelector('.desktop-icons');
             const containerRect = desktopIconsContainer.getBoundingClientRect();
 
             let newLeft = e.clientX - offsetX - containerRect.left;
             let newTop = e.clientY - offsetY - containerRect.top;
 
-            // Set the icon's position (convert from absolute to relative positioning)
+            // A dragged icon leaves the column layout and is placed absolutely,
+            // without the margin the column gave it
             icon.style.position = 'absolute';
             icon.style.left = newLeft + 'px';
             icon.style.top = newTop + 'px';
-            icon.style.margin = '0'; // Remove the margin to prevent offset issues
+            icon.style.margin = '0';
 
             e.preventDefault();
         });
 
-        // Mouse up event to stop dragging
         document.addEventListener('mouseup', function() {
             isDragging = false;
         });
 
-        // Prevent accidental text selection during dragging
+        // Dragging shouldn't select the icon's label text
         icon.addEventListener('selectstart', function(e) {
             e.preventDefault();
         });
     });
 }
 
-// Function to add delete functionality with simplified achievement notification
+// Delete removes the selected desktop icon. Deleting all of them unlocks an
+// Xbox-style achievement.
 function addDeleteKeyFunctionality() {
 
-    // Create achievement notification element (hidden initially)
     if (!document.querySelector('.achievement-notification')) {
         const achievementElement = document.createElement('div');
         achievementElement.className = 'achievement-notification';
@@ -700,23 +622,18 @@ function addDeleteKeyFunctionality() {
     // Preload the achievement sound
     const achievementSound = new Audio('https://dl.dropboxusercontent.com/s/8qvrpd69ua7wio8/XboxAchievement.mp3');
 
-    // Add a keyboard event listener to the document
     document.addEventListener('keydown', function(e) {
-        // Check if the Delete key was pressed
         if (e.key === 'Delete') {
-            // Find the selected icon
             const selectedIcon = document.querySelector('.desktop-icon.selected');
 
             if (selectedIcon) {
-                // Animate the deletion
+                // Fade out, then remove
                 selectedIcon.style.transition = 'opacity 0.3s';
                 selectedIcon.style.opacity = '0';
 
-                // Remove the icon after animation
                 setTimeout(() => {
                     selectedIcon.remove();
 
-                    // Check if all icons are now deleted
                     const remainingIcons = document.querySelectorAll('.desktop-icon');
                     if (remainingIcons.length === 0) {
                         showAchievement();
@@ -727,25 +644,21 @@ function addDeleteKeyFunctionality() {
     });
 }
 
-// Function to display the achievement notification
 function showAchievement() {
     const achievementElement = document.querySelector('.achievement-notification');
     if (!achievementElement) return;
 
-    // Play achievement sound
     const achievementSound = new Audio('https://dl.dropboxusercontent.com/s/8qvrpd69ua7wio8/XboxAchievement.mp3');
     achievementSound.volume = 0.7;
     achievementSound.play().catch(err => console.log('Audio play failed:', err));
 
-    // Prevent showing multiple times
+    // Already showing: the sound plays again, the notification doesn't restart
     if (achievementElement.classList.contains('achievement-show')) {
         return;
     }
 
-    // Show and animate the achievement
     achievementElement.classList.add('achievement-show');
 
-    // Remove the animation class after it completes
     setTimeout(() => {
         achievementElement.classList.remove('achievement-show');
     }, 8000); // Match this to the CSS animation duration
