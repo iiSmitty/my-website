@@ -14,7 +14,20 @@ module.exports = defineConfig({
         // Use the system-installed Microsoft Edge (always present on Windows)
         // instead of downloading Playwright's bundled Chromium. Avoids the
         // ~180MB browser download, which a corporate proxy/firewall blocks.
-        { name: 'msedge', use: { ...devices['Desktop Edge'], channel: 'msedge' } },
+        //
+        // No proxy: with Windows' "Automatically detect settings" on, Edge spent
+        // about 5 seconds looking for a proxy before every test's first page
+        // load, and the slowest tests ran out of time. This machine connects
+        // directly, so there's no proxy to find. If tests ever need a proxy to
+        // reach the internet, remove this and raise the timeout instead.
+        {
+            name: 'msedge',
+            use: {
+                ...devices['Desktop Edge'],
+                channel: 'msedge',
+                launchOptions: { args: ['--no-proxy-server'] },
+            },
+        },
     ],
     webServer: {
         command: 'npx -y serve -l 3000 .',
