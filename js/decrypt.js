@@ -52,12 +52,8 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
             decryptButton.addEventListener('click', onDecryptClick);
         }
 
-        // Check if this is an internal navigation from another page on your site
-        const isInternalNavigation = document.referrer.includes(window.location.hostname) ||
-            sessionStorage.getItem('internalNavigation') === 'true';
-
-        // Clear the session storage flag
-        sessionStorage.removeItem('internalNavigation');
+        // Coming from another page of this site means Windows has already started
+        const isInternalNavigation = document.referrer.includes(window.location.hostname);
 
         // Check if we're on a 404 page
         const is404Page = document.title.includes('404') ||
@@ -78,21 +74,6 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
                 mainContent.style.display = 'block';
             }
         }
-
-        // Modify all internal navigation links to set a session flag
-        document.querySelectorAll('.win95-menu-item').forEach(item => {
-            const originalOnClick = item.onclick;
-
-            item.onclick = function(e) {
-                // Set a session storage flag to indicate internal navigation
-                sessionStorage.setItem('internalNavigation', 'true');
-
-                // Call the original onclick handler if it exists
-                if (typeof originalOnClick === 'function') {
-                    return originalOnClick.call(this, e);
-                }
-            };
-        });
     });
 
     // "Welcome to Windows 95": clicking Start plays the startup sound and shows

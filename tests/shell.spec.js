@@ -273,6 +273,29 @@ test.describe('desktop', () => {
         await openFromStartMenu(page, 'My Computer');
         await expect(page.locator('#myTechWindow')).toBeVisible();
     });
+
+    test('deleting every desktop icon unlocks an achievement, and only then fetches its sound', async ({ page }) => {
+        const soundRequests = [];
+        page.on('request', request => {
+            if (request.url().includes('dl.dropboxusercontent.com')) soundRequests.push(request.url());
+        });
+
+        await boot(page);
+        expect(soundRequests, 'the sound is not downloaded with the page').toEqual([]);
+
+        const icons = page.locator('.desktop-icon');
+        const count = await icons.count();
+        for (let remaining = count - 1; remaining >= 0; remaining--) {
+            await icons.first().click();
+            await page.keyboard.press('Delete');
+            await expect(icons).toHaveCount(remaining);
+        }
+
+        const achievement = page.locator('.achievement-notification');
+        await expect(achievement).toHaveClass(/achievement-show/);
+        await expect(achievement).toContainText('Desktop Declutterer');
+        await expect.poll(() => soundRequests.length).toBeGreaterThan(0);
+    });
 });
 
 test.describe('touch device', () => {

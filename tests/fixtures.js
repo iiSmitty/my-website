@@ -3,12 +3,12 @@ const base = require('@playwright/test');
 
 // Every spec imports test and expect from here rather than from Playwright.
 //
-// The pages load three things from other people's servers: Google's
-// analytics script and its beacon, and the achievement sound from Dropbox.
-// A page's load event waits for them, so when seven test browsers start at
-// once and those hosts are slow to answer the burst, the first wave of tests
-// timed out. They're answered locally instead, so the suite only ever waits
-// on this site. (p5.js and the APIs the windows call are left alone: they
+// The pages load Google's analytics script and its beacon from other
+// people's servers, and the home page fetches its achievement sound from
+// Dropbox once every desktop icon is deleted. The load event waits for
+// analytics, so when seven test browsers start at once and those hosts are
+// slow to answer the burst, the first wave of tests timed out. They're
+// answered locally instead, so the suite only ever waits on this site. (p5.js and the APIs the windows call are left alone: they
 // load on demand, and the specs that need them route them themselves.)
 const STUBS = [
     ['https://*.googletagmanager.com/**', { status: 200, contentType: 'text/javascript', body: '' }],

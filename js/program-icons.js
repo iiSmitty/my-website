@@ -619,9 +619,6 @@ function addDeleteKeyFunctionality() {
         document.body.appendChild(achievementElement);
     }
 
-    // Preload the achievement sound
-    const achievementSound = new Audio('https://dl.dropboxusercontent.com/s/8qvrpd69ua7wio8/XboxAchievement.mp3');
-
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Delete') {
             const selectedIcon = document.querySelector('.desktop-icon.selected');
