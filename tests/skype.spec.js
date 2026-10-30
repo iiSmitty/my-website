@@ -1,4 +1,4 @@
-const { test, expect } = require('./fixtures');
+const { test, expect, expectCentered } = require('./fixtures');
 
 // The Skype easter egg shows an old profile that had real phone numbers on it.
 // They must never reach the page: anything shaped like a South African number
@@ -29,6 +29,7 @@ test.describe('desktop', () => {
         await expect(skypeWindow).toBeVisible();
         await expect(skypeWindow).toBeFocused();
         await expect(skypeWindow).toHaveCSS('position', 'fixed');
+        await expectCentered(skypeWindow);
 
         // Profile content
         await expect(skypeWindow).toContainText('andrez.smit');
@@ -69,6 +70,11 @@ test.describe('desktop', () => {
         await expect(skypeWindow).toBeVisible();
         await page.keyboard.press('Escape');
         await expect(skypeWindow).toBeHidden();
+
+        // Opening it again doesn't add its stylesheet again
+        await page.locator('.desktop-icon', { hasText: 'Recycle Bin' }).dblclick();
+        await expect(skypeWindow).toBeVisible();
+        await expect(page.locator('link[href="css/skype.min.css"]')).toHaveCount(1);
     });
 
     test('no phone number anywhere in the shipped source', async ({ request }) => {

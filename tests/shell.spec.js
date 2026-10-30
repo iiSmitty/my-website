@@ -38,6 +38,12 @@ test.describe('desktop', () => {
         expect(padding).toBeGreaterThanOrEqual(28);
     });
 
+    test('?showWatermark=true shows the Activate Windows watermark on any desktop', async ({ page }) => {
+        await page.goto('/?showWatermark=true');
+        await expect(page.getByText('Activate Windows')).toBeVisible();
+        await expect(page.locator('.desktop-icon')).toHaveCount(7);
+    });
+
     test('the Start menu opens every program, sorted by name', async ({ page }) => {
         await boot(page);
         await startButton(page).click();
@@ -339,6 +345,14 @@ test.describe('desktop', () => {
 
 test.describe('touch device', () => {
     test.use({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
+
+    test('has no desktop icons and no Activate Windows watermark', async ({ page }) => {
+        await page.goto('/?showWatermark=true');
+        await page.locator('#start-windows').click();
+        await expect(page.locator('.win95-container')).toBeVisible();
+        await expect(page.locator('.desktop-icon')).toHaveCount(0);
+        await expect(page.getByText('Activate Windows')).toHaveCount(0);
+    });
 
     test('has no taskbar, like it has no desktop icons', async ({ page }) => {
         await boot(page);

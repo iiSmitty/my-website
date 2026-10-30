@@ -1,4 +1,4 @@
-const { test, expect } = require('./fixtures');
+const { test, expect, expectCentered } = require('./fixtures');
 
 // The Videos folder reads data/watching.json, so every test serves its own
 // copy rather than depending on what the workflow last committed.
@@ -74,6 +74,7 @@ test.describe('desktop', () => {
         const { videosWindow, posters } = await openVideos(page, watching());
 
         await expect(videosWindow).toHaveCSS('position', 'fixed');
+        await expectCentered(videosWindow);
         await expect(videosWindow.locator('.videos-address')).toContainText('C:\\My Documents\\Videos');
         await expect(rows(page)).toHaveCount(5);
         await expect(rows(page).nth(0)).toContainText('Severance.avi');
@@ -131,6 +132,7 @@ test.describe('desktop', () => {
         await page.keyboard.press('Enter');
         const properties = page.getByRole('dialog', { name: 'The Bear.avi Properties' });
         await expect(properties).toBeVisible();
+        await expectCentered(properties);
         await expect(properties.getByRole('button', { name: 'OK' })).toBeFocused();
         await expect(properties).toContainText('MS-DOS name:THEBEA~1.AVI');
         await expect(properties).toContainText('Episodes:28 watched');
@@ -154,6 +156,18 @@ test.describe('desktop', () => {
         // A second Escape closes the window
         await page.keyboard.press('Escape');
         await expect(page.locator('#videosWindow')).toBeHidden();
+    });
+
+    test('dates are shown day first, the South African way', async ({ page }) => {
+        // Local times, so the test passes in any time zone
+        const data = watching();
+        data.movies[0].watchedAt = new Date(2026, 9, 19, 8, 5).toISOString();
+        data.previous.finishedAt = new Date(2026, 8, 1, 21, 30).toISOString();
+        await openVideos(page, data);
+
+        await expect(rows(page).nth(2).locator('.videos-modified')).toHaveText('19/10/2026 08:05');
+        await rows(page).nth(1).click();
+        await expect(preview(page)).toContainText('Finished 01/09/2026');
     });
 
     test('empty slots and a series left alone too long', async ({ page }) => {

@@ -1,4 +1,4 @@
-const { test, expect } = require('./fixtures');
+const { test, expect, expectCentered } = require('./fixtures');
 
 // TASKMGR.EXE reads the GitHub Actions API, so every test serves its own
 // answers rather than depending on GitHub (or its rate limit).
@@ -141,6 +141,7 @@ test.describe('desktop', () => {
         await taskManager.getByRole('button', { name: 'Close' }).click();
         await openTaskManager(page);
         expect(requests).toHaveLength(3);
+        await expect(page.locator('link[href="css/taskmgr.min.css"]')).toHaveCount(1);
 
         // F5 refreshes Task Manager rather than the page
         await page.getByRole('tab', { name: 'Processes' }).focus();
@@ -156,8 +157,10 @@ test.describe('desktop', () => {
         await taskManager.getByRole('tab', { name: 'Processes' }).click();
         await processRows(page).nth(1).dblclick();
 
+        await expectCentered(taskManager);
         const properties = page.getByRole('alertdialog', { name: 'SPOTIFY.EXE Properties' });
         await expect(properties).toBeVisible();
+        await expectCentered(properties);
         await expect(properties).toContainText('top artists and tracks of the month from Spotify');
         await expect(properties).toContainText('Update Spotify Data');
         await expect(properties).toContainText('Succeeded');

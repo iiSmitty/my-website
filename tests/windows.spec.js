@@ -1,4 +1,4 @@
-const { test, expect } = require('./fixtures');
+const { test, expect, expectCentered } = require('./fixtures');
 const { fastForwardUntil } = require('./contact-helpers');
 
 // The home page's simpler desktop windows: Spotify, the GitHub installer
@@ -149,6 +149,7 @@ test.describe('desktop', () => {
 
             await headset.click();
             await expect(deadDialog(page)).toBeVisible();
+            await expectCentered(page.locator('#deadDeviceWindow'));
             await expect(deadDialog(page)).toContainText('This device is not working properly.');
             await expect(headset).toHaveClass(/selected/);
             await deadDialog(page).getByRole('button', { name: 'OK' }).click();

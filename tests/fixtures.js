@@ -26,4 +26,13 @@ const test = base.test.extend({
     }
 });
 
-module.exports = { test, expect: base.expect, STUBS };
+// Windows and dialogs open in the middle of the screen, but never closer than
+// 8px to its top or left edge, so a title bar too big to fit stays in reach
+async function expectCentered(locator) {
+    const box = await locator.boundingBox();
+    const viewport = locator.page().viewportSize();
+    base.expect(Math.abs(box.x - Math.max(8, (viewport.width - box.width) / 2))).toBeLessThanOrEqual(1);
+    base.expect(Math.abs(box.y - Math.max(8, (viewport.height - box.height) / 2))).toBeLessThanOrEqual(1);
+}
+
+module.exports = { test, expect: base.expect, expectCentered, STUBS };
