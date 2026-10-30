@@ -54,7 +54,7 @@ test.describe('desktop', () => {
     });
 
     test.describe('shutting down', () => {
-        for (const path of ['/', '/experience.html', '/strava-pbs.html']) {
+        for (const path of ['/', '/experience.html', '/strava-pbs.html', '/404.html']) {
             test(`${path}: the main window's close button asks first, and Yes plays the shutdown video`, async ({ page }) => {
                 // The video is a YouTube embed; the test never reaches YouTube
                 await page.route('https://www.youtube.com/**', (route) =>
@@ -91,15 +91,6 @@ test.describe('desktop', () => {
                 await expect(video).toHaveCount(0);
             });
         }
-
-        test('/404.html: the main window\'s close button says it is safe to turn off the computer', async ({ page }) => {
-            await page.goto('/404.html');
-            await mainWindow(page).locator('.win95-close').first().click();
-            await expect(page.getByText('It is now safe to turn off your computer.')).toBeVisible();
-
-            await page.getByRole('button', { name: 'OK' }).click();
-            await expect(page.getByText('Windows 95 has shut down')).toBeVisible();
-        });
     });
 
     // The home page's window manager does these with a taskbar
