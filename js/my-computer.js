@@ -75,11 +75,8 @@ function showDeadDeviceDialog(element) {
     overlay.querySelector('#deadDialogTitle').textContent = `${name} Properties`;
     overlay.classList.add('open');
 
-    // Center on screen each time it opens (left/top in px so dragging works).
-    const dialog = document.getElementById('deadDeviceWindow');
-    const rect = dialog.getBoundingClientRect();
-    dialog.style.left = Math.max(8, (window.innerWidth - rect.width) / 2) + 'px';
-    dialog.style.top = Math.max(8, (window.innerHeight - rect.height) / 2) + 'px';
+    // Centered each time it opens
+    centerInViewport(document.getElementById('deadDeviceWindow'));
 
     // Esc closes the dialog while it's open.
     document.addEventListener('keydown', deadDeviceEscHandler);

@@ -45,7 +45,6 @@ const TASKMGR_EVENTS = {
     push: 'Code change'
 };
 
-let taskmgrStylesPromise = null;
 let taskmgrProcesses = [];
 let taskmgrFetchedAt = 0;
 let taskmgrLoading = null;
@@ -56,41 +55,11 @@ let taskmgrReturnFocus = null;
 
 // --- Helpers ---------------------------------------------------------------
 
-// Data from GitHub only ever reaches the page through textContent
-function taskmgrEl(tag, className, text) {
-    const element = document.createElement(tag);
-    if (className) element.className = className;
-    if (text !== undefined && text !== null) element.textContent = text;
-    return element;
-}
-
-function loadTaskmgrStyles() {
-    if (!taskmgrStylesPromise) {
-        taskmgrStylesPromise = new Promise(resolve => {
-            const link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = 'css/taskmgr.min.css';
-            link.onload = resolve;
-            link.onerror = resolve;
-            document.head.appendChild(link);
-        });
-    }
-    return taskmgrStylesPromise;
-}
-
 // 0:00:38, the way Task Manager shows CPU time
 function formatTaskmgrDuration(ms) {
     const seconds = Math.max(0, Math.round(ms / 1000));
     const pad = n => String(n).padStart(2, '0');
     return `${Math.floor(seconds / 3600)}:${pad(Math.floor(seconds / 60) % 60)}:${pad(seconds % 60)}`;
-}
-
-// DD/MM/YYYY HH:MM, the South African format used elsewhere on the site
-function formatTaskmgrDateTime(time) {
-    const date = new Date(time);
-    const pad = n => String(n).padStart(2, '0');
-    return `${pad(date.getDate())}/${pad(date.getMonth() + 1)}/${date.getFullYear()} ` +
-        `${pad(date.getHours())}:${pad(date.getMinutes())}`;
 }
 
 // The 8.3 name for a workflow file Task Manager doesn't know: NEW-THING.yml -> NEWTHING.EXE
@@ -228,13 +197,13 @@ function taskmgrWindow() {
 }
 
 function buildTaskmgrList(id, label, columns) {
-    const frame = taskmgrEl('div', 'taskmgr-list-frame');
-    const table = taskmgrEl('table', 'taskmgr-list');
+    const frame = makeElement('div', 'taskmgr-list-frame');
+    const table = makeElement('table', 'taskmgr-list');
     table.setAttribute('role', 'grid');
     table.setAttribute('aria-label', label);
     const head = table.createTHead().insertRow();
     columns.forEach(([text, className]) => {
-        const cell = taskmgrEl('th', className, text);
+        const cell = makeElement('th', className, text);
         cell.scope = 'col';
         head.append(cell);
     });
@@ -246,24 +215,24 @@ function buildTaskmgrList(id, label, columns) {
 
 // An NT4 meter: green LEDs on black, with the value underneath
 function buildTaskmgrMeter(id, label) {
-    const group = taskmgrEl('fieldset', 'taskmgr-group taskmgr-meter-group');
-    group.append(taskmgrEl('legend', null, label));
-    const meter = taskmgrEl('div', 'taskmgr-meter');
+    const group = makeElement('fieldset', 'taskmgr-group taskmgr-meter-group');
+    group.append(makeElement('legend', null, label));
+    const meter = makeElement('div', 'taskmgr-meter');
     meter.id = id;
     meter.setAttribute('role', 'meter');
     meter.setAttribute('aria-label', label);
     meter.setAttribute('aria-valuemin', '0');
     meter.setAttribute('aria-valuemax', '100');
-    const bar = taskmgrEl('div', 'taskmgr-meter-bar');
-    bar.append(taskmgrEl('div', 'taskmgr-meter-fill'));
-    meter.append(bar, taskmgrEl('div', 'taskmgr-meter-value'));
+    const bar = makeElement('div', 'taskmgr-meter-bar');
+    bar.append(makeElement('div', 'taskmgr-meter-fill'));
+    meter.append(bar, makeElement('div', 'taskmgr-meter-value'));
     group.append(meter);
     return group;
 }
 
 function buildTaskmgrGraph(id, label) {
-    const group = taskmgrEl('fieldset', 'taskmgr-group taskmgr-graph-group');
-    group.append(taskmgrEl('legend', null, label));
+    const group = makeElement('fieldset', 'taskmgr-group taskmgr-graph-group');
+    group.append(makeElement('legend', null, label));
     const graph = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     graph.id = id;
     graph.classList.add('taskmgr-graph');
@@ -275,20 +244,20 @@ function buildTaskmgrGraph(id, label) {
 }
 
 function buildTaskmgrTotals(label, rows) {
-    const group = taskmgrEl('fieldset', 'taskmgr-group taskmgr-totals');
-    group.append(taskmgrEl('legend', null, label));
-    const list = taskmgrEl('dl');
+    const group = makeElement('fieldset', 'taskmgr-group taskmgr-totals');
+    group.append(makeElement('legend', null, label));
+    const list = makeElement('dl');
     rows.forEach(([term, id]) => {
-        const value = taskmgrEl('dd');
+        const value = makeElement('dd');
         value.id = id;
-        list.append(taskmgrEl('dt', null, term), value);
+        list.append(makeElement('dt', null, term), value);
     });
     group.append(list);
     return group;
 }
 
 function buildTaskmgrWindow() {
-    const win = taskmgrEl('div', 'win95-window taskmgr-window');
+    const win = makeElement('div', 'win95-window taskmgr-window');
     win.id = 'taskmgrWindow';
     win.hidden = true;
     win.tabIndex = -1;
@@ -332,7 +301,7 @@ function buildTaskmgrWindow() {
     // Applications: the open windows
     const applications = win.querySelector('#taskmgrApplications');
     const tasks = buildTaskmgrList('taskmgrTasks', 'Tasks', [['Task', 'taskmgr-col-task'], ['Status', 'taskmgr-col-status']]);
-    const taskButtons = taskmgrEl('div', 'taskmgr-buttons');
+    const taskButtons = makeElement('div', 'taskmgr-buttons');
     taskButtons.innerHTML = `
         <button class="win95-btn" type="button" id="taskmgrEndTask">End Task</button>
         <button class="win95-btn" type="button" id="taskmgrSwitchTo">Switch To</button>`;
@@ -344,7 +313,7 @@ function buildTaskmgrWindow() {
         ['Image Name', 'taskmgr-col-image'], ['PID', 'taskmgr-col-pid'], ['Status', 'taskmgr-col-status'],
         ['CPU Time', 'taskmgr-col-time'], ['Last Run', 'taskmgr-col-last']
     ]);
-    const error = taskmgrEl('div', 'taskmgr-error');
+    const error = makeElement('div', 'taskmgr-error');
     error.id = 'taskmgrError';
     error.setAttribute('role', 'alert');
     error.hidden = true;
@@ -355,7 +324,7 @@ function buildTaskmgrWindow() {
             <button class="win95-btn" type="button" id="taskmgrRetry">Retry</button>
         </div>`;
     processList.append(error);
-    const processButtons = taskmgrEl('div', 'taskmgr-buttons');
+    const processButtons = makeElement('div', 'taskmgr-buttons');
     processButtons.innerHTML = `
         <button class="win95-btn" type="button" id="taskmgrProperties">Properties</button>
         <button class="win95-btn" type="button" id="taskmgrEndProcess">End Process</button>`;
@@ -363,14 +332,14 @@ function buildTaskmgrWindow() {
 
     // Performance: the last 30 days, NT4-style
     const performance = win.querySelector('#taskmgrPerformance');
-    const charts = taskmgrEl('div', 'taskmgr-charts');
+    const charts = makeElement('div', 'taskmgr-charts');
     charts.append(
         buildTaskmgrMeter('taskmgrSuccessMeter', 'Success Rate'),
         buildTaskmgrGraph('taskmgrRunsGraph', 'Runs per Day'),
         buildTaskmgrMeter('taskmgrTimeMeter', 'Run Time'),
         buildTaskmgrGraph('taskmgrTimeGraph', 'Run Time History')
     );
-    const totals = taskmgrEl('div', 'taskmgr-totals-row');
+    const totals = makeElement('div', 'taskmgr-totals-row');
     totals.append(
         buildTaskmgrTotals('Totals', [['Processes', 'taskmgrTotalProcesses'], ['Runs', 'taskmgrTotalRuns'], ['Failed', 'taskmgrTotalFailed']]),
         buildTaskmgrTotals(`Run Time (${TASKMGR_HISTORY_DAYS} days)`, [['Total', 'taskmgrTimeTotal'], ['Average', 'taskmgrTimeAverage'], ['Longest', 'taskmgrTimeLongest']])
@@ -427,16 +396,14 @@ function buildTaskmgrWindow() {
 
 async function openTaskManager() {
     const opener = document.activeElement;
-    await loadTaskmgrStyles();
+    await loadStylesheet('css/taskmgr.min.css');
 
     const win = taskmgrWindow() || buildTaskmgrWindow();
     const wasOpen = WindowManager.open(win);
 
     if (!wasOpen) {
         taskmgrReturnFocus = opener && opener !== document.body ? opener : null;
-        const rect = win.getBoundingClientRect();
-        win.style.left = Math.max(8, (window.innerWidth - rect.width) / 2) + 'px';
-        win.style.top = Math.max(8, (window.innerHeight - rect.height) / 2) + 'px';
+        centerInViewport(win);
         renderTaskmgrTasks();
     }
     win.querySelector('.taskmgr-tab[aria-selected="true"]').focus({ preventScroll: true });
@@ -532,9 +499,9 @@ function renderTaskmgrTasks() {
     taskmgrRenderedTasks = taskmgrTaskList();
 
     body.replaceChildren(...tasks.map((win, index) => {
-        const row = taskmgrEl('tr');
+        const row = makeElement('tr');
         row.dataset.index = index;
-        const label = taskmgrEl('span', 'taskmgr-task-label');
+        const label = makeElement('span', 'taskmgr-task-label');
         const icon = WindowManager.iconOf(win);
         if (icon) {
             const copy = icon.cloneNode(true);
@@ -542,10 +509,10 @@ function renderTaskmgrTasks() {
             copy.setAttribute('aria-hidden', 'true');
             label.append(copy);
         }
-        label.append(taskmgrEl('span', null, WindowManager.titleOf(win)));
-        const name = taskmgrEl('td', 'taskmgr-col-task');
+        label.append(makeElement('span', null, WindowManager.titleOf(win)));
+        const name = makeElement('td', 'taskmgr-col-task');
         name.append(label);
-        row.append(name, taskmgrEl('td', 'taskmgr-col-status', 'Running'));
+        row.append(name, makeElement('td', 'taskmgr-col-status', 'Running'));
         return row;
     }));
 
@@ -644,15 +611,15 @@ function renderTaskmgrProcesses(now) {
     const body = document.getElementById('taskmgrProcessRows');
     const hadFocus = body.contains(document.activeElement);
     body.replaceChildren(...taskmgrProcesses.map((process, index) => {
-        const row = taskmgrEl('tr', process.status === 'Not Responding' ? 'is-not-responding' : null);
+        const row = makeElement('tr', process.status === 'Not Responding' ? 'is-not-responding' : null);
         row.dataset.index = index;
         row.title = process.description;
         row.append(
-            taskmgrEl('td', 'taskmgr-col-image', process.image),
-            taskmgrEl('td', 'taskmgr-col-pid', String(process.id)),
-            taskmgrEl('td', 'taskmgr-col-status', process.status),
-            taskmgrEl('td', 'taskmgr-col-time', process.latest ? formatTaskmgrDuration(process.latest.durationMs) : '--:--:--'),
-            taskmgrEl('td', 'taskmgr-col-last', process.latest ? formatTaskmgrDateTime(process.latest.startedAt) : 'Never')
+            makeElement('td', 'taskmgr-col-image', process.image),
+            makeElement('td', 'taskmgr-col-pid', String(process.id)),
+            makeElement('td', 'taskmgr-col-status', process.status),
+            makeElement('td', 'taskmgr-col-time', process.latest ? formatTaskmgrDuration(process.latest.durationMs) : '--:--:--'),
+            makeElement('td', 'taskmgr-col-last', process.latest ? formatDateTime(process.latest.startedAt) : 'Never')
         );
         return row;
     }));
@@ -708,7 +675,7 @@ function openTaskmgrProperties(index) {
     const fields = [
         ['Workflow', process.name],
         ['Status', process.status],
-        ['Last run', latest ? formatTaskmgrDateTime(latest.startedAt) : 'Never'],
+        ['Last run', latest ? formatDateTime(latest.startedAt) : 'Never'],
         ['Started by', latest ? TASKMGR_EVENTS[latest.event] || latest.event : null],
         ['Result', result],
         ['CPU time', latest ? formatTaskmgrDuration(latest.durationMs) : null],
@@ -817,43 +784,43 @@ function openTaskmgrDialog({ title, icon, heading, message = [], fields = [], li
     closeTaskmgrDialog();
     const returnFocus = document.activeElement;
 
-    const overlay = taskmgrEl('div', 'dead-dialog-overlay open taskmgr-dialog-overlay');
+    const overlay = makeElement('div', 'dead-dialog-overlay open taskmgr-dialog-overlay');
     overlay.id = 'taskmgrDialog';
-    const dialog = taskmgrEl('div', 'dead-dialog win95-window taskmgr-dialog');
+    const dialog = makeElement('div', 'dead-dialog win95-window taskmgr-dialog');
     dialog.setAttribute('role', 'alertdialog');
     dialog.setAttribute('aria-modal', 'true');
     dialog.setAttribute('aria-labelledby', 'taskmgrDialogTitle');
     dialog.setAttribute('aria-describedby', 'taskmgrDialogBody');
 
-    const titleBar = taskmgrEl('div', 'win95-title-bar');
-    const titleText = taskmgrEl('div', 'win95-title', title);
+    const titleBar = makeElement('div', 'win95-title-bar');
+    const titleText = makeElement('div', 'win95-title', title);
     titleText.id = 'taskmgrDialogTitle';
-    const close = taskmgrEl('button', 'win95-button win95-close');
+    const close = makeElement('button', 'win95-button win95-close');
     close.type = 'button';
     close.setAttribute('aria-label', 'Close');
     close.innerHTML = '&times;';
-    const titleButtons = taskmgrEl('div', 'win95-buttons');
+    const titleButtons = makeElement('div', 'win95-buttons');
     titleButtons.append(close);
     titleBar.append(titleText, titleButtons);
 
-    const body = taskmgrEl('div', 'taskmgr-dialog-body');
+    const body = makeElement('div', 'taskmgr-dialog-body');
     body.id = 'taskmgrDialogBody';
-    const image = taskmgrEl('img', 'taskmgr-dialog-icon');
+    const image = makeElement('img', 'taskmgr-dialog-icon');
     image.src = icon;
     image.alt = '';
     image.width = image.height = 32;
-    const text = taskmgrEl('div', 'taskmgr-dialog-text');
-    if (heading) text.append(taskmgrEl('div', 'taskmgr-dialog-heading', heading));
-    message.forEach(line => text.append(taskmgrEl('p', null, line)));
+    const text = makeElement('div', 'taskmgr-dialog-text');
+    if (heading) text.append(makeElement('div', 'taskmgr-dialog-heading', heading));
+    message.forEach(line => text.append(makeElement('p', null, line)));
     if (fields.some(([, value]) => value)) {
-        const list = taskmgrEl('dl', 'taskmgr-dialog-fields');
+        const list = makeElement('dl', 'taskmgr-dialog-fields');
         fields.filter(([, value]) => value).forEach(([term, value]) => {
-            list.append(taskmgrEl('dt', null, `${term}:`), taskmgrEl('dd', null, value));
+            list.append(makeElement('dt', null, `${term}:`), makeElement('dd', null, value));
         });
         text.append(list);
     }
     links.forEach(([label, href]) => {
-        const link = taskmgrEl('a', 'taskmgr-dialog-link', label);
+        const link = makeElement('a', 'taskmgr-dialog-link', label);
         link.href = href;
         link.target = '_blank';
         link.rel = 'noopener noreferrer';
@@ -861,9 +828,9 @@ function openTaskmgrDialog({ title, icon, heading, message = [], fields = [], li
     });
     body.append(image, text);
 
-    const buttonRow = taskmgrEl('div', 'taskmgr-dialog-buttons');
+    const buttonRow = makeElement('div', 'taskmgr-dialog-buttons');
     buttons.forEach(({ label, action }) => {
-        const button = taskmgrEl('button', 'win95-btn', label);
+        const button = makeElement('button', 'win95-btn', label);
         button.type = 'button';
         button.addEventListener('click', () => {
             closeTaskmgrDialog();
@@ -902,9 +869,7 @@ function openTaskmgrDialog({ title, icon, heading, message = [], fields = [], li
 
     overlay.returnFocus = returnFocus;
     WindowManager.makeDraggable(dialog, titleBar);
-    const rect = dialog.getBoundingClientRect();
-    dialog.style.left = Math.max(8, (window.innerWidth - rect.width) / 2) + 'px';
-    dialog.style.top = Math.max(8, (window.innerHeight - rect.height) / 2) + 'px';
+    centerInViewport(dialog);
     buttonRow.querySelector('button').focus();
 }
 

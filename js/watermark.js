@@ -1,9 +1,7 @@
 // The "Activate Windows" watermark, shown to Mac users as a joke. Add
 // ?showWatermark=true to the URL to see it on any desktop.
 document.addEventListener('DOMContentLoaded', function() {
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-        'ontouchstart' in window ||
-        navigator.maxTouchPoints > 0;
+    const isMobile = isTouchDevice();
 
     // Don't show watermark on mobile devices, or twice when a page is framed
     // inside another (e.g. the Experience desktop window)

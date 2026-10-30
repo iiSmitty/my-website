@@ -20,7 +20,6 @@ const VIDEOS_MOVIE_COUNT = 3;
 const VIDEOS_STALE_DAYS = 21;
 const VIDEOS_DAY_MS = 24 * 60 * 60 * 1000;
 
-let videosStylesPromise = null;
 let videosItems = [];
 let videosReturnFocus = null;
 let videosPropertiesReturnFocus = null;
@@ -33,42 +32,6 @@ const VIDEOS_ERROR_SVG = `
     </svg>`;
 
 // --- Helpers ---------------------------------------------------------------
-
-// Data from Trakt only ever reaches the page through textContent
-function videosEl(tag, className, text) {
-    const element = document.createElement(tag);
-    if (className) element.className = className;
-    if (text !== undefined && text !== null) element.textContent = text;
-    return element;
-}
-
-// Load the window's stylesheet on first use. Resolves even if it fails, so the
-// window still opens (unstyled) rather than not at all.
-function loadVideosStyles() {
-    if (!videosStylesPromise) {
-        videosStylesPromise = new Promise(resolve => {
-            const link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = 'css/watching.min.css';
-            link.onload = resolve;
-            link.onerror = resolve;
-            document.head.appendChild(link);
-        });
-    }
-    return videosStylesPromise;
-}
-
-// DD/MM/YYYY HH:MM, the South African format used elsewhere on the site
-function formatVideosDateTime(iso) {
-    const date = new Date(iso);
-    const pad = n => String(n).padStart(2, '0');
-    return `${pad(date.getDate())}/${pad(date.getMonth() + 1)}/${date.getFullYear()} ` +
-        `${pad(date.getHours())}:${pad(date.getMinutes())}`;
-}
-
-function formatVideosDate(iso) {
-    return formatVideosDateTime(iso).split(' ')[0];
-}
 
 // "3 days ago", "5 weeks ago", "4 months ago"
 function describeVideosAge(iso, now) {
@@ -149,7 +112,7 @@ function buildVideosItems(data, now) {
                 [['Type', 'Video Clip'], ['Location', VIDEOS_FOLDER]],
                 [['Episodes', current.aired ? `${current.watched || 0} of ${current.aired} watched` : null],
                     ['Latest', episode ? `${episode}${episodeTitle}` : null],
-                    ['Last watched', formatVideosDateTime(current.lastWatchedAt)]],
+                    ['Last watched', formatDateTime(current.lastWatchedAt)]],
                 [['MS-DOS name', videosDosName(fileName)]]
             ],
             readOnly: false
@@ -169,13 +132,13 @@ function buildVideosItems(data, now) {
             details: previous.episodes ? `${previous.episodes} episodes` : '',
             modified: previous.finishedAt,
             lines: [
-                `Finished ${formatVideosDate(previous.finishedAt)}`,
+                `Finished ${formatDate(previous.finishedAt)}`,
                 previous.episodes ? `${previous.episodes} episodes` : ''
             ],
             fields: [
                 [['Type', 'Video Clip'], ['Location', VIDEOS_FOLDER]],
                 [['Episodes', previous.episodes ? `${previous.episodes} watched` : null],
-                    ['Finished', formatVideosDateTime(previous.finishedAt)]],
+                    ['Finished', formatDateTime(previous.finishedAt)]],
                 [['MS-DOS name', videosDosName(fileName)]]
             ],
             // Nothing more to write to it
@@ -197,11 +160,11 @@ function buildVideosItems(data, now) {
             status: 'Movie',
             details,
             modified: movie.watchedAt,
-            lines: [`Watched ${formatVideosDate(movie.watchedAt)}`, details],
+            lines: [`Watched ${formatDate(movie.watchedAt)}`, details],
             fields: [
                 [['Type', 'Movie Clip'], ['Location', VIDEOS_FOLDER]],
                 [['Released', movie.year ? String(movie.year) : null], ['Length', runtime || null],
-                    ['Watched', formatVideosDateTime(movie.watchedAt)]],
+                    ['Watched', formatDateTime(movie.watchedAt)]],
                 [['MS-DOS name', videosDosName(fileName)]]
             ],
             readOnly: true
@@ -216,12 +179,6 @@ function buildVideosItems(data, now) {
 }
 
 // --- Window ----------------------------------------------------------------
-
-function centerVideosElement(element) {
-    const rect = element.getBoundingClientRect();
-    element.style.left = Math.max(8, (window.innerWidth - rect.width) / 2) + 'px';
-    element.style.top = Math.max(8, (window.innerHeight - rect.height) / 2) + 'px';
-}
 
 function buildVideosWindow() {
     const videosWindow = document.createElement('div');
@@ -332,7 +289,7 @@ function buildVideosWindow() {
 
 async function openVideosWindow() {
     const opener = document.activeElement;
-    await loadVideosStyles();
+    await loadStylesheet('css/watching.min.css');
 
     const videosWindow = document.getElementById('videosWindow') || buildVideosWindow();
     const wasOpen = WindowManager.open(videosWindow);
@@ -344,7 +301,7 @@ async function openVideosWindow() {
     }
 
     videosReturnFocus = opener && opener !== document.body ? opener : null;
-    centerVideosElement(videosWindow);
+    centerInViewport(videosWindow);
     videosWindow.focus({ preventScroll: true });
     await loadVideosFolder();
 }
@@ -407,7 +364,7 @@ async function loadVideosFolder() {
 // --- File list -------------------------------------------------------------
 
 function buildVideosProgress({ watched, aired }) {
-    const bar = videosEl('span', 'videos-progress');
+    const bar = makeElement('span', 'videos-progress');
     bar.setAttribute('role', 'progressbar');
     bar.setAttribute('aria-valuemin', '0');
     bar.setAttribute('aria-valuemax', String(aired));
@@ -415,54 +372,54 @@ function buildVideosProgress({ watched, aired }) {
     bar.setAttribute('aria-label', `${watched} of ${aired} episodes watched`);
     bar.title = `${watched} of ${aired} episodes`;
 
-    const fill = videosEl('span', 'videos-progress-fill');
+    const fill = makeElement('span', 'videos-progress-fill');
     fill.style.width = `${Math.min(100, (watched / aired) * 100)}%`;
     bar.append(fill);
     return bar;
 }
 
 function buildVideosRow(item, index) {
-    const row = videosEl('tr', item.empty ? 'videos-row videos-row--empty' : 'videos-row');
+    const row = makeElement('tr', item.empty ? 'videos-row videos-row--empty' : 'videos-row');
     row.dataset.index = index;
     row.tabIndex = -1;
     row.setAttribute('aria-selected', 'false');
 
-    const label = videosEl('span', 'videos-name-label');
+    const label = makeElement('span', 'videos-name-label');
     if (!item.empty) {
-        const icon = videosEl('span', 'VideoFileIcon_16x16');
+        const icon = makeElement('span', 'VideoFileIcon_16x16');
         icon.setAttribute('aria-hidden', 'true');
         label.append(icon);
     }
     // A long name is shortened before the extension, so ".avi"/".mpg" stays visible
-    const name = videosEl('span', 'videos-name-text');
+    const name = makeElement('span', 'videos-name-text');
     const dot = item.empty ? -1 : item.fileName.lastIndexOf('.');
     if (dot > 0) {
         name.append(
-            videosEl('span', 'videos-name-base', item.fileName.slice(0, dot)),
-            videosEl('span', 'videos-name-ext', item.fileName.slice(dot))
+            makeElement('span', 'videos-name-base', item.fileName.slice(0, dot)),
+            makeElement('span', 'videos-name-ext', item.fileName.slice(dot))
         );
     } else {
-        name.append(videosEl('span', 'videos-name-base', item.fileName));
+        name.append(makeElement('span', 'videos-name-base', item.fileName));
     }
     label.append(name);
-    const nameCell = videosEl('td', 'videos-name');
+    const nameCell = makeElement('td', 'videos-name');
     nameCell.title = item.fileName;
     nameCell.append(label);
 
-    const details = videosEl('div', 'videos-details-inner');
-    if (item.details) details.append(videosEl('span', null, item.details));
+    const details = makeElement('div', 'videos-details-inner');
+    if (item.details) details.append(makeElement('span', null, item.details));
     if (item.progress) details.append(buildVideosProgress(item.progress));
-    const detailsCell = videosEl('td', 'videos-details');
+    const detailsCell = makeElement('td', 'videos-details');
     detailsCell.append(details);
 
-    const modifiedCell = videosEl('td', 'videos-modified');
+    const modifiedCell = makeElement('td', 'videos-modified');
     if (item.modified) {
-        const time = videosEl('time', null, formatVideosDateTime(item.modified));
+        const time = makeElement('time', null, formatDateTime(item.modified));
         time.dateTime = item.modified;
         modifiedCell.append(time);
     }
 
-    row.append(nameCell, videosEl('td', 'videos-status', item.status), detailsCell, modifiedCell);
+    row.append(nameCell, makeElement('td', 'videos-status', item.status), detailsCell, modifiedCell);
     return row;
 }
 
@@ -516,9 +473,9 @@ function handleVideosRowKey(event) {
 // The IE4 "View as Web Page" panel: describes whatever's selected
 
 function buildVideosPoster(item) {
-    const frame = videosEl('div', 'videos-poster');
+    const frame = makeElement('div', 'videos-poster');
     const showFallback = () => {
-        const fallback = videosEl('span', 'videos-poster-fallback');
+        const fallback = makeElement('span', 'videos-poster-fallback');
         fallback.setAttribute('role', 'img');
         fallback.setAttribute('aria-label', 'No poster');
         frame.replaceChildren(fallback);
@@ -543,18 +500,18 @@ function buildVideosPoster(item) {
 function renderVideosPreview(item) {
     const preview = document.getElementById('videosPreview');
     if (!item) {
-        preview.replaceChildren(videosEl('p', 'videos-hint', 'Select an item to view its description.'));
+        preview.replaceChildren(makeElement('p', 'videos-hint', 'Select an item to view its description.'));
         return;
     }
 
     const parts = [];
     if (!item.empty) {
-        parts.push(buildVideosPoster(item), videosEl('div', 'videos-preview-title', item.heading));
+        parts.push(buildVideosPoster(item), makeElement('div', 'videos-preview-title', item.heading));
     }
-    item.lines.filter(Boolean).forEach(line => parts.push(videosEl('div', 'videos-preview-line', line)));
+    item.lines.filter(Boolean).forEach(line => parts.push(makeElement('div', 'videos-preview-line', line)));
 
     if (item.link) {
-        const link = videosEl('a', 'videos-preview-link', 'View on Trakt');
+        const link = makeElement('a', 'videos-preview-link', 'View on Trakt');
         link.href = item.link;
         link.target = '_blank';
         link.rel = 'noopener';
@@ -655,16 +612,16 @@ function openVideosProperties(index) {
 
     // Groups of label/value pairs with an etched line between them, like the real sheet
     const groups = item.fields.map(group => {
-        const list = videosEl('dl', 'videos-props-fields');
+        const list = makeElement('dl', 'videos-props-fields');
         group.filter(([, value]) => value).forEach(([label, value]) => {
-            list.append(videosEl('dt', null, `${label}:`), videosEl('dd', null, value));
+            list.append(makeElement('dt', null, `${label}:`), makeElement('dd', null, value));
         });
         return list;
     });
     overlay.querySelector('#videosPropertiesFields').replaceChildren(...groups);
 
     overlay.classList.add('open');
-    centerVideosElement(overlay.querySelector('#videosPropertiesWindow'));
+    centerInViewport(overlay.querySelector('#videosPropertiesWindow'));
     overlay.querySelector('[data-close]').focus();
 }
 

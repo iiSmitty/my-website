@@ -419,9 +419,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     container.style.margin = container.dataset.originalMargin;
                     container.dataset.isMaximized = '';
 
-                    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-                        'ontouchstart' in window ||
-                        navigator.maxTouchPoints > 0;
+                    const isMobile = isTouchDevice();
 
                     // Show desktop icons when restored
                     if (desktopIcons && !isMobile) {

@@ -2,9 +2,7 @@
 // and other scripts (screensaver.js, taskmgr.js) can leave out desktop-only
 // features
 document.addEventListener('DOMContentLoaded', function() {
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-        'ontouchstart' in window ||
-        navigator.maxTouchPoints > 0;
+    const isMobile = isTouchDevice();
 
     const desktopIcons = document.querySelector('.desktop-icons');
 

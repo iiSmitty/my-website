@@ -17,21 +17,14 @@ const taskbarButtons = new Map();
 
 // --- Helpers ---------------------------------------------------------------
 
-function taskbarEl(tag, className, text) {
-    const element = document.createElement(tag);
-    if (className) element.className = className;
-    if (text !== undefined && text !== null) element.textContent = text;
-    return element;
-}
-
 // "Programs" with the P underlined, like a Win95 menu
 function taskbarLabel(text, accessKey) {
-    const label = taskbarEl('span', 'start-menu-label');
+    const label = makeElement('span', 'start-menu-label');
     const index = accessKey ? text.toLowerCase().indexOf(accessKey) : -1;
     if (index === -1) {
         label.textContent = text;
     } else {
-        label.append(text.slice(0, index), taskbarEl('u', null, text[index]), text.slice(index + 1));
+        label.append(text.slice(0, index), makeElement('u', null, text[index]), text.slice(index + 1));
     }
     return label;
 }
@@ -39,7 +32,7 @@ function taskbarLabel(text, accessKey) {
 // --- Start menu ------------------------------------------------------------
 
 function buildStartMenuItem(text, { icon, accessKey, href } = {}) {
-    const item = taskbarEl(href ? 'a' : 'button', 'start-menu-item');
+    const item = makeElement(href ? 'a' : 'button', 'start-menu-item');
     item.setAttribute('role', 'menuitem');
     item.tabIndex = -1;
     if (href) {
@@ -51,22 +44,22 @@ function buildStartMenuItem(text, { icon, accessKey, href } = {}) {
     }
     if (accessKey) item.dataset.accessKey = accessKey;
 
-    const iconElement = taskbarEl('span', `start-menu-icon ${icon || ''}`);
+    const iconElement = makeElement('span', `start-menu-icon ${icon || ''}`);
     iconElement.setAttribute('aria-hidden', 'true');
     item.append(iconElement, taskbarLabel(text, accessKey));
     return item;
 }
 
 function buildStartSubmenu(text, { icon, accessKey }, items) {
-    const entry = taskbarEl('div', 'start-menu-entry');
+    const entry = makeElement('div', 'start-menu-entry');
     const parent = buildStartMenuItem(text, { icon, accessKey });
     parent.setAttribute('aria-haspopup', 'menu');
     parent.setAttribute('aria-expanded', 'false');
-    const arrow = taskbarEl('span', 'start-menu-arrow');
+    const arrow = makeElement('span', 'start-menu-arrow');
     arrow.setAttribute('aria-hidden', 'true');
     parent.append(arrow);
 
-    const submenu = taskbarEl('div', 'start-menu start-submenu');
+    const submenu = makeElement('div', 'start-menu start-submenu');
     submenu.setAttribute('role', 'menu');
     submenu.setAttribute('aria-label', text);
     submenu.hidden = true;
@@ -77,16 +70,16 @@ function buildStartSubmenu(text, { icon, accessKey }, items) {
 }
 
 function buildStartMenu() {
-    const menu = taskbarEl('div', 'start-menu');
+    const menu = makeElement('div', 'start-menu');
     menu.id = 'startMenu';
     menu.setAttribute('role', 'menu');
     menu.setAttribute('aria-label', 'Start');
     menu.tabIndex = -1;
     menu.hidden = true;
 
-    const banner = taskbarEl('div', 'start-menu-banner');
+    const banner = makeElement('div', 'start-menu-banner');
     banner.setAttribute('aria-hidden', 'true');
-    banner.append(taskbarEl('b', null, 'Windows'), taskbarEl('span', null, '95'));
+    banner.append(makeElement('b', null, 'Windows'), makeElement('span', null, '95'));
 
     // Win95 sorts the Programs folder by name
     const programs = DESKTOP_PROGRAMS
@@ -108,10 +101,10 @@ function buildStartMenu() {
     const shutDown = buildStartMenuItem('Shut Down...', { icon: 'StartShutDownIcon', accessKey: 'u' });
     startMenuActions.set(shutDown, () => window.showClosingDialog());
 
-    const separator = taskbarEl('div', 'start-menu-separator');
+    const separator = makeElement('div', 'start-menu-separator');
     separator.setAttribute('role', 'separator');
 
-    const items = taskbarEl('div', 'start-menu-items');
+    const items = makeElement('div', 'start-menu-items');
     items.append(
         buildStartSubmenu('Programs', { icon: 'StartProgramsIcon', accessKey: 'p' }, programs),
         buildStartSubmenu('Favorites', { icon: 'StartFavoritesIcon', accessKey: 'a' }, favorites),
@@ -315,7 +308,7 @@ function onStartMenuKeydown(event) {
 // The taskbar's own menu, with the two items NT4 had that work here
 
 function buildTaskbarMenu() {
-    const menu = taskbarEl('div', 'start-menu taskbar-menu');
+    const menu = makeElement('div', 'start-menu taskbar-menu');
     menu.id = 'taskbarMenu';
     menu.setAttribute('role', 'menu');
     menu.setAttribute('aria-label', 'Taskbar');
@@ -326,7 +319,7 @@ function buildTaskbarMenu() {
     startMenuActions.set(minimizeAll, () => WindowManager.minimizeAll());
     const taskManager = buildStartMenuItem('Task Manager...', { accessKey: 'k' });
     startMenuActions.set(taskManager, () => openTaskManager());
-    const separator = taskbarEl('div', 'start-menu-separator');
+    const separator = makeElement('div', 'start-menu-separator');
     separator.setAttribute('role', 'separator');
     menu.append(minimizeAll, separator, taskManager);
 
@@ -420,7 +413,7 @@ function onTaskbarMenuKeydown(event) {
 // --- Window buttons --------------------------------------------------------
 
 function buildTaskbarButton(win) {
-    const button = taskbarEl('button', 'taskbar-button');
+    const button = makeElement('button', 'taskbar-button');
     button.type = 'button';
 
     const icon = WindowManager.iconOf(win);
@@ -430,7 +423,7 @@ function buildTaskbarButton(win) {
         copy.setAttribute('aria-hidden', 'true');
         button.append(copy);
     }
-    button.append(taskbarEl('span', 'taskbar-button-label'));
+    button.append(makeElement('span', 'taskbar-button-label'));
 
     // Like Win95: a click brings the window forward, or minimizes it if it's
     // already in front, or restores it if it's minimized
@@ -498,12 +491,12 @@ function startTaskbarClock(clock) {
 // --- Taskbar ---------------------------------------------------------------
 
 function buildTaskbar() {
-    const taskbar = taskbarEl('div', 'taskbar');
+    const taskbar = makeElement('div', 'taskbar');
     taskbar.id = 'taskbar';
     taskbar.setAttribute('role', 'region');
     taskbar.setAttribute('aria-label', 'Taskbar');
 
-    const start = taskbarEl('button', 'taskbar-start');
+    const start = makeElement('button', 'taskbar-start');
     start.id = 'taskbarStart';
     start.type = 'button';
     start.setAttribute('aria-haspopup', 'menu');
@@ -513,11 +506,11 @@ function buildTaskbar() {
     // A keyboard press (Enter or Space) clicks with detail 0, and gets the first item selected
     start.addEventListener('click', event => toggleStartMenu({ focusFirst: event.detail === 0 }));
 
-    const windowList = taskbarEl('div', 'taskbar-windows');
+    const windowList = makeElement('div', 'taskbar-windows');
     windowList.id = 'taskbarWindows';
 
-    const tray = taskbarEl('div', 'taskbar-tray');
-    const clock = taskbarEl('time', 'taskbar-clock');
+    const tray = makeElement('div', 'taskbar-tray');
+    const clock = makeElement('time', 'taskbar-clock');
     clock.id = 'taskbarClock';
     tray.append(clock);
 

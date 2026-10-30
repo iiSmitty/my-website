@@ -53,7 +53,6 @@ const DECRYPT_EXE_CLIPPY_AFTER = 2;
 // phone is no fun); everyone else gets the normal decryption
 const DECRYPT_EXE_MEDIA = '(min-width: 720px) and (pointer: fine)';
 
-let decryptExeStylesPromise = null;
 let decryptExeRunnerUrl = null;
 let decryptExeRunning = false;
 let decryptExeSolved = false;
@@ -144,22 +143,6 @@ function caesarShift(text, shift) {
 }
 
 // --- Helpers -------------------------------------------------------------------
-
-// Load the egg's stylesheet on first use. Resolves even if it fails, so the
-// windows still open (unstyled) rather than not at all.
-function loadDecryptExeStyles() {
-    if (!decryptExeStylesPromise) {
-        decryptExeStylesPromise = new Promise(resolve => {
-            const link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = 'css/decrypt-exe.min.css';
-            link.onload = resolve;
-            link.onerror = resolve;
-            document.head.appendChild(link);
-        });
-    }
-    return decryptExeStylesPromise;
-}
 
 function decryptExeIsOpen() {
     const notepad = document.getElementById('decryptExeNotepad');
@@ -367,7 +350,7 @@ function buildDecryptExe() {
 
 async function openDecryptExe() {
     const opener = document.activeElement;
-    await loadDecryptExeStyles();
+    await loadStylesheet('css/decrypt-exe.min.css');
 
     if (!document.getElementById('decryptExeNotepad')) {
         buildDecryptExe();

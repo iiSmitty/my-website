@@ -38,7 +38,6 @@ const SKYPE_EMOTICON_HI = 'images/skype-hi.gif';
 const SKYPE_EMOTICON_HI_STILL = 'images/skype-hi.png';
 
 let skypeLives = SKYPE_STARTING_LIVES;
-let skypeStylesPromise = null;
 let skypeChatTimers = [];
 let skypeReturnFocus = null;
 let skypeAudioContext = null;
@@ -62,22 +61,6 @@ const SKYPE_LOGO_SVG = `
 
 function prefersReducedMotion() {
     return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-}
-
-// Load the egg's stylesheet on first use. Resolves even if it fails, so the
-// window still opens (unstyled) rather than not at all.
-function loadSkypeStyles() {
-    if (!skypeStylesPromise) {
-        skypeStylesPromise = new Promise(resolve => {
-            const link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = 'css/skype.min.css';
-            link.onload = resolve;
-            link.onerror = resolve;
-            document.head.appendChild(link);
-        });
-    }
-    return skypeStylesPromise;
 }
 
 function playSkypeSound(sound) {
@@ -119,17 +102,6 @@ function playExtraLifeSound() {
     }
 }
 
-// DD/MM/YYYY HH:MM, the South African format used elsewhere on the site
-function formatSkypeDateTime(date) {
-    const pad = n => String(n).padStart(2, '0');
-    return `${pad(date.getDate())}/${pad(date.getMonth() + 1)}/${date.getFullYear()} ` +
-        `${pad(date.getHours())}:${pad(date.getMinutes())}`;
-}
-
-function formatSkypeDate(date) {
-    return formatSkypeDateTime(date).split(' ')[0];
-}
-
 // "12 years, 1 month" between two dates
 function describeTimeAway(since, now) {
     let months = (now.getFullYear() - since.getFullYear()) * 12 + (now.getMonth() - since.getMonth());
@@ -142,12 +114,6 @@ function describeTimeAway(since, now) {
     if (years > 0) parts.push(`${years} ${years === 1 ? 'year' : 'years'}`);
     if (months > 0) parts.push(`${months} ${months === 1 ? 'month' : 'months'}`);
     return parts.length ? parts.join(', ') : 'A little while';
-}
-
-function centerSkypeWindow(skypeWindow) {
-    const rect = skypeWindow.getBoundingClientRect();
-    skypeWindow.style.left = Math.max(8, (window.innerWidth - rect.width) / 2) + 'px';
-    skypeWindow.style.top = Math.max(8, (window.innerHeight - rect.height) / 2) + 'px';
 }
 
 // --- Profile window ---------------------------------------------------------
@@ -230,13 +196,13 @@ function buildSkypeWindow() {
 
             <div class="skype-chat" id="skypeChat" role="log" aria-label="Conversation with ${profile.displayName}">
                 <p class="skype-chat-note">
-                    ${profile.messageCount - 1} earlier messages (since ${formatSkypeDateTime(profile.firstMessage)})
+                    ${profile.messageCount - 1} earlier messages (since ${formatDateTime(profile.firstMessage)})
                     are stored on a PC that no longer exists.
                 </p>
                 <div class="skype-message">
                     <div class="skype-message-meta">
                         <b>${profile.displayName}</b>
-                        <time datetime="${profile.lastMessage.toISOString()}">${formatSkypeDateTime(profile.lastMessage)}</time>
+                        <time datetime="${profile.lastMessage.toISOString()}">${formatDateTime(profile.lastMessage)}</time>
                     </div>
                     <div class="skype-message-text">brb</div>
                 </div>
@@ -247,7 +213,7 @@ function buildSkypeWindow() {
 
         <div class="skype-statusbar">
             <span><span class="skype-status-dot" aria-hidden="true"></span>Online</span>
-            <span>${profile.messageCount} messages &middot; ${formatSkypeDate(profile.firstMessage)} &ndash; ${formatSkypeDate(profile.lastMessage)}</span>
+            <span>${profile.messageCount} messages &middot; ${formatDate(profile.firstMessage)} &ndash; ${formatDate(profile.lastMessage)}</span>
         </div>`;
 
     document.body.appendChild(skypeWindow);
@@ -267,7 +233,7 @@ function buildSkypeWindow() {
 
 async function openSkypeWindow() {
     const opener = document.activeElement;
-    await loadSkypeStyles();
+    await loadStylesheet('css/skype.min.css');
 
     const skypeWindow = document.getElementById('skypeWindow') || buildSkypeWindow();
     const wasOpen = WindowManager.open(skypeWindow);
@@ -277,7 +243,7 @@ async function openSkypeWindow() {
     if (wasOpen) return;
 
     skypeReturnFocus = opener && opener !== document.body ? opener : null;
-    centerSkypeWindow(skypeWindow);
+    centerInViewport(skypeWindow);
     playSkypeReturn();
 }
 
@@ -323,7 +289,7 @@ function playSkypeReturn() {
                 <div class="skype-message skype-message--new">
                     <div class="skype-message-meta">
                         <b>${SKYPE_PROFILE.displayName}</b>
-                        <time datetime="${now.toISOString()}">Today ${formatSkypeDateTime(now).split(' ')[1]}</time>
+                        <time datetime="${now.toISOString()}">Today ${formatDateTime(now).split(' ')[1]}</time>
                     </div>
                     <div class="skype-message-text">
                         back

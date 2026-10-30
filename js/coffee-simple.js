@@ -128,14 +128,6 @@ function updateEnhancedCoffeeDisplay(data, isError = false) {
     // Update last updated timestamp with SA date format (DD/MM/YYYY)
     const coffeeUpdatedElement = document.getElementById('coffee-last-updated');
     if (coffeeUpdatedElement && data && data.lastUpdated) {
-        const updateDate = new Date(data.lastUpdated);
-
-        // Format as DD/MM/YYYY for South Africa
-        const day = String(updateDate.getDate()).padStart(2, '0');
-        const month = String(updateDate.getMonth() + 1).padStart(2, '0');
-        const year = updateDate.getFullYear();
-        const formattedDate = `${day}/${month}/${year}`;
-
-        coffeeUpdatedElement.textContent = `Last updated: ${formattedDate}`;
+        coffeeUpdatedElement.textContent = `Last updated: ${formatDate(data.lastUpdated)}`;
     }
 }
