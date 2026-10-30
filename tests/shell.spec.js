@@ -40,8 +40,15 @@ test.describe('desktop', () => {
 
     test('?showWatermark=true shows the Activate Windows watermark on any desktop', async ({ page }) => {
         await page.goto('/?showWatermark=true');
-        await expect(page.getByText('Activate Windows')).toBeVisible();
+        const watermark = page.getByText('Activate Windows');
+        await expect(watermark).toBeVisible();
         await expect(page.locator('.desktop-icon')).toHaveCount(7);
+
+        // Above the taskbar once it shows, like the real one, rather than over the clock
+        await page.locator('#start-windows').click();
+        await expect(taskbar(page)).toBeVisible();
+        const [mark, bar] = await Promise.all([watermark.boundingBox(), taskbar(page).boundingBox()]);
+        expect(mark.y + mark.height).toBeLessThanOrEqual(bar.y);
     });
 
     test('the Start menu opens every program, sorted by name', async ({ page }) => {
