@@ -105,12 +105,6 @@ const screensaver = (p) => {
 function createScreensaverContainer() {
     const container = document.createElement('div');
     container.id = 'screensaver-container';
-    container.style.position = 'fixed';
-    container.style.top = '0';
-    container.style.left = '0';
-    container.style.width = '100%';
-    container.style.height = '100%';
-    container.style.zIndex = '9999';
     container.style.display = 'none';
     document.body.appendChild(container);
     return container;

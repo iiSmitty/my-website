@@ -14,24 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (forceWatermark || navigator.platform.toUpperCase().indexOf('MAC') >= 0) {
         const watermark = document.createElement('div');
-
-        // Placed and styled like the real Windows activation watermark
-        watermark.style.position = 'fixed';
-        watermark.style.bottom = '10px';
-        watermark.style.right = '10px';
-        watermark.style.fontFamily = 'Segoe UI, Arial, sans-serif';
-        watermark.style.fontSize = '12px';
-        watermark.style.color = 'rgba(255, 255, 255, 0.85)';
-        watermark.style.textShadow = '1px 1px 2px rgba(0, 0, 0, 0.5)';
-        watermark.style.pointerEvents = 'none';
-        watermark.style.zIndex = '9999';
-        watermark.style.textAlign = 'left';
-        watermark.style.lineHeight = '1.2';
-
+        watermark.className = 'activate-watermark';
         watermark.innerHTML = 'Activate Windows<br>Go to Settings to activate Windows.';
-
         document.body.appendChild(watermark);
-
-        watermark.style.opacity = '0.9';
     }
 });

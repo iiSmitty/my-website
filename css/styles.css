@@ -157,6 +157,18 @@ body {
     color: white;
 }
 
+/* The item chosen with the arrow keys (win95-components.js), over the
+   hover and current-page highlights */
+.keyboard-focused {
+    background-color: #000080 !important;
+    color: white !important;
+}
+
+/* The underlined letter that Alt or a key press chooses */
+.access-key {
+    text-decoration: underline;
+}
+
 /* Add separator between dropdown items - thinner line */
 .win95-dropdown-content div:not(:last-child) {
     border-bottom: 1px solid #919191;
@@ -471,6 +483,36 @@ th {
     padding: 0 5px;
 }
 
+/* Hosted on Cloudflare Pages: a sunken panel at the end of the status bar.
+   Specific enough to outrank a:visited, a:hover and the phone layout's
+   .status-bar-top .status-item. */
+.status-bar-top a.cloudflare-badge {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    color: #000;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+}
+
+.cloudflare-badge-logo {
+    width: 12px;
+    height: 12px;
+    background: #F6821F;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.cloudflare-badge span {
+    white-space: nowrap;
+}
+
 /* Windows 95-style links */
 a {
     color: #0000FF;
@@ -506,14 +548,127 @@ ul {
     transition: opacity 0.5s;
 }
 
-/* The Shut Down dialog (shutdown.js) sits in an overlay that centres it, so
-   it doesn't place itself like the dialog above */
+/* Shut Down (shutdown.js): a dimmed overlay above the windows and the
+   taskbar, like the other modal dialogs */
+.win95-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* The overlay centres the dialog, so it doesn't place itself like the dialog
+   above */
 .win95-overlay .win95-dialog {
     position: relative;
     top: auto;
     left: auto;
     transform: none;
+    width: 400px;
     max-width: calc(100vw - 32px);
+    background-color: #c0c0c0;
+    border: outset 2px #dfdfdf;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    font-family: "MS Sans Serif", sans-serif;
+    padding: 2px;
+}
+
+.win95-overlay .win95-title-bar {
+    background-color: #000080;
+    color: white;
+    padding: 3px 4px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shutdown-close {
+    cursor: pointer;
+    margin-left: 4px;
+}
+
+.win95-overlay .win95-dialog-content {
+    padding: 15px;
+}
+
+.shutdown-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.shutdown-message p {
+    margin: 10px 0;
+}
+
+.shutdown-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Dialog-sized, and they stay raised when pressed, unlike the title-bar
+   buttons they share a class with (.win95-button:active above) */
+.shutdown-buttons .win95-button {
+    padding: 4px 10px;
+    background-color: #c0c0c0;
+    border: outset 2px #dfdfdf;
+    font-family: "MS Sans Serif", sans-serif;
+    min-width: 75px;
+}
+
+/* The shutdown video, full screen */
+.shutdown-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* For browsers that block the embed (Brave, etc.). Two classes, so it
+   outranks a:visited and a:hover and stays white and underlined. */
+.shutdown-video .shutdown-video-fallback {
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2001;
+    color: #ffffff;
+    opacity: 0.8;
+    font-family: "MS Sans Serif", Tahoma, sans-serif;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.shutdown-video-close {
+    position: fixed;
+    top: 12px;
+    right: 16px;
+    z-index: 2001;
+    background: rgba(0,0,0,0.5);
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    padding: 6px 10px;
 }
 
 body.startup {
@@ -1982,6 +2137,33 @@ body.is-touch-device .desktop-icons,
 
 .spotify-track-item:nth-child(odd) {
     background-color: #f5f5f5;
+}
+
+/* The flying windows screensaver (screensaver.js), over everything. Shown
+   and hidden by the script. */
+#screensaver-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
+/* "Activate Windows" (watermark.js), placed and styled like the real one */
+.activate-watermark {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-family: Segoe UI, Arial, sans-serif;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    z-index: 9999;
+    text-align: left;
+    line-height: 1.2;
+    opacity: 0.9;
 }
 
 /* Windows 95 Style Achievement Notification */

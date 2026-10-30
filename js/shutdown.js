@@ -10,38 +10,14 @@ function createClosingDialog() {
     // Create the overlay background
     const overlay = document.createElement('div');
     overlay.className = 'win95-overlay';
-    overlay.style.position = 'fixed';
-    overlay.style.top = '0';
-    overlay.style.left = '0';
-    overlay.style.width = '100%';
-    overlay.style.height = '100%';
-    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-    // Above the windows and the taskbar, like the other modal dialogs
-    overlay.style.zIndex = '2000';
-    overlay.style.display = 'flex';
-    overlay.style.justifyContent = 'center';
-    overlay.style.alignItems = 'center';
 
     // Create the dialog window
     const dialog = document.createElement('div');
     dialog.className = 'win95-dialog';
-    dialog.style.width = '400px';
-    dialog.style.backgroundColor = '#c0c0c0';
-    dialog.style.border = 'outset 2px #dfdfdf';
-    dialog.style.boxShadow = '2px 2px 5px rgba(0, 0, 0, 0.2)';
-    dialog.style.fontFamily = '"MS Sans Serif", sans-serif';
-    dialog.style.padding = '2px';
 
     // Create the dialog title bar
     const titleBar = document.createElement('div');
     titleBar.className = 'win95-title-bar';
-    titleBar.style.backgroundColor = '#000080';
-    titleBar.style.color = 'white';
-    titleBar.style.padding = '3px 4px';
-    titleBar.style.fontWeight = 'bold';
-    titleBar.style.display = 'flex';
-    titleBar.style.justifyContent = 'space-between';
-    titleBar.style.alignItems = 'center';
 
     // Title text
     const titleText = document.createElement('span');
@@ -50,9 +26,8 @@ function createClosingDialog() {
 
     // Close button in title bar
     const closeButton = document.createElement('span');
+    closeButton.className = 'shutdown-close';
     closeButton.innerHTML = '&#x2715;'; // X symbol
-    closeButton.style.cursor = 'pointer';
-    closeButton.style.marginLeft = '4px';
     closeButton.addEventListener('click', function() {
         document.body.removeChild(overlay);
     });
@@ -61,39 +36,25 @@ function createClosingDialog() {
     // Create dialog content
     const content = document.createElement('div');
     content.className = 'win95-dialog-content';
-    content.style.padding = '15px';
 
     // Create dialog message
     const message = document.createElement('div');
-    message.style.display = 'flex';
-    message.style.flexDirection = 'column';
-    message.style.alignItems = 'center';
-    message.style.justifyContent = 'center';
-    message.style.textAlign = 'center';
-    message.style.marginBottom = '20px';
+    message.className = 'shutdown-message';
 
     const text = document.createElement('p');
     text.textContent = 'Are you sure you want to shut down this website?';
-    text.style.margin = '10px 0';
     message.appendChild(text);
 
     content.appendChild(message);
 
     // Create buttons container
     const buttons = document.createElement('div');
-    buttons.style.display = 'flex';
-    buttons.style.justifyContent = 'center';
-    buttons.style.gap = '10px';
+    buttons.className = 'shutdown-buttons';
 
     // Yes button
     const yesButton = document.createElement('button');
     yesButton.className = 'win95-button';
     yesButton.textContent = 'Yes';
-    yesButton.style.padding = '4px 10px';
-    yesButton.style.backgroundColor = '#c0c0c0';
-    yesButton.style.border = 'outset 2px #dfdfdf';
-    yesButton.style.fontFamily = '"MS Sans Serif", sans-serif';
-    yesButton.style.minWidth = '75px';
     yesButton.addEventListener('click', function() {
         // Play Windows 95 shutdown sound and video
         playShutdownVideo();
@@ -104,11 +65,6 @@ function createClosingDialog() {
     const noButton = document.createElement('button');
     noButton.className = 'win95-button';
     noButton.textContent = 'No';
-    noButton.style.padding = '4px 10px';
-    noButton.style.backgroundColor = '#c0c0c0';
-    noButton.style.border = 'outset 2px #dfdfdf';
-    noButton.style.fontFamily = '"MS Sans Serif", sans-serif';
-    noButton.style.minWidth = '75px';
     noButton.addEventListener('click', function() {
         document.body.removeChild(overlay);
     });
@@ -137,16 +93,7 @@ function playShutdownVideo() {
 
     // Fullscreen overlay for the video
     const videoOverlay = document.createElement('div');
-    videoOverlay.style.position = 'fixed';
-    videoOverlay.style.top = '0';
-    videoOverlay.style.left = '0';
-    videoOverlay.style.width = '100%';
-    videoOverlay.style.height = '100%';
-    videoOverlay.style.backgroundColor = 'black';
-    videoOverlay.style.zIndex = '2000';
-    videoOverlay.style.display = 'flex';
-    videoOverlay.style.justifyContent = 'center';
-    videoOverlay.style.alignItems = 'center';
+    videoOverlay.className = 'shutdown-video';
 
     // The embedded player (works for most browsers)
     const iframe = document.createElement('iframe');
@@ -172,36 +119,16 @@ function playShutdownVideo() {
     fallback.href = watchUrl;
     fallback.target = '_blank';
     fallback.rel = 'noopener';
+    fallback.className = 'shutdown-video-fallback';
     fallback.textContent = 'Trouble loading? ▸ Watch on YouTube';
-    fallback.style.position = 'fixed';
-    fallback.style.bottom = '16px';
-    fallback.style.left = '50%';
-    fallback.style.transform = 'translateX(-50%)';
-    fallback.style.zIndex = '2001';
-    fallback.style.color = '#ffffff';
-    fallback.style.opacity = '0.8';
-    fallback.style.fontFamily = '"MS Sans Serif", Tahoma, sans-serif';
-    fallback.style.fontSize = '14px';
-    fallback.style.textDecoration = 'underline';
     fallback.addEventListener('click', closeOverlay);
     videoOverlay.appendChild(fallback);
 
     // Close button so the overlay is never a dead-end
     const closeBtn = document.createElement('button');
     closeBtn.textContent = '✕';
+    closeBtn.className = 'shutdown-video-close';
     closeBtn.setAttribute('aria-label', 'Close video');
-    closeBtn.style.position = 'fixed';
-    closeBtn.style.top = '12px';
-    closeBtn.style.right = '16px';
-    closeBtn.style.zIndex = '2001';
-    closeBtn.style.background = 'rgba(0,0,0,0.5)';
-    closeBtn.style.color = '#ffffff';
-    closeBtn.style.border = '1px solid rgba(255,255,255,0.5)';
-    closeBtn.style.borderRadius = '4px';
-    closeBtn.style.cursor = 'pointer';
-    closeBtn.style.fontSize = '18px';
-    closeBtn.style.lineHeight = '1';
-    closeBtn.style.padding = '6px 10px';
     closeBtn.addEventListener('click', closeOverlay);
     videoOverlay.appendChild(closeBtn);
 
