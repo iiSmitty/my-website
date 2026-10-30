@@ -31,7 +31,6 @@ function createClosingDialog() {
     dialog.style.boxShadow = '2px 2px 5px rgba(0, 0, 0, 0.2)';
     dialog.style.fontFamily = '"MS Sans Serif", sans-serif';
     dialog.style.padding = '2px';
-    dialog.style.position = 'relative';
 
     // Create the dialog title bar
     const titleBar = document.createElement('div');

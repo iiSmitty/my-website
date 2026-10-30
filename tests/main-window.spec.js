@@ -1,4 +1,4 @@
-const { test, expect } = require('./fixtures');
+const { test, expect, expectCentered } = require('./fixtures');
 
 // Starting Windows (the "Welcome to Windows 95" dialog), shutting it down from
 // a page's main window, and that window's minimize and maximize on the pages
@@ -7,6 +7,7 @@ const { test, expect } = require('./fixtures');
 const mainWindow = (page) => page.locator('.win95-container');
 const welcome = (page) => page.getByText('Welcome to Windows 95');
 const shutDownQuestion = (page) => page.getByText('Are you sure you want to shut down this website?');
+const shutDownDialog = (page) => page.locator('.win95-overlay .win95-dialog');
 
 // Coming from another page of the site, so Windows has already started
 const FROM_THE_SITE = { referer: 'http://localhost:3000/' };
@@ -65,6 +66,7 @@ test.describe('desktop', () => {
                 await closeButton.click();
                 await expect(page.getByText('Shut Down Windows')).toBeVisible();
                 await expect(shutDownQuestion(page)).toBeVisible();
+                await expectCentered(shutDownDialog(page));
                 await page.getByRole('button', { name: 'No' }).click();
                 await expect(shutDownQuestion(page)).toHaveCount(0);
 
@@ -122,5 +124,18 @@ test.describe('desktop', () => {
                 await expect.poll(async () => (await mainWindow(page).boundingBox()).width).toBeCloseTo(before.width, 0);
             });
         }
+    });
+});
+
+test.describe('phone', () => {
+    test.use({ viewport: { width: 320, height: 640 }, hasTouch: true, isMobile: true });
+
+    test('the Shut Down dialog fits on the screen', async ({ page }) => {
+        await page.goto('/404.html');
+        await mainWindow(page).locator('.win95-close').first().click();
+        const box = await shutDownDialog(page).boundingBox();
+        expect(box.x).toBeGreaterThanOrEqual(0);
+        expect(box.x + box.width).toBeLessThanOrEqual(320);
+        await expectCentered(shutDownDialog(page));
     });
 });

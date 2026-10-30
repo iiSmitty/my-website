@@ -506,6 +506,16 @@ ul {
     transition: opacity 0.5s;
 }
 
+/* The Shut Down dialog (shutdown.js) sits in an overlay that centres it, so
+   it doesn't place itself like the dialog above */
+.win95-overlay .win95-dialog {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    max-width: calc(100vw - 32px);
+}
+
 body.startup {
     background-color: #008080;
     background-image: none;
