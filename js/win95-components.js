@@ -2,7 +2,8 @@
 // Help) and status bar, and Alt+letter menu shortcuts. Shut Down is in
 // shutdown.js.
 document.addEventListener('DOMContentLoaded', function() {
-    // Track the active dropdown for keyboard navigation
+    // The dropdown last opened with Alt and a letter, which the keyboard then
+    // moves through
     let activeDropdown = null;
 
     // Create the menu bar component
@@ -38,188 +39,99 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Close any open dropdowns when clicking elsewhere
         document.addEventListener('click', function(event) {
-            const dropdowns = document.querySelectorAll('.win95-dropdown');
-            dropdowns.forEach(dropdown => {
+            document.querySelectorAll('.win95-dropdown').forEach(dropdown => {
                 if (!dropdown.contains(event.target)) {
                     dropdown.querySelector('.win95-dropdown-content').classList.remove('show');
-
-                    // Remove active state from menu item
-                    dropdown.querySelector('.win95-menu-item').classList.remove('active-menu-item');
                 }
             });
         });
 
-        // Function to create text with underlined access key
-        function createUnderlinedText(text, accessKey) {
-            if (!text || text.length === 0) return document.createTextNode('');
-
-            const container = document.createElement('span');
-
-            // If accessKey is provided, find and underline that letter
-            if (accessKey) {
-                const lowercaseText = text.toLowerCase();
-                const lowercaseKey = accessKey.toLowerCase();
-                const keyIndex = lowercaseText.indexOf(lowercaseKey);
-
-                if (keyIndex !== -1) {
-                    // Add text before the access key
-                    if (keyIndex > 0) {
-                        container.appendChild(document.createTextNode(text.substring(0, keyIndex)));
-                    }
-
-                    // Add the underlined access key
-                    const keySpan = document.createElement('span');
-                    keySpan.textContent = text.charAt(keyIndex);
-                    keySpan.style.textDecoration = 'underline';
-                    container.appendChild(keySpan);
-
-                    // Add text after the access key
-                    if (keyIndex < text.length - 1) {
-                        container.appendChild(document.createTextNode(text.substring(keyIndex + 1)));
-                    }
-
-                    return container;
-                }
-            }
-
-            // Default behavior: just underline the first letter
-            const firstLetter = document.createElement('span');
-            firstLetter.textContent = text.charAt(0);
-            firstLetter.style.textDecoration = 'underline';
-
-            const restOfText = document.createTextNode(text.substring(1));
-
-            container.appendChild(firstLetter);
-            container.appendChild(restOfText);
-            return container;
-        }
-
-        // Create and append all menu items
         menuItems.forEach(item => {
-            if (item.dropdown) {
-                // Create dropdown container
-                const dropdownContainer = document.createElement('div');
-                dropdownContainer.className = 'win95-dropdown';
+            const menuItem = document.createElement('div');
+            menuItem.className = 'win95-menu-item';
+            menuItem.appendChild(accessKeyLabel(item.text, item.accessKey));
+            menuItem.dataset.accessKey = item.accessKey.toLowerCase();
 
-                // Create dropdown trigger
-                const menuItem = document.createElement('div');
-                menuItem.className = 'win95-menu-item';
-                menuItem.appendChild(createUnderlinedText(item.text, item.accessKey));
-                menuItem.dataset.accessKey = item.accessKey.toLowerCase();
+            if (!item.dropdown) {
+                menuItem.addEventListener('click', function() {
+                    window.location.href = item.link;
+                });
+                menuBar.appendChild(menuItem);
+                return;
+            }
 
-                // Create dropdown content
-                const dropdownContent = document.createElement('div');
-                dropdownContent.className = 'win95-dropdown-content';
+            const dropdownContainer = document.createElement('div');
+            dropdownContainer.className = 'win95-dropdown';
+            const dropdownContent = document.createElement('div');
+            dropdownContent.className = 'win95-dropdown-content';
 
-                // Toggle dropdown on click
-                menuItem.addEventListener('click', function(event) {
-                    event.stopPropagation();
-
-                    // Close any open dropdowns first
-                    document.querySelectorAll('.win95-dropdown-content').forEach(dropdown => {
-                        if (dropdown !== dropdownContent) {
-                            dropdown.classList.remove('show');
-                        }
-                    });
-
-                    dropdownContent.classList.toggle('show');
-
-                    // Add active state to menu item when dropdown is open
-                    if (dropdownContent.classList.contains('show')) {
-                        menuItem.classList.add('active-menu-item');
-                    } else {
-                        menuItem.classList.remove('active-menu-item');
+            // A click opens it, closing the other one, and a second click closes it
+            menuItem.addEventListener('click', function(event) {
+                event.stopPropagation();
+                document.querySelectorAll('.win95-dropdown-content').forEach(dropdown => {
+                    if (dropdown !== dropdownContent) {
+                        dropdown.classList.remove('show');
                     }
                 });
+                dropdownContent.classList.toggle('show');
+            });
 
-                // Add dropdown items
-                item.dropdown.forEach(dropdownItem => {
-                    const dropdownElement = document.createElement('div');
-                    dropdownElement.className = 'win95-dropdown-item';
-                    dropdownElement.appendChild(createUnderlinedText(dropdownItem.text, dropdownItem.accessKey));
-                    dropdownElement.dataset.accessKey = dropdownItem.accessKey ? dropdownItem.accessKey.toLowerCase() : '';
+            item.dropdown.forEach(dropdownItem => {
+                const dropdownElement = document.createElement('div');
+                dropdownElement.className = 'win95-dropdown-item';
+                dropdownElement.appendChild(accessKeyLabel(dropdownItem.text, dropdownItem.accessKey));
+                dropdownElement.dataset.accessKey = dropdownItem.accessKey.toLowerCase();
 
-                    // Highlight active page in dropdown
-                    if (dropdownItem.pages && dropdownItem.pages.includes(currentPage)) {
-                        dropdownElement.classList.add('active-dropdown-item');
-                    }
-
-                    // Check for special actions first
-                    if (dropdownItem.action === 'print') {
-                        dropdownElement.addEventListener('click', function() {
-                            dropdownContent.classList.remove('show');
-                            menuItem.classList.remove('active-menu-item');
-                            window.print();
-                        });
-                    } else if (dropdownItem.action === 'site-help') {
-                        dropdownElement.addEventListener('click', function() {
-                            dropdownContent.classList.remove('show');
-                            menuItem.classList.remove('active-menu-item');
-
-                            // The home page has the section (site-help.js);
-                            // other pages go there and land on it
-                            if (typeof openSiteHelp === 'function') {
-                                openSiteHelp();
-                            } else {
-                                window.location.href = './#how-it-works';
-                            }
-                        });
-                    } else if (dropdownItem.action === 'exit') {
-                        dropdownElement.addEventListener('click', function() {
-                            // First close the dropdown
-                            dropdownContent.classList.remove('show');
-                            menuItem.classList.remove('active-menu-item');
-
-                            // Call the global showClosingDialog function
-                            if (typeof window.showClosingDialog === 'function') {
-                                window.showClosingDialog();
-                            } else {
-                                console.error('showClosingDialog function not found in global scope');
-                            }
-                        });
-                    }
-                    // Handle normal links
-                    else if (dropdownItem.link) {
-                        dropdownElement.addEventListener('click', function() {
-                            // Check if the link should open in a new tab
-                            if (dropdownItem.target === '_blank') {
-                                window.open(dropdownItem.link, '_blank');
-                            } else {
-                                window.location.href = dropdownItem.link;
-                            }
-
-                            // Close the dropdown after clicking
-                            dropdownContent.classList.remove('show');
-                            menuItem.classList.remove('active-menu-item');
-                        });
-                    }
-
-                    dropdownContent.appendChild(dropdownElement);
-                });
-
-                // Assemble dropdown
-                dropdownContainer.appendChild(menuItem);
-                dropdownContainer.appendChild(dropdownContent);
-                menuBar.appendChild(dropdownContainer);
-            } else {
-                // Create regular menu item
-                const menuItem = document.createElement('div');
-                menuItem.className = 'win95-menu-item';
-                menuItem.appendChild(createUnderlinedText(item.text, item.accessKey));
-                menuItem.dataset.accessKey = item.accessKey.toLowerCase();
-
-                // Add click event for links
-                if (item.link) {
-                    menuItem.addEventListener('click', function() {
-                        window.location.href = item.link;
-                    });
+                // The page we're on
+                if (dropdownItem.pages && dropdownItem.pages.includes(currentPage)) {
+                    dropdownElement.classList.add('active-dropdown-item');
                 }
 
-                menuBar.appendChild(menuItem);
-            }
+                dropdownElement.addEventListener('click', function() {
+                    dropdownContent.classList.remove('show');
+                    chooseDropdownItem(dropdownItem);
+                });
+
+                dropdownContent.appendChild(dropdownElement);
+            });
+
+            dropdownContainer.appendChild(menuItem);
+            dropdownContainer.appendChild(dropdownContent);
+            menuBar.appendChild(dropdownContainer);
         });
 
         return menuBar;
+    }
+
+    // "File" with the F underlined. Without its access key in the text, the
+    // first letter is underlined.
+    function accessKeyLabel(text, accessKey) {
+        const label = document.createElement('span');
+        const index = Math.max(0, text.toLowerCase().indexOf(accessKey.toLowerCase()));
+        const key = makeElement('span', null, text[index]);
+        key.style.textDecoration = 'underline';
+        label.append(text.slice(0, index), key, text.slice(index + 1));
+        return label;
+    }
+
+    function chooseDropdownItem(dropdownItem) {
+        if (dropdownItem.action === 'print') {
+            window.print();
+        } else if (dropdownItem.action === 'site-help') {
+            // The home page has the section (site-help.js); other pages go
+            // there and land on it
+            if (typeof openSiteHelp === 'function') {
+                openSiteHelp();
+            } else {
+                window.location.href = './#how-it-works';
+            }
+        } else if (dropdownItem.action === 'exit') {
+            showClosingDialog();
+        } else if (dropdownItem.target === '_blank') {
+            window.open(dropdownItem.link, '_blank');
+        } else {
+            window.location.href = dropdownItem.link;
+        }
     }
 
     // Create the status bar component
@@ -322,82 +234,56 @@ document.addEventListener('DOMContentLoaded', function() {
         // another window), which then swallowed plain F/E/V/H typing.
         if (event.altKey && event.key !== 'Alt') {
             const key = event.key.toLowerCase();
-            const menuItems = document.querySelectorAll('.win95-menu-item');
+            document.querySelectorAll('.win95-menu-item').forEach(item => {
+                if (item.dataset.accessKey !== key) return;
+                event.preventDefault();
+                item.click();
 
-            // Check each menu item for matching access key
-            menuItems.forEach(item => {
-                if (item.dataset.accessKey === key) {
-                    event.preventDefault();
-
-                    // Simulate click on the menu item
-                    item.click();
-
-                    // If this is a dropdown menu, store a reference to its dropdown content
-                    const dropdownContainer = item.closest('.win95-dropdown');
-                    if (dropdownContainer) {
-                        activeDropdown = dropdownContainer.querySelector('.win95-dropdown-content');
-                    }
+                const dropdownContainer = item.closest('.win95-dropdown');
+                if (dropdownContainer) {
+                    activeDropdown = dropdownContainer.querySelector('.win95-dropdown-content');
                 }
             });
         }
 
-        // If a dropdown is active, navigate with arrow keys and execute with Enter or access keys.
-        // Not while typing in a text field (e.g. DECRYPT.EXE's Notepad), whose keys are its own.
+        // Not while typing in a text field (e.g. DECRYPT.EXE's Notepad), whose keys are its own
         const isTyping = event.target.closest && event.target.closest('input, textarea, [contenteditable]');
         if (activeDropdown && activeDropdown.classList.contains('show') && !isTyping) {
-            const dropdownItems = activeDropdown.querySelectorAll('.win95-dropdown-item');
-
-            // Get currently focused item (if any)
-            let currentIndex = -1;
-            dropdownItems.forEach((item, index) => {
-                if (item.classList.contains('keyboard-focused')) {
-                    currentIndex = index;
-                    item.classList.remove('keyboard-focused');
-                }
-            });
-
-            // Check for access key presses for dropdown items
-            if (event.key.length === 1) { // Single character keys only
-                const key = event.key.toLowerCase();
-                let found = false;
-
-                // Loop through dropdown items to find matching access key
-                dropdownItems.forEach((item) => {
-                    if (item.dataset.accessKey === key) {
-                        event.preventDefault();
-                        // Trigger the click on this item
-                        item.click();
-                        found = true;
-                    }
-                });
-
-                if (found) {
-                    return;
-                }
-            }
-
-            // Handle arrow keys for navigation
-            if (event.key === 'ArrowDown') {
-                event.preventDefault();
-                currentIndex = (currentIndex + 1) % dropdownItems.length;
-                dropdownItems[currentIndex].classList.add('keyboard-focused');
-            } else if (event.key === 'ArrowUp') {
-                event.preventDefault();
-                currentIndex = (currentIndex - 1 + dropdownItems.length) % dropdownItems.length;
-                dropdownItems[currentIndex].classList.add('keyboard-focused');
-            } else if (event.key === 'Enter' && currentIndex !== -1) {
-                event.preventDefault();
-                dropdownItems[currentIndex].click();
-            } else if (event.key === 'Escape') {
-                // Close dropdown with Escape key
-                event.preventDefault();
-                activeDropdown.classList.remove('show');
-                const menuItem = activeDropdown.closest('.win95-dropdown').querySelector('.win95-menu-item');
-                menuItem.classList.remove('active-menu-item');
-                activeDropdown = null;
-            }
+            navigateDropdown(event);
         }
     });
+
+    // In an open dropdown, an item's letter chooses it, the arrow keys move
+    // the highlight (any other key clears it), Enter chooses the highlighted
+    // item and Escape closes the dropdown
+    function navigateDropdown(event) {
+        const dropdownItems = [...activeDropdown.querySelectorAll('.win95-dropdown-item')];
+        let currentIndex = dropdownItems.findIndex(item => item.classList.contains('keyboard-focused'));
+        dropdownItems.forEach(item => item.classList.remove('keyboard-focused'));
+
+        if (event.key.length === 1) {
+            const chosen = dropdownItems.filter(item => item.dataset.accessKey === event.key.toLowerCase());
+            if (chosen.length) {
+                event.preventDefault();
+                chosen.forEach(item => item.click());
+                return;
+            }
+        }
+
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+            event.preventDefault();
+            const step = event.key === 'ArrowDown' ? 1 : -1;
+            currentIndex = (currentIndex + step + dropdownItems.length) % dropdownItems.length;
+            dropdownItems[currentIndex].classList.add('keyboard-focused');
+        } else if (event.key === 'Enter' && currentIndex !== -1) {
+            event.preventDefault();
+            dropdownItems[currentIndex].click();
+        } else if (event.key === 'Escape') {
+            event.preventDefault();
+            activeDropdown.classList.remove('show');
+            activeDropdown = null;
+        }
+    }
 
     // The dropdown item chosen with the arrow keys
     const style = document.createElement('style');
