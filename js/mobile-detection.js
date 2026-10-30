@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const desktopIcons = document.querySelector('.desktop-icons');
 
-    // The startup dialog (decrypt.js), if this visit has one
+    // The startup dialog (startup.js), if this visit has one
     const startupDialog = document.querySelector('.win95-dialog');
 
     if (desktopIcons) {
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         } else {
             if (startupDialog && startupDialog.style.display !== 'none') {
-                // decrypt.js shows the icons once "Start" is clicked
+                // startup.js shows the icons once "Start" is clicked
                 desktopIcons.style.display = 'none';
             } else {
                 desktopIcons.style.display = 'block';

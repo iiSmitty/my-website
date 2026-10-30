@@ -451,7 +451,7 @@
 
         select(idFromHash());
 
-        // decrypt.js revealed the window only just now, after the browser had
+        // startup.js revealed the window only just now, after the browser had
         // already given up on scrolling to the #fragment. Redo it in the stacked
         // (phone) layout, where the page itself is what scrolls.
         if (location.hash && !explorerLayout.matches) {

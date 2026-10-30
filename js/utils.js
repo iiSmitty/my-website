@@ -69,3 +69,15 @@ function isTouchDevice() {
         'ontouchstart' in window ||
         navigator.maxTouchPoints > 0;
 }
+
+
+// One of the Windows 95 sounds in sounds/
+function playWin95Sound(type) {
+    try {
+        const sound = new Audio(`sounds/win95-${type}.mp3`);
+        sound.volume = 0.7;
+        sound.play();
+    } catch (e) {
+        console.log(`Error playing ${type} sound: ${e.message}`);
+    }
+}

@@ -473,7 +473,7 @@
 
 @media screen and (min-width: 720px) {
     /* Fill the frame: toolbar, explorer, status bar. !important because
-       decrypt.js reveals the container with an inline display: block. */
+       startup.js reveals the container with an inline display: block. */
     .xp-embedded .xp-window.xp-ready {
         display: grid !important;
         grid-template-rows: auto minmax(0, 1fr) auto;
