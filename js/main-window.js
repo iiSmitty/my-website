@@ -50,48 +50,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Maximize the same way the window manager does on the home page: the
+    // is-maximized class, styled in styles.css, so every page fills the
+    // screen alike, phones included
     if (maximizeButton) {
         maximizeButton.addEventListener('click', function() {
-            // Toggle maximize
             const container = document.querySelector('.win95-container');
-            const desktopIcons = document.querySelector('.desktop-icons');
-
-            if (container) {
-                if (!container.dataset.isMaximized) {
-                    // Save current styles
-                    container.dataset.originalWidth = container.style.width;
-                    container.dataset.originalMaxWidth = container.style.maxWidth;
-                    container.dataset.originalHeight = container.style.height;
-                    container.dataset.originalMargin = container.style.margin;
-
-                    // Maximize
-                    container.style.transition = 'all 0.3s ease-out';
-                    container.style.width = '100%';
-                    container.style.maxWidth = '100%';
-                    container.style.height = 'calc(100vh - 20px)';
-                    container.style.margin = '0';
-                    container.dataset.isMaximized = 'true';
-
-                    // Hide desktop icons when maximized
-                    if (desktopIcons) {
-                        desktopIcons.style.display = 'none';
-                    }
-                } else {
-                    // Restore
-                    container.style.width = container.dataset.originalWidth;
-                    container.style.maxWidth = container.dataset.originalMaxWidth;
-                    container.style.height = container.dataset.originalHeight;
-                    container.style.margin = container.dataset.originalMargin;
-                    container.dataset.isMaximized = '';
-
-                    const isMobile = isTouchDevice();
-
-                    // Show desktop icons when restored
-                    if (desktopIcons && !isMobile) {
-                        desktopIcons.style.display = 'block';
-                    }
-                }
-            }
+            if (container) container.classList.toggle('is-maximized');
         });
     }
 });

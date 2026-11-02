@@ -31,6 +31,21 @@ body {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Maximized, the main window fills the screen: the home page's window
+   manager and the other pages' main-window.js both set is-maximized. The
+   taskbar height is 0 where there's no taskbar (shell.css sets it). */
+body:has(> .win95-container.is-maximized) {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
+
+.win95-container.is-maximized {
+    max-width: none;
+    min-height: calc(100vh - var(--taskbar-height, 0px));
+    box-sizing: border-box;
+}
+
 /* Windows 95 Title Bar */
 .win95-title-bar {
     background: linear-gradient(to right, #000080, #1084d0);
@@ -3071,6 +3086,11 @@ body.is-touch-device .desktop-icons,
     .status-bar-bottom {
         padding: 4px 0 2px;
         line-height: 1.5;
+    }
+
+    /* The link on a line of its own, under the sentence */
+    .faith-message a {
+        display: block;
     }
 }
 /* ==================================

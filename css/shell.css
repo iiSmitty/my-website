@@ -79,18 +79,8 @@ body.has-taskbar:not(.startup):not(.is-touch-device) {
     box-sizing: border-box;
 }
 
-/* The main window fills the width of the desktop instead */
-body:has(> .win95-container.is-maximized) {
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-}
-
-.win95-container.is-maximized {
-    max-width: none;
-    min-height: calc(100vh - var(--taskbar-height));
-    box-sizing: border-box;
-}
+/* The main window's maximized style is in styles.css, which every page
+   loads: pages without the window manager maximize it too (main-window.js) */
 
 /* ----- Taskbar ----- */
 

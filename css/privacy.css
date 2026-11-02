@@ -1,0 +1,66 @@
+/* Privacy notice (privacy.html): PRIVACY.TXT open in Notepad. Real headings
+   and lists for screen readers, set in one monospace size like a text file.
+   Laid out like the home page: the text and the status bar sit in the
+   page's .win95-content, which scrolls inside the window. */
+
+.notepad-window {
+    max-width: 760px;
+}
+
+.notepad-text {
+    margin: 2px;
+    padding: 8px 12px 16px;
+    background: #ffffff;
+    border: 2px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+    font-family: "Fixedsys", "Courier New", monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #000000;
+    overflow-wrap: break-word;
+}
+
+/* A text file has no type sizes, only capitals and blank lines */
+.notepad-text h1,
+.notepad-text h2 {
+    margin: 1.5em 0 0;
+    font-size: inherit;
+    font-weight: bold;
+    text-align: left;
+    color: inherit;
+    text-transform: uppercase;
+}
+
+.notepad-text h1 {
+    margin-top: 0;
+}
+
+.notepad-text p,
+.notepad-text ul {
+    margin: 0.5em 0 0;
+}
+
+.notepad-text ul {
+    padding-left: 2ch;
+    list-style: none;
+}
+
+.notepad-text li::before {
+    content: "- ";
+    margin-left: -2ch;
+}
+
+.notepad-text a {
+    color: #000080;
+}
+
+.notepad-text code {
+    font: inherit;
+}
+
+@media screen and (max-width: 480px) {
+    .notepad-text {
+        padding: 8px;
+        font-size: 13px;
+    }
+}

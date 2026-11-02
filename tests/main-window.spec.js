@@ -98,7 +98,7 @@ test.describe('desktop', () => {
     // The home page's window manager does these with a taskbar
     // (shell.spec.js); the other pages have a simpler fallback
     test.describe('minimize and maximize without the window manager', () => {
-        for (const path of ['/experience.html', '/strava-pbs.html', '/404.html']) {
+        for (const path of ['/experience.html', '/strava-pbs.html', '/privacy.html', '/404.html']) {
             test(`${path}: minimize leaves the title bar and a Restore Window button`, async ({ page }) => {
                 await page.goto(path, FROM_THE_SITE);
                 await mainWindow(page).locator('.win95-minimize').first().click();
@@ -110,17 +110,24 @@ test.describe('desktop', () => {
                 await expect.poll(async () => (await mainWindow(page).boundingBox()).height).toBeGreaterThan(100);
             });
 
-            test(`${path}: maximize fills the page, and a second click puts it back`, async ({ page }) => {
+            // The same is-maximized style as the home page's window manager:
+            // edge to edge and top to bottom, with no desktop showing
+            test(`${path}: maximize fills the screen, and a second click puts it back`, async ({ page }) => {
                 await page.goto(path, FROM_THE_SITE);
                 const before = await mainWindow(page).boundingBox();
                 const maximize = mainWindow(page).locator('.win95-maximize').first();
 
                 await maximize.click();
-                await expect(mainWindow(page)).toHaveAttribute('data-is-maximized', 'true');
-                await expect(mainWindow(page)).toHaveCSS('margin', '0px');
+                await expect(mainWindow(page)).toHaveClass(/is-maximized/);
+                const filled = await mainWindow(page).boundingBox();
+                const viewport = page.viewportSize();
+                expect(filled.x).toBe(0);
+                expect(filled.y).toBe(0);
+                expect(filled.width).toBe(viewport.width);
+                expect(filled.height).toBeGreaterThanOrEqual(viewport.height);
 
                 await maximize.click();
-                await expect(mainWindow(page)).toHaveAttribute('data-is-maximized', '');
+                await expect(mainWindow(page)).not.toHaveClass(/is-maximized/);
                 await expect.poll(async () => (await mainWindow(page).boundingBox()).width).toBeCloseTo(before.width, 0);
             });
         }

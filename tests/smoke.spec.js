@@ -1,15 +1,12 @@
 const { test, expect } = require('./fixtures');
 
 // Every HTML page that should load cleanly. Add new pages here as the site grows.
-const pages = ['index.html', 'strava-pbs.html', 'experience.html', '404.html'];
+const pages = ['index.html', 'strava-pbs.html', 'experience.html', 'privacy.html', '404.html'];
 
-// Console errors from third-party scripts we don't control (analytics, fonts,
-// ad/tracker blockers, etc.) are noise — we only care about errors from our own
-// code. Add substrings here to ignore a known-benign console error.
+// Console errors from things we don't control (fonts, ad/tracker blockers,
+// etc.) are noise — we only care about errors from our own code. Add
+// substrings here to ignore a known-benign console error.
 const ignoredConsole = [
-    'googletagmanager',
-    'google-analytics',
-    'gtag',
     'favicon',
 ];
 
