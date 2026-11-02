@@ -1,5 +1,7 @@
 /* Privacy notice (privacy.html): PRIVACY.TXT open in Notepad. Real headings
-   and lists for screen readers, set in one monospace size like a text file. */
+   and lists for screen readers, set in one monospace size like a text file.
+   The text area is the page's .win95-content, so it scrolls inside the window
+   like every other page's, and the status bar stays at the window's foot. */
 
 .notepad-window {
     max-width: 760px;

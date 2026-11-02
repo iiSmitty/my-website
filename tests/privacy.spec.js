@@ -41,6 +41,27 @@ test.describe('desktop', () => {
         await expect(notice.getByRole('link', { name: 'Information Regulator' })).toHaveAttribute('href', 'https://inforegulator.org.za/');
         await expect(notice.getByRole('heading', { level: 2 })).toHaveCount(8);
     });
+
+    // Like every page's content, the text scrolls inside the window, so the
+    // status bar stays in the frame, maximized or not
+    test('the text scrolls inside the window, and the status bar stays in it', async ({ page }) => {
+        await page.goto('/privacy');
+        const statusBarInsideWindow = () => page.evaluate(() => {
+            const frame = document.querySelector('.win95-container').getBoundingClientRect();
+            const statusBar = document.querySelector('.win95-status-bar').getBoundingClientRect();
+            return statusBar.bottom <= frame.bottom;
+        });
+        const scrollsInside = () => page.locator('.notepad-text').evaluate((text) => text.scrollHeight > text.clientHeight);
+
+        await expect(page.locator('.win95-status-bar')).toBeVisible();
+        expect(await scrollsInside()).toBe(true);
+        expect(await statusBarInsideWindow()).toBe(true);
+
+        await page.locator('.win95-container .win95-maximize').click();
+        await expect(page.locator('.win95-container')).toHaveAttribute('data-is-maximized', 'true');
+        await page.waitForTimeout(400); // the maximize animation
+        expect(await statusBarInsideWindow()).toBe(true);
+    });
 });
 
 test.describe('touch', () => {
