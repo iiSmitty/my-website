@@ -115,7 +115,7 @@ index.html
     POST /api/mood/cheer  per action
                          |
                          v
-  Cloudflare WAF rate-limit rule on /api/*   (blocks floods before any Worker runs)
+  Cloudflare WAF rate-limit rule on /api/*   (slows single-source floods, 10s blocks on Free)
                          |
                          v
   cf-mood/ Worker, route andresmit.co.za/api/mood*
@@ -208,7 +208,7 @@ index.html
 
 | Risk | Mitigation |
 | --- | --- |
-| A flood or viral spike uses up the shared 100k Worker requests a day and takes the contact form down until 02:00 SAST | The WAF rule blocks single-source floods before any Worker runs. No requests on page load, so visitors who never open the window cost nothing. The daily cap returns "resting" and the client stops calling. A separate account remains the fallback if this ever happens |
+| A flood or viral spike uses up the shared 100k Worker requests a day and takes the contact form down until 02:00 SAST | The WAF rule slows single-source floods (it can only block for 10 seconds on Free). No requests on page load, so visitors who never open the window cost nothing. The daily cap (about 40,000) returns "resting" and the client stops calling, which keeps more than half the quota for contact. The mood route fails open. A separate account remains the fallback if this ever happens |
 | Free-tier limits differ from what the panel found | Phase 0 is a go/no-go gate: if anything is not free, the feature stops. The caps are vars, so they can follow the real limits |
 | Bots pin the mood at "Great day" | Diminishing gain and the per-minute cap. Accepted as harmless |
 | A client sends made-up action strings to inject text | Action ID allowlist on the server, and the client renders only its own text with `textContent` |
@@ -232,6 +232,33 @@ Nothing else starts until this passes. Check against Cloudflare's own docs and t
 - A Worker route under the site's domain works alongside Pages for `/api/mood*`, as it already does for `/api/contact`.
 
 Go only if every item is free with no card on file and no way to be billed. If any item fails, stop: the feature does not go ahead in this form. Phase 1 (the privacy fix) is still worth doing on its own, and the fallback is the static "my data only" mood with local reactions, which needs no backend. Record the findings and the decision in this document.
+
+**Phase 0 findings (checked against developers.cloudflare.com on 2 November 2026)**
+
+| Check | Finding | Result |
+| --- | --- | --- |
+| Durable Objects on Free | Available on Workers Free, SQLite storage only | Pass |
+| Over a limit | "Further operations of that type will fail with an error." Daily limits reset at 00:00 UTC. Charges only exist on the Paid plan | Pass |
+| Durable Object limits | 100,000 requests a day (WebSocket messages count 20 to 1), 13,000 GB-s a day, 5 million rows read and 100,000 rows written a day, 5 GB storage per account, 1 GB per object | Pass, fits the design |
+| Workers limits | 100,000 requests a day for the whole account, 10 ms CPU per request. Over the limit a route returns Error 1027 (fail closed) or skips the Worker (fail open). Static asset requests are free and unlimited | Pass |
+| WAF rate limiting on Free | 1 rule, matched on Path, counted per IP, 10 second period, 10 second block | Pass, with a weaker rule than assumed (see below) |
+| Blocked requests and the Workers quota | The docs don't say whether a request blocked by the WAF still counts against the Workers quota | Unconfirmed, not a cost risk |
+| Web Analytics | Free, "does not collect or use your visitors' personal data", no site limit for proxied sites, automatic or manual snippet | Pass |
+
+What this changes:
+
+- The free WAF rule can only block for 10 seconds at a time, so a determined flood is slowed rather than stopped. The Durable Object's daily cap is the real backstop. Set it to about 40,000 requests a day so the contact form always keeps more than half of the shared Workers quota.
+- Set the mood route to fail open. If the account ever hits its daily Workers limit, `/api/mood` falls through to the static site, returns an ordinary 404, and the client shows its offline state.
+- Draft WAF rule: path starts with `/api/`, 10 requests per 10 seconds per IP, block for 10 seconds.
+
+Checks only the owner can do in the Cloudflare dashboard:
+
+- [ ] The account is on the Workers Free plan, with no Workers Paid subscription.
+- [ ] No payment method is on file.
+- [ ] The site is served by Cloudflare Pages on andresmit.co.za, and the existing `/api/contact` Worker route sits alongside it.
+- [ ] Security > WAF > Rate limiting rules allows one rule to be created.
+
+**Decision: go**, provided all four dashboard checks pass. If any fails, stop as described above.
 
 **Phase 1: privacy first (its own PR)**
 
@@ -270,7 +297,7 @@ Go only if every item is free with no card on file and no way to be billed. If a
 
 ## Open questions
 
-1. Does the free plan's single WAF rate-limit rule cover `/api/*` with a 10 second period, and do blocked requests stay out of the Workers quota? (Phase 0)
+1. Do requests blocked by the WAF still count against the Workers quota? Not in the docs. Check the Worker's request metrics once the rule is live.
 2. Where should the Durable Object live: no location hint, or one near South Africa or Europe? About 200ms either way is fine for a cheer.
 3. Starting half-life: 12 hours as drafted, or a full day?
 4. Does a personal, non-commercial portfolio need to register an information officer with the Information Regulator? I need to check.
