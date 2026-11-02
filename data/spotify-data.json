@@ -14,6 +14,17 @@
       "url": "https://open.spotify.com/artist/19eLuQmk9aCobbVDHc6eek"
     },
     {
+      "name": "Ramones",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb5b9f46a5c5bf8243179d56b0",
+      "genres": [
+        "punk",
+        "proto-punk"
+      ],
+      "popularity": 68,
+      "uri": "spotify:artist:1co4F2pPNH8JjTutZkmgSm",
+      "url": "https://open.spotify.com/artist/1co4F2pPNH8JjTutZkmgSm"
+    },
+    {
       "name": "Ella Fitzgerald",
       "image": "https://i.scdn.co/image/3c1d23141059785c8a863137d176319329dc17ef",
       "genres": [
@@ -38,24 +49,14 @@
       "url": "https://open.spotify.com/artist/6o4TnAxiqaQfZMLl55NFdn"
     },
     {
-      "name": "Die Piesangskille",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb0f9f1c72174154cbc8733c70",
+      "name": "David Kramer",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebe7e739857069ac4e364c37ed",
       "genres": [
         "afrikaans pop"
       ],
-      "popularity": 47,
-      "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
-      "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
-    },
-    {
-      "name": "Die Heuwels Fantasties",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb7e5ed68cd28045d603b7c82a",
-      "genres": [
-        "afrikaans pop"
-      ],
-      "popularity": 48,
-      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
-      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
+      "popularity": 29,
+      "uri": "spotify:artist:77uOOA6zRJBwYTrgsOst0B",
+      "url": "https://open.spotify.com/artist/77uOOA6zRJBwYTrgsOst0B"
     }
   ],
   "topTracks": [
@@ -80,12 +81,22 @@
       "url": "https://open.spotify.com/track/5JVbvCHX10U2pLa5DEqGav"
     },
     {
+      "name": "La vie en rose",
+      "artist": "Louis Armstrong",
+      "album": "BD Music Presents Louis Armstrong",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27314d3e87edcee8ca6d1029cd0",
+      "duration": "3:32",
+      "popularity": 67,
+      "uri": "spotify:track:1dEpbFXDk6sm3vhBQzAgdR",
+      "url": "https://open.spotify.com/track/1dEpbFXDk6sm3vhBQzAgdR"
+    },
+    {
       "name": "Ek Val",
       "artist": "Die Piesangskille",
       "album": "Ek Val",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27336238b48867d8c22c84a1634",
       "duration": "2:58",
-      "popularity": 40,
+      "popularity": 43,
       "uri": "spotify:track:3TRXjj5LyijhaeJOcZ3xig",
       "url": "https://open.spotify.com/track/3TRXjj5LyijhaeJOcZ3xig"
     },
@@ -95,7 +106,7 @@
       "album": "Pray For You",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273e976f6dc7869f1f4c50be6be",
       "duration": "2:56",
-      "popularity": 40,
+      "popularity": 41,
       "uri": "spotify:track:52NyGaMBUmFvahSs4PoAoN",
       "url": "https://open.spotify.com/track/52NyGaMBUmFvahSs4PoAoN"
     },
@@ -110,6 +121,16 @@
       "url": "https://open.spotify.com/track/0lIbM0Jnj1UOG6VRey2aO0"
     },
     {
+      "name": "Close My Eyes (feat. SACHA)",
+      "artist": "Marshmello, ILLENIUM, SACHA",
+      "album": "Close My Eyes (feat. SACHA)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27384198377626062d745c28658",
+      "duration": "2:43",
+      "popularity": 68,
+      "uri": "spotify:track:4Kv3BQhoqR0YboA8xvTyWC",
+      "url": "https://open.spotify.com/track/4Kv3BQhoqR0YboA8xvTyWC"
+    },
+    {
       "name": "My Sweet Escape",
       "artist": "Run Kid Run",
       "album": "Love At The Core",
@@ -120,6 +141,16 @@
       "url": "https://open.spotify.com/track/64ialcNeMgcanlIkEq2Q2a"
     },
     {
+      "name": "Riders On The Storm - Fredwreck Remix",
+      "artist": "Snoop Dogg, The Doors",
+      "album": "Riders On The Storm (Fredwreck Remix)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27347f58c2b7fe3bbd8d8671536",
+      "duration": "6:22",
+      "popularity": 69,
+      "uri": "spotify:track:0RcYEWXtbu4ehdv1tiBOi0",
+      "url": "https://open.spotify.com/track/0RcYEWXtbu4ehdv1tiBOi0"
+    },
+    {
       "name": "All Night",
       "artist": "The Vamps, Matoma",
       "album": "Night & Day (Night Edition)",
@@ -128,37 +159,7 @@
       "popularity": 70,
       "uri": "spotify:track:0dXNQ8dckG4eYfEtq9zcva",
       "url": "https://open.spotify.com/track/0dXNQ8dckG4eYfEtq9zcva"
-    },
-    {
-      "name": "See A Victory",
-      "artist": "Seventh Day Slumber",
-      "album": "Unseen: The Lion And The Lamb (Deluxe Edition)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2734bfd0e91bf806bc73d736cfd",
-      "duration": "5:57",
-      "popularity": 33,
-      "uri": "spotify:track:0vdsEnKEjx0mA1AHV8mwvM",
-      "url": "https://open.spotify.com/track/0vdsEnKEjx0mA1AHV8mwvM"
-    },
-    {
-      "name": "Man in the Mirror",
-      "artist": "Marina City",
-      "album": "Terminal",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735e2d956d46e8a22931c72960",
-      "duration": "3:43",
-      "popularity": 33,
-      "uri": "spotify:track:1cNsEXmXGnqNFMzJMorHys",
-      "url": "https://open.spotify.com/track/1cNsEXmXGnqNFMzJMorHys"
-    },
-    {
-      "name": "La vie en rose",
-      "artist": "Louis Armstrong",
-      "album": "BD Music Presents Louis Armstrong",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27314d3e87edcee8ca6d1029cd0",
-      "duration": "3:32",
-      "popularity": 67,
-      "uri": "spotify:track:1dEpbFXDk6sm3vhBQzAgdR",
-      "url": "https://open.spotify.com/track/1dEpbFXDk6sm3vhBQzAgdR"
     }
   ],
-  "lastUpdated": "2026-10-26T03:52:05.536Z"
+  "lastUpdated": "2026-11-02T05:02:44.243Z"
 }
