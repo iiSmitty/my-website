@@ -5,15 +5,23 @@ document.addEventListener('DOMContentLoaded', function() {
 // The loyalty card gives one point per drink bought; 10 points is a free one
 const POINTS_PER_FREE = 10;
 
+// The stats file, fetched once. PC Health (pc-health.js) reads it too.
+let coffeeStatsRequest = null;
+function getCoffeeStats() {
+    if (!coffeeStatsRequest) {
+        coffeeStatsRequest = fetch('data/coffee-stats.json').then(response => {
+            if (!response.ok) {
+                throw new Error(`Failed to load coffee data: ${response.status}`);
+            }
+            return response.json();
+        });
+    }
+    return coffeeStatsRequest;
+}
+
 async function loadCoffeeStats() {
     try {
-        const response = await fetch('data/coffee-stats.json');
-
-        if (!response.ok) {
-            throw new Error(`Failed to load coffee data: ${response.status}`);
-        }
-
-        const data = await response.json();
+        const data = await getCoffeeStats();
         updateEnhancedCoffeeDisplay(data);
 
     } catch (error) {

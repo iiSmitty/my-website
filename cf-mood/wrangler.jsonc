@@ -1,0 +1,48 @@
+// PC Health API (src/worker.js). Deployed by .github/workflows/deploy-mood.yml
+// on pushes to main that touch cf-mood/. See README.md for the parts that
+// live in the Cloudflare dashboard.
+{
+  "name": "andresmit-mood",
+  "main": "src/worker.js",
+  // Pinned, so a deploy never changes the runtime's behaviour under the code
+  "compatibility_date": "2026-10-01",
+
+  // Only reachable through the site's own domain: no workers.dev address and
+  // no preview URLs
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [
+    { "pattern": "andresmit.co.za/api/mood*", "zone_name": "andresmit.co.za" }
+  ],
+
+  "durable_objects": {
+    "bindings": [
+      { "name": "PC_MOOD", "class_name": "PcMood" }
+    ]
+  },
+  // SQLite storage, the kind the Workers Free plan has. A migration is
+  // permanent: never edit or remove this one, only add new ones after it.
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["PcMood"] }
+  ],
+
+  // Tunable without a code change. Strings, read by readConfig() in
+  // src/mood-core.js, which falls back to the default for anything it
+  // can't use.
+  "vars": {
+    // "false" answers 503 before touching the Durable Object
+    "ENABLED": "true",
+    // How long the shared lift takes to halve
+    "HALF_LIFE_HOURS": "12",
+    // Each cheer closes this share of the gap between the lift and 50
+    "GAIN": "0.08",
+    // Requests a UTC day before it rests until midnight UTC. Keeps more than
+    // half of the account's 100,000 free Worker requests for everything else.
+    "DAILY_CAP": "40000",
+    // Accepted cheers a minute, across every visitor
+    "CHEERS_PER_MINUTE": "30"
+  },
+
+  // No request logs: nothing about visitors is kept anywhere
+  "observability": { "enabled": false }
+}

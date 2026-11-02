@@ -14,3 +14,13 @@ test('the achievement sound is answered by the stub', async ({ page }) => {
     expect(sound.ok).toBe(true);
     expect(sound.bytes).toBeGreaterThan(0);
 });
+
+// PC Health's API is answered as switched off, so no test reaches the real one
+test('the mood API is answered by the stub', async ({ page }) => {
+    await page.goto('/');
+    const answer = await page.evaluate(async () => {
+        const response = await fetch('/api/mood/cheer', { method: 'POST', body: '{"action":"pat"}' });
+        return { status: response.status, body: await response.json() };
+    });
+    expect(answer).toEqual({ status: 503, body: { error: 'disabled' } });
+});

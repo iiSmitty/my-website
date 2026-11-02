@@ -7,9 +7,13 @@ const base = require('@playwright/test');
 // icon is deleted. It's answered locally instead, so the suite only ever
 // waits on this site. (p5.js and the APIs the windows call are left alone:
 // they load on demand, and the specs that need them route them themselves.)
+//
+// PC Health's API (cf-mood/) is answered as switched off, so no test can
+// ever cheer up the real PC. pc-health.spec.js routes it per test.
 const STUBS = [
     // A real sound of the site's own, so the audio element has something to decode
-    ['https://dl.dropboxusercontent.com/**', { path: path.join(__dirname, '..', 'sounds', 'win95-complete.mp3') }]
+    ['https://dl.dropboxusercontent.com/**', { path: path.join(__dirname, '..', 'sounds', 'win95-complete.mp3') }],
+    ['**/api/mood**', { status: 503, json: { error: 'disabled' } }]
 ];
 
 const test = base.test.extend({

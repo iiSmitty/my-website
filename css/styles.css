@@ -1447,6 +1447,26 @@ body.startup {
     background-position: center;
 }
 
+/* PC Health: a beige CRT having a good day (icons/pc-health-*.svg) */
+.PcHealthIcon_32x32 {
+    width: 32px;
+    height: 32px;
+    background-image: url(/icons/pc-health-32.svg);
+    display: inline-block;
+    margin-bottom: 4px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.PcHealthIcon_16x16 {
+    display: inline-block;
+    flex: 0 0 auto;
+    width: 16px;
+    height: 16px;
+    background: url(/icons/pc-health-16.svg) no-repeat center;
+    vertical-align: -3px;
+}
+
 /* Small icons, for title bars, taskbar buttons and the Start menu */
 .ComputerIcon_16x16,
 .GitHubIcon_16x16,
@@ -3171,6 +3191,34 @@ body.is-touch-device .desktop-icons,
 
 .identity-specs dd {
     margin: 0;
+}
+
+/* The Mood row (pc-health.js). Hidden until its script shows it, since the
+   button needs JavaScript. display: contents would otherwise beat hidden. */
+.identity-specs div[hidden] {
+    display: none;
+}
+
+.identity-specs .pc-health-check {
+    min-width: 0;
+    margin-left: 4px;
+    padding: 0 8px;
+    font-size: 11px;
+    line-height: 16px;
+}
+
+.identity-specs .pc-health-check:focus-visible {
+    outline: 1px dotted #000000;
+    outline-offset: -4px;
+}
+
+/* Easy to hit with a finger */
+@media (pointer: coarse) {
+    .identity-specs .pc-health-check {
+        min-height: 44px;
+        padding: 0 14px;
+        font-size: 12px;
+    }
 }
 
 @media screen and (max-width: 480px) {

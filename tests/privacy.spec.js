@@ -39,7 +39,7 @@ test.describe('desktop', () => {
 
         await expect(notice.getByRole('link', { name: 'Contact Me' }).first()).toHaveAttribute('href', './#contact');
         await expect(notice.getByRole('link', { name: 'Information Regulator' })).toHaveAttribute('href', 'https://inforegulator.org.za/');
-        await expect(notice.getByRole('heading', { level: 2 })).toHaveCount(8);
+        await expect(notice.getByRole('heading', { level: 2 })).toHaveCount(9);
     });
 
     // Laid out like the home page: the text and the status bar scroll inside
@@ -69,7 +69,7 @@ test.describe('touch', () => {
 
     test('reads on a small phone, with nothing wider than the screen', async ({ page }) => {
         await page.goto('/privacy');
-        await expect(page.getByRole('heading', { name: '7. Your rights' })).toBeAttached();
+        await expect(page.getByRole('heading', { name: '8. Your rights' })).toBeAttached();
         await expect(page.locator('.notepad-text')).toBeVisible();
 
         const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);

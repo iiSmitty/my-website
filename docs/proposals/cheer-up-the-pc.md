@@ -1,6 +1,6 @@
 # Proposal: Cheer up the PC
 
-Status: draft for review
+Status: Phase 2 built, waiting on the owner's Cloudflare setup
 Owner: Andre Smit
 
 ## Summary
@@ -287,6 +287,25 @@ The account also runs four other Workers (`andresmit-travel`, `annie`, `annie-pi
   - throttled announcements
 - A Help entry on how it works. A privacy note line.
 - Ship with `pcHealthShared: false`, check it in production, then flip it to true.
+
+**Phase 2 status: built, waiting on the owner's setup**
+
+In the repo: `lastVisitAt` in the coffee fetcher, `cf-mood/` (Worker, Durable Object, 32 node tests, `wrangler.jsonc`), `.github/workflows/deploy-mood.yml`, the Mood row, the PC Health window and its desktop icon and Start menu entry, `data/features.json` (`false`), `tests/pc-health.spec.js`, a Help topic and a privacy notice section. The Worker was also run in local `workerd` with `wrangler dev`.
+
+Changes from the plan while building it:
+
+- A day's counts are one row with a column per action, rather than a row per action, so an accepted cheer writes two rows (state and day) at most. With the daily cap of 40,000 that's under 100,000 rows written a day, even in a flood.
+- Days are UTC, to line up with when Cloudflare's free limits reset.
+- `GET /api/mood/stats` was added so the success measures can be read: cheers per action, page loads that cheered, and cheers that found the lift faded below 1 (for tuning the half-life). It's anonymous totals only.
+- The per-minute cap is a var too (`CHEERS_PER_MINUTE`).
+- Status messages are spoken together with the cheer that caused them, so one never cuts off the other.
+
+Left for the owner, in this order (details in `cf-mood/README.md`):
+
+- [ ] Create a Workers-only API token, and add `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` as repository secrets.
+- [ ] Merge, so Deploy Mood creates the Worker, the Durable Object and the route.
+- [ ] Set the route to fail open, and add the WAF rate-limit rule.
+- [ ] Check `/api/mood/health`, `/api/mood` and a cheer with curl, then set `pcHealthShared` to `true`.
 
 **Phase 3: polish**
 

@@ -1,0 +1,45 @@
+name: Deploy Mood
+
+# Deploys the PC Health API (cf-mood/) to Cloudflare when it changes on main.
+# Tests first: a failing test never reaches production.
+on:
+  push:
+    branches: [main]
+    paths:
+      - cf-mood/**
+      - .github/workflows/deploy-mood.yml
+  workflow_dispatch:
+
+# One deploy at a time, and a newer push waits rather than racing it
+concurrency:
+  group: deploy-mood
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      # No dependencies: the tests use Node's own test runner and SQLite
+      - name: Test
+        run: node --test "cf-mood/test/*.test.js"
+
+      # Wrangler is pinned, so a new release can't change a deploy unannounced.
+      # The token can only edit Workers on this account (see cf-mood/README.md).
+      - name: Deploy
+        working-directory: cf-mood
+        run: npx --yes wrangler@4.150.0 deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

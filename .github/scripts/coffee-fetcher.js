@@ -155,6 +155,24 @@ function hasChanged(stored, stats) {
     return !stored || Object.keys(PANELS).some(field => stored[field] !== stats[field]);
 }
 
+/**
+ * The file to write: the new stats, plus when I last bought a coffee. The
+ * portal has no visit history, so lastVisitAt is the time this run first saw
+ * totalSiteVisits go up (within a day of the visit, as the job runs daily).
+ * PC Health (js/pc-health.js) reads it. A run where the count didn't go up
+ * keeps the last known time; the first run ever has none to give.
+ */
+function nextStats(stored, stats, now) {
+    const next = { ...stats };
+    const visited = stored && Number.isFinite(stored.totalSiteVisits) && stats.totalSiteVisits > stored.totalSiteVisits;
+    if (visited) {
+        next.lastVisitAt = now.toISOString();
+    } else if (stored && stored.lastVisitAt) {
+        next.lastVisitAt = stored.lastVisitAt;
+    }
+    return { ...next, lastUpdated: now.toISOString(), success: true };
+}
+
 // --- Main ----------------------------------------------------------------------------
 
 /**
@@ -195,12 +213,13 @@ async function main() {
     const stats = readStats(await fetchPanels(username, password));
     console.log('Coffee stats:', stats);
 
-    if (!hasChanged(readStored(), stats)) {
+    const stored = readStored();
+    if (!hasChanged(stored, stats)) {
         console.log('No change in the stats');
         return;
     }
 
-    const next = { ...stats, lastUpdated: new Date().toISOString(), success: true };
+    const next = nextStats(stored, stats, new Date());
     fs.writeFileSync(DATA_PATH, JSON.stringify(next, null, 2));
     console.log('Stats changed, file updated');
 }
@@ -212,4 +231,4 @@ if (require.main === module) {
     });
 }
 
-module.exports = { NoRetryError, describeError, fetchPanels, hasChanged, loginForm, readStats };
+module.exports = { NoRetryError, describeError, fetchPanels, hasChanged, loginForm, nextStats, readStats };

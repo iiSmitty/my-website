@@ -8,6 +8,8 @@ const DESKTOP_PROGRAMS = [
     // TASKMGR.EXE (taskmgr.js)
     { name: 'Task Manager', icon: 'TaskManagerIcon_16x16', open: () => openTaskManager() },
     { name: 'My Computer', desktopIcon: 'ComputerIcon_32x32', icon: 'ComputerIcon_16x16', open: () => openMyTechWindow() },
+    // My Computer's mood, and visitors cheering it up (pc-health.js)
+    { name: 'PC Health', desktopIcon: 'PcHealthIcon_32x32', icon: 'PcHealthIcon_16x16', open: () => openPcHealthWindow() },
     { name: 'Source Code', desktopIcon: 'GitHubIcon_32x32', icon: 'GitHubIcon_16x16 WhiteIcon', open: () => openGitHubInstallerWindow() },
     { name: 'Spotify', desktopIcon: 'SpotifyIcon_32x32', icon: 'SpotifyIcon_16x16 WhiteIcon', open: () => openSpotifyWindow() },
     // What I'm watching (watching.js)

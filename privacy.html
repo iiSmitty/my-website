@@ -50,8 +50,9 @@
                 home page.</p>
 
             <h2>2. What this site keeps about you</h2>
-            <p>Nothing. The site's own code sets no cookies, has no sign-in, and doesn't save
-                anything in your browser's storage.</p>
+            <p>Nothing. The site's own code sets no cookies and has no sign-in. The only thing it
+                saves in your browser is PC Health's memory, and only once you open PC Health
+                (section 5).</p>
 
             <h2>3. Hosting and visit counts</h2>
             <p>The site is served by Cloudflare. Like any web host, Cloudflare receives your IP
@@ -69,7 +70,20 @@
                 from your browser and device, and my Cloudflare Worker passes your IP address to
                 Cloudflare to verify the result. I don't store any of it.</p>
 
-            <h2>5. Other services, only when you open something</h2>
+            <h2>5. Cheering up the PC</h2>
+            <p>PC Health lets you cheer up My Computer with a few preset buttons. When you press one,
+                your browser sends my Cloudflare Worker which button it was, and whether it's the first
+                you've pressed since the page loaded. The Worker adds it to anonymous counts per button
+                per day and to the PC's shared mood. It doesn't read, store or log your IP address or
+                anything else about you, and its logs are turned off. Other visitors only ever see
+                totals, such as "14 cheers today".</p>
+            <p>To stop floods of requests, Cloudflare's rate limiting briefly counts requests per IP
+                address. I can't see those counts.</p>
+            <p>Your browser remembers, in its local storage, the last mood you saw, how many times
+                you've cheered, which jokes you've heard, and whether the PC asked you to come back
+                later. It's never sent anywhere, and clearing your browser's site data removes it.</p>
+
+            <h2>6. Other services, only when you open something</h2>
             <p>Some windows show content from elsewhere. Nothing loads from these services until you
                 open the part of the site that uses them, and each receives your IP address and browser
                 details, as with any web request:</p>
@@ -84,7 +98,7 @@
             <p>Links to other sites, such as LinkedIn, GitHub and Strava, only reach them if you
                 click. Each of these services has its own privacy policy.</p>
 
-            <h2>6. Why, and where</h2>
+            <h2>7. Why, and where</h2>
             <p>The basis for this processing is my legitimate interest in running the site, keeping
                 it secure and knowing roughly how many people visit it (POPIA section 11(1)(f), GDPR
                 Article 6(1)(f)).</p>
@@ -92,7 +106,7 @@
                 States, so this information can be processed there under their own data protection
                 terms.</p>
 
-            <h2>7. Your rights</h2>
+            <h2>8. Your rights</h2>
             <p>You can ask what personal information I hold about you (from this site: none), and ask
                 for it to be corrected or deleted, or object to its use. Use
                 <a href="./#contact">Contact Me</a>.</p>
@@ -100,7 +114,7 @@
                 <a href="https://inforegulator.org.za/" target="_blank" rel="noopener noreferrer">Information Regulator</a>,
                 or to the data protection authority where you live.</p>
 
-            <h2>8. Changes</h2>
+            <h2>9. Changes</h2>
             <p>Until November 2026 this site used Google Analytics, which set cookies. It has been
                 removed. If anything here changes, this file will be updated, and its history is public
                 on <a href="https://github.com/iiSmitty/my-website/commits/main/privacy.html" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>

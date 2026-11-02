@@ -1,0 +1,314 @@
+/* PC Health window (js/pc-health-window.js). Loaded with it, the first time
+   it opens. Animations only move and fade things (transform and opacity),
+   only run while the window is open, and stop under reduced motion. */
+
+.pc-health-window {
+    position: fixed;
+    /* Centered on open via JS (left/top in px) so the title bar can be dragged */
+    top: 8px;
+    left: 8px;
+    z-index: 1000;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 420px;
+    max-width: calc(100vw - 16px);
+    max-height: calc(100vh - 16px);
+    max-height: calc(100dvh - 16px);
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+}
+
+.pc-health-window[hidden] {
+    display: none;
+}
+
+/* Focus lands on the window when it opens; the title bar already shows it's active */
+.pc-health-window:focus {
+    outline: none;
+}
+
+.pc-health-window .win95-title {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+#pcHealthTitleBar {
+    cursor: move;
+}
+
+.pc-health-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 0;
+    padding: 8px;
+    overflow-y: auto;
+}
+
+.pc-health-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* --- The PC ------------------------------------------------------------------ */
+
+.pc-health-art {
+    position: relative;
+    flex: 0 0 auto;
+    width: 128px;
+    height: 128px;
+}
+
+.pc-health-svg {
+    display: block;
+    width: 128px;
+    height: 128px;
+    transform-origin: 50% 100%;
+}
+
+/* One face at a time, chosen by the band (data-face) */
+.pc-health-art .pc-face {
+    display: none;
+}
+
+.pc-health-art[data-face="great"] .pc-face--great,
+.pc-health-art[data-face="happy"] .pc-face--happy,
+.pc-health-art[data-face="content"] .pc-face--content,
+.pc-health-art[data-face="okay"] .pc-face--okay,
+.pc-health-art[data-face="tired"] .pc-face--tired {
+    display: inline;
+}
+
+/* A blink every few seconds */
+.pc-health-art .pc-eyes {
+    animation: pc-health-blink 5s steps(1) infinite;
+}
+
+@keyframes pc-health-blink {
+    0%, 96% { opacity: 1; }
+    97%, 100% { opacity: 0; }
+}
+
+/* A cheer: a hop (or a wiggle for a pat), and a heart floating up */
+.pc-health-art.is-cheered .pc-health-svg {
+    animation: pc-health-hop 0.5s steps(4);
+}
+
+.pc-health-art.is-cheered[data-action="pat"] .pc-health-svg {
+    animation-name: pc-health-wiggle;
+}
+
+@keyframes pc-health-hop {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes pc-health-wiggle {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
+}
+
+.pc-health-heart {
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    width: 12px;
+    height: 12px;
+    opacity: 0;
+    /* A pixel heart, in a 6x5 grid */
+    background:
+        linear-gradient(#e0003c, #e0003c) 2px 0 / 2px 2px no-repeat,
+        linear-gradient(#e0003c, #e0003c) 8px 0 / 2px 2px no-repeat,
+        linear-gradient(#e0003c, #e0003c) 0 2px / 12px 4px no-repeat,
+        linear-gradient(#e0003c, #e0003c) 2px 6px / 8px 2px no-repeat,
+        linear-gradient(#e0003c, #e0003c) 4px 8px / 4px 2px no-repeat;
+    pointer-events: none;
+}
+
+.pc-health-art.is-cheered .pc-health-heart {
+    animation: pc-health-float 0.9s steps(6) forwards;
+}
+
+@keyframes pc-health-float {
+    0% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-24px); }
+}
+
+/* --- The readout ---------------------------------------------------------------- */
+
+.pc-health-readout {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.pc-health-state {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.pc-health-percent {
+    font-weight: normal;
+}
+
+/* A Win95 progress bar: navy blocks in a sunken well */
+.pc-health-meter,
+.pc-health-defrag-bar {
+    position: relative;
+    height: 16px;
+    margin: 6px 0;
+    overflow: hidden;
+    background: #ffffff;
+    border: 2px inset #ffffff;
+}
+
+.pc-health-meter-fill,
+.pc-health-defrag-fill {
+    position: absolute;
+    inset: 2px;
+    background: repeating-linear-gradient(to right, #000080 0 8px, transparent 8px 10px);
+    transform: scaleX(0);
+    transform-origin: left center;
+}
+
+.pc-health-line,
+.pc-health-humming {
+    margin: 0;
+}
+
+.pc-health-humming {
+    margin-top: 4px;
+    color: #404040;
+    font-style: italic;
+}
+
+/* What the PC just said */
+.pc-health-bubble {
+    min-height: 32px;
+    padding: 6px 8px;
+    background: #ffffe1;
+    border: 1px solid #000000;
+}
+
+.pc-health-defrag {
+    padding: 6px 8px;
+    border: 2px outset #ffffff;
+}
+
+.pc-health-defrag[hidden] {
+    display: none;
+}
+
+.pc-health-defrag-title {
+    font-weight: bold;
+}
+
+/* --- Buttons and traces ---------------------------------------------------------- */
+
+.pc-health-window fieldset {
+    margin: 0;
+    padding: 6px 8px 8px;
+    border: 2px groove #ffffff;
+}
+
+.pc-health-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 6px;
+}
+
+.pc-health-action {
+    min-width: 0;
+    min-height: 28px;
+    color: #000000;
+}
+
+.pc-health-action:focus-visible {
+    outline: 1px dotted #000000;
+    outline-offset: -5px;
+}
+
+/* Resting between cheers. Still focusable, so focus stays put. */
+.pc-health-action[aria-disabled="true"] {
+    color: #808080;
+    text-shadow: 1px 1px 0 #ffffff;
+    cursor: default;
+}
+
+.pc-health-action[aria-disabled="true"]:active {
+    border-style: outset;
+}
+
+.pc-health-lately p {
+    margin: 0;
+}
+
+.pc-health-lately p + p {
+    margin-top: 4px;
+}
+
+.pc-health-lately p[hidden] {
+    display: none;
+}
+
+/* For screen readers only */
+.pc-health-live {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.pc-health-statusbar {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 2px 4px;
+    border-top: 1px solid #808080;
+    font-size: 11px;
+}
+
+.pc-health-statusbar span {
+    padding: 1px 4px;
+    border: 1px inset #ffffff;
+}
+
+/* --- Phones ---------------------------------------------------------------------- */
+
+@media (pointer: coarse) {
+    .pc-health-action {
+        min-height: 44px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .pc-health-art,
+    .pc-health-svg {
+        width: 96px;
+        height: 96px;
+    }
+
+    .pc-health-buttons {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .pc-health-statusbar {
+        flex-direction: column;
+        gap: 2px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pc-health-art .pc-eyes,
+    .pc-health-art.is-cheered .pc-health-svg,
+    .pc-health-art.is-cheered .pc-health-heart {
+        animation: none;
+    }
+}

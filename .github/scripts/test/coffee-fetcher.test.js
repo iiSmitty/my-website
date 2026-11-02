@@ -1,6 +1,6 @@
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
-const { NoRetryError, describeError, fetchPanels, hasChanged, loginForm, readStats } = require('../coffee-fetcher.js');
+const { NoRetryError, describeError, fetchPanels, hasChanged, loginForm, nextStats, readStats } = require('../coffee-fetcher.js');
 
 // Shape matches what GetLoyaltyPanels actually returns (October 2026)
 
@@ -81,6 +81,34 @@ test('hasChanged notices any stat moving', () => {
 test('hasChanged writes a file from before the free coffee stats, or none at all', () => {
     assert.equal(hasChanged({ totalSiteVisits: 164, currentBalance: 3, success: true }, STATS), true);
     assert.equal(hasChanged(null, STATS), true);
+});
+
+// --- When I last bought a coffee -------------------------------------------------
+
+const NOW = new Date('2026-11-02T08:00:00.000Z');
+
+test('nextStats records a visit when the visit count goes up', () => {
+    const stored = { ...STATS, lastUpdated: '2026-10-23T13:11:30.358Z', success: true };
+    assert.deepEqual(nextStats(stored, { ...STATS, totalSiteVisits: 165 }, NOW), {
+        ...STATS,
+        totalSiteVisits: 165,
+        lastVisitAt: '2026-11-02T08:00:00.000Z',
+        lastUpdated: '2026-11-02T08:00:00.000Z',
+        success: true
+    });
+});
+
+test('nextStats keeps the last visit when something else changed', () => {
+    // Redeeming a banked free coffee changes the stats without a new site visit
+    const stored = { ...STATS, lastVisitAt: '2026-10-30T08:00:00.000Z', success: true };
+    const next = nextStats(stored, { ...STATS, freeBeveragesAvailable: 5 }, NOW);
+    assert.equal(next.lastVisitAt, '2026-10-30T08:00:00.000Z');
+    assert.equal(next.lastUpdated, '2026-11-02T08:00:00.000Z');
+});
+
+test('nextStats has no visit time to give before it has seen the count go up', () => {
+    assert.equal('lastVisitAt' in nextStats(null, STATS, NOW), false);
+    assert.equal('lastVisitAt' in nextStats({ ...STATS, success: true }, { ...STATS, currentBalance: 4 }, NOW), false);
 });
 
 // --- Logging in ------------------------------------------------------------------

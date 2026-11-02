@@ -55,6 +55,27 @@ function loadStylesheet(href) {
     return stylesheetLoads.get(href);
 }
 
+// Adds a script the first time something asks for it, for windows that load
+// their code on first open. Resolves to whether it loaded.
+const scriptLoads = new Map();
+function loadScript(src) {
+    if (!scriptLoads.has(src)) {
+        scriptLoads.set(src, new Promise(resolve => {
+            const script = document.createElement('script');
+            script.src = src;
+            script.onload = () => resolve(true);
+            script.onerror = () => {
+                // Let a later try load it again
+                scriptLoads.delete(src);
+                script.remove();
+                resolve(false);
+            };
+            document.head.appendChild(script);
+        }));
+    }
+    return scriptLoads.get(src);
+}
+
 // In the middle of the screen, but never closer than 8px to its top or left
 // edge. Set as left/top in px, so the window can still be dragged.
 function centerInViewport(element) {

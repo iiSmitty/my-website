@@ -42,7 +42,7 @@ test.describe('desktop', () => {
         await page.goto('/?showWatermark=true');
         const watermark = page.getByText('Activate Windows');
         await expect(watermark).toBeVisible();
-        await expect(page.locator('.desktop-icon')).toHaveCount(7);
+        await expect(page.locator('.desktop-icon')).toHaveCount(8);
 
         // Above the taskbar once it shows, like the real one, rather than over the clock
         await page.locator('#start-windows').click();
@@ -62,7 +62,7 @@ test.describe('desktop', () => {
         await expect(programs).toBeVisible();
         // The Recycle Bin is an easter egg, so it isn't listed
         await expect(programs.getByRole('menuitem')).toHaveText([
-            'Dev Community', 'Experience', 'My Computer', 'Source Code', 'Spotify', 'Task Manager', 'Videos'
+            'Dev Community', 'Experience', 'My Computer', 'PC Health', 'Source Code', 'Spotify', 'Task Manager', 'Videos'
         ]);
 
         await programs.getByRole('menuitem', { name: 'Spotify' }).click();
