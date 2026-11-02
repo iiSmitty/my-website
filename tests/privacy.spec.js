@@ -42,8 +42,8 @@ test.describe('desktop', () => {
         await expect(notice.getByRole('heading', { level: 2 })).toHaveCount(8);
     });
 
-    // Like every page's content, the text scrolls inside the window, so the
-    // status bar stays in the frame, maximized or not
+    // Laid out like the home page: the text and the status bar scroll inside
+    // the window, so neither spills out of the frame, maximized or not
     test('the text scrolls inside the window, and the status bar stays in it', async ({ page }) => {
         await page.goto('/privacy');
         const statusBarInsideWindow = () => page.evaluate(() => {
@@ -51,8 +51,9 @@ test.describe('desktop', () => {
             const statusBar = document.querySelector('.win95-status-bar').getBoundingClientRect();
             return statusBar.bottom <= frame.bottom;
         });
-        const scrollsInside = () => page.locator('.notepad-text').evaluate((text) => text.scrollHeight > text.clientHeight);
+        const scrollsInside = () => page.locator('.win95-content').evaluate((content) => content.scrollHeight > content.clientHeight);
 
+        await page.locator('.win95-status-bar').scrollIntoViewIfNeeded();
         await expect(page.locator('.win95-status-bar')).toBeVisible();
         expect(await scrollsInside()).toBe(true);
         expect(await statusBarInsideWindow()).toBe(true);

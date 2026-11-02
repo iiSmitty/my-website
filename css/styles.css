@@ -3087,6 +3087,11 @@ body.is-touch-device .desktop-icons,
         padding: 4px 0 2px;
         line-height: 1.5;
     }
+
+    /* The link on a line of its own, under the sentence */
+    .faith-message a {
+        display: block;
+    }
 }
 /* ==================================
    Identity: who this is, the way Win95's

@@ -171,3 +171,31 @@ test.describe('desktop', () => {
         await expect(dropdownItems(page).filter({ hasText: 'Privacy Notice' })).toHaveClass(/active-dropdown-item/);
     });
 });
+
+test.describe('phone', () => {
+    test.use({ viewport: { width: 375, height: 812 }, hasTouch: true, isMobile: true });
+
+    // The same status bar on every page, with Discover His Love on a line of
+    // its own under the sentence
+    for (const path of ['/', '/experience', '/privacy']) {
+        test(`${path}: the status bar's link sits on its own line`, async ({ page }) => {
+            await page.goto(path, FROM_THE_SITE);
+            // The home page's status bar is part of the profile on the floppy
+            if (path === '/') {
+                await page.locator('#floppyLoader').click();
+                await expect(page.locator('#mainProfileContent')).toBeVisible();
+            }
+            const message = page.locator('.win95-container .faith-message').first();
+            const link = message.getByRole('link', { name: 'Discover His Love' });
+            await link.scrollIntoViewIfNeeded();
+            await expect(link).toBeVisible();
+
+            // A line of its own at any width, not just wherever the sentence wraps
+            await expect(link).toHaveCSS('display', 'block');
+            const box = await message.boundingBox();
+            const linkBox = await link.boundingBox();
+            expect(linkBox.width).toBeCloseTo(box.width, 0);
+            expect(linkBox.y).toBeGreaterThan(box.y + 5);
+        });
+    }
+});
