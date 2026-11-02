@@ -1,12 +1,10 @@
 const { test, expect } = require('./fixtures');
 
-// The third-party hosts in fixtures.js are answered locally, so no test waits
-// on Google or Dropbox
+// The third-party host in fixtures.js is answered locally, so no test waits
+// on Dropbox
 
-test('third-party requests a page makes are answered by the stubs', async ({ page }) => {
-    const analytics = page.waitForResponse(response => response.url().includes('googletagmanager.com'));
+test('the achievement sound is answered by the stub', async ({ page }) => {
     await page.goto('/');
-    expect(await (await analytics).text()).toBe('');
 
     // The achievement sound, played when a desktop icon is deleted, is the site's own file
     const sound = await page.evaluate(async () => {

@@ -39,7 +39,7 @@ test.describe('desktop', () => {
             await menu(page, 'File').click();
             await menu(page, 'Help').click();
             await expect(openDropdown(page)).toHaveCount(1);
-            await expect(dropdownItems(page)).toHaveText(['How This Site Works']);
+            await expect(dropdownItems(page)).toHaveText(['How This Site Works', 'Privacy Notice']);
         });
 
         test('each menu and item underlines its access key', async ({ page }) => {
@@ -53,8 +53,8 @@ test.describe('desktop', () => {
             await expect(underlined(dropdownItems(page).filter({ hasText: 'Strava PBs' }))).toHaveText('S');
             await menu(page, 'Help').click();
             // The first w in the name, which is How's
-            await expect(dropdownItems(page).locator('span span')).toHaveText('w');
-            await expect(dropdownItems(page)).toHaveText('How This Site Works');
+            await expect(underlined(dropdownItems(page).filter({ hasText: 'How This Site Works' }))).toHaveText('w');
+            await expect(underlined(dropdownItems(page).filter({ hasText: 'Privacy Notice' }))).toHaveText('P');
         });
 
         test('Alt and a letter open a menu, the arrow keys move through it, and Enter chooses', async ({ page }) => {
@@ -95,7 +95,7 @@ test.describe('desktop', () => {
 
         test('Alt+H then W opens How This Site Works', async ({ page }) => {
             await page.keyboard.press('Alt+h');
-            await expect(dropdownItems(page)).toHaveText(['How This Site Works']);
+            await expect(dropdownItems(page)).toHaveText(['How This Site Works', 'Privacy Notice']);
             await page.keyboard.press('w');
             await expect(page.getByRole('heading', { name: 'How This Site Works' })).toBeInViewport();
         });
@@ -157,7 +157,17 @@ test.describe('desktop', () => {
         await expect(dropdownItems(page).filter({ hasText: 'Strava PBs' })).toHaveClass(/active-dropdown-item/);
 
         await menu(page, 'Help').click();
-        await dropdownItems(page).click();
+        await dropdownItems(page).filter({ hasText: 'How This Site Works' }).click();
         await expect(page).toHaveURL(/\/#how-it-works$/);
+    });
+
+    test('Help > Privacy Notice opens the privacy page, and marks it there', async ({ page }) => {
+        await page.goto('/experience', FROM_THE_SITE);
+        await menu(page, 'Help').click();
+        await dropdownItems(page).filter({ hasText: 'Privacy Notice' }).click();
+        await expect(page).toHaveURL(/\/privacy$/);
+
+        await menu(page, 'Help').click();
+        await expect(dropdownItems(page).filter({ hasText: 'Privacy Notice' })).toHaveClass(/active-dropdown-item/);
     });
 });

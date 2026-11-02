@@ -32,7 +32,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 text: 'Help',
                 accessKey: 'H',
                 dropdown: [
-                    { text: 'How This Site Works', accessKey: 'W', action: 'site-help' }
+                    { text: 'How This Site Works', accessKey: 'W', action: 'site-help' },
+                    { text: 'Privacy Notice', accessKey: 'P', link: './privacy', pages: ['privacy'] }
                 ]
             }
         ];

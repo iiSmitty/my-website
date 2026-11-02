@@ -195,7 +195,7 @@ index.html
 - The browser stores nothing but the last mood seen, the number of times you have cheered, and the jokes already seen (localStorage, never sent).
 - IP addresses are seen only by Cloudflare's WAF, briefly, to stop abuse. The Worker never reads, stores or logs them, and never logs request headers.
 - Counts are anonymous and aggregate. Broadcasts and traces carry no location or identity.
-- Phase 1 replaces Google Analytics, which sets cookies without consent today, with Cloudflare Web Analytics, which sets none, so no consent banner is needed. It also adds `PRIVACY.TXT`, a Notepad window and a plain `/privacy.txt`. The note covers who runs the site and how to reach me, Cloudflare as processor and the transfer outside South Africa (POPIA section 72), the lawful basis (legitimate interest in security: GDPR Article 6(1)(f), POPIA section 11(1)(f)), and visitors' rights, including complaining to the Information Regulator.
+- Phase 1 replaces Google Analytics, which sets cookies without consent today, with Cloudflare Web Analytics, which sets none, so no consent banner is needed. It also adds `/privacy`, a page styled as `PRIVACY.TXT` open in Notepad. It is a page rather than a desktop window because windows don't open on touch devices, and it works without JavaScript. The note covers who runs the site and how to reach me, Cloudflare as processor and the transfer outside South Africa (POPIA section 72), the lawful basis (legitimate interest in security: GDPR Article 6(1)(f), POPIA section 11(1)(f)), and visitors' rights, including complaining to the Information Regulator.
 
 ### Measuring success (free and private)
 
@@ -264,7 +264,8 @@ Checks only the owner can do in the Cloudflare dashboard:
 
 - Remove Google Analytics from every page and the GA stubs from `tests/fixtures.js`.
 - Turn on Cloudflare Web Analytics.
-- Add `PRIVACY.TXT` (Notepad window plus `/privacy.txt`), with a line ready for the mood feature.
+- Add the privacy notice at `/privacy` (`privacy.html`, styled as `PRIVACY.TXT` in Notepad), linked from the home page's "This site" row and from Help > Privacy Notice on every page. Phase 2 adds a section for the mood feature.
+- Done in its own PR. Cloudflare Web Analytics uses automatic setup (a dashboard toggle), so nothing for it lives in the repo.
 
 **Phase 2: Cheer up the PC (the smallest useful version)**
 
