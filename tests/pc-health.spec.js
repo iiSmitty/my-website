@@ -74,7 +74,7 @@ const live = (page) => page.locator('#pcHealthLive');
 const action = (page, name) => healthWindow(page).getByRole('button', { name });
 
 async function openFromRow(page) {
-    await moodRow(page).getByRole('button', { name: 'Check on it' }).click();
+    await moodRow(page).getByRole('button', { name: 'check on it' }).click();
     await expect(healthWindow(page)).toBeVisible();
 }
 
@@ -111,6 +111,9 @@ test.describe('desktop', () => {
         await expect(moodRow(page)).toBeVisible();
         await expect(moodRow(page).locator('dt')).toHaveText('Mood');
         await expect(page.locator('#pcHealthRowText')).toHaveText('Content, 55%');
+        // The PC's face matches its mood
+        await expect(page.locator('#pcHealthRowFace')).toHaveAttribute('data-face', 'content');
+        await expect(page.locator('#pcHealthRowFace svg')).toBeVisible();
 
         expect(calls).toEqual([]);
         expect(requested.filter(url => /pc-health-window|pc-health\.min\.css|features\.json/.test(url))).toEqual([]);
@@ -462,7 +465,7 @@ test.describe('touch', () => {
         await boot(page);
         await expect(page.locator('.desktop-icon')).toHaveCount(0);
 
-        const check = moodRow(page).getByRole('button', { name: 'Check on it' });
+        const check = moodRow(page).getByRole('button', { name: 'check on it' });
         expect((await check.boundingBox()).height).toBeGreaterThanOrEqual(44);
         await check.tap();
         await expect(healthWindow(page)).toBeVisible();

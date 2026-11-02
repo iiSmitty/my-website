@@ -3199,25 +3199,44 @@ body.is-touch-device .desktop-icons,
     display: none;
 }
 
+/* The PC's own face, which changes with its mood */
+.pc-health-row-face {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    /* Negative block margins keep the line as tall as the rows above it */
+    margin: -2px 5px -2px 0;
+    vertical-align: -3px;
+}
+
+.pc-health-row-face svg {
+    display: block;
+}
+
+/* A button, since it opens a window, dressed as the row's other links */
 .identity-specs .pc-health-check {
-    min-width: 0;
-    margin-left: 4px;
-    padding: 0 8px;
-    font-size: 11px;
-    line-height: 16px;
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    color: #0000ff;
+    cursor: pointer;
+}
+
+.identity-specs .pc-health-check:hover {
+    text-decoration: underline;
 }
 
 .identity-specs .pc-health-check:focus-visible {
     outline: 1px dotted #000000;
-    outline-offset: -4px;
+    outline-offset: 1px;
 }
 
-/* Easy to hit with a finger */
+/* Easy to hit with a finger, without making the row any taller */
 @media (pointer: coarse) {
     .identity-specs .pc-health-check {
-        min-height: 44px;
-        padding: 0 14px;
-        font-size: 12px;
+        padding: 15px 8px;
+        margin: -15px -8px;
     }
 }
 

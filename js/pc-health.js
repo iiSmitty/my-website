@@ -27,6 +27,30 @@ const PC_HEALTH_BANDS = [
     { min: 20, state: 'Tired', face: 'tired', line: 'Running a bit slow today. Could use a hand.' }
 ];
 
+// The PC's face at 16px, for the Mood row: its body, and a face per band,
+// drawn on its screen (x 3-12, y 3-8). Fixed markup, never data.
+const PC_HEALTH_ROW_BODY = '<rect x="1" y="1" width="14" height="11" fill="#000"/>' +
+    '<rect x="2" y="2" width="12" height="9" fill="#d8d0b0"/>' +
+    '<rect x="3" y="3" width="10" height="6" fill="#008080"/>' +
+    '<rect x="12" y="10" width="1" height="1" fill="#00d000"/>' +
+    '<rect x="6" y="12" width="4" height="1" fill="#000"/>' +
+    '<rect x="3" y="13" width="10" height="3" fill="#000"/>' +
+    '<rect x="4" y="13" width="8" height="2" fill="#d8d0b0"/>';
+const PC_HEALTH_ROW_FACES = {
+    great: [[4, 5, 1], [5, 4, 1], [6, 5, 1], [9, 5, 1], [10, 4, 1], [11, 5, 1], [4, 6, 8], [5, 7, 6]],
+    happy: [[5, 4, 1], [10, 4, 1], [4, 6, 1], [11, 6, 1], [5, 7, 6]],
+    content: [[5, 4, 1], [10, 4, 1], [5, 6, 1], [10, 6, 1], [6, 7, 4]],
+    okay: [[5, 4, 1], [10, 4, 1], [6, 7, 4]],
+    tired: [[4, 5, 2], [10, 5, 2], [7, 7, 2]]
+};
+
+function pcHealthRowFaceSvg(face) {
+    const pixels = (PC_HEALTH_ROW_FACES[face] || PC_HEALTH_ROW_FACES.okay)
+        .map(([x, y, width]) => `<rect x="${x}" y="${y}" width="${width}" height="1"/>`).join('');
+    return `<svg viewBox="0 0 16 16" width="16" height="16" shape-rendering="crispEdges" focusable="false">` +
+        `${PC_HEALTH_ROW_BODY}<g fill="#fff">${pixels}</g></svg>`;
+}
+
 // The coffee stats, once coffee-simple.js has them
 let pcHealthCoffee = null;
 
@@ -115,7 +139,14 @@ function renderPcHealthRow() {
     const text = document.getElementById('pcHealthRowText');
     if (!text) return;
     const mood = pcHealthCurrentMood();
-    text.textContent = `${pcHealthBand(mood).state}, ${mood}%`;
+    const band = pcHealthBand(mood);
+    text.textContent = `${band.state}, ${mood}%`;
+
+    const face = document.getElementById('pcHealthRowFace');
+    if (face && face.dataset.face !== band.face) {
+        face.dataset.face = band.face;
+        face.innerHTML = pcHealthRowFaceSvg(band.face);
+    }
 }
 
 async function openPcHealthWindow() {
