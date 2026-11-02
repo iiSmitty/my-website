@@ -58,8 +58,7 @@ test.describe('desktop', () => {
         expect(await statusBarInsideWindow()).toBe(true);
 
         await page.locator('.win95-container .win95-maximize').click();
-        await expect(page.locator('.win95-container')).toHaveAttribute('data-is-maximized', 'true');
-        await page.waitForTimeout(400); // the maximize animation
+        await expect(page.locator('.win95-container')).toHaveClass(/is-maximized/);
         expect(await statusBarInsideWindow()).toBe(true);
     });
 });
@@ -74,6 +73,18 @@ test.describe('touch', () => {
 
         const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
         expect(overflow).toBeLessThanOrEqual(0);
+    });
+
+    // Like the home page, maximized it takes the whole phone screen
+    test('maximize fills the phone screen', async ({ page }) => {
+        await page.goto('/privacy');
+        await page.locator('.win95-container .win95-maximize').tap();
+
+        const box = await page.locator('.win95-container').boundingBox();
+        expect(box.x).toBe(0);
+        expect(box.y).toBe(0);
+        expect(box.width).toBe(320);
+        expect(box.height).toBeGreaterThanOrEqual(640);
     });
 });
 
