@@ -251,14 +251,18 @@ What this changes:
 - Set the mood route to fail open. If the account ever hits its daily Workers limit, `/api/mood` falls through to the static site, returns an ordinary 404, and the client shows its offline state.
 - Draft WAF rule: path starts with `/api/`, 10 requests per 10 seconds per IP, block for 10 seconds.
 
-Checks only the owner can do in the Cloudflare dashboard:
+Checks only the owner can do in the Cloudflare dashboard (done 2 November 2026):
 
-- [ ] The account is on the Workers Free plan, with no Workers Paid subscription.
-- [ ] No payment method is on file.
-- [ ] The site is served by Cloudflare Pages on andresmit.co.za, and the existing `/api/contact` Worker route sits alongside it.
-- [ ] Security > WAF > Rate limiting rules allows one rule to be created.
+- [x] The account is on the Workers Free plan, with no Workers Paid subscription. Billing shows Workers Free, Teams Free Base and the Free zone plan, nothing paid.
+- [ ] No payment method is on file. **Not met:** a card is on file, most likely for the Teams Free (Zero Trust) plan. Accepted, see below.
+- [x] The site is served by Cloudflare Pages on andresmit.co.za (the `my-website` project, built from GitHub), and `andresmit-contact-api` is routed at `andresmit.co.za/api/contact`.
+- [x] Security rules shows "Rate limiting rules 0/1" with Create rule available.
 
-**Decision: go**, provided all four dashboard checks pass. If any fails, stop as described above.
+The card doesn't make the feature cost money: Workers Free has no overage billing, so a limit that is hit fails rather than bills. Charges would need a paid subscription, which means a deliberate upgrade. The owner chose to keep the card.
+
+The account also runs four other Workers (`andresmit-travel`, `annie`, `annie-pin`, `walk-log-sync`) that share the 100,000 requests a day. Daily usage was 0 at the time of the check, and the mood feature's cap of about 40,000 leaves 60,000 for everything else.
+
+**Decision: go.**
 
 **Phase 1: privacy first (its own PR)**
 
