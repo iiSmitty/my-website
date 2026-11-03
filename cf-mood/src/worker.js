@@ -165,15 +165,18 @@ export function createWorker() {
         return resting(restingUntil);
       }
 
+      // An object that throws or answers with something other than JSON is
+      // unavailable, never an uncaught exception
       let response;
+      let result;
       try {
         const stub = env.PC_MOOD.get(env.PC_MOOD.idFromName(OBJECT_NAME));
         response = await stub.fetch(`https://pc-mood${route.path}`, { method: route.method, body });
+        result = await response.json();
       } catch {
         return json({ error: 'unavailable' }, 503);
       }
 
-      const result = await response.json();
       if (result.resting) {
         restingUntil = result.until;
         return resting(result.until);

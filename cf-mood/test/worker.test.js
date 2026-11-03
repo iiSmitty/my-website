@@ -275,3 +275,11 @@ test('an object that fails is reported as unavailable, not a crash', async (t) =
   assert.equal(response.status, 503);
   assert.deepEqual(await response.json(), { error: 'unavailable' });
 });
+
+test('an object that answers with something other than JSON is unavailable, not a crash', async (t) => {
+  const { call, env } = setup(t);
+  env.PC_MOOD.get = () => ({ fetch: async () => new Response('Internal error', { status: 500 }) });
+  const response = await call(get());
+  assert.equal(response.status, 503);
+  assert.deepEqual(await response.json(), { error: 'unavailable' });
+});

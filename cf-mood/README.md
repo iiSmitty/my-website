@@ -44,8 +44,27 @@ These live in the Cloudflare dashboard or GitHub, not in this repo.
    - When rate exceeds: 10 requests per 10 seconds
    - Then: Block, for 10 seconds (the only duration on Free)
 
-   It covers the contact API too. It slows a flood from one address; the daily cap is what actually protects the free quota.
-6. **Uptime.** (Phase 3) An UptimeRobot keyword monitor on `https://andresmit.co.za/api/mood/health` for `"ok":true`.
+   It covers the contact API too. It slows a flood from one address. Nothing in the Worker can protect the free quota: a request counts as soon as the Worker runs, whatever it answers, so `DAILY_CAP` only spares the Durable Object. Only rules like this one and the next, which block a request before the Worker, save Worker requests.
+6. **WAF custom rule** (blocks before the Worker, so blocked requests cost nothing). Security > Security rules > Create rule > Custom rule:
+   - Name: `api mood: block foreign callers`
+   - Expression (Edit expression):
+
+     ```
+     (starts_with(http.request.uri.path, "/api/mood") and any(http.request.headers["sec-fetch-site"][*] == "cross-site"))
+     or
+     (http.request.method eq "POST" and http.request.uri.path eq "/api/mood/cheer" and not any(http.request.headers["origin"][*] in {"https://andresmit.co.za" "https://www.andresmit.co.za"}))
+     ```
+
+   - Then: Block
+
+   The first half stops other sites from making their visitors' browsers call the API (an `<img>` pointing at `/api/mood`, say), which would spread a flood over many addresses and past the rate limit. The second stops cheers without the site's Origin, such as a plain `curl` loop, before they cost a Worker request. Both headers can be forged by a determined script, so it's a speed bump, not a wall. Check it with:
+
+   ```bash
+   curl -s -o /dev/null -w "%{http_code}\n" -X POST -d '{"action":"pat"}' https://andresmit.co.za/api/mood/cheer
+   ```
+
+   It should answer `403` with Cloudflare's block page, not the Worker's `{"error":"forbidden"}`.
+7. **Uptime.** (Phase 3) An UptimeRobot keyword monitor on `https://andresmit.co.za/api/mood/health` for `"ok":true`.
 
 ## Turning it on, and off again
 
@@ -75,7 +94,7 @@ To switch the shared part off, in order of reach:
 
 ## Tuning
 
-`HALF_LIFE_HOURS`, `GAIN`, `DAILY_CAP` and `CHEERS_PER_MINUTE` are vars in `wrangler.jsonc`. Change one and push; the deploy picks it up. `/api/mood/stats` shows how often a cheer finds the lift faded (`coldCheers`), which says whether the half-life is too short.
+`HALF_LIFE_HOURS`, `GAIN`, `DAILY_CAP` and `CHEERS_PER_MINUTE` are vars in `wrangler.jsonc`. Change one and push; the deploy picks it up. `CHEERS_PER_MINUTE` can't go above 30: each cheer writes two rows, and more than 30 a minute all day could use up the free plan's 100,000 Durable Object rows written a day. `/api/mood/stats` shows how often a cheer finds the lift faded (`coldCheers`), which says whether the half-life is too short.
 
 ## Running it locally
 

@@ -19,7 +19,10 @@ const SETTINGS = {
   HALF_LIFE_HOURS: { fallback: 12, min: 0.25, max: 24 * 7 },
   GAIN: { fallback: 0.08, min: 0.001, max: 0.5 },
   DAILY_CAP: { fallback: 40000, min: 1, max: 100000 },
-  CHEERS_PER_MINUTE: { fallback: 30, min: 1, max: 600 },
+  // Each accepted cheer writes two rows. 30 a minute for a whole day is 86,400
+  // rows, under the free plan's 100,000 Durable Object rows written a day, so
+  // a script cheering nonstop can't use up the writes and stop the mood.
+  CHEERS_PER_MINUTE: { fallback: 30, min: 1, max: 30 },
 };
 
 function setting(env, name) {

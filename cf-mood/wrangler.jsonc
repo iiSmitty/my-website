@@ -36,10 +36,14 @@
     "HALF_LIFE_HOURS": "12",
     // Each cheer closes this share of the gap between the lift and 50
     "GAIN": "0.08",
-    // Requests a UTC day before it rests until midnight UTC. Keeps more than
-    // half of the account's 100,000 free Worker requests for everything else.
+    // Durable Object requests a UTC day before it rests until midnight UTC.
+    // Stops the page calling and spares the object, but every request still
+    // runs the Worker and counts toward the account's 100,000 free Worker
+    // requests. Only the WAF rules in README.md stop a script before that.
     "DAILY_CAP": "40000",
-    // Accepted cheers a minute, across every visitor
+    // Accepted cheers a minute, across every visitor. 30 at most (readConfig
+    // caps it): each cheer writes two rows, and 30 a minute all day stays
+    // under the free plan's 100,000 Durable Object rows written a day.
     "CHEERS_PER_MINUTE": "30"
   },
 

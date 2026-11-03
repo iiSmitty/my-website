@@ -84,6 +84,9 @@ test('config falls back to the defaults, and keeps vars in range', () => {
   assert.equal(silly.gain, 0.5);
   assert.equal(silly.dailyCap, 1);
   assert.equal(silly.cheersPerMinute, 30);
+  // Above 30 a minute, a nonstop script could use up the free Durable Object
+  // writes for the day
+  assert.equal(readConfig({ CHEERS_PER_MINUTE: '600' }).cheersPerMinute, 30);
 });
 
 test('only "false" turns it off', () => {
