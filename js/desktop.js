@@ -59,32 +59,53 @@ function initializeDesktopIcons() {
     initializeDesktopClickHandler();
 }
 
-// Desktop icons can be dragged anywhere on the desktop with the left button
+// Desktop icons can be dragged anywhere on the desktop with the left button.
+// Like Windows, a press only becomes a drag once the mouse has moved a few
+// pixels, so the small wobble of a click or double-click leaves the icon where
+// it is.
+const ICON_DRAG_THRESHOLD = 4; // pixels
+
+// Icons start out stacked in a column. Before the first one is dragged, every
+// icon is pinned where it sits, so taking one out of the column doesn't slide
+// the icons below it up underneath it.
+function pinDesktopIcons() {
+    const container = document.querySelector('.desktop-icons');
+    if (!container || container.dataset.iconsPinned) return;
+
+    const containerRect = container.getBoundingClientRect();
+    const icons = Array.from(container.querySelectorAll('.desktop-icon'));
+    // Measure them all before moving any of them
+    const positions = icons.map(icon => {
+        const rect = icon.getBoundingClientRect();
+        return { left: rect.left - containerRect.left, top: rect.top - containerRect.top };
+    });
+    icons.forEach((icon, i) => {
+        icon.style.position = 'absolute';
+        icon.style.left = positions[i].left + 'px';
+        icon.style.top = positions[i].top + 'px';
+        icon.style.margin = '0';
+    });
+    container.dataset.iconsPinned = 'true';
+}
+
 function makeIconsDraggable() {
     const desktopIcons = document.querySelectorAll('.desktop-icon');
 
     desktopIcons.forEach(icon => {
+        let isPressed = false;
         let isDragging = false;
-        let offsetX, offsetY;
+        let startX, startY, offsetX, offsetY;
 
         icon.addEventListener('mousedown', function(e) {
-            // The second press of a double-click opens the program, so it
-            // doesn't start a drag
-            const currentTime = new Date().getTime();
-            const clickDelay = 200; // milliseconds
-
-            if (icon.lastClickTime && (currentTime - icon.lastClickTime < clickDelay)) {
-                return;
-            }
-
             if (e.button !== 0) return;
-
-            icon.lastClickTime = currentTime;
 
             desktopIcons.forEach(i => i.classList.remove('selected'));
             icon.classList.add('selected');
 
-            isDragging = true;
+            isPressed = true;
+            isDragging = false;
+            startX = e.clientX;
+            startY = e.clientY;
             offsetX = e.clientX - icon.getBoundingClientRect().left;
             offsetY = e.clientY - icon.getBoundingClientRect().top;
 
@@ -93,25 +114,26 @@ function makeIconsDraggable() {
         });
 
         document.addEventListener('mousemove', function(e) {
-            if (!isDragging) return;
+            if (!isPressed) return;
 
-            const desktopIconsContainer = document.querySelector('.desktop-icons');
-            const containerRect = desktopIconsContainer.getBoundingClientRect();
+            if (!isDragging) {
+                if (Math.abs(e.clientX - startX) < ICON_DRAG_THRESHOLD &&
+                    Math.abs(e.clientY - startY) < ICON_DRAG_THRESHOLD) {
+                    return;
+                }
+                isDragging = true;
+                pinDesktopIcons();
+            }
 
-            let newLeft = e.clientX - offsetX - containerRect.left;
-            let newTop = e.clientY - offsetY - containerRect.top;
-
-            // A dragged icon leaves the column layout and is placed absolutely,
-            // without the margin the column gave it
-            icon.style.position = 'absolute';
-            icon.style.left = newLeft + 'px';
-            icon.style.top = newTop + 'px';
-            icon.style.margin = '0';
+            const containerRect = document.querySelector('.desktop-icons').getBoundingClientRect();
+            icon.style.left = (e.clientX - offsetX - containerRect.left) + 'px';
+            icon.style.top = (e.clientY - offsetY - containerRect.top) + 'px';
 
             e.preventDefault();
         });
 
         document.addEventListener('mouseup', function() {
+            isPressed = false;
             isDragging = false;
         });
 

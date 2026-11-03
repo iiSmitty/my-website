@@ -326,6 +326,42 @@ test.describe('desktop', () => {
         await expect(icon).toHaveClass(/selected/);
     });
 
+    const iconBoxes = (page) => page.locator('.desktop-icon').evaluateAll(icons =>
+        icons.map(icon => { const r = icon.getBoundingClientRect(); return { x: r.x, y: r.y }; }));
+
+    test('a click that wobbles a pixel or two doesn\'t move any desktop icon', async ({ page }) => {
+        await boot(page);
+        const before = await iconBoxes(page);
+        const box = await page.locator('.desktop-icon', { hasText: 'Spotify' }).boundingBox();
+
+        await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+        await page.mouse.down();
+        await page.mouse.move(box.x + box.width / 2 + 2, box.y + box.height / 2 + 1);
+        await page.mouse.up();
+
+        expect(await iconBoxes(page)).toEqual(before);
+    });
+
+    test('dragging a desktop icon leaves the others where they are', async ({ page }) => {
+        await boot(page);
+        const before = await iconBoxes(page);
+        const icons = page.locator('.desktop-icon');
+        const index = 3; // Spotify, with icons below it
+        const box = await icons.nth(index).boundingBox();
+
+        await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+        await page.mouse.down();
+        await page.mouse.move(box.x + box.width / 2 + 300, box.y + box.height / 2, { steps: 5 });
+        await page.mouse.up();
+
+        const after = await iconBoxes(page);
+        after.forEach((position, i) => {
+            if (i === index) return;
+            expect(position.x).toBeCloseTo(before[i].x, 0);
+            expect(position.y).toBeCloseTo(before[i].y, 0);
+        });
+    });
+
     test('deleting every desktop icon unlocks an achievement, and only then fetches its sound', async ({ page }) => {
         const soundRequests = [];
         page.on('request', request => {
