@@ -194,6 +194,35 @@ body.is-touch-device .taskbar {
     white-space: nowrap;
 }
 
+/* PC Health's face (pc-health.js): a tray icon, flat until it's pressed */
+.taskbar-tray-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin: 0 6px 0 -6px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.taskbar-tray-icon:focus-visible {
+    outline: 1px dotted #000000;
+}
+
+.taskbar-tray-icon:active .pc-health-tray-face {
+    transform: translate(1px, 1px);
+}
+
+.pc-health-tray-face,
+.pc-health-tray-face svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+
 /* ----- Start menu ----- */
 
 .start-menu {

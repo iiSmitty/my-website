@@ -32,6 +32,10 @@ const TASKMGR_PROCESSES = {
         image: 'WATCHING.EXE',
         description: 'Every Monday, and whenever its code changes, reads what I\'m watching on Trakt, for the Videos folder.'
     },
+    'deploy-mood.yml': {
+        image: 'DEPLOY.EXE',
+        description: 'Tests the PC Health API and deploys it to Cloudflare, whenever its code changes on main.'
+    },
     'update-strava-data.yml': {
         image: 'STRAVA.EXE',
         description: 'Fetched my running PBs from Strava. Retired: it only runs when started by hand.'

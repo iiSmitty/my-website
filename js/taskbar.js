@@ -510,6 +510,8 @@ function buildTaskbar() {
     windowList.id = 'taskbarWindows';
 
     const tray = makeElement('div', 'taskbar-tray');
+    // PC Health's face (pc-health.js), on the pages that have it
+    if (typeof buildPcHealthTrayIcon === 'function') tray.append(buildPcHealthTrayIcon());
     const clock = makeElement('time', 'taskbar-clock');
     clock.id = 'taskbarClock';
     tray.append(clock);

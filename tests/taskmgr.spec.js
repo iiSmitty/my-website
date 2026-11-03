@@ -175,6 +175,23 @@ test.describe('desktop', () => {
         await expect(taskManager).toBeVisible();
     });
 
+    test('the PC Health deploy shows up as DEPLOY.EXE', async ({ page }) => {
+        const workflows = {
+            total_count: 2,
+            workflows: [...WORKFLOWS.workflows.slice(0, 1), workflow(66, 'Deploy Mood', 'deploy-mood.yml')]
+        };
+        await mockGitHub(page, { workflows, runs: { workflow_runs: [run(66, 3 * HOUR, { seconds: 40, event: 'push' })] } });
+        await boot(page);
+        const taskManager = await openTaskManager(page);
+        await taskManager.getByRole('tab', { name: 'Processes' }).click();
+
+        await expect(processRows(page).locator('.taskmgr-col-image')).toHaveText(['DEPLOY.EXE', 'SPOTIFY.EXE']);
+        await processRows(page).first().dblclick();
+        const properties = page.getByRole('alertdialog', { name: 'DEPLOY.EXE Properties' });
+        await expect(properties).toContainText('deploys it to Cloudflare');
+        await expect(properties).toContainText('Deploy Mood');
+    });
+
     test('End Process is refused, the NT way', async ({ page }) => {
         await mockGitHub(page);
         await boot(page);

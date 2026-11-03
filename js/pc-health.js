@@ -41,7 +41,9 @@ const PC_HEALTH_ROW_FACES = {
     happy: [[5, 4, 1], [10, 4, 1], [4, 6, 1], [11, 6, 1], [5, 7, 6]],
     content: [[5, 4, 1], [10, 4, 1], [5, 6, 1], [10, 6, 1], [6, 7, 4]],
     okay: [[5, 4, 1], [10, 4, 1], [6, 7, 4]],
-    tired: [[4, 5, 2], [10, 5, 2], [7, 7, 2]]
+    tired: [[4, 5, 2], [10, 5, 2], [7, 7, 2]],
+    // Eyes shut, and a little "z"
+    asleep: [[4, 6, 2], [9, 6, 2], [10, 3, 2], [11, 4, 1]]
 };
 
 function pcHealthRowFaceSvg(face) {
@@ -53,6 +55,47 @@ function pcHealthRowFaceSvg(face) {
 
 // The coffee stats, once coffee-simple.js has them
 let pcHealthCoffee = null;
+
+// A cheer at night wakes the PC for this long
+const PC_HEALTH_AWAKE_MS = 10 * 60 * 1000;
+let pcHealthAwakeUntil = 0;
+
+// --- Time of day in Cape Town ----------------------------------------------------
+// The PC lives where I do, so it keeps Cape Town hours whatever the
+// visitor's clock says.
+
+const pcHealthClockFormat = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Africa/Johannesburg', hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
+});
+
+/** { hour, time } in Cape Town, e.g. { hour: 1, time: '01:30' } */
+function pcHealthCapeTown(now) {
+    const time = pcHealthClockFormat.format(new Date(now));
+    return { hour: Number(time.slice(0, 2)), time };
+}
+
+// night 23:00-05:59, morning 06:00-11:59, afternoon 12:00-17:59, evening 18:00-22:59
+function pcHealthPartOfDay(now) {
+    const { hour } = pcHealthCapeTown(now);
+    if (hour >= 23 || hour < 6) return 'night';
+    if (hour < 12) return 'morning';
+    if (hour < 18) return 'afternoon';
+    return 'evening';
+}
+
+/** Dozing: it's night in Cape Town, and nobody has woken it lately */
+function pcHealthIsDozing(now) {
+    return pcHealthPartOfDay(now) === 'night' && now >= pcHealthAwakeUntil;
+}
+
+function wakePcHealth(now) {
+    pcHealthAwakeUntil = now + PC_HEALTH_AWAKE_MS;
+}
+
+/** The face to draw: its mood's, unless it's dozing */
+function pcHealthFace(band, now) {
+    return pcHealthIsDozing(now) ? 'asleep' : band.face;
+}
 
 // --- Maths -------------------------------------------------------------------
 
@@ -133,20 +176,49 @@ function pcHealthCurrentMood(now = Date.now()) {
     return pcHealthMood(baseline, pcHealthRememberedLift(memory, now));
 }
 
-// --- The Mood row ----------------------------------------------------------------
+// --- The Mood row and the tray icon --------------------------------------------------
 
-function renderPcHealthRow() {
-    const text = document.getElementById('pcHealthRowText');
-    if (!text) return;
-    const mood = pcHealthCurrentMood();
-    const band = pcHealthBand(mood);
-    text.textContent = `${band.state}, ${mood}%`;
-
-    const face = document.getElementById('pcHealthRowFace');
-    if (face && face.dataset.face !== band.face) {
-        face.dataset.face = band.face;
-        face.innerHTML = pcHealthRowFaceSvg(band.face);
+function setPcHealthFaceIcon(element, face) {
+    if (element && element.dataset.face !== face) {
+        element.dataset.face = face;
+        element.innerHTML = pcHealthRowFaceSvg(face);
     }
+}
+
+// Both show the mood this browser last saw, faded to now. Neither asks the
+// API, so neither pretends to be live.
+function renderPcHealthRow() {
+    const now = Date.now();
+    const mood = pcHealthCurrentMood(now);
+    const band = pcHealthBand(mood);
+    const face = pcHealthFace(band, now);
+    const summary = `${band.state}, ${mood}%`;
+
+    const text = document.getElementById('pcHealthRowText');
+    if (text) text.textContent = summary;
+    setPcHealthFaceIcon(document.getElementById('pcHealthRowFace'), face);
+
+    const tray = document.getElementById('pcHealthTray');
+    if (tray) {
+        setPcHealthFaceIcon(tray.querySelector('.pc-health-tray-face'), face);
+        tray.title = `Check on the PC\nLast seen: ${summary}${face === 'asleep' ? ' (dozing)' : ''}`;
+    }
+}
+
+// The face next to the taskbar clock (taskbar.js adds it to the tray). The
+// taskbar is desktop only; phones use the Mood row.
+function buildPcHealthTrayIcon() {
+    const button = makeElement('button', 'taskbar-tray-icon');
+    button.id = 'pcHealthTray';
+    button.type = 'button';
+    button.setAttribute('aria-label', 'Check on the PC');
+    const face = makeElement('span', 'pc-health-tray-face');
+    face.setAttribute('aria-hidden', 'true');
+    button.append(face);
+    button.addEventListener('click', openPcHealthWindow);
+    // Drawn once the taskbar holding it is on the page
+    queueMicrotask(renderPcHealthRow);
+    return button;
 }
 
 async function openPcHealthWindow() {
@@ -166,6 +238,9 @@ document.addEventListener('DOMContentLoaded', () => {
     row.hidden = false;
     renderPcHealthRow();
     document.getElementById('pcHealthCheck').addEventListener('click', openPcHealthWindow);
+
+    // Nodding off (or waking up) as the hours pass, while the page is open
+    setInterval(renderPcHealthRow, 60 * 1000);
 
     if (typeof getCoffeeStats === 'function') {
         getCoffeeStats()

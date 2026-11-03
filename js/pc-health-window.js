@@ -59,7 +59,22 @@ const PC_HEALTH_JOKES = [
     'I asked the printer for some space. It said PC LOAD LETTER, which I am choosing to take as a yes.',
     'There are 10 kinds of computers: the ones that understand binary and the ones that need a pat.',
     'My clock is stuck in 1995. Honestly, great year.',
-    'I tried to tell a UDP joke, but I\'m not sure you got it.'
+    'I tried to tell a UDP joke, but I\'m not sure you got it.',
+    'I\'d tell you a joke about my RAM, but I forgot it.',
+    'Why was the computer cold? It left its Windows open.',
+    'Why don\'t keyboards sleep? They work two shifts.',
+    'I\'m not slow. I\'m thinking at 33.6 kbps.',
+    'A SQL query walks into a bar, goes up to two tables and asks: may I join you?',
+    'Why do programmers prefer dark mode? Light attracts bugs.',
+    'How many programmers does it take to change a light bulb? None. That\'s a hardware problem.',
+    'My password is "incorrect", so whenever I forget it, I get told.',
+    'Knock knock. Who\'s there? (A very long pause.) Dial-up.',
+    'I asked the floppy drive how it was. It said it couldn\'t take more than 1.44 megabytes of this.',
+    'Why did the PC sneeze? It caught a cold boot.',
+    'My screensaver and I go way back. It really knows how to fill a silence.',
+    'What\'s a computer\'s favourite snack? Microchips. Dip optional.',
+    'I wanted to be a laptop when I grew up. Never got over the desk job.',
+    'The Y2K bug and I still talk. It keeps calling me Grandpa from 1900.'
 ];
 
 const PC_HEALTH_LINES = {
@@ -68,8 +83,21 @@ const PC_HEALTH_LINES = {
     resting: 'I\'ve had a lot of visitors today and I need a rest. Come back tomorrow.',
     offline: 'Can\'t reach the network right now.',
     offlineCheered: 'Can\'t reach the network, but I still felt that.',
-    greeting: 'Hello. It\'s been a long day of serving web pages.'
+    woken: 'Huh? Oh, hello!'
 };
+
+// What it says when the window opens, by the time of day in Cape Town
+function pcHealthGreeting(now) {
+    if (pcHealthIsDozing(now)) {
+        return `Zzz... It's ${pcHealthCapeTown(now).time} in Cape Town, so I'm dozing. Any of these buttons will wake me.`;
+    }
+    return {
+        night: 'Still up? Me too. Someone woke me a minute ago.',
+        morning: 'Morning. Still warming up the CRT.',
+        afternoon: 'Hello. It\'s been a long day of serving web pages.',
+        evening: 'Evening. Winding down after a long day of serving web pages.'
+    }[pcHealthPartOfDay(now)];
+}
 
 const PC_HEALTH_STATUS_TEXT = {
     loading: 'Connecting...',
@@ -128,6 +156,14 @@ const PC_HEALTH_ART_SVG = `
             <rect x="11" y="10" width="2" height="1"/><rect x="19" y="10" width="2" height="1"/>
             <rect x="13" y="14" width="6" height="1"/>
             <rect x="21" y="7" width="2" height="1"/><rect x="22" y="8" width="1" height="1"/><rect x="21" y="9" width="2" height="1"/>
+        </g>
+        <g class="pc-face pc-face--asleep" fill="#fff">
+            <rect x="10" y="12" width="3" height="1"/><rect x="19" y="12" width="3" height="1"/>
+            <rect x="15" y="14" width="2" height="1"/>
+            <g class="pc-health-zzz">
+                <rect x="20" y="6" width="4" height="1"/><rect x="22" y="7" width="1" height="1"/>
+                <rect x="21" y="8" width="1" height="1"/><rect x="20" y="9" width="4" height="1"/>
+            </g>
         </g>
     </svg>`;
 
@@ -444,7 +480,7 @@ async function showPcHealthWindow(opener) {
     pcHealthState.band = null;
     if (pcHealthState.status !== 'off') pcHealthState.status = 'loading';
 
-    setPcHealthBubble(PC_HEALTH_LINES.greeting);
+    setPcHealthBubble(pcHealthGreeting(Date.now()));
     renderPcHealth();
     centerInViewport(win);
 
@@ -524,10 +560,15 @@ function renderPcHealth() {
     const mood = pcHealthWindowMood(now);
     const band = pcHealthBand(mood);
 
-    document.getElementById('pcHealthArt').dataset.face = band.face;
+    // Face, word and number together. Dozing changes the face and the line,
+    // never the word or the number.
+    const dozing = pcHealthIsDozing(now);
+    document.getElementById('pcHealthArt').dataset.face = pcHealthFace(band, now);
     document.getElementById('pcHealthState').textContent = band.state;
     document.getElementById('pcHealthPercent').textContent = `${mood}%`;
-    document.getElementById('pcHealthLine').textContent = band.line;
+    document.getElementById('pcHealthLine').textContent = dozing
+        ? `Dozing. It's ${pcHealthCapeTown(now).time} in Cape Town.`
+        : band.line;
 
     const meter = document.getElementById('pcHealthMeter');
     meter.setAttribute('aria-valuenow', String(mood));
@@ -687,7 +728,11 @@ async function cheerPcHealth(actionId) {
         cheers: (Number(memory.cheers) || 0) + 1
     });
 
-    const reaction = action.reaction();
+    // A cheer at night wakes it for a while
+    const woken = pcHealthIsDozing(now);
+    if (pcHealthPartOfDay(now) === 'night') wakePcHealth(now);
+
+    const reaction = [woken ? PC_HEALTH_LINES.woken : '', action.reaction()].filter(Boolean).join(' ');
     const react = () => {
         playPcHealthReaction(action.id);
         setPcHealthBubble(reaction);

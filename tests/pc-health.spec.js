@@ -38,8 +38,8 @@ function snapshot({ lift = 0, today = {}, total = 0, last = null, at = NOW } = {
  * Serves the data files and the mood API. `api(call, calls)` answers each API
  * call with a route.fulfill() options object, or 'abort'. Returns the calls.
  */
-async function setup(page, { shared = true, coffee = {}, api = () => ({ json: snapshot() }) } = {}) {
-    await page.clock.install({ time: NOW });
+async function setup(page, { shared = true, coffee = {}, api = () => ({ json: snapshot() }), now = NOW } = {}) {
+    await page.clock.install({ time: now });
     await page.route('**/data/features.json', route => route.fulfill({ json: { pcHealthShared: shared } }));
     await page.route('**/data/coffee-stats.json', route => route.fulfill({ json: { ...COFFEE, ...coffee } }));
     await page.route('**/data/watching.json', route => route.fulfill({ json: WATCHING }));
@@ -264,15 +264,20 @@ test.describe('desktop', () => {
         await openFromRow(page);
 
         const told = new Set();
-        for (let i = 0; i < 5; i++) {
-            await ready(page, 'Tell a joke');
+        for (let i = 0; i < 21; i++) {
             await action(page, 'Tell a joke').click();
-            await expect(page.locator('#pcHealthBubble')).not.toHaveText(/Hello|^$/);
+            await expect(page.locator('#pcHealthBubble')).not.toHaveText(/^Hello|^$/);
             const joke = await page.locator('#pcHealthBubble').textContent();
-            expect(told.has(joke), joke).toBe(false);
-            told.add(joke);
+            if (i < 20) {
+                expect(told.has(joke), joke).toBe(false);
+                told.add(joke);
+            } else {
+                // All 20 heard: the pool starts again
+                expect(told.has(joke), joke).toBe(true);
+            }
+            await page.clock.fastForward(1500);
+            await ready(page, 'Tell a joke');
         }
-        expect(told.size).toBe(5);
     });
 
     test('switched off, it stays in the browser and never calls the API', async ({ page }) => {
@@ -454,6 +459,71 @@ test.describe('desktop', () => {
         await expect(page.locator('#pcHealthTraces')).toHaveText('2 cheers today.');
         await expect(healthWindow(page).locator('img, b')).toHaveCount(0);
         expect(await page.evaluate(() => window.hacked)).toBeUndefined();
+    });
+});
+
+test.describe('Phase 3', () => {
+    test.use({ viewport: { width: 1280, height: 800 } });
+
+    test('the tray shows the face this browser last saw, and opens PC Health', async ({ page }) => {
+        const calls = await setup(page);
+        await boot(page);
+
+        const tray = page.getByRole('region', { name: 'Taskbar' }).getByRole('button', { name: 'Check on the PC' });
+        await expect(tray).toBeVisible();
+        await expect(tray.locator('.pc-health-tray-face')).toHaveAttribute('data-face', 'content');
+        await expect(tray).toHaveAttribute('title', 'Check on the PC\nLast seen: Content, 55%');
+        // Never live: the page hasn't asked the API anything
+        expect(calls).toEqual([]);
+
+        await tray.click();
+        await expect(healthWindow(page)).toBeVisible();
+        await page.keyboard.press('Escape');
+        await expect(tray).toBeFocused();
+    });
+
+    test('PC Health is listed in Task Manager\'s Applications tab while it\'s open', async ({ page }) => {
+        await setup(page);
+        await page.route('https://api.github.com/**', route => route.fulfill({ json: { workflows: [], workflow_runs: [] } }));
+        await boot(page);
+        await openFromRow(page);
+
+        await page.keyboard.press('Control+Shift+Escape');
+        const taskManager = page.getByRole('dialog', { name: 'Windows Task Manager' });
+        await expect(taskManager).toBeVisible();
+        await expect(page.locator('#taskmgrTasks tr')).toHaveText([/Windows 95/, /PC Health/, /Windows Task Manager/]);
+        await expect(page.locator('#taskmgrTasks tr').nth(1).locator('.PcHealthIcon_16x16')).toHaveCount(1);
+    });
+
+    test('at night in Cape Town it dozes, and a cheer wakes it', async ({ page }) => {
+        // 23:30 in Cape Town
+        await setup(page, { now: Date.parse('2026-11-02T21:30:00Z') });
+        await boot(page);
+        await expect(page.locator('#pcHealthRowFace')).toHaveAttribute('data-face', 'asleep');
+        await openFromRow(page);
+
+        await expect(page.locator('#pcHealthArt')).toHaveAttribute('data-face', 'asleep');
+        await expect(page.locator('#pcHealthLine')).toHaveText('Dozing. It\'s 23:30 in Cape Town.');
+        await expect(page.locator('#pcHealthBubble')).toHaveText('Zzz... It\'s 23:30 in Cape Town, so I\'m dozing. Any of these buttons will wake me.');
+        // The word and the number stay, whatever the face
+        await expect(healthWindow(page).getByRole('meter', { name: 'Mood' })).toHaveAttribute('aria-valuetext', /^Okay|^Content/);
+
+        await action(page, 'Pat the case').click();
+        await expect(page.locator('#pcHealthBubble')).toHaveText('Huh? Oh, hello! Whirr. That\'s the spot, just above the floppy drive.');
+        await expect(page.locator('#pcHealthArt')).not.toHaveAttribute('data-face', 'asleep');
+        await expect(page.locator('#pcHealthRowFace')).not.toHaveAttribute('data-face', 'asleep');
+
+        // Ten quiet minutes later it nods off again
+        await page.clock.fastForward(11 * 60 * 1000);
+        await expect(page.locator('#pcHealthArt')).toHaveAttribute('data-face', 'asleep');
+    });
+
+    test('it greets you by the time of day in Cape Town', async ({ page }) => {
+        // 08:00 in Cape Town
+        await setup(page, { now: Date.parse('2026-11-02T06:00:00Z') });
+        await boot(page);
+        await openFromRow(page);
+        await expect(page.locator('#pcHealthBubble')).toHaveText('Morning. Still warming up the CRT.');
     });
 });
 

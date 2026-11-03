@@ -80,8 +80,20 @@
 .pc-health-art[data-face="happy"] .pc-face--happy,
 .pc-health-art[data-face="content"] .pc-face--content,
 .pc-health-art[data-face="okay"] .pc-face--okay,
-.pc-health-art[data-face="tired"] .pc-face--tired {
+.pc-health-art[data-face="tired"] .pc-face--tired,
+.pc-health-art[data-face="asleep"] .pc-face--asleep {
     display: inline;
+}
+
+/* Dozing: the Z drifts up and fades, over and over */
+.pc-health-zzz {
+    animation: pc-health-zzz 2.4s steps(4) infinite;
+}
+
+@keyframes pc-health-zzz {
+    0% { opacity: 0; transform: translateY(2px); }
+    50% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-2px); }
 }
 
 /* A blink every few seconds */
@@ -307,6 +319,7 @@
 
 @media (prefers-reduced-motion: reduce) {
     .pc-health-art .pc-eyes,
+    .pc-health-zzz,
     .pc-health-art.is-cheered .pc-health-svg,
     .pc-health-art.is-cheered .pc-health-heart {
         animation: none;
