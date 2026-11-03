@@ -571,6 +571,7 @@ function closePcHealthWindow() {
     pcHealthState.timers.forEach(clearTimeout);
     pcHealthState.timers = [];
     stopPcHealthScene();
+    stopPcHealthDrive();
     pcHealthState.coolingUntil = 0;
     setPcHealthCooling(false);
     document.getElementById('pcHealthDefrag').hidden = true;
@@ -962,6 +963,85 @@ function announcePcHealthOthers() {
 
 // --- Cheering -------------------------------------------------------------------------
 
+// --- Defrag's hard drive ----------------------------------------------------------------
+// While Defrag runs you hear the drive at work: a low spin, and the heads
+// seeking, a tick at a time and in bursts. Wilhelm Kirschbaum's idea.
+// Synthesised like Skype's sounds, so there's no file to download. It only
+// ever starts from the Run Defrag click, stays quiet, and stops the moment
+// the window closes.
+
+const PC_HEALTH_DRIVE_VOLUME = 0.25;
+let pcHealthAudio = null;
+let pcHealthDriveOut = null;
+
+function playPcHealthDrive(duration) {
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContextClass || duration <= 0) return;
+
+    try {
+        pcHealthAudio = pcHealthAudio || new AudioContextClass();
+        const ctx = pcHealthAudio;
+        if (ctx.state === 'suspended') ctx.resume();
+        stopPcHealthDrive();
+
+        const out = ctx.createGain();
+        out.gain.value = PC_HEALTH_DRIVE_VOLUME;
+        out.connect(ctx.destination);
+        pcHealthDriveOut = out;
+
+        const start = ctx.currentTime + 0.02;
+        const end = start + duration / 1000;
+
+        // The spindle: a low hum that fades in and out
+        const spin = ctx.createOscillator();
+        const spinLevel = ctx.createGain();
+        spin.type = 'triangle';
+        spin.frequency.value = 120;
+        spinLevel.gain.setValueAtTime(0, start);
+        spinLevel.gain.linearRampToValueAtTime(0.06, start + 0.15);
+        spinLevel.gain.setValueAtTime(0.06, end - 0.15);
+        spinLevel.gain.linearRampToValueAtTime(0, end);
+        spin.connect(spinLevel).connect(out);
+        spin.start(start);
+        spin.stop(end + 0.05);
+
+        // A seek: a 12 ms burst of noise that dies away fast
+        const tick = ctx.createBuffer(1, Math.round(ctx.sampleRate * 0.012), ctx.sampleRate);
+        const samples = tick.getChannelData(0);
+        for (let i = 0; i < samples.length; i++) {
+            samples[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / samples.length, 3);
+        }
+
+        for (let t = start + 0.05; t < end - 0.05;) {
+            // Mostly single ticks, sometimes a burst of them
+            const burst = Math.random() < 0.35 ? 3 + Math.floor(Math.random() * 6) : 1;
+            for (let i = 0; i < burst && t < end - 0.05; i++) {
+                const source = ctx.createBufferSource();
+                const tone = ctx.createBiquadFilter();
+                const level = ctx.createGain();
+                source.buffer = tick;
+                tone.type = 'bandpass';
+                tone.frequency.value = 1800 + Math.random() * 1800;
+                tone.Q.value = 1.5;
+                level.gain.value = 0.4 + Math.random() * 0.5;
+                source.connect(tone).connect(level).connect(out);
+                source.start(t);
+                t += 0.012 + Math.random() * 0.02;
+            }
+            t += 0.03 + Math.random() * 0.12;
+        }
+    } catch (e) {
+        // Sound is a nice-to-have
+    }
+}
+
+/** Silences the drive at once; anything still scheduled plays to nothing */
+function stopPcHealthDrive() {
+    if (!pcHealthDriveOut) return;
+    pcHealthDriveOut.disconnect();
+    pcHealthDriveOut = null;
+}
+
 function runPcHealthDefrag(done) {
     const panel = document.getElementById('pcHealthDefrag');
     const bar = panel.querySelector('[role="progressbar"]');
@@ -984,6 +1064,7 @@ function runPcHealthDefrag(done) {
     panel.hidden = false;
     show(0);
     playPcHealthScene(pcHealthDefragScene(duration));
+    playPcHealthDrive(duration);
     for (let step = 1; step <= steps; step++) {
         pcHealthState.timers.push(setTimeout(() => {
             show(step);

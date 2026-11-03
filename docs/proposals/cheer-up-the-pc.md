@@ -327,6 +327,7 @@ Left for the owner, in this order (details in `cf-mood/README.md`):
 - [x] Each cheer reacts its own way, as frame-by-frame scenes on the 32x32 art: a pat gets happy closed eyes, a double wiggle and the heart; a coffee gets a steaming mug, then wide eyes and the jitters; a joke gets laughing bounces and a floating "HA"; Defrag packs coloured clusters on the PC's own screen while the progress bar runs; dusting blows dust out of the vent, then "ah... ah..." and a sneeze.
 - [x] Idle life between cheers, in CSS like the blink: the eyes glance left and right, the disk light flickers in bursts (flat out while busy), a faint scanline rolls down the screen, and at Tired it now and then yawns and sags a pixel.
 - [x] A change of mood flashes static on the screen before the new face. Not when the window opens, and after a reaction rather than over it.
+- [x] Defrag sounds like a hard drive at work: a low spin and the heads seeking, synthesised with Web Audio, quiet, and silenced when the window closes. Wilhelm Kirschbaum's idea.
 - [x] Still transform and opacity only for anything that moves, nothing runs while the window is closed, and under reduced motion there are no scenes and no idle movement.
 
 **Later, only if the data says so**

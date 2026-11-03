@@ -110,6 +110,43 @@ async function watchFaces(page) {
 }
 
 const pulledFaces = (page) => page.evaluate(() => window.pulledFaces);
+
+// A stand-in for Web Audio that makes no sound and counts what's played:
+// ticks (buffer sources), the spindle (oscillators), and silencing
+async function stubAudio(page) {
+    await page.addInitScript(() => {
+        window.driveSounds = { ticks: 0, spins: 0, silenced: 0 };
+        const param = () => ({ value: 0, setValueAtTime() {}, linearRampToValueAtTime() {} });
+        const node = (extra = {}) => ({ connect: target => target, disconnect() {}, ...extra });
+        window.AudioContext = class {
+            constructor() {
+                this.state = 'running';
+                this.currentTime = 0;
+                this.sampleRate = 8000;
+                this.destination = node();
+            }
+            resume() {}
+            createGain() {
+                return node({ gain: param(), disconnect() { window.driveSounds.silenced++; } });
+            }
+            createOscillator() {
+                window.driveSounds.spins++;
+                return node({ frequency: param(), start() {}, stop() {} });
+            }
+            createBiquadFilter() { return node({ frequency: param(), Q: param() }); }
+            createBuffer(channels, length) {
+                const data = new Float32Array(length);
+                return { getChannelData: () => data };
+            }
+            createBufferSource() {
+                window.driveSounds.ticks++;
+                return node({ start() {} });
+            }
+        };
+    });
+}
+
+const driveSounds = (page) => page.evaluate(() => window.driveSounds);
 const art = (page) => page.locator('#pcHealthArt');
 
 test.describe('desktop', () => {
@@ -622,6 +659,38 @@ test.describe('animation', () => {
         await expect(art(page)).not.toHaveClass(/is-busy/);
     });
 
+    test('Defrag sounds like a hard drive at work, and only Defrag', async ({ page }) => {
+        await stubAudio(page);
+        await setup(page, { shared: false });
+        await boot(page);
+        await openFromRow(page);
+
+        for (const name of ['Pat the case', 'Pour a coffee', 'Tell a joke', 'Dust the fan']) {
+            await ready(page, name);
+            await action(page, name).click();
+        }
+        expect(await driveSounds(page)).toEqual({ ticks: 0, spins: 0, silenced: 0 });
+
+        await ready(page, 'Run Defrag');
+        await action(page, 'Run Defrag').click();
+        const sounds = await driveSounds(page);
+        expect(sounds.spins).toBe(1);
+        // Seeks across the whole two seconds, not a single click
+        expect(sounds.ticks).toBeGreaterThan(10);
+    });
+
+    test('closing the window during Defrag silences the drive', async ({ page }) => {
+        await stubAudio(page);
+        await setup(page, { shared: false });
+        await boot(page);
+        await openFromRow(page);
+
+        await action(page, 'Run Defrag').click();
+        await expect(healthWindow(page).getByRole('progressbar')).toBeVisible();
+        await healthWindow(page).getByRole('button', { name: 'Close' }).click();
+        expect((await driveSounds(page)).silenced).toBe(1);
+    });
+
     test('closing the window part way through a reaction stops it', async ({ page }) => {
         await setup(page, { shared: false });
         await boot(page);
@@ -674,6 +743,7 @@ test.describe('reduced motion', () => {
 
     test('nothing moves, and Defrag finishes at once', async ({ page }) => {
         await page.emulateMedia({ reducedMotion: 'reduce' });
+        await stubAudio(page);
         await setup(page);
         await boot(page);
         await openFromRow(page);
@@ -697,6 +767,8 @@ test.describe('reduced motion', () => {
         await page.waitForTimeout(500);
         expect(await pulledFaces(page)).toEqual([]);
         await expect(page.locator('#pcHealthArt')).not.toHaveClass(/is-acting/);
+        // Defrag finished at once, so the drive never ran
+        expect(await page.evaluate(() => window.driveSounds)).toEqual({ ticks: 0, spins: 0, silenced: 0 });
         for (const selector of ['.pc-health-led', '.pc-health-scan', '.pc-health-ha']) {
             expect(await page.locator(`#pcHealthArt ${selector}`).evaluate(el => getComputedStyle(el).animationName), selector).toBe('none');
         }
