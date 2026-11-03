@@ -107,9 +107,13 @@ const PC_HEALTH_STATUS_TEXT = {
     off: 'Just you and me'
 };
 
-// A beige CRT in pixel art, with a face for each band
+// A beige CRT in pixel art, with a face for each band, and the faces it
+// pulls while it reacts to a cheer (data-react). The .pc-health-pc group is
+// what moves; props (a mug, steam, dust, Defrag's blocks, static) are drawn
+// into .pc-health-props by the scenes further down.
 const PC_HEALTH_ART_SVG = `
     <svg class="pc-health-svg" viewBox="0 0 32 32" width="128" height="128" shape-rendering="crispEdges" aria-hidden="true" focusable="false">
+        <g class="pc-health-pc">
         <g class="pc-health-body">
             <rect x="3" y="2" width="26" height="21" fill="#000"/>
             <rect x="4" y="3" width="24" height="19" fill="#d8d0b0"/>
@@ -120,6 +124,7 @@ const PC_HEALTH_ART_SVG = `
             <rect x="7" y="5" width="18" height="13" fill="#5c5848"/>
             <rect x="8" y="6" width="16" height="11" fill="#008080"/>
             <rect x="9" y="7" width="3" height="1" fill="#2aa6a6"/>
+            <rect x="24" y="19" width="2" height="1" fill="#004800"/>
             <rect x="24" y="19" width="2" height="1" class="pc-health-led" fill="#00d000"/>
             <rect x="18" y="19" width="4" height="1" fill="#8c8468"/>
             <rect x="12" y="23" width="8" height="2" fill="#000"/>
@@ -154,7 +159,11 @@ const PC_HEALTH_ART_SVG = `
         </g>
         <g class="pc-face pc-face--tired" fill="#fff">
             <rect x="11" y="10" width="2" height="1"/><rect x="19" y="10" width="2" height="1"/>
-            <rect x="13" y="14" width="6" height="1"/>
+            <rect class="pc-health-tired-mouth" x="13" y="14" width="6" height="1"/>
+            <g class="pc-health-yawn">
+                <rect x="14" y="12" width="4" height="1"/><rect x="14" y="13" width="1" height="2"/>
+                <rect x="17" y="13" width="1" height="2"/><rect x="14" y="15" width="4" height="1"/>
+            </g>
             <rect x="21" y="7" width="2" height="1"/><rect x="22" y="8" width="1" height="1"/><rect x="21" y="9" width="2" height="1"/>
         </g>
         <g class="pc-face pc-face--asleep" fill="#fff">
@@ -165,6 +174,45 @@ const PC_HEALTH_ART_SVG = `
                 <rect x="21" y="8" width="1" height="1"/><rect x="20" y="9" width="4" height="1"/>
             </g>
         </g>
+        <g class="pc-face pc-face--patted" fill="#fff">
+            <rect x="10" y="10" width="1" height="1"/><rect x="11" y="9" width="2" height="1"/><rect x="13" y="10" width="1" height="1"/>
+            <rect x="18" y="10" width="1" height="1"/><rect x="19" y="9" width="2" height="1"/><rect x="21" y="10" width="1" height="1"/>
+            <rect x="10" y="12" width="1" height="1"/><rect x="21" y="12" width="1" height="1"/>
+            <rect x="11" y="13" width="1" height="1"/><rect x="20" y="13" width="1" height="1"/>
+            <rect x="12" y="14" width="8" height="1"/>
+            <rect x="9" y="12" width="1" height="1" fill="#ff9ec0"/><rect x="22" y="12" width="1" height="1" fill="#ff9ec0"/>
+        </g>
+        <g class="pc-face pc-face--sip" fill="#fff">
+            <rect x="10" y="10" width="1" height="1"/><rect x="11" y="9" width="2" height="1"/><rect x="13" y="10" width="1" height="1"/>
+            <rect x="18" y="10" width="1" height="1"/><rect x="19" y="9" width="2" height="1"/><rect x="21" y="10" width="1" height="1"/>
+            <rect x="15" y="13" width="2" height="2"/>
+        </g>
+        <g class="pc-face pc-face--wired" fill="#fff">
+            <rect x="10" y="8" width="3" height="3"/><rect x="19" y="8" width="3" height="3"/>
+            <rect x="11" y="9" width="1" height="1" fill="#008080"/><rect x="20" y="9" width="1" height="1" fill="#008080"/>
+            <rect x="11" y="13" width="10" height="2"/>
+            <rect x="13" y="13" width="1" height="2" fill="#008080"/><rect x="16" y="13" width="1" height="2" fill="#008080"/><rect x="19" y="13" width="1" height="2" fill="#008080"/>
+        </g>
+        <g class="pc-face pc-face--laugh" fill="#fff">
+            <rect x="10" y="10" width="1" height="1"/><rect x="11" y="9" width="2" height="1"/><rect x="13" y="10" width="1" height="1"/>
+            <rect x="18" y="10" width="1" height="1"/><rect x="19" y="9" width="2" height="1"/><rect x="21" y="10" width="1" height="1"/>
+            <rect x="11" y="12" width="10" height="2"/><rect x="12" y="14" width="8" height="1"/>
+            <rect x="14" y="14" width="4" height="1" fill="#ff6a8a"/>
+            <rect x="9" y="12" width="1" height="1" fill="#ff9ec0"/><rect x="22" y="12" width="1" height="1" fill="#ff9ec0"/>
+        </g>
+        <g class="pc-face pc-face--ahh" fill="#fff">
+            <rect x="10" y="9" width="1" height="1"/><rect x="11" y="10" width="1" height="1"/><rect x="10" y="11" width="1" height="1"/>
+            <rect x="21" y="9" width="1" height="1"/><rect x="20" y="10" width="1" height="1"/><rect x="21" y="11" width="1" height="1"/>
+            <rect x="15" y="13" width="2" height="2"/>
+        </g>
+        <g class="pc-face pc-face--sneeze" fill="#fff">
+            <rect x="10" y="9" width="1" height="1"/><rect x="11" y="10" width="1" height="1"/><rect x="10" y="11" width="1" height="1"/>
+            <rect x="21" y="9" width="1" height="1"/><rect x="20" y="10" width="1" height="1"/><rect x="21" y="11" width="1" height="1"/>
+            <rect x="12" y="13" width="8" height="2"/>
+        </g>
+        <rect class="pc-health-scan" x="8" y="6" width="16" height="1" fill="#fff"/>
+        </g>
+        <g class="pc-health-props"></g>
     </svg>`;
 
 const pcHealthState = {
@@ -187,6 +235,13 @@ const pcHealthState = {
     band: null,
     coolingUntil: 0,
     timers: [],
+    // The scene playing on the PC (see Scenes), and the face last drawn, to
+    // notice when the mood changes
+    sceneTimers: [],
+    staticPending: false,
+    drawnFace: null,
+    // Off while the window opens, so the shared mood arriving isn't static
+    moodSettled: false,
     tick: null,
     returnFocus: null,
     // Sent with this page load's first counted cheer, to measure how many
@@ -398,6 +453,10 @@ function buildPcHealthWindow() {
                 <div class="pc-health-art" id="pcHealthArt">
                     ${PC_HEALTH_ART_SVG}
                     <span class="pc-health-heart" aria-hidden="true"></span>
+                    <svg class="pc-health-ha" viewBox="0 0 7 5" width="21" height="15" shape-rendering="crispEdges" aria-hidden="true" focusable="false">
+                        <g fill="#000"><rect x="0" y="0" width="1" height="5"/><rect x="2" y="0" width="1" height="5"/><rect x="1" y="2" width="1" height="1"/>
+                        <rect x="4" y="1" width="1" height="4"/><rect x="6" y="1" width="1" height="4"/><rect x="5" y="0" width="1" height="1"/><rect x="5" y="2" width="1" height="1"/></g>
+                    </svg>
                 </div>
                 <div class="pc-health-readout">
                     <div class="pc-health-state"><span id="pcHealthState"></span> <span class="pc-health-percent" id="pcHealthPercent"></span></div>
@@ -478,6 +537,8 @@ async function showPcHealthWindow(opener) {
     pcHealthState.lastSummary = '';
     pcHealthState.cheeredOffline = false;
     pcHealthState.band = null;
+    pcHealthState.drawnFace = null;
+    pcHealthState.moodSettled = false;
     if (pcHealthState.status !== 'off') pcHealthState.status = 'loading';
 
     setPcHealthBubble(pcHealthGreeting(Date.now()));
@@ -494,8 +555,10 @@ async function showPcHealthWindow(opener) {
     if (!pcHealthIsOpen()) return;
     renderPcHealth();
     await refreshPcHealth();
-    // The mood it opened with is the one later changes are told against
+    // The mood it opened with is the one later changes are told against,
+    // and shown against
     if (pcHealthState.band === null) pcHealthBandChange();
+    pcHealthState.moodSettled = true;
 }
 
 function closePcHealthWindow() {
@@ -507,6 +570,7 @@ function closePcHealthWindow() {
     pcHealthState.tick = null;
     pcHealthState.timers.forEach(clearTimeout);
     pcHealthState.timers = [];
+    stopPcHealthScene();
     pcHealthState.coolingUntil = 0;
     setPcHealthCooling(false);
     document.getElementById('pcHealthDefrag').hidden = true;
@@ -563,7 +627,12 @@ function renderPcHealth() {
     // Face, word and number together. Dozing changes the face and the line,
     // never the word or the number.
     const dozing = pcHealthIsDozing(now);
-    document.getElementById('pcHealthArt').dataset.face = pcHealthFace(band, now);
+    const face = pcHealthFace(band, now);
+    if (pcHealthState.moodSettled && pcHealthState.drawnFace && face !== pcHealthState.drawnFace && pcHealthIsOpen()) {
+        playPcHealthStatic();
+    }
+    pcHealthState.drawnFace = face;
+    document.getElementById('pcHealthArt').dataset.face = face;
     document.getElementById('pcHealthState').textContent = band.state;
     document.getElementById('pcHealthPercent').textContent = `${mood}%`;
     document.getElementById('pcHealthLine').textContent = dozing
@@ -611,13 +680,229 @@ function setPcHealthCooling(cooling) {
     });
 }
 
-// The little hop and heart, restarted even on quick cheers
+// Each cheer's own reaction, restarted even on quick cheers. The scene
+// moves the PC; is-cheered starts what CSS draws around it (a pat's heart, a
+// joke's "HA").
 function playPcHealthReaction(actionId) {
     const art = document.getElementById('pcHealthArt');
     art.classList.remove('is-cheered');
     art.dataset.action = actionId;
     void art.offsetWidth;
     art.classList.add('is-cheered');
+    playPcHealthScene(PC_HEALTH_SCENES[actionId]());
+}
+
+// --- Scenes ---------------------------------------------------------------------------
+// A scene is a list of frames, like a flip book: at `t` ms the PC pulls
+// `face` (data-react; none means its mood's own face), stands at `move` (an
+// SVG transform, in pixels of the 32x32 art), has `props` drawn around it,
+// and with `busy` its disk light flickers. The last frame only marks the end.
+// Everything is fixed markup built from the pixel lists below, never data.
+// Under reduced motion no scene plays, so the PC just keeps its mood's face.
+
+const PC_HEALTH_MUG = [[0, 0, 5, 6, '#000'], [1, 1, 3, 4, '#c8352c'], [1, 1, 3, 1, '#5a3412'], [1, 2, 1, 2, '#e8796f'],
+    [5, 1, 2, 1, '#000'], [6, 2, 1, 2, '#000'], [5, 4, 2, 1, '#000']];
+const PC_HEALTH_STEAM = [[[1, -2], [2, -4], [1, -6]], [[2, -2], [1, -4], [2, -6]], [[1, -3], [2, -5], [1, -7]], [[2, -3], [1, -5], [2, -7]]];
+// Dust blown out of the fan's vent, frame by frame
+const PC_HEALTH_DUST = [
+    [[19, 20], [21, 20]],
+    [[18, 21], [20, 21], [21, 21], [22, 20]],
+    [[17, 22], [21, 22], [23, 21], [24, 21], [25, 20]],
+    [[16, 24], [22, 23], [26, 22], [28, 21]],
+    [[15, 26], [24, 25], [30, 23]]
+];
+// Defrag's map fills the screen, 14 x 7 clusters
+const PC_HEALTH_MAP = { x: 9, y: 8, cols: 14, rows: 7 };
+const PC_HEALTH_CLUSTER_COLOURS = ['', '#0000a8', '#e00000', '#fff'];
+const PC_HEALTH_NOISE_COLOURS = ['#fff', '#c0c0c0', '#5c5848', '#2aa6a6'];
+
+function pcHealthPixels(list, dx = 0, dy = 0, fill = '') {
+    return list.map(([x, y, w = 1, h = 1, colour = fill]) =>
+        `<rect x="${x + dx}" y="${y + dy}" width="${w}" height="${h}"${colour ? ` fill="${colour}"` : ''}/>`).join('');
+}
+
+const pcHealthMug = x => pcHealthPixels(PC_HEALTH_MUG, x, 23);
+const pcHealthSteam = i => `<g opacity="${i > 7 ? 0.5 : 0.9}">${pcHealthPixels(PC_HEALTH_STEAM[i % PC_HEALTH_STEAM.length], 0, 23, '#fff')}</g>`;
+const pcHealthDust = i => `<g opacity="${1 - i / 6}">${pcHealthPixels(PC_HEALTH_DUST[i], 0, 0, '#6f6a5a')}</g>`;
+
+/** A hop: up two pixels and back, from `t` */
+function pcHealthHop(t, face) {
+    return [0, -1, -2, -1, 0].map((y, i) => ({ t: t + i * 125, face, move: `translate(0 ${y})` }));
+}
+
+const PC_HEALTH_SCENES = {
+    // Happy closed eyes and a blush, and a double wiggle (the heart is CSS)
+    pat: () => [
+        ...[-3, 0, 3, 0, -3, 0, 3, 0].map((angle, i) => ({ t: i * 110, face: 'patted', move: `rotate(${angle} 16 29)` })),
+        { t: 880, face: 'patted' },
+        { t: 1300 }
+    ],
+
+    // A mug slides in and steams while it takes a sniff, slides away, and
+    // the caffeine kicks in
+    coffee: () => [
+        ...[-9, -5, 0].map((x, i) => ({ t: i * 90, props: pcHealthMug(x) })),
+        ...Array.from({ length: 10 }, (_, i) => ({ t: 270 + i * 140, face: 'sip', props: pcHealthMug(0) + pcHealthSteam(i) })),
+        ...[-5, -9].map((x, i) => ({ t: 1670 + i * 90, face: 'sip', props: pcHealthMug(x) })),
+        { t: 1850, face: 'wired', busy: true },
+        ...Array.from({ length: 16 }, (_, i) => ({
+            t: 2100 + i * 50, face: 'wired', busy: true, move: `translate(${i % 2 ? 1 : -1} ${i % 4 === 1 ? -1 : 0})`
+        })),
+        { t: 2900, face: 'wired' },
+        ...pcHealthHop(3250, 'great'),
+        { t: 3875, face: 'great' },
+        { t: 4200 }
+    ],
+
+    // Laughing bounces (the "HA" is CSS)
+    joke: () => [
+        ...Array.from({ length: 8 }, (_, i) => ({ t: i * 120, face: 'laugh', move: i % 2 ? '' : 'translate(0 -1)' })),
+        { t: 960, face: 'laugh' },
+        { t: 1300 }
+    ],
+
+    // Defrag's map plays while the progress bar runs (pcHealthDefragScene);
+    // this is the PC once it's finished
+    defrag: () => [...pcHealthHop(0, 'happy'), { t: 625, face: 'happy' }, { t: 1100 }],
+
+    // A puff of dust from the vent, "ah... ah...", and a sneeze that blows
+    // out the rest
+    dust: () => [
+        ...PC_HEALTH_DUST.map((frame, i) => ({ t: i * 130, props: pcHealthDust(i) })),
+        { t: 650 },
+        ...[0, -1, 0, -1].map((y, i) => ({ t: 850 + i * 260, face: 'ahh', move: `translate(0 ${y})` })),
+        ...[[0, -3], [-1, -1], [1, 0], [-1, 0], [0, 0]].map(([x, y], i) => ({
+            t: 1890 + i * 70, face: 'sneeze', move: `translate(${x} ${y})`, props: pcHealthDust(i)
+        })),
+        { t: 2240, face: 'sneeze' },
+        { t: 2540, face: 'happy' },
+        { t: 3240 }
+    ]
+};
+
+/**
+ * Defrag's map on the PC's own screen: scattered clusters, some fragmented
+ * (red), packed to the front one by one, each lit white as it lands.
+ */
+function pcHealthDefragScene(duration) {
+    const { x, y, cols, rows } = PC_HEALTH_MAP;
+    const cells = Array.from({ length: cols * rows }, () => {
+        const r = Math.random();
+        return r < 0.42 ? 0 : r < 0.75 ? 1 : 2;
+    });
+
+    // Every move: the last used cluster into the first free one. Then the
+    // fragmented ones still in place are tidied.
+    const steps = [];
+    const sim = cells.slice();
+    for (let to = 0, from = sim.length - 1; to < from; to++) {
+        if (sim[to] !== 0) continue;
+        while (from > to && sim[from] === 0) from--;
+        if (from <= to) break;
+        steps.push([from, to]);
+        sim[to] = 1;
+        sim[from] = 0;
+    }
+    sim.forEach((cell, i) => { if (cell === 2) steps.push([i, i]); });
+
+    const draw = (lit) => cells.map((cell, i) => {
+        const colour = PC_HEALTH_CLUSTER_COLOURS[lit.includes(i) ? 3 : cell];
+        return colour ? pcHealthPixels([[x + (i % cols), y + Math.floor(i / cols)]], 0, 0, colour) : '';
+    }).join('');
+
+    const count = 40;
+    const perFrame = Math.max(1, Math.ceil(steps.length / count));
+    const frames = [{ t: 0, face: 'blank', busy: true, props: draw([]) }];
+    for (let f = 1; f <= count; f++) {
+        const lit = [];
+        steps.splice(0, perFrame).forEach(([from, to]) => {
+            cells[from] = 0;
+            cells[to] = 1;
+            lit.push(to);
+        });
+        frames.push({ t: Math.round(((duration - 100) * f) / count), face: 'blank', busy: true, props: draw(lit) });
+    }
+    // It ends when the PC reacts to the finished Defrag (at `duration`)
+    frames.push({ t: duration - 50, face: 'blank', props: draw([]) }, { t: duration + 500 });
+    return frames;
+}
+
+/** A burst of static on the screen, then the new face */
+function pcHealthStaticScene() {
+    const frames = [];
+    for (let f = 0; f < 5; f++) {
+        const pixels = [];
+        for (let y = 6; y < 17; y++) {
+            for (let x = 8; x < 24; x++) {
+                if (Math.random() < 0.55) {
+                    pixels.push([x, y, 1, 1, PC_HEALTH_NOISE_COLOURS[Math.floor(Math.random() * PC_HEALTH_NOISE_COLOURS.length)]]);
+                }
+            }
+        }
+        frames.push({ t: f * 60, face: 'blank', props: pcHealthPixels(pixels) });
+    }
+    frames.push({ t: 300 });
+    return frames;
+}
+
+function drawPcHealthFrame({ face, move, props, busy }) {
+    const art = document.getElementById('pcHealthArt');
+    if (face) {
+        art.dataset.react = face;
+    } else {
+        delete art.dataset.react;
+    }
+    art.classList.toggle('is-busy', Boolean(busy));
+    art.querySelector('.pc-health-pc').setAttribute('transform', move || '');
+    art.querySelector('.pc-health-props').innerHTML = props || '';
+}
+
+function stopPcHealthScene() {
+    pcHealthState.sceneTimers.forEach(clearTimeout);
+    pcHealthState.sceneTimers = [];
+    pcHealthState.staticPending = false;
+    const art = document.getElementById('pcHealthArt');
+    if (!art) return;
+    drawPcHealthFrame({});
+    art.classList.remove('is-acting');
+}
+
+function playPcHealthScene(frames) {
+    // A mood change still waiting for its static waits for this scene instead
+    const pending = pcHealthState.staticPending;
+    stopPcHealthScene();
+    pcHealthState.staticPending = pending;
+    if (pcHealthReducedMotion() || !frames.length) return;
+
+    // is-acting pauses the idle animations (glances, the yawn) meanwhile
+    document.getElementById('pcHealthArt').classList.add('is-acting');
+    const last = frames.length - 1;
+    frames.forEach((frame, i) => {
+        // The first frame straight away, so the mood's face doesn't flash between scenes
+        if (i === 0 && frame.t === 0 && i < last) {
+            drawPcHealthFrame(frame);
+            return;
+        }
+        pcHealthState.sceneTimers.push(setTimeout(() => {
+            if (i < last) {
+                drawPcHealthFrame(frame);
+                return;
+            }
+            // A mood change during the scene gets its static once it's over
+            const pending = pcHealthState.staticPending;
+            stopPcHealthScene();
+            if (pending) playPcHealthScene(pcHealthStaticScene());
+        }, frame.t));
+    });
+}
+
+/** The mood changed: static, now or once the PC finishes reacting */
+function playPcHealthStatic() {
+    if (pcHealthState.sceneTimers.length) {
+        pcHealthState.staticPending = true;
+    } else {
+        playPcHealthScene(pcHealthStaticScene());
+    }
 }
 
 // --- Announcements -------------------------------------------------------------------
@@ -698,6 +983,7 @@ function runPcHealthDefrag(done) {
 
     panel.hidden = false;
     show(0);
+    playPcHealthScene(pcHealthDefragScene(duration));
     for (let step = 1; step <= steps; step++) {
         pcHealthState.timers.push(setTimeout(() => {
             show(step);

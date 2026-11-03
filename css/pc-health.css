@@ -68,22 +68,33 @@
     display: block;
     width: 128px;
     height: 128px;
-    transform-origin: 50% 100%;
 }
 
-/* One face at a time, chosen by the band (data-face) */
+/* One face at a time: the band's (data-face), or while it reacts to
+   something, the face it pulls (data-react). data-react="blank" shows none,
+   for Defrag's map and static. */
 .pc-health-art .pc-face {
     display: none;
 }
 
-.pc-health-art[data-face="great"] .pc-face--great,
-.pc-health-art[data-face="happy"] .pc-face--happy,
-.pc-health-art[data-face="content"] .pc-face--content,
-.pc-health-art[data-face="okay"] .pc-face--okay,
-.pc-health-art[data-face="tired"] .pc-face--tired,
-.pc-health-art[data-face="asleep"] .pc-face--asleep {
+.pc-health-art:not([data-react])[data-face="great"] .pc-face--great,
+.pc-health-art:not([data-react])[data-face="happy"] .pc-face--happy,
+.pc-health-art:not([data-react])[data-face="content"] .pc-face--content,
+.pc-health-art:not([data-react])[data-face="okay"] .pc-face--okay,
+.pc-health-art:not([data-react])[data-face="tired"] .pc-face--tired,
+.pc-health-art:not([data-react])[data-face="asleep"] .pc-face--asleep,
+.pc-health-art[data-react="great"] .pc-face--great,
+.pc-health-art[data-react="happy"] .pc-face--happy,
+.pc-health-art[data-react="patted"] .pc-face--patted,
+.pc-health-art[data-react="sip"] .pc-face--sip,
+.pc-health-art[data-react="wired"] .pc-face--wired,
+.pc-health-art[data-react="laugh"] .pc-face--laugh,
+.pc-health-art[data-react="ahh"] .pc-face--ahh,
+.pc-health-art[data-react="sneeze"] .pc-face--sneeze {
     display: inline;
 }
+
+/* --- Idle life, between cheers. Each loop is stepped, like the art. --- */
 
 /* Dozing: the Z drifts up and fades, over and over */
 .pc-health-zzz {
@@ -96,9 +107,14 @@
     100% { opacity: 0; transform: translateY(-2px); }
 }
 
-/* A blink every few seconds */
+/* A blink every few seconds, and now and then a look left and right.
+   (In the SVG, 1px is one pixel of the art.) */
 .pc-health-art .pc-eyes {
-    animation: pc-health-blink 5s steps(1) infinite;
+    animation: pc-health-blink 5s steps(1) infinite, pc-health-glance 11s steps(1) infinite;
+}
+
+.pc-health-art.is-acting .pc-eyes {
+    animation: none;
 }
 
 @keyframes pc-health-blink {
@@ -106,26 +122,99 @@
     97%, 100% { opacity: 0; }
 }
 
-/* A cheer: a hop (or a wiggle for a pat), and a heart floating up */
-.pc-health-art.is-cheered .pc-health-svg {
-    animation: pc-health-hop 0.5s steps(4);
+@keyframes pc-health-glance {
+    0%, 40% { transform: translateX(0); }
+    41% { transform: translateX(-1px); }
+    49% { transform: translateX(0); }
+    51% { transform: translateX(1px); }
+    59%, 100% { transform: translateX(0); }
 }
 
-.pc-health-art.is-cheered[data-action="pat"] .pc-health-svg {
-    animation-name: pc-health-wiggle;
+/* The disk light flickers in bursts, like a hard drive at work, and
+   flat out while it's busy (Defrag, the coffee jitters). Under it, a dark
+   pixel shows when it's off. */
+.pc-health-led {
+    animation: pc-health-disk 7s steps(1) infinite;
 }
 
-@keyframes pc-health-hop {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+.pc-health-art.is-busy .pc-health-led {
+    animation: pc-health-disk 7s steps(1) infinite, pc-health-disk-busy 0.1s steps(1) infinite;
 }
 
-@keyframes pc-health-wiggle {
-    0%, 100% { transform: rotate(0); }
-    25% { transform: rotate(-3deg); }
-    75% { transform: rotate(3deg); }
+@keyframes pc-health-disk {
+    0%, 30% { opacity: 1; }
+    31% { opacity: 0; }
+    32% { opacity: 1; }
+    33.5% { opacity: 0; }
+    34.5%, 36% { opacity: 1; }
+    37% { opacity: 0; }
+    37.5%, 78% { opacity: 1; }
+    79% { opacity: 0; }
+    80% { opacity: 1; }
+    81% { opacity: 0; }
+    82%, 100% { opacity: 1; }
 }
 
+@keyframes pc-health-disk-busy {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* A faint line rolls down the screen every few seconds */
+.pc-health-scan {
+    opacity: 0;
+    animation: pc-health-scan 4.5s infinite;
+}
+
+.pc-health-art.is-acting .pc-health-scan {
+    animation: none;
+}
+
+@keyframes pc-health-scan {
+    0% { opacity: 0.22; transform: translateY(0); animation-timing-function: steps(11, end); }
+    22% { opacity: 0.22; transform: translateY(11px); animation-timing-function: steps(1, end); }
+    23%, 100% { opacity: 0; transform: translateY(0); }
+}
+
+/* Tired: every so often a yawn, sagging a pixel */
+.pc-health-yawn {
+    opacity: 0;
+}
+
+.pc-health-art:not(.is-acting)[data-face="tired"] .pc-health-yawn {
+    animation: pc-health-yawn 8s steps(1) infinite;
+}
+
+.pc-health-art:not(.is-acting)[data-face="tired"] .pc-health-tired-mouth {
+    animation: pc-health-yawn-mouth 8s steps(1) infinite;
+}
+
+.pc-health-art:not(.is-acting)[data-face="tired"] .pc-health-pc {
+    animation: pc-health-sag 8s steps(1) infinite;
+}
+
+@keyframes pc-health-yawn {
+    0%, 69% { opacity: 0; }
+    70%, 88% { opacity: 1; }
+    89%, 100% { opacity: 0; }
+}
+
+@keyframes pc-health-yawn-mouth {
+    0%, 69% { opacity: 1; }
+    70%, 88% { opacity: 0; }
+    89%, 100% { opacity: 1; }
+}
+
+@keyframes pc-health-sag {
+    0%, 72% { transform: translateY(0); }
+    73%, 86% { transform: translateY(1px); }
+    87%, 100% { transform: translateY(0); }
+}
+
+/* --- Around the PC, when it's cheered. The PC's own moves are scenes
+   (js/pc-health-window.js). --- */
+
+/* A pat: a heart floats up */
 .pc-health-heart {
     position: absolute;
     top: 4px;
@@ -143,8 +232,21 @@
     pointer-events: none;
 }
 
-.pc-health-art.is-cheered .pc-health-heart {
+.pc-health-art.is-cheered[data-action="pat"] .pc-health-heart {
     animation: pc-health-float 0.9s steps(6) forwards;
+}
+
+/* A joke: "HA" floats up from the corner */
+.pc-health-ha {
+    position: absolute;
+    top: 0;
+    right: -4px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.pc-health-art.is-cheered[data-action="joke"] .pc-health-ha {
+    animation: pc-health-float 1.1s steps(8) forwards;
 }
 
 @keyframes pc-health-float {
@@ -320,8 +422,14 @@
 @media (prefers-reduced-motion: reduce) {
     .pc-health-art .pc-eyes,
     .pc-health-zzz,
-    .pc-health-art.is-cheered .pc-health-svg,
-    .pc-health-art.is-cheered .pc-health-heart {
+    .pc-health-led,
+    .pc-health-art.is-busy .pc-health-led,
+    .pc-health-scan,
+    .pc-health-art:not(.is-acting)[data-face="tired"] .pc-health-yawn,
+    .pc-health-art:not(.is-acting)[data-face="tired"] .pc-health-tired-mouth,
+    .pc-health-art:not(.is-acting)[data-face="tired"] .pc-health-pc,
+    .pc-health-art.is-cheered[data-action="pat"] .pc-health-heart,
+    .pc-health-art.is-cheered[data-action="joke"] .pc-health-ha {
         animation: none;
     }
 }

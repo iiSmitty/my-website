@@ -322,6 +322,13 @@ Left for the owner, in this order (details in `cf-mood/README.md`):
 - [x] Time of day in Cape Town: a greeting for morning, afternoon and evening, and from 23:00 to 06:00 the PC dozes (a sleeping face in the window, the Mood row and the tray). A cheer wakes it for 10 minutes. Dozing changes the face and the line, never the mood word or number.
 - [x] An UptimeRobot keyword monitor on `/api/mood/health`, looking for `"ok":true`, every 5 minutes ("PC Health API").
 
+**Animation pass: done (3 November 2026)**
+
+- [x] Each cheer reacts its own way, as frame-by-frame scenes on the 32x32 art: a pat gets happy closed eyes, a double wiggle and the heart; a coffee gets a steaming mug, then wide eyes and the jitters; a joke gets laughing bounces and a floating "HA"; Defrag packs coloured clusters on the PC's own screen while the progress bar runs; dusting blows dust out of the vent, then "ah... ah..." and a sneeze.
+- [x] Idle life between cheers, in CSS like the blink: the eyes glance left and right, the disk light flickers in bursts (flat out while busy), a faint scanline rolls down the screen, and at Tired it now and then yawns and sags a pixel.
+- [x] A change of mood flashes static on the screen before the new face. Not when the window opens, and after a reaction rather than over it.
+- [x] Still transform and opacity only for anything that moves, nothing runs while the window is closed, and under reduced motion there are no scenes and no idle movement.
+
 **Later, only if the data says so**
 
 - WebSockets for live updates, on the same Durable Object, if the counts show visitors overlapping.

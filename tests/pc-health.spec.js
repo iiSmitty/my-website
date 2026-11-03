@@ -96,6 +96,22 @@ function collectErrors(page) {
     return errors;
 }
 
+// From now on, records every face the PC pulls while it reacts (data-react),
+// in order, with '-' for back to its mood's own face
+async function watchFaces(page) {
+    await page.evaluate(() => {
+        const art = document.getElementById('pcHealthArt');
+        window.pulledFaces = [];
+        new MutationObserver(() => {
+            const face = art.dataset.react || '-';
+            if (window.pulledFaces[window.pulledFaces.length - 1] !== face) window.pulledFaces.push(face);
+        }).observe(art, { attributes: true, attributeFilter: ['data-react'] });
+    });
+}
+
+const pulledFaces = (page) => page.evaluate(() => window.pulledFaces);
+const art = (page) => page.locator('#pcHealthArt');
+
 test.describe('desktop', () => {
     test.use({ viewport: { width: 1280, height: 800 } });
 
@@ -560,6 +576,99 @@ test.describe('touch', () => {
     });
 });
 
+test.describe('animation', () => {
+    test.use({ viewport: { width: 1280, height: 800 } });
+
+    test('each cheer gets its own reaction, then the PC goes back to its mood', async ({ page }) => {
+        await setup(page, { shared: false });
+        await boot(page);
+        await openFromRow(page);
+        await watchFaces(page);
+
+        const reactions = [
+            ['Pat the case', ['patted', '-']],
+            ['Pour a coffee', ['sip', 'wired', 'great', '-']],
+            ['Tell a joke', ['laugh', '-']],
+            ['Run Defrag', ['blank', 'happy', '-']],
+            ['Dust the fan', ['ahh', 'sneeze', 'happy', '-']]
+        ];
+        for (const [name, faces] of reactions) {
+            await ready(page, name);
+            await page.evaluate(() => { window.pulledFaces = []; });
+            await action(page, name).click();
+            await expect(art(page)).toHaveClass(/is-acting/);
+            await expect(art(page)).not.toHaveClass(/is-acting/, { timeout: 6000 });
+            expect(await pulledFaces(page), name).toEqual(faces);
+
+            // Nothing is left behind
+            await expect(art(page).locator('.pc-health-props rect')).toHaveCount(0);
+            await expect(art(page).locator('.pc-health-pc')).toHaveAttribute('transform', '');
+            await expect(art(page)).toHaveAttribute('data-face', 'content');
+        }
+    });
+
+    test('Defrag packs its clusters on the PC\'s own screen while the progress bar runs', async ({ page }) => {
+        await setup(page, { shared: false });
+        await boot(page);
+        await openFromRow(page);
+
+        await action(page, 'Run Defrag').click();
+        await expect(healthWindow(page).getByRole('progressbar')).toBeVisible();
+        await expect(art(page)).toHaveAttribute('data-react', 'blank');
+        await expect(art(page)).toHaveClass(/is-busy/);
+        expect(await art(page).locator('.pc-health-props rect').count()).toBeGreaterThan(20);
+
+        await expect(page.locator('#pcHealthBubble')).toHaveText('All my clusters are in a row. I feel organised.');
+        await expect(art(page)).not.toHaveClass(/is-busy/);
+    });
+
+    test('closing the window part way through a reaction stops it', async ({ page }) => {
+        await setup(page, { shared: false });
+        await boot(page);
+        await openFromRow(page);
+
+        await action(page, 'Pour a coffee').click();
+        await expect(art(page)).toHaveAttribute('data-react', 'sip');
+        await healthWindow(page).getByRole('button', { name: 'Close' }).click();
+        await expect(art(page)).not.toHaveClass(/is-acting/);
+        await expect(art(page)).not.toHaveAttribute('data-react');
+        await expect(art(page).locator('.pc-health-props rect')).toHaveCount(0);
+    });
+
+    test('a change of mood flashes static on the screen, but opening the window doesn\'t', async ({ page }) => {
+        await setup(page, { api: () => ({ json: snapshot({ lift: 40 }) }) });
+        await boot(page);
+        await openFromRow(page);
+        await expect(art(page)).toHaveAttribute('data-face', 'great');
+        await watchFaces(page);
+        await page.waitForTimeout(500);
+        expect(await pulledFaces(page)).toEqual([]);
+
+        // Three hours later, 55 + 34: Happy
+        await page.clock.fastForward(3 * HOUR);
+        await expect(art(page)).toHaveAttribute('data-face', 'happy');
+        await expect.poll(() => pulledFaces(page)).toEqual(['blank', '-']);
+    });
+
+    test('between cheers it blinks, glances, flickers its disk light and rolls a scanline; tired, it yawns', async ({ page }) => {
+        await setup(page, { coffee: { lastVisitAt: new Date(NOW - 5 * DAY).toISOString() } });
+        await boot(page);
+        await openFromRow(page);
+
+        // 40, nothing this week: Okay
+        await expect(art(page)).toHaveAttribute('data-face', 'okay');
+        const animation = (selector) => art(page).locator(selector).first().evaluate(el => getComputedStyle(el).animationName);
+        expect(await animation('.pc-face--okay .pc-eyes')).toBe('pc-health-blink, pc-health-glance');
+        expect(await animation('.pc-health-led')).toBe('pc-health-disk');
+        expect(await animation('.pc-health-scan')).toBe('pc-health-scan');
+        expect(await animation('.pc-health-yawn')).toBe('none');
+
+        await page.evaluate(() => { document.getElementById('pcHealthArt').dataset.face = 'tired'; });
+        expect(await animation('.pc-health-yawn')).toBe('pc-health-yawn');
+        expect(await animation('.pc-health-pc')).toBe('pc-health-sag');
+    });
+});
+
 test.describe('reduced motion', () => {
     test.use({ viewport: { width: 1280, height: 800 } });
 
@@ -579,5 +688,17 @@ test.describe('reduced motion', () => {
             heart: getComputedStyle(document.querySelector('#pcHealthArt .pc-health-heart')).animationName
         }));
         expect(animations).toEqual({ hop: 'none', heart: 'none' });
+
+        // No reactions, and no idle movement
+        await watchFaces(page);
+        await ready(page, 'Pour a coffee');
+        await action(page, 'Pour a coffee').click();
+        await expect(page.locator('#pcHealthBubble')).toContainText('loyalty card');
+        await page.waitForTimeout(500);
+        expect(await pulledFaces(page)).toEqual([]);
+        await expect(page.locator('#pcHealthArt')).not.toHaveClass(/is-acting/);
+        for (const selector of ['.pc-health-led', '.pc-health-scan', '.pc-health-ha']) {
+            expect(await page.locator(`#pcHealthArt ${selector}`).evaluate(el => getComputedStyle(el).animationName), selector).toBe('none');
+        }
     });
 });
