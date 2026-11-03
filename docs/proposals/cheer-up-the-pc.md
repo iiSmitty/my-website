@@ -1,6 +1,6 @@
 # Proposal: Cheer up the PC
 
-Status: Phase 2 live (shared cheers on since 2 November 2026), Phase 3 built
+Status: Phase 2 live (shared cheers on since 2 November 2026), Phase 3 done
 Owner: Andre Smit
 
 ## Summary
@@ -314,13 +314,13 @@ Left for the owner, in this order (details in `cf-mood/README.md`):
 - The rest of the joke pool, and time-of-day flavour (dozing at night in Cape Town).
 - An UptimeRobot keyword monitor on `/api/mood/health`.
 
-**Phase 3 status: built**
+**Phase 3 status: done**
 
 - [x] The tray face next to the clock. It shows the mood this browser last saw and opens PC Health. The taskbar is desktop only, so phones keep the Mood row.
 - [x] `DEPLOY.EXE` in Task Manager. PC Health was already in the Applications tab while open, because that tab lists every window the window manager knows; a test now pins it.
 - [x] 20 jokes, not repeated in a browser until all have been heard.
 - [x] Time of day in Cape Town: a greeting for morning, afternoon and evening, and from 23:00 to 06:00 the PC dozes (a sleeping face in the window, the Mood row and the tray). A cheer wakes it for 10 minutes. Dozing changes the face and the line, never the mood word or number.
-- [ ] An UptimeRobot keyword monitor on `/api/mood/health`, looking for `"ok":true`. Set up by the owner in UptimeRobot.
+- [x] An UptimeRobot keyword monitor on `/api/mood/health`, looking for `"ok":true`, every 5 minutes ("PC Health API").
 
 **Later, only if the data says so**
 
