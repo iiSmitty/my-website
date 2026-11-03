@@ -70,8 +70,9 @@ const WHAT_I_DO = {
         location: 'C:\\Program Files\\Claude\\',
         modified: 'Every day',
         story: `
-            <p>I make a deliberate effort to use Claude well. AI has changed the whole software development
-            life cycle, and anyone who refuses to use it is going to miss the bus.</p>
+            <p>I make a deliberate effort to use Claude well. It built most of this site with me: I decide what
+            to make and how it should work, and I check what it made. Its favourite mistake is assuming
+            everything works, so I click through every change myself and send back whatever isn't right.</p>
             <p>We have seniors who keep us honest, so we learn from them and don't blindly trust what Claude
             writes. It's a process, and it takes time.</p>`
     }
