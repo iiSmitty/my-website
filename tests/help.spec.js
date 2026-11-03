@@ -33,6 +33,14 @@ test.describe('desktop', () => {
         await expect(page.locator('#mainProfileContent')).toBeHidden();
     });
 
+    test('links to GitHub Sponsors, in a new tab', async ({ page }) => {
+        await boot(page);
+        const sponsor = page.locator('.identity').getByRole('link', { name: 'sponsor', exact: true });
+        await expect(sponsor).toHaveAttribute('href', 'https://github.com/sponsors/iiSmitty');
+        await expect(sponsor).toHaveAttribute('target', '_blank');
+        await expect(sponsor).toHaveAttribute('rel', 'noopener noreferrer');
+    });
+
     test('the floppy loads from the keyboard', async ({ page }) => {
         await boot(page);
         const floppy = page.getByRole('button', { name: /Click to Load Profile/ });

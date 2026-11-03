@@ -3193,6 +3193,11 @@ body.is-touch-device .desktop-icons,
     margin: 0;
 }
 
+/* The Sponsor link's heart, in PC Health's red */
+.identity-heart {
+    color: #e0003c;
+}
+
 /* The Mood row (pc-health.js). Hidden until its script shows it, since the
    button needs JavaScript. display: contents would otherwise beat hidden. */
 .identity-specs div[hidden] {
