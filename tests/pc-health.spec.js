@@ -23,7 +23,7 @@ const COFFEE = {
 // An episode ten days ago: too long for the +10
 const WATCHING = {
     lastUpdated: new Date(NOW - DAY).toISOString(),
-    current: { title: 'House', year: 2004, slug: 'house', lastWatchedAt: new Date(NOW - 10 * DAY).toISOString() }
+    inProgress: [{ title: 'House', year: 2004, slug: 'house', lastWatchedAt: new Date(NOW - 10 * DAY).toISOString() }]
 };
 
 const SPOTIFY = { topTracks: [{ name: 'Cool Soos Koos Kombuis', artist: 'Snotkop' }], topArtists: [] };

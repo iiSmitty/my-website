@@ -1,21 +1,23 @@
 {
   "lastUpdated": "2026-10-26T07:24:59.712Z",
-  "current": {
-    "title": "House",
-    "year": 2004,
-    "traktId": 1399,
-    "tmdbId": 1408,
-    "slug": "house",
-    "poster": "/3Cz7ySOQJmqiuTdrc6CY0r65yDI.jpg",
-    "episode": {
-      "season": 3,
-      "number": 16,
-      "title": "Top Secret"
-    },
-    "watched": 62,
-    "aired": 177,
-    "lastWatchedAt": "2026-10-19T07:43:00.000Z"
-  },
+  "inProgress": [
+    {
+      "title": "House",
+      "year": 2004,
+      "traktId": 1399,
+      "tmdbId": 1408,
+      "slug": "house",
+      "poster": "/3Cz7ySOQJmqiuTdrc6CY0r65yDI.jpg",
+      "episode": {
+        "season": 3,
+        "number": 16,
+        "title": "Top Secret"
+      },
+      "watched": 62,
+      "aired": 177,
+      "lastWatchedAt": "2026-10-19T07:43:00.000Z"
+    }
+  ],
   "previous": {
     "title": "Reacher",
     "year": 2022,

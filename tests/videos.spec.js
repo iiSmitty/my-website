@@ -12,11 +12,11 @@ const PNG = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR
 function watching(overrides = {}) {
     return {
         lastUpdated: daysAgo(0),
-        current: {
+        inProgress: [{
             title: 'Severance', year: 2022, traktId: 1, tmdbId: 95396, slug: 'severance',
             poster: '/severance.jpg', episode: { season: 2, number: 7, title: 'Chikhai Bardo' },
             watched: 16, aired: 19, lastWatchedAt: daysAgo(2)
-        },
+        }],
         previous: {
             title: 'The Bear', year: 2022, traktId: 2, tmdbId: 136315, slug: 'the-bear',
             poster: '/the-bear.jpg', episodes: 28, finishedAt: daysAgo(30)
@@ -70,7 +70,7 @@ test.describe('desktop', () => {
         await expect(page.locator('#videosWindow')).toHaveCount(0);
     });
 
-    test('shows the current series, the last finished one and the last few movies', async ({ page }) => {
+    test('shows the series in progress, the last finished one and the last few movies', async ({ page }) => {
         const { videosWindow, posters } = await openVideos(page, watching());
 
         await expect(videosWindow).toHaveCSS('position', 'fixed');
@@ -170,9 +170,42 @@ test.describe('desktop', () => {
         await expect(preview(page)).toContainText('Finished 01/09/2026');
     });
 
+    test('up to three series in progress, newest first, each playing or paused', async ({ page }) => {
+        const data = watching();
+        data.inProgress.push(
+            {
+                title: 'House', year: 2004, traktId: 6, tmdbId: 1408, slug: 'house', poster: '/house.jpg',
+                episode: { season: 3, number: 16, title: 'Top Secret' }, watched: 62, aired: 177, lastWatchedAt: daysAgo(22)
+            },
+            { title: 'Slow Horses', year: 2022, traktId: 7, slug: 'slow-horses', lastWatchedAt: daysAgo(30) },
+            // A fourth is more than the folder shows
+            { title: 'Lost', year: 2004, traktId: 8, slug: 'lost', lastWatchedAt: daysAgo(60) }
+        );
+        await openVideos(page, data);
+
+        await expect(rows(page)).toHaveCount(7);
+        await expect(page.locator('#videosStatus')).toHaveText('7 object(s)');
+        await expect(rows(page).nth(0)).toContainText('Severance.avi');
+        await expect(rows(page).nth(0)).toContainText('Now playing');
+        await expect(rows(page).nth(1)).toContainText('House.avi');
+        await expect(rows(page).nth(1)).toContainText('Paused');
+        await expect(rows(page).nth(1).getByRole('progressbar', { name: '62 of 177 episodes watched' })).toBeVisible();
+        // No episode or progress known: the row still lists the show
+        await expect(rows(page).nth(2)).toContainText('Slow Horses.avi');
+        await expect(rows(page).nth(2).getByRole('progressbar')).toHaveCount(0);
+        await expect(rows(page).nth(3)).toContainText('The Bear.avi');
+        await expect(rows(page).nth(3)).toContainText('Finished');
+        await expect(page.locator('#videosRows')).not.toContainText('Lost');
+
+        await rows(page).nth(1).click();
+        await expect(preview(page)).toContainText('House (2004)');
+        await expect(preview(page)).toContainText('Paused. Last watched 3 weeks ago.');
+        await expect(preview(page)).toContainText('S3E16 "Top Secret"');
+    });
+
     test('empty slots and a series left alone too long', async ({ page }) => {
         const data = watching({ previous: null, movies: [] });
-        data.current.lastWatchedAt = daysAgo(40);
+        data.inProgress[0].lastWatchedAt = daysAgo(40);
         await openVideos(page, data);
 
         await expect(rows(page).nth(0)).toContainText('Paused');
@@ -189,7 +222,7 @@ test.describe('desktop', () => {
     });
 
     test('nothing playing between series', async ({ page }) => {
-        await openVideos(page, watching({ current: null }));
+        await openVideos(page, watching({ inProgress: [] }));
 
         await expect(rows(page).nth(0)).toContainText('Between shows');
         await expect(preview(page)).toContainText('Nothing playing right now.');
@@ -238,8 +271,8 @@ test.describe('desktop', () => {
 
     test('titles are shown as text, never parsed as HTML', async ({ page }) => {
         const data = watching();
-        data.current.title = '<img src=x onerror="window.pwned=1">';
-        data.current.poster = '"><script>window.pwned=1</script>';
+        data.inProgress[0].title = '<img src=x onerror="window.pwned=1">';
+        data.inProgress[0].poster = '"><script>window.pwned=1</script>';
         await openVideos(page, data);
 
         await expect(preview(page)).toContainText('<img src=x onerror="window.pwned=1">');

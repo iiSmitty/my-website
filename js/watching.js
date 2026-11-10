@@ -1,6 +1,6 @@
 // Videos folder
-// What I'm watching, as a Windows Explorer window: the series I'm on now, the
-// last one I finished and the last few movies I saw. data/watching.json is
+// What I'm watching, as a Windows Explorer window: the series I'm on now (up
+// to three), the last one I finished and the last few movies I saw. data/watching.json is
 // refreshed from Trakt weekly by .github/workflows/update-watching.yml.
 //
 // Opened by double-clicking the Videos desktop icon (wired up in
@@ -13,7 +13,9 @@ const VIDEOS_TRAKT_URL = 'https://trakt.tv';
 const VIDEOS_TRAKT_PROFILE = 'https://trakt.tv/users/andrez-smit';
 const VIDEOS_FOLDER = 'C:\\My Documents\\Videos';
 
-// Matches MOVIE_COUNT in the fetcher; more are ignored if the data ever has them
+// Match IN_PROGRESS_COUNT and MOVIE_COUNT in the fetcher; more are ignored if
+// the data ever has them
+const VIDEOS_SHOW_COUNT = 3;
 const VIDEOS_MOVIE_COUNT = 3;
 
 // A show I haven't touched for this long is "Paused" rather than "Now playing"
@@ -79,45 +81,53 @@ function videosTraktLink(type, slug) {
 
 // --- Data -> rows ----------------------------------------------------------
 
-// The current and previous series, then the last few movies (newest first).
-// A slot with nothing in it still gets a greyed-out row.
-function buildVideosItems(data, now) {
-    const current = data && data.current && data.current.title ? data.current : null;
-    const previous = data && data.previous && data.previous.title ? data.previous : null;
-    const movies = data && Array.isArray(data.movies)
-        ? data.movies.filter(movie => movie && movie.title).slice(0, VIDEOS_MOVIE_COUNT)
+function videosTitled(data, key, count) {
+    return data && Array.isArray(data[key])
+        ? data[key].filter(item => item && item.title).slice(0, count)
         : [];
-    const items = [];
+}
 
-    if (current) {
-        const paused = now - new Date(current.lastWatchedAt) > VIDEOS_STALE_DAYS * VIDEOS_DAY_MS;
-        const episode = formatVideosEpisode(current.episode);
-        const episodeTitle = current.episode && current.episode.title ? ` "${current.episode.title}"` : '';
-        const fileName = videosFileName(current.title, 'avi');
-        items.push({
-            fileName,
-            heading: videosHeading(current),
-            poster: current.poster,
-            link: videosTraktLink('shows', current.slug),
-            status: paused ? 'Paused' : 'Now playing',
-            details: episode,
-            progress: current.aired ? { watched: current.watched || 0, aired: current.aired } : null,
-            modified: current.lastWatchedAt,
-            lines: [
-                paused ? `Paused. Last watched ${describeVideosAge(current.lastWatchedAt, now)}.` : 'Now playing',
-                episode ? `${episode}${episodeTitle}` : '',
-                current.aired ? `${current.watched || 0} of ${current.aired} episodes watched` : ''
-            ],
-            fields: [
-                [['Type', 'Video Clip'], ['Location', VIDEOS_FOLDER]],
-                [['Episodes', current.aired ? `${current.watched || 0} of ${current.aired} watched` : null],
-                    ['Latest', episode ? `${episode}${episodeTitle}` : null],
-                    ['Last watched', formatDateTime(current.lastWatchedAt)]],
-                [['MS-DOS name', videosDosName(fileName)]]
-            ],
-            readOnly: false
-        });
-    } else {
+// A series I've started but not finished
+function buildVideosShowItem(show, now) {
+    const paused = now - new Date(show.lastWatchedAt) > VIDEOS_STALE_DAYS * VIDEOS_DAY_MS;
+    const episode = formatVideosEpisode(show.episode);
+    const episodeTitle = show.episode && show.episode.title ? ` "${show.episode.title}"` : '';
+    const fileName = videosFileName(show.title, 'avi');
+    return {
+        fileName,
+        heading: videosHeading(show),
+        poster: show.poster,
+        link: videosTraktLink('shows', show.slug),
+        status: paused ? 'Paused' : 'Now playing',
+        details: episode,
+        progress: show.aired ? { watched: show.watched || 0, aired: show.aired } : null,
+        modified: show.lastWatchedAt,
+        lines: [
+            paused ? `Paused. Last watched ${describeVideosAge(show.lastWatchedAt, now)}.` : 'Now playing',
+            episode ? `${episode}${episodeTitle}` : '',
+            show.aired ? `${show.watched || 0} of ${show.aired} episodes watched` : ''
+        ],
+        fields: [
+            [['Type', 'Video Clip'], ['Location', VIDEOS_FOLDER]],
+            [['Episodes', show.aired ? `${show.watched || 0} of ${show.aired} watched` : null],
+                ['Latest', episode ? `${episode}${episodeTitle}` : null],
+                ['Last watched', formatDateTime(show.lastWatchedAt)]],
+            [['MS-DOS name', videosDosName(fileName)]]
+        ],
+        readOnly: false
+    };
+}
+
+// The series in progress (newest first), the last one finished, then the
+// last few movies (newest first). A slot with nothing in it still gets a
+// greyed-out row.
+function buildVideosItems(data, now) {
+    const inProgress = videosTitled(data, 'inProgress', VIDEOS_SHOW_COUNT);
+    const previous = data && data.previous && data.previous.title ? data.previous : null;
+    const movies = videosTitled(data, 'movies', VIDEOS_MOVIE_COUNT);
+    const items = inProgress.map(show => buildVideosShowItem(show, now));
+
+    if (!inProgress.length) {
         items.push({ empty: true, fileName: '(empty)', status: 'Between shows', lines: ['Nothing playing right now.'] });
     }
 

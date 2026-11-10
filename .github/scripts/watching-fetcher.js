@@ -2,7 +2,8 @@
  * Fetches what I'm watching from Trakt and writes data/watching.json for the
  * Videos folder on the desktop (js/watching.js):
  *
- *  - current:   the show I watched most recently, unless I've finished it
+ *  - inProgress: up to three shows I've started but not finished, newest
+ *                first, leaving out any I haven't touched for three months
  *  - previous:  the show I finished most recently
  *  - movies:    the last few movies I watched, newest first
  *
@@ -25,6 +26,12 @@ const TRAKT_API = 'https://api.trakt.tv';
 const TMDB_API = 'https://api.themoviedb.org/3';
 const DATA_PATH = path.join(__dirname, '..', '..', 'data', 'watching.json');
 const MOVIE_COUNT = 3;
+// We often have more than one series on the go. Past this many it stops
+// being "what I'm watching" and becomes a backlog.
+const IN_PROGRESS_COUNT = 3;
+// A show I haven't touched for this long is one I gave up on, not one I'm watching
+const IN_PROGRESS_DAYS = 90;
+const DAY_MS = 24 * 60 * 60 * 1000;
 // History has one entry per viewing, so fetch extra to find enough different movies
 const MOVIE_HISTORY_LIMIT = 20;
 
@@ -86,7 +93,7 @@ function createTmdbClient(token) {
     };
 }
 
-// --- Deriving the three slots ---------------------------------------------------
+// --- Deriving what to show -------------------------------------------------------
 
 function isPlainObject(value) {
     return value !== null && typeof value === 'object' && !Array.isArray(value);
@@ -131,18 +138,23 @@ function isFinished(entry, watchedCounts, stored) {
         storedPrevious.finishedAt === entry.last_watched_at;
 }
 
-/** Picks the Trakt watched/shows entries for the current and previous slots */
-function pickShows(watchedShows, watchedCounts, stored) {
+/**
+ * Picks the Trakt watched/shows entries for the in-progress list (newest
+ * first) and the previous slot. `now` is a timestamp in milliseconds.
+ */
+function pickShows(watchedShows, watchedCounts, stored, now) {
     if (!Array.isArray(watchedShows)) throw new Error('Unexpected Trakt response for watched/shows');
 
     const byRecent = watchedShows
         .filter(entry => entry && entry.show && entry.show.ids && entry.last_watched_at)
         .sort((a, b) => Date.parse(b.last_watched_at) - Date.parse(a.last_watched_at));
 
-    const latest = byRecent[0];
-    const current = latest && !isFinished(latest, watchedCounts, stored) ? latest : null;
-    const previous = byRecent.find(entry => entry !== current && isFinished(entry, watchedCounts, stored)) || null;
-    return { current, previous };
+    const since = now - IN_PROGRESS_DAYS * DAY_MS;
+    const inProgress = byRecent
+        .filter(entry => Date.parse(entry.last_watched_at) >= since && !isFinished(entry, watchedCounts, stored))
+        .slice(0, IN_PROGRESS_COUNT);
+    const previous = byRecent.find(entry => isFinished(entry, watchedCounts, stored)) || null;
+    return { inProgress, previous };
 }
 
 /** The most recent viewing of each of the last `count` different movies, newest first */
@@ -155,10 +167,12 @@ function latestDistinctMovies(history, count) {
         .slice(0, count);
 }
 
-// Reuse the poster I already have for the same title, so a normal run makes no TMDB calls
-async function posterFor(posterLookup, kind, tmdbId, storedItem) {
-    if (storedItem && storedItem.tmdbId === tmdbId && storedItem.poster) return storedItem.poster;
-    return posterLookup(kind, tmdbId);
+// Reuse the poster I already have for the same title, so a normal run makes no
+// TMDB calls. `storedItems` is every stored item of the same kind.
+async function posterFor(posterLookup, kind, tmdbId, storedItems) {
+    if (!tmdbId) return null;
+    const storedItem = storedItems.find(item => item && item.tmdbId === tmdbId && item.poster);
+    return storedItem ? storedItem.poster : posterLookup(kind, tmdbId);
 }
 
 function showFields(show) {
@@ -172,7 +186,7 @@ function showFields(show) {
 }
 
 /** Everything the Videos folder shows, from Trakt and TMDB */
-async function collectWatching({ trakt, posterLookup, stored }) {
+async function collectWatching({ trakt, posterLookup, stored, now = Date.now() }) {
     const user = `/users/${TRAKT_USER}`;
     const [watchedShows, minimal, movieHistory] = await Promise.all([
         trakt.get(`${user}/watched/shows?extended=full`),
@@ -181,32 +195,31 @@ async function collectWatching({ trakt, posterLookup, stored }) {
     ]);
 
     const watchedCounts = countWatchedEpisodes(minimal);
-    const picked = pickShows(watchedShows, watchedCounts, stored);
-    const storedCurrent = stored && stored.current;
-    const storedPrevious = stored && stored.previous;
-    const storedMovies = (stored && Array.isArray(stored.movies)) ? stored.movies : [];
+    const picked = pickShows(watchedShows, watchedCounts, stored, now);
+    const before = slots(stored);
+    // A show moving from in progress to finished keeps its poster
+    const storedShows = [...before.inProgress, before.previous];
 
-    let current = null;
-    if (picked.current) {
-        const show = picked.current.show;
+    const inProgress = await Promise.all(picked.inProgress.map(async entry => {
+        const show = entry.show;
         const [latest] = await trakt.get(`${user}/history/shows/${show.ids.trakt}?limit=1`);
         const episode = latest && latest.episode;
-        current = {
+        return {
             ...showFields(show),
-            poster: await posterFor(posterLookup, 'tv', show.ids.tmdb, storedCurrent),
+            poster: await posterFor(posterLookup, 'tv', show.ids.tmdb, storedShows),
             episode: episode ? { season: episode.season, number: episode.number, title: episode.title || null } : null,
             watched: watchedCounts[show.ids.trakt] || 0,
             aired: show.aired_episodes || 0,
-            lastWatchedAt: picked.current.last_watched_at
+            lastWatchedAt: entry.last_watched_at
         };
-    }
+    }));
 
     let previous = null;
     if (picked.previous) {
         const show = picked.previous.show;
         previous = {
             ...showFields(show),
-            poster: await posterFor(posterLookup, 'tv', show.ids.tmdb, storedPrevious),
+            poster: await posterFor(posterLookup, 'tv', show.ids.tmdb, storedShows),
             episodes: watchedCounts[show.ids.trakt] || show.aired_episodes || 0,
             finishedAt: picked.previous.last_watched_at
         };
@@ -216,7 +229,6 @@ async function collectWatching({ trakt, posterLookup, stored }) {
     const movies = [];
     for (const entry of latestDistinctMovies(movieHistory, MOVIE_COUNT)) {
         const movie = entry.movie;
-        const storedMovie = storedMovies.find(item => item && item.tmdbId === movie.ids.tmdb);
         movies.push({
             title: movie.title,
             year: movie.year || null,
@@ -224,21 +236,22 @@ async function collectWatching({ trakt, posterLookup, stored }) {
             tmdbId: movie.ids.tmdb || null,
             slug: movie.ids.slug || null,
             runtime: movie.runtime || null,
-            poster: await posterFor(posterLookup, 'movie', movie.ids.tmdb, storedMovie),
+            poster: await posterFor(posterLookup, 'movie', movie.ids.tmdb, before.movies),
             watchedAt: entry.watched_at
         });
     }
 
-    return { current, previous, movies };
+    return { inProgress, previous, movies };
 }
 
 // --- Change detection ------------------------------------------------------------
 
 function slots(data) {
+    const list = key => (data && Array.isArray(data[key])) ? data[key].filter(Boolean) : [];
     return {
-        current: (data && data.current) || null,
+        inProgress: list('inProgress'),
         previous: (data && data.previous) || null,
-        movies: (data && Array.isArray(data.movies)) ? data.movies : []
+        movies: list('movies')
     };
 }
 
@@ -257,16 +270,21 @@ function describeChange(stored, next) {
 
     let message;
     const sameTitle = (a, b) => !!a && !!b && a.traktId === b.traktId;
+    const started = after.inProgress.find(show => !before.inProgress.some(old => sameTitle(old, show)));
+    // The newest show in progress, if I've watched more of it since last time
+    const latest = after.inProgress[0];
+    const latestBefore = latest && before.inProgress.find(old => sameTitle(old, latest));
+    const watchedMore = latestBefore && latestBefore.lastWatchedAt !== latest.lastWatchedAt;
 
     if (after.previous && !sameTitle(before.previous, after.previous)) {
         message = `📼 ${after.previous.title} finished. Filed under read-only, sir.`;
     } else if (after.movies[0] && (!sameTitle(before.movies[0], after.movies[0]) ||
         before.movies[0].watchedAt !== after.movies[0].watchedAt)) {
         message = `🎬 ${after.movies[0].title} watched. I trust the popcorn held up, sir.`;
-    } else if (after.current && !sameTitle(before.current, after.current)) {
-        message = `📼 Now showing: ${after.current.title}. A new series, sir? I shall fetch the popcorn.`;
-    } else if (after.current) {
-        message = `📼 ${after.current.title}${episodeCode(after.current.episode)} watched. Just one more, I presume?`;
+    } else if (started) {
+        message = `📼 Now showing: ${started.title}. A new series, sir? I shall fetch the popcorn.`;
+    } else if (watchedMore) {
+        message = `📼 ${latest.title}${episodeCode(latest.episode)} watched. Just one more, I presume?`;
     } else {
         message = '📼 The Videos folder has been tidied, sir.';
     }

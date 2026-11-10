@@ -414,7 +414,8 @@ async function loadPcHealthData() {
     pcHealthState.shared = Boolean(features && features.pcHealthShared === true);
     if (!pcHealthState.shared) pcHealthState.status = 'off';
 
-    const current = watching && watching.current;
+    // The series I watched most recently comes first
+    const current = watching && Array.isArray(watching.inProgress) && watching.inProgress[0];
     if (current && typeof current.lastWatchedAt === 'string') {
         pcHealthState.watchedAt = current.lastWatchedAt;
         pcHealthState.watchedTitle = typeof current.title === 'string' ? current.title : null;

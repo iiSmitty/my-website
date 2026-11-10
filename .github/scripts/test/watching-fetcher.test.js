@@ -25,9 +25,12 @@ function minimalFor(entries) {
     return minimal;
 }
 
+const NOW = Date.parse('2026-11-10T12:00:00.000Z');
 const HOUSE = watchedShow(1399, 'House', 177, '2026-10-02T12:42:00.000Z');
 const REACHER = watchedShow(2400, 'Reacher', 32, '2026-09-16T19:00:00.000Z');
 const ABANDONED = watchedShow(3000, 'Lost', 121, '2025-01-01T19:00:00.000Z');
+const TRAITORS = watchedShow(4000, 'The Celebrity Traitors', 19, '2026-11-09T17:59:00.000Z');
+const SEVERANCE = watchedShow(5000, 'Severance', 19, '2026-10-20T20:00:00.000Z');
 
 function fakeTrakt({ shows, minimal, movies = [], history = {} }) {
     const calls = [];
@@ -72,56 +75,85 @@ test('merges paged responses without losing episodes of a show split across page
     assert.deepEqual(merged, { 1: { 10: { 100: ['a'], 101: ['b'] } }, 2: { 20: {} } });
 });
 
-test('the latest unfinished show is current and the latest finished one is previous', () => {
-    const counts = { 1399: 31, 2400: 32, 3000: 10 };
-    const { current, previous } = pickShows([REACHER, ABANDONED, HOUSE], counts, null);
-    assert.equal(current.show.title, 'House');
+const titles = entries => entries.map(entry => entry.show.title);
+
+test('unfinished shows are in progress, newest first, and the latest finished one is previous', () => {
+    const counts = { 1399: 31, 2400: 32, 4000: 10 };
+    const { inProgress, previous } = pickShows([REACHER, HOUSE, TRAITORS], counts, null, NOW);
+    assert.deepEqual(titles(inProgress), ['The Celebrity Traitors', 'House']);
     assert.equal(previous.show.title, 'Reacher');
 });
 
-test('finishing the latest show leaves nothing current', () => {
-    const counts = { 1399: 177, 2400: 32 };
-    const { current, previous } = pickShows([HOUSE, REACHER], counts, null);
-    assert.equal(current, null);
-    assert.equal(previous.show.title, 'House');
+test('at most three shows are in progress', () => {
+    const slowHorses = watchedShow(6000, 'Slow Horses', 30, '2026-10-01T20:00:00.000Z');
+    const counts = { 1399: 31, 4000: 10, 5000: 10, 6000: 5 };
+    const { inProgress } = pickShows([slowHorses, HOUSE, SEVERANCE, TRAITORS], counts, null, NOW);
+    assert.deepEqual(titles(inProgress), ['The Celebrity Traitors', 'Severance', 'House']);
+});
+
+test('a show left alone for three months is no longer in progress', () => {
+    const counts = { 1399: 31, 3000: 10 };
+    // House was last watched 39 days before NOW, Lost almost two years
+    assert.deepEqual(titles(pickShows([ABANDONED, HOUSE], counts, null, NOW).inProgress), ['House']);
+
+    const later = Date.parse('2027-01-01T12:00:00.000Z');
+    assert.deepEqual(pickShows([ABANDONED, HOUSE], counts, null, later).inProgress, []);
+});
+
+test('finishing a show moves it to previous and leaves the others in progress', () => {
+    const counts = { 1399: 31, 4000: 19 };
+    const { inProgress, previous } = pickShows([HOUSE, TRAITORS], counts, null, NOW);
+    assert.deepEqual(titles(inProgress), ['House']);
+    assert.equal(previous.show.title, 'The Celebrity Traitors');
+
+    const { inProgress: none } = pickShows([TRAITORS], counts, null, NOW);
+    assert.deepEqual(none, []);
 });
 
 test('a finished show stays finished when its next season airs', () => {
     // Reacher gained 8 aired episodes, but I haven't watched any of them
     const reacherS5 = watchedShow(2400, 'Reacher', 40, '2026-09-16T19:00:00.000Z');
     const stored = { previous: { traktId: 2400, finishedAt: '2026-09-16T19:00:00.000Z' } };
-    const { current, previous } = pickShows([reacherS5], { 2400: 32 }, stored);
-    assert.equal(current, null);
+    const { inProgress, previous } = pickShows([reacherS5], { 2400: 32 }, stored, NOW);
+    assert.deepEqual(inProgress, []);
     assert.equal(previous.show.title, 'Reacher');
 
     // Once I start season 5 it's in progress again
     const watchingS5 = watchedShow(2400, 'Reacher', 40, '2026-11-01T19:00:00.000Z');
-    const restarted = pickShows([watchingS5], { 2400: 33 }, stored);
-    assert.equal(restarted.current.show.title, 'Reacher');
+    const restarted = pickShows([watchingS5], { 2400: 33 }, stored, NOW);
+    assert.deepEqual(titles(restarted.inProgress), ['Reacher']);
     assert.equal(restarted.previous, null);
 });
 
 test('rejects a watched/shows response that is not a list', () => {
-    assert.throws(() => pickShows({ error: 'nope' }, {}, null), /Unexpected Trakt response/);
+    assert.throws(() => pickShows({ error: 'nope' }, {}, null, NOW), /Unexpected Trakt response/);
 });
 
-test('collects all three slots with episode details and posters', async () => {
+test('collects every slot with episode details and posters', async () => {
     const trakt = fakeTrakt({
-        shows: [REACHER, HOUSE],
-        minimal: minimalFor({ 1399: 31, 2400: 32 }),
+        shows: [REACHER, HOUSE, TRAITORS],
+        minimal: minimalFor({ 1399: 31, 2400: 32, 4000: 10 }),
         movies: [{ watched_at: '2026-09-20T18:00:00.000Z', movie: { title: 'Dune: Part Two', year: 2024, runtime: 166, ids: { trakt: 500, slug: 'dune-part-two-2024', tmdb: 693134 } } }],
-        history: { 1399: [{ episode: { season: 2, number: 9, title: 'Deception' } }] }
+        history: {
+            1399: [{ episode: { season: 2, number: 9, title: 'Deception' } }],
+            4000: [{ episode: { season: 2, number: 9, title: 'Episode 9' } }]
+        }
     });
     const posterLookup = fakePosters();
 
-    const data = await collectWatching({ trakt, posterLookup, stored: null });
+    const data = await collectWatching({ trakt, posterLookup, stored: null, now: NOW });
 
-    assert.deepEqual(data.current, {
+    assert.deepEqual(data.inProgress, [{
+        title: 'The Celebrity Traitors', year: 2004, traktId: 4000, tmdbId: 5000, slug: 'the celebrity traitors',
+        poster: '/tv-5000.jpg',
+        episode: { season: 2, number: 9, title: 'Episode 9' },
+        watched: 10, aired: 19, lastWatchedAt: '2026-11-09T17:59:00.000Z'
+    }, {
         title: 'House', year: 2004, traktId: 1399, tmdbId: 2399, slug: 'house',
         poster: '/tv-2399.jpg',
         episode: { season: 2, number: 9, title: 'Deception' },
         watched: 31, aired: 177, lastWatchedAt: '2026-10-02T12:42:00.000Z'
-    });
+    }]);
     assert.deepEqual(data.previous, {
         title: 'Reacher', year: 2004, traktId: 2400, tmdbId: 3400, slug: 'reacher',
         poster: '/tv-3400.jpg', episodes: 32, finishedAt: '2026-09-16T19:00:00.000Z'
@@ -136,45 +168,64 @@ test('reuses stored posters instead of asking TMDB again', async () => {
     const trakt = fakeTrakt({ shows: [REACHER, HOUSE], minimal: minimalFor({ 1399: 31, 2400: 32 }) });
     const posterLookup = fakePosters();
     const stored = {
-        current: { tmdbId: 2399, poster: '/house.jpg' },
+        inProgress: [{ tmdbId: 2399, poster: '/house.jpg' }],
         previous: { tmdbId: 3400, poster: '/reacher.jpg', traktId: 2400, finishedAt: REACHER.last_watched_at }
     };
 
-    const data = await collectWatching({ trakt, posterLookup, stored });
+    const data = await collectWatching({ trakt, posterLookup, stored, now: NOW });
 
-    assert.equal(data.current.poster, '/house.jpg');
+    assert.equal(data.inProgress[0].poster, '/house.jpg');
     assert.equal(data.previous.poster, '/reacher.jpg');
     assert.deepEqual(posterLookup.calls, []);
 });
 
-test('an empty profile gives three empty slots', async () => {
+test('a show that was in progress keeps its poster when it finishes', async () => {
+    const trakt = fakeTrakt({ shows: [HOUSE], minimal: minimalFor({ 1399: 177 }) });
+    const posterLookup = fakePosters();
+    const stored = { inProgress: [{ tmdbId: 2399, poster: '/house.jpg' }] };
+
+    const data = await collectWatching({ trakt, posterLookup, stored, now: NOW });
+
+    assert.deepEqual(data.inProgress, []);
+    assert.equal(data.previous.poster, '/house.jpg');
+    assert.deepEqual(posterLookup.calls, []);
+});
+
+test('an empty profile gives empty slots', async () => {
     const trakt = fakeTrakt({ shows: [], minimal: {} });
-    const data = await collectWatching({ trakt, posterLookup: fakePosters(), stored: null });
-    assert.deepEqual(data, { current: null, previous: null, movies: [] });
+    const data = await collectWatching({ trakt, posterLookup: fakePosters(), stored: null, now: NOW });
+    assert.deepEqual(data, { inProgress: [], previous: null, movies: [] });
 });
 
 test('nothing changed means no commit', () => {
-    const data = { current: { traktId: 1, title: 'House' }, previous: null, movies: [] };
+    const data = { inProgress: [{ traktId: 1, title: 'House' }], previous: null, movies: [] };
     assert.equal(describeChange({ lastUpdated: 'yesterday', ...data }, data), null);
 });
 
 test('describes what changed, in character', () => {
-    const house = (number) => ({ traktId: 1399, title: 'House', episode: { season: 2, number } });
+    const house = (number) => ({ traktId: 1399, title: 'House', episode: { season: 2, number }, lastWatchedAt: `day ${number}` });
+    const severance = { traktId: 7, title: 'Severance', lastWatchedAt: 'a' };
     const reacher = { traktId: 2400, title: 'Reacher' };
     const dune = { traktId: 500, title: 'Dune: Part Two', watchedAt: 'a' };
 
-    assert.equal(describeChange({ current: house(9) }, { current: house(10) }),
+    assert.equal(describeChange({ inProgress: [house(9)] }, { inProgress: [house(10)] }),
         '📼 House S2E10 watched. Just one more, I presume?');
-    assert.equal(describeChange({ current: house(9) }, { current: { traktId: 7, title: 'Severance' } }),
+    assert.equal(describeChange({ inProgress: [house(9)] }, { inProgress: [severance, house(9)] }),
         '📼 Now showing: Severance. A new series, sir? I shall fetch the popcorn.');
-    assert.equal(describeChange({ current: reacher }, { previous: reacher }),
+    // Going back to a show I'd paused: it moves to the top
+    assert.equal(describeChange({ inProgress: [severance, house(9)] }, { inProgress: [house(10), severance] }),
+        '📼 House S2E10 watched. Just one more, I presume?');
+    assert.equal(describeChange({ inProgress: [reacher] }, { previous: reacher }),
         '📼 Reacher finished. Filed under read-only, sir.');
     assert.equal(describeChange({}, { movies: [dune] }),
         '🎬 Dune: Part Two watched. I trust the popcorn held up, sir.');
     assert.equal(describeChange({ movies: [dune] }, { movies: [{ ...dune, watchedAt: 'b' }] }),
         '🎬 Dune: Part Two watched. I trust the popcorn held up, sir.');
-    assert.equal(describeChange({}, { current: { traktId: 1, title: 'Line\nbreak' } }),
+    assert.equal(describeChange({}, { inProgress: [{ traktId: 1, title: 'Line\nbreak' }] }),
         '📼 Now showing: Line break. A new series, sir? I shall fetch the popcorn.');
+    // A show I gave up on drops off with nothing new watched
+    assert.equal(describeChange({ inProgress: [severance, house(9)] }, { inProgress: [severance] }),
+        '📼 The Videos folder has been tidied, sir.');
 });
 
 function viewing(traktId, title, watchedAt) {
