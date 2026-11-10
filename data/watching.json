@@ -1,6 +1,22 @@
 {
-  "lastUpdated": "2026-10-26T07:24:59.712Z",
+  "lastUpdated": "2026-11-10T16:18:32.123Z",
   "inProgress": [
+    {
+      "title": "The Celebrity Traitors",
+      "year": 2025,
+      "traktId": 285631,
+      "tmdbId": 291431,
+      "slug": "the-celebrity-traitors",
+      "poster": "/uziPOqxQotCE9g0wBgDvHCOvRhP.jpg",
+      "episode": {
+        "season": 2,
+        "number": 9,
+        "title": "Episode 9"
+      },
+      "watched": 10,
+      "aired": 19,
+      "lastWatchedAt": "2026-11-10T15:59:00.000Z"
+    },
     {
       "title": "House",
       "year": 2004,
