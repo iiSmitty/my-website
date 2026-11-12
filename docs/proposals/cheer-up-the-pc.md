@@ -71,11 +71,12 @@ The displayed mood is a number from 20 to 100:
 mood = clamp(baseline + lift(now), 20, 100)
 ```
 
-**Baseline (client side, from static JSON the Actions already refresh, about 40 to 65):**
+**Baseline (client side, from static JSON the Actions already refresh, 25 to 65):**
 
 - Starts at 40.
 - +15 if I bought a coffee in the last two days. This needs a `lastVisitAt` field in `data/coffee-stats.json`. The coffee fetcher sets it when `totalSiteVisits` goes up.
 - +10 if I watched an episode in the last seven days (`data/watching.json`, `current.lastWatchedAt`).
+- -15 for a quiet week: no coffee and no episode in the last seven days. That's 25, Tired, the only way the baseline reaches it. Only known dates count, so a missing `lastVisitAt` (before the fetcher has seen a visit) or an episode date this browser hasn't loaded yet never makes a week quiet.
 - Flavour, not mood: the PC hums my top Spotify track (`data/spotify-data.json`, `topTracks[0]`).
 - Strava is retired (its workflow only runs by hand), so it is left out.
 
@@ -329,6 +330,10 @@ Left for the owner, in this order (details in `cf-mood/README.md`):
 - [x] A change of mood flashes static on the screen before the new face. Not when the window opens, and after a reaction rather than over it.
 - [x] Defrag sounds like a hard drive at work: a low spin and the heads seeking, synthesised with Web Audio, quiet, and silenced when the window closes. Wilhelm Kirschbaum's idea.
 - [x] Still transform and opacity only for anything that moves, nothing runs while the window is closed, and under reduced motion there are no scenes and no idle movement.
+
+**Fix: a quiet week reaches Tired (12 November 2026)**
+
+- [x] The baseline started at 40 and only ever went up, and the lift is never negative, so the mood never dropped below 40 and the Tired band, its face and the yawn never showed. A quiet week (no coffee and no episode in seven days) now takes 15 off, so it sits at 25, Tired. Every other week is unchanged, and the floor of 20 still means it's never distressed.
 
 **Later, only if the data says so**
 

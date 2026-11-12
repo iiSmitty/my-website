@@ -719,22 +719,52 @@ test.describe('animation', () => {
         await expect.poll(() => pulledFaces(page)).toEqual(['blank', '-']);
     });
 
-    test('between cheers it blinks, glances, flickers its disk light and rolls a scanline; tired, it yawns', async ({ page }) => {
+    test('between cheers it blinks, glances, flickers its disk light and rolls a scanline', async ({ page }) => {
         await setup(page, { coffee: { lastVisitAt: new Date(NOW - 5 * DAY).toISOString() } });
         await boot(page);
         await openFromRow(page);
 
-        // 40, nothing this week: Okay
+        // 40: a coffee five days ago keeps it from being a quiet week, so Okay
         await expect(art(page)).toHaveAttribute('data-face', 'okay');
         const animation = (selector) => art(page).locator(selector).first().evaluate(el => getComputedStyle(el).animationName);
         expect(await animation('.pc-face--okay .pc-eyes')).toBe('pc-health-blink, pc-health-glance');
         expect(await animation('.pc-health-led')).toBe('pc-health-disk');
         expect(await animation('.pc-health-scan')).toBe('pc-health-scan');
         expect(await animation('.pc-health-yawn')).toBe('none');
+    });
 
-        await page.evaluate(() => { document.getElementById('pcHealthArt').dataset.face = 'tired'; });
+    test('a quiet week makes it Tired, and it yawns', async ({ page }) => {
+        // No coffee in eight days, no episode in ten
+        await setup(page, { coffee: { lastVisitAt: new Date(NOW - 8 * DAY).toISOString() } });
+        await boot(page);
+
+        // A first visit hasn't loaded the episode yet, and an unknown date
+        // never makes a week quiet: 40
+        await expect(page.locator('#pcHealthRowText')).toHaveText('Okay, 40%');
+
+        // The window loads it: 40 - 15
+        await openFromRow(page);
+        await expect(page.locator('#pcHealthPercent')).toHaveText('25%');
+        await expect(page.locator('#pcHealthState')).toHaveText('Tired');
+        await expect(page.locator('#pcHealthLine')).toHaveText('Running a bit slow today. Could use a hand.');
+        await expect(art(page)).toHaveAttribute('data-face', 'tired');
+        const animation = (selector) => art(page).locator(selector).first().evaluate(el => getComputedStyle(el).animationName);
         expect(await animation('.pc-health-yawn')).toBe('pc-health-yawn');
         expect(await animation('.pc-health-pc')).toBe('pc-health-sag');
+
+        // And the Mood row remembers it
+        await page.keyboard.press('Escape');
+        await expect(page.locator('#pcHealthRowText')).toHaveText('Tired, 25%');
+    });
+
+    test('before the coffee fetcher has seen a visit, the week isn\'t quiet', async ({ page }) => {
+        // No lastVisitAt at all, and no episode in ten days
+        await setup(page, { coffee: { lastVisitAt: undefined } });
+        await boot(page);
+        await openFromRow(page);
+
+        await expect(page.locator('#pcHealthPercent')).toHaveText('40%');
+        await expect(page.locator('#pcHealthState')).toHaveText('Okay');
     });
 });
 

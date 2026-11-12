@@ -104,14 +104,25 @@ function pcHealthWithin(isoTime, days, now) {
     return Number.isFinite(time) && now - time >= -PC_HEALTH_HOUR_MS && now - time <= days * PC_HEALTH_DAY_MS;
 }
 
+/** Known, and more than `days` old. A missing or unreadable time is never stale. */
+function pcHealthStale(isoTime, days, now) {
+    const time = Date.parse(isoTime);
+    return Number.isFinite(time) && now - time > days * PC_HEALTH_DAY_MS;
+}
+
 /**
  * How my week is going: 40, +15 if I bought a coffee in the last two days,
- * +10 if I watched an episode in the last seven.
+ * +10 if I watched an episode in the last seven, and -15 for a quiet week
+ * (no coffee and no episode in seven days), which makes it Tired. Only
+ * known dates make a week quiet: no coffee date yet, or an episode this
+ * browser hasn't heard of, never does.
  */
 function pcHealthBaseline(coffee, watchedAt, now) {
+    const coffeeAt = coffee && coffee.lastVisitAt;
     let baseline = 40;
-    if (coffee && pcHealthWithin(coffee.lastVisitAt, 2, now)) baseline += 15;
+    if (pcHealthWithin(coffeeAt, 2, now)) baseline += 15;
     if (pcHealthWithin(watchedAt, 7, now)) baseline += 10;
+    if (pcHealthStale(coffeeAt, 7, now) && pcHealthStale(watchedAt, 7, now)) baseline -= 15;
     return baseline;
 }
 

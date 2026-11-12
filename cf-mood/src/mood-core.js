@@ -6,7 +6,7 @@
 // the words for them live in the page.
 export const ACTIONS = ['pat', 'coffee', 'joke', 'defrag', 'dust'];
 
-// The shared lift is 0 to 50, on top of a baseline of 40 to 65 that the page
+// The shared lift is 0 to 50, on top of a baseline of 25 to 65 that the page
 // works out from my own data. The page clamps the sum to 20 to 100.
 export const MAX_LIFT = 50;
 
