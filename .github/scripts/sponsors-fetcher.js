@@ -5,8 +5,16 @@
  * Makes two kinds of call to GitHub's GraphQL API, a page of 100 at a time:
  *
  *  1. sponsorshipsAsMaintainer(activeOnly: false): every sponsorship I've
- *     ever had, so one-time and past sponsors are credited too
+ *     ever had, so one-time and past sponsors are credited too, each with
+ *     its tier's amount
  *  2. lifetimeReceivedSponsorshipValues: how much each sponsor has paid in all
+ *
+ * GitHub sometimes withholds a lifetime amount, answering null in its place
+ * with no error and no sponsor to match it to. In November 2026 it did that
+ * for a one-time sponsorship still in its 60-day probation, even with every
+ * scope. A sponsor without a lifetime amount is credited with their tier's
+ * amount instead: exact for a one-time sponsor, and a first month for a
+ * monthly one, until GitHub fills in the total.
  *
  * The file says how many coffees each sponsor has bought me, never how much
  * they paid. Amounts are turned into coffees here (coffeesFor below), so no
@@ -28,8 +36,7 @@
  * workflow passes a personal access token as SPONSORS_TOKEN. A classic token
  * of my account with the read:user and read:org scopes, and nothing else.
  * Without read:user GitHub refuses createdAt and privacyLevel
- * (INSUFFICIENT_SCOPES), and quietly returns null for every lifetime amount.
- * Without read:org it refuses a sponsor's login and name, because a sponsor
+ * (INSUFFICIENT_SCOPES). Without read:org it refuses a sponsor's login and name, because a sponsor
  * can be an organisation, even when none is. It has to be my account's
  * token, because only the maintainer can see those amounts. No repo access is
  * needed; the workflow commits with its own GITHUB_TOKEN.
@@ -62,6 +69,7 @@ query ($login: String!, $after: String) {
       nodes {
         createdAt
         privacyLevel
+        tier { monthlyPriceInCents }
         sponsorEntity {
           ... on User { login name }
           ... on Organization { login name }
@@ -181,22 +189,22 @@ function coffeesFor(amountInCents) {
 // Logins are case-insensitive on GitHub
 const loginKey = login => login.toLowerCase();
 
-/** Each sponsor's lifetime amount in cents, by login */
+/**
+ * Each sponsor's lifetime amount in cents, by login. A null in the list is an
+ * amount GitHub withheld (see the header); that sponsor gets no entry here.
+ */
 function amountsByLogin(lifetimeValues) {
     if (!Array.isArray(lifetimeValues)) throw new Error('Unexpected response for lifetimeReceivedSponsorshipValues');
-    // GitHub answers a token without read:user with a null in place of each
-    // amount, rather than an error. Crediting everyone with one coffee would
-    // quietly be wrong, so stop instead.
-    if (lifetimeValues.some(value => value === null)) {
-        throw new NoRetryError(`GitHub hid the sponsorship amounts. ${SCOPE_HINT}`);
-    }
     const amounts = new Map();
     for (const value of lifetimeValues) {
-        const login = value.sponsor && value.sponsor.login;
-        if (login) amounts.set(loginKey(login), value.amountInCents);
+        const login = value && value.sponsor && value.sponsor.login;
+        if (login && Number.isFinite(value.amountInCents)) amounts.set(loginKey(login), value.amountInCents);
     }
     return amounts;
 }
+
+// What a sponsorship's tier costs: a one-time amount, or a month's
+const tierCents = sponsorship => sponsorship.tier && sponsorship.tier.monthlyPriceInCents;
 
 /**
  * The public sponsors, in the order they first sponsored, each with the
@@ -218,17 +226,18 @@ function creditSponsors(sponsorships, lifetimeValues) {
 
         const key = loginKey(entity.login);
         const seen = earliest.get(key);
-        if (!seen || startedAt < seen.startedAt) earliest.set(key, { entity, startedAt });
+        if (!seen || startedAt < seen.startedAt) earliest.set(key, { entity, startedAt, tier: tierCents(sponsorship) });
     }
 
     return [...earliest.entries()]
         // Oldest first; the login breaks a tie, so the order never flips between runs
         .sort(([keyA, a], [keyB, b]) => a.startedAt - b.startedAt || keyA.localeCompare(keyB))
-        .map(([key, { entity, startedAt }]) => ({
+        .map(([key, { entity, startedAt, tier }]) => ({
             login: entity.login,
             name: entity.name || null,
             since: new Date(startedAt).toISOString().slice(0, 7),
-            coffees: coffeesFor(amounts.get(key))
+            // The lifetime amount when GitHub gives one, else the tier's
+            coffees: coffeesFor(amounts.has(key) ? amounts.get(key) : tier)
         }));
 }
 

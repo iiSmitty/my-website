@@ -50,12 +50,18 @@ test('amounts are matched to sponsors whatever the case of their login', () => {
     assert.equal(credit.coffees, 5);
 });
 
-test('a token without read:user, which GitHub answers with null amounts, is not retried', () => {
-    assert.throws(() => creditSponsors([WILHELM], [null]), (error) => {
-        assert.ok(error instanceof NoRetryError);
-        assert.match(error.message, /read:user/);
-        return true;
-    });
+// What GitHub really answered for Wilhelm's $5 one-time sponsorship, in its
+// probation: the tier's amount, and a null lifetime amount
+test('a lifetime amount GitHub withholds falls back to the tier\'s amount', () => {
+    const [credit] = creditSponsors([{ ...WILHELM, tier: { monthlyPriceInCents: 500 } }], [null]);
+    assert.equal(credit.coffees, 2);
+});
+
+test('a lifetime amount, when GitHub gives one, wins over the tier\'s', () => {
+    // A monthly sponsor's tier is one month; the lifetime amount is all of them
+    const [credit] = creditSponsors([{ ...WILHELM, tier: { monthlyPriceInCents: 500 } }],
+        [lifetimeValue('wkirschbaum', 3000)]);
+    assert.equal(credit.coffees, 12);
 });
 
 // --- Privacy -------------------------------------------------------------------------

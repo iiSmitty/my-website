@@ -101,8 +101,12 @@ test.describe('desktop', () => {
         // events, so it's the wrapper that's hovered.
         const tooltip = sheet(page).getByRole('tooltip');
         await expect(tooltip).toBeHidden();
-        await sheet(page).locator('#coffeeSugar').hover();
-        await expect(tooltip).toBeVisible();
+        // Hovered again until it shows: under a loaded full suite, the first
+        // hover can land while the sheet is still laying out the tab
+        await expect(async () => {
+            await sheet(page).locator('#coffeeSugar').hover();
+            await expect(tooltip).toBeVisible({ timeout: 1000 });
+        }).toPass();
         await expect(tooltip).toHaveText('This option has been disabled by your administrator.');
         await sheet(page).getByRole('checkbox', { name: 'Milk (lots)' }).hover();
         await expect(tooltip).toBeHidden();
