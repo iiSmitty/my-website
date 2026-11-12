@@ -3,12 +3,16 @@ const { defineConfig, devices } = require('@playwright/test');
 // Smoke-test config for the static site. Playwright starts its own copy of the
 // same static server the site is served with, runs the specs in tests/, then
 // shuts the server down.
+//
+// PORT lets two checkouts (git worktrees, say) run the suite at the same time
+// without one reusing the other's server.
+const PORT = Number(process.env.PORT) || 3000;
 module.exports = defineConfig({
     testDir: './tests',
     fullyParallel: true,
     reporter: 'list',
     use: {
-        baseURL: 'http://localhost:3000',
+        baseURL: `http://localhost:${PORT}`,
     },
     projects: [
         // Use the system-installed Microsoft Edge (always present on Windows)
@@ -30,8 +34,8 @@ module.exports = defineConfig({
         },
     ],
     webServer: {
-        command: 'npx -y serve -l 3000 .',
-        port: 3000,
+        command: `npx -y serve -l ${PORT} .`,
+        port: PORT,
         reuseExistingServer: !process.env.CI,
     },
 });
