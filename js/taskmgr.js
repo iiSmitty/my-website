@@ -32,6 +32,10 @@ const TASKMGR_PROCESSES = {
         image: 'WATCHING.EXE',
         description: 'Every Monday, and whenever its code changes, reads what I\'m watching on Trakt, for the Videos folder.'
     },
+    'update-sponsors.yml': {
+        image: 'SPONSORS.EXE',
+        description: 'Every day, and whenever its code changes, reads who sponsors me on GitHub, for the coffees they\'ve bought in Coffee Analytics.'
+    },
     'deploy-mood.yml': {
         image: 'DEPLOY.EXE',
         description: 'Tests the PC Health API and deploys it to Cloudflare, whenever its code changes on main.'

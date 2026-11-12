@@ -1,0 +1,82 @@
+/* ==================================
+   Sponsors (js/sponsors.js): the coffees my GitHub sponsors have bought,
+   in Coffee Analytics
+   ================================== */
+
+/* "thanks to 3 patrons", by the identity block's sponsor link. Kept on one
+   line, so a phone doesn't break it after the number. */
+.sponsors-thanks-link {
+    white-space: nowrap;
+}
+
+/* The GroupBox itself is Coffee Analytics' (.coffee-loyalty-group) */
+.sponsors-group:focus {
+    outline: none;
+}
+
+.sponsors-group:focus-visible {
+    outline: 1px dotted #000;
+    outline-offset: 2px;
+}
+
+.sponsors-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* One line each: cups, name, standing */
+.sponsors-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2px 8px;
+    padding: 3px 0;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.sponsors-item + .sponsors-item {
+    border-top: 1px solid #dfdfdf;
+}
+
+.sponsors-cups {
+    display: inline-flex;
+    align-items: center;
+    gap: 1px;
+    white-space: nowrap;
+}
+
+.sponsors-cups-count {
+    margin-left: 2px;
+    font-size: 11px;
+}
+
+.sponsors-standing {
+    font-size: 11px;
+    color: #444;
+}
+
+/* The first sponsor's credit is theirs for good: a quiet star marks it */
+.is-founding .sponsors-standing::before {
+    content: "\2605\00a0"; /* a star, then a space that won't wrap */
+    color: #b8860b;
+}
+
+/* A 16x16 pixel cup (icons/coffee-cup-16.svg). The SVG is a mask, so
+   background-color sets its colour, and another theme can recolour it. */
+.pixel-cup {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    -webkit-mask: url(/icons/coffee-cup-16.svg) center / contain no-repeat;
+    mask: url(/icons/coffee-cup-16.svg) center / contain no-repeat;
+    background-color: #000;
+}
+
+/* Phones: a touch larger text */
+@media screen and (max-width: 430px) {
+    .win95-box .sponsors-item {
+        font-size: 13px;
+    }
+}

@@ -1,0 +1,67 @@
+name: Update Sponsors
+
+on:
+  schedule:
+    - cron: '0 6 * * *'    # 08:00 SAST, daily. Sponsors come rarely; once a day is plenty.
+  workflow_dispatch:         # Manual trigger
+  # When the fetcher changes, refresh the data straight away rather than at
+  # the next scheduled run. Can't loop: the workflow's own commits only touch
+  # data/sponsors.json, and pushes made with GITHUB_TOKEN don't trigger workflows.
+  push:
+    branches: [main]
+    paths:
+      - .github/scripts/sponsors-fetcher.js
+      - .github/workflows/update-sponsors.yml
+
+# One run at a time, so two runs can't race to push the same file
+concurrency:
+  group: update-sponsors
+  cancel-in-progress: false
+
+jobs:
+  update-sponsors:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      # No dependencies to install: the script only uses Node's built-in fetch
+      - name: Fetch from GitHub Sponsors (with retry)
+        id: fetch
+        uses: nick-fields/retry@v4
+        with:
+          timeout_minutes: 2
+          max_attempts: 3
+          retry_wait_seconds: 30
+          # Only retry exit code 1. The fetcher exits 2 when the token is
+          # missing, expired or lacks its scope, which trying again won't fix.
+          retry_on_exit_code: 1
+          command: node .github/scripts/sponsors-fetcher.js
+        env:
+          # The Actions GITHUB_TOKEN can't read sponsorships. A classic personal
+          # access token of iiSmitty with only the read:user scope; the
+          # fetcher's header explains why.
+          SPONSORS_TOKEN: ${{ secrets.SPONSORS_TOKEN }}
+
+      # The script only writes the file when the credits changed
+      - name: Commit and push if changed
+        env:
+          # Passed through env, not inlined, because it contains sponsors' names
+          COMMIT_MSG: ${{ steps.fetch.outputs.message }}
+        run: |
+          if git diff --quiet data/sponsors.json; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git config --local user.email "292474565+waynemanor-butler@users.noreply.github.com"
+          git config --local user.name "Alfred Pennyworth"
+          git add data/sponsors.json
+          git commit -m "${COMMIT_MSG:-☕ The credits have been tidied, sir.}"
+          git pull --rebase --autostash origin main
+          git push

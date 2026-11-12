@@ -7,6 +7,21 @@
 
 let loadProfile = () => Promise.resolve();
 
+// Brings the main window back, loads the profile if it hasn't been, then
+// lands on one of its sections, with focus on `focusTarget` so the keyboard
+// is there too. For Help > How This Site Works (site-help.js) and the
+// sponsors' credits (sponsors.js).
+async function goToProfileSection(section, focusTarget = section) {
+    const mainWindow = document.querySelector('.win95-container');
+    if (mainWindow) WindowManager.open(mainWindow);
+
+    await loadProfile({ quick: true });
+
+    // A jump, not a glide: Win95 never scrolled smoothly
+    section.scrollIntoView();
+    focusTarget.focus({ preventScroll: true });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
 
     const floppyLoader = document.getElementById('floppyLoader');

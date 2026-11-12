@@ -1,17 +1,10 @@
-// Help > How This Site Works (the menu bar and the Start menu). Brings the
-// main window back, loads the profile from the floppy if it hasn't been, then
-// lands on the section, with focus on its heading so the keyboard is there too.
-async function openSiteHelp() {
-    const mainWindow = document.querySelector('.win95-container');
-    if (mainWindow) WindowManager.open(mainWindow);
-
-    await loadProfile({ quick: true });
-
+// Help > How This Site Works (the menu bar and the Start menu). Lands on the
+// section (loading the profile from the floppy if it hasn't been), with focus
+// on its heading.
+function openSiteHelp() {
+    const section = document.getElementById('how-it-works');
     const heading = document.getElementById('how-it-works-title');
-    if (!heading) return;
-    // A jump, not a glide: Win95 never scrolled smoothly
-    document.getElementById('how-it-works').scrollIntoView();
-    heading.focus({ preventScroll: true });
+    if (section && heading) return goToProfileSection(section, heading);
 }
 
 // The help topics' shortcut buttons open the program they talk about, the way

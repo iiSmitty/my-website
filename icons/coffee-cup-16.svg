@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" shape-rendering="crispEdges">
+  <!-- A 16x16 pixel cup on a saucer, used as a CSS mask (css/sponsors.css),
+       so its colour comes from background-color. The steam is half-strength. -->
+  <path fill-opacity=".5" d="M5 1h1v1H5zM6 2h1v1H6zM5 3h1v1H5zM6 4h1v1H6zM8 1h1v1H8zM9 2h1v1H9zM8 3h1v1H8zM9 4h1v1H9z"/>
+  <path d="M2 6h10v6H2zM3 12h8v1H3zM4 13h6v1H4zM12 7h3v1h-3zM14 8h1v2h-1zM12 10h3v1h-3zM1 14h14v1H1z"/>
+</svg>
