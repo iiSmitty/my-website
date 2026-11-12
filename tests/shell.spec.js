@@ -1,4 +1,4 @@
-const { test, expect } = require('./fixtures');
+const { test, expect, openFromRecycleBin } = require('./fixtures');
 
 // The window manager (js/window-manager.js) and the taskbar and Start menu
 // (js/taskbar.js) on the home page's desktop.
@@ -262,7 +262,7 @@ test.describe('desktop', () => {
 
     test('windows built on first open join the taskbar too', async ({ page }) => {
         await boot(page);
-        await page.locator('.desktop-icon', { hasText: 'Recycle Bin' }).dblclick();
+        await openFromRecycleBin(page, 'andrez.smit');
         const skype = page.locator('#skypeWindow');
         await expect(skype).toBeVisible();
         await expect(taskbarButton(page, 'Skype™ - andrez.smit')).toHaveAttribute('aria-pressed', 'true');
@@ -271,7 +271,7 @@ test.describe('desktop', () => {
         await expect(skype).toBeHidden();
 
         // Re-opening a minimized window restores it rather than starting over
-        await page.locator('.desktop-icon', { hasText: 'Recycle Bin' }).dblclick();
+        await openFromRecycleBin(page, 'andrez.smit');
         await expect(skype).toBeVisible();
         await expect(skype.locator('.skype-message--new')).toContainText('back', { timeout: 10000 });
     });

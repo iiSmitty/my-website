@@ -34,4 +34,11 @@ async function expectCentered(locator) {
     base.expect(Math.abs(box.y - Math.max(8, (viewport.height - box.height) / 2))).toBeLessThanOrEqual(1);
 }
 
-module.exports = { test, expect: base.expect, expectCentered, STUBS };
+// The Recycle Bin on the desktop opens a folder, and double-clicking one of
+// its items opens that (recycle-bin.js). The Skype easter egg is one of them.
+async function openFromRecycleBin(page, name) {
+    await page.locator('.desktop-icon', { hasText: 'Recycle Bin' }).dblclick();
+    await page.locator('#recycleBinItems tr', { hasText: name }).dblclick();
+}
+
+module.exports = { test, expect: base.expect, expectCentered, openFromRecycleBin, STUBS };

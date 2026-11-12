@@ -1,4 +1,4 @@
-const { test, expect, expectCentered } = require('./fixtures');
+const { test, expect, expectCentered, openFromRecycleBin } = require('./fixtures');
 
 // TASKMGR.EXE reads the GitHub Actions API, so every test serves its own
 // answers rather than depending on GitHub (or its rate limit).
@@ -338,7 +338,7 @@ test.describe('desktop', () => {
         await mockGitHub(page);
         await boot(page);
         // A window that closes on Escape has focus; the shortcut mustn't close it
-        await page.locator('.desktop-icon', { hasText: 'Recycle Bin' }).dblclick();
+        await openFromRecycleBin(page, 'andrez.smit');
         await expect(page.locator('#skypeWindow')).toBeFocused();
         await page.keyboard.press('Control+Shift+Escape');
 

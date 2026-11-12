@@ -1,4 +1,4 @@
-const { test, expect, expectCentered } = require('./fixtures');
+const { test, expect, expectCentered, openFromRecycleBin } = require('./fixtures');
 
 // The Skype easter egg shows an old profile that had real phone numbers on it.
 // They must never reach the page: anything shaped like a South African number
@@ -23,7 +23,7 @@ test.describe('desktop', () => {
     test('the Recycle Bin restores the profile', async ({ page }) => {
         await page.goto('/');
         await page.locator('#start-windows').click();
-        await page.locator('.desktop-icon', { hasText: 'Recycle Bin' }).dblclick();
+        await openFromRecycleBin(page, 'andrez.smit');
 
         const skypeWindow = page.getByRole('dialog', { name: 'Skype™ - andrez.smit' });
         await expect(skypeWindow).toBeVisible();
@@ -64,7 +64,7 @@ test.describe('desktop', () => {
     test('Escape closes the window', async ({ page }) => {
         await page.goto('/');
         await page.locator('#start-windows').click();
-        await page.locator('.desktop-icon', { hasText: 'Recycle Bin' }).dblclick();
+        await openFromRecycleBin(page, 'andrez.smit');
 
         const skypeWindow = page.locator('#skypeWindow');
         await expect(skypeWindow).toBeVisible();
@@ -72,7 +72,7 @@ test.describe('desktop', () => {
         await expect(skypeWindow).toBeHidden();
 
         // Opening it again doesn't add its stylesheet again
-        await page.locator('.desktop-icon', { hasText: 'Recycle Bin' }).dblclick();
+        await openFromRecycleBin(page, 'andrez.smit');
         await expect(skypeWindow).toBeVisible();
         await expect(page.locator('link[href="css/skype.min.css"]')).toHaveCount(1);
     });
@@ -92,7 +92,7 @@ test.describe('reduced motion', () => {
         await page.emulateMedia({ reducedMotion: 'reduce' });
         await page.goto('/');
         await page.locator('#start-windows').click();
-        await page.locator('.desktop-icon', { hasText: 'Recycle Bin' }).dblclick();
+        await openFromRecycleBin(page, 'andrez.smit');
 
         await expect(page.locator('#skypeWindow')).toBeVisible();
         // The "1UP" only lives for 600ms, so read its style in the same tick as the click

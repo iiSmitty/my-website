@@ -1,0 +1,152 @@
+/* ==================================
+   Recycle Bin
+   Loaded on demand by js/recycle-bin.js
+   ================================== */
+
+/* ----- Window ----- */
+
+.recycle-bin-window {
+    position: fixed;
+    /* Centered on open via JS (left/top in px) so the title bar can be dragged. */
+    top: 8px;
+    left: 8px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    max-width: calc(100vw - 16px);
+    max-height: calc(100vh - 16px);
+    max-height: calc(100dvh - 16px);
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    font-size: 11px;
+}
+
+.recycle-bin-window[hidden] {
+    display: none;
+}
+
+/* Focus lands on the selected row; the title bar already shows the window is active */
+.recycle-bin-window:focus {
+    outline: none;
+}
+
+#recycleBinTitleBar {
+    cursor: move;
+}
+
+.recycle-bin-window .win95-title {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    min-width: 0;
+}
+
+.recycle-bin-window .RecycleIcon_16x16 {
+    margin: 0;
+}
+
+/* ----- Details view ----- */
+
+.recycle-bin-frame {
+    flex: 1 1 auto;
+    min-height: 140px;
+    margin: 2px;
+    overflow: auto;
+    background-color: #ffffff;
+    border: 2px inset #ffffff;
+}
+
+.recycle-bin-list {
+    width: 100%;
+    min-width: 560px;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+/* Column headers are buttons, as in Explorer */
+.recycle-bin-list th {
+    position: sticky;
+    top: 0;
+    padding: 2px 6px;
+    background-color: #c0c0c0;
+    border: 1px solid;
+    border-color: #ffffff #808080 #808080 #ffffff;
+    font-weight: normal;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.recycle-bin-list td {
+    padding: 2px 6px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.recycle-bin-list tr {
+    cursor: default;
+}
+
+.recycle-bin-list tr:focus {
+    outline: none;
+}
+
+/* Explorer highlights only the selected name, not the whole row */
+.recycle-bin-list tbody tr[aria-selected="true"] .recycle-bin-label > span {
+    background-color: #000080;
+    color: #ffffff;
+}
+
+.recycle-bin-list tbody tr:focus .recycle-bin-label > span {
+    outline: 1px dotted #ffffff;
+    outline-offset: -1px;
+}
+
+.recycle-bin-col-name { width: 132px; }
+.recycle-bin-col-deleted { width: 104px; }
+.recycle-bin-col-type { width: 84px; }
+.recycle-bin-col-size { width: 88px; }
+
+/* A name is its icon and its label */
+.recycle-bin-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+.recycle-bin-label > svg {
+    flex: 0 0 16px;
+    width: 16px;
+    height: 16px;
+}
+
+.recycle-bin-label > span {
+    padding: 0 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ----- Status bar ----- */
+
+.recycle-bin-statusbar {
+    display: flex;
+    gap: 2px;
+    padding: 2px;
+}
+
+.recycle-bin-statusbar span {
+    padding: 1px 4px;
+    border: 1px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+    white-space: nowrap;
+}
+
+.recycle-bin-statusbar span:last-child {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

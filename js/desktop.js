@@ -16,9 +16,10 @@ const DESKTOP_PROGRAMS = [
     { name: 'Videos', desktopIcon: 'VideosIcon_32x32', icon: 'VideosIcon_16x16', open: () => openVideosWindow() },
     { name: 'Experience', desktopIcon: 'BriefcaseIcon_32x32', icon: 'BriefcaseIcon_16x16', open: () => openExperienceWindow() },
     { name: 'Dev Community', desktopIcon: 'SlackIcon_32x32', icon: 'SlackIcon_16x16', open: () => openSlackInviteWindow() },
-    // Something from 2014 is still in the Recycle Bin (skype.js). It's an
-    // easter egg, so the Start menu doesn't give it away.
-    { name: 'Recycle Bin', desktopIcon: 'RecycleIcon_32x32', open: () => openSkypeWindow(), inStartMenu: false }
+    // Something from 2014 is still in the Recycle Bin, and so is a coffee
+    // routine (recycle-bin.js). It's an easter egg, so the Start menu doesn't
+    // give it away.
+    { name: 'Recycle Bin', desktopIcon: 'RecycleIcon_32x32', open: () => openRecycleBin(), inStartMenu: false }
 ];
 
 // Clicking anywhere but an icon or a window deselects the desktop icons

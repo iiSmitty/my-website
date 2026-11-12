@@ -1,0 +1,302 @@
+/* ==================================
+   Coffee Properties
+   Loaded on demand by js/coffee-properties.js
+   Inside the shared .dead-dialog frame (styles.css)
+   ================================== */
+
+.coffee-props {
+    width: 360px;
+    font-size: 11px;
+}
+
+#coffeePropertiesTitleBar {
+    cursor: move;
+}
+
+/* ----- Tabs (a Win95 property sheet, as in Task Manager) ----- */
+
+.coffee-props-tabs {
+    display: flex;
+    padding: 8px 8px 0;
+}
+
+.coffee-props-tab {
+    position: relative;
+    margin-right: -1px;
+    padding: 3px 8px 2px;
+    border: 1px solid;
+    border-color: #ffffff #404040 transparent #ffffff;
+    border-bottom: none;
+    border-radius: 3px 3px 0 0;
+    background-color: #c0c0c0;
+    font: inherit;
+    color: #000000;
+    cursor: pointer;
+}
+
+/* The selected tab stands taller and joins the sheet below it */
+.coffee-props-tab[aria-selected="true"] {
+    z-index: 1;
+    margin: -2px -2px -1px;
+    padding: 4px 10px 4px;
+}
+
+.coffee-props-tab:focus-visible {
+    outline: 1px dotted #000000;
+    outline-offset: -4px;
+}
+
+.coffee-props-sheet {
+    margin: 0 8px;
+    padding: 10px;
+    border: 1px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+}
+
+/* Every tab is the same size, as on a property sheet */
+.coffee-props-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 266px;
+}
+
+.coffee-props-panel[hidden] {
+    display: none;
+}
+
+/* ----- General ----- */
+
+.coffee-props-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 8px;
+    /* Etched separator */
+    border-bottom: 1px solid #808080;
+    box-shadow: 0 1px 0 #ffffff;
+}
+
+.coffee-props-head svg {
+    flex: 0 0 auto;
+}
+
+/* Win95 GroupBox: an etched line the legend sits in */
+.coffee-props-group {
+    margin: 0;
+    padding: 4px 8px 8px;
+    border: 2px groove #c0c0c0;
+    min-width: 0;
+}
+
+.coffee-props-group legend {
+    padding: 0 3px;
+}
+
+.coffee-props-fields {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 3px 8px;
+    margin: 0;
+}
+
+.coffee-props-fields dt,
+.coffee-props-fields dd {
+    margin: 0;
+}
+
+.coffee-props-note {
+    margin: 6px 0 0;
+    color: #404040;
+}
+
+.coffee-props-favourites {
+    display: grid;
+    grid-template-columns: 62px 1fr;
+    gap: 8px;
+}
+
+/* A sunken white list box */
+.coffee-props-list {
+    margin: 0;
+    padding: 2px;
+    list-style: none;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+    box-shadow: inset 1px 1px #000000, inset -1px -1px #c0c0c0;
+}
+
+.coffee-props-list li {
+    padding: 1px 3px;
+}
+
+.coffee-props-star {
+    color: #808000;
+}
+
+/* ----- Roast: a Win95 trackbar ----- */
+
+.coffee-props-roast-label {
+    display: block;
+    margin: 4px 0 6px;
+}
+
+.coffee-props-slider {
+    appearance: none;
+    display: block;
+    width: 100%;
+    height: 24px;
+    margin: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.coffee-props-slider:focus {
+    outline: none;
+}
+
+.coffee-props-slider:focus-visible {
+    outline: 1px dotted #000000;
+}
+
+.coffee-props-slider::-webkit-slider-runnable-track {
+    height: 4px;
+    background-color: #c0c0c0;
+    border: 1px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+    box-shadow: inset 1px 1px #000000;
+}
+
+.coffee-props-slider::-moz-range-track {
+    height: 4px;
+    background-color: #c0c0c0;
+    border: 1px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+    box-shadow: inset 1px 1px #000000;
+}
+
+.coffee-props-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 11px;
+    height: 21px;
+    margin-top: -10px;
+    background-color: #c0c0c0;
+    border: 1px solid;
+    border-color: #ffffff #000000 #000000 #ffffff;
+    border-radius: 0;
+    box-shadow: inset -1px -1px #808080;
+}
+
+.coffee-props-slider::-moz-range-thumb {
+    box-sizing: border-box;
+    width: 11px;
+    height: 21px;
+    background-color: #c0c0c0;
+    border: 1px solid;
+    border-color: #ffffff #000000 #000000 #ffffff;
+    border-radius: 0;
+    box-shadow: inset -1px -1px #808080;
+}
+
+/* A tick under each stop, then its name: the end ones line up with the
+   thumb's middle at either end, 5px in */
+.coffee-props-ticks {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-top: 8px;
+    background:
+        linear-gradient(#000000, #000000) 5px 2px / 1px 4px no-repeat,
+        linear-gradient(#000000, #000000) 50% 2px / 1px 4px no-repeat,
+        linear-gradient(#000000, #000000) calc(100% - 5px) 2px / 1px 4px no-repeat;
+}
+
+.coffee-props-ticks span:nth-child(2) {
+    text-align: center;
+}
+
+.coffee-props-ticks span:last-child {
+    text-align: right;
+}
+
+/* ----- Additives ----- */
+
+.coffee-props-check {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 4px 0;
+}
+
+/* Classic sunken white checkbox */
+.coffee-props-check input {
+    appearance: none;
+    flex: 0 0 auto;
+    width: 13px;
+    height: 13px;
+    margin: 0;
+    background: #ffffff center / 9px 9px no-repeat;
+    border: 1px solid;
+    border-color: #808080 #ffffff #ffffff #808080;
+    box-shadow: inset 1px 1px #000000, inset -1px -1px #c0c0c0;
+}
+
+.coffee-props-check input:checked {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Cpath d='M6 0h1v2H6v1H5v1H4v1H3v1H2V5H1V4H0V2h1v1h1v1h1V3h1V2h1V1h1z'/%3E%3C/svg%3E");
+}
+
+.coffee-props-check input:focus-visible {
+    outline: 1px dotted #000000;
+    outline-offset: 2px;
+}
+
+/* Sugar: greyed out, with the administrator's tooltip on hover. The wrapper
+   takes the mouse, since a disabled input gets no mouse events. */
+.coffee-props-locked {
+    position: relative;
+    display: inline-block;
+}
+
+.coffee-props-locked .coffee-props-check {
+    color: #808080;
+    text-shadow: 1px 1px 0 #ffffff;
+    cursor: default;
+}
+
+.coffee-props-locked input {
+    pointer-events: none;
+    background-color: #c0c0c0;
+}
+
+/* A Win95 tooltip: shows after a short hover, goes as soon as the mouse does */
+.coffee-props-tooltip {
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 12px;
+    z-index: 1;
+    padding: 1px 4px;
+    background-color: #ffffe1;
+    border: 1px solid #000000;
+    color: #000000;
+    white-space: nowrap;
+    visibility: hidden;
+    transition: visibility 0s;
+}
+
+.coffee-props-locked:hover .coffee-props-tooltip {
+    visibility: visible;
+    transition-delay: 0.4s;
+}
+
+/* ----- OK / Cancel / Apply ----- */
+
+.coffee-props-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+    padding: 10px 8px;
+}
+
+.coffee-props-buttons .win95-btn {
+    min-width: 70px;
+}

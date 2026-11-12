@@ -1522,6 +1522,15 @@ body.startup {
     image-rendering: pixelated;
 }
 
+/* The Recycle Bin window's title bar (recycle-bin.js) */
+.RecycleIcon_16x16 {
+    display: inline-block;
+    flex: 0 0 auto;
+    width: 16px;
+    height: 16px;
+    background: url(/icons/recycle-full.ico) no-repeat center / 16px 16px;
+}
+
 /* GitHub installer and Dev Community windows. Scoped by window, so these win
    over the general rules (.win95-btn, .SlackIcon_32x32, ul) as the inline
    styles they replace did. */
@@ -1958,6 +1967,23 @@ body.is-touch-device .desktop-icons,
     display: flex;
     justify-content: center;
     padding: 6px 0 14px;
+}
+
+/* Message boxes (message-box.js) in the same frame */
+.message-box .win95-title-bar {
+    cursor: move;
+}
+
+.message-box-text p {
+    margin: 0 0 6px;
+}
+
+.message-box-text p:last-child {
+    margin-bottom: 0;
+}
+
+.message-box-buttons {
+    gap: 6px;
 }
 
 #myTechWindow {
@@ -2611,6 +2637,18 @@ body.is-touch-device .desktop-icons,
     font-size: 10px;
     color: #666;
     font-style: italic;
+}
+
+/* Properties... opens Coffee Properties (coffee-properties.js) */
+.coffee-details-header .coffee-app-title {
+    margin-right: auto;
+}
+
+.coffee-properties-button {
+    min-width: 0;
+    margin-left: 8px;
+    padding: 2px 8px;
+    font-size: 11px;
 }
 
 /* Three headline tiles in a row, split by thin dividers. Plain class
