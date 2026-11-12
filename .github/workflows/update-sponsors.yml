@@ -45,7 +45,7 @@ jobs:
           command: node .github/scripts/sponsors-fetcher.js
         env:
           # The Actions GITHUB_TOKEN can't read sponsorships. A classic personal
-          # access token of iiSmitty with only the read:user scope; the
+          # access token of iiSmitty with only the read:user and read:org scopes; the
           # fetcher's header explains why.
           SPONSORS_TOKEN: ${{ secrets.SPONSORS_TOKEN }}
 

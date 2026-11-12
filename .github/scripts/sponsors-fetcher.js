@@ -26,9 +26,11 @@
  *
  * The token: the Actions GITHUB_TOKEN can't read sponsorships, so the
  * workflow passes a personal access token as SPONSORS_TOKEN. A classic token
- * of my account with only the read:user scope is enough. Without read:user
- * GitHub refuses createdAt and privacyLevel (INSUFFICIENT_SCOPES), and
- * quietly returns null for every lifetime amount. It has to be my account's
+ * of my account with the read:user and read:org scopes, and nothing else.
+ * Without read:user GitHub refuses createdAt and privacyLevel
+ * (INSUFFICIENT_SCOPES), and quietly returns null for every lifetime amount.
+ * Without read:org it refuses a sponsor's login and name, because a sponsor
+ * can be an organisation, even when none is. It has to be my account's
  * token, because only the maintainer can see those amounts. No repo access is
  * needed; the workflow commits with its own GITHUB_TOKEN.
  *
@@ -94,7 +96,7 @@ query ($login: String!, $after: String) {
 class NoRetryError extends Error {}
 const NO_RETRY_EXIT_CODE = 2;
 
-const SCOPE_HINT = 'SPONSORS_TOKEN needs to be a classic token of iiSmitty with the read:user scope';
+const SCOPE_HINT = 'SPONSORS_TOKEN needs to be a classic token of iiSmitty with the read:user and read:org scopes';
 
 function createGitHubClient(token) {
     const headers = {
