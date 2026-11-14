@@ -1,8 +1,9 @@
 {
-  "totalSiteVisits": 160,
+  "totalSiteVisits": 161,
   "currentBalance": 0,
-  "freeBeveragesRedeemed": 29,
-  "freeBeveragesAvailable": 3,
-  "lastUpdated": "2026-10-23T13:11:30.358Z",
+  "freeBeveragesRedeemed": 31,
+  "freeBeveragesAvailable": 1,
+  "lastVisitAt": "2026-11-14T14:39:18.100Z",
+  "lastUpdated": "2026-11-14T14:39:18.100Z",
   "success": true
 }
