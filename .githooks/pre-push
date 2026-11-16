@@ -1,0 +1,20 @@
+#!/bin/sh
+# The full suite before every push. Cloudflare Pages deploys main as soon as
+# it's pushed, so this is the last check before the live site changes.
+# Bypass in a pinch with:  git push --no-verify
+
+# The tests run against the files on disk, so with uncommitted changes they
+# would be checking something other than what's being pushed
+if ! git diff --quiet HEAD; then
+    echo "You have uncommitted changes, so the tests wouldn't be checking what you're pushing."
+    echo "Commit or stash them, then push again."
+    exit 1
+fi
+
+echo "Running the full test suite before push..."
+npm test
+if [ $? -ne 0 ]; then
+    echo ""
+    echo "Tests FAILED -- push aborted. Fix the errors above, or bypass with: git push --no-verify"
+    exit 1
+fi

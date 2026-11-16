@@ -1,11 +1,12 @@
 #!/bin/sh
-# Runs the smoke suite (build + Playwright) before every commit.
-# Blocks the commit if any page throws an uncaught error or console error.
+# A quick check before every commit, a few seconds: the build, the unit
+# tests, and the smoke tests that load every page and fail on any error.
+# The full suite runs before a push instead (pre-push).
 # Bypass in a pinch with:  git commit --no-verify
-echo "Running smoke tests before commit..."
-npm test
+echo "Running quick checks before commit..."
+npm run test:quick
 if [ $? -ne 0 ]; then
     echo ""
-    echo "Smoke tests FAILED -- commit aborted. Fix the errors above, or bypass with: git commit --no-verify"
+    echo "Quick checks FAILED -- commit aborted. Fix the errors above, or bypass with: git commit --no-verify"
     exit 1
 fi
