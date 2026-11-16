@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-10T16:18:32.123Z",
+  "lastUpdated": "2026-11-16T08:59:55.093Z",
   "inProgress": [
     {
       "title": "The Celebrity Traitors",
@@ -9,13 +9,13 @@
       "slug": "the-celebrity-traitors",
       "poster": "/uziPOqxQotCE9g0wBgDvHCOvRhP.jpg",
       "episode": {
-        "season": 2,
-        "number": 9,
-        "title": "Episode 9"
+        "season": 1,
+        "number": 4,
+        "title": "Episode 4"
       },
-      "watched": 10,
+      "watched": 14,
       "aired": 19,
-      "lastWatchedAt": "2026-11-10T15:59:00.000Z"
+      "lastWatchedAt": "2026-11-16T06:37:00.000Z"
     },
     {
       "title": "House",
