@@ -1,0 +1,41 @@
+name: Late Night
+
+# Alfred comments on a commit the owner made between 22:00 and 04:59 SAST,
+# at most once a week (.github/scripts/late-night.js). The comment is posted
+# with BUTLER_TOKEN, a classic token from the waynemanor-butler account with
+# only the public_repo scope, so it comes from Alfred, not github-actions.
+# Alfred's own data commits are pushed with GITHUB_TOKEN, which doesn't
+# trigger workflows, so he never comments on himself.
+on:
+  push:
+    branches: [main]
+
+# Pushes in quick succession are judged one at a time, so the weekly limit holds
+concurrency:
+  group: late-night
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  late-night:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          sparse-checkout: .github/scripts
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      # No dependencies: the script only uses Node's built-in fetch
+      - name: Notice the hour
+        run: node .github/scripts/late-night.js
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          BUTLER_TOKEN: ${{ secrets.BUTLER_TOKEN }}
