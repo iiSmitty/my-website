@@ -16,10 +16,9 @@
  */
 
 const fs = require('fs');
+const { github, BUTLER } = require('./github-api.js');
 
 const TIME_ZONE = 'Africa/Johannesburg';
-const BUTLER = 'waynemanor-butler';
-const API = 'https://api.github.com';
 const HOUR_MS = 60 * 60 * 1000;
 const DAY_MS = 24 * HOUR_MS;
 const LATE_FROM = 22;          // a night runs from 22:00
@@ -112,22 +111,6 @@ function remark(time, sha, nights) {
 }
 
 // --- GitHub ---
-
-async function github(path, token, options = {}) {
-    const response = await fetch(`${API}${path}`, {
-        ...options,
-        headers: {
-            Accept: 'application/vnd.github+json',
-            Authorization: `Bearer ${token}`,
-            'X-GitHub-Api-Version': '2022-11-28',
-            'User-Agent': 'late-night-butler',
-            ...(options.body ? { 'Content-Type': 'application/json' } : {}),
-        },
-        signal: AbortSignal.timeout(15000),
-    });
-    if (!response.ok) throw new Error(`${options.method || 'GET'} ${path}: HTTP ${response.status} ${await response.text()}`);
-    return response.json();
-}
 
 /** Every commit comment in the repo. There are few: at most one a week from Alfred. */
 async function allCommitComments(repo, token) {

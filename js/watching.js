@@ -1,7 +1,7 @@
 // Videos folder
 // What I'm watching, as a Windows Explorer window: the series I'm on now (up
 // to three), the last one I finished and the last few movies I saw. data/watching.json is
-// refreshed from Trakt weekly by .github/workflows/update-watching.yml.
+// refreshed from Trakt daily by .github/workflows/update-watching.yml.
 //
 // Opened by double-clicking the Videos desktop icon (wired up in
 // desktop.js). Like the Skype window, nothing loads until then: the

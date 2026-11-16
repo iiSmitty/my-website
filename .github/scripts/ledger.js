@@ -164,7 +164,7 @@ function recordCoffee(ledger, before, after, now) {
     ].filter(Boolean).join(', ');
     if (ledgerLine) trailers.push(['Ledger', ledgerLine]);
     if (isCount(after && after.currentBalance)) trailers.push(['Card', `${after.currentBalance}/10`]);
-    return { remarks, trailers };
+    return { remarks, trailers, resumed: visits > 0 };
 }
 
 // --- watching ---
@@ -180,7 +180,7 @@ function forecast(memory, show, now) {
 }
 
 /**
- * Trakt reports progress per show, weekly, for the few shows in progress, so
+ * Trakt reports progress per show, daily, for the few shows in progress, so
  * the ledger remembers every show it has seen: a show that drops out of the
  * list and comes back isn't counted twice. Episodes count in the month they
  * were watched (the show's lastWatchedAt).
@@ -239,7 +239,7 @@ function recordWatching(ledger, before, after, now, context = {}) {
     const trailers = shows
         .filter(show => isCount(show.watched) && isCount(show.aired))
         .map(show => ['Watching', `${oneLine(show.title)} ${show.watched}/${show.aired}`]);
-    return { remarks, trailers };
+    return { remarks, trailers, resumed: episodes > 0 };
 }
 
 // --- sponsors ---
@@ -274,24 +274,31 @@ const RECORDERS = { coffee: recordCoffee, watching: recordWatching, sponsors: re
 /**
  * One entry in the ledger: the updated ledger and the full commit message.
  * `context.entriesElsewhere` is the other sources' entry counts, so the entry
- * number runs across all of Alfred's commits. Pure: nothing is read or written.
+ * number runs across all of Alfred's commits. `context.quietNotice` is the
+ * number of an open quiet-week notice (quiet-week.js): a coffee or an episode
+ * ends the quiet spell, so the commit closes it. Pure: nothing is read or written.
  */
 function record(source, { ledger, before, after, now, subject, context = {} }) {
     const next = normalise(source, ledger);
     next.entries += 1;
     const entry = next.entries + (context.entriesElsewhere || 0);
 
-    const { remarks, trailers } = RECORDERS[source](next, before || null, after || null, now, context);
+    const { remarks, trailers, resumed } = RECORDERS[source](next, before || null, after || null, now, context);
     if (entry % ENTRY_MILESTONE === 0) remarks.unshift(`My ${ordinal(entry)} entry in this log, sir. I keep a copy.`);
     trailers.push(['Entry', String(entry)]);
 
-    return { ledger: next, message: composeMessage(subject, remarks.slice(0, MAX_REMARKS), trailers) };
+    const closes = resumed && Number.isInteger(context.quietNotice) && context.quietNotice > 0 ? context.quietNotice : null;
+    const said = closes
+        ? [...remarks.slice(0, MAX_REMARKS - 1), 'Normal service resumes, sir.']
+        : remarks.slice(0, MAX_REMARKS);
+    return { ledger: next, message: composeMessage(subject, said, trailers, closes) };
 }
 
-/** Subject, a blank line, the remarks as one paragraph, a blank line, the trailers */
-function composeMessage(subject, remarks, trailers) {
+/** Subject, the remarks as one paragraph, a closing line if any, then the trailers */
+function composeMessage(subject, remarks, trailers, closes = null) {
     const parts = [oneLine(subject)];
     if (remarks.length) parts.push(remarks.join(' '));
+    if (closes) parts.push(`Closes #${closes}`);
     if (trailers.length) parts.push(trailers.map(([key, value]) => `${key}: ${oneLine(value)}`).join('\n'));
     return parts.join('\n\n') + '\n';
 }
@@ -333,7 +340,11 @@ function main(source, subject) {
         after: readJson(path.join(ROOT, SOURCES[source])),
         now: Date.now(),
         subject,
-        context: { entriesElsewhere, coffee: readJson(path.join(ROOT, SOURCES.coffee)) },
+        context: {
+            entriesElsewhere,
+            coffee: readJson(path.join(ROOT, SOURCES.coffee)),
+            quietNotice: Number(process.env.QUIET_NOTICE) || null, // from quiet-week.js open-notice
+        },
     });
 
     // Last, so a failure above leaves the ledger untouched

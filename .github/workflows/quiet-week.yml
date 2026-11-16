@@ -1,0 +1,47 @@
+name: Quiet Week
+
+# When a week goes by with no coffee and no episode (the week that makes the
+# PC Tired), Alfred opens one plain issue saying so. His next coffee or
+# watching commit closes it with "Closes #N". This daily check opens the
+# notice, and closes one that's no longer true if a commit didn't.
+# See .github/scripts/quiet-week.js.
+#
+# Opening and closing use BUTLER_TOKEN, a classic token from the
+# waynemanor-butler account with only the public_repo scope, so the notice
+# comes from Alfred, not github-actions.
+on:
+  schedule:
+    - cron: '0 17 * * *'   # 19:00 SAST, after the day's coffee runs
+  workflow_dispatch:         # Manual trigger
+
+concurrency:
+  group: quiet-week
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  issues: read
+
+jobs:
+  quiet-week:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          sparse-checkout: |
+            .github/scripts
+            data
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      # No dependencies: the script only uses Node's built-in fetch
+      - name: Check the week
+        run: node .github/scripts/quiet-week.js check
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          BUTLER_TOKEN: ${{ secrets.BUTLER_TOKEN }}

@@ -30,7 +30,15 @@ const TASKMGR_PROCESSES = {
     },
     'update-watching.yml': {
         image: 'WATCHING.EXE',
-        description: 'Every Monday, and whenever its code changes, reads what I\'m watching on Trakt, for the Videos folder.'
+        description: 'Every day, and whenever its code changes, reads what I\'m watching on Trakt, for the Videos folder.'
+    },
+    'late-night.yml': {
+        image: 'LATENITE.EXE',
+        description: 'On every push, checks whether I committed after 22:00. If I did, Alfred, who commits my data, says something about it, at most once a week.'
+    },
+    'quiet-week.yml': {
+        image: 'QUIETWK.EXE',
+        description: 'Every evening, checks for a week with no coffee and no episode. Alfred then opens a notice on GitHub, which closes itself when either resumes.'
     },
     'update-sponsors.yml': {
         image: 'SPONSORS.EXE',

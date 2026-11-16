@@ -268,3 +268,47 @@ test('at most two remarks', () => {
     });
     assert.equal(body(message), 'My 50th entry in this log, sir. I keep a copy. The first visit in 25 days, the longest gap in my records.');
 });
+
+// --- the quiet-week notice ---
+
+test('a visit during a quiet-week notice closes it, plainly', () => {
+    const { message } = record('coffee', {
+        ledger: { visitsByMonth: {}, longestGap: { days: 88 } },
+        before: coffee(160, '2026-11-01T08:00:00Z'), after: coffee(161, '2026-11-14T08:00:00Z'),
+        now: at('2026-11-14T08:00:00Z'), subject: '☕ A fresh visit logged — 1/10.', context: { quietNotice: 12 },
+    });
+    assert.equal(message,
+        '☕ A fresh visit logged — 1/10.\n\nThe first visit in 13 days. Normal service resumes, sir.\n\nCloses #12\n\n' +
+        'Ledger: 161 visits, 31 free, 1 in reserve\nCard: 1/10\nEntry: 1\n');
+});
+
+test('an episode during a quiet-week notice closes it', () => {
+    const { message } = record('watching', {
+        ledger: { shows: { 1399: { title: 'House', watched: 62, firstSeenAt: '2026-11-10T08:00:00Z', firstWatched: 62 } } },
+        before: {}, after: { inProgress: [show(1399, 'House', 63, 177, '2026-11-15T20:00:00Z')] },
+        now: at('2026-11-16T02:00:00Z'), subject: 'x', context: { quietNotice: 7 },
+    });
+    assert.match(message, /\n\n1 episode this month so far\. Normal service resumes, sir\.\n\nCloses #7\n\n/);
+});
+
+test('a change that is not a coffee or an episode leaves the notice open', () => {
+    const redeemed = record('coffee', {
+        ledger: null, before: coffee(161, '2026-11-01T08:00:00Z', { freeBeveragesRedeemed: 30 }), after: coffee(161, '2026-11-01T08:00:00Z'),
+        now: at('2026-11-14T08:00:00Z'), subject: 'x', context: { quietNotice: 12 },
+    });
+    const patron = record('sponsors', {
+        ledger: null, before: { sponsors: [] }, after: { sponsors: [{ login: 'a', coffees: 1 }] },
+        now: at('2026-11-14T08:00:00Z'), subject: 'x', context: { quietNotice: 12 },
+    });
+    for (const { message } of [redeemed, patron]) {
+        assert.doesNotMatch(message, /Closes|Normal service/);
+    }
+});
+
+test('no notice, no closing line', () => {
+    const { message } = record('coffee', {
+        ledger: null, before: coffee(160, '2026-11-13T08:00:00Z'), after: coffee(161, '2026-11-14T08:00:00Z'),
+        now: at('2026-11-14T08:00:00Z'), subject: 'x', context: { quietNotice: null },
+    });
+    assert.doesNotMatch(message, /Closes|Normal service/);
+});

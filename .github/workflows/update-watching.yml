@@ -2,7 +2,7 @@ name: Update Watching
 
 on:
   schedule:
-    - cron: '0 2 * * 1'    # Mondays 04:00 SAST, two hours after the Spotify update
+    - cron: '0 2 * * *'    # 04:00 SAST daily, so last night's episodes count by morning
   workflow_dispatch:         # Manual trigger
   # When the fetcher changes, refresh the data straight away rather than at
   # the next scheduled run. Can't loop: the workflow's own commits only touch
@@ -49,6 +49,7 @@ jobs:
         env:
           # Passed through env, not inlined, because it contains show titles
           COMMIT_MSG: ${{ steps.fetch.outputs.message }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           if git diff --quiet data/watching.json; then
             echo "No changes to commit"
@@ -57,6 +58,8 @@ jobs:
           git config --local user.email "292474565+waynemanor-butler@users.noreply.github.com"
           git config --local user.name "Alfred Pennyworth"
           SUBJECT="${COMMIT_MSG:-📼 The Videos folder has been tidied, sir.}"
+          # An open quiet-week notice, which an episode closes (quiet-week.js). None if the lookup fails.
+          export QUIET_NOTICE=$(node .github/scripts/quiet-week.js open-notice || true)
           # Alfred's ledger adds a body and trailers. If it fails, the subject alone will do.
           if ! node .github/scripts/ledger.js watching "$SUBJECT" > "$RUNNER_TEMP/commit-msg"; then
             echo "::warning::The ledger could not be written; committing the subject alone"
