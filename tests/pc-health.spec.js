@@ -83,6 +83,22 @@ async function ready(page, name) {
     await expect(action(page, name)).not.toHaveAttribute('aria-disabled', 'true');
 }
 
+// The page's clock ticks in real time, so a busy machine can finish Defrag's
+// two seconds before a test gets to look at it. Stopping the clock holds the
+// animation still until the test moves it on with page.clock.runFor().
+//
+// Pausing in the past is an error, so it stops at a fixed time no test can
+// have reached yet: the clock starts at NOW and a test times out after 30
+// seconds. Getting there jumps ahead, which runs any timer due on the way
+// once, so first it waits for the window to finish loading, before the 3
+// second timeout on a mood call still in flight could fire.
+const HELD_AT = NOW + 60 * 1000;
+
+async function holdTime(page) {
+    await expect(page.locator('#pcHealthMode')).not.toHaveText('Connecting...');
+    await page.clock.pauseAt(HELD_AT);
+}
+
 // Our own code's errors. A request the test aborts, or the 404 a missing
 // Worker gives, is logged by the browser itself, not by the page.
 function collectErrors(page) {
@@ -302,11 +318,14 @@ test.describe('desktop', () => {
         await setup(page);
         await boot(page);
         await openFromRow(page);
+        await holdTime(page);
 
         await action(page, 'Run Defrag').click();
         const progress = healthWindow(page).getByRole('progressbar', { name: 'Defragmenting Drive C' });
         await expect(progress).toBeVisible();
         await expect(page.locator('#pcHealthBubble')).toHaveText('Defragmenting Drive C...');
+
+        await page.clock.runFor(2000);
         await expect(page.locator('#pcHealthBubble')).toHaveText('All my clusters are in a row. I feel organised.');
         await expect(progress).toBeHidden();
     });
@@ -648,6 +667,7 @@ test.describe('animation', () => {
         await setup(page, { shared: false });
         await boot(page);
         await openFromRow(page);
+        await holdTime(page);
 
         await action(page, 'Run Defrag').click();
         await expect(healthWindow(page).getByRole('progressbar')).toBeVisible();
@@ -655,6 +675,7 @@ test.describe('animation', () => {
         await expect(art(page)).toHaveClass(/is-busy/);
         expect(await art(page).locator('.pc-health-props rect').count()).toBeGreaterThan(20);
 
+        await page.clock.runFor(2000);
         await expect(page.locator('#pcHealthBubble')).toHaveText('All my clusters are in a row. I feel organised.');
         await expect(art(page)).not.toHaveClass(/is-busy/);
     });
@@ -684,6 +705,7 @@ test.describe('animation', () => {
         await setup(page, { shared: false });
         await boot(page);
         await openFromRow(page);
+        await holdTime(page);
 
         await action(page, 'Run Defrag').click();
         await expect(healthWindow(page).getByRole('progressbar')).toBeVisible();
