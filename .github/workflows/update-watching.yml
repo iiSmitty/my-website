@@ -56,7 +56,15 @@ jobs:
           fi
           git config --local user.email "292474565+waynemanor-butler@users.noreply.github.com"
           git config --local user.name "Alfred Pennyworth"
-          git add data/watching.json
-          git commit -m "${COMMIT_MSG:-📼 The Videos folder has been tidied, sir.}"
+          SUBJECT="${COMMIT_MSG:-📼 The Videos folder has been tidied, sir.}"
+          # Alfred's ledger adds a body and trailers. If it fails, the subject alone will do.
+          if ! node .github/scripts/ledger.js watching "$SUBJECT" > "$RUNNER_TEMP/commit-msg"; then
+            echo "::warning::The ledger could not be written; committing the subject alone"
+            git checkout -- data/ledger/watching.json 2>/dev/null || true
+            printf '%s\n' "$SUBJECT" > "$RUNNER_TEMP/commit-msg"
+          fi
+          cat "$RUNNER_TEMP/commit-msg"
+          git add data/watching.json data/ledger/watching.json
+          git commit -F "$RUNNER_TEMP/commit-msg"
           git pull --rebase --autostash origin main
           git push
