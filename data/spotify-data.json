@@ -1,19 +1,6 @@
 {
   "topArtists": [
     {
-      "name": "Louis Armstrong",
-      "image": "https://i.scdn.co/image/ab6772690000c46c53b6519baafe8f4d6135453e",
-      "genres": [
-        "jazz",
-        "swing music",
-        "vocal jazz",
-        "big band"
-      ],
-      "popularity": 71,
-      "uri": "spotify:artist:19eLuQmk9aCobbVDHc6eek",
-      "url": "https://open.spotify.com/artist/19eLuQmk9aCobbVDHc6eek"
-    },
-    {
       "name": "Ramones",
       "image": "https://i.scdn.co/image/ab6761610000e5eb5b9f46a5c5bf8243179d56b0",
       "genres": [
@@ -25,18 +12,25 @@
       "url": "https://open.spotify.com/artist/1co4F2pPNH8JjTutZkmgSm"
     },
     {
-      "name": "Ella Fitzgerald",
-      "image": "https://i.scdn.co/image/3c1d23141059785c8a863137d176319329dc17ef",
+      "name": "Kurt Darren",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb08f9d4ab0417e503f61c5744",
       "genres": [
-        "vocal jazz",
-        "jazz",
-        "swing music",
-        "big band",
-        "christmas"
+        "afrikaans pop"
       ],
-      "popularity": 70,
-      "uri": "spotify:artist:5V0MlUE1Bft0mbLlND7FJz",
-      "url": "https://open.spotify.com/artist/5V0MlUE1Bft0mbLlND7FJz"
+      "popularity": 48,
+      "uri": "spotify:artist:3fFoaTI85WuaVkSMUxeYRd",
+      "url": "https://open.spotify.com/artist/3fFoaTI85WuaVkSMUxeYRd"
+    },
+    {
+      "name": "Our Last Night",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb9d23c75528e428dd6e188666",
+      "genres": [
+        "post-hardcore",
+        "metalcore"
+      ],
+      "popularity": 65,
+      "uri": "spotify:artist:00YTqRClk82aMchQQpYMd5",
+      "url": "https://open.spotify.com/artist/00YTqRClk82aMchQQpYMd5"
     },
     {
       "name": "Die Heuwels Fantasties",
@@ -49,17 +43,27 @@
       "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
     },
     {
-      "name": "Dead by April",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebf3770344c0b2952acd65b79f",
+      "name": "Die Piesangskille",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb0f9f1c72174154cbc8733c70",
       "genres": [
-        "metalcore"
+        "afrikaans pop"
       ],
-      "popularity": 52,
-      "uri": "spotify:artist:2otRZcOVNcmdkZ5nEoogy6",
-      "url": "https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6"
+      "popularity": 48,
+      "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
+      "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
     }
   ],
   "topTracks": [
+    {
+      "name": "Exile",
+      "artist": "Stephen Stanley, The Chosen",
+      "album": "Exile",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733877dce2634f93c62c544229",
+      "duration": "3:58",
+      "popularity": 47,
+      "uri": "spotify:track:4PdiiiIgjeMCJRXcSgvhYb",
+      "url": "https://open.spotify.com/track/4PdiiiIgjeMCJRXcSgvhYb"
+    },
     {
       "name": "Cool Soos Koos Kombuis",
       "artist": "Snotkop",
@@ -69,6 +73,26 @@
       "popularity": 45,
       "uri": "spotify:track:0FJ8QKzMg5pc42LJ3wr9NV",
       "url": "https://open.spotify.com/track/0FJ8QKzMg5pc42LJ3wr9NV"
+    },
+    {
+      "name": "Mighty To Save",
+      "artist": "Seventh Day Slumber",
+      "album": "Take Everything",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a4dc2e03e08a5b22867f6940",
+      "duration": "4:01",
+      "popularity": 36,
+      "uri": "spotify:track:0Hw9aocqrEwTepprJrmE3q",
+      "url": "https://open.spotify.com/track/0Hw9aocqrEwTepprJrmE3q"
+    },
+    {
+      "name": "Heartless",
+      "artist": "Evaride",
+      "album": "Heartless",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27360520413ceed9f4a67bc7c5d",
+      "duration": "4:17",
+      "popularity": 25,
+      "uri": "spotify:track:3cwxpoKIqqFHIjyWYqkrdf",
+      "url": "https://open.spotify.com/track/3cwxpoKIqqFHIjyWYqkrdf"
     },
     {
       "name": "Safe and Sound",
@@ -81,16 +105,6 @@
       "url": "https://open.spotify.com/track/5JVbvCHX10U2pLa5DEqGav"
     },
     {
-      "name": "La vie en rose",
-      "artist": "Louis Armstrong",
-      "album": "BD Music Presents Louis Armstrong",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27314d3e87edcee8ca6d1029cd0",
-      "duration": "3:32",
-      "popularity": 67,
-      "uri": "spotify:track:1dEpbFXDk6sm3vhBQzAgdR",
-      "url": "https://open.spotify.com/track/1dEpbFXDk6sm3vhBQzAgdR"
-    },
-    {
       "name": "Ek Val",
       "artist": "Die Piesangskille",
       "album": "Ek Val",
@@ -99,36 +113,6 @@
       "popularity": 45,
       "uri": "spotify:track:3TRXjj5LyijhaeJOcZ3xig",
       "url": "https://open.spotify.com/track/3TRXjj5LyijhaeJOcZ3xig"
-    },
-    {
-      "name": "Pray For You",
-      "artist": "Manafest",
-      "album": "Pray For You",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273e976f6dc7869f1f4c50be6be",
-      "duration": "2:56",
-      "popularity": 41,
-      "uri": "spotify:track:52NyGaMBUmFvahSs4PoAoN",
-      "url": "https://open.spotify.com/track/52NyGaMBUmFvahSs4PoAoN"
-    },
-    {
-      "name": "Close My Eyes (feat. SACHA)",
-      "artist": "Marshmello, ILLENIUM, SACHA",
-      "album": "Close My Eyes (feat. SACHA)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27384198377626062d745c28658",
-      "duration": "2:43",
-      "popularity": 68,
-      "uri": "spotify:track:4Kv3BQhoqR0YboA8xvTyWC",
-      "url": "https://open.spotify.com/track/4Kv3BQhoqR0YboA8xvTyWC"
-    },
-    {
-      "name": "Exile",
-      "artist": "Stephen Stanley, The Chosen",
-      "album": "Exile",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733877dce2634f93c62c544229",
-      "duration": "3:58",
-      "popularity": 43,
-      "uri": "spotify:track:4PdiiiIgjeMCJRXcSgvhYb",
-      "url": "https://open.spotify.com/track/4PdiiiIgjeMCJRXcSgvhYb"
     },
     {
       "name": "Riders On The Storm - Fredwreck Remix",
@@ -159,7 +143,17 @@
       "popularity": 48,
       "uri": "spotify:track:0pVZxVh5NFfLvisAvP3F1h",
       "url": "https://open.spotify.com/track/0pVZxVh5NFfLvisAvP3F1h"
+    },
+    {
+      "name": "See A Victory",
+      "artist": "Seventh Day Slumber",
+      "album": "Unseen: The Lion And The Lamb (Deluxe Edition)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2734bfd0e91bf806bc73d736cfd",
+      "duration": "5:57",
+      "popularity": 34,
+      "uri": "spotify:track:0vdsEnKEjx0mA1AHV8mwvM",
+      "url": "https://open.spotify.com/track/0vdsEnKEjx0mA1AHV8mwvM"
     }
   ],
-  "lastUpdated": "2026-11-09T05:19:04.046Z"
+  "lastUpdated": "2026-11-16T05:29:27.304Z"
 }
