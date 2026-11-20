@@ -1,8 +1,8 @@
 {
-  "entries": 5,
+  "entries": 6,
   "episodesByMonth": {
     "2026-10": 31,
-    "2026-11": 14
+    "2026-11": 15
   },
   "seriesFinished": 0,
   "shows": {
@@ -14,7 +14,7 @@
     },
     "285631": {
       "title": "The Celebrity Traitors",
-      "watched": 14,
+      "watched": 15,
       "firstSeenAt": "2026-11-10T16:18:32.000Z",
       "firstWatched": 10
     }
