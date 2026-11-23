@@ -1,13 +1,23 @@
 {
   "topArtists": [
     {
+      "name": "Francois van Coke",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb2b0cee2c8f4756bcc85e91e2",
+      "genres": [
+        "afrikaans pop"
+      ],
+      "popularity": 45,
+      "uri": "spotify:artist:7pJtnZQLPJmqzVfdIz7eFF",
+      "url": "https://open.spotify.com/artist/7pJtnZQLPJmqzVfdIz7eFF"
+    },
+    {
       "name": "Ramones",
       "image": "https://i.scdn.co/image/ab6761610000e5eb5b9f46a5c5bf8243179d56b0",
       "genres": [
         "punk",
         "proto-punk"
       ],
-      "popularity": 68,
+      "popularity": 67,
       "uri": "spotify:artist:1co4F2pPNH8JjTutZkmgSm",
       "url": "https://open.spotify.com/artist/1co4F2pPNH8JjTutZkmgSm"
     },
@@ -22,17 +32,6 @@
       "url": "https://open.spotify.com/artist/3fFoaTI85WuaVkSMUxeYRd"
     },
     {
-      "name": "Our Last Night",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb9d23c75528e428dd6e188666",
-      "genres": [
-        "post-hardcore",
-        "metalcore"
-      ],
-      "popularity": 65,
-      "uri": "spotify:artist:00YTqRClk82aMchQQpYMd5",
-      "url": "https://open.spotify.com/artist/00YTqRClk82aMchQQpYMd5"
-    },
-    {
       "name": "Die Heuwels Fantasties",
       "image": "https://i.scdn.co/image/ab6761610000e5eb8c23dc2c6245332f29331f32",
       "genres": [
@@ -43,14 +42,15 @@
       "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
     },
     {
-      "name": "Die Piesangskille",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb0f9f1c72174154cbc8733c70",
+      "name": "Our Last Night",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb9d23c75528e428dd6e188666",
       "genres": [
-        "afrikaans pop"
+        "post-hardcore",
+        "metalcore"
       ],
-      "popularity": 48,
-      "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
-      "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
+      "popularity": 65,
+      "uri": "spotify:artist:00YTqRClk82aMchQQpYMd5",
+      "url": "https://open.spotify.com/artist/00YTqRClk82aMchQQpYMd5"
     }
   ],
   "topTracks": [
@@ -60,19 +60,9 @@
       "album": "Exile",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2733877dce2634f93c62c544229",
       "duration": "3:58",
-      "popularity": 47,
+      "popularity": 49,
       "uri": "spotify:track:4PdiiiIgjeMCJRXcSgvhYb",
       "url": "https://open.spotify.com/track/4PdiiiIgjeMCJRXcSgvhYb"
-    },
-    {
-      "name": "Cool Soos Koos Kombuis",
-      "artist": "Snotkop",
-      "album": "HKGK",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273390d9cc33dc3210e46b55119",
-      "duration": "3:47",
-      "popularity": 45,
-      "uri": "spotify:track:0FJ8QKzMg5pc42LJ3wr9NV",
-      "url": "https://open.spotify.com/track/0FJ8QKzMg5pc42LJ3wr9NV"
     },
     {
       "name": "Mighty To Save",
@@ -85,34 +75,24 @@
       "url": "https://open.spotify.com/track/0Hw9aocqrEwTepprJrmE3q"
     },
     {
-      "name": "Heartless",
-      "artist": "Evaride",
-      "album": "Heartless",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27360520413ceed9f4a67bc7c5d",
-      "duration": "4:17",
-      "popularity": 25,
-      "uri": "spotify:track:3cwxpoKIqqFHIjyWYqkrdf",
-      "url": "https://open.spotify.com/track/3cwxpoKIqqFHIjyWYqkrdf"
+      "name": "Toxic Lullabies",
+      "artist": "Behold the Beloved",
+      "album": "Harsh Realities",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735e7e91227b06da702927a7fe",
+      "duration": "4:36",
+      "popularity": 33,
+      "uri": "spotify:track:3e9pqJH3QMX7G7ZM6ZYaoZ",
+      "url": "https://open.spotify.com/track/3e9pqJH3QMX7G7ZM6ZYaoZ"
     },
     {
-      "name": "Safe and Sound",
-      "artist": "Capital Cities",
-      "album": "In A Tidal Wave of Mystery",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b03e92f4e7dcd9db3a06c869",
-      "duration": "3:12",
-      "popularity": 88,
-      "uri": "spotify:track:5JVbvCHX10U2pLa5DEqGav",
-      "url": "https://open.spotify.com/track/5JVbvCHX10U2pLa5DEqGav"
-    },
-    {
-      "name": "Ek Val",
-      "artist": "Die Piesangskille",
-      "album": "Ek Val",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27336238b48867d8c22c84a1634",
-      "duration": "2:58",
-      "popularity": 45,
-      "uri": "spotify:track:3TRXjj5LyijhaeJOcZ3xig",
-      "url": "https://open.spotify.com/track/3TRXjj5LyijhaeJOcZ3xig"
+      "name": "Choosin' Texas",
+      "artist": "Our Last Night",
+      "album": "Covers Only, Vol. 2",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27383c41e0710ae43affeb7d4ef",
+      "duration": "3:50",
+      "popularity": 48,
+      "uri": "spotify:track:3y9siycRHOKgWyWdqhudng",
+      "url": "https://open.spotify.com/track/3y9siycRHOKgWyWdqhudng"
     },
     {
       "name": "Riders On The Storm - Fredwreck Remix",
@@ -125,35 +105,55 @@
       "url": "https://open.spotify.com/track/0RcYEWXtbu4ehdv1tiBOi0"
     },
     {
-      "name": "Fishers Of Men",
-      "artist": "Tyler Philip Ratcliffe",
-      "album": "Fishers Of Men",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273393dff8b8617dba9d54bd1d5",
-      "duration": "2:56",
-      "popularity": 35,
-      "uri": "spotify:track:0lIbM0Jnj1UOG6VRey2aO0",
-      "url": "https://open.spotify.com/track/0lIbM0Jnj1UOG6VRey2aO0"
-    },
-    {
       "name": "Holy God",
       "artist": "Cory Asbury",
       "album": "Outsing The Angels",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273afea08b8d947cf2d49f15383",
       "duration": "4:30",
-      "popularity": 48,
+      "popularity": 47,
       "uri": "spotify:track:0pVZxVh5NFfLvisAvP3F1h",
       "url": "https://open.spotify.com/track/0pVZxVh5NFfLvisAvP3F1h"
     },
     {
-      "name": "See A Victory",
-      "artist": "Seventh Day Slumber",
-      "album": "Unseen: The Lion And The Lamb (Deluxe Edition)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2734bfd0e91bf806bc73d736cfd",
-      "duration": "5:57",
-      "popularity": 34,
-      "uri": "spotify:track:0vdsEnKEjx0mA1AHV8mwvM",
-      "url": "https://open.spotify.com/track/0vdsEnKEjx0mA1AHV8mwvM"
+      "name": "Pyro",
+      "artist": "Tasché, Richard Onraet",
+      "album": "Acoustic Sessions",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739f5c0b1bc26f61a02179b4ea",
+      "duration": "3:57",
+      "popularity": 16,
+      "uri": "spotify:track:0rhKwKECyPBsRZLAp9HToC",
+      "url": "https://open.spotify.com/track/0rhKwKECyPBsRZLAp9HToC"
+    },
+    {
+      "name": "Die Reënmasjien",
+      "artist": "Spoegwolf",
+      "album": "Kleiner",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b745d888656e40d7a842e342",
+      "duration": "3:13",
+      "popularity": 43,
+      "uri": "spotify:track:15zECs6Gbi1MFSKdxEUZ1F",
+      "url": "https://open.spotify.com/track/15zECs6Gbi1MFSKdxEUZ1F"
+    },
+    {
+      "name": "Bloed En Vlees",
+      "artist": "Jo Black",
+      "album": "Skepe",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2737ea86917883bb42725975c31",
+      "duration": "3:22",
+      "popularity": 22,
+      "uri": "spotify:track:1Y64gXmUMwlGJdhQidx8Rk",
+      "url": "https://open.spotify.com/track/1Y64gXmUMwlGJdhQidx8Rk"
+    },
+    {
+      "name": "Victor Ludorum",
+      "artist": "Francois van Coke",
+      "album": "Die Ruimte",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735ba82225885ef42556872351",
+      "duration": "3:09",
+      "popularity": 38,
+      "uri": "spotify:track:1rRA1DtKpsjr69ha6edeSh",
+      "url": "https://open.spotify.com/track/1rRA1DtKpsjr69ha6edeSh"
     }
   ],
-  "lastUpdated": "2026-11-16T05:29:27.304Z"
+  "lastUpdated": "2026-11-23T06:30:48.344Z"
 }
