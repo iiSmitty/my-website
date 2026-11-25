@@ -5,35 +5,51 @@ on:
     - cron: '0 0 * * 1'  # Runs at midnight on Monday each week
   workflow_dispatch:     # Allows manual triggering from GitHub UI
 
+# One run at a time, so two runs can't race to push the same file
+concurrency:
+  group: update-spotify-data
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
 jobs:
   update-spotify-data:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
-          node-version: '16'
+          node-version: '24'
 
-      - name: Install dependencies
-        run: npm install axios --no-save
-
+      # No dependencies to install: the script only uses Node's built-in fetch
       - name: Fetch Spotify data
+        id: fetch
         run: node .github/scripts/spotify-data-fetcher.js
         env:
           SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
           SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
           SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
 
-      - name: Clean up Node.js files
-        run: rm -rf node_modules
-
+      # Alfred commits it, as he does the coffee and watching data. The commit
+      # is pushed with GITHUB_TOKEN; the author is his noreply address, which is
+      # what puts his name and avatar on it.
       - name: Commit and push if changed
+        env:
+          # Passed through env, not inlined, because it contains artist and track names
+          COMMIT_MSG: ${{ steps.fetch.outputs.message }}
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add -A
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update Spotify data" && git push)
+          if git diff --quiet data/spotify-data.json; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git config --local user.email "292474565+waynemanor-butler@users.noreply.github.com"
+          git config --local user.name "Alfred Pennyworth"
+          git add data/spotify-data.json
+          git commit -m "${COMMIT_MSG:-🎧 The Spotify records are filed, sir.}"
+          git pull --rebase --autostash origin main
+          git push
