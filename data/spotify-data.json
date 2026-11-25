@@ -41,14 +41,14 @@
       "url": "https://open.spotify.com/artist/00YTqRClk82aMchQQpYMd5"
     },
     {
-      "name": "Straatligkinders",
-      "image": "https://i.scdn.co/image/ab6761610000e5ebf337ec7e14397df7af9a859c",
+      "name": "Die Piesangskille",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb0f9f1c72174154cbc8733c70",
       "genres": [
         "afrikaans pop"
       ],
-      "popularity": 25,
-      "uri": "spotify:artist:5UiwFnPps6GB50J7e8Q5GS",
-      "url": "https://open.spotify.com/artist/5UiwFnPps6GB50J7e8Q5GS"
+      "popularity": 48,
+      "uri": "spotify:artist:0ziQukaJM4x6Wgus61oFrS",
+      "url": "https://open.spotify.com/artist/0ziQukaJM4x6Wgus61oFrS"
     }
   ],
   "topTracks": [
@@ -153,5 +153,5 @@
       "url": "https://open.spotify.com/track/0pVZxVh5NFfLvisAvP3F1h"
     }
   ],
-  "lastUpdated": "2026-11-25T14:23:54.449Z"
+  "lastUpdated": "2026-11-25T15:28:45.041Z"
 }
