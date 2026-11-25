@@ -5,7 +5,7 @@ const { record, composeMessage, emptyLedger, ordinal, monthKey } = require('../l
 const DAY = 24 * 60 * 60 * 1000;
 const at = iso => Date.parse(iso);
 
-// Shapes match data/coffee-stats.json, watching.json and sponsors.json (November 2026)
+// Shapes match data/coffee-stats.json, watching.json, sponsors.json and spotify-data.json (November 2026)
 function coffee(visits, lastVisitAt, extra = {}) {
     return { totalSiteVisits: visits, currentBalance: visits % 10, freeBeveragesRedeemed: 31, freeBeveragesAvailable: 1, lastVisitAt, ...extra };
 }
@@ -46,7 +46,7 @@ test('months are SAST: 23:30 UTC on 31 October is November in Johannesburg', () 
 
 // --- entries ---
 
-test('the entry number runs across all three sources', () => {
+test('the entry number runs across all sources', () => {
     const { ledger, message } = record('sponsors', {
         ledger: { entries: 2 }, before: null, after: { sponsors: [] }, now: at('2026-11-16T08:00:00Z'),
         subject: '☕ Tidied.', context: { entriesElsewhere: 20 },
@@ -311,4 +311,84 @@ test('no notice, no closing line', () => {
         now: at('2026-11-14T08:00:00Z'), subject: 'x', context: { quietNotice: null },
     });
     assert.doesNotMatch(message, /Closes|Normal service/);
+});
+
+// --- spotify ---
+
+function spotify(artists, track = ['Exile', 'Francois van Coke']) {
+    return { topArtists: artists.map(name => ({ name })), topTracks: track ? [{ name: track[0], artist: track[1] }] : [] };
+}
+
+function spotifyEntry(ledger, before, after, now) {
+    return record('spotify', { ledger, before, after, now: at(now), subject: '🎧 Filed.' });
+}
+
+test('the first Spotify entry starts the reign quietly, and names the top artist and track', () => {
+    const { ledger, message } = spotifyEntry(null, spotify(['Ramones']), spotify(['Ramones']), '2026-11-30T00:30:00Z');
+    assert.deepEqual(ledger.reign, { artist: 'Ramones', since: '2026-11-30T00:30:00.000Z' });
+    assert.equal(message, '🎧 Filed.\n\nTop artist: Ramones\nTop track: Exile by Francois van Coke\nEntry: 1\n');
+});
+
+test('a top artist new to his records is noted as a first', () => {
+    const ledger = { entries: 1, reign: { artist: 'Ramones', since: '2026-11-30T00:30:00Z' }, lastAtTop: { Ramones: '2026-11-30T00:30:00Z' } };
+    const { ledger: next, message } = spotifyEntry(ledger, spotify(['Ramones']), spotify(['Kurt Darren', 'Ramones']), '2026-12-07T00:30:00Z');
+    assert.equal(body(message), 'New to the top spot, in my records.');
+    assert.equal(next.reign.artist, 'Kurt Darren');
+});
+
+test('an artist back at the top is told when they were last there', () => {
+    const ledger = {
+        entries: 5, reign: { artist: 'Kurt Darren', since: '2026-12-07T00:30:00Z' },
+        lastAtTop: { Ramones: '2026-11-30T00:30:00Z', 'Kurt Darren': '2026-12-21T00:30:00Z' },
+    };
+    const { message } = spotifyEntry(ledger, spotify(['Kurt Darren', 'Ramones']), spotify(['Ramones', 'Kurt Darren']), '2026-12-28T00:30:00Z');
+    assert.equal(body(message), 'Back at the top, last seen there on 30 November.');
+});
+
+test('a return after most of a year gives the month and year', () => {
+    const ledger = { entries: 40, reign: { artist: 'Kurt Darren', since: '2027-03-01T00:30:00Z' }, lastAtTop: { Ramones: '2026-11-30T00:30:00Z' } };
+    const { message } = spotifyEntry(ledger, spotify(['Kurt Darren', 'Ramones']), spotify(['Ramones', 'Kurt Darren']), '2027-11-29T00:30:00Z');
+    assert.equal(body(message), 'Back at the top, last seen there in November 2026.');
+});
+
+test('a long run at the top gets a word, and beating the record is said once', () => {
+    const ledger = {
+        entries: 9, reign: { artist: 'Ramones', since: '2027-01-04T00:30:00Z' },
+        longestReign: { artist: 'Kurt Darren', since: '2026-12-07T00:30:00Z', days: 21 }, lastAtTop: {},
+    };
+    const same = spotify(['Ramones']);
+    const week2 = spotifyEntry(ledger, same, same, '2027-01-18T00:30:00Z');
+    assert.equal(body(week2.message).startsWith('Top artist'), true); // 14 days: nothing to say yet
+
+    const week4 = spotifyEntry(week2.ledger, same, same, '2027-02-01T00:30:00Z');
+    assert.equal(body(week4.message), 'At the top since 4 January, the longest run in my records.');
+    assert.deepEqual(week4.ledger.longestReign, { artist: 'Ramones', since: '2027-01-04T00:30:00Z', days: 28 });
+
+    const week5 = spotifyEntry(week4.ledger, same, same, '2027-02-08T00:30:00Z');
+    assert.equal(body(week5.message), 'At the top since 4 January.');
+});
+
+test('new names in the top five are listed, leaving out the top artist', () => {
+    const before = spotify(['Ramones', 'Kurt Darren', 'Pyro']);
+    const ledger = { entries: 3, reign: { artist: 'Ramones', since: '2026-11-30T00:30:00Z' }, lastAtTop: {} };
+    const one = spotifyEntry(ledger, before, spotify(['Ramones', 'Kurt Darren', 'Die Heuwels Fantasties']), '2026-12-07T00:30:00Z');
+    assert.equal(body(one.message), 'Die Heuwels Fantasties is new to the top five.');
+    const three = spotifyEntry(ledger, before, spotify(['Ramones', 'A', 'B', 'C']), '2026-12-07T00:30:00Z');
+    assert.equal(body(three.message), 'New to the top five: A, B and C.');
+    const newTop = spotifyEntry(ledger, before, spotify(['Our Last Night', 'Ramones']), '2026-12-07T00:30:00Z');
+    assert.equal(body(newTop.message), 'New to the top spot, in my records.');
+});
+
+test('an empty month is filed without remarks or a top artist', () => {
+    const { ledger, message } = spotifyEntry({ entries: 2, reign: { artist: 'Ramones', since: '2026-11-30T00:30:00Z' } }, spotify(['Ramones']), spotify([], null), '2026-12-07T00:30:00Z');
+    assert.equal(message, '🎧 Filed.\n\nEntry: 3\n');
+    assert.equal(ledger.reign.artist, 'Ramones');
+});
+
+test('a Spotify entry never closes a quiet-week notice', () => {
+    const { message } = record('spotify', {
+        ledger: null, before: spotify(['Ramones']), after: spotify(['Kurt Darren']), now: at('2026-12-07T00:30:00Z'),
+        subject: '🎧 Filed.', context: { quietNotice: 12 },
+    });
+    assert.doesNotMatch(message, /Closes #/);
 });

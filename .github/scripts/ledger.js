@@ -2,10 +2,10 @@
  * Alfred's ledger: what he remembers between commits, and the commit body he
  * writes from it.
  *
- * Each data workflow (coffee, watching, sponsors) commits as Alfred with a
- * one-line subject. This adds a memory. Before committing, the workflow runs
+ * Each data workflow (coffee, watching, sponsors, spotify) commits as Alfred
+ * with a one-line subject. This adds a memory. Before committing, the workflow runs
  *
- *     node .github/scripts/ledger.js <coffee|watching|sponsors> "<subject>"
+ *     node .github/scripts/ledger.js <coffee|watching|sponsors|spotify> "<subject>"
  *
  * which compares the data file at HEAD with the freshly fetched one, updates
  * data/ledger/<source>.json, and prints the full commit message: the subject,
@@ -32,6 +32,7 @@ const SOURCES = {
     coffee: 'data/coffee-stats.json',
     watching: 'data/watching.json',
     sponsors: 'data/sponsors.json',
+    spotify: 'data/spotify-data.json',
 };
 
 const TIME_ZONE = 'Africa/Johannesburg';
@@ -43,6 +44,8 @@ const BATCH_EPISODES = 5;        // as do this many episodes in one report
 const NO_COFFEE_DAYS = 7;        // the same quiet week as the site's PC Health
 const PACE_MIN_DAYS = 28;        // watch a show this long before forecasting it
 const PACE_MIN_EPISODES = 4;     // and see at least this much progress
+const REIGN_NOTE_DAYS = 21;      // a top artist this long gets a word each week
+const DATE_WITH_YEAR_DAYS = 300; // older than this, "March 2027" rather than "3 March"
 
 // --- small helpers ---
 
@@ -108,6 +111,7 @@ function oneLine(text) {
 function emptyLedger(source) {
     if (source === 'coffee') return { entries: 0, visitsByMonth: {}, longestGap: null };
     if (source === 'watching') return { entries: 0, episodesByMonth: {}, seriesFinished: 0, shows: {} };
+    if (source === 'spotify') return { entries: 0, reign: null, longestReign: null, lastAtTop: {} };
     return { entries: 0 };
 }
 
@@ -267,9 +271,75 @@ function recordSponsors(ledger, before, after, now, context = {}) {
     return { remarks, trailers: [['Patrons', `${patrons}, ${plural(is, 'coffee')} stood`]] };
 }
 
+// --- spotify ---
+
+function artistNames(data) {
+    const artists = data && Array.isArray(data.topArtists) ? data.topArtists : [];
+    return artists.filter(artist => artist && typeof artist.name === 'string').map(artist => oneLine(artist.name));
+}
+
+/** "A", "A and B", "A, B and C" */
+function listNames(names) {
+    return names.length > 1 ? `${names.slice(0, -1).join(', ')} and ${names[names.length - 1]}` : names[0];
+}
+
+/**
+ * Spotify gives the top artists of roughly the last four weeks, once a week.
+ * The ledger remembers who holds the top spot and since when (dated by the
+ * report that first saw them there), the longest such run, and when each
+ * artist was last seen at the top. The subject already says who took the top
+ * spot from whom, so the remarks don't repeat it.
+ */
+function recordSpotify(ledger, before, after, now) {
+    const remarks = [];
+    const top = artistNames(after)[0] || null;
+    const hadRecords = ledger.entries > 1; // record() has already counted this entry
+    const nowIso = new Date(now).toISOString();
+
+    if (top) {
+        const reign = ledger.reign;
+        if (reign && reign.artist === top) {
+            const since = timeOf(reign.since) || now;
+            const days = Math.floor((now - since) / DAY_MS);
+            const best = ledger.longestReign;
+            if (best && best.since !== reign.since && days > best.days) {
+                remarks.push(`At the top since ${dayAndMonth(since)}, the longest run in my records.`);
+            } else if (days >= REIGN_NOTE_DAYS) {
+                remarks.push(`At the top since ${dayAndMonth(since)}.`);
+            }
+            if (!best || days > best.days) ledger.longestReign = { artist: top, since: reign.since, days };
+        } else {
+            const last = timeOf(ledger.lastAtTop[top]);
+            if (last !== null) {
+                const when = now - last > DATE_WITH_YEAR_DAYS * DAY_MS ? `in ${monthAndYear(last)}` : `on ${dayAndMonth(last)}`;
+                remarks.push(`Back at the top, last seen there ${when}.`);
+            } else if (hadRecords) {
+                remarks.push('New to the top spot, in my records.');
+            }
+            ledger.reign = { artist: top, since: nowIso };
+        }
+        ledger.lastAtTop[top] = nowIso;
+    }
+
+    const known = artistNames(before);
+    if (known.length) {
+        const newNames = artistNames(after).filter(name => name !== top && !known.includes(name));
+        if (newNames.length === 1) remarks.push(`${newNames[0]} is new to the top five.`);
+        else if (newNames.length > 1) remarks.push(`New to the top five: ${listNames(newNames)}.`);
+    }
+
+    const trailers = [];
+    if (top) trailers.push(['Top artist', top]);
+    const track = after && Array.isArray(after.topTracks) && after.topTracks[0];
+    if (track && typeof track.name === 'string') {
+        trailers.push(['Top track', typeof track.artist === 'string' ? `${track.name} by ${track.artist}` : track.name]);
+    }
+    return { remarks, trailers };
+}
+
 // --- the entry ---
 
-const RECORDERS = { coffee: recordCoffee, watching: recordWatching, sponsors: recordSponsors };
+const RECORDERS = { coffee: recordCoffee, watching: recordWatching, sponsors: recordSponsors, spotify: recordSpotify };
 
 /**
  * One entry in the ledger: the updated ledger and the full commit message.
@@ -362,4 +432,4 @@ if (require.main === module) {
     }
 }
 
-module.exports = { record, recordCoffee, recordWatching, recordSponsors, composeMessage, emptyLedger, normalise, ordinal, monthKey };
+module.exports = { record, recordCoffee, recordWatching, recordSponsors, recordSpotify, composeMessage, emptyLedger, normalise, ordinal, monthKey };

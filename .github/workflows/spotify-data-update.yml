@@ -49,7 +49,17 @@ jobs:
           fi
           git config --local user.email "292474565+waynemanor-butler@users.noreply.github.com"
           git config --local user.name "Alfred Pennyworth"
+          SUBJECT="${COMMIT_MSG:-🎧 The Spotify records are filed, sir.}"
+          # Alfred's ledger adds a body and trailers. If it fails, the subject alone will do.
+          if ! node .github/scripts/ledger.js spotify "$SUBJECT" > "$RUNNER_TEMP/commit-msg"; then
+            echo "::warning::The ledger could not be written; committing the subject alone"
+            git checkout -- data/ledger/spotify.json 2>/dev/null || true
+            printf '%s\n' "$SUBJECT" > "$RUNNER_TEMP/commit-msg"
+          fi
+          cat "$RUNNER_TEMP/commit-msg"
           git add data/spotify-data.json
-          git commit -m "${COMMIT_MSG:-🎧 The Spotify records are filed, sir.}"
+          # Absent only if the ledger failed before its first entry
+          if [ -f data/ledger/spotify.json ]; then git add data/ledger/spotify.json; fi
+          git commit -F "$RUNNER_TEMP/commit-msg"
           git pull --rebase --autostash origin main
           git push
