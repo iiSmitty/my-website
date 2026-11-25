@@ -11,15 +11,14 @@
       "url": "https://open.spotify.com/artist/7pJtnZQLPJmqzVfdIz7eFF"
     },
     {
-      "name": "Ramones",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb5b9f46a5c5bf8243179d56b0",
+      "name": "Die Heuwels Fantasties",
+      "image": "https://i.scdn.co/image/ab6761610000e5eb8c23dc2c6245332f29331f32",
       "genres": [
-        "punk",
-        "proto-punk"
+        "afrikaans pop"
       ],
-      "popularity": 67,
-      "uri": "spotify:artist:1co4F2pPNH8JjTutZkmgSm",
-      "url": "https://open.spotify.com/artist/1co4F2pPNH8JjTutZkmgSm"
+      "popularity": 48,
+      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
+      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
     },
     {
       "name": "Kurt Darren",
@@ -32,35 +31,54 @@
       "url": "https://open.spotify.com/artist/3fFoaTI85WuaVkSMUxeYRd"
     },
     {
-      "name": "Die Heuwels Fantasties",
-      "image": "https://i.scdn.co/image/ab6761610000e5eb8c23dc2c6245332f29331f32",
-      "genres": [
-        "afrikaans pop"
-      ],
-      "popularity": 48,
-      "uri": "spotify:artist:0FrkoXLOCHCWfMXw10Apxb",
-      "url": "https://open.spotify.com/artist/0FrkoXLOCHCWfMXw10Apxb"
-    },
-    {
       "name": "Our Last Night",
       "image": "https://i.scdn.co/image/ab6761610000e5eb9d23c75528e428dd6e188666",
       "genres": [
-        "post-hardcore",
-        "metalcore"
+        "post-hardcore"
       ],
       "popularity": 65,
       "uri": "spotify:artist:00YTqRClk82aMchQQpYMd5",
       "url": "https://open.spotify.com/artist/00YTqRClk82aMchQQpYMd5"
+    },
+    {
+      "name": "Straatligkinders",
+      "image": "https://i.scdn.co/image/ab6761610000e5ebf337ec7e14397df7af9a859c",
+      "genres": [
+        "afrikaans pop"
+      ],
+      "popularity": 25,
+      "uri": "spotify:artist:5UiwFnPps6GB50J7e8Q5GS",
+      "url": "https://open.spotify.com/artist/5UiwFnPps6GB50J7e8Q5GS"
     }
   ],
   "topTracks": [
+    {
+      "name": "Nagmerries (Bye Bye Baby)",
+      "artist": "Francois van Coke",
+      "album": "Nagmerries (Bye Bye Baby)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27336e97243054943f312afb89e",
+      "duration": "2:52",
+      "popularity": 40,
+      "uri": "spotify:track:4poZabWtPpWp5CL2r3rbxg",
+      "url": "https://open.spotify.com/track/4poZabWtPpWp5CL2r3rbxg"
+    },
+    {
+      "name": "Victor Ludorum",
+      "artist": "Francois van Coke",
+      "album": "Die Ruimte",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735ba82225885ef42556872351",
+      "duration": "3:09",
+      "popularity": 39,
+      "uri": "spotify:track:1rRA1DtKpsjr69ha6edeSh",
+      "url": "https://open.spotify.com/track/1rRA1DtKpsjr69ha6edeSh"
+    },
     {
       "name": "Exile",
       "artist": "Stephen Stanley, The Chosen",
       "album": "Exile",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2733877dce2634f93c62c544229",
       "duration": "3:58",
-      "popularity": 49,
+      "popularity": 50,
       "uri": "spotify:track:4PdiiiIgjeMCJRXcSgvhYb",
       "url": "https://open.spotify.com/track/4PdiiiIgjeMCJRXcSgvhYb"
     },
@@ -90,9 +108,19 @@
       "album": "Covers Only, Vol. 2",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27383c41e0710ae43affeb7d4ef",
       "duration": "3:50",
-      "popularity": 48,
+      "popularity": 50,
       "uri": "spotify:track:3y9siycRHOKgWyWdqhudng",
       "url": "https://open.spotify.com/track/3y9siycRHOKgWyWdqhudng"
+    },
+    {
+      "name": "TILL THE END",
+      "artist": "Micah Ariss",
+      "album": "TILL THE END",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273efd2d8641668a8d450e0527a",
+      "duration": "3:31",
+      "popularity": 35,
+      "uri": "spotify:track:00VlRfyKemNbHe0wT43F76",
+      "url": "https://open.spotify.com/track/00VlRfyKemNbHe0wT43F76"
     },
     {
       "name": "Riders On The Storm - Fredwreck Remix",
@@ -100,9 +128,19 @@
       "album": "Riders On The Storm (Fredwreck Remix)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27347f58c2b7fe3bbd8d8671536",
       "duration": "6:22",
-      "popularity": 69,
+      "popularity": 70,
       "uri": "spotify:track:0RcYEWXtbu4ehdv1tiBOi0",
       "url": "https://open.spotify.com/track/0RcYEWXtbu4ehdv1tiBOi0"
+    },
+    {
+      "name": "No Smoke",
+      "artist": "Emerson Day",
+      "album": "No Smoke",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273ff9a8bd1a6f8184179e3331b",
+      "duration": "2:59",
+      "popularity": 57,
+      "uri": "spotify:track:0iSgWnJlkOTMLrascid8pc",
+      "url": "https://open.spotify.com/track/0iSgWnJlkOTMLrascid8pc"
     },
     {
       "name": "Holy God",
@@ -113,47 +151,7 @@
       "popularity": 47,
       "uri": "spotify:track:0pVZxVh5NFfLvisAvP3F1h",
       "url": "https://open.spotify.com/track/0pVZxVh5NFfLvisAvP3F1h"
-    },
-    {
-      "name": "Pyro",
-      "artist": "Tasché, Richard Onraet",
-      "album": "Acoustic Sessions",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739f5c0b1bc26f61a02179b4ea",
-      "duration": "3:57",
-      "popularity": 16,
-      "uri": "spotify:track:0rhKwKECyPBsRZLAp9HToC",
-      "url": "https://open.spotify.com/track/0rhKwKECyPBsRZLAp9HToC"
-    },
-    {
-      "name": "Die Reënmasjien",
-      "artist": "Spoegwolf",
-      "album": "Kleiner",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b745d888656e40d7a842e342",
-      "duration": "3:13",
-      "popularity": 43,
-      "uri": "spotify:track:15zECs6Gbi1MFSKdxEUZ1F",
-      "url": "https://open.spotify.com/track/15zECs6Gbi1MFSKdxEUZ1F"
-    },
-    {
-      "name": "Bloed En Vlees",
-      "artist": "Jo Black",
-      "album": "Skepe",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2737ea86917883bb42725975c31",
-      "duration": "3:22",
-      "popularity": 22,
-      "uri": "spotify:track:1Y64gXmUMwlGJdhQidx8Rk",
-      "url": "https://open.spotify.com/track/1Y64gXmUMwlGJdhQidx8Rk"
-    },
-    {
-      "name": "Victor Ludorum",
-      "artist": "Francois van Coke",
-      "album": "Die Ruimte",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735ba82225885ef42556872351",
-      "duration": "3:09",
-      "popularity": 38,
-      "uri": "spotify:track:1rRA1DtKpsjr69ha6edeSh",
-      "url": "https://open.spotify.com/track/1rRA1DtKpsjr69ha6edeSh"
     }
   ],
-  "lastUpdated": "2026-11-23T06:30:48.344Z"
+  "lastUpdated": "2026-11-25T14:23:54.449Z"
 }
