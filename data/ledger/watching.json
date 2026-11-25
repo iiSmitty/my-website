@@ -1,22 +1,16 @@
 {
-  "entries": 9,
+  "entries": 10,
   "episodesByMonth": {
     "2026-10": 31,
-    "2026-11": 18
+    "2026-11": 19
   },
-  "seriesFinished": 0,
+  "seriesFinished": 1,
   "shows": {
     "1399": {
       "title": "House",
       "watched": 62,
       "firstSeenAt": "2026-10-02T13:52:23.000Z",
       "firstWatched": 31
-    },
-    "285631": {
-      "title": "The Celebrity Traitors",
-      "watched": 18,
-      "firstSeenAt": "2026-11-10T16:18:32.000Z",
-      "firstWatched": 10
     }
   }
 }

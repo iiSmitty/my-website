@@ -1,22 +1,6 @@
 {
-  "lastUpdated": "2026-11-24T11:46:47.315Z",
+  "lastUpdated": "2026-11-25T10:40:32.904Z",
   "inProgress": [
-    {
-      "title": "The Celebrity Traitors",
-      "year": 2025,
-      "traktId": 285631,
-      "tmdbId": 291431,
-      "slug": "the-celebrity-traitors",
-      "poster": "/uziPOqxQotCE9g0wBgDvHCOvRhP.jpg",
-      "episode": {
-        "season": 1,
-        "number": 8,
-        "title": "Episode 8"
-      },
-      "watched": 18,
-      "aired": 19,
-      "lastWatchedAt": "2026-11-23T19:00:00.000Z"
-    },
     {
       "title": "House",
       "year": 2004,
@@ -35,14 +19,14 @@
     }
   ],
   "previous": {
-    "title": "Reacher",
-    "year": 2022,
-    "traktId": 155536,
-    "tmdbId": 108978,
-    "slug": "reacher",
-    "poster": "/f1VCQIG2iCyOookdgOzwtUpwWC0.jpg",
-    "episodes": 32,
-    "finishedAt": "2026-09-16T19:00:00.000Z"
+    "title": "The Celebrity Traitors",
+    "year": 2025,
+    "traktId": 285631,
+    "tmdbId": 291431,
+    "slug": "the-celebrity-traitors",
+    "poster": "/uziPOqxQotCE9g0wBgDvHCOvRhP.jpg",
+    "episodes": 19,
+    "finishedAt": "2026-11-24T18:30:00.000Z"
   },
   "movies": [
     {
