@@ -111,6 +111,25 @@ function pcHealthStale(isoTime, days, now) {
 }
 
 /**
+ * The episode I watched last, as { at, title }, or null. The newest of the
+ * shows in progress and the show I last finished: a series' final episode
+ * moves it out of inProgress and into previous. Alfred's quiet-week check
+ * (.github/scripts/quiet-week.js) reads watching.json the same way.
+ */
+function pcHealthLatestEpisode(watching) {
+    if (!watching) return null;
+    const finished = watching.previous;
+    const candidates = [
+        ...(Array.isArray(watching.inProgress) ? watching.inProgress : [])
+            .map(show => show && { at: show.lastWatchedAt, title: show.title }),
+        finished && { at: finished.finishedAt, title: finished.title }
+    ].filter(episode => episode && typeof episode.at === 'string' && Number.isFinite(Date.parse(episode.at)));
+    if (!candidates.length) return null;
+    const latest = candidates.reduce((a, b) => (Date.parse(b.at) > Date.parse(a.at) ? b : a));
+    return { at: latest.at, title: typeof latest.title === 'string' ? latest.title : null };
+}
+
+/**
  * How my week is going: 40, +15 if I bought a coffee in the last two days,
  * +10 if I watched an episode in the last seven, and -15 for a quiet week
  * (no coffee and no episode in seven days), which makes it Tired. Only

@@ -414,13 +414,12 @@ async function loadPcHealthData() {
     pcHealthState.shared = Boolean(features && features.pcHealthShared === true);
     if (!pcHealthState.shared) pcHealthState.status = 'off';
 
-    // The series I watched most recently comes first
-    const current = watching && Array.isArray(watching.inProgress) && watching.inProgress[0];
-    if (current && typeof current.lastWatchedAt === 'string') {
-        pcHealthState.watchedAt = current.lastWatchedAt;
-        pcHealthState.watchedTitle = typeof current.title === 'string' ? current.title : null;
+    const episode = pcHealthLatestEpisode(watching);
+    if (episode) {
+        pcHealthState.watchedAt = episode.at;
+        pcHealthState.watchedTitle = episode.title;
         // So the Mood row can count it on the next visit, before this loads
-        writePcHealthMemory({ watchedAt: current.lastWatchedAt });
+        writePcHealthMemory({ watchedAt: episode.at });
     }
 
     const track = spotify && Array.isArray(spotify.topTracks) && spotify.topTracks[0];

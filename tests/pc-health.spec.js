@@ -38,11 +38,11 @@ function snapshot({ lift = 0, today = {}, total = 0, last = null, at = NOW } = {
  * Serves the data files and the mood API. `api(call, calls)` answers each API
  * call with a route.fulfill() options object, or 'abort'. Returns the calls.
  */
-async function setup(page, { shared = true, coffee = {}, api = () => ({ json: snapshot() }), now = NOW } = {}) {
+async function setup(page, { shared = true, coffee = {}, watching = {}, api = () => ({ json: snapshot() }), now = NOW } = {}) {
     await page.clock.install({ time: now });
     await page.route('**/data/features.json', route => route.fulfill({ json: { pcHealthShared: shared } }));
     await page.route('**/data/coffee-stats.json', route => route.fulfill({ json: { ...COFFEE, ...coffee } }));
-    await page.route('**/data/watching.json', route => route.fulfill({ json: WATCHING }));
+    await page.route('**/data/watching.json', route => route.fulfill({ json: { ...WATCHING, ...watching } }));
     await page.route('**/data/spotify-data.json', route => route.fulfill({ json: SPOTIFY }));
 
     const calls = [];
@@ -777,6 +777,22 @@ test.describe('animation', () => {
         // And the Mood row remembers it
         await page.keyboard.press('Escape');
         await expect(page.locator('#pcHealthRowText')).toHaveText('Tired, 25%');
+    });
+
+    test('a series finished this week counts as the latest episode', async ({ page }) => {
+        // No coffee in eight days and House ten days ago, but the last
+        // episode of a series two days ago, which moved it to previous
+        await setup(page, {
+            coffee: { lastVisitAt: new Date(NOW - 8 * DAY).toISOString() },
+            watching: { previous: { title: 'The Celebrity Traitors', year: 2025, slug: 'the-celebrity-traitors', episodes: 19, finishedAt: new Date(NOW - 2 * DAY).toISOString() } }
+        });
+        await boot(page);
+        await openFromRow(page);
+
+        // 40 + 10, not a quiet week
+        await expect(page.locator('#pcHealthPercent')).toHaveText('50%');
+        await expect(page.locator('#pcHealthState')).toHaveText('Okay');
+        await expect(page.locator('#pcHealthLife')).toContainText('Last episode: The Celebrity Traitors, 2 days ago.');
     });
 
     test('before the coffee fetcher has seen a visit, the week isn\'t quiet', async ({ page }) => {

@@ -6,8 +6,9 @@
  *
  * The rule is the site's own (js/pc-health.js): a week is quiet when both the
  * last coffee (coffee-stats.json lastVisitAt) and the latest episode
- * (watching.json inProgress[0].lastWatchedAt) are known and more than seven
- * days old. That is the week that makes the PC Tired.
+ * (watching.json, the newest of inProgress[].lastWatchedAt and
+ * previous.finishedAt) are known and more than seven days old. That is the
+ * week that makes the PC Tired.
  *
  *     node .github/scripts/quiet-week.js check
  *         Run daily by .github/workflows/quiet-week.yml. Opens the notice when
@@ -48,13 +49,26 @@ function dayAndMonth(time) {
 }
 
 /**
+ * When the latest episode was watched, or null. Like the site's
+ * pcHealthLatestEpisode: the newest of the shows in progress and the show
+ * last finished, whose final episode leaves inProgress for previous.
+ */
+function latestEpisodeAt(watching) {
+    if (!watching) return null;
+    const times = [
+        ...(Array.isArray(watching.inProgress) ? watching.inProgress : []).map(show => show && timeOf(show.lastWatchedAt)),
+        timeOf(watching.previous && watching.previous.finishedAt),
+    ].filter(time => typeof time === 'number');
+    return times.length ? Math.max(...times) : null;
+}
+
+/**
  * The quiet spell, or null: when the last coffee and episode were, if both
  * are known and over a week old. Unknown dates never make a week quiet.
  */
 function quietSpell(coffee, watching, now) {
     const coffeeAt = timeOf(coffee && coffee.lastVisitAt);
-    const latest = watching && Array.isArray(watching.inProgress) && watching.inProgress[0];
-    const watchedAt = timeOf(latest && latest.lastWatchedAt);
+    const watchedAt = latestEpisodeAt(watching);
     const stale = time => time !== null && now - time > QUIET_DAYS * DAY_MS;
     return stale(coffeeAt) && stale(watchedAt) ? { coffeeAt, watchedAt } : null;
 }
@@ -142,4 +156,4 @@ if (require.main === module) {
     });
 }
 
-module.exports = { quietSpell, noticeBody, notices, decide, MARKER };
+module.exports = { latestEpisodeAt, quietSpell, noticeBody, notices, decide, MARKER };

@@ -1,6 +1,6 @@
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
-const { quietSpell, noticeBody, notices, decide, MARKER } = require('../quiet-week.js');
+const { latestEpisodeAt, quietSpell, noticeBody, notices, decide, MARKER } = require('../quiet-week.js');
 
 const at = iso => Date.parse(iso);
 
@@ -30,6 +30,19 @@ test('a recent coffee or a recent episode keeps the week from being quiet', () =
 test('the latest episode is the first show in progress, as on the site', () => {
     const now = at('2026-11-12T17:00:00Z');
     assert.equal(quietSpell(coffee('2026-11-03T08:00:00Z'), watching('2026-11-11T19:00:00Z', '2026-10-01T19:00:00Z'), now), null);
+});
+
+test('a series finished recently counts: its last episode moved to previous', () => {
+    const now = at('2026-11-26T17:00:00Z');
+    const data = { ...watching('2026-10-19T07:43:00Z'), previous: { title: 'Finished', finishedAt: '2026-11-24T18:30:00Z' } };
+    assert.equal(latestEpisodeAt(data), at('2026-11-24T18:30:00Z'));
+    assert.equal(quietSpell(coffee('2026-11-14T08:00:00Z'), data, now), null);
+});
+
+test('an old finished series doesn\'t hide a newer episode in progress', () => {
+    const data = { ...watching('2026-11-20T19:00:00Z'), previous: { title: 'Finished', finishedAt: '2026-09-01T19:00:00Z' } };
+    assert.equal(latestEpisodeAt(data), at('2026-11-20T19:00:00Z'));
+    assert.equal(latestEpisodeAt({ inProgress: [], previous: { finishedAt: '2026-09-01T19:00:00Z' } }), at('2026-09-01T19:00:00Z'));
 });
 
 test('unknown dates never make a week quiet', () => {
