@@ -1,0 +1,23 @@
+// Alfred's clock (src/worker.js). Deployed by .github/workflows/deploy-clock.yml
+// on pushes to main that touch cf-clock/. See README.md for the token, which
+// lives in Cloudflare, not here.
+{
+  "name": "andresmit-clock",
+  "main": "src/worker.js",
+  // Pinned, so a deploy never changes the runtime's behaviour under the code
+  "compatibility_date": "2026-10-01",
+
+  // Cron only: no workers.dev address, no preview URLs, no routes
+  "workers_dev": false,
+  "preview_urls": false,
+
+  // Every hour, on the hour (UTC). src/schedule.js decides what runs when, so
+  // changing a time never touches this line. One of the free plan's five.
+  "triggers": {
+    "crons": ["0 * * * *"]
+  },
+
+  // Logs on: it handles no visitor data, and a failed start should be easy to
+  // find (Workers & Pages > andresmit-clock > Logs, kept three days on Free)
+  "observability": { "enabled": true }
+}

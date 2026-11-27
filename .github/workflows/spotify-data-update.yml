@@ -1,9 +1,9 @@
 name: Update Spotify Data
 
+# Started at 02:00 SAST on Mondays by Alfred's clock (cf-clock/). GitHub's own
+# cron ran hours late, so there's no schedule here.
 on:
-  schedule:
-    - cron: '0 0 * * 1'  # Runs at midnight on Monday each week
-  workflow_dispatch:     # Allows manual triggering from GitHub UI
+  workflow_dispatch:     # The clock, or by hand from the Actions tab
 
 # One run at a time, so two runs can't race to push the same file
 concurrency:

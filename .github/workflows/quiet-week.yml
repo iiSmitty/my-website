@@ -9,10 +9,11 @@ name: Quiet Week
 # Opening and closing use BUTLER_TOKEN, a classic token from the
 # waynemanor-butler account with only the public_repo scope, so the notice
 # comes from Alfred, not github-actions.
+#
+# Started at 19:00 SAST daily, after the day's coffee runs, by Alfred's clock
+# (cf-clock/). GitHub's own cron ran hours late, so there's no schedule here.
 on:
-  schedule:
-    - cron: '0 17 * * *'   # 19:00 SAST, after the day's coffee runs
-  workflow_dispatch:         # Manual trigger
+  workflow_dispatch:         # The clock, or by hand
 
 concurrency:
   group: quiet-week

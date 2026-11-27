@@ -1,11 +1,15 @@
 name: Update Coffee Stats
 
+# Started at 10:00, 14:00 and 18:00 SAST by Alfred's clock (cf-clock/), which
+# passes scheduled=true so the backups skip once the day's stats are in.
+# GitHub's own cron ran hours late, so there's no schedule here.
 on:
-  schedule:
-    - cron: '0 8 * * *'   # 10 AM SAST - primary
-    - cron: '0 12 * * *'  # 2 PM SAST  - backup if primary missed
-    - cron: '0 16 * * *'  # 6 PM SAST  - last resort
-  workflow_dispatch:       # Manual trigger (always runs, ignores skip check)
+  workflow_dispatch:
+    inputs:
+      scheduled:
+        description: Skip if already updated today (the clock's runs). Leave off to run regardless.
+        type: boolean
+        default: false
 
 jobs:
   update-coffee-stats:
@@ -23,7 +27,7 @@ jobs:
       - name: Check if already updated today
         id: check_update
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          if [ "${{ inputs.scheduled }}" != "true" ]; then
             echo "skip=false" >> $GITHUB_OUTPUT
             echo "Manual trigger — running regardless"
             exit 0

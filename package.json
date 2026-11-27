@@ -7,9 +7,10 @@
     "build": "node build.js",
     "test": "npm run build && npm run test:unit && playwright test",
     "test:quick": "npm run build && npm run test:unit && playwright test tests/smoke.spec.js",
-    "test:unit": "npm run test:worker && npm run test:mood && npm run test:scripts",
+    "test:unit": "npm run test:worker && npm run test:mood && npm run test:clock && npm run test:scripts",
     "test:worker": "node --test \"cf-worker/test/*.test.js\"",
     "test:mood": "node --test \"cf-mood/test/*.test.js\"",
+    "test:clock": "node --test \"cf-clock/test/*.test.js\"",
     "test:scripts": "node --test \".github/scripts/test/*.test.js\""
   },
   "devDependencies": {

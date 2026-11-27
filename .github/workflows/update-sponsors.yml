@@ -1,9 +1,10 @@
 name: Update Sponsors
 
+# Started at 08:00 SAST daily by Alfred's clock (cf-clock/). Sponsors come
+# rarely; once a day is plenty. GitHub's own cron ran hours late, so there's
+# no schedule here.
 on:
-  schedule:
-    - cron: '0 6 * * *'    # 08:00 SAST, daily. Sponsors come rarely; once a day is plenty.
-  workflow_dispatch:         # Manual trigger
+  workflow_dispatch:         # The clock, or by hand
   # When the fetcher changes, refresh the data straight away rather than at
   # the next scheduled run. Can't loop: the workflow's own commits only touch
   # data/sponsors.json, and pushes made with GITHUB_TOKEN don't trigger workflows.
