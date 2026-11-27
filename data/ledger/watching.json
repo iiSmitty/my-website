@@ -1,8 +1,8 @@
 {
-  "entries": 11,
+  "entries": 12,
   "episodesByMonth": {
     "2026-10": 31,
-    "2026-11": 20
+    "2026-11": 29
   },
   "seriesFinished": 1,
   "shows": {
@@ -11,6 +11,12 @@
       "watched": 63,
       "firstSeenAt": "2026-10-02T13:52:23.000Z",
       "firstWatched": 31
+    },
+    "170081": {
+      "title": "The Terminal List",
+      "watched": 9,
+      "firstSeenAt": "2026-11-27T07:25:26.357Z",
+      "firstWatched": 9
     }
   }
 }
